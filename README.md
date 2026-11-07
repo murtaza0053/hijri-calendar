@@ -15,3 +15,10 @@ Dua e Kamil: audio plays and the PDF scrolls/highlights the current line (merged
 - `dua/media/config.json` names the audio/PDF/sync files; refine timing in-app with ✎ (Sync mode),
   export `sync.json`, replace `dua/media/sync.json` and push.
 - After changing dua app files bump `CACHE` in `dua/sw.js`; after changing audio/PDF bump `MEDIA_CACHE` in `dua/app.js`.
+
+## Quran & Tasbeeh — `dua/quran.html?s=<surah>`, `dua/tasbeeh.html`
+- Surah data (Indo-Pak text, word timings, Alafasy audio URL) comes from the Quran.com API via
+  `python3 tools/quran-fetch.py 36 18` → `dua/quran/<n>.json`. Audio streams from quranicaudio.com and is
+  cached in the browser (`quran-audio-v1`) for offline use. Add a surah: fetch it and add a card in the Dua tab.
+- Font: Noto Naskh Arabic (OFL), Arabic subset in `dua/fonts/`.
+- Shared theme: `themes.css` + `theme-init.js` (used by every page).

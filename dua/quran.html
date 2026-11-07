@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quran</title>
+<meta name="theme-color" content="#0f5132">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Hijri Cal">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<link rel="icon" href="../icons/icon-192.png">
+<link rel="stylesheet" href="../themes.css">
+<script src="../theme-init.js"></script>
+<style>
+@font-face{font-family:"QNaskh";src:url(fonts/NotoNaskhArabic-arabic.woff2) format("woff2");font-weight:400 700;font-display:swap}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+header{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;gap:6px;
+  padding:calc(env(safe-area-inset-top) + 8px) 10px 8px;background:var(--hdr);color:var(--hdr-ink)}
+header a{color:inherit;text-decoration:none;font-size:26px;width:40px;height:40px;display:grid;place-items:center}
+header .tt{flex:1;min-width:0}
+header .tt b{display:block;font-size:16px}
+header .tt span{font-size:12px;opacity:.85}
+header .ar{font-family:QNaskh,serif;font-size:24px;padding:0 6px}
+main{padding:calc(env(safe-area-inset-top) + 72px) 12px calc(env(safe-area-inset-bottom) + 150px);max-width:760px;margin:0 auto}
+.bism{font-family:QNaskh,serif;text-align:center;font-size:28px;margin:6px 0 2px;color:var(--brand)}
+.bism-t{text-align:center;color:var(--muted);font-size:12px;margin-bottom:12px}
+.v{direction:rtl;text-align:right;font-family:QNaskh,"Geeza Pro",serif;font-size:28px;line-height:2.15;
+  padding:8px 10px;margin:4px 0;border-radius:12px;background:var(--card);border:1px solid var(--line);cursor:pointer;transition:background .2s}
+.v.cur{background:var(--chip);border-color:var(--brand)}
+.w{border-radius:6px;padding:0 1px;transition:background .12s,color .12s}
+.w.on{background:var(--brand);color:var(--on-brand)}
+.num{display:inline-grid;place-items:center;min-width:1.5em;height:1.5em;border:1.5px solid var(--gold);border-radius:50%;
+  font-size:15px;line-height:1;color:var(--gold);margin:0 4px;vertical-align:middle;font-family:-apple-system,"Segoe UI",sans-serif;padding:0 3px}
+#bar{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--card);border-top:1px solid var(--line);
+  padding:8px 12px calc(env(safe-area-inset-bottom) + 8px)}
+#seekRow{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+#seek{flex:1;accent-color:var(--brand)}
+#ctrl{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
+#ctrl button{font:inherit;color:var(--ink);background:none;border:0;border-radius:10px;padding:8px 10px;min-width:48px;font-size:16px}
+#play{width:56px;height:56px;border-radius:50%!important;background:var(--brand)!important;color:var(--on-brand)!important;font-size:22px!important}
+#status{font-size:12px;color:var(--muted);text-align:center;min-height:16px}
+#follow{position:fixed;right:14px;bottom:calc(env(safe-area-inset-bottom) + 150px);z-index:6;display:none;border:0;
+  background:var(--brand);color:var(--on-brand);border-radius:20px;padding:8px 14px;font:inherit;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.src{color:var(--muted);font-size:11px;text-align:center;margin:16px 0}
+</style>
+</head>
+<body>
+<header>
+  <a href="../#dua" aria-label="Back">‹</a>
+  <div class="tt"><b id="title">…</b><span id="sub"></span></div>
+  <div class="ar" id="arName" dir="rtl"></div>
+</header>
+<main>
+  <div class="bism" id="bism" dir="rtl">بِسۡمِ اللّٰهِ الرَّحۡمٰنِ الرَّحِيۡمِ</div>
+  <div class="bism-t" id="bismT"></div>
+  <div id="verses"></div>
+  <div class="src" id="src"></div>
+</main>
+<button id="follow"></button>
+<div id="bar">
+  <div id="status"></div>
+  <div id="seekRow"><span id="cur">0:00</span><input type="range" id="seek" min="0" max="1" step="0.1" value="0"><span id="dur">0:00</span></div>
+  <div id="ctrl">
+    <button id="speed">1×</button>
+    <button id="prevA" aria-label="Previous ayat">⏮</button>
+    <button id="play" aria-label="Play">▶</button>
+    <button id="nextA" aria-label="Next ayat">⏭</button>
+    <button id="rep" aria-label="Repeat ayat">🔁</button>
+  </div>
+</div>
+<audio id="audio" preload="metadata"></audio>
+<script src="../i18n.js"></script>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const ls = { get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+             set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
+const L = I18N[ls.get("lang", "hi")] || I18N.hi;
+const t = (k, v = {}) => String(L[k] ?? I18N.en[k] ?? k).replace(/\{(\w+)\}/g, (_, x) => v[x] ?? "");
+const ARD = "٠١٢٣٤٥٦٧٨٩", arNum = n => String(n).replace(/\d/g, d => ARD[d]);
+const fmt = s => { s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); };
+const AUDIO_CACHE = "quran-audio-v1";
+const audio = $("audio");
+const sn = +(new URLSearchParams(location.search).get("s") || 36);
+let D = null, vEls = [], wEls = [], curV = -1, curW = null, followUntil = 0, repeatV = -1;
+
+async function cachedAudio(url) {
+  try { const c = await caches.open(AUDIO_CACHE); const r = await c.match(url); if (r) return URL.createObjectURL(await r.blob()); } catch {}
+  return null;
+}
+async function downloadAudio(url) {  // background: save for offline, with progress
+  try {
+    const net = await fetch(url); if (!net.ok) throw 0;
+    const total = +net.headers.get("content-length") || 0, rd = net.body.getReader(), parts = []; let got = 0;
+    for (;;) { const { done, value } = await rd.read(); if (done) break; parts.push(value); got += value.length;
+      if (total) $("status").textContent = t("qDownloading", { p: Math.round(got / total * 100) }); }
+    const blob = new Blob(parts, { type: "audio/mpeg" });
+    const c = await caches.open(AUDIO_CACHE); await c.put(url, new Response(blob, { headers: { "content-type": "audio/mpeg" } }));
+    $("status").textContent = t("qOfflineReady"); setTimeout(() => $("status").textContent = "", 3000);
+  } catch { $("status").textContent = navigator.onLine ? "" : t("qOnlineOnly"); }
+}
+
+async function load() {
+  D = await fetch(`quran/${sn}.json`).then(r => r.json());
+  document.title = D.name;
+  $("title").textContent = (L.sYaseen && sn === 36) ? t("sYaseen") : (sn === 18 ? t("sKahf") : D.name);
+  $("sub").textContent = `${t("qAyaat", { n: D.verses.length })} · ${t("qReciter")}: ${D.reciter}`;
+  $("arName").textContent = D.ar;
+  $("bismT").textContent = t("qBismillah");
+  if (sn === 9 || sn === 1) { $("bism").style.display = "none"; $("bismT").style.display = "none"; }
+  $("src").textContent = D.source;
+  const box = $("verses");
+  box.innerHTML = D.verses.map((v, i) => `<div class="v" data-i="${i}">${v.w.map((w, j) => `<span class="w" data-j="${j}">${w[0]}</span>`).join(" ")} <span class="num">${arNum(v.k)}</span></div>`).join("");
+  vEls = [...box.querySelectorAll(".v")];
+  wEls = vEls.map(el => [...el.querySelectorAll(".w")]);
+  const local = await cachedAudio(D.audio);
+  audio.src = local || D.audio;
+  if (!local) downloadAudio(D.audio);
+  const last = ls.get("qpos:" + sn, 0);
+  audio.addEventListener("loadedmetadata", () => { if (last && last < audio.duration - 2) audio.currentTime = last; tick(true); }, { once: true });
+  if ("mediaSession" in navigator) {
+    navigator.mediaSession.metadata = new MediaMetadata({ title: $("title").textContent, artist: D.reciter, artwork: [{ src: "../icons/icon-512.png", sizes: "512x512", type: "image/png" }] });
+    navigator.mediaSession.setActionHandler("play", () => audio.play());
+    navigator.mediaSession.setActionHandler("pause", () => audio.pause());
+    navigator.mediaSession.setActionHandler("previoustrack", () => jump(-1));
+    navigator.mediaSession.setActionHandler("nexttrack", () => jump(1));
+  }
+}
+
+function verseAt(ms) {
+  const v = D.verses; let lo = 0, hi = v.length - 1, r = -1;
+  while (lo <= hi) { const m = (lo + hi) >> 1; if (v[m].f <= ms) { r = m; lo = m + 1; } else hi = m - 1; }
+  return r;
+}
+function tick(force) {
+  if (!D) return;
+  const s = audio.currentTime || 0, ms = s * 1000;
+  if (!seeking) { $("seek").max = audio.duration || 1; $("seek").value = s; }
+  $("cur").textContent = fmt(s); $("dur").textContent = fmt(audio.duration);
+  if (repeatV >= 0 && !audio.paused && ms >= D.verses[repeatV].t) { audio.currentTime = D.verses[repeatV].f / 1000; return; }
+  const i = verseAt(ms);
+  if (i !== curV) {
+    if (curV >= 0) vEls[curV].classList.remove("cur");
+    curV = i;
+    if (i >= 0) { vEls[i].classList.add("cur"); if ((force || !audio.paused) && Date.now() > followUntil) follow(vEls[i], force); }
+  }
+  let w = null;
+  if (i >= 0) { const ws = D.verses[i].w; for (let j = 0; j < ws.length; j++) if (ws[j][1] != null && ws[j][1] <= ms && ms < ws[j][2]) { w = wEls[i][j]; break; } }
+  if (w !== curW) { curW && curW.classList.remove("on"); w && w.classList.add("on"); curW = w; }
+  $("follow").style.display = Date.now() < followUntil ? "block" : "none";
+}
+function follow(el, force) {
+  const r = el.getBoundingClientRect(), h = innerHeight;
+  if (force || r.top < 90 || r.bottom > h - 170) window.scrollTo({ top: scrollY + r.top - h * 0.25, behavior: force ? "auto" : "smooth" });
+}
+let raf = 0; const loop = () => { tick(false); raf = audio.paused ? 0 : requestAnimationFrame(loop); };
+audio.onplay = () => { $("play").textContent = "⏸"; if (!raf) raf = requestAnimationFrame(loop); };
+audio.onpause = () => { $("play").textContent = "▶"; ls.set("qpos:" + sn, audio.currentTime); tick(false); };
+audio.onended = () => ls.set("qpos:" + sn, 0);
+setInterval(() => { if (!audio.paused) ls.set("qpos:" + sn, audio.currentTime); }, 5000);
+
+$("play").onclick = () => audio.paused ? audio.play() : audio.pause();
+function jump(d) { const i = Math.max(0, Math.min(D.verses.length - 1, (curV < 0 ? 0 : curV) + d)); audio.currentTime = D.verses[i].f / 1000 + 0.01; if (repeatV >= 0) repeatV = i; tick(true); }
+$("prevA").onclick = () => jump(-1);
+$("nextA").onclick = () => jump(1);
+$("rep").onclick = () => { repeatV = repeatV >= 0 ? -1 : Math.max(0, curV); $("rep").style.background = repeatV >= 0 ? "var(--chip)" : ""; };
+const speeds = [0.75, 1, 1.25, 1.5];
+audio.playbackRate = ls.get("qspeed", 1); $("speed").textContent = audio.playbackRate + "×";
+$("speed").onclick = () => { const k = (speeds.indexOf(audio.playbackRate) + 1) % speeds.length; audio.playbackRate = speeds[k]; ls.set("qspeed", speeds[k]); $("speed").textContent = speeds[k] + "×"; };
+let seeking = false;
+$("seek").oninput = () => { seeking = true; audio.currentTime = +$("seek").value; tick(true); };
+$("seek").onchange = () => { seeking = false; };
+$("verses").onclick = e => { const v = e.target.closest(".v"); if (!v) return; const i = +v.dataset.i; audio.currentTime = D.verses[i].f / 1000 + 0.01; if (repeatV >= 0) repeatV = i; audio.play(); tick(true); };
+$("follow").textContent = "↓ " + t("qFollow");
+$("follow").onclick = () => { followUntil = 0; if (curV >= 0) follow(vEls[curV], true); tick(false); };
+["touchstart", "wheel"].forEach(ev => addEventListener(ev, e => { if (!e.target.closest("#bar") && !audio.paused) followUntil = Date.now() + 6000; }, { passive: true }));
+load().catch(err => { $("status").textContent = String(err); });
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+</script>
+</body>
+</html>
