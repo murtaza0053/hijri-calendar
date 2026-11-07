@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Hijri Calendar</title>
+<meta name="description" content="Misri (Fatimi) Hijri calendar with miqaats for Dawoodi Bohras — works offline.">
+<meta name="theme-color" content="#0f5132">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Hijri Cal">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<style>
+:root{
+  --bg:#f6f3ea; --card:#fffdf7; --ink:#1d2a22; --muted:#6b7a70; --line:#e4dccb;
+  --brand:#0f5132; --brand-2:#1f7a50; --gold:#b8892b; --today:#0f5132; --today-ink:#fff;
+  --filler:#b9b3a4; --night:#3b4a8c; --chip:#efe8d6;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0e1411; --card:#16201b; --ink:#e8efe9; --muted:#93a39a; --line:#26332c;
+    --brand:#3fbf7f; --brand-2:#2c9a64; --gold:#e0b65a; --today:#3fbf7f; --today-ink:#08130d;
+    --filler:#4b5a52; --night:#9aa8ff; --chip:#1f2b25;
+  }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+body{padding:env(safe-area-inset-top) 0 calc(64px + env(safe-area-inset-bottom));min-height:100vh}
+.ar{font-family:"Geeza Pro","Noto Naskh Arabic","Traditional Arabic",serif}
+header.top{background:var(--brand);color:#fff;padding:14px 16px 16px}
+@media (prefers-color-scheme: dark){header.top{background:#123524}}
+.top .hdate{font-size:22px;font-weight:700}
+.top .hdate-ar{font-size:20px;opacity:.95;margin-top:2px}
+.top .gdate{opacity:.85;font-size:14px;margin-top:4px}
+.top .eve{margin-top:6px;font-size:13px;opacity:.85}
+main{max-width:640px;margin:0 auto;padding:12px 12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:12px}
+.monthbar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+.monthbar button{background:var(--chip);border:0;color:var(--ink);width:40px;height:40px;border-radius:10px;font-size:20px}
+.monthbar .title{text-align:center;flex:1}
+.monthbar .title b{display:block;font-size:17px}
+.monthbar .title span{font-size:12px;color:var(--muted)}
+.monthbar .title .ar{font-size:15px;color:var(--gold);display:block}
+table.cal{width:100%;border-collapse:separate;border-spacing:3px;table-layout:fixed}
+.cal th{font-size:11px;color:var(--muted);font-weight:600;padding:2px 0}
+.cal th.fri{color:var(--brand)}
+.cal td{height:58px;vertical-align:top;text-align:center;border-radius:10px;padding:4px 0 2px;position:relative;cursor:pointer;background:var(--bg)}
+.cal td.filler{background:transparent;color:var(--filler);cursor:default}
+.cal td.empty{background:transparent;cursor:default}
+.cal td .h{font-size:20px;line-height:1.1}
+.cal td .g{font-size:10px;color:var(--muted);white-space:nowrap;overflow:hidden}
+.cal td.filler .g{color:var(--filler)}
+.cal td.today{background:var(--today);color:var(--today-ink)}
+.cal td.today .g{color:var(--today-ink);opacity:.85}
+.cal td.sel:not(.today){outline:2px solid var(--brand)}
+.dot{display:block;margin:1px auto 0;height:12px;font-size:11px;line-height:12px}
+.dot.p1d{color:var(--gold)} .dot.p1n{color:var(--night)} .dot.p2{color:var(--brand-2)}
+.cal td.today .dot{color:var(--today-ink)}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:6px;justify-content:center}
+h3{margin:4px 0 8px;font-size:15px}
+.mq{padding:8px 0;border-top:1px solid var(--line)}
+.mq:first-of-type{border-top:0}
+.mq .t{font-weight:600}
+.mq .d{font-size:13px;color:var(--muted)}
+.mq .when{font-size:12px;color:var(--brand);font-weight:600}
+.tag{display:inline-block;font-size:10px;padding:1px 6px;border-radius:6px;background:var(--chip);color:var(--muted);margin-left:4px;vertical-align:middle}
+.times{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px}
+.times div{background:var(--bg);border-radius:10px;padding:8px;text-align:center}
+.times small{display:block;color:var(--muted);font-size:11px}
+.times b{font-size:16px}
+.muted{color:var(--muted);font-size:12px}
+.btn{background:var(--brand);color:#fff;border:0;border-radius:10px;padding:10px 14px;font-size:15px;font-weight:600}
+@media (prefers-color-scheme: dark){.btn{color:#08130d}}
+.btn.ghost{background:var(--chip);color:var(--ink)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+input,select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 10px;min-width:0}
+.conv-out{font-size:18px;font-weight:700;margin-top:10px}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:5}
+nav.tabs button{flex:1;background:none;border:0;color:var(--muted);padding:8px 0 10px;font-size:11px}
+nav.tabs button .i{display:block;font-size:20px;line-height:1.2}
+nav.tabs button.on{color:var(--brand);font-weight:700}
+.view{display:none}.view.on{display:block}
+.sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;z-index:9}
+.sheet{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-radius:18px 18px 0 0;padding:16px 16px calc(20px + env(safe-area-inset-bottom));max-height:75vh;overflow:auto;transform:translateY(100%);transition:transform .22s ease;z-index:10;max-width:640px;margin:0 auto}
+.sheet.on{transform:none}
+.sheet .grab{width:40px;height:5px;border-radius:3px;background:var(--line);margin:-6px auto 10px}
+.install{display:none}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="hdate" id="tHijri">…</div>
+  <div class="hdate-ar ar" id="tHijriAr" dir="rtl"></div>
+  <div class="gdate" id="tGreg"></div>
+  <div class="eve" id="tEve"></div>
+</header>
+
+<main>
+  <!-- CALENDAR -->
+  <section class="view on" id="v-cal">
+    <div class="card">
+      <div class="monthbar">
+        <button id="prev" aria-label="Previous month">‹</button>
+        <div class="title" id="mTitle"></div>
+        <button id="next" aria-label="Next month">›</button>
+      </div>
+      <table class="cal" id="cal"></table>
+      <div class="legend"><span><span style="color:var(--gold)">☀</span> Badi miqaat (din)</span><span><span style="color:var(--night)">☾</span> Raat ki miqaat</span><span><span style="color:var(--brand-2)">●</span> Urus / other</span></div>
+      <div class="row" style="justify-content:center;margin-top:10px"><button class="btn ghost" id="goToday">Aaj</button></div>
+    </div>
+    <div class="card" id="todayMq"></div>
+    <div class="card">
+      <h3>Aaj ke timings <span class="tag" id="locName"></span></h3>
+      <div class="times" id="times"></div>
+      <p class="muted" id="timesNote">Approx. — sun position se calculate (Fajr azaan = sunrise − 1 ghanta, Maghrib = sunset). Apni jamaat ke timings confirm kar lena.</p>
+    </div>
+  </section>
+
+  <!-- UPCOMING -->
+  <section class="view" id="v-up">
+    <div class="card">
+      <h3>Aane wali miqaats</h3>
+      <div class="row" style="margin-bottom:6px">
+        <select id="upFilter">
+          <option value="1">Sirf badi miqaats</option>
+          <option value="3" selected>Sab (urus bhi)</option>
+        </select>
+        <select id="upRange">
+          <option value="30">30 din</option>
+          <option value="90" selected>90 din</option>
+          <option value="365">1 saal</option>
+        </select>
+      </div>
+      <div id="upList"></div>
+    </div>
+  </section>
+
+  <!-- CONVERT -->
+  <section class="view" id="v-conv">
+    <div class="card">
+      <h3>Gregorian → Hijri</h3>
+      <div class="row"><input type="date" id="gIn"><button class="btn" id="gGo">Convert</button></div>
+      <div class="conv-out" id="gOut"></div>
+      <div class="ar" dir="rtl" id="gOutAr"></div>
+    </div>
+    <div class="card">
+      <h3>Hijri → Gregorian</h3>
+      <div class="row">
+        <input type="number" id="hD" min="1" max="30" placeholder="Din" style="width:70px">
+        <select id="hM"></select>
+        <input type="number" id="hY" min="1000" max="3000" placeholder="Saal" style="width:90px">
+        <button class="btn" id="hGo">Convert</button>
+      </div>
+      <div class="conv-out" id="hOut"></div>
+      <div class="row" style="margin-top:8px"><button class="btn ghost" id="hShow" style="display:none">Calendar me dekho</button></div>
+    </div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section class="view" id="v-set">
+    <div class="card">
+      <h3>Location (timings ke liye)</h3>
+      <p class="muted" id="locCur"></p>
+      <div class="row">
+        <button class="btn" id="useGps">📍 Meri location use karo</button>
+        <button class="btn ghost" id="useIndore">Indore (default)</button>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <input id="lat" placeholder="Latitude" inputmode="decimal" style="width:120px">
+        <input id="lng" placeholder="Longitude" inputmode="decimal" style="width:120px">
+        <button class="btn ghost" id="saveLL">Save</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>iPhone pe install kaise karein</h3>
+      <ol class="muted" style="font-size:14px;padding-left:18px;margin:0">
+        <li>Ye page <b>Safari</b> me kholo.</li>
+        <li>Neeche <b>Share</b> button (⬆️) dabao.</li>
+        <li><b>Add to Home Screen</b> chuno → Add.</li>
+        <li>Ab home screen se app jaisa khulega, offline bhi chalega.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>About</h3>
+      <p class="muted">Misri / Fatimi tabular Hijri calendar (30-saal ka cycle, kabisa saal: 2, 5, 8, 10, 13, 16, 19, 21, 24, 27, 29). Hijri tareekh Maghrib ke baad badal jaati hai. Calendar logic aur miqaat list <a href="https://www.mumineencalendar.com/" style="color:var(--brand)">mumineencalendar.com</a> (Murtaza Gulamali) ke basis par hai.</p>
+    </div>
+  </section>
+</main>
+
+<nav class="tabs">
+  <button data-v="cal" class="on"><span class="i">📅</span>Calendar</button>
+  <button data-v="up"><span class="i">🕌</span>Miqaats</button>
+  <button data-v="conv"><span class="i">🔁</span>Convert</button>
+  <button data-v="set"><span class="i">⚙️</span>Settings</button>
+</nav>
+
+<div class="sheet-bg" id="sheetBg"></div>
+<div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
+
+<script>
+"use strict";
+/* ---------- Misri (Fatimi) Hijri calendar ---------- */
+const H = (() => {
+  const KABISA = [2,5,8,10,13,16,19,21,24,27,29];
+  const MONTH_CUM = [30,59,89,118,148,177,207,236,266,295,325];
+  const YEAR_CUM = [354,708,1063,1417,1771,2126,2480,2834,3189,3543,3898,4252,4606,4961,5315,5669,6024,6378,6732,7087,7441,7796,8150,8504,8859,9213,9567,9922,10276,10631];
+  const EPOCH = 1948083.5;
+  const NAMES = ["Moharram al-Haraam","Safar al-Muzaffar","Rabi al-Awwal","Rabi al-Aakhar","Jumada al-Ula","Jumada al-Ukhra","Rajab al-Asab","Shabaan al-Karim","Ramadaan al-Moazzam","Shawwal al-Mukarram","Zilqadah al-Haraam","Zilhaj al-Haraam"];
+  const SHORT = ["Moharram","Safar","Rabi I","Rabi II","Jumada I","Jumada II","Rajab","Shabaan","Ramadaan","Shawwal","Zilqadah","Zilhaj"];
+  const AR = ["محرم الحرام","صفر المظفر","ربيع الأول","ربيع الآخر","جمادى الأولى","جمادى الأخرى","رجب الأصب","شعبان الكريم","رمضان المعظم","شوال المكرم","ذو القعدة الحرام","ذو الحجة الحرام"];
+  const isKabisa = y => KABISA.includes(((y % 30) + 30) % 30);
+  const daysInMonth = (y, m) => (m === 11 && isKabisa(y)) || m % 2 === 0 ? 30 : 29;
+  const toAJD = (y, m, d) => {
+    const c = Math.floor(y / 30);
+    let a = EPOCH + 10631 * c + (m === 0 ? d : MONTH_CUM[m - 1] + d);
+    if (y % 30 !== 0) a += YEAR_CUM[y - 30 * c - 1];
+    return a;
+  };
+  const fromAJD = ajd => {
+    let c = Math.floor(ajd - EPOCH) - 1; // 0-based day index
+    const u = Math.floor(c / 10631);
+    c -= 10631 * u;
+    let s = 0; while (c >= YEAR_CUM[s]) s++;
+    const y = 30 * u + s;
+    if (s > 0) c -= YEAR_CUM[s - 1];
+    let m = 0; while (m < 11 && c >= MONTH_CUM[m]) m++;
+    return { y, m, d: c - (m > 0 ? MONTH_CUM[m - 1] : 0) + 1 };
+  };
+  // Gregorian (local calendar date) <-> astronomical JD at midnight
+  const gToAJD = (Y, M, D) => Date.UTC(Y, M, D) / 864e5 + 2440587.5;
+  const ajdToG = ajd => { const t = new Date(Math.round((ajd - 2440587.5) * 864e5)); return { y: t.getUTCFullYear(), m: t.getUTCMonth(), d: t.getUTCDate() }; };
+  const dow = ajd => Math.floor(ajd + 1.5) % 7; // 0 = Sunday
+  return { NAMES, SHORT, AR, isKabisa, daysInMonth, toAJD, fromAJD, gToAJD, ajdToG, dow };
+})();
+
+const ARD = ["٠","١","٢","٣","٤","٥","٦","٧","٨","٩"];
+const arNum = n => String(n).replace(/\d/g, c => ARD[c]);
+const GM = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const GMS = GM.map(s => s.slice(0, 3));
+const WD = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
+const store = { get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
+                set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
+
+/* ---------- Miqaats ---------- */
+let MIQ = [];
+const miqaatsFor = (y, m, d) => {
+  const e = MIQ.find(x => x.month === m && x.date === d);
+  return e ? e.miqaats.filter(q => !q.year || q.year <= y).sort((a, b) => a.priority - b.priority) : [];
+};
+
+/* ---------- Sun times (NOAA) ---------- */
+function sunTimes(Y, M, D, lat, lng) {
+  const rad = Math.PI / 180;
+  const jd = H.gToAJD(Y, M, D) + 0.5 - lng / 360; // ~local noon
+  const T = (jd - 2451545) / 36525;
+  const L0 = (280.46646 + T * (36000.76983 + 0.0003032 * T)) % 360;
+  const Ma = 357.52911 + T * (35999.05029 - 0.0001537 * T);
+  const e = 0.016708634 - T * (0.000042037 + 0.0000001267 * T);
+  const C = Math.sin(Ma * rad) * (1.914602 - T * (0.004817 + 0.000014 * T)) + Math.sin(2 * Ma * rad) * (0.019993 - 0.000101 * T) + Math.sin(3 * Ma * rad) * 0.000289;
+  const lam = L0 + C - 0.00569 - 0.00478 * Math.sin((125.04 - 1934.136 * T) * rad);
+  const eps0 = 23 + (26 + (21.448 - T * (46.815 + T * (0.00059 - T * 0.001813))) / 60) / 60;
+  const eps = eps0 + 0.00256 * Math.cos((125.04 - 1934.136 * T) * rad);
+  const decl = Math.asin(Math.sin(eps * rad) * Math.sin(lam * rad));
+  const yv = Math.tan(eps / 2 * rad) ** 2;
+  const eqt = 4 / rad * (yv * Math.sin(2 * L0 * rad) - 2 * e * Math.sin(Ma * rad) + 4 * e * yv * Math.sin(Ma * rad) * Math.cos(2 * L0 * rad) - 0.5 * yv * yv * Math.sin(4 * L0 * rad) - 1.25 * e * e * Math.sin(2 * Ma * rad));
+  const noon = 720 - 4 * lng - eqt; // minutes UTC
+  const cosH = (Math.cos(90.833 * rad) - Math.sin(lat * rad) * Math.sin(decl)) / (Math.cos(lat * rad) * Math.cos(decl));
+  const ha = Math.acos(Math.max(-1, Math.min(1, cosH))) / rad;
+  const at = min => new Date(Date.UTC(Y, M, D) + min * 6e4);
+  return { sunrise: at(noon - 4 * ha), noon: at(noon), sunset: at(noon + 4 * ha) };
+}
+const fmtT = d => d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+
+/* ---------- State ---------- */
+const DEFAULT_LOC = { lat: 22.7196, lng: 75.8577, name: "Indore" };
+let loc = store.get("loc", DEFAULT_LOC);
+const now = new Date();
+const todayAJD = H.gToAJD(now.getFullYear(), now.getMonth(), now.getDate());
+const todayH = H.fromAJD(todayAJD);
+let view = { y: todayH.y, m: todayH.m };
+let selAJD = null;
+
+const hStr = h => `${h.d} ${H.NAMES[h.m]} ${h.y}H`;
+const hStrAr = h => `${arNum(h.d)} ${H.AR[h.m]} ${arNum(h.y)}هـ`;
+const gStr = g => `${g.d} ${GM[g.m]} ${g.y}`;
+
+/* ---------- Header ---------- */
+function renderHeader() {
+  $("tHijri").textContent = hStr(todayH);
+  $("tHijriAr").textContent = hStrAr(todayH);
+  $("tGreg").textContent = `${WD[H.dow(todayAJD)]}, ${gStr(H.ajdToG(todayAJD))}`;
+  const s = sunTimes(now.getFullYear(), now.getMonth(), now.getDate(), loc.lat, loc.lng);
+  const nxt = H.fromAJD(todayAJD + 1);
+  $("tEve").textContent = now > s.sunset
+    ? `🌙 Maghrib ho gayi — abhi raat hai ${nxt.d} ${H.SHORT[nxt.m]} ki`
+    : `Maghrib (${fmtT(s.sunset)}) ke baad: ${nxt.d} ${H.SHORT[nxt.m]} ki raat`;
+}
+
+/* ---------- Calendar grid ---------- */
+function renderCal() {
+  const { y, m } = view;
+  const first = H.toAJD(y, m, 1), n = H.daysInMonth(y, m);
+  const lead = H.dow(first);
+  const cells = [];
+  for (let i = lead; i > 0; i--) cells.push({ ajd: first - i, filler: true });
+  for (let i = 0; i < n; i++) cells.push({ ajd: first + i });
+  while (cells.length % 7) cells.push({ ajd: first + n + (cells.length - lead - n), filler: true });
+
+  const g1 = H.ajdToG(first), g2 = H.ajdToG(first + n - 1);
+  $("mTitle").innerHTML = `<b>${H.NAMES[m]} ${y}H</b><span class="ar" dir="rtl">${H.AR[m]} ${arNum(y)}</span>
+    <span>${GMS[g1.m]} ${g1.y === g2.y ? "" : g1.y + " "}– ${GMS[g2.m]} ${g2.y}${H.isKabisa(y) ? " · Kabisa saal" : ""}</span>`;
+
+  let html = "<thead><tr>" + ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].map((d, i) => `<th class="${i === 5 ? "fri" : ""}">${d}</th>`).join("") + "</tr></thead><tbody>";
+  cells.forEach((c, i) => {
+    if (i % 7 === 0) html += "<tr>";
+    const h = H.fromAJD(c.ajd), g = H.ajdToG(c.ajd);
+    let gl = String(g.d);
+    if (!c.filler && (h.d === 1 || g.d === 1)) gl += " " + GMS[g.m];
+    let cls = c.filler ? "filler" : "";
+    if (c.ajd === todayAJD) cls += " today";
+    if (c.ajd === selAJD) cls += " sel";
+    let dot = "";
+    if (!c.filler) {
+      const q = miqaatsFor(h.y, h.m, h.d)[0];
+      if (q) dot = q.priority === 1 ? (q.phase === "night" ? '<i class="dot p1n">☾</i>' : '<i class="dot p1d">☀</i>') : '<i class="dot p2">●</i>';
+    }
+    html += `<td class="${cls}" data-a="${c.ajd}"><div class="h ar">${arNum(h.d)}</div><div class="g">${gl}</div>${dot || '<i class="dot"></i>'}</td>`;
+    if (i % 7 === 6) html += "</tr>";
+  });
+  $("cal").innerHTML = html + "</tbody>";
+}
+
+function mqHTML(list) {
+  if (!list.length) return '<p class="muted">Koi miqaat nahi.</p>';
+  return list.map(q => `<div class="mq"><div class="t">${q.priority === 1 ? (q.phase === "night" ? "☾ " : "☀ ") : ""}${esc(q.title)}${q.phase === "night" ? '<span class="tag">pichli raat</span>' : ""}</div>${q.description ? `<div class="d">${esc(q.description)}</div>` : ""}</div>`).join("");
+}
+
+function renderTodayMq() {
+  const list = miqaatsFor(todayH.y, todayH.m, todayH.d);
+  $("todayMq").innerHTML = `<h3>Aaj ki miqaats</h3>${mqHTML(list)}`;
+}
+
+function renderTimes() {
+  const s = sunTimes(now.getFullYear(), now.getMonth(), now.getDate(), loc.lat, loc.lng);
+  const t2 = new Date(now); t2.setDate(t2.getDate() + 1);
+  const s2 = sunTimes(t2.getFullYear(), t2.getMonth(), t2.getDate(), loc.lat, loc.lng);
+  const nisf = new Date((s.sunset.getTime() + s2.sunrise.getTime()) / 2);
+  const fajr = new Date(s.sunrise.getTime() - 60 * 6e4);
+  const items = [["Fajr azaan", fajr], ["Sunrise", s.sunrise], ["Zawaal", s.noon], ["Maghrib", s.sunset], ["Nisful Layl", nisf]];
+  $("times").innerHTML = items.map(([k, v]) => `<div><small>${k}</small><b>${fmtT(v)}</b></div>`).join("");
+  $("locName").textContent = loc.name || `${loc.lat.toFixed(2)}, ${loc.lng.toFixed(2)}`;
+  $("locCur").textContent = `Abhi: ${loc.name || "Custom"} (${loc.lat.toFixed(4)}, ${loc.lng.toFixed(4)})`;
+}
+
+/* ---------- Day sheet ---------- */
+function openDay(ajd) {
+  selAJD = ajd; renderCal();
+  const h = H.fromAJD(ajd), g = H.ajdToG(ajd);
+  const s = sunTimes(g.y, g.m, g.d, loc.lat, loc.lng);
+  $("sheetBody").innerHTML = `<div style="font-size:20px;font-weight:700">${hStr(h)}</div>
+    <div class="ar" dir="rtl" style="font-size:18px;color:var(--gold)">${hStrAr(h)}</div>
+    <div class="muted" style="font-size:14px;margin:2px 0 10px">${WD[H.dow(ajd)]}, ${gStr(g)} · Maghrib ${fmtT(s.sunset)}</div>
+    <h3>Miqaats</h3>${mqHTML(miqaatsFor(h.y, h.m, h.d))}`;
+  $("sheetBg").style.display = "block";
+  requestAnimationFrame(() => $("sheet").classList.add("on"));
+}
+function closeSheet() { $("sheet").classList.remove("on"); $("sheetBg").style.display = "none"; }
+
+/* ---------- Upcoming ---------- */
+function renderUpcoming() {
+  const maxP = +$("upFilter").value, days = +$("upRange").value;
+  let html = "";
+  for (let a = todayAJD; a < todayAJD + days; a++) {
+    const h = H.fromAJD(a);
+    const list = miqaatsFor(h.y, h.m, h.d).filter(q => q.priority <= maxP);
+    if (!list.length) continue;
+    const g = H.ajdToG(a), diff = a - todayAJD;
+    const rel = diff === 0 ? "Aaj" : diff === 1 ? "Kal" : `${diff} din baad`;
+    html += `<div class="mq" data-a="${a}"><div class="when">${h.d} ${H.SHORT[h.m]} · ${WD[H.dow(a)].slice(0, 3)}, ${g.d} ${GMS[g.m]} ${g.y} · ${rel}</div>${list.map(q => `<div class="t">${q.priority === 1 ? (q.phase === "night" ? "☾ " : "☀ ") : ""}${esc(q.title)}${q.phase === "night" ? '<span class="tag">pichli raat</span>' : ""}</div>`).join("")}</div>`;
+  }
+  $("upList").innerHTML = html || '<p class="muted">Is range me koi miqaat nahi.</p>';
+}
+
+/* ---------- Converter ---------- */
+function setupConv() {
+  $("hM").innerHTML = H.NAMES.map((n, i) => `<option value="${i}">${n}</option>`).join("");
+  const g = H.ajdToG(todayAJD);
+  $("gIn").value = `${g.y}-${String(g.m + 1).padStart(2, "0")}-${String(g.d).padStart(2, "0")}`;
+  $("hD").value = todayH.d; $("hM").value = todayH.m; $("hY").value = todayH.y;
+  $("gGo").onclick = () => {
+    const [Y, M, D] = $("gIn").value.split("-").map(Number);
+    if (!Y) return;
+    const h = H.fromAJD(H.gToAJD(Y, M - 1, D));
+    $("gOut").textContent = hStr(h);
+    $("gOutAr").textContent = hStrAr(h);
+  };
+  $("hGo").onclick = () => {
+    const d = +$("hD").value, m = +$("hM").value, y = +$("hY").value;
+    if (!y || !d) return;
+    const max = H.daysInMonth(y, m);
+    if (d < 1 || d > max) { $("hOut").textContent = `${H.NAMES[m]} ${y} me sirf ${max} din hain.`; $("hShow").style.display = "none"; return; }
+    const a = H.toAJD(y, m, d), g = H.ajdToG(a);
+    $("hOut").textContent = `${WD[H.dow(a)]}, ${gStr(g)}`;
+    $("hShow").style.display = "";
+    $("hShow").onclick = () => { view = { y, m }; switchView("cal"); renderCal(); openDay(a); };
+  };
+  $("gGo").onclick(); $("hGo").onclick();
+}
+
+/* ---------- Navigation ---------- */
+function shiftMonth(k) {
+  let { y, m } = view; m += k;
+  if (m < 0) { m = 11; y--; } if (m > 11) { m = 0; y++; }
+  view = { y, m }; selAJD = null; renderCal();
+}
+function switchView(v) {
+  document.querySelectorAll(".view").forEach(s => s.classList.toggle("on", s.id === "v-" + v));
+  document.querySelectorAll("nav.tabs button").forEach(b => b.classList.toggle("on", b.dataset.v === v));
+  if (v === "up") renderUpcoming();
+  window.scrollTo(0, 0);
+}
+$("prev").onclick = () => shiftMonth(-1);
+$("next").onclick = () => shiftMonth(1);
+$("goToday").onclick = () => { view = { y: todayH.y, m: todayH.m }; selAJD = null; renderCal(); };
+$("cal").onclick = e => { const td = e.target.closest("td[data-a]"); if (td && !td.classList.contains("filler")) openDay(+td.dataset.a); };
+$("upList").onclick = e => { const r = e.target.closest("[data-a]"); if (r) { const a = +r.dataset.a, h = H.fromAJD(a); view = { y: h.y, m: h.m }; switchView("cal"); openDay(a); } };
+$("sheetBg").onclick = closeSheet;
+$("upFilter").onchange = $("upRange").onchange = renderUpcoming;
+document.querySelectorAll("nav.tabs button").forEach(b => b.onclick = () => switchView(b.dataset.v));
+
+// swipe months
+let sx = null, sy = null;
+const calEl = $("cal");
+calEl.addEventListener("touchstart", e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+calEl.addEventListener("touchend", e => {
+  if (sx === null) return;
+  const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) shiftMonth(dx < 0 ? 1 : -1);
+  sx = null;
+}, { passive: true });
+
+/* ---------- Location ---------- */
+function setLoc(l) { loc = l; store.set("loc", l); renderTimes(); renderHeader(); }
+$("useIndore").onclick = () => setLoc(DEFAULT_LOC);
+$("saveLL").onclick = () => {
+  const lat = parseFloat($("lat").value), lng = parseFloat($("lng").value);
+  if (isFinite(lat) && isFinite(lng) && Math.abs(lat) <= 90 && Math.abs(lng) <= 180) setLoc({ lat, lng, name: "Custom" });
+};
+$("useGps").onclick = () => {
+  if (!navigator.geolocation) return alert("Location available nahi hai.");
+  navigator.geolocation.getCurrentPosition(
+    p => setLoc({ lat: p.coords.latitude, lng: p.coords.longitude, name: "Meri location" }),
+    err => alert("Location nahi mili: " + err.message),
+    { enableHighAccuracy: false, timeout: 15000 }
+  );
+};
+
+/* ---------- Boot ---------- */
+renderHeader(); renderCal(); renderTimes(); setupConv();
+fetch("miqaats.json").then(r => r.json()).then(d => { MIQ = d; renderCal(); renderTodayMq(); }).catch(() => { $("todayMq").innerHTML = '<p class="muted">Miqaats load nahi hui.</p>'; });
+// refresh "today" when app resumes on a new day
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") { const n = new Date(); if (n.getDate() !== now.getDate()) location.reload(); else renderHeader(); }
+});
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");
+</script>
+</body>
+</html>
