@@ -75,9 +75,9 @@ async function loadBundled() {
   const pdfBlob = await fetchCached('media/' + cfg.pdf);
   const audioBlob = await fetchCached('media/' + cfg.audio, (g, t) =>
     status(t ? `Audio download: ${Math.round(g / t * 100)}% (${mb(g)} / ${mb(t)} MB)` : `Audio download: ${mb(g)} MB`));
-  let fileMarks = null;
-  try { const r = await fetch('media/' + cfg.sync, { cache: 'no-cache' }); if (r.ok) fileMarks = (await r.json()).marks; } catch {}
-  await openMedia({ title: cfg.title, pdfBlob, audioBlob, key: `bundled:${cfg.pdf}|${cfg.audio}`, fileMarks });
+  let fileMarks = null, frames = null;
+  try { const r = await fetch('media/' + cfg.sync, { cache: 'no-cache' }); if (r.ok) { const j = await r.json(); fileMarks = j.marks; frames = j.frames || null; } } catch {}
+  await openMedia({ title: cfg.title, pdfBlob, audioBlob, key: `bundled:${cfg.pdf}|${cfg.audio}`, fileMarks, frames });
 }
 
 async function loadPicked() {
@@ -87,9 +87,10 @@ async function loadPicked() {
   return true;
 }
 
-async function openMedia({ title, pdfBlob, audioBlob, key, fileMarks }) {
+async function openMedia({ title, pdfBlob, audioBlob, key, fileMarks, frames }) {
   status('Opening PDF…');
   state.key = key;
+  state.frames = frames || null; // per page [left, right] of the printed border, as fractions of page width
   $('title').textContent = title; document.title = title;
   if (audio.src) URL.revokeObjectURL(audio.src);
   audio.src = URL.createObjectURL(audioBlob);
@@ -237,6 +238,7 @@ function tick(force) {
   if (pos == null) { cursorEl.style.display = 'none'; $('pageInfo').textContent = n ? `${visiblePage()} / ${n}` : ''; return; }
   const y = pxOf(pos);
   cursorEl.style.display = 'block'; cursorEl.style.top = y + 'px';
+  placeCursorX(pos);
   $('pageInfo').textContent = `${Math.min(n, Math.floor(pos) + 1)} / ${n}`;
   if ((!audio.paused || force) && Date.now() > state.followPausedUntil) follow(y, force);
   $('follow').style.display = Date.now() > state.followPausedUntil ? 'none' : 'block';
@@ -250,6 +252,15 @@ function follow(y, force) {
   if (!force && Math.abs(target - (state.scrollTarget ?? -1e9)) < 40 && now - state.scrollAt < 1500) return; // already heading there
   state.scrollTarget = target; state.scrollAt = now;
   viewer.scrollTo({ top: target, behavior: force ? 'auto' : 'smooth' });
+}
+// keep the highlight inside the page's printed border (if known), else span the page area
+function placeCursorX(pos) {
+  const i = Math.min(state.pageEls.length - 1, Math.max(0, Math.floor(pos)));
+  const el = state.pageEls[i], fr = state.frames && state.frames[i];
+  if (!el || !fr) { cursorEl.style.left = ''; cursorEl.style.width = ''; cursorEl.style.right = ''; return; }
+  cursorEl.style.left = (el.offsetLeft + fr[0] * el.offsetWidth) + 'px';
+  cursorEl.style.width = ((fr[1] - fr[0]) * el.offsetWidth) + 'px';
+  cursorEl.style.right = 'auto';
 }
 function visiblePage() {
   const mid = viewer.scrollTop + viewer.clientHeight / 3;

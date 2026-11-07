@@ -11,4 +11,6 @@ from tessdata_best in `./tessdata`, `ffmpeg`, `pdftoppm`):
 4. `python align.py words.json sync.json` — trigram matching + DP over the script with repeat blocks
    (`blocks` in align.py: 3x opening, 11x tasbih ×2, optional 3x dua on p19–20), interpolates unmatched lines.
 
+5. `python frames.py sync.json` — adds each page's printed-border x-range so the highlight stays inside it.
+
 For Dua e Kamil (2026-11-07) 213 of 468 script lines matched directly; spot checks were on the right line.
