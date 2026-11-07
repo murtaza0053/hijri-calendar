@@ -13,25 +13,59 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<script>
+(function(){var g=function(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}};
+var th=g("theme","green"),md=g("mode","auto"),r=document.documentElement;r.setAttribute("data-theme",th);
+var dk=md==="dark"||(md==="auto"&&matchMedia("(prefers-color-scheme: dark)").matches);r.classList.toggle("dark",dk);})();
+</script>
 <style>
-:root{
+/* Themes: data-theme = green | maroon | navy | teal ; class "dark" = dark mode */
+:root,html[data-theme=green]{
   --bg:#f6f3ea; --card:#fffdf7; --ink:#1d2a22; --muted:#6b7a70; --line:#e4dccb;
   --brand:#0f5132; --brand-2:#1f7a50; --gold:#b8892b; --today:#0f5132; --today-ink:#fff;
-  --filler:#b9b3a4; --night:#3b4a8c; --chip:#efe8d6;
+  --filler:#b9b3a4; --night:#3b4a8c; --chip:#efe8d6; --hdr:#0f5132; --on-brand:#fff;
 }
-@media (prefers-color-scheme: dark){
-  :root{
-    --bg:#0e1411; --card:#16201b; --ink:#e8efe9; --muted:#93a39a; --line:#26332c;
-    --brand:#3fbf7f; --brand-2:#2c9a64; --gold:#e0b65a; --today:#3fbf7f; --today-ink:#08130d;
-    --filler:#4b5a52; --night:#9aa8ff; --chip:#1f2b25;
-  }
+html.dark,html.dark[data-theme=green]{
+  --bg:#0e1411; --card:#16201b; --ink:#e8efe9; --muted:#93a39a; --line:#26332c;
+  --brand:#3fbf7f; --brand-2:#2c9a64; --gold:#e0b65a; --today:#3fbf7f; --today-ink:#08130d;
+  --filler:#4b5a52; --night:#9aa8ff; --chip:#1f2b25; --hdr:#123524; --on-brand:#08130d;
 }
+html[data-theme=maroon]{
+  --bg:#f8f1ec; --card:#fffaf6; --ink:#2b1a1a; --muted:#7d6a66; --line:#ead9cf;
+  --brand:#7a1f2b; --brand-2:#a8473f; --gold:#b8892b; --today:#7a1f2b; --today-ink:#fff;
+  --filler:#bfaea6; --night:#3b4a8c; --chip:#f1e3da; --hdr:#6b1824; --on-brand:#fff;
+}
+html.dark[data-theme=maroon]{
+  --bg:#150d0e; --card:#211416; --ink:#f3e7e6; --muted:#a8918f; --line:#3a2427;
+  --brand:#e0707c; --brand-2:#c9615a; --gold:#e6bd63; --today:#e0707c; --today-ink:#1a0a0c;
+  --filler:#5c4446; --night:#a8b2ff; --chip:#2c1b1e; --hdr:#3d1219; --on-brand:#1a0a0c;
+}
+html[data-theme=navy]{
+  --bg:#eef2f7; --card:#fbfcfe; --ink:#16202e; --muted:#5f6b7c; --line:#d8e0eb;
+  --brand:#1d3a6e; --brand-2:#3462a8; --gold:#b8892b; --today:#1d3a6e; --today-ink:#fff;
+  --filler:#a9b3c2; --night:#6a3b8c; --chip:#e1e8f2; --hdr:#1a3363; --on-brand:#fff;
+}
+html.dark[data-theme=navy]{
+  --bg:#0b0f17; --card:#131a26; --ink:#e6ecf5; --muted:#8e9ab0; --line:#232e42;
+  --brand:#7aa7ff; --brand-2:#5b8be0; --gold:#e6bd63; --today:#7aa7ff; --today-ink:#0a1222;
+  --filler:#46526a; --night:#d39cff; --chip:#1b2436; --hdr:#14223f; --on-brand:#0a1222;
+}
+html[data-theme=teal]{
+  --bg:#eef6f5; --card:#fbfefd; --ink:#132826; --muted:#5d7472; --line:#d3e6e3;
+  --brand:#0e6e6a; --brand-2:#2a9590; --gold:#b8892b; --today:#0e6e6a; --today-ink:#fff;
+  --filler:#a6bcba; --night:#3b4a8c; --chip:#dfeeec; --hdr:#0c5f5b; --on-brand:#fff;
+}
+html.dark[data-theme=teal]{
+  --bg:#0a1413; --card:#12201f; --ink:#e3f1ef; --muted:#8ba7a4; --line:#203533;
+  --brand:#4fd1c5; --brand-2:#38b2a8; --gold:#e6bd63; --today:#4fd1c5; --today-ink:#06201d;
+  --filler:#45605d; --night:#a8b2ff; --chip:#1a2c2a; --hdr:#0f3a37; --on-brand:#06201d;
+}
+html.dark{color-scheme:dark}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
 body{padding:env(safe-area-inset-top) 0 calc(64px + env(safe-area-inset-bottom));min-height:100vh}
 .ar{font-family:"Geeza Pro","Noto Naskh Arabic","Traditional Arabic",serif}
-header.top{background:var(--brand);color:#fff;padding:14px 16px 16px}
-@media (prefers-color-scheme: dark){header.top{background:#123524}}
+header.top{background:var(--hdr);color:#fff;padding:14px 16px 16px}
 .top .hdate{font-size:22px;font-weight:700}
 .top .hdate-ar{font-size:20px;opacity:.95;margin-top:2px}
 .top .gdate{opacity:.85;font-size:14px;margin-top:4px}
@@ -72,8 +106,7 @@ h3{margin:4px 0 8px;font-size:15px}
 .times small{display:block;color:var(--muted);font-size:11px}
 .times b{font-size:16px}
 .muted{color:var(--muted);font-size:12px}
-.btn{background:var(--brand);color:#fff;border:0;border-radius:10px;padding:10px 14px;font-size:15px;font-weight:600}
-@media (prefers-color-scheme: dark){.btn{color:#08130d}}
+.btn{background:var(--brand);color:var(--on-brand);border:0;border-radius:10px;padding:10px 14px;font-size:15px;font-weight:600}
 .btn.ghost{background:var(--chip);color:var(--ink)}
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 input,select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 10px;min-width:0}
@@ -95,11 +128,14 @@ a.btn{text-decoration:none;display:inline-block}
 .cal th{white-space:nowrap;overflow:hidden;text-overflow:clip}
 .lang{display:flex;width:max-content;margin:0 0 8px auto;background:rgba(255,255,255,.15);border-radius:9px;padding:2px}
 .lang button,.langset button{border:0;background:none;color:inherit;font:inherit;font-size:12px;font-weight:600;padding:5px 8px;border-radius:7px;opacity:.8}
-.lang button.on{background:#fff;color:#0f5132;opacity:1}
+.lang button.on{background:#fff;color:var(--hdr);opacity:1}
 .langset{display:flex;background:var(--chip);border-radius:10px;padding:3px;gap:2px}
 .langset button{font-size:14px;padding:8px 12px;color:var(--ink)}
-.langset button.on{background:var(--brand);color:#fff;opacity:1}
-@media (prefers-color-scheme: dark){.langset button.on{color:#08130d}}
+.langset button.on{background:var(--brand);color:var(--on-brand);opacity:1}
+.swatches{display:flex;gap:10px;flex-wrap:wrap}
+.sw{border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:8px 10px;display:flex;align-items:center;gap:8px;font:inherit;font-size:14px}
+.sw.on{border-color:var(--brand);font-weight:700}
+.sw i{width:22px;height:22px;border-radius:50%;display:inline-block;box-shadow:inset 0 0 0 2px rgba(255,255,255,.35)}
 </style>
 </head>
 <body>
@@ -180,6 +216,12 @@ a.btn{text-decoration:none;display:inline-block}
       <h3 data-i18n="langH"></h3>
       <div class="langset" id="langSet"></div>
     </div>
+    <div class="card">
+      <h3 data-i18n="themeH"></h3>
+      <div class="swatches" id="themeSet"></div>
+      <h3 style="margin-top:14px" data-i18n="modeH"></h3>
+      <div class="langset" id="modeSet"></div>
+    </div>
     <div class="card" id="remCard">
       <h3 data-i18n="remH"></h3>
       <p class="muted" style="font-size:14px" data-i18n="remP"></p>
@@ -253,9 +295,29 @@ function applyStatic() {
 }
 function setLang(k) {
   lang = k; L = I18N[k]; store.set("lang", k);
-  applyStatic(); renderAll();
+  applyStatic(); applyTheme(); renderAll();
 }
 document.addEventListener("click", e => { const b = e.target.closest("[data-l]"); if (b) setLang(b.dataset.l); });
+
+/* ---------- Theme ---------- */
+const THEMES = { green: "#0f5132", maroon: "#7a1f2b", navy: "#1d3a6e", teal: "#0e6e6a" };
+const MODES = ["auto", "light", "dark"];
+let theme = store.get("theme", "green"); if (!THEMES[theme]) theme = "green";
+let mode = store.get("mode", "auto"); if (!MODES.includes(mode)) mode = "auto";
+const darkMQ = matchMedia("(prefers-color-scheme: dark)");
+function applyTheme() {
+  const r = document.documentElement;
+  r.setAttribute("data-theme", theme);
+  r.classList.toggle("dark", mode === "dark" || (mode === "auto" && darkMQ.matches));
+  document.querySelector('meta[name="theme-color"]').content = getComputedStyle(r).getPropertyValue("--hdr").trim();
+  $("themeSet").innerHTML = Object.entries(THEMES).map(([k, c]) => `<button class="sw ${k === theme ? "on" : ""}" data-theme-k="${k}"><i style="background:${c}"></i>${t("th_" + k)}</button>`).join("");
+  $("modeSet").innerHTML = MODES.map(k => `<button data-mode-k="${k}" class="${k === mode ? "on" : ""}">${t("md_" + k)}</button>`).join("");
+}
+darkMQ.addEventListener?.("change", applyTheme);
+document.addEventListener("click", e => {
+  const a = e.target.closest("[data-theme-k]"); if (a) { theme = a.dataset.themeK; store.set("theme", theme); applyTheme(); }
+  const b = e.target.closest("[data-mode-k]"); if (b) { mode = b.dataset.modeK; store.set("mode", mode); applyTheme(); }
+});
 
 /* ---------- Miqaats ---------- */
 let MIQ = [];
@@ -516,7 +578,7 @@ function renderAll() {
   if (curView === "up") renderUpcoming();
   if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD);
 }
-applyStatic(); setupConv(); setupSubscribe(); renderAll();
+applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 fetch("miqaats.json").then(r => r.json()).then(d => { MIQ = d; miqLoaded = true; renderAll(); }).catch(() => { $("todayMq").innerHTML = `<p class="muted">${t("loadFail")}</p>`; });
 // refresh "today" when app resumes on a new day
 document.addEventListener("visibilitychange", () => {
