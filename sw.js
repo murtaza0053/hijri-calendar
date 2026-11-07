@@ -1,4 +1,4 @@
-const CACHE = "hijri-cal-v4";
+const CACHE = "hijri-cal-v5";
 const ASSETS = ["./", "index.html", "hijri.js", "i18n.js", "miqaats.json", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS))); self.skipWaiting(); });
 self.addEventListener("activate", e => {

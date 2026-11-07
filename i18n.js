@@ -3,7 +3,7 @@
 globalThis.I18N = {
   en: {
     _label: "EN",
-    themeH: "Theme", modeH: "Appearance", th_green: "Green", th_maroon: "Maroon", th_navy: "Navy", th_teal: "Teal", md_auto: "Auto", md_light: "Light", md_dark: "Dark",
+    themeH: "Theme", modeH: "Appearance", th_green: "Green", th_maroon: "Maroon", th_navy: "Navy", th_teal: "Teal", th_rose: "Rose", th_sky: "Sky blue", th_lavender: "Lavender", md_auto: "Auto", md_light: "Light", md_dark: "Dark",
     hijriMonths: ["Moharram al-Haraam","Safar al-Muzaffar","Rabi al-Awwal","Rabi al-Aakhar","Jumada al-Ula","Jumada al-Ukhra","Rajab al-Asab","Shabaan al-Karim","Ramadaan al-Moazzam","Shawwal al-Mukarram","Zilqadah al-Haraam","Zilhaj al-Haraam"],
     hijriShort: ["Moharram","Safar","Rabi I","Rabi II","Jumada I","Jumada II","Rajab","Shabaan","Ramadaan","Shawwal","Zilqadah","Zilhaj"],
     gMonths: ["January","February","March","April","May","June","July","August","September","October","November","December"],
@@ -42,7 +42,7 @@ globalThis.I18N = {
 
   gu: {
     _label: "ગુ",
-    themeH: "થીમ", modeH: "દેખાવ", th_green: "લીલો", th_maroon: "મરૂન", th_navy: "નેવી", th_teal: "ફિરોઝી", md_auto: "ઑટો", md_light: "લાઇટ", md_dark: "ડાર્ક",
+    themeH: "થીમ", modeH: "દેખાવ", th_green: "લીલો", th_maroon: "મરૂન", th_navy: "નેવી", th_teal: "ફિરોઝી", th_rose: "ગુલાબી", th_sky: "આસમાની", th_lavender: "લવંડર", md_auto: "ઑટો", md_light: "લાઇટ", md_dark: "ડાર્ક",
     hijriMonths: ["મોહર્રમુલ હરામ","સફરુલ મુઝફ્ફર","રબીઉલ અવ્વલ","રબીઉલ આખર","જમાદિલ ઊલા","જમાદિલ ઉખરા","રજબુલ અસબ","શાબાનુલ કરીમ","રમઝાનુલ મોઅઝ્ઝમ","શવ્વાલુલ મુકર્રમ","ઝિલ્કાદતિલ હરામ","ઝિલ્હજ્જતિલ હરામ"],
     hijriShort: ["મોહર્રમ","સફર","રબીઉલ અવ્વલ","રબીઉલ આખર","જમાદિલ ઊલા","જમાદિલ ઉખરા","રજબ","શાબાન","રમઝાન","શવ્વાલ","ઝિલ્કાદ","ઝિલ્હજ"],
     gMonths: ["જાન્યુઆરી","ફેબ્રુઆરી","માર્ચ","એપ્રિલ","મે","જૂન","જુલાઈ","ઑગસ્ટ","સપ્ટેમ્બર","ઑક્ટોબર","નવેમ્બર","ડિસેમ્બર"],
@@ -81,7 +81,7 @@ globalThis.I18N = {
 
   hi: {
     _label: "Hinglish",
-    themeH: "Theme", modeH: "Light / Dark", th_green: "Hara", th_maroon: "Maroon", th_navy: "Neela", th_teal: "Firozi", md_auto: "Auto", md_light: "Light", md_dark: "Dark",
+    themeH: "Theme", modeH: "Light / Dark", th_green: "Hara", th_maroon: "Maroon", th_navy: "Neela", th_teal: "Firozi", th_rose: "Gulabi", th_sky: "Aasmani", th_lavender: "Lavender", md_auto: "Auto", md_light: "Light", md_dark: "Dark",
     hijriMonths: ["Moharram al-Haraam","Safar al-Muzaffar","Rabi al-Awwal","Rabi al-Aakhar","Jumada al-Ula","Jumada al-Ukhra","Rajab al-Asab","Shabaan al-Karim","Ramadaan al-Moazzam","Shawwal al-Mukarram","Zilqadah al-Haraam","Zilhaj al-Haraam"],
     hijriShort: ["Moharram","Safar","Rabi I","Rabi II","Jumada I","Jumada II","Rajab","Shabaan","Ramadaan","Shawwal","Zilqadah","Zilhaj"],
     gMonths: ["January","February","March","April","May","June","July","August","September","October","November","December"],
