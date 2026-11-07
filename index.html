@@ -163,6 +163,7 @@ nav.tabs button.on{color:var(--brand);font-weight:700}
 .banner .when{font-size:12px;color:var(--brand);font-weight:700;text-transform:uppercase;letter-spacing:.03em}
 .banner .t{font-weight:600;margin-top:2px}
 a.btn{text-decoration:none;display:inline-block}
+h4.plat{margin:14px 0 2px;font-size:14px}
 .dua-item{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
 .dua-ic{width:46px;height:46px;border-radius:12px;background:var(--chip);display:grid;place-items:center;font-size:24px}
 .dua-go{font-size:26px;color:var(--brand)}
@@ -281,8 +282,12 @@ a.btn{text-decoration:none;display:inline-block}
         <a class="btn" id="subMajor" href="#" data-i18n="subMajor"></a>
         <a class="btn ghost" id="subAll" href="#" data-i18n="upAll"></a>
       </div>
+      <h4 class="plat" data-i18n="platIphone"></h4>
       <ol class="muted" style="font-size:14px;padding-left:18px;margin:6px 0 0" data-i18n="remSteps"></ol>
       <p class="muted"><span data-i18n="remFallback"></span><br><code id="subUrl" style="word-break:break-all"></code></p>
+      <h4 class="plat" data-i18n="platAndroid"></h4>
+      <ol class="muted" style="font-size:14px;padding-left:18px;margin:6px 0 0" data-i18n="remAndroidSteps"></ol>
+      <p class="muted"><span data-i18n="remAndroidLink"></span><br><code id="subHttps" style="word-break:break-all;user-select:all;-webkit-user-select:all"></code></p>
     </div>
     <div class="card">
       <h3 data-i18n="locH"></h3>
@@ -299,7 +304,10 @@ a.btn{text-decoration:none;display:inline-block}
     </div>
     <div class="card">
       <h3 data-i18n="installH"></h3>
+      <h4 class="plat" data-i18n="platIphone"></h4>
       <ol class="muted" style="font-size:14px;padding-left:18px;margin:0" data-i18n="installSteps"></ol>
+      <h4 class="plat" data-i18n="platAndroid"></h4>
+      <ol class="muted" style="font-size:14px;padding-left:18px;margin:0" data-i18n="installAndroidSteps"></ol>
     </div>
     <div class="card">
       <h3 data-i18n="aboutH"></h3>
@@ -524,6 +532,7 @@ function setupSubscribe() {
   $("subMajor").href = "webcal://" + base + "miqaats-major.ics";
   $("subAll").href = "webcal://" + base + "miqaats-all.ics";
   $("subUrl").textContent = "webcal://" + base + "miqaats-major.ics";
+  $("subHttps").textContent = location.protocol + "//" + base + "miqaats-major.ics";
 }
 
 /* ---------- Upcoming ---------- */

@@ -3,6 +3,10 @@
 globalThis.I18N = {
   en: {
     _label: "EN",
+    platIphone: "📱 iPhone", platAndroid: "🤖 Android",
+    remAndroidSteps: "<li>On a computer, open <b>calendar.google.com</b> → next to <b>Other calendars</b> click <b>+</b> → <b>From URL</b>.</li><li>Paste the link below → <b>Add calendar</b>. The miqaats then show up in the Google Calendar app on your phone.</li><li>Google often ignores the alarms in subscribed calendars, so a notification may not come.</li>",
+    remAndroidLink: "Link for Google Calendar:",
+    installAndroidSteps: "<li>Open this page in <b>Chrome</b>.</li><li>Tap <b>⋮</b> at the top right.</li><li>Choose <b>Install app</b> or <b>Add to Home screen</b> → Install.</li><li>It now opens from the home screen like an app, and works offline too.</li>",
     tabDua: "Dua", duaKamil: "Dua e Kamil", duaKamilDesc: "Audio with the text — the page scrolls along. Works offline after first open.", duaNote: "More duas can be added here later.", bDuaKamil: "Shab-e-Juma — recite Dua e Kamil 🤲",
     themeH: "Theme", modeH: "Appearance", th_green: "Green", th_maroon: "Maroon", th_navy: "Navy", th_teal: "Teal", th_rose: "Rose", th_sky: "Sky blue", th_lavender: "Lavender", md_auto: "Auto", md_light: "Light", md_dark: "Dark",
     hijriMonths: ["Moharram al-Haraam","Safar al-Muzaffar","Rabi al-Awwal","Rabi al-Aakhar","Jumada al-Ula","Jumada al-Ukhra","Rajab al-Asab","Shabaan al-Karim","Ramadaan al-Moazzam","Shawwal al-Mukarram","Zilqadah al-Haraam","Zilhaj al-Haraam"],
@@ -30,7 +34,7 @@ globalThis.I18N = {
     locH: "Location (for timings)", useGps: "📍 Use my location", save: "Save", locNow: "Current: {name} ({lat}, {lng})",
     locGps: "My location", locCustom: "Custom", locIndore: "Indore",
     geoNA: "Location is not available.", geoErr: "Couldn't get location: ",
-    installH: "How to install on iPhone",
+    installH: "How to install",
     installSteps: "<li>Open this page in <b>Safari</b>.</li><li>Tap the <b>Share</b> button (⬆️) at the bottom.</li><li>Choose <b>Add to Home Screen</b> → Add.</li><li>It now opens from the home screen like an app, and works offline too.</li>",
     aboutH: "About",
     about: "Misri / Fatimi tabular Hijri calendar (30-year cycle, leap years: 2, 5, 8, 10, 13, 16, 19, 21, 24, 27, 29). The Hijri date changes after Maghrib. Calendar logic and miqaat list are based on <a href=\"https://www.mumineencalendar.com/\" style=\"color:var(--brand)\">mumineencalendar.com</a> (Murtaza Gulamali).",
@@ -43,6 +47,10 @@ globalThis.I18N = {
 
   gu: {
     _label: "ગુ",
+    platIphone: "📱 iPhone", platAndroid: "🤖 Android",
+    remAndroidSteps: "<li>કમ્પ્યુટર પર <b>calendar.google.com</b> ખોલો → <b>Other calendars</b> પાસે <b>+</b> → <b>From URL</b>.</li><li>નીચેની લિંક પેસ્ટ કરો → <b>Add calendar</b>. પછી મિકાત ફોનની Google Calendar એપમાં દેખાશે.</li><li>Google સબ્સ્ક્રાઇબ કરેલા કેલેન્ડરના એલાર્મ ઘણીવાર અવગણે છે, એટલે નોટિફિકેશન કદાચ ન આવે.</li>",
+    remAndroidLink: "Google Calendar માટે લિંક:",
+    installAndroidSteps: "<li>આ પેજ <b>Chrome</b>માં ખોલો.</li><li>ઉપર જમણી બાજુ <b>⋮</b> દબાવો.</li><li><b>Install app</b> અથવા <b>Add to Home screen</b> પસંદ કરો → Install.</li><li>હવે હોમ સ્ક્રીન પરથી એપની જેમ ખુલશે, ઑફલાઇન પણ ચાલશે.</li>",
     tabDua: "દુઆ", duaKamil: "દુઆ એ કામિલ", duaKamilDesc: "ઓડિયો સાથે લખાણ — પેજ સાથે સાથે સ્ક્રોલ થાય છે. એક વાર ખોલ્યા પછી ઑફલાઇન પણ ચાલે.", duaNote: "અહીં આગળ બીજી દુઆઓ પણ ઉમેરી શકાય.", bDuaKamil: "શબે જુમ્આ — દુઆ એ કામિલ પઢો 🤲",
     themeH: "થીમ", modeH: "દેખાવ", th_green: "લીલો", th_maroon: "મરૂન", th_navy: "નેવી", th_teal: "ફિરોઝી", th_rose: "ગુલાબી", th_sky: "આસમાની", th_lavender: "લવંડર", md_auto: "ઑટો", md_light: "લાઇટ", md_dark: "ડાર્ક",
     hijriMonths: ["મોહર્રમુલ હરામ","સફરુલ મુઝફ્ફર","રબીઉલ અવ્વલ","રબીઉલ આખર","જમાદિલ ઊલા","જમાદિલ ઉખરા","રજબુલ અસબ","શાબાનુલ કરીમ","રમઝાનુલ મોઅઝ્ઝમ","શવ્વાલુલ મુકર્રમ","ઝિલ્કાદતિલ હરામ","ઝિલ્હજ્જતિલ હરામ"],
@@ -70,7 +78,7 @@ globalThis.I18N = {
     locH: "લોકેશન (સમય માટે)", useGps: "📍 મારું લોકેશન વાપરો", save: "સેવ", locNow: "હાલ: {name} ({lat}, {lng})",
     locGps: "મારું લોકેશન", locCustom: "કસ્ટમ", locIndore: "ઇન્દોર",
     geoNA: "લોકેશન ઉપલબ્ધ નથી.", geoErr: "લોકેશન ન મળ્યું: ",
-    installH: "iPhone પર ઇન્સ્ટોલ કેવી રીતે કરવું",
+    installH: "ઇન્સ્ટોલ કેવી રીતે કરવું",
     installSteps: "<li>આ પેજ <b>Safari</b>માં ખોલો.</li><li>નીચે <b>Share</b> બટન (⬆️) દબાવો.</li><li><b>Add to Home Screen</b> પસંદ કરો → Add.</li><li>હવે હોમ સ્ક્રીન પરથી એપની જેમ ખુલશે, ઑફલાઇન પણ ચાલશે.</li>",
     aboutH: "માહિતી",
     about: "મિસરી / ફાતિમી હિજરી કેલેન્ડર (૩૦ વર્ષનું ચક્ર, કબીસા વર્ષ: 2, 5, 8, 10, 13, 16, 19, 21, 24, 27, 29). હિજરી તારીખ મગરિબ પછી બદલાય છે. કેલેન્ડરની ગણતરી અને મિકાતની યાદી <a href=\"https://www.mumineencalendar.com/\" style=\"color:var(--brand)\">mumineencalendar.com</a> (Murtaza Gulamali) પર આધારિત છે. મિકાતના નામ અંગ્રેજીમાં છે.",
@@ -83,6 +91,10 @@ globalThis.I18N = {
 
   hi: {
     _label: "Hinglish",
+    platIphone: "📱 iPhone", platAndroid: "🤖 Android",
+    remAndroidSteps: "<li>Computer pe <b>calendar.google.com</b> kholo → <b>Other calendars</b> ke paas <b>+</b> → <b>From URL</b>.</li><li>Neeche wala link paste karo → <b>Add calendar</b>. Phir miqaats phone ke Google Calendar app me dikhengi.</li><li>Google subscribed calendar ke alarms aksar ignore karta hai, isliye notification shayad na aaye.</li>",
+    remAndroidLink: "Google Calendar ke liye link:",
+    installAndroidSteps: "<li>Ye page <b>Chrome</b> me kholo.</li><li>Upar right me <b>⋮</b> dabao.</li><li><b>Install app</b> ya <b>Add to Home screen</b> chuno → Install.</li><li>Ab home screen se app jaisa khulega, offline bhi chalega.</li>",
     tabDua: "Dua", duaKamil: "Dua e Kamil", duaKamilDesc: "Audio ke saath text — page saath saath scroll hota hai. Ek baar kholne ke baad offline bhi chalegi.", duaNote: "Aage aur duas bhi yahan add ho sakti hain.", bDuaKamil: "Shab-e-Juma — Dua e Kamil padhiye 🤲",
     themeH: "Theme", modeH: "Light / Dark", th_green: "Hara", th_maroon: "Maroon", th_navy: "Neela", th_teal: "Firozi", th_rose: "Gulabi", th_sky: "Aasmani", th_lavender: "Lavender", md_auto: "Auto", md_light: "Light", md_dark: "Dark",
     hijriMonths: ["Moharram al-Haraam","Safar al-Muzaffar","Rabi al-Awwal","Rabi al-Aakhar","Jumada al-Ula","Jumada al-Ukhra","Rajab al-Asab","Shabaan al-Karim","Ramadaan al-Moazzam","Shawwal al-Mukarram","Zilqadah al-Haraam","Zilhaj al-Haraam"],
@@ -110,7 +122,7 @@ globalThis.I18N = {
     locH: "Location (timings ke liye)", useGps: "📍 Meri location use karo", save: "Save", locNow: "Abhi: {name} ({lat}, {lng})",
     locGps: "Meri location", locCustom: "Custom", locIndore: "Indore",
     geoNA: "Location available nahi hai.", geoErr: "Location nahi mili: ",
-    installH: "iPhone pe install kaise karein",
+    installH: "Install kaise karein",
     installSteps: "<li>Ye page <b>Safari</b> me kholo.</li><li>Neeche <b>Share</b> button (⬆️) dabao.</li><li><b>Add to Home Screen</b> chuno → Add.</li><li>Ab home screen se app jaisa khulega, offline bhi chalega.</li>",
     aboutH: "About",
     about: "Misri / Fatimi tabular Hijri calendar (30-saal ka cycle, kabisa saal: 2, 5, 8, 10, 13, 16, 19, 21, 24, 27, 29). Hijri tareekh Maghrib ke baad badal jaati hai. Calendar logic aur miqaat list <a href=\"https://www.mumineencalendar.com/\" style=\"color:var(--brand)\">mumineencalendar.com</a> (Murtaza Gulamali) ke basis par hai.",
