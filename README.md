@@ -7,3 +7,11 @@ Offline-capable Misri / Fatimi tabular Hijri calendar with miqaats, made to inst
 - Approx. sunrise / zawaal / maghrib / nisful layl for your location
 
 Calendar algorithm and miqaat list based on [mumineencalendar.com](https://www.mumineencalendar.com/) by Murtaza Gulamali.
+
+## Dua (read-along) — `dua/`
+Dua e Kamil: audio plays and the PDF scrolls/highlights the current line (merged from the former
+`audio-pdf-sync-pwa` project so there is only one app to install). It has its own service worker
+(`dua/sw.js`, caches `readalong-*`); the root `sw.js` ignores `dua/` and never deletes those caches.
+- `dua/media/config.json` names the audio/PDF/sync files; refine timing in-app with ✎ (Sync mode),
+  export `sync.json`, replace `dua/media/sync.json` and push.
+- After changing dua app files bump `CACHE` in `dua/sw.js`; after changing audio/PDF bump `MEDIA_CACHE` in `dua/app.js`.

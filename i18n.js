@@ -3,6 +3,7 @@
 globalThis.I18N = {
   en: {
     _label: "EN",
+    tabDua: "Dua", duaKamil: "Dua e Kamil", duaKamilDesc: "Audio with the text — the page scrolls along. Works offline after first open.", duaNote: "More duas can be added here later.", bDuaKamil: "Shab-e-Juma — recite Dua e Kamil 🤲",
     themeH: "Theme", modeH: "Appearance", th_green: "Green", th_maroon: "Maroon", th_navy: "Navy", th_teal: "Teal", th_rose: "Rose", th_sky: "Sky blue", th_lavender: "Lavender", md_auto: "Auto", md_light: "Light", md_dark: "Dark",
     hijriMonths: ["Moharram al-Haraam","Safar al-Muzaffar","Rabi al-Awwal","Rabi al-Aakhar","Jumada al-Ula","Jumada al-Ukhra","Rajab al-Asab","Shabaan al-Karim","Ramadaan al-Moazzam","Shawwal al-Mukarram","Zilqadah al-Haraam","Zilhaj al-Haraam"],
     hijriShort: ["Moharram","Safar","Rabi I","Rabi II","Jumada I","Jumada II","Rajab","Shabaan","Ramadaan","Shawwal","Zilqadah","Zilhaj"],
@@ -42,6 +43,7 @@ globalThis.I18N = {
 
   gu: {
     _label: "ગુ",
+    tabDua: "દુઆ", duaKamil: "દુઆ એ કામિલ", duaKamilDesc: "ઓડિયો સાથે લખાણ — પેજ સાથે સાથે સ્ક્રોલ થાય છે. એક વાર ખોલ્યા પછી ઑફલાઇન પણ ચાલે.", duaNote: "અહીં આગળ બીજી દુઆઓ પણ ઉમેરી શકાય.", bDuaKamil: "શબે જુમ્આ — દુઆ એ કામિલ પઢો 🤲",
     themeH: "થીમ", modeH: "દેખાવ", th_green: "લીલો", th_maroon: "મરૂન", th_navy: "નેવી", th_teal: "ફિરોઝી", th_rose: "ગુલાબી", th_sky: "આસમાની", th_lavender: "લવંડર", md_auto: "ઑટો", md_light: "લાઇટ", md_dark: "ડાર્ક",
     hijriMonths: ["મોહર્રમુલ હરામ","સફરુલ મુઝફ્ફર","રબીઉલ અવ્વલ","રબીઉલ આખર","જમાદિલ ઊલા","જમાદિલ ઉખરા","રજબુલ અસબ","શાબાનુલ કરીમ","રમઝાનુલ મોઅઝ્ઝમ","શવ્વાલુલ મુકર્રમ","ઝિલ્કાદતિલ હરામ","ઝિલ્હજ્જતિલ હરામ"],
     hijriShort: ["મોહર્રમ","સફર","રબીઉલ અવ્વલ","રબીઉલ આખર","જમાદિલ ઊલા","જમાદિલ ઉખરા","રજબ","શાબાન","રમઝાન","શવ્વાલ","ઝિલ્કાદ","ઝિલ્હજ"],
@@ -81,6 +83,7 @@ globalThis.I18N = {
 
   hi: {
     _label: "Hinglish",
+    tabDua: "Dua", duaKamil: "Dua e Kamil", duaKamilDesc: "Audio ke saath text — page saath saath scroll hota hai. Ek baar kholne ke baad offline bhi chalegi.", duaNote: "Aage aur duas bhi yahan add ho sakti hain.", bDuaKamil: "Shab-e-Juma — Dua e Kamil padhiye 🤲",
     themeH: "Theme", modeH: "Light / Dark", th_green: "Hara", th_maroon: "Maroon", th_navy: "Neela", th_teal: "Firozi", th_rose: "Gulabi", th_sky: "Aasmani", th_lavender: "Lavender", md_auto: "Auto", md_light: "Light", md_dark: "Dark",
     hijriMonths: ["Moharram al-Haraam","Safar al-Muzaffar","Rabi al-Awwal","Rabi al-Aakhar","Jumada al-Ula","Jumada al-Ukhra","Rajab al-Asab","Shabaan al-Karim","Ramadaan al-Moazzam","Shawwal al-Mukarram","Zilqadah al-Haraam","Zilhaj al-Haraam"],
     hijriShort: ["Moharram","Safar","Rabi I","Rabi II","Jumada I","Jumada II","Rajab","Shabaan","Ramadaan","Shawwal","Zilqadah","Zilhaj"],

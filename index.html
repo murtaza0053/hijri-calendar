@@ -163,6 +163,10 @@ nav.tabs button.on{color:var(--brand);font-weight:700}
 .banner .when{font-size:12px;color:var(--brand);font-weight:700;text-transform:uppercase;letter-spacing:.03em}
 .banner .t{font-weight:600;margin-top:2px}
 a.btn{text-decoration:none;display:inline-block}
+.dua-item{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.dua-ic{width:46px;height:46px;border-radius:12px;background:var(--chip);display:grid;place-items:center;font-size:24px}
+.dua-go{font-size:26px;color:var(--brand)}
+.dua-item .muted{font-size:13px}
 .cal th{white-space:nowrap;overflow:hidden;text-overflow:clip}
 .lang{display:flex;width:max-content;margin:0 0 8px auto;background:var(--hdr-chip);border-radius:9px;padding:2px}
 .lang button,.langset button{border:0;background:none;color:inherit;font:inherit;font-size:12px;font-weight:600;padding:5px 8px;border-radius:7px;opacity:.8}
@@ -225,6 +229,16 @@ a.btn{text-decoration:none;display:inline-block}
       <div id="upList"></div>
       <div class="row" style="margin-top:10px"><button class="btn ghost" id="toRem" data-i18n="toRem"></button></div>
     </div>
+  </section>
+
+  <!-- DUA -->
+  <section class="view" id="v-dua">
+    <a class="card dua-item" href="dua/">
+      <div class="dua-ic">🤲</div>
+      <div style="flex:1"><b data-i18n="duaKamil"></b><div class="muted" data-i18n="duaKamilDesc"></div></div>
+      <div class="dua-go">›</div>
+    </a>
+    <p class="muted" style="padding:0 4px" data-i18n="duaNote"></p>
   </section>
 
   <!-- CONVERT -->
@@ -297,6 +311,7 @@ a.btn{text-decoration:none;display:inline-block}
 <nav class="tabs">
   <button data-v="cal" class="on"><span class="i">📅</span><span data-i18n="tabCal"></span></button>
   <button data-v="up"><span class="i">🕌</span><span data-i18n="tabUp"></span></button>
+  <button data-v="dua"><span class="i">🤲</span><span data-i18n="tabDua"></span></button>
   <button data-v="conv"><span class="i">🔁</span><span data-i18n="tabConv"></span></button>
   <button data-v="set"><span class="i">⚙️</span><span data-i18n="tabSet"></span></button>
 </nav>
@@ -496,12 +511,13 @@ function renderBanner() {
     if (k > 0 && day.length) items.push({ a, when: k === 1 ? t("relTomorrow") : t("bInDays", { n: k, wd: wd(a) }), qs: day });
     if (night.length) items.push({ a, when: k === 0 ? t("bTonight") : k === 1 ? t("bTomorrowNight") : t("bWdNight", { wd: wd(a) }), qs: night });
   }
+  if (H.dow(todayAJD) === 4) items.unshift({ a: null, when: t("bTonight"), dua: true });
   const b = $("banner");
   if (!items.length) { b.style.display = "none"; return; }
   b.style.display = "";
-  b.innerHTML = items.map(i => `<div class="mq" data-a="${i.a}"><div class="when">🔔 ${i.when}</div>${i.qs.map(q => `<div class="t">${q.phase === "night" ? "☾ " : "☀ "}${esc(q.title)}</div>`).join("")}</div>`).join("");
+  b.innerHTML = items.map(i => i.dua ? `<div class="mq" data-dua="1"><div class="when">🤲 ${i.when}</div><div class="t">${t("bDuaKamil")}</div></div>` : `<div class="mq" data-a="${i.a}"><div class="when">🔔 ${i.when}</div>${i.qs.map(q => `<div class="t">${q.phase === "night" ? "☾ " : "☀ "}${esc(q.title)}</div>`).join("")}</div>`).join("");
 }
-$("banner").onclick = e => { const r = e.target.closest("[data-a]"); if (r) { const a = +r.dataset.a, h = H.fromAJD(a); view = { y: h.y, m: h.m }; renderCal(); openDay(a); } };
+$("banner").onclick = e => { if (e.target.closest("[data-dua]")) { location.href = "dua/"; return; } const r = e.target.closest("[data-a]"); if (r) { const a = +r.dataset.a, h = H.fromAJD(a); view = { y: h.y, m: h.m }; renderCal(); openDay(a); } };
 
 function setupSubscribe() {
   const base = location.host + location.pathname.replace(/[^/]*$/, "") + "calendar/";

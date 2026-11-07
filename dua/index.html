@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dua e Kamil</title>
+<meta name="theme-color" content="#1f5f4a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Hijri Cal">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<link rel="icon" href="../icons/icon-192.png">
+<script>
+(function(){try{var th=JSON.parse(localStorage.getItem("theme")||'"green"');var A={green:["#1f5f4a","#5fc39a"],maroon:["#7a1f2b","#e0707c"],navy:["#1d3a6e","#7aa7ff"],teal:["#0e6e6a","#4fd1c5"],rose:["#b83b6b","#f48fb1"],sky:["#1f78b4","#7cc4f5"],lavender:["#6a4fb3","#b9a2f2"]}[th];
+if(A&&th!=="green"){var st=document.createElement("style");st.textContent=":root{--accent:"+A[0]+"}@media (prefers-color-scheme: dark){:root{--accent:"+A[1]+"}}";document.head.appendChild(st);}}catch(e){}})();
+</script>
+<style>
+:root{
+  --bg:#f3efe6; --surface:#fffdf8; --text:#1d2421; --muted:#6b736f;
+  --accent:#1f5f4a; --accent-2:#e7f1ec; --line:#d9d3c5; --mark:#e0a100;
+  --cursor:rgba(31,95,74,.18);
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#121614; --surface:#1b211e; --text:#e8ece9; --muted:#9aa49f;
+    --accent:#5fc39a; --accent-2:#20302a; --line:#2c3531; --mark:#f2c14e; --cursor:rgba(95,195,154,.22); }
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);
+  font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
+header{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;gap:8px;
+  padding:calc(env(safe-area-inset-top) + 8px) 12px 8px;background:var(--surface);border-bottom:1px solid var(--line)}
+header h1{flex:1;margin:0;font-size:16px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#pageInfo{color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;border-radius:10px;padding:8px 10px}
+button:active{background:var(--accent-2)}
+.icon{width:40px;height:40px;padding:0;display:inline-grid;place-items:center;font-size:18px}
+#viewer{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding:calc(env(safe-area-inset-top) + 64px) 0 calc(env(safe-area-inset-bottom) + 150px)}
+#pages{max-width:900px;margin:0 auto;padding:0 8px;position:relative}
+.page{position:relative;margin:0 auto 10px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.15)}
+.page canvas{display:block;width:100%;height:100%}
+.page .num{position:absolute;bottom:4px;right:8px;font-size:11px;color:#999}
+#cursor{position:absolute;left:8px;right:8px;height:44px;margin-top:-22px;pointer-events:none;
+  background:var(--cursor);border-left:4px solid var(--accent);border-radius:4px;transition:top .25s linear;display:none;z-index:2;mix-blend-mode:multiply}
+.tick{position:absolute;left:0;right:0;height:0;z-index:3;border-top:2px dashed var(--mark);pointer-events:none}
+.tick span{position:absolute;left:4px;top:-10px;background:var(--mark);color:#000;font-size:11px;padding:1px 6px;border-radius:8px;pointer-events:auto}
+body:not(.editing) .tick{display:none}
+#bar{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--surface);border-top:1px solid var(--line);
+  padding:8px 12px calc(env(safe-area-inset-bottom) + 8px)}
+#seekRow{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+#seek{flex:1;accent-color:var(--accent)}
+#ctrlRow{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
+#play{width:54px;height:54px;border-radius:50%;background:var(--accent);color:#fff;font-size:22px}
+#speed{min-width:52px;font-weight:600}
+body.editing #syncBtn{background:var(--mark);color:#000}
+#editBar{display:none;gap:6px;margin-top:6px;flex-wrap:wrap;justify-content:center}
+body.editing #editBar{display:flex}
+#editBar button{background:var(--accent-2);font-size:13px}
+#editHint{width:100%;text-align:center;font-size:12px;color:var(--muted)}
+#follow{position:fixed;right:14px;bottom:calc(env(safe-area-inset-bottom) + 160px);z-index:6;display:none;
+  background:var(--accent);color:#fff;border-radius:20px;padding:8px 14px;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+body.editing #follow{bottom:calc(env(safe-area-inset-bottom) + 230px)}
+#menu{position:fixed;top:calc(env(safe-area-inset-top) + 56px);right:8px;z-index:7;background:var(--surface);
+  border:1px solid var(--line);border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.2);display:none;min-width:220px;overflow:hidden}
+#menu.open{display:block}
+#menu button{display:block;width:100%;text-align:left;border-radius:0;padding:12px 16px}
+#status{position:fixed;inset:0;display:grid;place-items:center;text-align:center;padding:24px;color:var(--muted);z-index:4;pointer-events:none}
+#status.hidden{display:none}
+#toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top) + 70px);transform:translateX(-50%);z-index:8;
+  background:var(--text);color:var(--bg);padding:8px 14px;border-radius:20px;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none}
+#toast.show{opacity:.92}
+input[type=file]{display:none}
+</style>
+</head>
+<body>
+<header>
+  <a class="icon" id="backBtn" href="../" aria-label="Back to calendar" style="text-decoration:none;color:inherit">‹</a>
+  <h1 id="title">Dua e Kamil</h1>
+  <span id="pageInfo"></span>
+  <button class="icon" id="menuBtn" aria-label="Menu">⋮</button>
+</header>
+<div id="menu">
+  <button id="openFiles">📂 Open audio + PDF from phone</button>
+  <button id="useBundled">📦 Use bundled files</button>
+  <button id="exportSync">⬇️ Export sync.json</button>
+  <button id="importSync">⬆️ Import sync.json</button>
+  <button id="clearSync">🗑️ Clear all sync marks</button>
+</div>
+<input type="file" id="filePick" accept="audio/*,application/pdf,.pdf,.mp3,.m4a,.aac,.wav,.ogg" multiple>
+<input type="file" id="syncPick" accept="application/json,.json">
+
+<div id="viewer"><div id="pages"><div id="cursor"></div></div></div>
+<div id="status">Loading…</div>
+<button id="follow">↧ Follow audio</button>
+<div id="toast"></div>
+
+<div id="bar">
+  <div id="seekRow"><span id="cur">0:00</span><input type="range" id="seek" min="0" max="1" step="0.1" value="0"><span id="dur">0:00</span></div>
+  <div id="ctrlRow">
+    <button id="speed">1×</button>
+    <button class="icon" id="back">↺10</button>
+    <button id="play" aria-label="Play">▶</button>
+    <button class="icon" id="fwd">10↻</button>
+    <button class="icon" id="syncBtn" aria-label="Sync mode" title="Sync mode">✎</button>
+  </div>
+  <div id="editBar">
+    <div id="editHint">Sync mode: audio chalao, jahan padhai ho rahi ho us line pe tap karo.</div>
+    <button id="markNext">Next page starts now</button>
+    <button id="undo">Undo</button>
+    <button id="doneEdit">Done</button>
+  </div>
+</div>
+<audio id="audio" preload="auto"></audio>
+
+<script src="vendor/pdf.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
