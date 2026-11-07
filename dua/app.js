@@ -95,7 +95,7 @@ async function openMedia({ title, pdfBlob, audioBlob, key, fileMarks }) {
   audio.src = URL.createObjectURL(audioBlob);
 
   const saved = ls.get('sync:' + key, null);
-  state.marks = normalize(saved || fileMarks || []);
+  state.marks = normalize(saved && saved.length ? saved : (fileMarks || []));
   state.history = [];
 
   state.pdf = await pdfjsLib.getDocument({ data: new Uint8Array(await pdfBlob.arrayBuffer()) }).promise;

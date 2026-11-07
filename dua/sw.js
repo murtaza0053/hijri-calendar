@@ -1,5 +1,5 @@
 // Bump CACHE when app files change. Media (audio/pdf) is cached by app.js in 'readalong-media-v1'.
-const CACHE = 'readalong-shell-v1';
+const CACHE = 'readalong-shell-v2';
 const SHELL = ['./', 'index.html', 'app.js', 'vendor/pdf.min.js', 'vendor/pdf.worker.min.js'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL))); self.skipWaiting(); });
 self.addEventListener('activate', e => {
