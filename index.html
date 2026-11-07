@@ -92,10 +92,19 @@ nav.tabs button.on{color:var(--brand);font-weight:700}
 .banner .when{font-size:12px;color:var(--brand);font-weight:700;text-transform:uppercase;letter-spacing:.03em}
 .banner .t{font-weight:600;margin-top:2px}
 a.btn{text-decoration:none;display:inline-block}
+.cal th{white-space:nowrap;overflow:hidden;text-overflow:clip}
+.lang{display:flex;width:max-content;margin:0 0 8px auto;background:rgba(255,255,255,.15);border-radius:9px;padding:2px}
+.lang button,.langset button{border:0;background:none;color:inherit;font:inherit;font-size:12px;font-weight:600;padding:5px 8px;border-radius:7px;opacity:.8}
+.lang button.on{background:#fff;color:#0f5132;opacity:1}
+.langset{display:flex;background:var(--chip);border-radius:10px;padding:3px;gap:2px}
+.langset button{font-size:14px;padding:8px 12px;color:var(--ink)}
+.langset button.on{background:var(--brand);color:#fff;opacity:1}
+@media (prefers-color-scheme: dark){.langset button.on{color:#08130d}}
 </style>
 </head>
 <body>
 <header class="top">
+  <div class="lang" id="langTop"></div>
   <div class="hdate" id="tHijri">…</div>
   <div class="hdate-ar ar" id="tHijriAr" dir="rtl"></div>
   <div class="gdate" id="tGreg"></div>
@@ -113,34 +122,34 @@ a.btn{text-decoration:none;display:inline-block}
         <button id="next" aria-label="Next month">›</button>
       </div>
       <table class="cal" id="cal"></table>
-      <div class="legend"><span><span style="color:var(--gold)">☀</span> Badi miqaat (din)</span><span><span style="color:var(--night)">☾</span> Us din ki raat</span><span><span style="color:var(--brand-2)">●</span> Urus / other</span></div>
-      <div class="row" style="justify-content:center;margin-top:10px"><button class="btn ghost" id="goToday">Aaj</button></div>
+      <div class="legend"><span><span style="color:var(--gold)">☀</span> <span data-i18n="legendDay"></span></span><span><span style="color:var(--night)">☾</span> <span data-i18n="legendNight"></span></span><span><span style="color:var(--brand-2)">●</span> <span data-i18n="legendOther"></span></span></div>
+      <div class="row" style="justify-content:center;margin-top:10px"><button class="btn ghost" id="goToday" data-i18n="today"></button></div>
     </div>
     <div class="card" id="todayMq"></div>
     <div class="card">
-      <h3>Aaj ke timings <span class="tag" id="locName"></span></h3>
+      <h3><span data-i18n="timesH"></span> <span class="tag" id="locName"></span></h3>
       <div class="times" id="times"></div>
-      <p class="muted" id="timesNote">Approx. — sun position se calculate (Fajr azaan = sunrise − 1 ghanta, Maghrib = sunset). Apni jamaat ke timings confirm kar lena.</p>
+      <p class="muted" data-i18n="timesNote"></p>
     </div>
   </section>
 
   <!-- UPCOMING -->
   <section class="view" id="v-up">
     <div class="card">
-      <h3>Aane wali miqaats</h3>
+      <h3 data-i18n="upH"></h3>
       <div class="row" style="margin-bottom:6px">
         <select id="upFilter">
-          <option value="1">Sirf badi miqaats</option>
-          <option value="3" selected>Sab (urus bhi)</option>
+          <option value="1" data-i18n="upMajor"></option>
+          <option value="3" selected data-i18n="upAll"></option>
         </select>
         <select id="upRange">
-          <option value="30">30 din</option>
-          <option value="90" selected>90 din</option>
-          <option value="365">1 saal</option>
+          <option value="30" data-i18n="nDays" data-n="30"></option>
+          <option value="90" selected data-i18n="nDays" data-n="90"></option>
+          <option value="365" data-i18n="oneYear"></option>
         </select>
       </div>
       <div id="upList"></div>
-      <div class="row" style="margin-top:10px"><button class="btn ghost" id="toRem">🔔 Reminders set karo</button></div>
+      <div class="row" style="margin-top:10px"><button class="btn ghost" id="toRem" data-i18n="toRem"></button></div>
     </div>
   </section>
 
@@ -148,92 +157,105 @@ a.btn{text-decoration:none;display:inline-block}
   <section class="view" id="v-conv">
     <div class="card">
       <h3>Gregorian → Hijri</h3>
-      <div class="row"><input type="date" id="gIn"><button class="btn" id="gGo">Convert</button></div>
+      <div class="row"><input type="date" id="gIn"><button class="btn" id="gGo" data-i18n="convert"></button></div>
       <div class="conv-out" id="gOut"></div>
       <div class="ar" dir="rtl" id="gOutAr"></div>
     </div>
     <div class="card">
       <h3>Hijri → Gregorian</h3>
       <div class="row">
-        <input type="number" id="hD" min="1" max="30" placeholder="Din" style="width:70px">
+        <input type="number" id="hD" min="1" max="30" data-i18n-ph="dayPh" style="width:70px">
         <select id="hM"></select>
-        <input type="number" id="hY" min="1000" max="3000" placeholder="Saal" style="width:90px">
-        <button class="btn" id="hGo">Convert</button>
+        <input type="number" id="hY" min="1000" max="3000" data-i18n-ph="yearPh" style="width:90px">
+        <button class="btn" id="hGo" data-i18n="convert"></button>
       </div>
       <div class="conv-out" id="hOut"></div>
-      <div class="row" style="margin-top:8px"><button class="btn ghost" id="hShow" style="display:none">Calendar me dekho</button></div>
+      <div class="row" style="margin-top:8px"><button class="btn ghost" id="hShow" style="display:none" data-i18n="showCal"></button></div>
     </div>
   </section>
 
   <!-- SETTINGS -->
   <section class="view" id="v-set">
+    <div class="card">
+      <h3 data-i18n="langH"></h3>
+      <div class="langset" id="langSet"></div>
+    </div>
     <div class="card" id="remCard">
-      <h3>🔔 Miqaat reminders</h3>
-      <p class="muted" style="font-size:14px">iPhone ke <b>Calendar</b> app me miqaats subscribe kar lo — har miqaat pe notification aayegi, app band ho tab bhi.<br>
-      ☀ Din ki miqaat → <b>pichli raat 9 PM</b> reminder · 🌙 Raat ki miqaat → <b>usi din 5 PM</b> reminder.</p>
+      <h3 data-i18n="remH"></h3>
+      <p class="muted" style="font-size:14px" data-i18n="remP"></p>
       <div class="row" style="margin:8px 0">
-        <a class="btn" id="subMajor" href="#">Badi miqaats subscribe karo</a>
-        <a class="btn ghost" id="subAll" href="#">Sab (urus bhi)</a>
+        <a class="btn" id="subMajor" href="#" data-i18n="subMajor"></a>
+        <a class="btn ghost" id="subAll" href="#" data-i18n="upAll"></a>
       </div>
-      <ol class="muted" style="font-size:14px;padding-left:18px;margin:6px 0 0">
-        <li>Upar button dabao → <b>Subscribe</b> → <b>Add</b>.</li>
-        <li><b>Zaroori:</b> iPhone <b>Settings → Apps → Calendar → Calendar Accounts → Subscribed Calendars</b> → is calendar pe jaake <b>"Remove Alerts" OFF</b> karo, warna notification nahi aayegi.</li>
-        <li>Settings → Notifications → Calendar me notifications ON ho.</li>
-      </ol>
-      <p class="muted">Button kaam na kare to ye link Safari me paste karo:<br><code id="subUrl" style="word-break:break-all"></code></p>
+      <ol class="muted" style="font-size:14px;padding-left:18px;margin:6px 0 0" data-i18n="remSteps"></ol>
+      <p class="muted"><span data-i18n="remFallback"></span><br><code id="subUrl" style="word-break:break-all"></code></p>
     </div>
     <div class="card">
-      <h3>Location (timings ke liye)</h3>
+      <h3 data-i18n="locH"></h3>
       <p class="muted" id="locCur"></p>
       <div class="row">
-        <button class="btn" id="useGps">📍 Meri location use karo</button>
-        <button class="btn ghost" id="useIndore">Indore (default)</button>
+        <button class="btn" id="useGps" data-i18n="useGps"></button>
+        <button class="btn ghost" id="useIndore"><span data-i18n="locIndore"></span> (default)</button>
       </div>
       <div class="row" style="margin-top:8px">
         <input id="lat" placeholder="Latitude" inputmode="decimal" style="width:120px">
         <input id="lng" placeholder="Longitude" inputmode="decimal" style="width:120px">
-        <button class="btn ghost" id="saveLL">Save</button>
+        <button class="btn ghost" id="saveLL" data-i18n="save"></button>
       </div>
     </div>
     <div class="card">
-      <h3>iPhone pe install kaise karein</h3>
-      <ol class="muted" style="font-size:14px;padding-left:18px;margin:0">
-        <li>Ye page <b>Safari</b> me kholo.</li>
-        <li>Neeche <b>Share</b> button (⬆️) dabao.</li>
-        <li><b>Add to Home Screen</b> chuno → Add.</li>
-        <li>Ab home screen se app jaisa khulega, offline bhi chalega.</li>
-      </ol>
+      <h3 data-i18n="installH"></h3>
+      <ol class="muted" style="font-size:14px;padding-left:18px;margin:0" data-i18n="installSteps"></ol>
     </div>
     <div class="card">
-      <h3>About</h3>
-      <p class="muted">Misri / Fatimi tabular Hijri calendar (30-saal ka cycle, kabisa saal: 2, 5, 8, 10, 13, 16, 19, 21, 24, 27, 29). Hijri tareekh Maghrib ke baad badal jaati hai. Calendar logic aur miqaat list <a href="https://www.mumineencalendar.com/" style="color:var(--brand)">mumineencalendar.com</a> (Murtaza Gulamali) ke basis par hai.</p>
+      <h3 data-i18n="aboutH"></h3>
+      <p class="muted" data-i18n="about"></p>
     </div>
   </section>
 </main>
 
 <nav class="tabs">
-  <button data-v="cal" class="on"><span class="i">📅</span>Calendar</button>
-  <button data-v="up"><span class="i">🕌</span>Miqaats</button>
-  <button data-v="conv"><span class="i">🔁</span>Convert</button>
-  <button data-v="set"><span class="i">⚙️</span>Settings</button>
+  <button data-v="cal" class="on"><span class="i">📅</span><span data-i18n="tabCal"></span></button>
+  <button data-v="up"><span class="i">🕌</span><span data-i18n="tabUp"></span></button>
+  <button data-v="conv"><span class="i">🔁</span><span data-i18n="tabConv"></span></button>
+  <button data-v="set"><span class="i">⚙️</span><span data-i18n="tabSet"></span></button>
 </nav>
 
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
 <script src="hijri.js"></script>
+<script src="i18n.js"></script>
 <script>
 "use strict";
 
 const ARD = ["٠","١","٢","٣","٤","٥","٦","٧","٨","٩"];
 const arNum = n => String(n).replace(/\d/g, c => ARD[c]);
-const GM = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-const GMS = GM.map(s => s.slice(0, 3));
-const WD = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
 const store = { get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
                 set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
+
+/* ---------- Language ---------- */
+const LANGS = ["en", "gu", "hi"];
+let lang = store.get("lang", "hi");
+if (!LANGS.includes(lang)) lang = "hi";
+let L = I18N[lang];
+const t = (k, v = {}) => String(L[k] ?? I18N.en[k] ?? k).replace(/\{(\w+)\}/g, (_, x) => v[x] ?? "");
+
+function applyStatic() {
+  document.documentElement.lang = lang === "gu" ? "gu" : "en";
+  document.querySelectorAll("[data-i18n]").forEach(el => { el.innerHTML = t(el.dataset.i18n, { n: el.dataset.n }); });
+  document.querySelectorAll("[data-i18n-ph]").forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
+  const btns = cur => LANGS.map(k => `<button data-l="${k}" class="${k === cur ? "on" : ""}">${I18N[k]._label}</button>`).join("");
+  $("langTop").innerHTML = btns(lang);
+  $("langSet").innerHTML = btns(lang);
+}
+function setLang(k) {
+  lang = k; L = I18N[k]; store.set("lang", k);
+  applyStatic(); renderAll();
+}
+document.addEventListener("click", e => { const b = e.target.closest("[data-l]"); if (b) setLang(b.dataset.l); });
 
 /* ---------- Miqaats ---------- */
 let MIQ = [];
@@ -266,28 +288,30 @@ function sunTimes(Y, M, D, lat, lng) {
 const fmtT = d => d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
 
 /* ---------- State ---------- */
-const DEFAULT_LOC = { lat: 22.7196, lng: 75.8577, name: "Indore" };
+const DEFAULT_LOC = { lat: 22.7196, lng: 75.8577, key: "indore" };
 let loc = store.get("loc", DEFAULT_LOC);
+if (!loc.key) loc.key = { "Indore": "indore", "Meri location": "gps" }[loc.name] || "custom"; // migrate v1
+const locLabel = () => t({ indore: "locIndore", gps: "locGps" }[loc.key] || "locCustom");
 const now = new Date();
 const todayAJD = H.gToAJD(now.getFullYear(), now.getMonth(), now.getDate());
 const todayH = H.fromAJD(todayAJD);
 let view = { y: todayH.y, m: todayH.m };
 let selAJD = null;
 
-const hStr = h => `${h.d} ${H.NAMES[h.m]} ${h.y}H`;
+const hStr = h => `${h.d} ${L.hijriMonths[h.m]} ${h.y}${L.hSuffix}`;
+const hShort = h => `${h.d} ${L.hijriShort[h.m]}`;
 const hStrAr = h => `${arNum(h.d)} ${H.AR[h.m]} ${arNum(h.y)}هـ`;
-const gStr = g => `${g.d} ${GM[g.m]} ${g.y}`;
+const gStr = g => `${g.d} ${L.gMonths[g.m]} ${g.y}`;
+const wd = a => L.wd[H.dow(a)];
 
 /* ---------- Header ---------- */
 function renderHeader() {
   $("tHijri").textContent = hStr(todayH);
   $("tHijriAr").textContent = hStrAr(todayH);
-  $("tGreg").textContent = `${WD[H.dow(todayAJD)]}, ${gStr(H.ajdToG(todayAJD))}`;
+  $("tGreg").textContent = `${wd(todayAJD)}, ${gStr(H.ajdToG(todayAJD))}`;
   const s = sunTimes(now.getFullYear(), now.getMonth(), now.getDate(), loc.lat, loc.lng);
-  const nxt = H.fromAJD(todayAJD + 1);
-  $("tEve").textContent = now > s.sunset
-    ? `🌙 Maghrib ho gayi — abhi raat hai ${nxt.d} ${H.SHORT[nxt.m]} ki`
-    : `Maghrib (${fmtT(s.sunset)}) ke baad: ${nxt.d} ${H.SHORT[nxt.m]} ki raat`;
+  const d = hShort(H.fromAJD(todayAJD + 1));
+  $("tEve").textContent = new Date() > s.sunset ? t("eveAfter", { d }) : t("eveBefore", { d, t: fmtT(s.sunset) });
 }
 
 /* ---------- Calendar grid ---------- */
@@ -301,15 +325,15 @@ function renderCal() {
   while (cells.length % 7) cells.push({ ajd: first + n + (cells.length - lead - n), filler: true });
 
   const g1 = H.ajdToG(first), g2 = H.ajdToG(first + n - 1);
-  $("mTitle").innerHTML = `<b>${H.NAMES[m]} ${y}H</b><span class="ar" dir="rtl">${H.AR[m]} ${arNum(y)}</span>
-    <span>${GMS[g1.m]} ${g1.y === g2.y ? "" : g1.y + " "}– ${GMS[g2.m]} ${g2.y}${H.isKabisa(y) ? " · Kabisa saal" : ""}</span>`;
+  $("mTitle").innerHTML = `<b>${L.hijriMonths[m]} ${y}${L.hSuffix}</b><span class="ar" dir="rtl">${H.AR[m]} ${arNum(y)}</span>
+    <span>${L.gShort[g1.m]} ${g1.y === g2.y ? "" : g1.y + " "}– ${L.gShort[g2.m]} ${g2.y}${H.isKabisa(y) ? " · " + t("leap") : ""}</span>`;
 
-  let html = "<thead><tr>" + ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].map((d, i) => `<th class="${i === 5 ? "fri" : ""}">${d}</th>`).join("") + "</tr></thead><tbody>";
+  let html = "<thead><tr>" + L.wdShort.map((d, i) => `<th class="${i === 5 ? "fri" : ""}">${d}</th>`).join("") + "</tr></thead><tbody>";
   cells.forEach((c, i) => {
     if (i % 7 === 0) html += "<tr>";
     const h = H.fromAJD(c.ajd), g = H.ajdToG(c.ajd);
     let gl = String(g.d);
-    if (!c.filler && (h.d === 1 || g.d === 1)) gl += " " + GMS[g.m];
+    if (!c.filler && (h.d === 1 || g.d === 1)) gl += " " + L.gShort[g.m];
     let cls = c.filler ? "filler" : "";
     if (c.ajd === todayAJD) cls += " today";
     if (c.ajd === selAJD) cls += " sel";
@@ -324,14 +348,15 @@ function renderCal() {
   $("cal").innerHTML = html + "</tbody>";
 }
 
+const icon = q => q.priority === 1 ? (q.phase === "night" ? "☾ " : "☀ ") : "";
+const nightTag = q => q.phase === "night" ? `<span class="tag">${t("nightTag")}</span>` : "";
 function mqHTML(list) {
-  if (!list.length) return '<p class="muted">Koi miqaat nahi.</p>';
-  return list.map(q => `<div class="mq"><div class="t">${q.priority === 1 ? (q.phase === "night" ? "☾ " : "☀ ") : ""}${esc(q.title)}${q.phase === "night" ? '<span class="tag">raat · Maghrib ke baad</span>' : ""}</div>${q.description ? `<div class="d">${esc(q.description)}</div>` : ""}</div>`).join("");
+  if (!list.length) return `<p class="muted">${t("noMq")}</p>`;
+  return list.map(q => `<div class="mq"><div class="t">${icon(q)}${esc(q.title)}${nightTag(q)}</div>${q.description ? `<div class="d">${esc(q.description)}</div>` : ""}</div>`).join("");
 }
 
 function renderTodayMq() {
-  const list = miqaatsFor(todayH.y, todayH.m, todayH.d);
-  $("todayMq").innerHTML = `<h3>Aaj ki miqaats</h3>${mqHTML(list)}`;
+  $("todayMq").innerHTML = `<h3>${t("todayMq")}</h3>${mqHTML(miqaatsFor(todayH.y, todayH.m, todayH.d))}`;
 }
 
 function renderTimes() {
@@ -340,10 +365,10 @@ function renderTimes() {
   const s2 = sunTimes(t2.getFullYear(), t2.getMonth(), t2.getDate(), loc.lat, loc.lng);
   const nisf = new Date((s.sunset.getTime() + s2.sunrise.getTime()) / 2);
   const fajr = new Date(s.sunrise.getTime() - 60 * 6e4);
-  const items = [["Fajr azaan", fajr], ["Sunrise", s.sunrise], ["Zawaal", s.noon], ["Maghrib", s.sunset], ["Nisful Layl", nisf]];
-  $("times").innerHTML = items.map(([k, v]) => `<div><small>${k}</small><b>${fmtT(v)}</b></div>`).join("");
-  $("locName").textContent = loc.name || `${loc.lat.toFixed(2)}, ${loc.lng.toFixed(2)}`;
-  $("locCur").textContent = `Abhi: ${loc.name || "Custom"} (${loc.lat.toFixed(4)}, ${loc.lng.toFixed(4)})`;
+  const items = [["tFajr", fajr], ["tSunrise", s.sunrise], ["tZawaal", s.noon], ["tMaghrib", s.sunset], ["tNisf", nisf]];
+  $("times").innerHTML = items.map(([k, v]) => `<div><small>${t(k)}</small><b>${fmtT(v)}</b></div>`).join("");
+  $("locName").textContent = locLabel();
+  $("locCur").textContent = t("locNow", { name: locLabel(), lat: loc.lat.toFixed(4), lng: loc.lng.toFixed(4) });
 }
 
 /* ---------- Day sheet ---------- */
@@ -353,12 +378,12 @@ function openDay(ajd) {
   const s = sunTimes(g.y, g.m, g.d, loc.lat, loc.lng);
   $("sheetBody").innerHTML = `<div style="font-size:20px;font-weight:700">${hStr(h)}</div>
     <div class="ar" dir="rtl" style="font-size:18px;color:var(--gold)">${hStrAr(h)}</div>
-    <div class="muted" style="font-size:14px;margin:2px 0 10px">${WD[H.dow(ajd)]}, ${gStr(g)} · Maghrib ${fmtT(s.sunset)}</div>
-    <h3>Miqaats</h3>${mqHTML(miqaatsFor(h.y, h.m, h.d))}`;
+    <div class="muted" style="font-size:14px;margin:2px 0 10px">${wd(ajd)}, ${gStr(g)} · ${t("tMaghrib")} ${fmtT(s.sunset)}</div>
+    <h3>${t("miqaats")}</h3>${mqHTML(miqaatsFor(h.y, h.m, h.d))}`;
   $("sheetBg").style.display = "block";
   requestAnimationFrame(() => $("sheet").classList.add("on"));
 }
-function closeSheet() { $("sheet").classList.remove("on"); $("sheetBg").style.display = "none"; }
+function closeSheet() { $("sheet").classList.remove("on"); $("sheetBg").style.display = "none"; selAJD = null; renderCal(); }
 
 /* ---------- Reminder banner (next 3 days, badi miqaats) ---------- */
 function renderBanner() {
@@ -368,8 +393,8 @@ function renderBanner() {
     const qs = miqaatsFor(h.y, h.m, h.d).filter(q => q.priority <= 2);
     const night = qs.filter(q => q.phase === "night"), day = qs.filter(q => q.phase === "day");
     // day miqaat k days away; night miqaat = evening of that day
-    if (k > 0 && day.length) items.push({ a, when: k === 1 ? "Kal" : `${k} din baad · ${WD[H.dow(a)]}`, qs: day });
-    if (night.length) items.push({ a, when: k === 0 ? "Aaj raat (Maghrib ke baad)" : k === 1 ? "Kal raat" : `${WD[H.dow(a)]} raat`, qs: night });
+    if (k > 0 && day.length) items.push({ a, when: k === 1 ? t("relTomorrow") : t("bInDays", { n: k, wd: wd(a) }), qs: day });
+    if (night.length) items.push({ a, when: k === 0 ? t("bTonight") : k === 1 ? t("bTomorrowNight") : t("bWdNight", { wd: wd(a) }), qs: night });
   }
   const b = $("banner");
   if (!items.length) { b.style.display = "none"; return; }
@@ -394,45 +419,53 @@ function renderUpcoming() {
     const list = miqaatsFor(h.y, h.m, h.d).filter(q => q.priority <= maxP);
     if (!list.length) continue;
     const g = H.ajdToG(a), diff = a - todayAJD;
-    const rel = diff === 0 ? "Aaj" : diff === 1 ? "Kal" : `${diff} din baad`;
-    html += `<div class="mq" data-a="${a}"><div class="when">${h.d} ${H.SHORT[h.m]} · ${WD[H.dow(a)].slice(0, 3)}, ${g.d} ${GMS[g.m]} ${g.y} · ${rel}</div>${list.map(q => `<div class="t">${q.priority === 1 ? (q.phase === "night" ? "☾ " : "☀ ") : ""}${esc(q.title)}${q.phase === "night" ? '<span class="tag">raat · Maghrib ke baad</span>' : ""}</div>`).join("")}</div>`;
+    const rel = diff === 0 ? t("relToday") : diff === 1 ? t("relTomorrow") : t("relIn", { n: diff });
+    html += `<div class="mq" data-a="${a}"><div class="when">${hShort(h)} · ${L.wdShort[H.dow(a)]}, ${g.d} ${L.gShort[g.m]} ${g.y} · ${rel}</div>${list.map(q => `<div class="t">${icon(q)}${esc(q.title)}${nightTag(q)}</div>`).join("")}</div>`;
   }
-  $("upList").innerHTML = html || '<p class="muted">Is range me koi miqaat nahi.</p>';
+  $("upList").innerHTML = html || `<p class="muted">${t("upNone")}</p>`;
 }
 
 /* ---------- Converter ---------- */
+function gConvert() {
+  const [Y, M, D] = $("gIn").value.split("-").map(Number);
+  if (!Y) return;
+  const h = H.fromAJD(H.gToAJD(Y, M - 1, D));
+  $("gOut").textContent = hStr(h);
+  $("gOutAr").textContent = hStrAr(h);
+}
+function hConvert() {
+  const d = +$("hD").value, m = +$("hM").value, y = +$("hY").value;
+  if (!y || !d) return;
+  const max = H.daysInMonth(y, m);
+  if (d < 1 || d > max) { $("hOut").textContent = t("onlyDays", { m: L.hijriMonths[m], y, n: max }); $("hShow").style.display = "none"; return; }
+  const a = H.toAJD(y, m, d), g = H.ajdToG(a);
+  $("hOut").textContent = `${wd(a)}, ${gStr(g)}`;
+  $("hShow").style.display = "";
+  $("hShow").onclick = () => { view = { y, m }; switchView("cal"); renderCal(); openDay(a); };
+}
+function renderMonthSelect() {
+  const v = $("hM").value || todayH.m;
+  $("hM").innerHTML = L.hijriMonths.map((n, i) => `<option value="${i}">${n}</option>`).join("");
+  $("hM").value = v;
+}
 function setupConv() {
-  $("hM").innerHTML = H.NAMES.map((n, i) => `<option value="${i}">${n}</option>`).join("");
+  renderMonthSelect();
   const g = H.ajdToG(todayAJD);
   $("gIn").value = `${g.y}-${String(g.m + 1).padStart(2, "0")}-${String(g.d).padStart(2, "0")}`;
   $("hD").value = todayH.d; $("hM").value = todayH.m; $("hY").value = todayH.y;
-  $("gGo").onclick = () => {
-    const [Y, M, D] = $("gIn").value.split("-").map(Number);
-    if (!Y) return;
-    const h = H.fromAJD(H.gToAJD(Y, M - 1, D));
-    $("gOut").textContent = hStr(h);
-    $("gOutAr").textContent = hStrAr(h);
-  };
-  $("hGo").onclick = () => {
-    const d = +$("hD").value, m = +$("hM").value, y = +$("hY").value;
-    if (!y || !d) return;
-    const max = H.daysInMonth(y, m);
-    if (d < 1 || d > max) { $("hOut").textContent = `${H.NAMES[m]} ${y} me sirf ${max} din hain.`; $("hShow").style.display = "none"; return; }
-    const a = H.toAJD(y, m, d), g = H.ajdToG(a);
-    $("hOut").textContent = `${WD[H.dow(a)]}, ${gStr(g)}`;
-    $("hShow").style.display = "";
-    $("hShow").onclick = () => { view = { y, m }; switchView("cal"); renderCal(); openDay(a); };
-  };
-  $("gGo").onclick(); $("hGo").onclick();
+  $("gGo").onclick = gConvert;
+  $("hGo").onclick = hConvert;
 }
 
 /* ---------- Navigation ---------- */
+let curView = "cal";
 function shiftMonth(k) {
   let { y, m } = view; m += k;
   if (m < 0) { m = 11; y--; } if (m > 11) { m = 0; y++; }
   view = { y, m }; selAJD = null; renderCal();
 }
 function switchView(v) {
+  curView = v;
   document.querySelectorAll(".view").forEach(s => s.classList.toggle("on", s.id === "v-" + v));
   document.querySelectorAll("nav.tabs button").forEach(b => b.classList.toggle("on", b.dataset.v === v));
   if (v === "up") renderUpcoming();
@@ -464,20 +497,27 @@ function setLoc(l) { loc = l; store.set("loc", l); renderTimes(); renderHeader()
 $("useIndore").onclick = () => setLoc(DEFAULT_LOC);
 $("saveLL").onclick = () => {
   const lat = parseFloat($("lat").value), lng = parseFloat($("lng").value);
-  if (isFinite(lat) && isFinite(lng) && Math.abs(lat) <= 90 && Math.abs(lng) <= 180) setLoc({ lat, lng, name: "Custom" });
+  if (isFinite(lat) && isFinite(lng) && Math.abs(lat) <= 90 && Math.abs(lng) <= 180) setLoc({ lat, lng, key: "custom" });
 };
 $("useGps").onclick = () => {
-  if (!navigator.geolocation) return alert("Location available nahi hai.");
+  if (!navigator.geolocation) return alert(t("geoNA"));
   navigator.geolocation.getCurrentPosition(
-    p => setLoc({ lat: p.coords.latitude, lng: p.coords.longitude, name: "Meri location" }),
-    err => alert("Location nahi mili: " + err.message),
+    p => setLoc({ lat: p.coords.latitude, lng: p.coords.longitude, key: "gps" }),
+    err => alert(t("geoErr") + err.message),
     { enableHighAccuracy: false, timeout: 15000 }
   );
 };
 
 /* ---------- Boot ---------- */
-renderHeader(); renderCal(); renderTimes(); setupConv(); setupSubscribe();
-fetch("miqaats.json").then(r => r.json()).then(d => { MIQ = d; renderCal(); renderTodayMq(); renderBanner(); }).catch(() => { $("todayMq").innerHTML = '<p class="muted">Miqaats load nahi hui.</p>'; });
+let miqLoaded = false;
+function renderAll() {
+  renderHeader(); renderCal(); renderTimes(); renderMonthSelect(); gConvert(); hConvert();
+  if (miqLoaded) { renderTodayMq(); renderBanner(); }
+  if (curView === "up") renderUpcoming();
+  if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD);
+}
+applyStatic(); setupConv(); setupSubscribe(); renderAll();
+fetch("miqaats.json").then(r => r.json()).then(d => { MIQ = d; miqLoaded = true; renderAll(); }).catch(() => { $("todayMq").innerHTML = `<p class="muted">${t("loadFail")}</p>`; });
 // refresh "today" when app resumes on a new day
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible") { const n = new Date(); if (n.getDate() !== now.getDate()) location.reload(); else renderHeader(); }
