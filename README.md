@@ -22,3 +22,8 @@ Dua e Kamil: audio plays and the PDF scrolls/highlights the current line (merged
   cached in the browser (`quran-audio-v1`) for offline use. Add a surah: fetch it and add a card in the Dua tab.
 - Font: Noto Naskh Arabic (OFL), Arabic subset in `dua/fonts/`.
 - Shared theme: `themes.css` + `theme-init.js` (used by every page).
+- Dua e Kamil now uses the user's "NEW updated version" PDF (`dua/media/dua-e-kamil-v2.pdf`, 22 pages, gold border).
+  Re-aligned with tools/dua-sync (border threshold 185 for gold frames; `KAMIL_NEW=1` pins the known repeat spans).
+- Amal: "Rozi ma Barakat" (Hijri 2–7: Yaseen, Rahman, Waqiah, Hashr, Jumuah, Jinn) in the Dua tab + banner on those dates;
+  "Tasbih of 7 days" = `dua/tasbeeh.html?m=week`. User's chart images in `dua/img/`, user's Mushaf PDFs in `dua/pdf/`.
+- Shared scripts/CSS are loaded with `?v=N` — bump N with the cache names so phones never mix old/new files.

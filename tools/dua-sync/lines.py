@@ -3,10 +3,10 @@ from PIL import Image
 import numpy as np
 out = []
 for f in sorted(glob.glob('pg-*.png')):
-    im = np.array(Image.open(f).convert('L')) < 128
+    arr = np.array(Image.open(f).convert('L')); im = arr < 128; bor = arr < 185
     H, W = im.shape
     # find inner frame: the thick border is the first/last rows/cols with very high ink across the page
-    c = im.mean(0); r = im.mean(1)
+    c = bor.mean(0); r = bor.mean(1)
     def edges(v):
         idx = np.where(v > .25)[0]
         a = idx[0]

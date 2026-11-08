@@ -55,7 +55,7 @@ BASE = float(sys.argv[3]) if len(sys.argv) > 3 else 0.22
 gain = score - BASE  # weak matches become negative -> DP prefers to skip
 
 # ---- expanded script with repeat blocks
-blocks = [((1, 1), (2, 7), 3), ((3, 0), (3, 3), 11), ((3, 5), (4, 1), 11), ((19, 4), (20, 9), 3)]
+blocks = [((1, 1), (2, 5), 3), ((2, 8), (2, 10), 11), ((3, 1), (3, 8), 11), ((16, 10), (18, 1), 3)]
 exp = []  # list of (line index, rep number)
 k = 0
 while k < len(lines):
@@ -102,11 +102,27 @@ path.reverse()
 print('matched expanded lines', len(path), 'total', round(float(G[-1]), 2))
 
 # ---- fill unmatched expanded lines by interpolating on text length
-INSTR = {(2, 8), (2, 9), (2, 10), (3, 4), (4, 2), (4, 10), (19, 2), (19, 3), (20, 10)}
+import os
+# known block spans for this audio (from the earlier, better-OCR alignment): {block start: (from, to)}
+KNOWN = {(2, 8): (93.5, 159.4), (3, 1): (159.4, 329.0), (16, 10): (626.8, 713.8)} if os.environ.get('KAMIL_NEW') else {}
+INSTR = {(1, 0), (2, 6), (2, 7), (3, 0), (3, 9), (16, 8), (16, 9), (18, 2)}
 def weight(li):
     l = lines[li]
     return 0 if (l['p'], l['i']) in INSTR else max(len(l['txt']), 14)
 tmatch = {e: float(times[p]) for e, p in path}
+if KNOWN:  # pin known block starts/ends as anchors, then drop matches that break time order
+    for (b0, b1, N) in blocks:
+        if b0 in KNOWN:
+            es = [e for e in range(K) if idx[b0] <= exp[e][0] <= idx[b1]]
+            nxt = es[-1] + 1
+            while nxt < K and weight(exp[nxt][0]) == 0: nxt += 1
+            tmatch = {e: v for e, v in tmatch.items() if not (es[0] <= e <= es[-1])}
+            tmatch[es[0]] = KNOWN[b0][0]
+            if nxt < K: tmatch[nxt] = KNOWN[b0][1]
+    keep, last = {}, -1
+    for e in sorted(tmatch):
+        if tmatch[e] > last: keep[e] = tmatch[e]; last = tmatch[e]
+    tmatch = keep
 dur = float(times[-1]) + 2
 anchors = [(-1, 0.0)] + sorted(tmatch.items()) + [(K, dur)]
 etime = {}
@@ -122,12 +138,14 @@ for (ea, ta), (eb, tb) in zip(anchors, anchors[1:]):
         acc += w
 
 # ---- uniform repeats (tasbih blocks): spread N reps evenly between block start and the next line
-for (b0, b1, N) in blocks[1:3]:
+for (b0, b1, N) in (blocks[1:] if KNOWN else blocks[1:3]):
     a, z = idx[b0], idx[b1]
     es = [e for e in range(K) if a <= exp[e][0] <= z]
     first, after = es[0], es[-1] + 1
     while after < K and weight(exp[after][0]) == 0: after += 1
     T0, T1 = etime[first], etime[after]
+    ov = KNOWN.get(b0)
+    if ov: T0, T1 = ov
     per = (T1 - T0) / N
     blk = list(range(a, z + 1)); ws = [weight(li) for li in blk]; tot = sum(ws)
     for e in es:

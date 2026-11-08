@@ -5,7 +5,7 @@ import numpy as np
 from PIL import Image
 frames = []
 for f in sorted(glob.glob('pg-*.png')):
-    im = np.array(Image.open(f).convert('L')) < 128; H, W = im.shape
+    im = np.array(Image.open(f).convert('L')) < 185; H, W = im.shape
     c = im.mean(0); idx = np.where(c > .25)[0]
     a = idx[0]
     while a + 1 < W and c[a + 1] > .25: a += 1

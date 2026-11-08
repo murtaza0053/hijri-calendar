@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css">
-<script src="theme-init.js"></script>
+<link rel="stylesheet" href="themes.css?v=12">
+<script src="theme-init.js?v=12"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -86,6 +86,14 @@ h4.plat{margin:14px 0 2px;font-size:14px}
 .dua-ic{width:46px;height:46px;border-radius:12px;background:var(--chip);display:grid;place-items:center;font-size:24px}
 .dua-go{font-size:26px;color:var(--brand)}
 .dua-item .muted{font-size:13px}
+h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.rz{display:flex;align-items:center;gap:10px;padding:8px 6px;border-top:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.rz:first-child{border-top:0}
+.rz .d{min-width:34px;height:34px;border-radius:10px;background:var(--chip);display:grid;place-items:center;font-weight:700;font-size:14px}
+.rz.today{background:var(--chip);border-radius:10px}
+.rz.today .d{background:var(--brand);color:var(--on-brand)}
+.rz .n{flex:1;font-weight:600}
+.rz .go{color:var(--brand);font-size:20px}
 .cal th{white-space:nowrap;overflow:hidden;text-overflow:clip}
 .lang{display:flex;width:max-content;margin:0 0 8px auto;background:var(--hdr-chip);border-radius:9px;padding:2px}
 .lang button,.langset button{border:0;background:none;color:inherit;font:inherit;font-size:12px;font-weight:600;padding:5px 8px;border-radius:7px;opacity:.8}
@@ -152,26 +160,37 @@ h4.plat{margin:14px 0 2px;font-size:14px}
 
   <!-- DUA -->
   <section class="view" id="v-dua">
+    <h3 class="sec" data-i18n="secDuas"></h3>
     <a class="card dua-item" href="dua/">
       <div class="dua-ic">🤲</div>
       <div style="flex:1"><b data-i18n="duaKamil"></b><div class="muted" data-i18n="duaKamilDesc"></div></div>
       <div class="dua-go">›</div>
     </a>
-    <a class="card dua-item" href="dua/quran.html?s=36">
-      <div class="dua-ic ar">يٰسٓ</div>
-      <div style="flex:1"><b data-i18n="sYaseen"></b><div class="muted" data-i18n="sDesc"></div></div>
-      <div class="dua-go">›</div>
-    </a>
-    <a class="card dua-item" href="dua/quran.html?s=18">
-      <div class="dua-ic">📖</div>
-      <div style="flex:1"><b data-i18n="sKahf"></b><div class="muted" data-i18n="sDesc"></div></div>
+    <a class="card dua-item" href="dua/tasbeeh.html?m=week">
+      <div class="dua-ic">📿</div>
+      <div style="flex:1"><b data-i18n="weekH"></b><div class="muted" id="weekToday"></div></div>
       <div class="dua-go">›</div>
     </a>
     <a class="card dua-item" href="dua/tasbeeh.html">
-      <div class="dua-ic">📿</div>
+      <div class="dua-ic">🔢</div>
       <div style="flex:1"><b data-i18n="tasbeehH"></b><div class="muted" data-i18n="tasbeehDesc"></div></div>
       <div class="dua-go">›</div>
     </a>
+
+    <h3 class="sec" data-i18n="secAmal"></h3>
+    <div class="card">
+      <b data-i18n="roziH"></b>
+      <div class="muted" style="font-size:13px;margin:2px 0 8px" data-i18n="roziDesc"></div>
+      <div id="roziList"></div>
+      <div class="muted" style="font-size:12px;margin-top:8px" data-i18n="roziExtra"></div>
+      <div class="row" style="margin-top:10px;gap:8px">
+        <a class="btn ghost" href="dua/img/rozi-barakat-amal.jpg" data-i18n="chart"></a>
+        <a class="btn ghost" href="dua/img/tasbih-7-days.jpg"><span data-i18n="chart"></span> · 📿</a>
+      </div>
+    </div>
+
+    <h3 class="sec" data-i18n="secQuran"></h3>
+    <div id="quranList"></div>
     <p class="muted" style="padding:0 4px" data-i18n="duaNote"></p>
   </section>
 
@@ -260,8 +279,8 @@ h4.plat{margin:14px 0 2px;font-size:14px}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js"></script>
-<script src="i18n.js"></script>
+<script src="hijri.js?v=12"></script>
+<script src="i18n.js?v=12"></script>
 <script>
 "use strict";
 
@@ -453,6 +472,8 @@ function renderBanner() {
     if (night.length) items.push({ a, when: k === 0 ? t("bTonight") : k === 1 ? t("bTomorrowNight") : t("bWdNight", { wd: wd(a) }), qs: night });
   }
   if (H.dow(todayAJD) === 4) items.unshift({ a: null, when: t("bTonight"), dua: "dua/", txt: t("bDuaKamil"), ic: "🤲" });
+  const rz = ROZI.find(r => r[0] === todayH.d);
+  if (rz) items.unshift({ a: null, when: t("relToday"), dua: `dua/quran.html?s=${rz[1]}`, txt: t("bRozi", { s: surahName(rz[1]) }), ic: "📖" });
   if (H.dow(todayAJD) === 5) items.unshift({ a: null, when: t("relToday"), dua: "dua/quran.html?s=18", txt: t("bKahf"), ic: "📖" });
   const b = $("banner");
   if (!items.length) { b.style.display = "none"; return; }
@@ -467,6 +488,17 @@ function setupSubscribe() {
   $("subAll").href = "webcal://" + base + "miqaats-all.ics";
   $("subUrl").textContent = "webcal://" + base + "miqaats-major.ics";
   $("subHttps").textContent = location.protocol + "//" + base + "miqaats-major.ics";
+}
+
+/* ---------- Dua tab: Quran list, Rozi amal, weekly tasbih ---------- */
+const SURAHS = [[36, "يٰسٓ", "Yaseen"], [18, "📖", "al-Kahf"], [55, "📖", "ar-Rahman"], [56, "📖", "al-Waqiah"], [59, "📖", "al-Hashr"], [62, "📖", "al-Jumuah"], [72, "📖", "al-Jinn"]];
+const ROZI = [[2, 36, "Yaseen"], [3, 55, "ar-Rahman"], [4, 56, "al-Waqiah"], [5, 59, "al-Hashr"], [6, 62, "al-Jumuah"], [7, 72, "al-Jinn"]];
+const WEEK_TASBIH = ["Iyyaka Na'budu Wa Iyyaka Nasta'een", "Ya Ghafoor, Ya Raheem", "SubhanAllahi wal Hamdu Lillah", "Ya Rahman, Ya Raheem", "HasbunAllahu Wa Ni'mal Wakeel", "Ya Zal Jalali Wal Ikram", "Ya Hayyu, Ya Qayyum"];
+const surahName = n => `${t("surahPrefix")} ${(SURAHS.find(x => x[0] === n) || [0, 0, n])[2]}`;
+function renderDuaTab() {
+  $("quranList").innerHTML = SURAHS.map(([n, ic]) => `<a class="card dua-item" href="dua/quran.html?s=${n}"><div class="dua-ic ar">${ic}</div><div style="flex:1"><b>${surahName(n)}</b><div class="muted">${t("sDesc")}</div></div><div class="dua-go">›</div></a>`).join("");
+  $("roziList").innerHTML = ROZI.map(([d, n]) => `<a class="rz ${todayH.d === d ? "today" : ""}" href="dua/quran.html?s=${n}"><span class="d">${d}</span><span class="n">${surahName(n)}</span>${todayH.d === d ? `<span class="tag">${t("today")}</span>` : ""}<span class="go">›</span></a>`).join("");
+  $("weekToday").textContent = `${t("tToday")}: ${WEEK_TASBIH[H.dow(todayAJD)]} · 100×`;
 }
 
 /* ---------- Upcoming ---------- */
@@ -571,6 +603,7 @@ $("useGps").onclick = () => {
 let miqLoaded = false;
 function renderAll() {
   renderHeader(); renderCal(); renderTimes(); renderMonthSelect(); gConvert(); hConvert();
+  renderDuaTab();
   if (miqLoaded) { renderTodayMq(); renderBanner(); }
   if (curView === "up") renderUpcoming();
   if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD);
