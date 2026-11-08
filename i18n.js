@@ -3,6 +3,7 @@
 globalThis.I18N = {
   en: {
     _label: "EN",
+    ytAdd: "＋ YouTube link", ytPrompt: "Paste the YouTube link of the recitation (e.g. Shehzada Husain bhaisaheb):", ytPlay: "▶ YouTube", ytHide: "Hide video", ytRemove: "Remove link", ytBad: "That does not look like a YouTube link.",
     jawahirH: "Dua al-Jawahir", jawahirDesc: "Read along (PDF) — fazilat in Lisan ud-Dawat with the dua. No audio yet.",
     secDuas: "Duas", secQuran: "Quran", secAmal: "Amal", surahPrefix: "Surat", qPdf: "PDF",
     roziH: "Rozi ma Barakat vaaste Amal", roziDesc: "Every Hijri month, dates 2–7: one surah a day.", roziExtra: "7th: salawat on Panjatan Paak (AS) and Moulana Abbas Alamdaar (AS) — as much as you can.", roziDay: "{n}", chart: "View chart",
@@ -56,6 +57,7 @@ globalThis.I18N = {
 
   gu: {
     _label: "ગુ",
+    ytAdd: "＋ YouTube લિંક", ytPrompt: "તિલાવતની YouTube લિંક પેસ્ટ કરો (દા.ત. શહઝાદા હુસૈન ભાઈસાહેબ):", ytPlay: "▶ YouTube", ytHide: "વીડિયો છુપાવો", ytRemove: "લિંક હટાવો", ytBad: "આ YouTube લિંક લાગતી નથી.",
     jawahirH: "દુઆ અલ-જવાહિર", jawahirDesc: "પઢવા માટે (PDF) — લિસાનુદ્દઅવતમાં ફઝીલત સાથે દુઆ. ઓડિયો હજુ નથી.",
     secDuas: "દુઆઓ", secQuran: "કુરાન", secAmal: "અમલ", surahPrefix: "સૂરત", qPdf: "PDF",
     roziH: "રોઝી મા બરકત વાસ્તે અમલ", roziDesc: "દર હિજરી મહિનાની 2 થી 7 તારીખ — રોજ એક સૂરત.", roziExtra: "7મી તારીખ: પંજતન પાક (અ.સ.) અને મૌલાના અબ્બાસ અલમદાર (અ.સ.) પર સલવાત — જેટલું ઇમકાન થાય.", roziDay: "{n}", chart: "ચાર્ટ જુઓ",
@@ -109,6 +111,7 @@ globalThis.I18N = {
 
   hi: {
     _label: "Hinglish",
+    ytAdd: "＋ YouTube link", ytPrompt: "Tilawat ka YouTube link paste karo (jaise Shehzada Husain bhaisaheb):", ytPlay: "▶ YouTube", ytHide: "Video chhupao", ytRemove: "Link hatao", ytBad: "Ye YouTube link nahi lag raha.",
     jawahirH: "Dua al-Jawahir", jawahirDesc: "Padhne ke liye (PDF) — Lisan ud-Dawat me fazilat ke saath dua. Audio abhi nahi hai.",
     secDuas: "Duas", secQuran: "Quran", secAmal: "Amal", surahPrefix: "Surat", qPdf: "PDF",
     roziH: "Rozi ma Barakat vaaste Amal", roziDesc: "Har Hijri mahine ki 2 se 7 tarikh — roz ek surah.", roziExtra: "7mi tarikh: Panjatan Paak (AS) aur Moulana Abbas Alamdaar (AS) par salawat — jetlu imkaan thai.", roziDay: "{n}", chart: "Chart dekho",
