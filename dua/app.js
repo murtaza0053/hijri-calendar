@@ -184,9 +184,21 @@ function normalize(arr) {
   return (arr || []).filter(m => isFinite(m.t) && m.p >= 1).map(m => ({ t: +m.t, p: +m.p, y: Math.min(1, Math.max(0, +m.y || 0)) }))
     .sort((a, b) => a.t - b.t);
 }
+let anchorCache = null, anchorSrc = null;
 function anchors() {
-  const a = state.marks.map(m => ({ t: m.t, pos: posOf(m) }));
+  if (anchorSrc === state.marks && anchorCache && anchorCache.step === state.step) return anchorCache;
+  let a = state.marks.map(m => ({ t: m.t, pos: posOf(m) }));
   if (!a.length || a[0].t > 0) a.unshift({ t: 0, pos: 0 });
+  if (state.step) {  // drop forward marks that come < 0.6 s before the next one (nothing to glide over)
+    const out = [];
+    for (let i = 0; i < a.length; i++) {
+      const n = a[i + 1];
+      if (n && n.t - a[i].t < 0.6 && n.pos >= a[i].pos && i > 0) continue;
+      out.push(a[i]);
+    }
+    a = out;
+  }
+  a.step = state.step; anchorCache = a; anchorSrc = state.marks;
   return a;
 }
 function posAt(t) {
@@ -195,8 +207,16 @@ function posAt(t) {
   for (let i = a.length - 1; i >= 0; i--) {
     if (t >= a[i].t) {
       const n = a[i + 1];
-      if (!n || state.step) return a[i].pos;
-      return a[i].pos + (n.pos - a[i].pos) * ((t - a[i].t) / (n.t - a[i].t));
+      if (!n) return a[i].pos;
+      const f = (t - a[i].t) / (n.t - a[i].t);
+      if (!state.step) return a[i].pos + (n.pos - a[i].pos) * f;
+      // dense per-line sync: stay on the line being read, then glide to the next one at the end of it
+      if (n.pos < a[i].pos) return a[i].pos;                       // repetition: hold, then jump back
+      const glide = Math.min(0.9, Math.max(0.45, (n.t - a[i].t) * 0.3));  // seconds spent moving
+      const g0 = Math.max(a[i].t, n.t - glide);
+      if (t < g0) return a[i].pos;
+      let u = (t - g0) / (n.t - g0); u = u * u * (3 - 2 * u);            // ease in-out
+      return a[i].pos + (n.pos - a[i].pos) * u;
     }
   }
   return 0;
@@ -243,11 +263,18 @@ function drawTicks() {
 /* ---------- playback UI loop ---------- */
 let rafId = 0;
 function loop() { tick(false); rafId = audio.paused ? 0 : requestAnimationFrame(loop); }
+// audio.currentTime can update in coarse steps; extrapolate between them so motion stays smooth
+let lastCT = -1, lastStamp = 0;
+function smoothTime() {
+  const ct = audio.currentTime || 0, p = performance.now();
+  if (audio.paused || ct !== lastCT) { lastCT = ct; lastStamp = p; return ct; }
+  return ct + Math.min(0.3, (p - lastStamp) / 1000) * audio.playbackRate;
+}
 function tick(force) {
   const t = audio.currentTime || 0, d = audio.duration || 0;
   if (!seeking) { $('seek').max = d || 1; $('seek').value = t; }
   $('cur').textContent = fmt(t); $('dur').textContent = fmt(d);
-  const pos = posAt(t);
+  const pos = posAt(audio.paused ? t : smoothTime());
   const n = state.pageEls.length;
   if (pos == null) { cursorEl.style.display = 'none'; $('pageInfo').textContent = n ? `${visiblePage()} / ${n}` : ''; return; }
   const y = pxOf(pos);
@@ -257,15 +284,14 @@ function tick(force) {
   if ((!audio.paused || force) && Date.now() > state.followPausedUntil) follow(y, force);
   $('follow').style.display = Date.now() > state.followPausedUntil ? 'none' : 'block';
 }
+// continuous, gentle auto-scroll: every frame move a little toward keeping the highlight ~35% from the top
 function follow(y, force) {
   const top = viewer.scrollTop, h = viewer.clientHeight;
-  const rel = (y - top) / h;
-  if (!(force || rel < 0.18 || rel > 0.65)) return;
-  const target = Math.max(0, Math.min(y - h * 0.3, viewer.scrollHeight - h));
-  const now = Date.now();
-  if (!force && Math.abs(target - (state.scrollTarget ?? -1e9)) < 40 && now - state.scrollAt < 1500) return; // already heading there
-  state.scrollTarget = target; state.scrollAt = now;
-  viewer.scrollTo({ top: target, behavior: force ? 'auto' : 'smooth' });
+  const target = Math.max(0, Math.min(y - h * 0.35, viewer.scrollHeight - h));
+  const diff = target - top;
+  if (force || Math.abs(diff) > h * 1.5) { viewer.scrollTop = target; return; }  // seek / big jump
+  if (Math.abs(diff) < 0.5) return;
+  viewer.scrollTop = top + diff * 0.06;
 }
 // keep the highlight inside the page's printed border (if known), else span the page area
 function placeCursorX(pos) {

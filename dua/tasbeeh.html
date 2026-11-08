@@ -12,8 +12,8 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="icon" href="../icons/icon-192.png">
-<link rel="stylesheet" href="../themes.css?v=17">
-<script src="../theme-init.js?v=17"></script>
+<link rel="stylesheet" href="../themes.css?v=18">
+<script src="../theme-init.js?v=18"></script>
 <style>
 @font-face{font-family:"QNaskh";src:url(fonts/NotoNaskhArabic-arabic.woff2) format("woff2");font-weight:400 700;font-display:swap}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
@@ -61,7 +61,7 @@ header b{flex:1;font-size:16px}
   <div class="hint" id="hint"></div>
 </div>
 <div id="foot"><button id="undo">−1</button><span id="total"></span><button id="reset"></button></div>
-<script src="../i18n.js?v=17"></script>
+<script src="../i18n.js?v=18"></script>
 <script>
 "use strict";
 const $ = id => document.getElementById(id);
@@ -80,15 +80,12 @@ const WEEK = [
 const wk = WEEK[new Date().getDay()];
 const PRESETS = {
   week: { name: "tToday", steps: [{ ar: wk.ar, en: wk.en + " — " + wk.m, n: 100 }] },
-  fatema: { name: "tFatema", steps: [
-    { ar: "اَللّٰهُ اَكۡبَرُ", en: "Allahu Akbar", n: 34 },
-    { ar: "اَلۡحَمۡدُ لِلّٰهِ", en: "Alhamdulillah", n: 33 },
-    { ar: "سُبۡحَانَ اللّٰهِ", en: "Subhanallah", n: 33 }] },
   salawaat: { name: "tSalawaat", steps: [{ ar: "اَللّٰهُمَّ صَلِّ عَلٰى مُحَمَّدٍ وَّاٰلِ مُحَمَّدٍ", en: "Allahumma salli ala Muhammadin wa aale Muhammad", n: 100 }] },
   custom: { name: "tCustom", steps: [{ ar: "", en: "", n: 33 }] },
 };
 const today = new Date().toISOString().slice(0, 10);
-let st = ls.get("tasbeeh", { mode: "fatema", step: 0, c: 0, round: 1, custom: { name: "", n: 33 }, day: today, total: 0 });
+let st = ls.get("tasbeeh", { mode: "week", step: 0, c: 0, round: 1, custom: { name: "", n: 33 }, day: today, total: 0 });
+if (!PRESETS[st.mode]) { st.mode = "week"; st.step = 0; st.c = 0; st.round = 1; }  // e.g. the removed Tasbeeh-e-Fatema
 if (st.day !== today) { st.day = today; st.total = 0; if (st.mode === "week") { st.step = 0; st.c = 0; st.round = 1; } }
 const qm = new URLSearchParams(location.search).get("m");
 if (qm && PRESETS[qm] && qm !== st.mode) { st.mode = qm; st.step = 0; st.c = 0; st.round = 1; }

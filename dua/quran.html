@@ -12,8 +12,8 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="icon" href="../icons/icon-192.png">
-<link rel="stylesheet" href="../themes.css?v=17">
-<script src="../theme-init.js?v=17"></script>
+<link rel="stylesheet" href="../themes.css?v=18">
+<script src="../theme-init.js?v=18"></script>
 <style>
 @font-face{font-family:"QNaskh";src:url(fonts/NotoNaskhArabic-arabic.woff2) format("woff2");font-weight:400 700;font-display:swap}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -89,7 +89,7 @@ body.fs main{padding-top:calc(env(safe-area-inset-top) + 10px);padding-bottom:ca
   </div>
 </div>
 <audio id="audio" preload="metadata"></audio>
-<script src="../i18n.js?v=17"></script>
+<script src="../i18n.js?v=18"></script>
 <script>
 "use strict";
 const $ = id => document.getElementById(id);
@@ -165,16 +165,20 @@ function tick(force) {
   if (i !== curV) {
     if (curV >= 0) vEls[curV].classList.remove("cur");
     curV = i;
-    if (i >= 0) { vEls[i].classList.add("cur"); if ((force || !audio.paused) && Date.now() > followUntil) follow(vEls[i], force); }
+    if (i >= 0) vEls[i].classList.add("cur");
   }
   let w = null;
   if (i >= 0) { const ws = D.verses[i].w; for (let j = 0; j < ws.length; j++) if (ws[j][1] != null && ws[j][1] <= ms && ms < ws[j][2]) { w = wEls[i][j]; break; } }
   if (w !== curW) { curW && curW.classList.remove("on"); w && w.classList.add("on"); curW = w; }
+  if (i >= 0 && (force || !audio.paused) && Date.now() > followUntil) follow(curW || vEls[i], force);
   $("follow").style.display = Date.now() < followUntil ? "block" : "none";
 }
+// continuous, gentle auto-scroll that keeps the word being recited ~35% from the top
 function follow(el, force) {
   const r = el.getBoundingClientRect(), h = innerHeight;
-  if (force || r.top < 90 || r.bottom > h - 170) window.scrollTo({ top: scrollY + r.top - h * 0.25, behavior: force ? "auto" : "smooth" });
+  const diff = (r.top + r.height / 2) - h * 0.35;
+  if (force || Math.abs(diff) > h * 1.5) { window.scrollTo(0, scrollY + diff); return; }
+  if (Math.abs(diff) > 0.5) window.scrollTo(0, scrollY + diff * 0.05);
 }
 let raf = 0; const loop = () => { tick(false); raf = audio.paused ? 0 : requestAnimationFrame(loop); };
 audio.onplay = () => { $("play").textContent = "⏸"; if (!raf) raf = requestAnimationFrame(loop); };
@@ -197,7 +201,7 @@ $("seek").oninput = () => { seeking = true; audio.currentTime = +$("seek").value
 $("seek").onchange = () => { seeking = false; };
 $("verses").onclick = e => { const v = e.target.closest(".v"); if (!v) return; const i = +v.dataset.i; audio.currentTime = D.verses[i].f / 1000 + 0.01; if (repeatV >= 0) repeatV = i; audio.play(); tick(true); };
 $("follow").textContent = "↓ " + t("qFollow");
-$("follow").onclick = () => { followUntil = 0; if (curV >= 0) follow(vEls[curV], true); tick(false); };
+$("follow").onclick = () => { followUntil = 0; if (curV >= 0) follow(curW || vEls[curV], true); tick(false); };
 ["touchstart", "wheel"].forEach(ev => addEventListener(ev, e => { if (!e.target.closest("#bar") && !audio.paused) followUntil = Date.now() + 6000; }, { passive: true }));
 /* ---------- YouTube (embedded player; links come from quran/youtube.json or the user's own) ---------- */
 const ytId = u => { const m = String(u || "").match(/(?:youtu\.be\/|[?&]v=|\/embed\/|\/shorts\/|\/live\/)([\w-]{11})/) || String(u || "").match(/^([\w-]{11})$/); return m ? m[1] : null; };
