@@ -45,6 +45,12 @@ main{padding:calc(env(safe-area-inset-top) + 72px) 12px calc(env(safe-area-inset
 #status{font-size:12px;color:var(--muted);text-align:center;min-height:16px}
 #follow{position:fixed;right:14px;bottom:calc(env(safe-area-inset-bottom) + 150px);z-index:6;display:none;border:0;
   background:var(--brand);color:var(--on-brand);border-radius:20px;padding:8px 14px;font:inherit;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+#speed{font:inherit;font-weight:600;color:var(--ink);background:var(--chip);border:0;border-radius:10px;padding:8px 6px;min-width:64px}
+#fsCtl{display:none;position:fixed;right:12px;bottom:calc(env(safe-area-inset-bottom) + 14px);z-index:9;gap:8px}
+#fsCtl button{width:46px;height:46px;border-radius:50%;border:0;background:rgba(0,0,0,.55);color:#fff;font-size:18px}
+body.fs header,body.fs #bar,body.fs #follow{display:none!important}
+body.fs #fsCtl{display:flex}
+body.fs main{padding-top:calc(env(safe-area-inset-top) + 10px);padding-bottom:calc(env(safe-area-inset-bottom) + 80px)}
 .src{color:var(--muted);font-size:11px;text-align:center;margin:16px 0}
 </style>
 </head>
@@ -54,6 +60,7 @@ main{padding:calc(env(safe-area-inset-top) + 72px) 12px calc(env(safe-area-inset
   <div class="tt"><b id="title">…</b><span id="sub"></span></div>
   <a id="pdfBtn" style="display:none;font-size:13px;width:auto;padding:0 10px;border-radius:10px;background:var(--hdr-chip)"></a>
   <div class="ar" id="arName" dir="rtl"></div>
+  <a id="fsBtn" aria-label="Full screen" title="Full screen" style="font-size:20px">⛶</a>
 </header>
 <main>
   <div class="bism" id="bism" dir="rtl">بِسۡمِ اللّٰهِ الرَّحۡمٰنِ الرَّحِيۡمِ</div>
@@ -62,11 +69,12 @@ main{padding:calc(env(safe-area-inset-top) + 72px) 12px calc(env(safe-area-inset
   <div class="src" id="src"></div>
 </main>
 <button id="follow"></button>
+<div id="fsCtl"><button id="fsPlay" aria-label="Play">▶</button><button id="fsExit" aria-label="Exit full screen">✕</button></div>
 <div id="bar">
   <div id="status"></div>
   <div id="seekRow"><span id="cur">0:00</span><input type="range" id="seek" min="0" max="1" step="0.1" value="0"><span id="dur">0:00</span></div>
   <div id="ctrl">
-    <button id="speed">1×</button>
+    <select id="speed" aria-label="Speed"></select>
     <button id="prevA" aria-label="Previous ayat">⏮</button>
     <button id="play" aria-label="Play">▶</button>
     <button id="nextA" aria-label="Next ayat">⏭</button>
@@ -172,9 +180,11 @@ function jump(d) { const i = Math.max(0, Math.min(D.verses.length - 1, (curV < 0
 $("prevA").onclick = () => jump(-1);
 $("nextA").onclick = () => jump(1);
 $("rep").onclick = () => { repeatV = repeatV >= 0 ? -1 : Math.max(0, curV); $("rep").style.background = repeatV >= 0 ? "var(--chip)" : ""; };
-const speeds = [0.75, 1, 1.25, 1.5];
-audio.playbackRate = ls.get("qspeed", 1); $("speed").textContent = audio.playbackRate + "×";
-$("speed").onclick = () => { const k = (speeds.indexOf(audio.playbackRate) + 1) % speeds.length; audio.playbackRate = speeds[k]; ls.set("qspeed", speeds[k]); $("speed").textContent = speeds[k] + "×"; };
+const speeds = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.5, 3];
+$("speed").innerHTML = speeds.map(v => `<option value="${v}">${v}×</option>`).join("");
+audio.playbackRate = speeds.includes(ls.get("qspeed", 1)) ? ls.get("qspeed", 1) : 1; $("speed").value = String(audio.playbackRate);
+$("speed").onchange = () => { audio.playbackRate = +$("speed").value; ls.set("qspeed", audio.playbackRate); };
+audio.addEventListener("loadedmetadata", () => { audio.playbackRate = +$("speed").value; });
 let seeking = false;
 $("seek").oninput = () => { seeking = true; audio.currentTime = +$("seek").value; tick(true); };
 $("seek").onchange = () => { seeking = false; };
@@ -182,6 +192,19 @@ $("verses").onclick = e => { const v = e.target.closest(".v"); if (!v) return; c
 $("follow").textContent = "↓ " + t("qFollow");
 $("follow").onclick = () => { followUntil = 0; if (curV >= 0) follow(vEls[curV], true); tick(false); };
 ["touchstart", "wheel"].forEach(ev => addEventListener(ev, e => { if (!e.target.closest("#bar") && !audio.paused) followUntil = Date.now() + 6000; }, { passive: true }));
+function setFull(on) {
+  document.body.classList.toggle("fs", on);
+  try {
+    if (on && document.documentElement.requestFullscreen && !document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => {});
+    if (!on && document.fullscreenElement) document.exitFullscreen().catch(() => {});
+  } catch {}
+}
+$("fsBtn").onclick = () => setFull(true);
+$("fsExit").onclick = () => setFull(false);
+$("fsPlay").onclick = () => audio.paused ? audio.play() : audio.pause();
+audio.addEventListener("play", () => $("fsPlay").textContent = "⏸");
+audio.addEventListener("pause", () => $("fsPlay").textContent = "▶");
+document.addEventListener("fullscreenchange", () => { if (!document.fullscreenElement) document.body.classList.remove("fs"); });
 load().catch(err => { $("status").textContent = String(err); });
 if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
 </script>

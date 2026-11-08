@@ -74,13 +74,19 @@ async function loadBundled() {
   status('Loading…');
   let cfg = await fetch(BASE + 'config.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({}));
   state.config = cfg = Object.assign({ title: 'Read Along', pdf: 'book.pdf' }, cfg);
+  if (cfg.versions && cfg.versions.length) {  // several PDF editions of the same dua, each with its own sync
+    const want = ls.get('ver:' + BASE, cfg.versions[0].id);
+    const v = cfg.versions.find(x => x.id === want) || cfg.versions[0];
+    cfg.pdf = v.pdf; cfg.sync = v.sync; state.version = v.id; renderVersions(cfg.versions);
+  }
   const mb = (n) => (n / 1048576).toFixed(1);
   const pdfBlob = await fetchCached(BASE + cfg.pdf);
   const audioBlob = !cfg.audio ? null : await fetchCached(BASE + cfg.audio, (g, t) =>
     status(t ? `Audio download: ${Math.round(g / t * 100)}% (${mb(g)} / ${mb(t)} MB)` : `Audio download: ${mb(g)} MB`));
   let fileMarks = null, frames = null;
-  if (cfg.sync) try { const r = await fetch(BASE + cfg.sync, { cache: 'no-cache' }); if (r.ok) { const j = await r.json(); fileMarks = j.marks; frames = j.frames || null; } } catch {}
-  await openMedia({ title: cfg.title, pdfBlob, audioBlob, key: `bundled:${cfg.pdf}|${cfg.audio}`, fileMarks, frames });
+  let step = false;
+  if (cfg.sync) try { const r = await fetch(BASE + cfg.sync, { cache: 'no-cache' }); if (r.ok) { const j = await r.json(); fileMarks = j.marks; frames = j.frames || null; step = !!j.step; } } catch {}
+  await openMedia({ title: cfg.title, pdfBlob, audioBlob, key: `bundled:${cfg.pdf}|${cfg.audio}`, fileMarks, frames, step });
 }
 
 async function loadPicked() {
@@ -90,7 +96,7 @@ async function loadPicked() {
   return true;
 }
 
-async function openMedia({ title, pdfBlob, audioBlob, key, fileMarks, frames }) {
+async function openMedia({ title, pdfBlob, audioBlob, key, fileMarks, frames, step }) {
   status('Opening PDF…');
   state.key = key;
   state.frames = frames || null; // per page [left, right] of the printed border, as fractions of page width
@@ -100,7 +106,10 @@ async function openMedia({ title, pdfBlob, audioBlob, key, fileMarks, frames }) 
   if (audioBlob) audio.src = URL.createObjectURL(audioBlob); else audio.removeAttribute('src');
 
   const saved = ls.get('sync:' + key, null);
-  state.marks = normalize(saved && saved.length ? saved : (fileMarks || []));
+  const useSaved = !!(saved && saved.length);
+  state.marks = normalize(useSaved ? saved : (fileMarks || []));
+  // dense per-line auto sync: jump line to line (never slide through page gaps); hand-made sparse marks: interpolate
+  state.step = !!step && !useSaved;
   state.history = [];
 
   state.pdf = await pdfjsLib.getDocument({ data: new Uint8Array(await pdfBlob.arrayBuffer()) }).promise;
@@ -186,7 +195,7 @@ function posAt(t) {
   for (let i = a.length - 1; i >= 0; i--) {
     if (t >= a[i].t) {
       const n = a[i + 1];
-      if (!n) return a[i].pos;
+      if (!n || state.step) return a[i].pos;
       return a[i].pos + (n.pos - a[i].pos) * ((t - a[i].t) / (n.t - a[i].t));
     }
   }
@@ -313,13 +322,12 @@ $('fwd').onclick = () => { audio.currentTime = Math.min(audio.duration || 0, aud
 let seeking = false;
 $('seek').oninput = (e) => { seeking = true; $('cur').textContent = fmt(+e.target.value); };
 $('seek').onchange = (e) => { seeking = false; audio.currentTime = +e.target.value; state.followPausedUntil = 0; };
-const speeds = [0.75, 1, 1.25, 1.5, 1.75, 2];
-audio.playbackRate = ls.get('speed', 1);
-$('speed').textContent = audio.playbackRate + '×';
-$('speed').onclick = () => {
-  const i = (speeds.indexOf(audio.playbackRate) + 1) % speeds.length;
-  audio.playbackRate = speeds[i]; ls.set('speed', speeds[i]); $('speed').textContent = speeds[i] + '×';
-};
+const speeds = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.5, 3];
+$('speed').innerHTML = speeds.map(v => `<option value="${v}">${v}×</option>`).join('');
+audio.playbackRate = speeds.includes(ls.get('speed', 1)) ? ls.get('speed', 1) : 1;
+$('speed').value = String(audio.playbackRate);
+$('speed').onchange = () => { audio.playbackRate = +$('speed').value; ls.set('speed', audio.playbackRate); };
+audio.addEventListener('loadedmetadata', () => { audio.playbackRate = +$('speed').value; });
 function setEditing(on) {
   state.editing = on; document.body.classList.toggle('editing', on);
   if (on) toast('Sync mode ON — jo line padhi ja rahi hai us pe tap karo', 3500);
@@ -345,6 +353,11 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* ---------- menu ---------- */
+function renderVersions(vs) {
+  const box = $('versions'); if (!box) return;
+  box.innerHTML = vs.map(v => `<button data-ver="${v.id}">📄 ${v.label}${v.id === state.version ? ' ✓' : ''}</button>`).join('');
+  box.onclick = e => { const b = e.target.closest('[data-ver]'); if (!b || b.dataset.ver === state.version) return; ls.set('ver:' + BASE, b.dataset.ver); location.reload(); };
+}
 $('menuBtn').onclick = (e) => { e.stopPropagation(); $('menu').classList.toggle('open'); };
 document.addEventListener('click', () => $('menu').classList.remove('open'));
 $('openFiles').onclick = () => $('filePick').click();
@@ -381,6 +394,23 @@ function setupMediaSession(title) {
     seekto: (d) => { audio.currentTime = d.seekTime; } };
   for (const [k, fn] of Object.entries(h)) try { navigator.mediaSession.setActionHandler(k, fn); } catch {}
 }
+
+/* ---------- full screen (reading mode) ---------- */
+function setFull(on) {
+  document.body.classList.toggle('fs', on);
+  const el = document.documentElement;
+  try {
+    if (on && el.requestFullscreen && !document.fullscreenElement) el.requestFullscreen().catch(() => {});
+    if (!on && document.fullscreenElement) document.exitFullscreen().catch(() => {});
+  } catch {}
+  $('fsPlay').textContent = audio.paused ? '▶' : '⏸';
+}
+$('fsBtn').onclick = () => setFull(true);
+$('fsExit').onclick = () => setFull(false);
+$('fsPlay').onclick = () => { audio.paused ? audio.play() : audio.pause(); };
+audio.addEventListener('play', () => $('fsPlay').textContent = '⏸');
+audio.addEventListener('pause', () => $('fsPlay').textContent = '▶');
+document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement && document.body.classList.contains('fs')) document.body.classList.remove('fs'); });
 
 /* ---------- start ---------- */
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});

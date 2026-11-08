@@ -23,6 +23,7 @@ Dua e Kamil: audio plays and the PDF scrolls/highlights the current line (merged
 - Font: Noto Naskh Arabic (OFL), Arabic subset in `dua/fonts/`.
 - Shared theme: `themes.css` + `theme-init.js` (used by every page).
 - More duas: `dua/?d=<id>` loads `dua/media/<id>/config.json` (`audio`/`sync` optional — without audio it is a read-only PDF). Dua al-Jawahir = `?d=jawahir`.
+- Dua e Kamil has two PDF editions (config `versions`, chosen from the ⋮ menu): new 22-page (`sync.json`) and old 26-page (`sync-old.json`). `"step": true` in a sync file makes the highlight jump line to line instead of sliding through page gaps.
 - Dua e Kamil now uses the user's "NEW updated version" PDF (`dua/media/dua-e-kamil-v2.pdf`, 22 pages, gold border).
   Re-aligned with tools/dua-sync (border threshold 185 for gold frames; `KAMIL_NEW=1` pins the known repeat spans).
 - Amal: "Rozi ma Barakat" (Hijri 2–7: Yaseen, Rahman, Waqiah, Hashr, Jumuah, Jinn) in the Dua tab + banner on those dates;

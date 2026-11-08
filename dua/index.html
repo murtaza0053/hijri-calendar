@@ -48,6 +48,15 @@ button:active{background:var(--accent-2)}
 body:not(.editing) .tick{display:none}
 body.noaudio #bar,body.noaudio #follow,body.noaudio #syncBtn{display:none!important}
 body.noaudio #viewer{padding-bottom:calc(env(safe-area-inset-bottom) + 20px)}
+#speed{font:inherit;font-weight:600;color:var(--text);background:var(--accent-2);border:0;border-radius:10px;padding:8px 6px;min-width:64px}
+#fsCtl{display:none;position:fixed;right:12px;bottom:calc(env(safe-area-inset-bottom) + 14px);z-index:9;gap:8px}
+#fsCtl button{width:46px;height:46px;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;font-size:18px;padding:0}
+body.fs header,body.fs #bar,body.fs #follow{display:none!important}
+body.fs #fsCtl{display:flex}
+body.noaudio #fsPlay{display:none}
+body.fs #viewer{padding:calc(env(safe-area-inset-top) + 6px) 0 calc(env(safe-area-inset-bottom) + 70px)}
+#versions:empty{display:none}
+#versions{border-bottom:1px solid var(--line);margin-bottom:4px;padding-bottom:4px}
 #bar{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--surface);border-top:1px solid var(--line);
   padding:8px 12px calc(env(safe-area-inset-bottom) + 8px)}
 #seekRow{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
@@ -80,9 +89,11 @@ input[type=file]{display:none}
   <a class="icon" id="backBtn" href="../#dua" aria-label="Back to calendar" style="text-decoration:none;color:inherit">‹</a>
   <h1 id="title">Dua e Kamil</h1>
   <span id="pageInfo"></span>
+  <button class="icon" id="fsBtn" aria-label="Full screen" title="Full screen">⛶</button>
   <button class="icon" id="menuBtn" aria-label="Menu">⋮</button>
 </header>
 <div id="menu">
+  <div id="versions"></div>
   <button id="openFiles">📂 Open audio + PDF from phone</button>
   <button id="useBundled">📦 Use bundled files</button>
   <button id="exportSync">⬇️ Export sync.json</button>
@@ -97,10 +108,11 @@ input[type=file]{display:none}
 <button id="follow">↧ Follow audio</button>
 <div id="toast"></div>
 
+<div id="fsCtl"><button id="fsPlay" aria-label="Play">▶</button><button id="fsExit" aria-label="Exit full screen">✕</button></div>
 <div id="bar">
   <div id="seekRow"><span id="cur">0:00</span><input type="range" id="seek" min="0" max="1" step="0.1" value="0"><span id="dur">0:00</span></div>
   <div id="ctrlRow">
-    <button id="speed">1×</button>
+    <select id="speed" aria-label="Speed"></select>
     <button class="icon" id="back">↺10</button>
     <button id="play" aria-label="Play">▶</button>
     <button class="icon" id="fwd">10↻</button>

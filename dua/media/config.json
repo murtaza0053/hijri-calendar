@@ -1,6 +1,18 @@
 {
  "title": "Dua e Kamil",
  "audio": "dua-e-kamil.m4a",
- "pdf": "dua-e-kamil-v2.pdf",
- "sync": "sync.json"
+ "versions": [
+  {
+   "id": "new",
+   "label": "Naya PDF (22 pages)",
+   "pdf": "dua-e-kamil-v2.pdf",
+   "sync": "sync.json"
+  },
+  {
+   "id": "old",
+   "label": "Purana PDF (26 pages)",
+   "pdf": "dua-e-kamil.pdf",
+   "sync": "sync-old.json"
+  }
+ ]
 }
