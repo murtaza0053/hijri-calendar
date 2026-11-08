@@ -46,6 +46,8 @@ button:active{background:var(--accent-2)}
 .tick{position:absolute;left:0;right:0;height:0;z-index:3;border-top:2px dashed var(--mark);pointer-events:none}
 .tick span{position:absolute;left:4px;top:-10px;background:var(--mark);color:#000;font-size:11px;padding:1px 6px;border-radius:8px;pointer-events:auto}
 body:not(.editing) .tick{display:none}
+body.noaudio #bar,body.noaudio #follow,body.noaudio #syncBtn{display:none!important}
+body.noaudio #viewer{padding-bottom:calc(env(safe-area-inset-bottom) + 20px)}
 #bar{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--surface);border-top:1px solid var(--line);
   padding:8px 12px calc(env(safe-area-inset-bottom) + 8px)}
 #seekRow{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}

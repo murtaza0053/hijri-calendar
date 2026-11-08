@@ -3,6 +3,7 @@
 globalThis.I18N = {
   en: {
     _label: "EN",
+    jawahirH: "Dua al-Jawahir", jawahirDesc: "Read along (PDF) — fazilat in Lisan ud-Dawat with the dua. No audio yet.",
     secDuas: "Duas", secQuran: "Quran", secAmal: "Amal", surahPrefix: "Surat", qPdf: "PDF",
     roziH: "Rozi ma Barakat vaaste Amal", roziDesc: "Every Hijri month, dates 2–7: one surah a day.", roziExtra: "7th: salawat on Panjatan Paak (AS) and Moulana Abbas Alamdaar (AS) — as much as you can.", roziDay: "{n}", chart: "View chart",
     weekH: "Tasbih of 7 days", weekDesc: "A different tasbih each weekday — 100 times.", tToday: "Today's tasbih", bRozi: "Rozi barakat amal — today: {s}",
@@ -55,6 +56,7 @@ globalThis.I18N = {
 
   gu: {
     _label: "ગુ",
+    jawahirH: "દુઆ અલ-જવાહિર", jawahirDesc: "પઢવા માટે (PDF) — લિસાનુદ્દઅવતમાં ફઝીલત સાથે દુઆ. ઓડિયો હજુ નથી.",
     secDuas: "દુઆઓ", secQuran: "કુરાન", secAmal: "અમલ", surahPrefix: "સૂરત", qPdf: "PDF",
     roziH: "રોઝી મા બરકત વાસ્તે અમલ", roziDesc: "દર હિજરી મહિનાની 2 થી 7 તારીખ — રોજ એક સૂરત.", roziExtra: "7મી તારીખ: પંજતન પાક (અ.સ.) અને મૌલાના અબ્બાસ અલમદાર (અ.સ.) પર સલવાત — જેટલું ઇમકાન થાય.", roziDay: "{n}", chart: "ચાર્ટ જુઓ",
     weekH: "7 દિવસની તસ્બીહ", weekDesc: "દરેક દિવસની અલગ તસ્બીહ — 100 વાર.", tToday: "આજની તસ્બીહ", bRozi: "રોઝી બરકત અમલ — આજે: {s}",
@@ -107,6 +109,7 @@ globalThis.I18N = {
 
   hi: {
     _label: "Hinglish",
+    jawahirH: "Dua al-Jawahir", jawahirDesc: "Padhne ke liye (PDF) — Lisan ud-Dawat me fazilat ke saath dua. Audio abhi nahi hai.",
     secDuas: "Duas", secQuran: "Quran", secAmal: "Amal", surahPrefix: "Surat", qPdf: "PDF",
     roziH: "Rozi ma Barakat vaaste Amal", roziDesc: "Har Hijri mahine ki 2 se 7 tarikh — roz ek surah.", roziExtra: "7mi tarikh: Panjatan Paak (AS) aur Moulana Abbas Alamdaar (AS) par salawat — jetlu imkaan thai.", roziDay: "{n}", chart: "Chart dekho",
     weekH: "7 din ki tasbeeh", weekDesc: "Har din ki alag tasbeeh — 100 baar.", tToday: "Aaj ki tasbeeh", bRozi: "Rozi barakat amal — aaj: {s}",

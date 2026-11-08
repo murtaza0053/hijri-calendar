@@ -67,16 +67,19 @@ async function fetchCached(url, onProgress) {
 }
 
 /* ---------- loading ---------- */
+// ?d=<id> opens media/<id>/ (another dua); no param = the default Dua e Kamil in media/
+const DUA_ID = (new URLSearchParams(location.search).get('d') || '').replace(/[^a-z0-9_-]/gi, '');
+const BASE = DUA_ID ? `media/${DUA_ID}/` : 'media/';
 async function loadBundled() {
   status('Loading…');
-  let cfg = await fetch('media/config.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({}));
-  state.config = cfg = Object.assign({ title: 'Read Along', audio: 'audio.mp3', pdf: 'book.pdf', sync: 'sync.json' }, cfg);
+  let cfg = await fetch(BASE + 'config.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({}));
+  state.config = cfg = Object.assign({ title: 'Read Along', pdf: 'book.pdf' }, cfg);
   const mb = (n) => (n / 1048576).toFixed(1);
-  const pdfBlob = await fetchCached('media/' + cfg.pdf);
-  const audioBlob = await fetchCached('media/' + cfg.audio, (g, t) =>
+  const pdfBlob = await fetchCached(BASE + cfg.pdf);
+  const audioBlob = !cfg.audio ? null : await fetchCached(BASE + cfg.audio, (g, t) =>
     status(t ? `Audio download: ${Math.round(g / t * 100)}% (${mb(g)} / ${mb(t)} MB)` : `Audio download: ${mb(g)} MB`));
   let fileMarks = null, frames = null;
-  try { const r = await fetch('media/' + cfg.sync, { cache: 'no-cache' }); if (r.ok) { const j = await r.json(); fileMarks = j.marks; frames = j.frames || null; } } catch {}
+  if (cfg.sync) try { const r = await fetch(BASE + cfg.sync, { cache: 'no-cache' }); if (r.ok) { const j = await r.json(); fileMarks = j.marks; frames = j.frames || null; } } catch {}
   await openMedia({ title: cfg.title, pdfBlob, audioBlob, key: `bundled:${cfg.pdf}|${cfg.audio}`, fileMarks, frames });
 }
 
@@ -93,7 +96,8 @@ async function openMedia({ title, pdfBlob, audioBlob, key, fileMarks, frames }) 
   state.frames = frames || null; // per page [left, right] of the printed border, as fractions of page width
   $('title').textContent = title; document.title = title;
   if (audio.src) URL.revokeObjectURL(audio.src);
-  audio.src = URL.createObjectURL(audioBlob);
+  document.body.classList.toggle('noaudio', !audioBlob);  // read-only PDF (no recitation available)
+  if (audioBlob) audio.src = URL.createObjectURL(audioBlob); else audio.removeAttribute('src');
 
   const saved = ls.get('sync:' + key, null);
   state.marks = normalize(saved && saved.length ? saved : (fileMarks || []));
@@ -105,6 +109,7 @@ async function openMedia({ title, pdfBlob, audioBlob, key, fileMarks, frames }) 
 
   const last = ls.get('pos:' + key, 0);
   audio.addEventListener('loadedmetadata', () => { if (last && last < audio.duration - 2) audio.currentTime = last; tick(true); }, { once: true });
+  if (!audioBlob) return;
   setupMediaSession(title);
   if (!state.marks.length) toast('Sync abhi nahi hua — ✎ dabao aur sync karo', 4000);
 }
@@ -381,7 +386,7 @@ function setupMediaSession(title) {
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
 (async () => {
   try {
-    if (ls.get('source', 'bundled') === 'picked' && await loadPicked()) return;
+    if (!DUA_ID && ls.get('source', 'bundled') === 'picked' && await loadPicked()) return;
     await loadBundled();
   } catch (err) {
     status('Files nahi mili. media/ folder me audio + PDF daalo (media/config.json dekho), ya ⋮ → "Open audio + PDF from phone".\n\n' + err.message);
