@@ -16,6 +16,8 @@ Dua e Kamil: audio plays and the PDF scrolls/highlights the current line (merged
   export `sync.json`, replace `dua/media/sync.json` and push.
 - After changing dua app files bump `CACHE` in `dua/sw.js`; after changing audio/PDF bump `MEDIA_CACHE` in `dua/app.js`.
 
+- `calendar/amal.ics`: Rozi ma Barakat amal (Hijri 2-7, 8:00 AM) + weekly-recurring daily tasbih (7:00 AM), built by build-ics.js.
+
 ## Quran & Tasbeeh — `dua/quran.html?s=<surah>`, `dua/tasbeeh.html`
 - Surah data (Indo-Pak text, word timings, Alafasy audio URL) comes from the Quran.com API via
   `python3 tools/quran-fetch.py 36 18` → `dua/quran/<n>.json`. Audio streams from quranicaudio.com and is
