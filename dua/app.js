@@ -413,7 +413,14 @@ audio.addEventListener('pause', () => $('fsPlay').textContent = '▶');
 document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement && document.body.classList.contains('fs')) document.body.classList.remove('fs'); });
 
 /* ---------- start ---------- */
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+if ("serviceWorker" in navigator) {
+  // updateViaCache:none + update() on every resume = new versions arrive fast; reload once when a new worker takes over
+  const hadSW = !!navigator.serviceWorker.controller; let reloaded = false;
+  navigator.serviceWorker.register("sw.js", { updateViaCache: "none" }).then(r => {
+    document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") r.update().catch(() => {}); });
+  }).catch(() => {});
+  navigator.serviceWorker.addEventListener("controllerchange", () => { if (hadSW && !reloaded) { reloaded = true; location.reload(); } });
+}
 (async () => {
   try {
     if (!DUA_ID && ls.get('source', 'bundled') === 'picked' && await loadPicked()) return;

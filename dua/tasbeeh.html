@@ -12,8 +12,8 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="icon" href="../icons/icon-192.png">
-<link rel="stylesheet" href="../themes.css?v=15">
-<script src="../theme-init.js?v=15"></script>
+<link rel="stylesheet" href="../themes.css?v=16">
+<script src="../theme-init.js?v=16"></script>
 <style>
 @font-face{font-family:"QNaskh";src:url(fonts/NotoNaskhArabic-arabic.woff2) format("woff2");font-weight:400 700;font-display:swap}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
@@ -61,7 +61,7 @@ header b{flex:1;font-size:16px}
   <div class="hint" id="hint"></div>
 </div>
 <div id="foot"><button id="undo">−1</button><span id="total"></span><button id="reset"></button></div>
-<script src="../i18n.js?v=15"></script>
+<script src="../i18n.js?v=16"></script>
 <script>
 "use strict";
 const $ = id => document.getElementById(id);
@@ -134,7 +134,14 @@ $("cTarget").value = st.custom.n; $("cName").value = st.custom.name; $("cName").
 $("cTarget").onchange = () => { st.custom.n = +$("cTarget").value; st.step = 0; st.c = 0; save(); render(); };
 $("cName").oninput = () => { st.custom.name = $("cName").value; save(); render(); };
 render();
-if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+if ("serviceWorker" in navigator) {
+  // updateViaCache:none + update() on every resume = new versions arrive fast; reload once when a new worker takes over
+  const hadSW = !!navigator.serviceWorker.controller; let reloaded = false;
+  navigator.serviceWorker.register("sw.js", { updateViaCache: "none" }).then(r => {
+    document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") r.update().catch(() => {}); });
+  }).catch(() => {});
+  navigator.serviceWorker.addEventListener("controllerchange", () => { if (hadSW && !reloaded) { reloaded = true; location.reload(); } });
+}
 </script>
 </body>
 </html>

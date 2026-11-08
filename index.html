@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=15">
-<script src="theme-init.js?v=15"></script>
+<link rel="stylesheet" href="themes.css?v=16">
+<script src="theme-init.js?v=16"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -288,6 +288,7 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
     <div class="card">
       <h3 data-i18n="aboutH"></h3>
       <p class="muted" data-i18n="about"></p>
+      <p class="muted" style="font-size:12px">Version <span id="appVer"></span></p>
     </div>
   </section>
 </main>
@@ -303,8 +304,8 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=15"></script>
-<script src="i18n.js?v=15"></script>
+<script src="hijri.js?v=16"></script>
+<script src="i18n.js?v=16"></script>
 <script>
 "use strict";
 
@@ -664,6 +665,8 @@ function renderAll() {
   if (curView === "up") renderUpcoming();
   if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD);
 }
+const APP_VERSION = "16 (2026-11-08)";
+$("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");
 fetch("miqaats.json").then(r => r.json()).then(d => { MIQ = d; miqLoaded = true; renderAll(); }).catch(() => { $("todayMq").innerHTML = `<p class="muted">${t("loadFail")}</p>`; });
@@ -671,7 +674,14 @@ fetch("miqaats.json").then(r => r.json()).then(d => { MIQ = d; miqLoaded = true;
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible") { const n = new Date(); if (n.getDate() !== now.getDate()) location.reload(); else renderHeader(); }
 });
-if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");
+if ("serviceWorker" in navigator) {
+  // updateViaCache:none + update() on every resume = new versions arrive fast; reload once when a new worker takes over
+  const hadSW = !!navigator.serviceWorker.controller; let reloaded = false;
+  navigator.serviceWorker.register("sw.js", { updateViaCache: "none" }).then(r => {
+    document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") r.update().catch(() => {}); });
+  }).catch(() => {});
+  navigator.serviceWorker.addEventListener("controllerchange", () => { if (hadSW && !reloaded) { reloaded = true; location.reload(); } });
+}
 </script>
 </body>
 </html>
