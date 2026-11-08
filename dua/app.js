@@ -209,14 +209,8 @@ function posAt(t) {
       const n = a[i + 1];
       if (!n) return a[i].pos;
       const f = (t - a[i].t) / (n.t - a[i].t);
-      if (!state.step) return a[i].pos + (n.pos - a[i].pos) * f;
-      // dense per-line sync: stay on the line being read, then glide to the next one at the end of it
-      if (n.pos < a[i].pos) return a[i].pos;                       // repetition: hold, then jump back
-      const glide = Math.min(0.9, Math.max(0.45, (n.t - a[i].t) * 0.3));  // seconds spent moving
-      const g0 = Math.max(a[i].t, n.t - glide);
-      if (t < g0) return a[i].pos;
-      let u = (t - g0) / (n.t - g0); u = u * u * (3 - 2 * u);            // ease in-out
-      return a[i].pos + (n.pos - a[i].pos) * u;
+      if (state.step && n.pos < a[i].pos) return a[i].pos;   // repetition: hold, then jump back
+      return a[i].pos + (n.pos - a[i].pos) * f;
     }
   }
   return 0;
@@ -277,7 +271,12 @@ function tick(force) {
   const pos = posAt(audio.paused ? t : smoothTime());
   const n = state.pageEls.length;
   if (pos == null) { cursorEl.style.display = 'none'; $('pageInfo').textContent = n ? `${visiblePage()} / ${n}` : ''; return; }
-  const y = pxOf(pos);
+  const yRaw = pxOf(pos);
+  // low-pass the position (framerate independent): speed changes become gentle ramps instead of jerks
+  const nowP = performance.now(), dt = Math.min(0.1, (nowP - (state.lpAt || nowP)) / 1000); state.lpAt = nowP;
+  if (state.lpY == null || force || audio.paused || Math.abs(yRaw - state.lpY) > viewer.clientHeight * 1.2) state.lpY = yRaw;
+  else state.lpY += (yRaw - state.lpY) * (1 - Math.exp(-dt / 0.8));
+  const y = state.lpY;
   cursorEl.style.display = 'block'; cursorEl.style.top = y + 'px';
   placeCursorX(pos);
   $('pageInfo').textContent = `${Math.min(n, Math.floor(pos) + 1)} / ${n}`;
@@ -285,13 +284,13 @@ function tick(force) {
   $('follow').style.display = Date.now() > state.followPausedUntil ? 'none' : 'block';
 }
 // continuous, gentle auto-scroll: every frame move a little toward keeping the highlight ~35% from the top
+// teleprompter: the (already smoothed) highlight stays ~35% from the top and the text flows under it
 function follow(y, force) {
-  const top = viewer.scrollTop, h = viewer.clientHeight;
+  const h = viewer.clientHeight;
   const target = Math.max(0, Math.min(y - h * 0.35, viewer.scrollHeight - h));
-  const diff = target - top;
-  if (force || Math.abs(diff) > h * 1.5) { viewer.scrollTop = target; return; }  // seek / big jump
-  if (Math.abs(diff) < 0.5) return;
-  viewer.scrollTop = top + diff * 0.06;
+  const diff = target - viewer.scrollTop;
+  if (force || Math.abs(diff) > h * 0.6) { viewer.scrollTop = target; return; }   // seek / resume after manual scroll
+  if (Math.abs(diff) > 0.3) viewer.scrollTop = target;
 }
 // keep the highlight inside the page's printed border (if known), else span the page area
 function placeCursorX(pos) {
