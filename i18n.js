@@ -3,6 +3,7 @@
 globalThis.I18N = {
   en: {
     _label: "EN",
+    subAmal: "📖 Amal + Tasbeeh reminders", remAmalP: "Hijri 2–7 every month: that day's surah at 8:00 AM (Yaseen → Jinn). Every day: the weekday's tasbih at 7:00 AM.",
     ghH: "Ghadi", ghDay: "Day ghadi", ghNight: "Night ghadi", ghNow: "Now: {p} — {l} · until {t}", ghUntil: "until {t}",
     ghP: ["Shams (Sun)", "Zahrat (Venus)", "Atarad (Mercury)", "Qamar (Moon)", "Zuhal (Saturn)", "Mushtari (Jupiter)", "Mirrikh (Mars)"],
     ghL: { vgood: "Very good", good: "Good", normal: "Normal", unfav: "Unfavourable" },
@@ -61,6 +62,7 @@ globalThis.I18N = {
 
   gu: {
     _label: "ગુ",
+    subAmal: "📖 અમલ + તસ્બીહ રિમાઇન્ડર", remAmalP: "દર હિજરી મહિનાની 2–7 તારીખ: એ દિવસની સૂરત સવારે 8:00 વાગ્યે (યાસીન → જિન્ન). દરરોજ: એ દિવસની તસ્બીહ સવારે 7:00 વાગ્યે.",
     ghH: "ઘડી", ghDay: "દિવસની ઘડી", ghNight: "રાતની ઘડી", ghNow: "હાલ: {p} — {l} · {t} સુધી", ghUntil: "{t} સુધી",
     ghP: ["શમ્સ", "ઝોહરા", "અતારદ", "કમર", "ઝોહલ", "મુશ્તરી", "મિર્રીખ"],
     ghL: { vgood: "ઘણી સારી", good: "સારી", normal: "સામાન્ય", unfav: "નાપસંદ" },
@@ -119,6 +121,7 @@ globalThis.I18N = {
 
   hi: {
     _label: "Hinglish",
+    subAmal: "📖 Amal + Tasbeeh reminders", remAmalP: "Har Hijri mahine ki 2–7 tarikh: us din ki surah subah 8:00 baje (Yaseen → Jinn). Roz: us din ki tasbeeh subah 7:00 baje.",
     ghH: "Ghadi", ghDay: "Din ki ghadi", ghNight: "Raat ki ghadi", ghNow: "Abhi: {p} — {l} · {t} tak", ghUntil: "{t} tak",
     ghP: ["Shams (Suraj)", "Zahrat (Zohra)", "Atarad", "Qamar (Chaand)", "Zuhal", "Mushtari", "Mirrikh"],
     ghL: { vgood: "Bahut achhi", good: "Achhi", normal: "Normal", unfav: "Na-pasand" },
