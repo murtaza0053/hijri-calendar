@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=14">
-<script src="theme-init.js?v=14"></script>
+<link rel="stylesheet" href="themes.css?v=15">
+<script src="theme-init.js?v=15"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -86,6 +86,16 @@ h4.plat{margin:14px 0 2px;font-size:14px}
 .dua-ic{width:46px;height:46px;border-radius:12px;background:var(--chip);display:grid;place-items:center;font-size:24px}
 .dua-go{font-size:26px;color:var(--brand)}
 .dua-item .muted{font-size:13px}
+.ghnow{font-weight:600;margin:4px 0 8px;font-size:14px}
+.gh{display:grid;grid-template-columns:26px 1fr auto;gap:8px;align-items:center;padding:7px 8px;border-radius:10px;font-size:14px}
+.gh:nth-child(odd){background:var(--bg)}
+.gh .no{color:var(--muted);font-variant-numeric:tabular-nums;text-align:right}
+.gh .tm{font-variant-numeric:tabular-nums}
+.gh .pl{display:flex;align-items:center;gap:6px;justify-content:flex-end;text-align:right}
+.gh .pl i{width:10px;height:10px;border-radius:50%;flex:none}
+.gh.cur{outline:2px solid var(--brand);background:var(--chip)!important;font-weight:700}
+.lv-vgood{background:#1f9d55} .lv-good{background:#5bb974} .lv-normal{background:#d4a72c} .lv-unfav{background:#d14b4b}
+#ghToggle button{font-size:12px;padding:6px 10px}
 h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .rz{display:flex;align-items:center;gap:10px;padding:8px 6px;border-top:1px solid var(--line);text-decoration:none;color:var(--ink)}
 .rz:first-child{border-top:0}
@@ -135,6 +145,15 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
       <h3><span data-i18n="timesH"></span> <span class="tag" id="locName"></span></h3>
       <div class="times" id="times"></div>
       <p class="muted" data-i18n="timesNote"></p>
+    </div>
+    <div class="card" id="ghadiCard">
+      <div class="row" style="justify-content:space-between;margin-bottom:6px">
+        <h3 style="margin:0">⏳ <span data-i18n="ghH"></span> <span class="tag" id="ghLoc"></span></h3>
+        <div class="langset" id="ghToggle"></div>
+      </div>
+      <div class="ghnow" id="ghNow"></div>
+      <div id="ghList"></div>
+      <p class="muted" style="font-size:11px" data-i18n="ghNote"></p>
     </div>
   </section>
 
@@ -284,8 +303,8 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=14"></script>
-<script src="i18n.js?v=14"></script>
+<script src="hijri.js?v=15"></script>
+<script src="i18n.js?v=15"></script>
 <script>
 "use strict";
 
@@ -451,6 +470,38 @@ function renderTimes() {
   $("locCur").textContent = t("locNow", { name: locLabel(), lat: loc.lat.toFixed(4), lng: loc.lng.toFixed(4) });
 }
 
+/* ---------- Ghadi (planetary hours, as on aajnodin.com / Busaheba Sahifa) ---------- */
+// Chaldean order; first day-ghadi of each weekday: Sun=Shams, Mon=Qamar, Tue=Mirrikh, Wed=Atarad, Thu=Mushtari, Fri=Zahrat, Sat=Zuhal
+const GH_LV = ["good", "vgood", "normal", "good", "unfav", "vgood", "unfav"];
+const GH_FIRST = [0, 3, 6, 2, 5, 1, 4];
+let ghMode = null; // "day" | "night"; null = follow the clock
+function ghadiOf(d0, night) {  // d0 = local date of the day whose day/night we want
+  const s = sunTimes(d0.getFullYear(), d0.getMonth(), d0.getDate(), loc.lat, loc.lng);
+  const n = new Date(d0); n.setDate(n.getDate() + 1);
+  const s2 = sunTimes(n.getFullYear(), n.getMonth(), n.getDate(), loc.lat, loc.lng);
+  const a = night ? s.sunset : s.sunrise, b = night ? s2.sunrise : s.sunset, len = (b - a) / 12;
+  const first = GH_FIRST[d0.getDay()] + (night ? 12 : 0);
+  return Array.from({ length: 12 }, (_, k) => ({ k: k + 1, from: new Date(+a + len * k), to: new Date(+a + len * (k + 1)), p: (first + k) % 7 }));
+}
+function renderGhadi() {
+  const nowD = new Date(), today = new Date(nowD.getFullYear(), nowD.getMonth(), nowD.getDate());
+  const st = sunTimes(today.getFullYear(), today.getMonth(), today.getDate(), loc.lat, loc.lng);
+  // which day/night are we in right now?
+  let curBase = today, curNight = false;
+  if (nowD >= st.sunset) curNight = true;
+  else if (nowD < st.sunrise) { curBase = new Date(today); curBase.setDate(curBase.getDate() - 1); curNight = true; }
+  const night = ghMode ? ghMode === "night" : curNight;
+  const base = night === curNight ? curBase : today;
+  const list = ghadiOf(base, night);
+  const cur = ghadiOf(curBase, curNight).find(g => nowD >= g.from && nowD < g.to);
+  $("ghToggle").innerHTML = ["day", "night"].map(m => `<button data-gh="${m}" class="${(night ? "night" : "day") === m ? "on" : ""}">${t(m === "day" ? "ghDay" : "ghNight")}</button>`).join("");
+  $("ghNow").innerHTML = cur ? `<span class="pl"><i class="lv-${GH_LV[cur.p]}" style="display:inline-block;width:10px;height:10px;border-radius:50%"></i></span> ` + t("ghNow", { p: L.ghP[cur.p], l: L.ghL[GH_LV[cur.p]], t: fmtT(cur.to) }) : "";
+  $("ghList").innerHTML = list.map(g => `<div class="gh ${cur && +g.from === +cur.from ? "cur" : ""}"><span class="no">${g.k}</span><span class="tm">${fmtT(g.from)} – ${fmtT(g.to)}</span><span class="pl">${L.ghP[g.p]} · ${L.ghL[GH_LV[g.p]]}<i class="lv-${GH_LV[g.p]}"></i></span></div>`).join("");
+  $("ghLoc").textContent = `${L.wd[base.getDay()]} · ${locLabel()}`;
+}
+document.addEventListener("click", e => { const b = e.target.closest("[data-gh]"); if (b) { ghMode = b.dataset.gh; renderGhadi(); } });
+setInterval(() => { if (document.visibilityState === "visible") renderGhadi(); }, 60000);
+
 /* ---------- Day sheet ---------- */
 function openDay(ajd) {
   selAJD = ajd; renderCal();
@@ -589,7 +640,7 @@ calEl.addEventListener("touchend", e => {
 }, { passive: true });
 
 /* ---------- Location ---------- */
-function setLoc(l) { loc = l; store.set("loc", l); renderTimes(); renderHeader(); }
+function setLoc(l) { loc = l; store.set("loc", l); renderTimes(); renderHeader(); renderGhadi(); }
 $("useIndore").onclick = () => setLoc(DEFAULT_LOC);
 $("saveLL").onclick = () => {
   const lat = parseFloat($("lat").value), lng = parseFloat($("lng").value);
@@ -608,7 +659,7 @@ $("useGps").onclick = () => {
 let miqLoaded = false;
 function renderAll() {
   renderHeader(); renderCal(); renderTimes(); renderMonthSelect(); gConvert(); hConvert();
-  renderDuaTab();
+  renderDuaTab(); renderGhadi();
   if (miqLoaded) { renderTodayMq(); renderBanner(); }
   if (curView === "up") renderUpcoming();
   if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD);

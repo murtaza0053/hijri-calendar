@@ -3,6 +3,10 @@
 globalThis.I18N = {
   en: {
     _label: "EN",
+    ghH: "Ghadi", ghDay: "Day ghadi", ghNight: "Night ghadi", ghNow: "Now: {p} — {l} · until {t}", ghUntil: "until {t}",
+    ghP: ["Shams (Sun)", "Zahrat (Venus)", "Atarad (Mercury)", "Qamar (Moon)", "Zuhal (Saturn)", "Mushtari (Jupiter)", "Mirrikh (Mars)"],
+    ghL: { vgood: "Very good", good: "Good", normal: "Normal", unfav: "Unfavourable" },
+    ghNote: "Ghadi as per Busaheba Sahifa (following aajnodin.com) — for information only. Take raza before any deeni amal. Day = sunrise→sunset in 12 parts, night = sunset→sunrise.",
     ytAdd: "＋ YouTube link", ytPrompt: "Paste the YouTube link of the recitation (e.g. Shehzada Husain bhaisaheb):", ytPlay: "▶ YouTube", ytHide: "Hide video", ytRemove: "Remove link", ytBad: "That does not look like a YouTube link.",
     jawahirH: "Dua al-Jawahir", jawahirDesc: "Read along (PDF) — fazilat in Lisan ud-Dawat with the dua. No audio yet.",
     secDuas: "Duas", secQuran: "Quran", secAmal: "Amal", surahPrefix: "Surat", qPdf: "PDF",
@@ -57,6 +61,10 @@ globalThis.I18N = {
 
   gu: {
     _label: "ગુ",
+    ghH: "ઘડી", ghDay: "દિવસની ઘડી", ghNight: "રાતની ઘડી", ghNow: "હાલ: {p} — {l} · {t} સુધી", ghUntil: "{t} સુધી",
+    ghP: ["શમ્સ", "ઝોહરા", "અતારદ", "કમર", "ઝોહલ", "મુશ્તરી", "મિર્રીખ"],
+    ghL: { vgood: "ઘણી સારી", good: "સારી", normal: "સામાન્ય", unfav: "નાપસંદ" },
+    ghNote: "ઘડી બુસાહેબા સહીફા મુજબ (aajnodin.com પ્રમાણે) — ફક્ત જાણકારી માટે. કોઈ પણ દીની અમલ પહેલાં રઝા લેજો. દિવસ = સૂર્યોદય→સૂર્યાસ્તના 12 ભાગ, રાત = સૂર્યાસ્ત→સૂર્યોદય.",
     ytAdd: "＋ YouTube લિંક", ytPrompt: "તિલાવતની YouTube લિંક પેસ્ટ કરો (દા.ત. શહઝાદા હુસૈન ભાઈસાહેબ):", ytPlay: "▶ YouTube", ytHide: "વીડિયો છુપાવો", ytRemove: "લિંક હટાવો", ytBad: "આ YouTube લિંક લાગતી નથી.",
     jawahirH: "દુઆ અલ-જવાહિર", jawahirDesc: "પઢવા માટે (PDF) — લિસાનુદ્દઅવતમાં ફઝીલત સાથે દુઆ. ઓડિયો હજુ નથી.",
     secDuas: "દુઆઓ", secQuran: "કુરાન", secAmal: "અમલ", surahPrefix: "સૂરત", qPdf: "PDF",
@@ -111,6 +119,10 @@ globalThis.I18N = {
 
   hi: {
     _label: "Hinglish",
+    ghH: "Ghadi", ghDay: "Din ki ghadi", ghNight: "Raat ki ghadi", ghNow: "Abhi: {p} — {l} · {t} tak", ghUntil: "{t} tak",
+    ghP: ["Shams (Suraj)", "Zahrat (Zohra)", "Atarad", "Qamar (Chaand)", "Zuhal", "Mushtari", "Mirrikh"],
+    ghL: { vgood: "Bahut achhi", good: "Achhi", normal: "Normal", unfav: "Na-pasand" },
+    ghNote: "Ghadi Busaheba Sahifa ke mutabik (aajnodin.com jaisi) — sirf jaankari ke liye. Koi bhi deeni amal se pehle raza le lena. Din = sunrise→sunset ke 12 hisse, raat = sunset→sunrise.",
     ytAdd: "＋ YouTube link", ytPrompt: "Tilawat ka YouTube link paste karo (jaise Shehzada Husain bhaisaheb):", ytPlay: "▶ YouTube", ytHide: "Video chhupao", ytRemove: "Link hatao", ytBad: "Ye YouTube link nahi lag raha.",
     jawahirH: "Dua al-Jawahir", jawahirDesc: "Padhne ke liye (PDF) — Lisan ud-Dawat me fazilat ke saath dua. Audio abhi nahi hai.",
     secDuas: "Duas", secQuran: "Quran", secAmal: "Amal", surahPrefix: "Surat", qPdf: "PDF",
