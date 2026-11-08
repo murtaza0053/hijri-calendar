@@ -12,8 +12,8 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="icon" href="../icons/icon-192.png">
-<link rel="stylesheet" href="../themes.css?v=21">
-<script src="../theme-init.js?v=21"></script>
+<link rel="stylesheet" href="../themes.css?v=22">
+<script src="../theme-init.js?v=22"></script>
 <style>
 @font-face{font-family:"QNaskh";src:url(fonts/NotoNaskhArabic-arabic.woff2) format("woff2");font-weight:400 700;font-display:swap}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
@@ -61,7 +61,7 @@ header b{flex:1;font-size:16px}
   <div class="hint" id="hint"></div>
 </div>
 <div id="foot"><button id="undo">−1</button><span id="total"></span><button id="reset"></button></div>
-<script src="../i18n.js?v=21"></script>
+<script src="../i18n.js?v=22"></script>
 <script>
 "use strict";
 const $ = id => document.getElementById(id);
@@ -78,9 +78,10 @@ const WEEK = [
   { ar: "يَا ذَا الۡجَلَالِ وَالۡاِكۡرَامِ", en: "Ya Zal Jalali Wal Ikram", m: "Ae jalal aur izzat wale" },
   { ar: "يَا حَيُّ يَا قَيُّوۡمُ", en: "Ya Hayyu, Ya Qayyum", m: "Ae hamesha zinda aur sab ko sambhalne wale" }];
 const wk = WEEK[new Date().getDay()];
+// salawaat text as printed in the Bohra Dua al-Jawahir (user's PDF)
 const PRESETS = {
   week: { name: "tToday", steps: [{ ar: wk.ar, en: wk.en + " — " + wk.m, n: 100 }] },
-  salawaat: { name: "tSalawaat", steps: [{ ar: "اَللّٰهُمَّ صَلِّ عَلٰى مُحَمَّدٍ وَّاٰلِ مُحَمَّدٍ وَّبَارِكۡ وَسَلِّمۡ", en: "Allahumma salli ala Muhammadin wa aale Muhammadin wa baarik wa sallim", n: 1000 }] },
+  salawaat: { name: "tSalawaat", steps: [{ ar: "اَللّٰهُمَّ صَلِّ عَلٰى مُحَمَّدٍ وَّعَلٰى اٰلِ مُحَمَّدٍ وَّبَارِكۡ وَسَلِّمۡ", en: "Allahumma salle ala Mohammadin wa ala aale Mohammadin wa baarik wa sallim", n: 1000 }] },
   custom: { name: "tCustom", steps: [{ ar: "", en: "", n: 33 }] },
 };
 const today = new Date().toISOString().slice(0, 10);
