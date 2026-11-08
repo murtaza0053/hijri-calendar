@@ -1,0 +1,1017 @@
+{
+ "updated": "2026-11-09",
+ "sources": {
+  "mazaraat": "https://zaereen.com/mazaraat/ (Mumineen Travel Portal)",
+  "dais": "https://en.wikipedia.org/wiki/List_of_Dai_of_the_Dawoodi_Bohra"
+ },
+ "mazaraat": [
+  {
+   "id": "ahmedabad-mazaar__mazar-e-qutbi",
+   "name": "Mazar e Qutbi",
+   "city": "Ahmedabad",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [],
+   "address": "Vohra's roza, Qutbi mazar, Asarwa, Amdupura, Saraspur, Ahmedabad, Gujarat 382345",
+   "phone": "+91 95377 93253",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20e%20Qutbi%2C%20Vohra%27s%20roza%2C%20Qutbi%20mazar%2C%20Asarwa%2C%20Amdupura%2C%20Saraspur%2C%20Ahmedabad%2C%20Gujarat%20382345",
+   "src": "https://zaereen.com/ahmedabad-mazaar/mazar-e-qutbi"
+  },
+  {
+   "id": "ahmednagar-mazaar__mazaar-ganj-e-shohada",
+   "name": "Mazaar Ganj E Shohada",
+   "city": "Ahmednagar",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [],
+   "address": "GANJ E SHAHID SAHEB DARGAH 511,Shukrawar Bazaar, Bhingar, Ahmednagar, Maharashtra 414002",
+   "phone": "+91 94059 25253",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazaar%20Ganj%20E%20Shohada%2C%20GANJ%20E%20SHAHID%20SAHEB%20DARGAH%20511%2CShukrawar%20Bazaar%2C%20Bhingar%2C%20Ahmednagar%2C%20Maharashtra%20414002",
+   "src": "https://zaereen.com/ahmednagar-mazaar/mazaar-ganj-e-shohada"
+  },
+  {
+   "id": "amreli-mazaar__mazar-e-jafari-amreli",
+   "name": "Mazar E Jafari Amreli",
+   "city": "Amreli",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Syedi Jafferjee Jivaji Saheb (QS)"
+   ],
+   "address": "JESINGPARA ,SHIWAJI CHOWK ,NEAR PETROL PUMP  DIST.AMRELI AMRELI 365601 GUJARAT",
+   "phone": "+91 88307 45551",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20E%20Jafari%20Amreli%2C%20JESINGPARA%20%2CSHIWAJI%20CHOWK%20%2CNEAR%20PETROL%20PUMP%20%20DIST.AMRELI%20AMRELI%20365601%20GUJARAT",
+   "src": "https://zaereen.com/amreli-mazaar/mazar-e-jafari-amreli"
+  },
+  {
+   "id": "aurangabad-mazaar__mazar-e-moulai-najam-khan",
+   "name": "Mazar E Moulai Najam Khan",
+   "city": "Aurangabad",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Maulai Najam Khan RA, Mulla Vali Bhai QR"
+   ],
+   "address": "Dargah Dawoodpura,  Kushal Nagar, Jalna Road, New Balaji Nagar, Sindhi Colony Aurangabad – 431005 (M.S)",
+   "phone": "+91 94226 05253",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20E%20Moulai%20Najam%20Khan%2C%20Dargah%20Dawoodpura%2C%20%20Kushal%20Nagar%2C%20Jalna%20Road%2C%20New%20Balaji%20Nagar%2C%20Sindhi%20Colony%20Aurangabad%20%E2%80%93%20431005%20%28M.S%29",
+   "src": "https://zaereen.com/aurangabad-mazaar/mazar-e-moulai-najam-khan"
+  },
+  {
+   "id": "banswara-mazaar__mazar-e-sayedi-abdul-rasool-shaheed",
+   "name": "Mazar E Sayedi Abdul Rasool Shaheed",
+   "city": "Banswara",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Moulaya Abdul Rasul Shaheed Saheb(QS)"
+   ],
+   "address": "Dargah Abdulrasool Shaheed Raj Talab indira colony Banswara - 327001  Rajasthan",
+   "phone": "+91 29622 42472",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20E%20Sayedi%20Abdul%20Rasool%20Shaheed%2C%20Dargah%20Abdulrasool%20Shaheed%20Raj%20Talab%20indira%20colony%20Banswara%20-%20327001%20%20Rajasthan",
+   "src": "https://zaereen.com/banswara-mazaar/mazar-e-sayedi-abdul-rasool-shaheed"
+  },
+  {
+   "id": "burhanpur-mazaar__dargah-e-hakimi",
+   "name": "Dargah E Hakimi",
+   "city": "Burhanpur",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "41st Dai-al-Mutlaq Syedna Abdul Tayeb Zakiyuddin(RA)",
+    "Syedi AbdulQader Hakimuddin (A.Q.)",
+    "Syedi Jivanjee Bin Syedi Dawood (Q.R.)"
+   ],
+   "address": "Road, Shah Colony, Lodhipura, Burhanpur, Hamidpura, Madhya Pradesh 450331",
+   "phone": "+91 73252 45152",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Dargah%20E%20Hakimi%2C%20Road%2C%20Shah%20Colony%2C%20Lodhipura%2C%20Burhanpur%2C%20Hamidpura%2C%20Madhya%20Pradesh%20450331",
+   "src": "https://zaereen.com/burhanpur-mazaar/dargah-e-hakimi"
+  },
+  {
+   "id": "chechat-mazaar__mazar-e-shaikh-ibrahim-saheb-shaheed",
+   "name": "Mazar E Shaikh Ibrahim Saheb Shaheed",
+   "city": "Chechat",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Mullah Nooh bhaisaheb (QS)"
+   ],
+   "address": "Mails Area",
+   "phone": "+91 95748 22252",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20E%20Shaikh%20Ibrahim%20Saheb%20Shaheed%2C%20Mails%20Area",
+   "src": "https://zaereen.com/chechat-mazaar/mazar-e-shaikh-ibrahim-saheb-shaheed"
+  },
+  {
+   "id": "dandi-mazaar__mazaar-e-maisaheba-dandi",
+   "name": "Mazaar E Maisaheba Dandi",
+   "city": "Dandi",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [],
+   "address": "E MAISAHEBA, DARGAH, HAJIANI DARGAH, VRR3+VFX ,MAZAR, Dandi, Gujarat 396439",
+   "phone": "+91 26372 23214",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazaar%20E%20Maisaheba%20Dandi%2C%20E%20MAISAHEBA%2C%20DARGAH%2C%20HAJIANI%20DARGAH%2C%20VRR3%2BVFX%20%2CMAZAR%2C%20Dandi%2C%20Gujarat%20396439",
+   "src": "https://zaereen.com/dandi-mazaar/mazaar-e-maisaheba-dandi"
+  },
+  {
+   "id": "delmal-mazaar__mazaar-e-hasani-hasanpeer",
+   "name": "Mazaar E Hasani Hasanpeer",
+   "city": "Delmal",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Syedi Hasanfeer Shaheed (QS)"
+   ],
+   "address": "Hasanfeer Saheb Dargah, P.O. - Delmal,  Taluka -  Chanasma,  Dist. - Patan (Gujarat)  384230",
+   "phone": "+91 78620 77052",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazaar%20E%20Hasani%20Hasanpeer%2C%20Hasanfeer%20Saheb%20Dargah%2C%20P.O.%20-%20Delmal%2C%20%20Taluka%20-%20%20Chanasma%2C%20%20Dist.%20-%20Patan%20%28Gujarat%29%20%20384230",
+   "src": "https://zaereen.com/delmal-mazaar/mazaar-e-hasani-hasanpeer"
+  },
+  {
+   "id": "dongaon-mazaar__mazar-e-moulai-nooruddin-dongam",
+   "name": "Mazar e Moulai Nooruddin Dongam",
+   "city": "Dongaon",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Moulai Nooruddin Saheb(QS)"
+   ],
+   "address": "MAZAR-E-MOULAYA NOORUDDIN SAHEB DARGAH SHAREEF, DONGAON, TALUKA-AMBAD, DISTRICT-JALNA, MAHARASHTRA,MUMBAI-431121",
+   "phone": "+91 9131535331",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20e%20Moulai%20Nooruddin%20Dongam%2C%20MAZAR-E-MOULAYA%20NOORUDDIN%20SAHEB%20DARGAH%20SHAREEF%2C%20DONGAON%2C%20TALUKA-AMBAD%2C%20DISTRICT-JALNA%2C%20MAHARASHTRA%2CMUMBAI-431121",
+   "src": "https://zaereen.com/dongaon-mazaar/mazar-e-moulai-nooruddin-dongam"
+  },
+  {
+   "id": "galiakot-mazaar__mazar-e-fakhri",
+   "name": "Mazar E Fakhri",
+   "city": "Galiakot",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Syedi Fakhruddin Shaheed(QS)",
+    "Maulaya Dawood Bin Syedi Fakhruddin Shaheed",
+    "Syedi Fakhruddin Shaheed (QS)"
+   ],
+   "address": "G2J9+9J3, Galiakot, Rajasthan 314026",
+   "phone": "+91 29662 30052",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20E%20Fakhri%2C%20G2J9%2B9J3%2C%20Galiakot%2C%20Rajasthan%20314026",
+   "src": "https://zaereen.com/galiakot-mazaar/mazar-e-fakhri"
+  },
+  {
+   "id": "godhra-mazaar__mazaar-e-syedi-ismailji-shaheed",
+   "name": "Mazaar E Syedi Ismailji Shaheed",
+   "city": "Godhra",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Syedi Ismailji Shaheed Saheb (QR)"
+   ],
+   "address": "DAWOODI BOHRA MUSAFIRKHANA, VOHRAWAD TOWER  DIST:- PANCHMAHAL, GODHRA -389001",
+   "phone": "+91 95103 30880",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazaar%20E%20Syedi%20Ismailji%20Shaheed%2C%20DAWOODI%20BOHRA%20MUSAFIRKHANA%2C%20VOHRAWAD%20TOWER%20%20DIST%3A-%20PANCHMAHAL%2C%20GODHRA%20-389001",
+   "src": "https://zaereen.com/godhra-mazaar/mazaar-e-syedi-ismailji-shaheed"
+  },
+  {
+   "id": "halvad-mazaar__mazaar-e-syedi-qazi-khan",
+   "name": "Mazaar E Syedi Qazi Khan",
+   "city": "Halvad",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Syedi Kazi Khan Saheb(QS)"
+   ],
+   "address": "Syedi moulai Kazikhan dargah, Out side morbi darwaza, Halvad.Dist,Morbi (Gujrat) - 363330",
+   "phone": "+91 27582 91688",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazaar%20E%20Syedi%20Qazi%20Khan%2C%20Syedi%20moulai%20Kazikhan%20dargah%2C%20Out%20side%20morbi%20darwaza%2C%20Halvad.Dist%2CMorbi%20%28Gujrat%29%20-%20363330",
+   "src": "https://zaereen.com/halvad-mazaar/mazaar-e-syedi-qazi-khan"
+  },
+  {
+   "id": "jamnagar-mazaar__mazar-e-badri-jamnagar",
+   "name": "Mazar E Badri Jamnagar",
+   "city": "Jamnagar",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Syedi Shaikh Adam Safiyuddin (QS)",
+    "Syedi Hebatullah Jamaluddin (QS)",
+    "Syedi Sheikh Feer Jamaluddin Bin Mohammed",
+    "Moulai Mulla Adam bin Al-Moula Mulla Dawood (QS)",
+    "Moulai Mulla Raj bin Moulai Mulla Adam (QS)"
+   ],
+   "address": "saifee tower, Nageshwar, Zakavi Mohalla, Nageshwar Colony, Jamnagar, Gujarat 361001",
+   "phone": "+91 28826 74452",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20E%20Badri%20Jamnagar%2C%20saifee%20tower%2C%20Nageshwar%2C%20Zakavi%20Mohalla%2C%20Nageshwar%20Colony%2C%20Jamnagar%2C%20Gujarat%20361001",
+   "src": "https://zaereen.com/jamnagar-mazaar/mazar-e-badri-jamnagar"
+  },
+  {
+   "id": "kalavad-mazaar__mazar-e-ganipir-shahid",
+   "name": "Mazar E Ganipir Shahid",
+   "city": "Kalavad",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Moulai Ganipir bin Moulai Dawoodji Saheb (QS)",
+    "Syedi Moosaji bin Hasanji (QS)",
+    "Syedi Hasanji bin Dawoodji (QS)",
+    "Syedi Ishaq bin Khanji (QS)"
+   ],
+   "address": "MAULAI GANIPIR SAHEB DARGAH  MURILA,KALAWAD- 361160",
+   "phone": "+91 89800 71853",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20E%20Ganipir%20Shahid%2C%20MAULAI%20GANIPIR%20SAHEB%20DARGAH%20%20MURILA%2CKALAWAD-%20361160",
+   "src": "https://zaereen.com/kalavad-mazaar/mazar-e-ganipir-shahid"
+  },
+  {
+   "id": "kamlapur-mazaar__mazar-e-syedi-aliji-shaheed",
+   "name": "Mazar E Syedi Aliji Shaheed",
+   "city": "Kamlapur",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Syedi Aliji Shaheed (QS.)"
+   ],
+   "address": "Mazar Syedi Aliji Shaheed Dist. -  Dewas Kamlapur. 455227",
+   "phone": "+91 8871365253",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20E%20Syedi%20Aliji%20Shaheed%2C%20Mazar%20Syedi%20Aliji%20Shaheed%20Dist.%20-%20%20Dewas%20Kamlapur.%20455227",
+   "src": "https://zaereen.com/kamlapur-mazaar/mazar-e-syedi-aliji-shaheed"
+  },
+  {
+   "id": "kapadvanj-mazaar__mazar-e-syedi-khoj-bin-malak-sahab",
+   "name": "Mazar E Syedi Khoj Bin Malak Sahab",
+   "city": "Kapadvanj",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Syedi Khoj Bin Malak (Q.R.)",
+    "Syedi Mohammed Bin Kazikhan (Q.R.)",
+    "Syedi Khoj Bin Malak Saheb (Q.R.)"
+   ],
+   "address": "23Q6+6PX, Sultanpur, Gujarat 387620",
+   "phone": "",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20E%20Syedi%20Khoj%20Bin%20Malak%20Sahab%2C%2023Q6%2B6PX%2C%20Sultanpur%2C%20Gujarat%20387620",
+   "src": "https://zaereen.com/kapadvanj-mazaar/mazar-e-syedi-khoj-bin-malak-sahab"
+  },
+  {
+   "id": "khambhat-mazaar__mazaar-e-maulaya-ahmed-saheb",
+   "name": "Mazaar E Maulaya Ahmed Saheb",
+   "city": "Khambhat",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Moulai Ahmed Saheb (Q.R.)"
+   ],
+   "address": "DAWOODI BOHRA MUSAFIRKHANA OPP.S.T. BUS STAND KHAMBHAT- 388620 GUJARAT",
+   "phone": "+91 02698 226915",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazaar%20E%20Maulaya%20Ahmed%20Saheb%2C%20DAWOODI%20BOHRA%20MUSAFIRKHANA%20OPP.S.T.%20BUS%20STAND%20KHAMBHAT-%20388620%20GUJARAT",
+   "src": "https://zaereen.com/khambhat-mazaar/mazaar-e-maulaya-ahmed-saheb"
+  },
+  {
+   "id": "mandvi-mazaar__mazaar-e-noorani-mandvi",
+   "name": "Mazaar E Noorani Mandvi",
+   "city": "Mandvi",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Syedna Noor Mohammed Nooruddin (RA)"
+   ],
+   "address": "MAZAR E NOORANI VOHRA HAJIRA HAJIRA ROAD MANDVI KUTCH- 370465 GUJARAT",
+   "phone": "+91 2834 231786",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazaar%20E%20Noorani%20Mandvi%2C%20MAZAR%20E%20NOORANI%20VOHRA%20HAJIRA%20HAJIRA%20ROAD%20MANDVI%20KUTCH-%20370465%20GUJARAT",
+   "src": "https://zaereen.com/mandvi-mazaar/mazaar-e-noorani-mandvi"
+  },
+  {
+   "id": "morbi-mazaar__mazar-e-maulai-raja-saheb-morbi",
+   "name": "Mazar E Maulai Raja Saheb Morbi",
+   "city": "Morbi",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Moulai Raj bin Moulai Dawood(QS)",
+    "Moulai Mulla Dawood bin Mulla Raj(QS)",
+    "Moulai Raj bin Moulai Dawood (QS)",
+    "Moulai Mulla Dawood bin Mulla Raj (QS)"
+   ],
+   "address": "Maulai Raja Saheb Dargah Near V.C. Fatak Morbi-363641",
+   "phone": "+91 94264 14952",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20E%20Maulai%20Raja%20Saheb%20Morbi%2C%20Maulai%20Raja%20Saheb%20Dargah%20Near%20V.C.%20Fatak%20Morbi-363641",
+   "src": "https://zaereen.com/morbi-mazaar/mazar-e-maulai-raja-saheb-morbi"
+  },
+  {
+   "id": "mumbai-mazaar__raudat-tahera-mumbai",
+   "name": "Raudat Tahera Mumbai",
+   "city": "Mumbai",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Syedna Taher Saifuddin(AQ)",
+    "Syedi Ishaq bhaisaheb Jamaluddin(QS)",
+    "Syedi Saleh bhaisaheb Safiyuddin(QS)",
+    "51st Dai Al-Mutlaq Syedna Taher Saifuddin (R.A)"
+   ],
+   "address": "Ajmer, Bhendi Bazaar, Kumbharwada, Mumbai, Maharashtra 400003",
+   "phone": "+91 22234 63752",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Raudat%20Tahera%20Mumbai%2C%20Ajmer%2C%20Bhendi%20Bazaar%2C%20Kumbharwada%2C%20Mumbai%2C%20Maharashtra%20400003",
+   "src": "https://zaereen.com/mumbai-mazaar/raudat-tahera-mumbai"
+  },
+  {
+   "id": "mundra-mazaar__mazaar-e-rani-baisaheba-mundra",
+   "name": "Mazaar E Rani Baisaheba Mundra",
+   "city": "Mundra",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [],
+   "address": "MAZAR-E-RANI BAI SAHEBA, OUTSIDE NADIWALA NAKA,  MUNDRA,  KUTCH. PIN CODE - 370421",
+   "phone": "+91 82098 36351",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazaar%20E%20Rani%20Baisaheba%20Mundra%2C%20MAZAR-E-RANI%20BAI%20SAHEBA%2C%20OUTSIDE%20NADIWALA%20NAKA%2C%20%20MUNDRA%2C%20%20KUTCH.%20PIN%20CODE%20-%20370421",
+   "src": "https://zaereen.com/mundra-mazaar/mazaar-e-rani-baisaheba-mundra"
+  },
+  {
+   "id": "pisawada-mazaar__mazar-e-burhani-pisawada",
+   "name": "Mazar E Burhani  Pisawada",
+   "city": "Pisawada",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Maulai Burhanuddin Saheb (QS)"
+   ],
+   "address": "Moulaya Burhanuddin Saheb Dargah, Burhani Mazar, Pisawada. Pincode-382265. Taluka-Dholka, Dist:-Ahmedabad.",
+   "phone": "+91 27142 51052",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20E%20Burhani%20%20Pisawada%2C%20Moulaya%20Burhanuddin%20Saheb%20Dargah%2C%20Burhani%20Mazar%2C%20Pisawada.%20Pincode-382265.%20Taluka-Dholka%2C%20Dist%3A-Ahmedabad.",
+   "src": "https://zaereen.com/pisawada-mazaar/mazar-e-burhani-pisawada"
+  },
+  {
+   "id": "pratapgarh-mazaar__mazaar-e-syedi-kakaji-saheb-pratapgarh",
+   "name": "Mazaar E Syedi Kakaji Saheb Pratapgarh",
+   "city": "Pratapgarh",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Mulla Moosaji Shaheed"
+   ],
+   "address": "DARGAH KAKAJI SAHEB   M.G.ROAD PARTAPGARH RAJASTHAN   PIN.312605",
+   "phone": "+91 88299 22786",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazaar%20E%20Syedi%20Kakaji%20Saheb%20Pratapgarh%2C%20DARGAH%20KAKAJI%20SAHEB%20%20%20M.G.ROAD%20PARTAPGARH%20RAJASTHAN%20%20%20PIN.312605",
+   "src": "https://zaereen.com/pratapgarh-mazaar/mazaar-e-syedi-kakaji-saheb-pratapgarh"
+  },
+  {
+   "id": "rampura-mazaar__mazaar-e-syedi-bawa-mulla-khan",
+   "name": "Mazaar E Syedi Bawa Mulla Khan",
+   "city": "Rampura",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Syedi Bawa Mulla Khan Saheb (QS)"
+   ],
+   "address": "Mazar Syedi Bawa Mulla Khan Saheb (qs)  Dist Nimach 458118 Rampura,Madhya Paradesh",
+   "phone": "+91 74212 38244",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazaar%20E%20Syedi%20Bawa%20Mulla%20Khan%2C%20Mazar%20Syedi%20Bawa%20Mulla%20Khan%20Saheb%20%28qs%29%20%20Dist%20Nimach%20458118%20Rampura%2CMadhya%20Paradesh",
+   "src": "https://zaereen.com/rampura-mazaar/mazaar-e-syedi-bawa-mulla-khan"
+  },
+  {
+   "id": "ranpur-mazaar__mazar-e-maulaya-sheikhfeer-saheb-ranpur",
+   "name": "Mazar E Maulaya Sheikhfeer Saheb Ranpur",
+   "city": "Ranpur",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Moulai Sheikhpeer Saheb(QS)",
+    "Moulai Tarakh peer Shaheed(QS)",
+    "Moulai Sheikhpeer Saheb (QS)",
+    "Moulai Tarakhpeer Shaheed"
+   ],
+   "address": "Near River Bridge, Ranpur, Botad Road. Dist:-Botad, Gujarat 382245",
+   "phone": "+91 91739 72452",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20E%20Maulaya%20Sheikhfeer%20Saheb%20Ranpur%2C%20Near%20River%20Bridge%2C%20Ranpur%2C%20Botad%20Road.%20Dist%3A-Botad%2C%20Gujarat%20382245",
+   "src": "https://zaereen.com/ranpur-mazaar/mazar-e-maulaya-sheikhfeer-saheb-ranpur"
+  },
+  {
+   "id": "selavi-mazaar__maulaya-e-mulla-nooh-saheb",
+   "name": "Maulaya E Mulla Nooh Saheb",
+   "city": "Selavi",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [],
+   "address": "TALUKA CHANASMA DIST. PATAN,  GUJARAT P.O  384235",
+   "phone": "+91 27342 63360",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Maulaya%20E%20Mulla%20Nooh%20Saheb%2C%20TALUKA%20CHANASMA%20DIST.%20PATAN%2C%20%20GUJARAT%20P.O%20%20384235",
+   "src": "https://zaereen.com/selavi-mazaar/maulaya-e-mulla-nooh-saheb"
+  },
+  {
+   "id": "shajapur-mazaar__mazar-e-yusufi-shajapur",
+   "name": "Mazar E Yusufi Shajapur",
+   "city": "Shajapur",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Syedi Yusufkhan Saheb (QS)"
+   ],
+   "address": "Mazar-E-Yusufi Girwar Road Shajapur-465001 Madhya Pradesh",
+   "phone": "+91 94798 53253",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20E%20Yusufi%20Shajapur%2C%20Mazar-E-Yusufi%20Girwar%20Road%20Shajapur-465001%20Madhya%20Pradesh",
+   "src": "https://zaereen.com/shajapur-mazaar/mazar-e-yusufi-shajapur"
+  },
+  {
+   "id": "siddhpur-mazaar__mazar-e-sayedi-qazi-khan",
+   "name": "Mazar-E-Sayedi Qazi Khan",
+   "city": "Siddhpur",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Syedi Qazi Khan Saheb(QS)",
+    "Syedna Abdul Taiyeb Zakiuddin (R.A.)",
+    "Syedna Moosa Kalimuddin (R.A.)",
+    "Syedna Noor Mohammed Nooruddin (R.A.)",
+    "Syedna Ismail Badruddin (R.A.)"
+   ],
+   "address": "MUSAFIRKHANA-E-MARYAMBAI , JHAMPLI POLE,YUSUFPURA, SIDHPUR (DIST) PATAN - 384151",
+   "phone": "+91 27672 20176",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazar-E-Sayedi%20Qazi%20Khan%2C%20MUSAFIRKHANA-E-MARYAMBAI%20%2C%20JHAMPLI%20POLE%2CYUSUFPURA%2C%20SIDHPUR%20%28DIST%29%20PATAN%20-%20384151",
+   "src": "https://zaereen.com/siddhpur-mazaar/mazar-e-sayedi-qazi-khan"
+  },
+  {
+   "id": "surat-mazaar__mazar-e-saifee",
+   "name": "Mazar E Saifee",
+   "city": "Surat",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Syedna Yusuf Najmuddin (RA)",
+    "Syedna Abdeali Saifuddin (RA)",
+    "Syedna Mohammed Ezzuddin (RA)",
+    "Syedna Tayeb Zainuddin (RA)",
+    "Syedna Mohammed Badruddin (RA)",
+    "Syedna Mohammed Burhanudin (RA)",
+    "Syedna Abdullah Badruddin (RA)",
+    "Syedi Luqmanjee Bin Habibullah (QS)",
+    "Syedi AbdulQader Hakimuddin (QS)",
+    "Syedi Shamskhan (QS)",
+    "Syedi Abdeali Imamuddin (QS)",
+    "Syedi QasimKhan Zainuddin (QS)",
+    "Syedi Sadiqali Saheb (QS)",
+    "Syedi Abdeali Mohyuddin (QS)",
+    "Syedi Ismail bhaisaheb Badruddin (QS)",
+    "Syedi Taiyeb bhaisaheb Zainuddin (QS)",
+    "Syedi Dawood bhaisaheb Shahabuddin (QS)",
+    "Syedi Fazal bhaisaheb bin Syedna Abdullah Badruddin (QS)"
+   ],
+   "address": "Devdi Mubarak, Zhampa Bazaar, Pathan Wara ,Surat-395003",
+   "phone": "+91 26124 22749",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20E%20Saifee%2C%20Devdi%20Mubarak%2C%20Zhampa%20Bazaar%2C%20Pathan%20Wara%20%2CSurat-395003",
+   "src": "https://zaereen.com/surat-mazaar/mazar-e-saifee"
+  },
+  {
+   "id": "udaipur-mazaar__mazaar-e-luqmanji-udaipur",
+   "name": "Mazaar e Luqmanji Udaipur",
+   "city": "Udaipur",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Syedi Luqmanji bin Sheikh Dawood bhaisaheb (QS)",
+    "Syedi Khanji Feer Saheb(QS)"
+   ],
+   "address": "Dargah Musafirkhana, 204, vazirpura, Luqmani Marg, Bohrawadi, Old City, Bohrwadi, Udaipur, Rajasthan 313001",
+   "phone": "+91 29424 25607",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazaar%20e%20Luqmanji%20Udaipur%2C%20Dargah%20Musafirkhana%2C%20204%2C%20vazirpura%2C%20Luqmani%20Marg%2C%20Bohrawadi%2C%20Old%20City%2C%20Bohrwadi%2C%20Udaipur%2C%20Rajasthan%20313001",
+   "src": "https://zaereen.com/udaipur-mazaar/mazaar-e-luqmanji-udaipur"
+  },
+  {
+   "id": "ujjain-mazaar__mazar-e-najmi-ujjain",
+   "name": "Mazar E Najmi Ujjain",
+   "city": "Ujjain",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Syedna Ibrahim Vajihuddin(RA)",
+    "Syedna Hebatullah-il-Moayed-Fiddeen (RA)",
+    "Syedna Abdulqader Najmuddin (RA)",
+    "Syedi Dawood Bhaisaheb bin Syedi Abdulqadar Hakimuddin (Q.S)",
+    "Syedi Khan Bhaisaheb bin Syedna Vajihuddin(QS)",
+    "Syedi Qamruddin Bhaisaheb bin Syedna Moaiyad Fiddin (QS)",
+    "Syedi Hasanji Badshah Saheb (Q.S)"
+   ],
+   "address": "Qamari Marg, Kamri Marg, Ujjain, Madhya Pradesh 456006",
+   "phone": "+91 73425 70786",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20E%20Najmi%20Ujjain%2C%20Qamari%20Marg%2C%20Kamri%20Marg%2C%20Ujjain%2C%20Madhya%20Pradesh%20456006",
+   "src": "https://zaereen.com/ujjain-mazaar/mazar-e-najmi-ujjain"
+  },
+  {
+   "id": "umreth-mazaar__mazar-e-syedi-miyaji-bin-taj",
+   "name": "Mazar E Syedi Miyaji bin Taj",
+   "city": "Umreth",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Syedi Miyaji Bin Taj Saheb (Q.R.)"
+   ],
+   "address": "MAZAR SYEDI MIYAJI TAJ SAHEB  NR. BUS STAND UMRETH - 388220 GUJARAT",
+   "phone": "+91 26922 78872",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20E%20Syedi%20Miyaji%20bin%20Taj%2C%20MAZAR%20SYEDI%20MIYAJI%20TAJ%20SAHEB%20%20NR.%20BUS%20STAND%20UMRETH%20-%20388220%20GUJARAT",
+   "src": "https://zaereen.com/umreth-mazaar/mazar-e-syedi-miyaji-bin-taj"
+  },
+  {
+   "id": "vadodara-mazaar__mazar-e-musanji-taj-saheb",
+   "name": "Mazar E Musanji Taj Saheb",
+   "city": "Vadodara",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Syedi Musanji Bin Taj Saheb(QR)"
+   ],
+   "address": "Panigate Rd, Syedwada, Moghul Wada, Vadodara, Gujarat 390017",
+   "phone": "+91 26525 61649",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20E%20Musanji%20Taj%20Saheb%2C%20Panigate%20Rd%2C%20Syedwada%2C%20Moghul%20Wada%2C%20Vadodara%2C%20Gujarat%20390017",
+   "src": "https://zaereen.com/vadodara-mazaar/mazar-e-musanji-taj-saheb"
+  },
+  {
+   "id": "wankaner-mazaar__mazar-e-syedi-lukmanji-saheb",
+   "name": "Mazar E Syedi Lukmanji Saheb",
+   "city": "Wankaner",
+   "country": "India",
+   "kind": "mazaar",
+   "people": [
+    "Moulai Looqmanji Saheb (QS)"
+   ],
+   "address": "SYEDI LUKMANJI SAHEB MAZAR PROPERTY TRUST Mazar mubarak . Palace Road Nr .Statue WANKANER-363621.Dist .Morbi (GUJ)",
+   "phone": "+91 28282 21388",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20E%20Syedi%20Lukmanji%20Saheb%2C%20SYEDI%20LUKMANJI%20SAHEB%20MAZAR%20PROPERTY%20TRUST%20Mazar%20mubarak%20.%20Palace%20Road%20Nr%20.Statue%20WANKANER-363621.Dist%20.Morbi%20%28GUJ%29",
+   "src": "https://zaereen.com/wankaner-mazaar/mazar-e-syedi-lukmanji-saheb"
+  },
+  {
+   "id": "cairo-mazaar__faiz-e-haakimi",
+   "name": "Faiz e Haakimi",
+   "city": "Cairo",
+   "country": "Egypt",
+   "kind": "faiz",
+   "people": [],
+   "address": "48 Al Mansouria, El-Gamaleya, El Gamaliya, Cairo Governorate 4331535, Egypt",
+   "phone": "",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Faiz%20e%20Haakimi%2C%2048%20Al%20Mansouria%2C%20El-Gamaleya%2C%20El%20Gamaliya%2C%20Cairo%20Governorate%204331535%2C%20Egypt",
+   "src": "https://zaereen.com/cairo-mazaar/faiz-e-haakimi"
+  },
+  {
+   "id": "karbala-mazaar__faiz-e-husaini-karbala",
+   "name": "Faiz e Husaini Karbala",
+   "city": "Karbala",
+   "country": "Iraq",
+   "kind": "faiz",
+   "people": [],
+   "address": "Shaare Maulana Abbas, Karbala Moalla 56001, Iraq",
+   "phone": "",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Faiz%20e%20Husaini%20Karbala%2C%20Shaare%20Maulana%20Abbas%2C%20Karbala%20Moalla%2056001%2C%20Iraq",
+   "src": "https://zaereen.com/karbala-mazaar/faiz-e-husaini-karbala"
+  },
+  {
+   "id": "najaf-mazaar__faiz-e-husaini-badri",
+   "name": "Faiz-E-Husaini (Badri)",
+   "city": "Najaf",
+   "country": "Iraq",
+   "kind": "faiz",
+   "people": [],
+   "address": "X8W9+3M6, Najaf, Najaf Governorate 54001,Iraq",
+   "phone": "",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Faiz-E-Husaini%20%28Badri%29%2C%20X8W9%2B3M6%2C%20Najaf%2C%20Najaf%20Governorate%2054001%2CIraq",
+   "src": "https://zaereen.com/najaf-mazaar/faiz-e-husaini-badri"
+  },
+  {
+   "id": "najaf-mazaar__faiz-e-husaini-burhani",
+   "name": "Faiz-E-Husaini (Burhani)",
+   "city": "Najaf",
+   "country": "Iraq",
+   "kind": "faiz",
+   "people": [],
+   "address": "Shrine of Imam Ali",
+   "phone": "",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Faiz-E-Husaini%20%28Burhani%29%2C%20Shrine%20of%20Imam%20Ali",
+   "src": "https://zaereen.com/najaf-mazaar/faiz-e-husaini-burhani"
+  },
+  {
+   "id": "najaf-mazaar__faiz-e-husaini-saifee",
+   "name": "Faiz-E-Husaini ( Saifee )",
+   "city": "Najaf",
+   "country": "Iraq",
+   "kind": "faiz",
+   "people": [],
+   "address": "X8WC+275 شارع بنات حسن, Najaf, Najaf Governorate 54001, Iraq",
+   "phone": "",
+   "maps": "https://www.google.com/maps/search/?api=1&query=Faiz-E-Husaini%20%28%20Saifee%20%29%2C%20X8WC%2B275%20%D8%B4%D8%A7%D8%B1%D8%B9%20%D8%A8%D9%86%D8%A7%D8%AA%20%D8%AD%D8%B3%D9%86%2C%20Najaf%2C%20Najaf%20Governorate%2054001%2C%20Iraq",
+   "src": "https://zaereen.com/najaf-mazaar/faiz-e-husaini-saifee"
+  }
+ ],
+ "dais": [
+  {
+   "no": 1,
+   "name": "Zoeb bin Moosa al-Waade'ee",
+   "period": "1138 –1151 (530 – 546)",
+   "rest": "Huth (exact site unknown)",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 2,
+   "name": "Ibrahim bin Husain al-Haamedi",
+   "period": "1151–1162 (546–557)",
+   "rest": "Ghayl bani-Haamid",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 3,
+   "name": "Hatim Mohyi'uddin bin Ibrahim al-Haamedi",
+   "period": "1162–1199 (557–596)",
+   "rest": "Al-Hutaib ul-Mubarak",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 4,
+   "name": "Ali Shamsuddin bin Hatim al-Haamedi",
+   "period": "1199–1209 (596–605)",
+   "rest": "Sana'a (exact site unknown)",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 5,
+   "name": "Ali bin Maula Muhammad bin il-Waleed",
+   "period": "1209–1215 (605–612)",
+   "rest": "Al-Aghmur (Haraaz) (exact site unknown)",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 6,
+   "name": "Ali bin Hanzala al-Waade'ee",
+   "period": "1215–1229 (612–626)",
+   "rest": "Hamdaan (exact site unknown)",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 7,
+   "name": "Ahmed bin Mubarak Al Walid",
+   "period": "1229–1230 (626–627)",
+   "rest": "Sana'a (exact site unknown)",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 8,
+   "name": "Husain bin Ali bin Maula Mohammed bin il-Waleed",
+   "period": "1230–1268 (627–667)",
+   "rest": "Sana'a (exact site unknown)",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 9,
+   "name": "Ali bin Husain",
+   "period": "1268–1284 (667–682)",
+   "rest": "Sana'a (exact site unknown)",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 10,
+   "name": "Ali bin Syedi Husain bin Ali bin Hanzala",
+   "period": "1284–1287 (682–686)",
+   "rest": "Sana'a (exact site unknown)",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 11,
+   "name": "Ibrahim bin Husain Al Walid",
+   "period": "1287–1328 (686–728)",
+   "rest": "Hisne-Af'eda, Hafat Idris, Sana'a Governorate",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 12,
+   "name": "Mohammed bin Hatim bin Syedna Husain Al Walid",
+   "period": "1328–1329 (728–729)",
+   "rest": "Hisne-Af'eda, Hafat Idris, Sana'a Governorate",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 13,
+   "name": "Ali Shamsuddin I bin Ibrahim",
+   "period": "1329–1345 (729–746)",
+   "rest": "Hisne-Af'eda, Hafat Idris, Sana'a Governorate",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 14,
+   "name": "Abdul-Muttalib Najmuddin bin Mohammed",
+   "period": "1345–1354 (746–755)",
+   "rest": "Zimarmar Fort",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 15,
+   "name": "Abbas bin Muhammad",
+   "period": "1354–1378 (755–779)",
+   "rest": "Hisne-Af'eda, Hafat Idris, Sana'a Governorate",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 16,
+   "name": "Abdullah Fakhruddin bin Ali bin Syedna Mohammed",
+   "period": "1378–1407 (779–809)",
+   "rest": "Zimarmar Fort",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 17,
+   "name": "Hasan Badruddin I bin Abdullah Fakhruddin",
+   "period": "1407–1418 (809–821)",
+   "rest": "Zimarmar Fort",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 18,
+   "name": "Ali Shamsuddin II bin Abdullah Fakhruddin",
+   "period": "1418–1428 (821–832)",
+   "rest": "Al Shariqa",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 19,
+   "name": "Idris Imaduddin bin Hasan Badruddin",
+   "period": "1429–1467 (832–872)",
+   "rest": "Shibaam",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 20,
+   "name": "Hasan Badruddin II bin Syedna Idris Imaduddin",
+   "period": "1467–1512 (872–918)",
+   "rest": "Masaar",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 21,
+   "name": "Husain Husamuddin bin Syedna Idris Imaduddin",
+   "period": "1512–1527 (918–933)",
+   "rest": "Masaar",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 22,
+   "name": "Ali Shamsuddin III bin Syedna Husain Husamuddin",
+   "period": "1527–1527 (933–933)",
+   "rest": "Masaar",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 23,
+   "name": "Syedna Mohammed Izzuddin I",
+   "period": "1527–1539 (933–946)",
+   "rest": "Zabid",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 24,
+   "name": "Yusuf Najmuddin I bin Sulaiman",
+   "period": "1539–1567 (946–974)",
+   "rest": "Taibah",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 25,
+   "name": "Jalal Shamshuddin bin Hasan",
+   "period": "1567–1568 (974–975)",
+   "rest": "Ahmedabad",
+   "mz": "",
+   "yemen": false
+  },
+  {
+   "no": 26,
+   "name": "Dawood Burhanuddin bin Ajabshah",
+   "period": "1568–1589 (975–997)",
+   "rest": "Ahmedabad",
+   "mz": "",
+   "yemen": false
+  },
+  {
+   "no": 27,
+   "name": "Dawood Burhanuddin bin QutubShah bin Khwaja bin Ali",
+   "period": "1589–1612 (999–1021)",
+   "rest": "Ahmedabad",
+   "mz": "",
+   "yemen": false
+  },
+  {
+   "no": 28,
+   "name": "Sheikh Adam Safiuddin bin TaiyibShah",
+   "period": "1612–1621 (1021–1030)",
+   "rest": "Ahmedabad",
+   "mz": "",
+   "yemen": false
+  },
+  {
+   "no": 29,
+   "name": "Abduttayyeb Zakiuddin I",
+   "period": "1622–1633",
+   "rest": "Ahmedabad",
+   "mz": "",
+   "yemen": false
+  },
+  {
+   "no": 30,
+   "name": "Ali Shamsuddin IV bin Moulai Hasan",
+   "period": "1633–1634",
+   "rest": "Hisne Afidah, Sana'a Governorate, Yemen",
+   "mz": "",
+   "yemen": true
+  },
+  {
+   "no": 31,
+   "name": "Qasim Khan Zainuddin bin Feerkhan",
+   "period": "1634–1646",
+   "rest": "Ahmedabad",
+   "mz": "",
+   "yemen": false
+  },
+  {
+   "no": 32,
+   "name": "Qutub Khan Qutbuddin Shaheed",
+   "period": "1646–1648",
+   "rest": "Ahmedabad",
+   "mz": "ahmedabad-mazaar__mazar-e-qutbi",
+   "yemen": false
+  },
+  {
+   "no": 33,
+   "name": "Feer Khan Shujauddin bin Syedi Ahmedji",
+   "period": "1648–1657",
+   "rest": "Ahmedabad",
+   "mz": "",
+   "yemen": false
+  },
+  {
+   "no": 34,
+   "name": "Ismail Badruddin I bin Syedi Moulai Raj Saheb",
+   "period": "1657–1676",
+   "rest": "Jamnagar",
+   "mz": "jamnagar-mazaar__mazar-e-badri-jamnagar",
+   "yemen": false
+  },
+  {
+   "no": 35,
+   "name": "Abduttayyeb Zakiuddin II bin Syedna Ismail Badruddin I",
+   "period": "1676–1692",
+   "rest": "Jamnagar",
+   "mz": "jamnagar-mazaar__mazar-e-badri-jamnagar",
+   "yemen": false
+  },
+  {
+   "no": 36,
+   "name": "Musa Kalimuddin bin Abduttayyeb Zakiuddin II",
+   "period": "1692–1711",
+   "rest": "Jamnagar",
+   "mz": "jamnagar-mazaar__mazar-e-badri-jamnagar",
+   "yemen": false
+  },
+  {
+   "no": 37,
+   "name": "Noor Mohammad Nooruddin bin Musa Kalimuddin",
+   "period": "1711–1719",
+   "rest": "Mandvi",
+   "mz": "mandvi-mazaar__mazaar-e-noorani-mandvi",
+   "yemen": false
+  },
+  {
+   "no": 38,
+   "name": "Ismail Badruddin II bin Syedi Sheikh Aadam",
+   "period": "1719–1738",
+   "rest": "Jamnagar",
+   "mz": "jamnagar-mazaar__mazar-e-badri-jamnagar",
+   "yemen": false
+  },
+  {
+   "no": 39,
+   "name": "Ibrahim Wajiuddin bin Syedi Abdul Qadir",
+   "period": "1738–1756",
+   "rest": "Ujjain",
+   "mz": "ujjain-mazaar__mazar-e-najmi-ujjain",
+   "yemen": false
+  },
+  {
+   "no": 40,
+   "name": "Hebatullahil Moaiyadfiddeen bin Syedna Ibrahim Wajiuddin",
+   "period": "1756–1780",
+   "rest": "Ujjain",
+   "mz": "ujjain-mazaar__mazar-e-najmi-ujjain",
+   "yemen": false
+  },
+  {
+   "no": 41,
+   "name": "Abduttayyeb Zakiuddin III bin Syedna Badruddin",
+   "period": "1780–1787",
+   "rest": "Burhanpur",
+   "mz": "burhanpur-mazaar__dargah-e-hakimi",
+   "yemen": false
+  },
+  {
+   "no": 42,
+   "name": "Yusuf Najmuddin II bin Syedna Abduttayyeb Zakiuddin III",
+   "period": "1787–1799",
+   "rest": "Surat",
+   "mz": "surat-mazaar__mazar-e-saifee",
+   "yemen": false
+  },
+  {
+   "no": 43,
+   "name": "Abde Ali Saifuddin bin Syedna Abduttayyeb Zakiuddin III",
+   "period": "1799–1817",
+   "rest": "Surat",
+   "mz": "surat-mazaar__mazar-e-saifee",
+   "yemen": false
+  },
+  {
+   "no": 44,
+   "name": "Mohammed Ezzuddin bin Syedi Jivanjee",
+   "period": "1817–1821",
+   "rest": "Surat",
+   "mz": "surat-mazaar__mazar-e-saifee",
+   "yemen": false
+  },
+  {
+   "no": 45,
+   "name": "Tayyeb Zainuddin bin Syedi Jivanjee",
+   "period": "1821–1836",
+   "rest": "Surat",
+   "mz": "surat-mazaar__mazar-e-saifee",
+   "yemen": false
+  },
+  {
+   "no": 46,
+   "name": "Mohammed Badruddin bin Syedna Abde Ali Saifuddin",
+   "period": "1836–1840",
+   "rest": "Surat",
+   "mz": "surat-mazaar__mazar-e-saifee",
+   "yemen": false
+  },
+  {
+   "no": 47,
+   "name": "Abdul Qadir Najmuddin bin Syedna Tayyeb Zainuddin",
+   "period": "1840–1885",
+   "rest": "Ujjain",
+   "mz": "ujjain-mazaar__mazar-e-najmi-ujjain",
+   "yemen": false
+  },
+  {
+   "no": 48,
+   "name": "Abdul Husain Husamuddin bin Syedna Tayyeb Zainuddin",
+   "period": "1885–1891",
+   "rest": "Ahmedabad",
+   "mz": "",
+   "yemen": false
+  },
+  {
+   "no": 49,
+   "name": "Mohammed Burhanuddin I bin Syedna Abdul Qadir Najmuddin",
+   "period": "1891–1906",
+   "rest": "Surat",
+   "mz": "surat-mazaar__mazar-e-saifee",
+   "yemen": false
+  },
+  {
+   "no": 50,
+   "name": "Abdullah Badruddin bin Syedna Abdul Husain Husamuddin",
+   "period": "1906–1915",
+   "rest": "Surat",
+   "mz": "surat-mazaar__mazar-e-saifee",
+   "yemen": false
+  },
+  {
+   "no": 51,
+   "name": "Taher Saifuddin bin Syedna Mohammed Burhanuddin I",
+   "period": "1915–1965",
+   "rest": "Mumbai",
+   "mz": "mumbai-mazaar__raudat-tahera-mumbai",
+   "yemen": false
+  },
+  {
+   "no": 52,
+   "name": "Mohammed Burhanuddin II bin Syedna Taher Saifuddin",
+   "period": "1965–2014",
+   "rest": "Mumbai",
+   "mz": "mumbai-mazaar__raudat-tahera-mumbai",
+   "yemen": false
+  }
+ ]
+}

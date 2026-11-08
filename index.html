@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=22">
-<script src="theme-init.js?v=22"></script>
+<link rel="stylesheet" href="themes.css?v=23">
+<script src="theme-init.js?v=23"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -119,7 +119,6 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 </head>
 <body>
 <header class="top">
-  <div class="lang" id="langTop"></div>
   <div class="hdate" id="tHijri">…</div>
   <div class="hdate-ar ar" id="tHijriAr" dir="rtl"></div>
   <div class="gdate" id="tGreg"></div>
@@ -179,6 +178,11 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 
   <!-- DUA -->
   <section class="view" id="v-dua">
+    <a class="card dua-item" href="ziyarat.html">
+      <div class="dua-ic">🕌</div>
+      <div style="flex:1"><b data-i18n="zH"></b><div class="muted" data-i18n="zDesc"></div></div>
+      <div class="dua-go">›</div>
+    </a>
     <h3 class="sec" data-i18n="secDuas"></h3>
     <a class="card dua-item" href="dua/">
       <div class="dua-ic">🤲</div>
@@ -306,8 +310,8 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=22"></script>
-<script src="i18n.js?v=22"></script>
+<script src="hijri.js?v=23"></script>
+<script src="i18n.js?v=23"></script>
 <script>
 "use strict";
 
@@ -320,8 +324,8 @@ const store = { get(k, d) { try { const v = localStorage.getItem(k); return v ? 
 
 /* ---------- Language ---------- */
 const LANGS = ["en", "gu", "hi"];
-let lang = store.get("lang", "hi");
-if (!LANGS.includes(lang)) lang = "hi";
+let lang = store.get("lang", "en");
+if (!LANGS.includes(lang)) lang = "en";
 let L = I18N[lang];
 const t = (k, v = {}) => String(L[k] ?? I18N.en[k] ?? k).replace(/\{(\w+)\}/g, (_, x) => v[x] ?? "");
 
@@ -330,7 +334,6 @@ function applyStatic() {
   document.querySelectorAll("[data-i18n]").forEach(el => { el.innerHTML = t(el.dataset.i18n, { n: el.dataset.n }); });
   document.querySelectorAll("[data-i18n-ph]").forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
   const btns = cur => LANGS.map(k => `<button data-l="${k}" class="${k === cur ? "on" : ""}">${I18N[k]._label}</button>`).join("");
-  $("langTop").innerHTML = btns(lang);
   $("langSet").innerHTML = btns(lang);
 }
 function setLang(k) {
@@ -668,7 +671,7 @@ function renderAll() {
   if (curView === "up") renderUpcoming();
   if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD);
 }
-const APP_VERSION = "22 (2026-11-09)";
+const APP_VERSION = "23 (2026-11-09)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");

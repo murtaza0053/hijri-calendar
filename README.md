@@ -31,3 +31,10 @@ Dua e Kamil: audio plays and the PDF scrolls/highlights the current line (merged
 - Amal: "Rozi ma Barakat" (Hijri 2–7: Yaseen, Rahman, Waqiah, Hashr, Jumuah, Jinn) in the Dua tab + banner on those dates;
   "Tasbih of 7 days" = `dua/tasbeeh.html?m=week`. User's chart images in `dua/img/`, user's Mushaf PDFs in `dua/pdf/`.
 - Shared scripts/CSS are loaded with `?v=N` — bump N with the cache names so phones never mix old/new files.
+
+## Ziyarat — `ziyarat.html` + `ziyarat.json`
+40 mazaraat/ziyarat places (address, phone, who rests there) scraped from zaereen.com/mazaraat (Mumineen Travel
+Portal) on 2026-11-09, plus the Duat Mutlaqeen 1–52 and their resting places from Wikipedia
+(List_of_Dai_of_the_Dawoodi_Bohra; rows 29+ have a shifted column there — the resting place is in the next cell).
+Maps links are Google Maps searches of name + address (zaereen's own coordinates are rounded).
+Language: toggle only in Settings; first load defaults to English.
