@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <title>Hijri Calendar</title>
 <meta name="description" content="Misri (Fatimi) Hijri calendar with miqaats for Dawoodi Bohras — works offline.">
-<meta name="theme-color" content="#0f5132">
+<meta name="theme-color" content="#6b1824">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=44">
-<script src="theme-init.js?v=44"></script>
+<link rel="stylesheet" href="themes.css?v=45">
+<script src="theme-init.js?v=45"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -377,8 +377,8 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=44"></script>
-<script src="i18n.js?v=44"></script>
+<script src="hijri.js?v=45"></script>
+<script src="i18n.js?v=45"></script>
 <script>
 "use strict";
 
@@ -416,8 +416,8 @@ document.addEventListener("click", e => { const b = e.target.closest("[data-l]")
 /* ---------- Theme ---------- */
 const THEMES = { green: "#0f5132", maroon: "#7a1f2b", navy: "#1d3a6e", teal: "#0e6e6a", rose: "#f4b6ca", sky: "#a9d4f2", lavender: "#cbb9f0" };
 const MODES = ["auto", "light", "dark"];
-let theme = store.get("theme", "green"); if (!THEMES[theme]) theme = "green";
-let mode = store.get("mode", "auto"); if (!MODES.includes(mode)) mode = "auto";
+let theme = store.get("theme", "maroon"); if (!THEMES[theme]) theme = "maroon";
+let mode = store.get("mode", "light"); if (!MODES.includes(mode)) mode = "light";
 const darkMQ = matchMedia("(prefers-color-scheme: dark)");
 function applyTheme() {
   const r = document.documentElement;
@@ -778,7 +778,7 @@ function renderAll() {
   if (curView === "up") renderUpcoming();
   if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD);
 }
-const APP_V = 44, APP_VERSION = APP_V + " (2026-11-09)";
+const APP_V = 45, APP_VERSION = APP_V + " (2026-11-09)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");

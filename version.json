@@ -1,6 +1,19 @@
 {
- "v": 44,
+ "v": 45,
  "history": [
+  {
+   "v": 45,
+   "date": "2026-11-09",
+   "en": [
+    "The app now opens in the Maroon theme, light mode, by default (your own choice in Settings is kept)."
+   ],
+   "gu": [
+    "એપ હવે ડિફૉલ્ટ મરૂન થીમ, લાઇટ મોડમાં ખૂલે છે (સેટિંગ્સમાં તમારી પસંદ રહે છે)."
+   ],
+   "hi": [
+    "App ab default Maroon theme, light mode me khulti hai (Settings me aapki chuni hui pasand bani rehti hai)."
+   ]
+  },
   {
    "v": 44,
    "date": "2026-11-09",
