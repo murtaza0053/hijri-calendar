@@ -1,8 +1,8 @@
 {
- "v": 49,
+ "v": 50,
  "history": [
   {
-   "v": 49,
+   "v": 50,
    "date": "2026-11-09",
    "en": [
     "If location is not allowed, a '📍 Turn on location' button now appears at the top; it explains how to allow it."
