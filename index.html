@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=25">
-<script src="theme-init.js?v=25"></script>
+<link rel="stylesheet" href="themes.css?v=26">
+<script src="theme-init.js?v=26"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -343,8 +343,8 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=25"></script>
-<script src="i18n.js?v=25"></script>
+<script src="hijri.js?v=26"></script>
+<script src="i18n.js?v=26"></script>
 <script>
 "use strict";
 
@@ -370,7 +370,7 @@ function applyStatic() {
   $("langSet").innerHTML = btns(lang);
   $("numSet").innerHTML = [["en", "12"], ["ar", "١٢"]].map(([k, x]) => `<button data-num="${k}" class="${k === numStyle ? "on" : ""}">${x}</button>`).join("");
 }
-let numStyle = store.get("num", "en");
+let numStyle = store.get("num", "ar");
 const hNum = n => numStyle === "ar" ? arNum(n) : String(n);
 document.addEventListener("click", e => { const b = e.target.closest("[data-num]"); if (b) { numStyle = b.dataset.num; store.set("num", numStyle); applyStatic(); renderCal(); } });
 function setLang(k) {
@@ -729,7 +729,7 @@ function renderAll() {
   if (curView === "up") renderUpcoming();
   if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD);
 }
-const APP_V = 25, APP_VERSION = APP_V + " (2026-11-09)";
+const APP_V = 26, APP_VERSION = APP_V + " (2026-11-09)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");
