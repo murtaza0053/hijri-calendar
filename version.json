@@ -1,6 +1,19 @@
 {
- "v": 38,
+ "v": 39,
  "history": [
+  {
+   "v": 39,
+   "date": "2026-11-09",
+   "en": [
+    "Tasabeeh: removed the 'Own zikr' tab (Today's tasbih and Salawaat remain)."
+   ],
+   "gu": [
+    "તસાબીહ: 'પોતાનો ઝિક્ર' ટેબ કાઢી નાખ્યો (આજની તસ્બીહ અને સલવાત રહે છે)."
+   ],
+   "hi": [
+    "Tasabeeh: 'Own zikr' tab hata diya (Aaj ki tasbeeh aur Salawaat bache hain)."
+   ]
+  },
   {
    "v": 38,
    "date": "2026-11-09",
