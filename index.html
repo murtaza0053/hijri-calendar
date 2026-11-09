@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=32">
-<script src="theme-init.js?v=32"></script>
+<link rel="stylesheet" href="themes.css?v=33">
+<script src="theme-init.js?v=33"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -258,11 +258,6 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
       <div style="flex:1"><b data-i18n="weekH"></b><div class="muted" id="weekToday"></div></div>
       <div class="dua-go">›</div>
     </a>
-    <a class="card dua-item" href="dua/tasbeeh.html">
-      <div class="dua-ic">🔢</div>
-      <div style="flex:1"><b data-i18n="tasbeehH"></b><div class="muted" data-i18n="tasbeehDesc"></div></div>
-      <div class="dua-go">›</div>
-    </a>
 
     <h3 class="sec" data-i18n="secAmal"></h3>
     <div class="card">
@@ -371,8 +366,8 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=32"></script>
-<script src="i18n.js?v=32"></script>
+<script src="hijri.js?v=33"></script>
+<script src="i18n.js?v=33"></script>
 <script>
 "use strict";
 
@@ -772,7 +767,7 @@ function renderAll() {
   if (curView === "up") renderUpcoming();
   if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD);
 }
-const APP_V = 32, APP_VERSION = APP_V + " (2026-11-09)";
+const APP_V = 33, APP_VERSION = APP_V + " (2026-11-09)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");

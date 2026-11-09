@@ -1,6 +1,19 @@
 {
- "v": 32,
+ "v": 33,
  "history": [
+  {
+   "v": 33,
+   "date": "2026-11-09",
+   "en": [
+    "Removed the separate 'Tasbeeh counter' item from the Dua tab."
+   ],
+   "gu": [
+    "દુઆ ટેબમાંથી અલગ 'તસ્બીહ કાઉન્ટર' કાઢી નાખ્યું."
+   ],
+   "hi": [
+    "Dua tab se alag 'Tasbeeh counter' hata diya."
+   ]
+  },
   {
    "v": 32,
    "date": "2026-11-09",
