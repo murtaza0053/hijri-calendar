@@ -1,6 +1,19 @@
 {
- "v": 36,
+ "v": 37,
  "history": [
+  {
+   "v": 37,
+   "date": "2026-11-09",
+   "en": [
+    "Quran section now shows only the Quran (Khazain) and Surat al-Kahf. The Rozi amal surahs still open from the Amal list."
+   ],
+   "gu": [
+    "કુરાન વિભાગમાં હવે ફક્ત કુરાન (ખઝાઇન) અને સૂરત અલ-કહફ. રોઝી અમલની સૂરતો અમલની યાદીમાંથી ખુલે છે."
+   ],
+   "hi": [
+    "Quran section me ab sirf Quran (Khazain) aur Surat al-Kahf. Rozi amal ki surahs Amal list se khulti rahengi."
+   ]
+  },
   {
    "v": 36,
    "date": "2026-11-09",

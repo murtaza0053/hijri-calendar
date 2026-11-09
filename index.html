@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=36">
-<script src="theme-init.js?v=36"></script>
+<link rel="stylesheet" href="themes.css?v=37">
+<script src="theme-init.js?v=37"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -279,7 +279,6 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
       <div class="dua-go">›</div>
     </a>
     <div id="quranList"></div>
-    <p class="muted" style="padding:0 4px" data-i18n="duaNote"></p>
   </section>
 
   <!-- SETTINGS -->
@@ -367,8 +366,8 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=36"></script>
-<script src="i18n.js?v=36"></script>
+<script src="hijri.js?v=37"></script>
+<script src="i18n.js?v=37"></script>
 <script>
 "use strict";
 
@@ -655,7 +654,7 @@ const ROZI = [[2, 36, "Yaseen"], [3, 55, "ar-Rahman"], [4, 56, "al-Waqiah"], [5,
 const WEEK_TASBIH = ["Iyyaka Na'budu Wa Iyyaka Nasta'een", "Ya Ghafoor, Ya Raheem", "SubhanAllahi wal Hamdu Lillah", "Ya Rahman, Ya Raheem", "HasbunAllahu Wa Ni'mal Wakeel", "Ya Zal Jalali Wal Ikram", "Ya Hayyu, Ya Qayyum"];
 const surahName = n => `${t("surahPrefix")} ${(SURAHS.find(x => x[0] === n) || [0, 0, n])[2]}`;
 function renderDuaTab() {
-  $("quranList").innerHTML = SURAHS.map(([n, ic]) => `<a class="card dua-item" href="dua/quran.html?s=${n}"><div class="dua-ic ar">${ic}</div><div style="flex:1"><b>${surahName(n)}</b><div class="muted">${t("sDesc")}</div></div><div class="dua-go">›</div></a>`).join("");
+  $("quranList").innerHTML = SURAHS.filter(x => x[0] === 18).map(([n, ic]) => `<a class="card dua-item" href="dua/quran.html?s=${n}"><div class="dua-ic ar">${ic}</div><div style="flex:1"><b>${surahName(n)}</b><div class="muted">${t("sDesc")}</div></div><div class="dua-go">›</div></a>`).join("");
   $("roziList").innerHTML = ROZI.map(([d, n]) => `<a class="rz ${todayH.d === d ? "today" : ""}" href="dua/quran.html?s=${n}"><span class="d ar">${arNum(d)}</span><span class="n">${surahName(n)}</span>${todayH.d === d ? `<span class="tag">${t("today")}</span>` : ""}<span class="go">›</span></a>`).join("");
   $("weekToday").textContent = `${t("tToday")}: ${WEEK_TASBIH[H.dow(todayAJD)]} · 100×`;
 }
@@ -768,7 +767,7 @@ function renderAll() {
   if (curView === "up") renderUpcoming();
   if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD);
 }
-const APP_V = 36, APP_VERSION = APP_V + " (2026-11-09)";
+const APP_V = 37, APP_VERSION = APP_V + " (2026-11-09)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");
