@@ -12,8 +12,8 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="icon" href="../icons/icon-192.png">
-<link rel="stylesheet" href="../themes.css?v=37">
-<script src="../theme-init.js?v=37"></script>
+<link rel="stylesheet" href="../themes.css?v=38">
+<script src="../theme-init.js?v=38"></script>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
@@ -53,13 +53,16 @@ header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:
 <div class="sheet-bg" id="sbg"></div>
 <div class="sheet" id="sheet"></div>
 <script src="vendor/pdf.min.js"></script>
-<script src="../i18n.js?v=37"></script>
+<script src="../i18n.js?v=38"></script>
 <script>
 "use strict";
 // Large PDF reader: loads the file with HTTP range requests (no full download), renders only the
 // pages near the screen, and keeps the PDF's own hyperlinks working (index → page, and web links).
 const BOOKS = {
   zikre: { title: "Zikre Husain (AS) 1443", pdf: "books/zikre-husain-1443.pdf" },
+  // page images (no PDF): shown as-is, with a credit link to where they came from
+  azam: { title: "Tasbih ul Azam", images: ["books/tasbih-ul-azam/p1.png", "books/tasbih-ul-azam/p2.png", "books/tasbih-ul-azam/p3.png"], ratio: 1360 / 939,
+    src: "https://dawoodibohraapp.com/Duas/66%20tasbih%20ul%20azam.html", srcName: "dawoodibohraapp.com" },
   // Khazain ma'ani al-Quran al-Faiqa. Contents = targets of the PDF's own Juz index (page 1).
   // This file has Juz 1–25 and 30 only (26–29 are not in it).
   quran: { title: "Quran — Khazain (Juz 1–25, 30)", pdf: "books/quran-khazain-30-juz.pdf", label: "Juz", note: "bkQNote",
@@ -109,7 +112,7 @@ async function destToPage(dest) {
 }
 
 async function renderPage(n) {
-  if (rendered.has(n)) return;
+  if (B.images || rendered.has(n)) return;
   const box = els[n - 1], rec = { cancel: false };
   rendered.set(n, rec);
   const page = await pdf.getPage(n);
@@ -172,6 +175,20 @@ $("tocBtn").onclick = $("pg").onclick = openSheet;
 $("sheet").onclick = e => { const it = e.target.closest("[data-p]"); if (it) { closeSheet(); goto(+it.dataset.p, true); } };
 
 (async () => {
+  if (B.images) {
+    N = B.images.length;
+    B.images.forEach((src, i) => {
+      const d = document.createElement("div");
+      d.className = "pg"; d.style.aspectRatio = `1 / ${B.ratio}`;
+      d.innerHTML = `<img src="${src}" alt="${i + 1}" style="width:100%;height:100%;display:block" loading="${i < 2 ? "eager" : "lazy"}"><span class="no">${i + 1}</span>`;
+      els.push(d);
+    });
+    $("pages").replaceChildren(...els);
+    if (B.src) $("pages").insertAdjacentHTML("beforeend", `<p style="text-align:center;color:var(--muted);font-size:12px">${t("bkSrc")}: <a style="color:var(--brand)" href="${B.src}" target="_blank" rel="noopener">${esc(B.srcName)}</a></p>`);
+    $("tocBtn").style.display = "none";
+    const last = ls.get("book:" + id, 1); if (last > 1) goto(last, false);
+    update(); return;
+  }
   try {
     pdf = await pdfjsLib.getDocument({ url: B.pdf, rangeChunkSize: 262144, disableAutoFetch: true, disableStream: true }).promise;
   } catch (e) { $("msg").textContent = t("bkFail") + " (" + e.message + ")"; return; }
