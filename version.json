@@ -1,6 +1,19 @@
 {
- "v": 31,
+ "v": 32,
  "history": [
+  {
+   "v": 32,
+   "date": "2026-11-09",
+   "en": [
+    "New in Dua tab → Quran: Khazain ma'ani al-Quran PDF (Juz 1–25 and 30). Tap a Juz in the index page to jump there; ☰ lists every Juz."
+   ],
+   "gu": [
+    "દુઆ ટેબ → કુરાનમાં નવું: ખઝાઇન મઆની અલ-કુરાન PDF (જુઝ ૧–૨૫ અને ૩૦). ફેહરિસ્તમાં જુઝ પર ટેપ કરો; ☰ માં બધા જુઝ."
+   ],
+   "hi": [
+    "Dua tab → Quran me naya: Khazain ma'ani al-Quran PDF (Juz 1–25 aur 30). Fehrist me Juz pe tap karo; ☰ me saare Juz."
+   ]
+  },
   {
    "v": 31,
    "date": "2026-11-09",

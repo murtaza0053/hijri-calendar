@@ -12,8 +12,8 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="icon" href="../icons/icon-192.png">
-<link rel="stylesheet" href="../themes.css?v=31">
-<script src="../theme-init.js?v=31"></script>
+<link rel="stylesheet" href="../themes.css?v=32">
+<script src="../theme-init.js?v=32"></script>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
@@ -53,13 +53,18 @@ header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:
 <div class="sheet-bg" id="sbg"></div>
 <div class="sheet" id="sheet"></div>
 <script src="vendor/pdf.min.js"></script>
-<script src="../i18n.js?v=31"></script>
+<script src="../i18n.js?v=32"></script>
 <script>
 "use strict";
 // Large PDF reader: loads the file with HTTP range requests (no full download), renders only the
 // pages near the screen, and keeps the PDF's own hyperlinks working (index → page, and web links).
 const BOOKS = {
   zikre: { title: "Zikre Husain (AS) 1443", pdf: "books/zikre-husain-1443.pdf" },
+  // Khazain ma'ani al-Quran al-Faiqa. Contents = targets of the PDF's own Juz index (page 1).
+  // This file has Juz 1–25 and 30 only (26–29 are not in it).
+  quran: { title: "Quran — Khazain (Juz 1–25, 30)", pdf: "books/quran-khazain-30-juz.pdf", label: "Juz", note: "bkQNote",
+    toc: [[1, 9], [2, 30], [3, 50], [4, 70], [5, 90], [6, 112], [7, 132], [8, 152], [9, 172], [10, 192], [11, 217], [12, 237], [13, 257], [14, 277], [15, 297],
+          [16, 322], [17, 342], [18, 362], [19, 382], [20, 402], [21, 427], [22, 447], [23, 467], [24, 487], [25, 507], [30, 539]] },
 };
 pdfjsLib.GlobalWorkerOptions.workerSrc = "vendor/pdf.worker.min.js";
 const $ = id => document.getElementById(id);
@@ -157,7 +162,7 @@ function openSheet() {
   $("sheet").innerHTML = `<h3>${t("bkContents")}</h3>
     <div class="jump"><input id="jp" type="number" inputmode="numeric" min="1" max="${N}" placeholder="${t("bkPage")} (1–${N})"><button id="jgo">${t("bkGo")}</button></div>
     <div class="it" data-p="1"><b>${t("bkIndex")}</b><span>1</span></div>
-    ${outline.map(o => `<div class="it" data-p="${o.p}"><b>${esc(o.title)}</b><span>${o.p}</span></div>`).join("")}`;
+    ${B.note ? `<p style="color:var(--muted);font-size:12px;margin:6px">${esc(t(B.note))}</p>` : ""}${outline.map(o => `<div class="it" data-p="${o.p}"><b>${esc(o.title)}</b><span>${o.p}</span></div>`).join("")}`;
   $("sbg").style.display = "block"; requestAnimationFrame(() => $("sheet").classList.add("on"));
   $("jgo").onclick = () => { const p = +$("jp").value; if (p) { closeSheet(); goto(p, true); } };
 }
@@ -181,8 +186,11 @@ $("sheet").onclick = e => { const it = e.target.closest("[data-p]"); if (it) { c
     els.push(d); frag.append(d);
   }
   $("pages").replaceChildren(frag);
-  const ol = await pdf.getOutline().catch(() => null) || [];
-  for (const o of ol) { const p = await destToPage(o.dest).catch(() => null); if (p) outline.push({ title: o.title, p }); }
+  if (B.toc) outline = B.toc.map(([k, p]) => ({ title: `${B.label} ${k}`, p }));
+  else {
+    const ol = await pdf.getOutline().catch(() => null) || [];
+    for (const o of ol) { const p = await destToPage(o.dest).catch(() => null); if (p) outline.push({ title: o.title, p }); }
+  }
   const last = +new URLSearchParams(location.search).get("p") || ls.get("book:" + id, 1);
   if (last > 1) goto(last, false);
   update();
