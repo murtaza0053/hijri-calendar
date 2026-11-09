@@ -12,8 +12,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="icon" href="icons/icon-192.png">
-<link rel="stylesheet" href="themes.css?v=52">
-<script src="theme-init.js?v=52"></script>
+<link rel="stylesheet" href="themes.css?v=53">
+<script src="theme-init.js?v=53"></script>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
@@ -50,6 +50,10 @@ main{max-width:720px;margin:0 auto;padding:12px 12px calc(env(safe-area-inset-bo
 .note{color:var(--muted);font-size:11px;margin:14px 4px}
 .note a{color:var(--brand)}
 .hide{display:none}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px;align-items:center}
+.chips .lb{font-size:12px;font-weight:700;margin-right:2px}
+.chips span.c{min-width:30px;height:28px;padding:0 6px;border-radius:14px;background:var(--chip);display:grid;place-items:center;font-size:17px;line-height:1;font-family:"Geeza Pro","Noto Naskh Arabic","Traditional Arabic",serif}
+.city .mk{margin-right:4px}
 </style>
 </head>
 <body>
@@ -63,7 +67,7 @@ main{max-width:720px;margin:0 auto;padding:12px 12px calc(env(safe-area-inset-bo
   <div id="vd" class="hide"><div class="card" id="dl"></div></div>
   <p class="note" id="note"></p>
 </main>
-<script src="i18n.js?v=52"></script>
+<script src="i18n.js?v=53"></script>
 <script>
 "use strict";
 const $ = id => document.getElementById(id);
@@ -82,28 +86,29 @@ function render() {
   let html = "", last = "";
   D.mazaraat.forEach(m => {
     const dais = byMz[m.id] || [];
-    const people = m.people.length ? m.people : dais.map(d => `${d.no}${ord(d.no)} Dai — Syedna ${d.name}`);
-    const daiLine = dais.length ? `<div class="r" style="font-size:12px;margin-top:6px"><b>${t("zTabD")}:</b> ${dais.map(d => d.no).join(", ")}</div>` : "";
+    const people = m.people.length ? m.people : dais.map(d => `${arNum(d.no)} · Syedna ${d.name}`);
+    const daiLine = dais.length ? `<div class="chips"><span class="lb">${t("zTabD")}:</span>${dais.map(d => `<span class="c">${arNum(d.no)}</span>`).join("")}</div>` : "";
     const text = [m.name, m.city, m.address, ...people, ...dais.map(d => d.name)].join(" ");
     if (!hit(text)) return;
-    if (m.country !== last) { html += `<div class="grp">${esc(m.country)}</div>`; last = m.country; }
+    if (m.country !== last) { html += `<div class="grp">${FLAG[m.country] || ""} ${esc(m.country)}</div>`; last = m.country; }
     const tel = m.phone ? m.phone.replace(/[^\d+]/g, "") : "";
-    html += `<div class="card" id="${m.id}"><div class="city">${esc(m.city)}${m.kind === "faiz" ? `<span class="tag">${t("zFaiz")}</span>` : ""}</div>
+    html += `<div class="card" id="${m.id}"><div class="city"><span class="mk">${m.kind === "faiz" ? "🏠" : "🕌"}</span>${esc(m.city)}${m.kind === "faiz" ? `<span class="tag">${t("zFaiz")}</span>` : ""}</div>
       <h3>${esc(m.name)}</h3>
       ${people.length ? `<div class="r" style="font-size:12px;color:var(--muted);margin-top:4px">${t("zResting")}</div><ul class="ppl">${people.map(p => `<li>${esc(p)}</li>`).join("")}</ul>` : ""}
       ${daiLine}
       ${m.address ? `<div class="addr">📍 ${esc(m.address)}</div>` : ""}
       <div class="btns">${tel ? `<a class="call" href="tel:${tel}">📞 ${esc(m.phone)}</a>` : ""}<a href="${esc(m.maps)}" target="_blank" rel="noopener">🗺 ${t("zMap")}</a><a href="${esc(m.src)}" target="_blank" rel="noopener">🔗 ${t("zSrc")}</a></div></div>`;
   });
-  $("vm").innerHTML = html || `<p class="note">—</p>`;
+  $("vm").innerHTML = `<div class="legend"><span>🕌 ${t("zMzKey")}</span><span>🏠 ${t("zFaiz")}</span><span>${t("zNums")}</span></div>` + (html || `<p class="note">—</p>`);
   // Duat Mutlaqeen
-  const ARD = "٠١٢٣٤٥٦٧٨٩", arNum = n => String(n).replace(/\d/g, c => ARD[c]);
   const mark = d => d.current ? "⭐" : d.mz ? "🕌" : d.yemen ? "🇾🇪" : "";
   $("dl").innerHTML = `<div class="legend"><span>⭐ ${t("zCur")}</span><span>🕌 ${t("zHasMz")}</span><span>🇾🇪 ${t("zYemenKey")}</span></div>` +
     D.dais.filter(d => hit(`${d.no} ${d.name} ${d.rest}`)).map(d => `<div class="dai ${d.current ? "cur" : d.yemen ? "yem" : ""}"><span class="n">${arNum(d.no)}${mark(d) ? `<i>${mark(d)}</i>` : ""}</span><div><b>Syedna ${esc(d.name)}</b>
     <div class="r">${esc(d.period)}${d.current ? ` · <b>${t("zCur")}</b>` : ` · ${t("zRest")}: ${esc(d.rest)}`}${d.yemen ? ` <span class="tag">${t("zYemen")}</span>` : ""}</div>
     ${d.mz ? `<a href="#${d.mz}" data-goto="${d.mz}">→ ${t("zSeeMz")}</a>` : ""}</div></div>`).join("") || "—";
 }
+const ARD = "٠١٢٣٤٥٦٧٨٩", arNum = n => String(n).replace(/\d/g, c => ARD[c]);
+const FLAG = { India: "🇮🇳", Iraq: "🇮🇶", Egypt: "🇪🇬", Yemen: "🇾🇪" };
 const ord = n => (n % 100 >= 11 && n % 100 <= 13) ? "th" : ({ 1: "st", 2: "nd", 3: "rd" }[n % 10] || "th");
 function setTab(x) {
   tab = x; $("tM").classList.toggle("on", x === "m"); $("tD").classList.toggle("on", x === "d");
