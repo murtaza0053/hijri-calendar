@@ -1,6 +1,19 @@
 {
- "v": 34,
+ "v": 35,
  "history": [
+  {
+   "v": 35,
+   "date": "2026-11-09",
+   "en": [
+    "Rozi amal dates are now in Arabic numerals (٢ to ٧)."
+   ],
+   "gu": [
+    "રોઝી અમલની તારીખો હવે અરબી આંકડામાં (٢ થી ٧)."
+   ],
+   "hi": [
+    "Rozi amal ki tareekh ab Arabic number me (٢ se ٧)."
+   ]
+  },
   {
    "v": 34,
    "date": "2026-11-09",
