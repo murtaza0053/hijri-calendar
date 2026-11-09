@@ -1,6 +1,19 @@
 {
- "v": 40,
+ "v": 41,
  "history": [
+  {
+   "v": 41,
+   "date": "2026-11-09",
+   "en": [
+    "Removed the extra tasbeeh 'View chart' button from the Amal section (the chart is in Tasabeeh, top right)."
+   ],
+   "gu": [
+    "અમલ વિભાગમાંથી તસ્બીહનું વધારાનું 'ચાર્ટ જુઓ' બટન કાઢ્યું (ચાર્ટ તસાબીહમાં ઉપર જમણે છે)."
+   ],
+   "hi": [
+    "Amal section se tasbeeh ka extra 'View chart' button hataya (chart Tasabeeh me upar right me hai)."
+   ]
+  },
   {
    "v": 40,
    "date": "2026-11-09",
