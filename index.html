@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=23">
-<script src="theme-init.js?v=23"></script>
+<link rel="stylesheet" href="themes.css?v=24">
+<script src="theme-init.js?v=24"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -34,21 +34,44 @@ main{max-width:640px;margin:0 auto;padding:12px 12px 0}
 .monthbar .title b{display:block;font-size:17px}
 .monthbar .title span{font-size:12px;color:var(--muted)}
 .monthbar .title .ar{font-size:15px;color:var(--gold);display:block}
-table.cal{width:100%;border-collapse:separate;border-spacing:3px;table-layout:fixed}
-.cal th{font-size:11px;color:var(--muted);font-weight:600;padding:2px 0}
+table.cal{width:100%;border-collapse:separate;border-spacing:2px;table-layout:fixed}
+.cal th{font-size:11px;color:var(--muted);font-weight:700;padding:4px 0 6px;text-transform:uppercase;letter-spacing:.03em}
 .cal th.fri{color:var(--brand)}
-.cal td{height:58px;vertical-align:top;text-align:center;border-radius:10px;padding:4px 0 2px;position:relative;cursor:pointer;background:var(--bg)}
-.cal td.filler{background:transparent;color:var(--filler);cursor:default}
-.cal td.empty{background:transparent;cursor:default}
-.cal td .h{font-size:20px;line-height:1.1}
-.cal td .g{font-size:10px;color:var(--muted);white-space:nowrap;overflow:hidden}
-.cal td.filler .g{color:var(--filler)}
-.cal td.today{background:var(--today);color:var(--today-ink)}
-.cal td.today .g{color:var(--today-ink);opacity:.85}
-.cal td.sel:not(.today){outline:2px solid var(--brand)}
-.dot{display:block;margin:1px auto 0;height:12px;font-size:11px;line-height:12px}
-.dot.p1d{color:var(--gold)} .dot.p1n{color:var(--night)} .dot.p2{color:var(--brand-2)}
-.cal td.today .dot{color:var(--today-ink)}
+.cal td{height:54px;vertical-align:middle;text-align:center;border-radius:12px;padding:0;position:relative;cursor:pointer;background:transparent}
+.cal td.fri{background:color-mix(in srgb,var(--brand) 6%,transparent)}
+.cal td.filler,.cal td.empty{background:transparent;cursor:default}
+.cal td.filler>*{opacity:.35}
+.cal td .h{font-size:20px;font-weight:600;line-height:1}
+.cal td .h.ar{font-size:21px;font-weight:400}
+.cal td .g{position:absolute;top:3px;right:5px;font-size:9px;color:var(--muted);line-height:1;white-space:nowrap}
+.cal td .g b{font-weight:700;color:var(--brand)}
+.cal td.mq1{background:color-mix(in srgb,var(--gold) 22%,transparent)}
+.cal td.mq1n{background:color-mix(in srgb,var(--night) 16%,transparent)}
+.dot{position:absolute;left:0;right:0;bottom:4px;height:5px;display:flex;justify-content:center;gap:2px}
+.dot i{width:5px;height:5px;border-radius:50%;background:var(--brand-2)}
+.dot i.d{background:var(--gold)} .dot i.n{background:var(--night)}
+.cal td.today{background:var(--today);color:var(--today-ink);box-shadow:0 2px 8px color-mix(in srgb,var(--today) 40%,transparent)}
+.cal td.today .g,.cal td.today .g b{color:var(--today-ink);opacity:.85}
+.cal td.today .dot i{background:var(--today-ink)}
+.cal td.filler.today{background:transparent;box-shadow:none;color:var(--brand)}
+.cal td.filler.today .g{color:var(--muted)}
+.cal td.sel:not(.today){outline:2px solid var(--brand);outline-offset:-2px}
+.key{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:8px}
+.key .s{display:inline-grid;place-items:center;width:30px;height:26px;border-radius:7px;position:relative;font-size:14px;font-weight:600;color:var(--ink);vertical-align:middle;margin-right:4px;border:1px solid var(--line)}
+.key .s small{position:absolute;top:1px;right:2px;font-size:7px;color:var(--muted);font-weight:400}
+.key .ksw{display:inline-block;width:12px;height:12px;border-radius:4px;vertical-align:-2px;margin-right:4px}
+.mlist{margin-top:4px}
+.mrow{display:flex;gap:10px;align-items:center;padding:8px 4px;border-top:1px solid var(--line);cursor:pointer}
+.mrow:first-child{border-top:0}
+.mrow .dd{flex:0 0 46px;text-align:center;border-radius:10px;padding:4px 0;background:var(--chip)}
+.mrow .dd b{display:block;font-size:17px;line-height:1.1}
+.mrow .dd span{font-size:10px;color:var(--muted)}
+.mrow.p1 .dd{background:color-mix(in srgb,var(--gold) 25%,transparent)}
+.mrow.p1n .dd{background:color-mix(in srgb,var(--night) 18%,transparent)}
+.mrow.past{opacity:.55}
+.mrow .tt{flex:1;min-width:0;font-size:14px}
+.mrow .tt div+div{margin-top:2px}
+.mrow .tt .sub{font-size:11px;color:var(--muted)}
 .legend{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:6px;justify-content:center}
 h3{margin:4px 0 8px;font-size:15px}
 .mq{padding:8px 0;border-top:1px solid var(--line)}
@@ -136,9 +159,10 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
         <button id="next" aria-label="Next month">›</button>
       </div>
       <table class="cal" id="cal"></table>
-      <div class="legend"><span><span style="color:var(--gold)">☀</span> <span data-i18n="legendDay"></span></span><span><span style="color:var(--night)">☾</span> <span data-i18n="legendNight"></span></span><span><span style="color:var(--brand-2)">●</span> <span data-i18n="legendOther"></span></span></div>
+      <div class="key" id="calKey"></div>
       <div class="row" style="justify-content:center;margin-top:10px"><button class="btn ghost" id="goToday" data-i18n="today"></button></div>
     </div>
+    <div class="card" id="monthMq"></div>
     <div class="card" id="todayMq"></div>
     <div class="card">
       <h3><span data-i18n="timesH"></span> <span class="tag" id="locName"></span></h3>
@@ -248,6 +272,8 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
     <div class="card">
       <h3 data-i18n="langH"></h3>
       <div class="langset" id="langSet"></div>
+      <h3 style="margin-top:14px" data-i18n="numH"></h3>
+      <div class="langset" id="numSet"></div>
     </div>
     <div class="card">
       <h3 data-i18n="themeH"></h3>
@@ -310,8 +336,8 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=23"></script>
-<script src="i18n.js?v=23"></script>
+<script src="hijri.js?v=24"></script>
+<script src="i18n.js?v=24"></script>
 <script>
 "use strict";
 
@@ -335,7 +361,11 @@ function applyStatic() {
   document.querySelectorAll("[data-i18n-ph]").forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
   const btns = cur => LANGS.map(k => `<button data-l="${k}" class="${k === cur ? "on" : ""}">${I18N[k]._label}</button>`).join("");
   $("langSet").innerHTML = btns(lang);
+  $("numSet").innerHTML = [["en", "12"], ["ar", "١٢"]].map(([k, x]) => `<button data-num="${k}" class="${k === numStyle ? "on" : ""}">${x}</button>`).join("");
 }
+let numStyle = store.get("num", "en");
+const hNum = n => numStyle === "ar" ? arNum(n) : String(n);
+document.addEventListener("click", e => { const b = e.target.closest("[data-num]"); if (b) { numStyle = b.dataset.num; store.set("num", numStyle); applyStatic(); renderCal(); } });
 function setLang(k) {
   lang = k; L = I18N[k]; store.set("lang", k);
   applyStatic(); applyTheme(); renderAll();
@@ -437,20 +467,40 @@ function renderCal() {
   cells.forEach((c, i) => {
     if (i % 7 === 0) html += "<tr>";
     const h = H.fromAJD(c.ajd), g = H.ajdToG(c.ajd);
-    let gl = String(g.d);
-    if (!c.filler && (h.d === 1 || g.d === 1)) gl += " " + L.gShort[g.m];
+    const gl = (h.d === 1 || g.d === 1) && !c.filler ? `<b>${L.gShort[g.m]}</b> ${g.d}` : String(g.d);
     let cls = c.filler ? "filler" : "";
+    if (i % 7 === 5) cls += " fri";
     if (c.ajd === todayAJD) cls += " today";
     if (c.ajd === selAJD) cls += " sel";
     let dot = "";
     if (!c.filler) {
-      const q = miqaatsFor(h.y, h.m, h.d)[0];
-      if (q) dot = q.priority === 1 ? (q.phase === "night" ? '<i class="dot p1n">☾</i>' : '<i class="dot p1d">☀</i>') : '<i class="dot p2">●</i>';
+      const qs = miqaatsFor(h.y, h.m, h.d);
+      const top = qs[0];
+      if (top && top.priority === 1) cls += top.phase === "night" ? " mq1n" : " mq1";
+      if (qs.length) dot = `<span class="dot">${qs.slice(0, 3).map(q => `<i class="${q.priority === 1 ? (q.phase === "night" ? "n" : "d") : ""}"></i>`).join("")}</span>`;
     }
-    html += `<td class="${cls}" data-a="${c.ajd}"><div class="h ar">${arNum(h.d)}</div><div class="g">${gl}</div>${dot || '<i class="dot"></i>'}</td>`;
+    html += `<td class="${cls}" data-a="${c.ajd}"><span class="g">${gl}</span><div class="h${numStyle === "ar" ? " ar" : ""}">${hNum(h.d)}</div>${dot}</td>`;
     if (i % 7 === 6) html += "</tr>";
   });
   $("cal").innerHTML = html + "</tbody>";
+  $("calKey").innerHTML = `<span><span class="s">${hNum(12)}<small>3</small></span>${t("keyNums")}</span>
+    <span><span class="ksw" style="background:color-mix(in srgb,var(--gold) 35%,transparent)"></span>${t("legendDay")}</span>
+    <span><span class="ksw" style="background:color-mix(in srgb,var(--night) 28%,transparent)"></span>${t("legendNight")}</span>
+    <span><span class="ksw" style="width:6px;height:6px;border-radius:50%;background:var(--brand-2);vertical-align:1px"></span>${t("legendOther")}</span>`;
+  renderMonthMq();
+}
+
+function renderMonthMq() {
+  const { y, m } = view, first = H.toAJD(y, m, 1);
+  let rows = "";
+  for (let d = 1; d <= H.daysInMonth(y, m); d++) {
+    const qs = miqaatsFor(y, m, d); if (!qs.length) continue;
+    const a = first + d - 1, g = H.ajdToG(a), top = qs[0];
+    const cls = (top.priority === 1 ? (top.phase === "night" ? "p1n" : "p1") : "") + (a < todayAJD ? " past" : "");
+    rows += `<div class="mrow ${cls}" data-a="${a}"><div class="dd"><b>${hNum(d)}</b><span>${g.d} ${L.gShort[g.m]}</span></div>
+      <div class="tt">${qs.map(q => `<div>${icon(q)}${esc(q.title)}${nightTag(q)}</div>`).join("")}<div class="sub">${wd(a)}</div></div></div>`;
+  }
+  $("monthMq").innerHTML = `<h3>${t("monthMq", { m: L.hijriMonths[m] })}</h3><div class="mlist">${rows || `<p class="muted">${t("noMq")}</p>`}</div>`;
 }
 
 const icon = q => q.priority === 1 ? (q.phase === "night" ? "☾ " : "☀ ") : "";
@@ -631,6 +681,7 @@ $("goToday").onclick = () => { view = { y: todayH.y, m: todayH.m }; selAJD = nul
 $("cal").onclick = e => { const td = e.target.closest("td[data-a]"); if (td && !td.classList.contains("filler")) openDay(+td.dataset.a); };
 $("upList").onclick = e => { const r = e.target.closest("[data-a]"); if (r) { const a = +r.dataset.a, h = H.fromAJD(a); view = { y: h.y, m: h.m }; switchView("cal"); openDay(a); } };
 $("sheetBg").onclick = closeSheet;
+$("monthMq").onclick = e => { const r = e.target.closest("[data-a]"); if (r) openDay(+r.dataset.a); };
 $("toRem").onclick = () => switchView("set");
 $("upFilter").onchange = $("upRange").onchange = renderUpcoming;
 document.querySelectorAll("nav.tabs button").forEach(b => b.onclick = () => switchView(b.dataset.v));
@@ -671,7 +722,7 @@ function renderAll() {
   if (curView === "up") renderUpcoming();
   if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD);
 }
-const APP_VERSION = "23 (2026-11-09)";
+const APP_VERSION = "24 (2026-11-09)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");
