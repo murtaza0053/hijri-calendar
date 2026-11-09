@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=43">
-<script src="theme-init.js?v=43"></script>
+<link rel="stylesheet" href="themes.css?v=44">
+<script src="theme-init.js?v=44"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -119,9 +119,9 @@ nav.tabs button.on{color:var(--brand);font-weight:700}
 .ashara{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:10px;padding:10px 14px}
 .ashara .l{display:contents}
 .ashara .t2{grid-row:1;grid-column:1;font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ashara .t3{grid-row:2;grid-column:1/-1;font-size:11px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ashara .cd{grid-row:1;grid-column:2;font-size:17px;font-weight:700;color:var(--brand);font-variant-numeric:tabular-nums;white-space:nowrap}
-.ashara .cd small{font-size:11px;font-weight:600;color:var(--muted);margin-left:1px}
+.ashara .t3{grid-row:2;grid-column:1;font-size:11px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ashara .cd{grid-row:1/3;grid-column:2;align-self:center;font-size:15px;font-weight:700;color:var(--on-brand);background:var(--brand);border-radius:999px;padding:6px 12px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ashara .cd small{font-size:11px;font-weight:600;opacity:.8;margin-left:1px}
 .ashara .bar{grid-row:3;grid-column:1/-1;height:4px;border-radius:2px;background:var(--chip);margin-top:6px;overflow:hidden}
 .ashara .bar i{display:block;height:100%;background:var(--gold)}
 .upd{position:fixed;left:12px;right:12px;top:calc(env(safe-area-inset-top) + 10px);z-index:20;max-width:616px;margin:0 auto;background:var(--brand);color:var(--on-brand);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:10px;box-shadow:0 6px 24px rgba(0,0,0,.25);transform:translateY(-150%);transition:transform .3s ease}
@@ -377,8 +377,8 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=43"></script>
-<script src="i18n.js?v=43"></script>
+<script src="hijri.js?v=44"></script>
+<script src="i18n.js?v=44"></script>
 <script>
 "use strict";
 
@@ -778,7 +778,7 @@ function renderAll() {
   if (curView === "up") renderUpcoming();
   if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD);
 }
-const APP_V = 43, APP_VERSION = APP_V + " (2026-11-09)";
+const APP_V = 44, APP_VERSION = APP_V + " (2026-11-09)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");
