@@ -1,6 +1,19 @@
 {
- "v": 48,
+ "v": 49,
  "history": [
+  {
+   "v": 49,
+   "date": "2026-11-09",
+   "en": [
+    "If location is not allowed, a '📍 Turn on location' button now appears at the top; it explains how to allow it."
+   ],
+   "gu": [
+    "લોકેશનની મંજૂરી ન હોય તો ઉપર '📍 લોકેશન ચાલુ કરો' બટન આવે; કેવી રીતે ચાલુ કરવું તે બતાવે."
+   ],
+   "hi": [
+    "Location allow nahi hai to upar '📍 Location on karo' button aata hai; kaise allow karna hai wo batata hai."
+   ]
+  },
   {
    "v": 48,
    "date": "2026-11-09",
