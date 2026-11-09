@@ -12,7 +12,7 @@ globalThis.I18N = {
     ytAdd: "＋ YouTube link", ytPrompt: "Paste the YouTube link of the recitation (e.g. Shehzada Husain bhaisaheb):", ytPlay: "▶ YouTube", ytHide: "Hide video", ytRemove: "Remove link", ytBad: "That does not look like a YouTube link.",
     jawahirH: "Dua al-Jawahir", jawahirDesc: "Read along (PDF) — fazilat in Lisan ud-Dawat with the dua. No audio yet.",
     secDuas: "Duas", secQuran: "Quran", secAmal: "Amal", surahPrefix: "Surat", qPdf: "PDF",
-    roziH: "Rozi ma Barakat vaaste Amal", roziDesc: "Every Hijri month, dates ٢–٧: one surah a day.", roziExtra: "7th: salawat on Panjatan Paak (AS) and Moulana Abbas Alamdaar (AS) — as much as you can.", roziDay: "{n}", chart: "View chart",
+    roziH: "Rozi ma Barakat vaaste Amal", roziDesc: "Every Hijri month, dates ٢ to ٧: one surah a day.", roziExtra: "7th: salawat on Panjatan Paak (AS) and Moulana Abbas Alamdaar (AS) — as much as you can.", roziDay: "{n}", chart: "View chart",
     weekH: "Tasabeeh", weekDesc: "A different tasbih each weekday — 100 times.", tToday: "Today's tasbih", bRozi: "Rozi barakat amal — today: {s}",
     sYaseen: "Surat Yaseen", sKahf: "Surat al-Kahf", sDesc: "Recitation with every word highlighted — tap any ayat to listen from there.",
     tasbeehH: "Tasbeeh counter", tasbeehDesc: "Today's tasbih, salawaat or your own zikr — tap anywhere to count.",
