@@ -1,6 +1,19 @@
 {
- "v": 30,
+ "v": 31,
  "history": [
+  {
+   "v": 31,
+   "date": "2026-11-09",
+   "en": [
+    "New in Dua tab: Zikre Husain (AS) 1443 (5181 pages). Index links jump to the page, with a 'Back' button; audio links open in the browser. ☰ shows the contents and page jump; it remembers your last page."
+   ],
+   "gu": [
+    "દુઆ ટેબમાં નવું: ઝિક્રે હુસૈન (અ.સ.) ૧૪૪૩ (૫૧૮૧ પાના). ફેહરિસ્તની લિંકથી સીધું પાનું, 'પાછા' બટન; ઓડિયો લિંક બ્રાઉઝરમાં. ☰ માં અનુક્રમ અને પાના નંબર; છેલ્લું પાનું યાદ રહે."
+   ],
+   "hi": [
+    "Dua tab me naya: Zikre Husain (AS) 1443 (5181 pages). Fehrist ke link se seedha page, 'Back' button ke saath; audio links browser me khulte hain. ☰ me contents aur page number; aakhri page yaad rehta hai."
+   ]
+  },
   {
    "v": 30,
    "date": "2026-11-09",

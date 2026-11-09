@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Book</title>
+<meta name="theme-color" content="#0f5132">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Hijri Cal">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<link rel="icon" href="../icons/icon-192.png">
+<link rel="stylesheet" href="../themes.css?v=31">
+<script src="../theme-init.js?v=31"></script>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:4px;padding:calc(env(safe-area-inset-top) + 6px) 6px 6px;background:var(--hdr);color:var(--hdr-ink)}
+header a,header button{color:inherit;background:none;border:0;font:inherit;text-decoration:none;font-size:22px;min-width:40px;height:40px;display:grid;place-items:center;border-radius:10px}
+header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#pg{font-size:13px;font-weight:600;background:var(--hdr-chip);padding:0 10px;min-width:0}
+#pages{max-width:900px;margin:0 auto;padding:8px 6px 90px}
+.pg{position:relative;background:#fff;margin:0 auto 8px;box-shadow:0 1px 4px rgba(0,0,0,.15);width:100%}
+.pg canvas{position:absolute;inset:0;width:100%;height:100%}
+.pg .no{position:absolute;right:6px;bottom:4px;font-size:10px;color:#999}
+.pg a.lk{position:absolute;display:block;border-radius:3px}
+.pg a.lk:active{background:rgba(255,200,0,.35)}
+.pg a.lk.ext{background:rgba(31,120,180,.08)}
+#backJump{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 16px);transform:translateX(-50%);z-index:6;border:0;border-radius:22px;padding:10px 16px;font:inherit;font-weight:700;background:var(--brand);color:var(--on-brand);box-shadow:0 4px 14px rgba(0,0,0,.25);display:none}
+#msg{text-align:center;color:var(--muted);padding:40px 16px}
+.sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;z-index:9}
+.sheet{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-radius:18px 18px 0 0;padding:14px 14px calc(18px + env(safe-area-inset-bottom));max-height:75vh;overflow:auto;transform:translateY(100%);transition:transform .22s;z-index:10;max-width:640px;margin:0 auto}
+.sheet.on{transform:none}
+.sheet h3{margin:0 0 8px}
+.sheet .it{display:flex;justify-content:space-between;gap:10px;padding:11px 6px;border-top:1px solid var(--line);cursor:pointer}
+.sheet .it span{color:var(--muted);font-size:13px}
+.jump{display:flex;gap:8px;margin:4px 0 10px}
+.jump input{flex:1;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 10px}
+.jump button{border:0;border-radius:10px;padding:9px 14px;font:inherit;font-weight:700;background:var(--brand);color:var(--on-brand)}
+</style>
+</head>
+<body>
+<header>
+  <a href="../#dua" aria-label="Back">‹</a>
+  <b id="title"></b>
+  <button id="pg" aria-label="Contents"></button>
+  <button id="tocBtn" aria-label="Contents">☰</button>
+</header>
+<div id="pages"><p id="msg">Loading…</p></div>
+<button id="backJump"></button>
+<div class="sheet-bg" id="sbg"></div>
+<div class="sheet" id="sheet"></div>
+<script src="vendor/pdf.min.js"></script>
+<script src="../i18n.js?v=31"></script>
+<script>
+"use strict";
+// Large PDF reader: loads the file with HTTP range requests (no full download), renders only the
+// pages near the screen, and keeps the PDF's own hyperlinks working (index → page, and web links).
+const BOOKS = {
+  zikre: { title: "Zikre Husain (AS) 1443", pdf: "books/zikre-husain-1443.pdf" },
+};
+pdfjsLib.GlobalWorkerOptions.workerSrc = "vendor/pdf.worker.min.js";
+const $ = id => document.getElementById(id);
+const ls = { get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+             set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
+const L = I18N[ls.get("lang", "en")] || I18N.en;
+const t = (k, v = {}) => String(L[k] ?? I18N.en[k] ?? k).replace(/\{(\w+)\}/g, (_, x) => v[x] ?? "");
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const id = new URLSearchParams(location.search).get("b") || "zikre";
+const B = BOOKS[id] || BOOKS.zikre;
+document.title = B.title; $("title").textContent = B.title;
+
+let pdf, N = 0, ratio = 792 / 612, cur = 1, outline = [];
+const els = [], rendered = new Map(); // page → {task}
+const jumpStack = [];
+
+function pageAt() { // page whose box covers 30% of the viewport height
+  const y = innerHeight * 0.3;
+  let lo = 0, hi = N - 1;
+  while (lo < hi) { const m = (lo + hi + 1) >> 1; if (els[m].getBoundingClientRect().top <= y) lo = m; else hi = m - 1; }
+  return lo + 1;
+}
+function goto(p, push) {
+  p = Math.max(1, Math.min(N, p | 0));
+  if (push) { jumpStack.push(cur); showBack(); }
+  els[p - 1].scrollIntoView({ block: "start" });
+  scrollBy(0, -56);
+}
+function showBack() {
+  const b = $("backJump");
+  if (!jumpStack.length) { b.style.display = "none"; return; }
+  b.textContent = "↩ " + t("bkBack", { p: jumpStack[jumpStack.length - 1] });
+  b.style.display = "block";
+}
+$("backJump").onclick = () => { const p = jumpStack.pop(); showBack(); if (p) goto(p, false); };
+
+async function destToPage(dest) {
+  if (typeof dest === "string") dest = await pdf.getDestination(dest);
+  if (!Array.isArray(dest)) return null;
+  const ref = dest[0];
+  return (typeof ref === "object" ? await pdf.getPageIndex(ref) : ref) + 1;
+}
+
+async function renderPage(n) {
+  if (rendered.has(n)) return;
+  const box = els[n - 1], rec = { cancel: false };
+  rendered.set(n, rec);
+  const page = await pdf.getPage(n);
+  if (rec.cancel) return;
+  const w = box.clientWidth, base = page.getViewport({ scale: 1 });
+  const scale = w / base.width, dpr = Math.min(devicePixelRatio || 1, 3);
+  const vp = page.getViewport({ scale: scale * dpr });
+  const c = document.createElement("canvas");
+  c.width = Math.floor(vp.width); c.height = Math.floor(vp.height);
+  rec.task = page.render({ canvasContext: c.getContext("2d"), viewport: vp });
+  try { await rec.task.promise; } catch { return; }
+  if (rec.cancel) return;
+  box.querySelectorAll("canvas,a.lk").forEach(e => e.remove());
+  box.prepend(c);
+  // hyperlinks
+  const vp1 = page.getViewport({ scale });
+  for (const a of await page.getAnnotations()) {
+    if (a.subtype !== "Link" || rec.cancel) continue;
+    const [x1, y1, x2, y2] = vp1.convertToViewportRectangle(a.rect);
+    const el = document.createElement("a");
+    el.className = "lk";
+    Object.assign(el.style, { left: Math.min(x1, x2) + "px", top: Math.min(y1, y2) + "px", width: Math.abs(x2 - x1) + "px", height: Math.abs(y2 - y1) + "px" });
+    if (a.url) { el.href = a.url; el.target = "_blank"; el.rel = "noopener"; el.classList.add("ext"); }
+    else if (a.dest) { el.href = "#"; el.onclick = async e => { e.preventDefault(); const p = await destToPage(a.dest); if (p) goto(p, true); }; }
+    else continue;
+    box.append(el);
+  }
+}
+function unrender(n) {
+  const rec = rendered.get(n); if (!rec) return;
+  rec.cancel = true; try { rec.task && rec.task.cancel(); } catch {}
+  rendered.delete(n);
+  els[n - 1].querySelectorAll("canvas,a.lk").forEach(e => e.remove());
+}
+let raf = 0;
+function update() {
+  raf = 0;
+  cur = pageAt();
+  $("pg").textContent = `${cur} / ${N}`;
+  ls.set("book:" + id, cur);
+  const want = new Set();
+  for (let p = cur - 2; p <= cur + 3; p++) if (p >= 1 && p <= N) want.add(p);
+  for (const p of [...rendered.keys()]) if (!want.has(p)) unrender(p);
+  want.forEach(p => renderPage(p));
+}
+addEventListener("scroll", () => { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+addEventListener("resize", () => { [...rendered.keys()].forEach(unrender); update(); });
+
+function openSheet() {
+  $("sheet").innerHTML = `<h3>${t("bkContents")}</h3>
+    <div class="jump"><input id="jp" type="number" inputmode="numeric" min="1" max="${N}" placeholder="${t("bkPage")} (1–${N})"><button id="jgo">${t("bkGo")}</button></div>
+    <div class="it" data-p="1"><b>${t("bkIndex")}</b><span>1</span></div>
+    ${outline.map(o => `<div class="it" data-p="${o.p}"><b>${esc(o.title)}</b><span>${o.p}</span></div>`).join("")}`;
+  $("sbg").style.display = "block"; requestAnimationFrame(() => $("sheet").classList.add("on"));
+  $("jgo").onclick = () => { const p = +$("jp").value; if (p) { closeSheet(); goto(p, true); } };
+}
+function closeSheet() { $("sheet").classList.remove("on"); $("sbg").style.display = "none"; }
+$("sbg").onclick = closeSheet;
+$("tocBtn").onclick = $("pg").onclick = openSheet;
+$("sheet").onclick = e => { const it = e.target.closest("[data-p]"); if (it) { closeSheet(); goto(+it.dataset.p, true); } };
+
+(async () => {
+  try {
+    pdf = await pdfjsLib.getDocument({ url: B.pdf, rangeChunkSize: 262144, disableAutoFetch: true, disableStream: true }).promise;
+  } catch (e) { $("msg").textContent = t("bkFail") + " (" + e.message + ")"; return; }
+  N = pdf.numPages;
+  const p1 = await pdf.getPage(1), v = p1.getViewport({ scale: 1 });
+  ratio = v.height / v.width;
+  const frag = document.createDocumentFragment();
+  for (let i = 1; i <= N; i++) {
+    const d = document.createElement("div");
+    d.className = "pg"; d.style.aspectRatio = `1 / ${ratio}`;
+    d.innerHTML = `<span class="no">${i}</span>`;
+    els.push(d); frag.append(d);
+  }
+  $("pages").replaceChildren(frag);
+  const ol = await pdf.getOutline().catch(() => null) || [];
+  for (const o of ol) { const p = await destToPage(o.dest).catch(() => null); if (p) outline.push({ title: o.title, p }); }
+  const last = +new URLSearchParams(location.search).get("p") || ls.get("book:" + id, 1);
+  if (last > 1) goto(last, false);
+  update();
+})();
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+</script>
+</body>
+</html>
