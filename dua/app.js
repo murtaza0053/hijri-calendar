@@ -120,7 +120,7 @@ async function openMedia({ title, pdfBlob, audioBlob, key, fileMarks, frames, st
   audio.addEventListener('loadedmetadata', () => { if (last && last < audio.duration - 2) audio.currentTime = last; tick(true); }, { once: true });
   if (!audioBlob) return;
   setupMediaSession(title);
-  if (!state.marks.length) toast('Sync abhi nahi hua — ✎ dabao aur sync karo', 4000);
+  if (!state.marks.length) toast('Not synced yet — tap ✎ to sync', 4000);
 }
 
 /* ---------- PDF rendering (lazy) ---------- */
@@ -314,7 +314,7 @@ $('follow').onclick = () => { state.followPausedUntil = 0; tick(true); };
 /* ---------- taps on the PDF ---------- */
 pagesEl.addEventListener('click', (e) => {
   const del = e.target.closest('.tick span');
-  if (del) { pushHistory(); state.marks.splice(+del.dataset.i, 1); saveMarks(); toast('Mark hata diya'); return; }
+  if (del) { pushHistory(); state.marks.splice(+del.dataset.i, 1); saveMarks(); toast('Mark removed'); return; }
   const el = e.target.closest('.page'); if (!el) return;
   const r = el.getBoundingClientRect();
   const p = +el.dataset.n, y = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height));
@@ -328,7 +328,7 @@ pagesEl.addEventListener('click', (e) => {
   if (lt && now - lt.time < 400 && Math.abs(lt.x - e.clientX) < 40 && Math.abs(lt.y - e.clientY) < 40) {
     state.lastTap = null;
     const t = timeAt((p - 1) + y);
-    if (t == null) { toast('Pehle sync karo (✎)'); return; }
+    if (t == null) { toast('Sync first (✎)'); return; }
     audio.currentTime = t; state.followPausedUntil = 0; tick(true);
     toast(`Jump → ${fmt(t)}`);
   } else state.lastTap = { time: now, x: e.clientX, y: e.clientY };
@@ -355,18 +355,18 @@ $('speed').onchange = () => { audio.playbackRate = +$('speed').value; ls.set('sp
 audio.addEventListener('loadedmetadata', () => { audio.playbackRate = +$('speed').value; });
 function setEditing(on) {
   state.editing = on; document.body.classList.toggle('editing', on);
-  if (on) toast('Sync mode ON — jo line padhi ja rahi hai us pe tap karo', 3500);
+  if (on) toast('Sync mode ON — tap the line being recited', 3500);
 }
 $('syncBtn').onclick = () => setEditing(!state.editing);
 $('doneEdit').onclick = () => { setEditing(false); toast(`${state.marks.length} marks saved`); };
 $('undo').onclick = () => {
-  if (!state.history.length) return toast('Undo ke liye kuch nahi');
+  if (!state.history.length) return toast('Nothing to undo');
   state.marks = JSON.parse(state.history.pop()); saveMarks();
 };
 $('markNext').onclick = () => {
   const cur = posAt(audio.currentTime) ?? 0;
   const p = Math.floor(cur) + 2;
-  if (p > state.pageEls.length) return toast('Last page hai');
+  if (p > state.pageEls.length) return toast('This is the last page');
   addMark(audio.currentTime, p, 0); toast(`Page ${p} starts at ${fmt(audio.currentTime)}`);
 };
 document.addEventListener('keydown', (e) => {
@@ -390,7 +390,7 @@ $('filePick').onchange = async (e) => {
   const files = [...e.target.files]; e.target.value = '';
   let pdf = files.find(f => /pdf/i.test(f.type) || /\.pdf$/i.test(f.name));
   let aud = files.find(f => /^audio\//.test(f.type) || /\.(mp3|m4a|aac|wav|ogg|opus)$/i.test(f.name));
-  if (!pdf || !aud) return toast('Audio aur PDF dono ek saath select karo', 3500);
+  if (!pdf || !aud) return toast('Select the audio and the PDF together', 3500);
   const title = (pdf.name || 'Read Along').replace(/\.pdf$/i, '');
   const key = `picked:${pdf.name}:${pdf.size}|${aud.name}:${aud.size}`;
   await idbPut('current', { pdf, audio: aud, title, key });
@@ -409,7 +409,7 @@ $('syncPick').onchange = async (e) => {
   try { const j = JSON.parse(await f.text()); pushHistory(); state.marks = normalize(j.marks || j); saveMarks(); toast(`${state.marks.length} marks imported`); }
   catch { toast('Invalid sync.json'); }
 };
-$('clearSync').onclick = () => { if (confirm('Saare sync marks delete karein?')) { pushHistory(); state.marks = []; saveMarks(); } };
+$('clearSync').onclick = () => { if (confirm('Delete all sync marks?')) { pushHistory(); state.marks = []; saveMarks(); } };
 
 /* ---------- lock screen controls ---------- */
 function setupMediaSession(title) {
@@ -451,6 +451,6 @@ if ("serviceWorker" in navigator) {
     if (!DUA_ID && ls.get('source', 'bundled') === 'picked' && await loadPicked()) return;
     await loadBundled();
   } catch (err) {
-    status('Files nahi mili. media/ folder me audio + PDF daalo (media/config.json dekho), ya ⋮ → "Open audio + PDF from phone".\n\n' + err.message);
+    status('Files not found. Put the audio + PDF in the media/ folder (see media/config.json), or use ⋮ → "Open audio + PDF from phone".\n\n' + err.message);
   }
 })();

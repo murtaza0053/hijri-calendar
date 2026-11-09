@@ -12,8 +12,8 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="icon" href="../icons/icon-192.png">
-<link rel="stylesheet" href="../themes.css?v=26">
-<script src="../theme-init.js?v=26"></script>
+<link rel="stylesheet" href="../themes.css?v=27">
+<script src="../theme-init.js?v=27"></script>
 <style>
 @font-face{font-family:"QNaskh";src:url(fonts/NotoNaskhArabic-arabic.woff2) format("woff2");font-weight:400 700;font-display:swap}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
@@ -61,7 +61,7 @@ header b{flex:1;font-size:16px}
   <div class="hint" id="hint"></div>
 </div>
 <div id="foot"><button id="undo">−1</button><span id="total"></span><button id="reset"></button></div>
-<script src="../i18n.js?v=26"></script>
+<script src="../i18n.js?v=27"></script>
 <script>
 "use strict";
 const $ = id => document.getElementById(id);
@@ -70,13 +70,13 @@ const ls = { get(k, d) { try { const v = localStorage.getItem(k); return v == nu
 const L = I18N[ls.get("lang", "en")] || I18N.en;
 const t = (k, v = {}) => String(L[k] ?? I18N.en[k] ?? k).replace(/\{(\w+)\}/g, (_, x) => v[x] ?? "");
 const WEEK = [
-  { ar: "اِيَّاكَ نَعۡبُدُ وَاِيَّاكَ نَسۡتَعِيۡنُ", en: "Iyyaka Na'budu Wa Iyyaka Nasta'een", m: "Sirf Teri ibadat karte hain aur Tujh se madad maangte hain" },
-  { ar: "يَا غَفُوۡرُ يَا رَحِيۡمُ", en: "Ya Ghafoor, Ya Raheem", m: "Ae maaf karne wale, ae rehmat karne wale" },
-  { ar: "سُبۡحَانَ اللّٰهِ وَالۡحَمۡدُ لِلّٰهِ", en: "SubhanAllahi wal Hamdu Lillah", m: "Allah paak hai aur saari tareef Allah ke liye hai" },
-  { ar: "يَا رَحۡمٰنُ يَا رَحِيۡمُ", en: "Ya Rahman, Ya Raheem", m: "Ae bohot meherban, ae rehmat karne wale" },
-  { ar: "حَسۡبُنَا اللّٰهُ وَنِعۡمَ الۡوَكِيۡلُ", en: "HasbunAllahu Wa Ni'mal Wakeel", m: "Allah kaafi hai, woh behtareen kaam banane wala hai" },
-  { ar: "يَا ذَا الۡجَلَالِ وَالۡاِكۡرَامِ", en: "Ya Zal Jalali Wal Ikram", m: "Ae jalal aur izzat wale" },
-  { ar: "يَا حَيُّ يَا قَيُّوۡمُ", en: "Ya Hayyu, Ya Qayyum", m: "Ae hamesha zinda aur sab ko sambhalne wale" }];
+  { ar: "اِيَّاكَ نَعۡبُدُ وَاِيَّاكَ نَسۡتَعِيۡنُ", en: "Iyyaka Na'budu Wa Iyyaka Nasta'een", m: "You alone we worship and You alone we ask for help" },
+  { ar: "يَا غَفُوۡرُ يَا رَحِيۡمُ", en: "Ya Ghafoor, Ya Raheem", m: "O Most Forgiving, O Most Merciful" },
+  { ar: "سُبۡحَانَ اللّٰهِ وَالۡحَمۡدُ لِلّٰهِ", en: "SubhanAllahi wal Hamdu Lillah", m: "Glory be to Allah, and all praise is for Allah" },
+  { ar: "يَا رَحۡمٰنُ يَا رَحِيۡمُ", en: "Ya Rahman, Ya Raheem", m: "O Most Gracious, O Most Merciful" },
+  { ar: "حَسۡبُنَا اللّٰهُ وَنِعۡمَ الۡوَكِيۡلُ", en: "HasbunAllahu Wa Ni'mal Wakeel", m: "Allah is sufficient for us, and He is the best disposer of affairs" },
+  { ar: "يَا ذَا الۡجَلَالِ وَالۡاِكۡرَامِ", en: "Ya Zal Jalali Wal Ikram", m: "O Lord of Majesty and Honour" },
+  { ar: "يَا حَيُّ يَا قَيُّوۡمُ", en: "Ya Hayyu, Ya Qayyum", m: "O Ever-Living, O Sustainer of all" }];
 const wk = WEEK[new Date().getDay()];
 // salawaat text as printed in the Bohra Dua al-Jawahir (user's PDF)
 const PRESETS = {

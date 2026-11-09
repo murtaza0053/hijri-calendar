@@ -3,7 +3,7 @@ VERSION:2.0
 PRODID:-//murtaza0053//hijri-calendar//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:Miqaats (badi)
+X-WR-CALNAME:Miqaats (major)
 X-WR-CALDESC:Misri Hijri calendar miqaats (Dawoodi Bohra)
 X-WR-TIMEZONE:Asia/Kolkata
 REFRESH-INTERVAL;VALUE=DURATION:P7D
@@ -60,13 +60,13 @@ UID:1447-1-11-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20250706
 DTEND;VALUE=DATE:20250707
-SUMMARY:🌙 Raat: Suyum Imam Hussain (SA)
-DESCRIPTION:11 Moharram 1447H — Maghrib ke baad (raat)\n\n• Suyum Imam 
- Hussain (SA) — 2nd Imam\, Karbala\, Iraq.
+SUMMARY:🌙 Night: Suyum Imam Hussain (SA)
+DESCRIPTION:11 Moharram 1447H — night\, after Maghrib\n\n• Suyum Imam H
+ ussain (SA) — 2nd Imam\, Karbala\, Iraq.
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Suyum Imam Hussain (SA)
+DESCRIPTION:🌙 Night: Suyum Imam Hussain (SA)
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -557,13 +557,13 @@ UID:1447-6-29-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20251219
 DTEND;VALUE=DATE:20251220
-SUMMARY:🌙 Raat: Rajab al-Asab Pehli raat
-DESCRIPTION:29 Jumada II 1447H — Maghrib ke baad (raat)\n\n• Rajab al-A
- sab Pehli raat — Washeq
+SUMMARY:🌙 Night: Rajab al-Asab Pehli raat
+DESCRIPTION:29 Jumada II 1447H — night\, after Maghrib\n\n• Rajab al-As
+ ab Pehli raat — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Rajab al-Asab Pehli raat
+DESCRIPTION:🌙 Night: Rajab al-Asab Pehli raat
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -722,13 +722,13 @@ UID:1447-7-26-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20260114
 DTEND;VALUE=DATE:20260115
-SUMMARY:🌙 Raat: Shab-e-Meraaj
-DESCRIPTION:26 Rajab 1447H — Maghrib ke baad (raat)\n\n• Shab-e-Meraaj 
+SUMMARY:🌙 Night: Shab-e-Meraaj
+DESCRIPTION:26 Rajab 1447H — night\, after Maghrib\n\n• Shab-e-Meraaj 
  — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Shab-e-Meraaj
+DESCRIPTION:🌙 Night: Shab-e-Meraaj
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -766,13 +766,13 @@ UID:1447-8-14-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20260201
 DTEND;VALUE=DATE:20260202
-SUMMARY:🌙 Raat: Shab-e-Baraat
-DESCRIPTION:14 Shabaan 1447H — Maghrib ke baad (raat)\n\n• Shab-e-Baraa
- t — Washeq
+SUMMARY:🌙 Night: Shab-e-Baraat
+DESCRIPTION:14 Shabaan 1447H — night\, after Maghrib\n\n• Shab-e-Baraat
+  — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Shab-e-Baraat
+DESCRIPTION:🌙 Night: Shab-e-Baraat
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -841,13 +841,13 @@ UID:1447-8-29-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20260216
 DTEND;VALUE=DATE:20260217
-SUMMARY:🌙 Raat: Ramadaan al-Moazzan Pehli raat
-DESCRIPTION:29 Shabaan 1447H — Maghrib ke baad (raat)\n\n• Ramadaan al-
- Moazzan Pehli raat
+SUMMARY:🌙 Night: Ramadaan al-Moazzan Pehli raat
+DESCRIPTION:29 Shabaan 1447H — night\, after Maghrib\n\n• Ramadaan al-M
+ oazzan Pehli raat
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Ramadaan al-Moazzan Pehli raat
+DESCRIPTION:🌙 Night: Ramadaan al-Moazzan Pehli raat
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -871,13 +871,13 @@ UID:1447-9-16-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20260304
 DTEND;VALUE=DATE:20260305
-SUMMARY:🌙 Raat: Lailat al-Fahdil
-DESCRIPTION:16 Ramadaan 1447H — Maghrib ke baad (raat)\n\n• Lailat al-F
- ahdil — Washeq
+SUMMARY:🌙 Night: Lailat al-Fahdil
+DESCRIPTION:16 Ramadaan 1447H — night\, after Maghrib\n\n• Lailat al-Fa
+ hdil — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Fahdil
+DESCRIPTION:🌙 Night: Lailat al-Fahdil
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -886,13 +886,13 @@ UID:1447-9-18-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20260306
 DTEND;VALUE=DATE:20260307
-SUMMARY:🌙 Raat: Lailat al-Fahdil
-DESCRIPTION:18 Ramadaan 1447H — Maghrib ke baad (raat)\n\n• Lailat al-F
- ahdil — Washeq
+SUMMARY:🌙 Night: Lailat al-Fahdil
+DESCRIPTION:18 Ramadaan 1447H — night\, after Maghrib\n\n• Lailat al-Fa
+ hdil — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Fahdil
+DESCRIPTION:🌙 Night: Lailat al-Fahdil
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -919,13 +919,13 @@ UID:1447-9-20-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20260308
 DTEND;VALUE=DATE:20260309
-SUMMARY:🌙 Raat: Lailat al-Fahdil
-DESCRIPTION:20 Ramadaan 1447H — Maghrib ke baad (raat)\n\n• Lailat al-F
- ahdil — Washeq
+SUMMARY:🌙 Night: Lailat al-Fahdil
+DESCRIPTION:20 Ramadaan 1447H — night\, after Maghrib\n\n• Lailat al-Fa
+ hdil — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Fahdil
+DESCRIPTION:🌙 Night: Lailat al-Fahdil
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -949,13 +949,13 @@ UID:1447-9-22-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20260310
 DTEND;VALUE=DATE:20260311
-SUMMARY:🌙 Raat: Lailat al-Qadr
-DESCRIPTION:22 Ramadaan 1447H — Maghrib ke baad (raat)\n\n• Lailat al-Q
- adr
+SUMMARY:🌙 Night: Lailat al-Qadr
+DESCRIPTION:22 Ramadaan 1447H — night\, after Maghrib\n\n• Lailat al-Qa
+ dr
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Qadr
+DESCRIPTION:🌙 Night: Lailat al-Qadr
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -979,13 +979,13 @@ UID:1447-9-29-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20260317
 DTEND;VALUE=DATE:20260318
-SUMMARY:🌙 Raat: Lailat al-Thala'theen
-DESCRIPTION:29 Ramadaan 1447H — Maghrib ke baad (raat)\n\n• Lailat al-T
- hala'theen
+SUMMARY:🌙 Night: Lailat al-Thala'theen
+DESCRIPTION:29 Ramadaan 1447H — night\, after Maghrib\n\n• Lailat al-Th
+ ala'theen
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Thala'theen
+DESCRIPTION:🌙 Night: Lailat al-Thala'theen
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -994,13 +994,13 @@ UID:1447-9-30-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20260318
 DTEND;VALUE=DATE:20260319
-SUMMARY:🌙 Raat: Lailat ul-Eid-ul-Fitr
-DESCRIPTION:30 Ramadaan 1447H — Maghrib ke baad (raat)\n\n• Lailat ul-E
- id-ul-Fitr — Washeq\, Takbira
+SUMMARY:🌙 Night: Lailat ul-Eid-ul-Fitr
+DESCRIPTION:30 Ramadaan 1447H — night\, after Maghrib\n\n• Lailat ul-Ei
+ d-ul-Fitr — Washeq\, Takbira
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat ul-Eid-ul-Fitr
+DESCRIPTION:🌙 Night: Lailat ul-Eid-ul-Fitr
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -1314,13 +1314,13 @@ UID:1447-12-9-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20260525
 DTEND;VALUE=DATE:20260526
-SUMMARY:🌙 Raat: Lailat al-Eid-al-Adha
-DESCRIPTION:9 Zilhaj 1447H — Maghrib ke baad (raat)\n\n• Lailat al-Eid-
- al-Adha — Washeq
+SUMMARY:🌙 Night: Lailat al-Eid-al-Adha
+DESCRIPTION:9 Zilhaj 1447H — night\, after Maghrib\n\n• Lailat al-Eid-a
+ l-Adha — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Eid-al-Adha
+DESCRIPTION:🌙 Night: Lailat al-Eid-al-Adha
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -1479,13 +1479,13 @@ UID:1448-1-11-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20260625
 DTEND;VALUE=DATE:20260626
-SUMMARY:🌙 Raat: Suyum Imam Hussain (SA)
-DESCRIPTION:11 Moharram 1448H — Maghrib ke baad (raat)\n\n• Suyum Imam 
- Hussain (SA) — 2nd Imam\, Karbala\, Iraq.
+SUMMARY:🌙 Night: Suyum Imam Hussain (SA)
+DESCRIPTION:11 Moharram 1448H — night\, after Maghrib\n\n• Suyum Imam H
+ ussain (SA) — 2nd Imam\, Karbala\, Iraq.
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Suyum Imam Hussain (SA)
+DESCRIPTION:🌙 Night: Suyum Imam Hussain (SA)
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -1976,13 +1976,13 @@ UID:1448-6-29-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261208
 DTEND;VALUE=DATE:20261209
-SUMMARY:🌙 Raat: Rajab al-Asab Pehli raat
-DESCRIPTION:29 Jumada II 1448H — Maghrib ke baad (raat)\n\n• Rajab al-A
- sab Pehli raat — Washeq
+SUMMARY:🌙 Night: Rajab al-Asab Pehli raat
+DESCRIPTION:29 Jumada II 1448H — night\, after Maghrib\n\n• Rajab al-As
+ ab Pehli raat — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Rajab al-Asab Pehli raat
+DESCRIPTION:🌙 Night: Rajab al-Asab Pehli raat
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -2141,13 +2141,13 @@ UID:1448-7-26-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270103
 DTEND;VALUE=DATE:20270104
-SUMMARY:🌙 Raat: Shab-e-Meraaj
-DESCRIPTION:26 Rajab 1448H — Maghrib ke baad (raat)\n\n• Shab-e-Meraaj 
+SUMMARY:🌙 Night: Shab-e-Meraaj
+DESCRIPTION:26 Rajab 1448H — night\, after Maghrib\n\n• Shab-e-Meraaj 
  — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Shab-e-Meraaj
+DESCRIPTION:🌙 Night: Shab-e-Meraaj
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -2185,13 +2185,13 @@ UID:1448-8-14-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270121
 DTEND;VALUE=DATE:20270122
-SUMMARY:🌙 Raat: Shab-e-Baraat
-DESCRIPTION:14 Shabaan 1448H — Maghrib ke baad (raat)\n\n• Shab-e-Baraa
- t — Washeq
+SUMMARY:🌙 Night: Shab-e-Baraat
+DESCRIPTION:14 Shabaan 1448H — night\, after Maghrib\n\n• Shab-e-Baraat
+  — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Shab-e-Baraat
+DESCRIPTION:🌙 Night: Shab-e-Baraat
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -2260,13 +2260,13 @@ UID:1448-8-29-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270205
 DTEND;VALUE=DATE:20270206
-SUMMARY:🌙 Raat: Ramadaan al-Moazzan Pehli raat
-DESCRIPTION:29 Shabaan 1448H — Maghrib ke baad (raat)\n\n• Ramadaan al-
- Moazzan Pehli raat
+SUMMARY:🌙 Night: Ramadaan al-Moazzan Pehli raat
+DESCRIPTION:29 Shabaan 1448H — night\, after Maghrib\n\n• Ramadaan al-M
+ oazzan Pehli raat
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Ramadaan al-Moazzan Pehli raat
+DESCRIPTION:🌙 Night: Ramadaan al-Moazzan Pehli raat
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -2290,13 +2290,13 @@ UID:1448-9-16-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270221
 DTEND;VALUE=DATE:20270222
-SUMMARY:🌙 Raat: Lailat al-Fahdil
-DESCRIPTION:16 Ramadaan 1448H — Maghrib ke baad (raat)\n\n• Lailat al-F
- ahdil — Washeq
+SUMMARY:🌙 Night: Lailat al-Fahdil
+DESCRIPTION:16 Ramadaan 1448H — night\, after Maghrib\n\n• Lailat al-Fa
+ hdil — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Fahdil
+DESCRIPTION:🌙 Night: Lailat al-Fahdil
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -2305,13 +2305,13 @@ UID:1448-9-18-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270223
 DTEND;VALUE=DATE:20270224
-SUMMARY:🌙 Raat: Lailat al-Fahdil
-DESCRIPTION:18 Ramadaan 1448H — Maghrib ke baad (raat)\n\n• Lailat al-F
- ahdil — Washeq
+SUMMARY:🌙 Night: Lailat al-Fahdil
+DESCRIPTION:18 Ramadaan 1448H — night\, after Maghrib\n\n• Lailat al-Fa
+ hdil — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Fahdil
+DESCRIPTION:🌙 Night: Lailat al-Fahdil
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -2338,13 +2338,13 @@ UID:1448-9-20-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270225
 DTEND;VALUE=DATE:20270226
-SUMMARY:🌙 Raat: Lailat al-Fahdil
-DESCRIPTION:20 Ramadaan 1448H — Maghrib ke baad (raat)\n\n• Lailat al-F
- ahdil — Washeq
+SUMMARY:🌙 Night: Lailat al-Fahdil
+DESCRIPTION:20 Ramadaan 1448H — night\, after Maghrib\n\n• Lailat al-Fa
+ hdil — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Fahdil
+DESCRIPTION:🌙 Night: Lailat al-Fahdil
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -2368,13 +2368,13 @@ UID:1448-9-22-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270227
 DTEND;VALUE=DATE:20270228
-SUMMARY:🌙 Raat: Lailat al-Qadr
-DESCRIPTION:22 Ramadaan 1448H — Maghrib ke baad (raat)\n\n• Lailat al-Q
- adr
+SUMMARY:🌙 Night: Lailat al-Qadr
+DESCRIPTION:22 Ramadaan 1448H — night\, after Maghrib\n\n• Lailat al-Qa
+ dr
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Qadr
+DESCRIPTION:🌙 Night: Lailat al-Qadr
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -2398,13 +2398,13 @@ UID:1448-9-29-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270306
 DTEND;VALUE=DATE:20270307
-SUMMARY:🌙 Raat: Lailat al-Thala'theen
-DESCRIPTION:29 Ramadaan 1448H — Maghrib ke baad (raat)\n\n• Lailat al-T
- hala'theen
+SUMMARY:🌙 Night: Lailat al-Thala'theen
+DESCRIPTION:29 Ramadaan 1448H — night\, after Maghrib\n\n• Lailat al-Th
+ ala'theen
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Thala'theen
+DESCRIPTION:🌙 Night: Lailat al-Thala'theen
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -2413,13 +2413,13 @@ UID:1448-9-30-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270307
 DTEND;VALUE=DATE:20270308
-SUMMARY:🌙 Raat: Lailat ul-Eid-ul-Fitr
-DESCRIPTION:30 Ramadaan 1448H — Maghrib ke baad (raat)\n\n• Lailat ul-E
- id-ul-Fitr — Washeq\, Takbira
+SUMMARY:🌙 Night: Lailat ul-Eid-ul-Fitr
+DESCRIPTION:30 Ramadaan 1448H — night\, after Maghrib\n\n• Lailat ul-Ei
+ d-ul-Fitr — Washeq\, Takbira
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat ul-Eid-ul-Fitr
+DESCRIPTION:🌙 Night: Lailat ul-Eid-ul-Fitr
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -2733,13 +2733,13 @@ UID:1448-12-9-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270514
 DTEND;VALUE=DATE:20270515
-SUMMARY:🌙 Raat: Lailat al-Eid-al-Adha
-DESCRIPTION:9 Zilhaj 1448H — Maghrib ke baad (raat)\n\n• Lailat al-Eid-
- al-Adha — Washeq
+SUMMARY:🌙 Night: Lailat al-Eid-al-Adha
+DESCRIPTION:9 Zilhaj 1448H — night\, after Maghrib\n\n• Lailat al-Eid-a
+ l-Adha — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Eid-al-Adha
+DESCRIPTION:🌙 Night: Lailat al-Eid-al-Adha
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -2898,13 +2898,13 @@ UID:1449-1-11-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270615
 DTEND;VALUE=DATE:20270616
-SUMMARY:🌙 Raat: Suyum Imam Hussain (SA)
-DESCRIPTION:11 Moharram 1449H — Maghrib ke baad (raat)\n\n• Suyum Imam 
- Hussain (SA) — 2nd Imam\, Karbala\, Iraq.
+SUMMARY:🌙 Night: Suyum Imam Hussain (SA)
+DESCRIPTION:11 Moharram 1449H — night\, after Maghrib\n\n• Suyum Imam H
+ ussain (SA) — 2nd Imam\, Karbala\, Iraq.
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Suyum Imam Hussain (SA)
+DESCRIPTION:🌙 Night: Suyum Imam Hussain (SA)
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -3395,13 +3395,13 @@ UID:1449-6-29-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20271128
 DTEND;VALUE=DATE:20271129
-SUMMARY:🌙 Raat: Rajab al-Asab Pehli raat
-DESCRIPTION:29 Jumada II 1449H — Maghrib ke baad (raat)\n\n• Rajab al-A
- sab Pehli raat — Washeq
+SUMMARY:🌙 Night: Rajab al-Asab Pehli raat
+DESCRIPTION:29 Jumada II 1449H — night\, after Maghrib\n\n• Rajab al-As
+ ab Pehli raat — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Rajab al-Asab Pehli raat
+DESCRIPTION:🌙 Night: Rajab al-Asab Pehli raat
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -3560,13 +3560,13 @@ UID:1449-7-26-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20271224
 DTEND;VALUE=DATE:20271225
-SUMMARY:🌙 Raat: Shab-e-Meraaj
-DESCRIPTION:26 Rajab 1449H — Maghrib ke baad (raat)\n\n• Shab-e-Meraaj 
+SUMMARY:🌙 Night: Shab-e-Meraaj
+DESCRIPTION:26 Rajab 1449H — night\, after Maghrib\n\n• Shab-e-Meraaj 
  — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Shab-e-Meraaj
+DESCRIPTION:🌙 Night: Shab-e-Meraaj
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -3604,13 +3604,13 @@ UID:1449-8-14-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20280111
 DTEND;VALUE=DATE:20280112
-SUMMARY:🌙 Raat: Shab-e-Baraat
-DESCRIPTION:14 Shabaan 1449H — Maghrib ke baad (raat)\n\n• Shab-e-Baraa
- t — Washeq
+SUMMARY:🌙 Night: Shab-e-Baraat
+DESCRIPTION:14 Shabaan 1449H — night\, after Maghrib\n\n• Shab-e-Baraat
+  — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Shab-e-Baraat
+DESCRIPTION:🌙 Night: Shab-e-Baraat
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -3679,13 +3679,13 @@ UID:1449-8-29-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20280126
 DTEND;VALUE=DATE:20280127
-SUMMARY:🌙 Raat: Ramadaan al-Moazzan Pehli raat
-DESCRIPTION:29 Shabaan 1449H — Maghrib ke baad (raat)\n\n• Ramadaan al-
- Moazzan Pehli raat
+SUMMARY:🌙 Night: Ramadaan al-Moazzan Pehli raat
+DESCRIPTION:29 Shabaan 1449H — night\, after Maghrib\n\n• Ramadaan al-M
+ oazzan Pehli raat
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Ramadaan al-Moazzan Pehli raat
+DESCRIPTION:🌙 Night: Ramadaan al-Moazzan Pehli raat
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -3709,13 +3709,13 @@ UID:1449-9-16-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20280211
 DTEND;VALUE=DATE:20280212
-SUMMARY:🌙 Raat: Lailat al-Fahdil
-DESCRIPTION:16 Ramadaan 1449H — Maghrib ke baad (raat)\n\n• Lailat al-F
- ahdil — Washeq
+SUMMARY:🌙 Night: Lailat al-Fahdil
+DESCRIPTION:16 Ramadaan 1449H — night\, after Maghrib\n\n• Lailat al-Fa
+ hdil — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Fahdil
+DESCRIPTION:🌙 Night: Lailat al-Fahdil
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -3724,13 +3724,13 @@ UID:1449-9-18-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20280213
 DTEND;VALUE=DATE:20280214
-SUMMARY:🌙 Raat: Lailat al-Fahdil
-DESCRIPTION:18 Ramadaan 1449H — Maghrib ke baad (raat)\n\n• Lailat al-F
- ahdil — Washeq
+SUMMARY:🌙 Night: Lailat al-Fahdil
+DESCRIPTION:18 Ramadaan 1449H — night\, after Maghrib\n\n• Lailat al-Fa
+ hdil — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Fahdil
+DESCRIPTION:🌙 Night: Lailat al-Fahdil
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -3757,13 +3757,13 @@ UID:1449-9-20-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20280215
 DTEND;VALUE=DATE:20280216
-SUMMARY:🌙 Raat: Lailat al-Fahdil
-DESCRIPTION:20 Ramadaan 1449H — Maghrib ke baad (raat)\n\n• Lailat al-F
- ahdil — Washeq
+SUMMARY:🌙 Night: Lailat al-Fahdil
+DESCRIPTION:20 Ramadaan 1449H — night\, after Maghrib\n\n• Lailat al-Fa
+ hdil — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Fahdil
+DESCRIPTION:🌙 Night: Lailat al-Fahdil
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -3787,13 +3787,13 @@ UID:1449-9-22-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20280217
 DTEND;VALUE=DATE:20280218
-SUMMARY:🌙 Raat: Lailat al-Qadr
-DESCRIPTION:22 Ramadaan 1449H — Maghrib ke baad (raat)\n\n• Lailat al-Q
- adr
+SUMMARY:🌙 Night: Lailat al-Qadr
+DESCRIPTION:22 Ramadaan 1449H — night\, after Maghrib\n\n• Lailat al-Qa
+ dr
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Qadr
+DESCRIPTION:🌙 Night: Lailat al-Qadr
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -3817,13 +3817,13 @@ UID:1449-9-29-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20280224
 DTEND;VALUE=DATE:20280225
-SUMMARY:🌙 Raat: Lailat al-Thala'theen
-DESCRIPTION:29 Ramadaan 1449H — Maghrib ke baad (raat)\n\n• Lailat al-T
- hala'theen
+SUMMARY:🌙 Night: Lailat al-Thala'theen
+DESCRIPTION:29 Ramadaan 1449H — night\, after Maghrib\n\n• Lailat al-Th
+ ala'theen
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Thala'theen
+DESCRIPTION:🌙 Night: Lailat al-Thala'theen
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -3832,13 +3832,13 @@ UID:1449-9-30-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20280225
 DTEND;VALUE=DATE:20280226
-SUMMARY:🌙 Raat: Lailat ul-Eid-ul-Fitr
-DESCRIPTION:30 Ramadaan 1449H — Maghrib ke baad (raat)\n\n• Lailat ul-E
- id-ul-Fitr — Washeq\, Takbira
+SUMMARY:🌙 Night: Lailat ul-Eid-ul-Fitr
+DESCRIPTION:30 Ramadaan 1449H — night\, after Maghrib\n\n• Lailat ul-Ei
+ d-ul-Fitr — Washeq\, Takbira
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat ul-Eid-ul-Fitr
+DESCRIPTION:🌙 Night: Lailat ul-Eid-ul-Fitr
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -4152,13 +4152,13 @@ UID:1449-12-9-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20280503
 DTEND;VALUE=DATE:20280504
-SUMMARY:🌙 Raat: Lailat al-Eid-al-Adha
-DESCRIPTION:9 Zilhaj 1449H — Maghrib ke baad (raat)\n\n• Lailat al-Eid-
- al-Adha — Washeq
+SUMMARY:🌙 Night: Lailat al-Eid-al-Adha
+DESCRIPTION:9 Zilhaj 1449H — night\, after Maghrib\n\n• Lailat al-Eid-a
+ l-Adha — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Eid-al-Adha
+DESCRIPTION:🌙 Night: Lailat al-Eid-al-Adha
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -4317,13 +4317,13 @@ UID:1450-1-11-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20280603
 DTEND;VALUE=DATE:20280604
-SUMMARY:🌙 Raat: Suyum Imam Hussain (SA)
-DESCRIPTION:11 Moharram 1450H — Maghrib ke baad (raat)\n\n• Suyum Imam 
- Hussain (SA) — 2nd Imam\, Karbala\, Iraq.
+SUMMARY:🌙 Night: Suyum Imam Hussain (SA)
+DESCRIPTION:11 Moharram 1450H — night\, after Maghrib\n\n• Suyum Imam H
+ ussain (SA) — 2nd Imam\, Karbala\, Iraq.
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Suyum Imam Hussain (SA)
+DESCRIPTION:🌙 Night: Suyum Imam Hussain (SA)
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -4814,13 +4814,13 @@ UID:1450-6-29-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20281116
 DTEND;VALUE=DATE:20281117
-SUMMARY:🌙 Raat: Rajab al-Asab Pehli raat
-DESCRIPTION:29 Jumada II 1450H — Maghrib ke baad (raat)\n\n• Rajab al-A
- sab Pehli raat — Washeq
+SUMMARY:🌙 Night: Rajab al-Asab Pehli raat
+DESCRIPTION:29 Jumada II 1450H — night\, after Maghrib\n\n• Rajab al-As
+ ab Pehli raat — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Rajab al-Asab Pehli raat
+DESCRIPTION:🌙 Night: Rajab al-Asab Pehli raat
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -4979,13 +4979,13 @@ UID:1450-7-26-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20281212
 DTEND;VALUE=DATE:20281213
-SUMMARY:🌙 Raat: Shab-e-Meraaj
-DESCRIPTION:26 Rajab 1450H — Maghrib ke baad (raat)\n\n• Shab-e-Meraaj 
+SUMMARY:🌙 Night: Shab-e-Meraaj
+DESCRIPTION:26 Rajab 1450H — night\, after Maghrib\n\n• Shab-e-Meraaj 
  — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Shab-e-Meraaj
+DESCRIPTION:🌙 Night: Shab-e-Meraaj
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -5023,13 +5023,13 @@ UID:1450-8-14-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20281230
 DTEND;VALUE=DATE:20281231
-SUMMARY:🌙 Raat: Shab-e-Baraat
-DESCRIPTION:14 Shabaan 1450H — Maghrib ke baad (raat)\n\n• Shab-e-Baraa
- t — Washeq
+SUMMARY:🌙 Night: Shab-e-Baraat
+DESCRIPTION:14 Shabaan 1450H — night\, after Maghrib\n\n• Shab-e-Baraat
+  — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Shab-e-Baraat
+DESCRIPTION:🌙 Night: Shab-e-Baraat
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -5098,13 +5098,13 @@ UID:1450-8-29-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20290114
 DTEND;VALUE=DATE:20290115
-SUMMARY:🌙 Raat: Ramadaan al-Moazzan Pehli raat
-DESCRIPTION:29 Shabaan 1450H — Maghrib ke baad (raat)\n\n• Ramadaan al-
- Moazzan Pehli raat
+SUMMARY:🌙 Night: Ramadaan al-Moazzan Pehli raat
+DESCRIPTION:29 Shabaan 1450H — night\, after Maghrib\n\n• Ramadaan al-M
+ oazzan Pehli raat
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Ramadaan al-Moazzan Pehli raat
+DESCRIPTION:🌙 Night: Ramadaan al-Moazzan Pehli raat
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -5128,13 +5128,13 @@ UID:1450-9-16-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20290130
 DTEND;VALUE=DATE:20290131
-SUMMARY:🌙 Raat: Lailat al-Fahdil
-DESCRIPTION:16 Ramadaan 1450H — Maghrib ke baad (raat)\n\n• Lailat al-F
- ahdil — Washeq
+SUMMARY:🌙 Night: Lailat al-Fahdil
+DESCRIPTION:16 Ramadaan 1450H — night\, after Maghrib\n\n• Lailat al-Fa
+ hdil — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Fahdil
+DESCRIPTION:🌙 Night: Lailat al-Fahdil
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -5143,13 +5143,13 @@ UID:1450-9-18-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20290201
 DTEND;VALUE=DATE:20290202
-SUMMARY:🌙 Raat: Lailat al-Fahdil
-DESCRIPTION:18 Ramadaan 1450H — Maghrib ke baad (raat)\n\n• Lailat al-F
- ahdil — Washeq
+SUMMARY:🌙 Night: Lailat al-Fahdil
+DESCRIPTION:18 Ramadaan 1450H — night\, after Maghrib\n\n• Lailat al-Fa
+ hdil — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Fahdil
+DESCRIPTION:🌙 Night: Lailat al-Fahdil
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -5176,13 +5176,13 @@ UID:1450-9-20-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20290203
 DTEND;VALUE=DATE:20290204
-SUMMARY:🌙 Raat: Lailat al-Fahdil
-DESCRIPTION:20 Ramadaan 1450H — Maghrib ke baad (raat)\n\n• Lailat al-F
- ahdil — Washeq
+SUMMARY:🌙 Night: Lailat al-Fahdil
+DESCRIPTION:20 Ramadaan 1450H — night\, after Maghrib\n\n• Lailat al-Fa
+ hdil — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Fahdil
+DESCRIPTION:🌙 Night: Lailat al-Fahdil
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -5206,13 +5206,13 @@ UID:1450-9-22-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20290205
 DTEND;VALUE=DATE:20290206
-SUMMARY:🌙 Raat: Lailat al-Qadr
-DESCRIPTION:22 Ramadaan 1450H — Maghrib ke baad (raat)\n\n• Lailat al-Q
- adr
+SUMMARY:🌙 Night: Lailat al-Qadr
+DESCRIPTION:22 Ramadaan 1450H — night\, after Maghrib\n\n• Lailat al-Qa
+ dr
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Qadr
+DESCRIPTION:🌙 Night: Lailat al-Qadr
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -5236,13 +5236,13 @@ UID:1450-9-29-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20290212
 DTEND;VALUE=DATE:20290213
-SUMMARY:🌙 Raat: Lailat al-Thala'theen
-DESCRIPTION:29 Ramadaan 1450H — Maghrib ke baad (raat)\n\n• Lailat al-T
- hala'theen
+SUMMARY:🌙 Night: Lailat al-Thala'theen
+DESCRIPTION:29 Ramadaan 1450H — night\, after Maghrib\n\n• Lailat al-Th
+ ala'theen
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Thala'theen
+DESCRIPTION:🌙 Night: Lailat al-Thala'theen
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -5251,13 +5251,13 @@ UID:1450-9-30-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20290213
 DTEND;VALUE=DATE:20290214
-SUMMARY:🌙 Raat: Lailat ul-Eid-ul-Fitr
-DESCRIPTION:30 Ramadaan 1450H — Maghrib ke baad (raat)\n\n• Lailat ul-E
- id-ul-Fitr — Washeq\, Takbira
+SUMMARY:🌙 Night: Lailat ul-Eid-ul-Fitr
+DESCRIPTION:30 Ramadaan 1450H — night\, after Maghrib\n\n• Lailat ul-Ei
+ d-ul-Fitr — Washeq\, Takbira
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat ul-Eid-ul-Fitr
+DESCRIPTION:🌙 Night: Lailat ul-Eid-ul-Fitr
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -5571,13 +5571,13 @@ UID:1450-12-9-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20290422
 DTEND;VALUE=DATE:20290423
-SUMMARY:🌙 Raat: Lailat al-Eid-al-Adha
-DESCRIPTION:9 Zilhaj 1450H — Maghrib ke baad (raat)\n\n• Lailat al-Eid-
- al-Adha — Washeq
+SUMMARY:🌙 Night: Lailat al-Eid-al-Adha
+DESCRIPTION:9 Zilhaj 1450H — night\, after Maghrib\n\n• Lailat al-Eid-a
+ l-Adha — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Eid-al-Adha
+DESCRIPTION:🌙 Night: Lailat al-Eid-al-Adha
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -5736,13 +5736,13 @@ UID:1451-1-11-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20290524
 DTEND;VALUE=DATE:20290525
-SUMMARY:🌙 Raat: Suyum Imam Hussain (SA)
-DESCRIPTION:11 Moharram 1451H — Maghrib ke baad (raat)\n\n• Suyum Imam 
- Hussain (SA) — 2nd Imam\, Karbala\, Iraq.
+SUMMARY:🌙 Night: Suyum Imam Hussain (SA)
+DESCRIPTION:11 Moharram 1451H — night\, after Maghrib\n\n• Suyum Imam H
+ ussain (SA) — 2nd Imam\, Karbala\, Iraq.
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Suyum Imam Hussain (SA)
+DESCRIPTION:🌙 Night: Suyum Imam Hussain (SA)
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -6233,13 +6233,13 @@ UID:1451-6-29-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20291106
 DTEND;VALUE=DATE:20291107
-SUMMARY:🌙 Raat: Rajab al-Asab Pehli raat
-DESCRIPTION:29 Jumada II 1451H — Maghrib ke baad (raat)\n\n• Rajab al-A
- sab Pehli raat — Washeq
+SUMMARY:🌙 Night: Rajab al-Asab Pehli raat
+DESCRIPTION:29 Jumada II 1451H — night\, after Maghrib\n\n• Rajab al-As
+ ab Pehli raat — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Rajab al-Asab Pehli raat
+DESCRIPTION:🌙 Night: Rajab al-Asab Pehli raat
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -6398,13 +6398,13 @@ UID:1451-7-26-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20291202
 DTEND;VALUE=DATE:20291203
-SUMMARY:🌙 Raat: Shab-e-Meraaj
-DESCRIPTION:26 Rajab 1451H — Maghrib ke baad (raat)\n\n• Shab-e-Meraaj 
+SUMMARY:🌙 Night: Shab-e-Meraaj
+DESCRIPTION:26 Rajab 1451H — night\, after Maghrib\n\n• Shab-e-Meraaj 
  — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Shab-e-Meraaj
+DESCRIPTION:🌙 Night: Shab-e-Meraaj
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -6442,13 +6442,13 @@ UID:1451-8-14-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20291220
 DTEND;VALUE=DATE:20291221
-SUMMARY:🌙 Raat: Shab-e-Baraat
-DESCRIPTION:14 Shabaan 1451H — Maghrib ke baad (raat)\n\n• Shab-e-Baraa
- t — Washeq
+SUMMARY:🌙 Night: Shab-e-Baraat
+DESCRIPTION:14 Shabaan 1451H — night\, after Maghrib\n\n• Shab-e-Baraat
+  — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Shab-e-Baraat
+DESCRIPTION:🌙 Night: Shab-e-Baraat
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -6517,13 +6517,13 @@ UID:1451-8-29-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20300104
 DTEND;VALUE=DATE:20300105
-SUMMARY:🌙 Raat: Ramadaan al-Moazzan Pehli raat
-DESCRIPTION:29 Shabaan 1451H — Maghrib ke baad (raat)\n\n• Ramadaan al-
- Moazzan Pehli raat
+SUMMARY:🌙 Night: Ramadaan al-Moazzan Pehli raat
+DESCRIPTION:29 Shabaan 1451H — night\, after Maghrib\n\n• Ramadaan al-M
+ oazzan Pehli raat
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Ramadaan al-Moazzan Pehli raat
+DESCRIPTION:🌙 Night: Ramadaan al-Moazzan Pehli raat
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -6547,13 +6547,13 @@ UID:1451-9-16-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20300120
 DTEND;VALUE=DATE:20300121
-SUMMARY:🌙 Raat: Lailat al-Fahdil
-DESCRIPTION:16 Ramadaan 1451H — Maghrib ke baad (raat)\n\n• Lailat al-F
- ahdil — Washeq
+SUMMARY:🌙 Night: Lailat al-Fahdil
+DESCRIPTION:16 Ramadaan 1451H — night\, after Maghrib\n\n• Lailat al-Fa
+ hdil — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Fahdil
+DESCRIPTION:🌙 Night: Lailat al-Fahdil
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -6562,13 +6562,13 @@ UID:1451-9-18-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20300122
 DTEND;VALUE=DATE:20300123
-SUMMARY:🌙 Raat: Lailat al-Fahdil
-DESCRIPTION:18 Ramadaan 1451H — Maghrib ke baad (raat)\n\n• Lailat al-F
- ahdil — Washeq
+SUMMARY:🌙 Night: Lailat al-Fahdil
+DESCRIPTION:18 Ramadaan 1451H — night\, after Maghrib\n\n• Lailat al-Fa
+ hdil — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Fahdil
+DESCRIPTION:🌙 Night: Lailat al-Fahdil
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -6595,13 +6595,13 @@ UID:1451-9-20-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20300124
 DTEND;VALUE=DATE:20300125
-SUMMARY:🌙 Raat: Lailat al-Fahdil
-DESCRIPTION:20 Ramadaan 1451H — Maghrib ke baad (raat)\n\n• Lailat al-F
- ahdil — Washeq
+SUMMARY:🌙 Night: Lailat al-Fahdil
+DESCRIPTION:20 Ramadaan 1451H — night\, after Maghrib\n\n• Lailat al-Fa
+ hdil — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Fahdil
+DESCRIPTION:🌙 Night: Lailat al-Fahdil
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -6625,13 +6625,13 @@ UID:1451-9-22-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20300126
 DTEND;VALUE=DATE:20300127
-SUMMARY:🌙 Raat: Lailat al-Qadr
-DESCRIPTION:22 Ramadaan 1451H — Maghrib ke baad (raat)\n\n• Lailat al-Q
- adr
+SUMMARY:🌙 Night: Lailat al-Qadr
+DESCRIPTION:22 Ramadaan 1451H — night\, after Maghrib\n\n• Lailat al-Qa
+ dr
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Qadr
+DESCRIPTION:🌙 Night: Lailat al-Qadr
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -6655,13 +6655,13 @@ UID:1451-9-29-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20300202
 DTEND;VALUE=DATE:20300203
-SUMMARY:🌙 Raat: Lailat al-Thala'theen
-DESCRIPTION:29 Ramadaan 1451H — Maghrib ke baad (raat)\n\n• Lailat al-T
- hala'theen
+SUMMARY:🌙 Night: Lailat al-Thala'theen
+DESCRIPTION:29 Ramadaan 1451H — night\, after Maghrib\n\n• Lailat al-Th
+ ala'theen
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Thala'theen
+DESCRIPTION:🌙 Night: Lailat al-Thala'theen
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -6670,13 +6670,13 @@ UID:1451-9-30-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20300203
 DTEND;VALUE=DATE:20300204
-SUMMARY:🌙 Raat: Lailat ul-Eid-ul-Fitr
-DESCRIPTION:30 Ramadaan 1451H — Maghrib ke baad (raat)\n\n• Lailat ul-E
- id-ul-Fitr — Washeq\, Takbira
+SUMMARY:🌙 Night: Lailat ul-Eid-ul-Fitr
+DESCRIPTION:30 Ramadaan 1451H — night\, after Maghrib\n\n• Lailat ul-Ei
+ d-ul-Fitr — Washeq\, Takbira
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat ul-Eid-ul-Fitr
+DESCRIPTION:🌙 Night: Lailat ul-Eid-ul-Fitr
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -6990,13 +6990,13 @@ UID:1451-12-9-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20300412
 DTEND;VALUE=DATE:20300413
-SUMMARY:🌙 Raat: Lailat al-Eid-al-Adha
-DESCRIPTION:9 Zilhaj 1451H — Maghrib ke baad (raat)\n\n• Lailat al-Eid-
- al-Adha — Washeq
+SUMMARY:🌙 Night: Lailat al-Eid-al-Adha
+DESCRIPTION:9 Zilhaj 1451H — night\, after Maghrib\n\n• Lailat al-Eid-a
+ l-Adha — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Eid-al-Adha
+DESCRIPTION:🌙 Night: Lailat al-Eid-al-Adha
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -7155,13 +7155,13 @@ UID:1452-1-11-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20300513
 DTEND;VALUE=DATE:20300514
-SUMMARY:🌙 Raat: Suyum Imam Hussain (SA)
-DESCRIPTION:11 Moharram 1452H — Maghrib ke baad (raat)\n\n• Suyum Imam 
- Hussain (SA) — 2nd Imam\, Karbala\, Iraq.
+SUMMARY:🌙 Night: Suyum Imam Hussain (SA)
+DESCRIPTION:11 Moharram 1452H — night\, after Maghrib\n\n• Suyum Imam H
+ ussain (SA) — 2nd Imam\, Karbala\, Iraq.
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Suyum Imam Hussain (SA)
+DESCRIPTION:🌙 Night: Suyum Imam Hussain (SA)
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -7652,13 +7652,13 @@ UID:1452-6-29-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20301026
 DTEND;VALUE=DATE:20301027
-SUMMARY:🌙 Raat: Rajab al-Asab Pehli raat
-DESCRIPTION:29 Jumada II 1452H — Maghrib ke baad (raat)\n\n• Rajab al-A
- sab Pehli raat — Washeq
+SUMMARY:🌙 Night: Rajab al-Asab Pehli raat
+DESCRIPTION:29 Jumada II 1452H — night\, after Maghrib\n\n• Rajab al-As
+ ab Pehli raat — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Rajab al-Asab Pehli raat
+DESCRIPTION:🌙 Night: Rajab al-Asab Pehli raat
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -7817,13 +7817,13 @@ UID:1452-7-26-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20301121
 DTEND;VALUE=DATE:20301122
-SUMMARY:🌙 Raat: Shab-e-Meraaj
-DESCRIPTION:26 Rajab 1452H — Maghrib ke baad (raat)\n\n• Shab-e-Meraaj 
+SUMMARY:🌙 Night: Shab-e-Meraaj
+DESCRIPTION:26 Rajab 1452H — night\, after Maghrib\n\n• Shab-e-Meraaj 
  — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Shab-e-Meraaj
+DESCRIPTION:🌙 Night: Shab-e-Meraaj
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -7861,13 +7861,13 @@ UID:1452-8-14-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20301209
 DTEND;VALUE=DATE:20301210
-SUMMARY:🌙 Raat: Shab-e-Baraat
-DESCRIPTION:14 Shabaan 1452H — Maghrib ke baad (raat)\n\n• Shab-e-Baraa
- t — Washeq
+SUMMARY:🌙 Night: Shab-e-Baraat
+DESCRIPTION:14 Shabaan 1452H — night\, after Maghrib\n\n• Shab-e-Baraat
+  — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Shab-e-Baraat
+DESCRIPTION:🌙 Night: Shab-e-Baraat
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -7936,13 +7936,13 @@ UID:1452-8-29-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20301224
 DTEND;VALUE=DATE:20301225
-SUMMARY:🌙 Raat: Ramadaan al-Moazzan Pehli raat
-DESCRIPTION:29 Shabaan 1452H — Maghrib ke baad (raat)\n\n• Ramadaan al-
- Moazzan Pehli raat
+SUMMARY:🌙 Night: Ramadaan al-Moazzan Pehli raat
+DESCRIPTION:29 Shabaan 1452H — night\, after Maghrib\n\n• Ramadaan al-M
+ oazzan Pehli raat
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Ramadaan al-Moazzan Pehli raat
+DESCRIPTION:🌙 Night: Ramadaan al-Moazzan Pehli raat
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -7966,13 +7966,13 @@ UID:1452-9-16-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20310109
 DTEND;VALUE=DATE:20310110
-SUMMARY:🌙 Raat: Lailat al-Fahdil
-DESCRIPTION:16 Ramadaan 1452H — Maghrib ke baad (raat)\n\n• Lailat al-F
- ahdil — Washeq
+SUMMARY:🌙 Night: Lailat al-Fahdil
+DESCRIPTION:16 Ramadaan 1452H — night\, after Maghrib\n\n• Lailat al-Fa
+ hdil — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Fahdil
+DESCRIPTION:🌙 Night: Lailat al-Fahdil
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -7981,13 +7981,13 @@ UID:1452-9-18-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20310111
 DTEND;VALUE=DATE:20310112
-SUMMARY:🌙 Raat: Lailat al-Fahdil
-DESCRIPTION:18 Ramadaan 1452H — Maghrib ke baad (raat)\n\n• Lailat al-F
- ahdil — Washeq
+SUMMARY:🌙 Night: Lailat al-Fahdil
+DESCRIPTION:18 Ramadaan 1452H — night\, after Maghrib\n\n• Lailat al-Fa
+ hdil — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Fahdil
+DESCRIPTION:🌙 Night: Lailat al-Fahdil
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -8014,13 +8014,13 @@ UID:1452-9-20-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20310113
 DTEND;VALUE=DATE:20310114
-SUMMARY:🌙 Raat: Lailat al-Fahdil
-DESCRIPTION:20 Ramadaan 1452H — Maghrib ke baad (raat)\n\n• Lailat al-F
- ahdil — Washeq
+SUMMARY:🌙 Night: Lailat al-Fahdil
+DESCRIPTION:20 Ramadaan 1452H — night\, after Maghrib\n\n• Lailat al-Fa
+ hdil — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Fahdil
+DESCRIPTION:🌙 Night: Lailat al-Fahdil
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -8044,13 +8044,13 @@ UID:1452-9-22-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20310115
 DTEND;VALUE=DATE:20310116
-SUMMARY:🌙 Raat: Lailat al-Qadr
-DESCRIPTION:22 Ramadaan 1452H — Maghrib ke baad (raat)\n\n• Lailat al-Q
- adr
+SUMMARY:🌙 Night: Lailat al-Qadr
+DESCRIPTION:22 Ramadaan 1452H — night\, after Maghrib\n\n• Lailat al-Qa
+ dr
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Qadr
+DESCRIPTION:🌙 Night: Lailat al-Qadr
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -8074,13 +8074,13 @@ UID:1452-9-29-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20310122
 DTEND;VALUE=DATE:20310123
-SUMMARY:🌙 Raat: Lailat al-Thala'theen
-DESCRIPTION:29 Ramadaan 1452H — Maghrib ke baad (raat)\n\n• Lailat al-T
- hala'theen
+SUMMARY:🌙 Night: Lailat al-Thala'theen
+DESCRIPTION:29 Ramadaan 1452H — night\, after Maghrib\n\n• Lailat al-Th
+ ala'theen
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Thala'theen
+DESCRIPTION:🌙 Night: Lailat al-Thala'theen
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -8089,13 +8089,13 @@ UID:1452-9-30-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20310123
 DTEND;VALUE=DATE:20310124
-SUMMARY:🌙 Raat: Lailat ul-Eid-ul-Fitr
-DESCRIPTION:30 Ramadaan 1452H — Maghrib ke baad (raat)\n\n• Lailat ul-E
- id-ul-Fitr — Washeq\, Takbira
+SUMMARY:🌙 Night: Lailat ul-Eid-ul-Fitr
+DESCRIPTION:30 Ramadaan 1452H — night\, after Maghrib\n\n• Lailat ul-Ei
+ d-ul-Fitr — Washeq\, Takbira
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat ul-Eid-ul-Fitr
+DESCRIPTION:🌙 Night: Lailat ul-Eid-ul-Fitr
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT
@@ -8409,13 +8409,13 @@ UID:1452-12-9-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20310401
 DTEND;VALUE=DATE:20310402
-SUMMARY:🌙 Raat: Lailat al-Eid-al-Adha
-DESCRIPTION:9 Zilhaj 1452H — Maghrib ke baad (raat)\n\n• Lailat al-Eid-
- al-Adha — Washeq
+SUMMARY:🌙 Night: Lailat al-Eid-al-Adha
+DESCRIPTION:9 Zilhaj 1452H — night\, after Maghrib\n\n• Lailat al-Eid-a
+ l-Adha — Washeq
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🌙 Raat: Lailat al-Eid-al-Adha
+DESCRIPTION:🌙 Night: Lailat al-Eid-al-Adha
 TRIGGER:PT17H
 END:VALARM
 END:VEVENT

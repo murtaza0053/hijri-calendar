@@ -4,13 +4,13 @@
  "versions": [
   {
    "id": "new",
-   "label": "Naya PDF (22 pages)",
+   "label": "New PDF (22 pages)",
    "pdf": "dua-e-kamil-v2.pdf",
    "sync": "sync.json"
   },
   {
    "id": "old",
-   "label": "Purana PDF (26 pages)",
+   "label": "Old PDF (26 pages)",
    "pdf": "dua-e-kamil.pdf",
    "sync": "sync-old.json"
   }

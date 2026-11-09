@@ -44,8 +44,8 @@ function build(maxPriority, name, file) {
       const a = H.toAJD(y, m, d), g = H.ajdToG(a), g2 = H.ajdToG(a + 1);
       const hdate = `${d} ${H.SHORT[m]} ${y}H`;
       const titles = qs.map(q => q.title);
-      const summary = (phase === "night" ? "🌙 Raat: " : "") + titles.join(" · ");
-      const desc = `${hdate}${phase === "night" ? " — Maghrib ke baad (raat)" : ""}\n\n` +
+      const summary = (phase === "night" ? "🌙 Night: " : "") + titles.join(" · ");
+      const desc = `${hdate}${phase === "night" ? " — night, after Maghrib" : ""}\n\n` +
         qs.map(q => "• " + q.title + (q.description ? ` — ${q.description}` : "")).join("\n");
       // day miqaat → remind 9 PM the evening before; night miqaat → remind 5 PM same day
       const trigger = phase === "night" ? "PT17H" : "-PT3H";
@@ -63,19 +63,19 @@ function build(maxPriority, name, file) {
   console.log(`${file}: ${n} events, Hijri ${Y0}–${Y1}`);
 }
 
-build(2, "Miqaats (badi)", "miqaats-major.ics");
-build(3, "Miqaats + Urus (sab)", "miqaats-all.ics");
+build(2, "Miqaats (major)", "miqaats-major.ics");
+build(3, "Miqaats + Urus (all)", "miqaats-all.ics");
 
 // ---- Amal feed: Rozi ma Barakat (Hijri 2..7 every month) + daily tasbih of the weekday ----
 const SITE = "https://murtaza0053.github.io/hijri-calendar/";
 const ROZI = [[2, 36, "Surat Yaseen"], [3, 55, "Surat ar-Rahman"], [4, 56, "Surat al-Waqiah"], [5, 59, "Surat al-Hashr"], [6, 62, "Surat al-Jumuah"], [7, 72, "Surat al-Jinn"]];
-const WEEK = [["SU", "Iyyaka Na'budu Wa Iyyaka Nasta'een", "Sirf Teri ibadat karte hain aur Tujh se madad maangte hain"],
-  ["MO", "Ya Ghafoor, Ya Raheem", "Ae maaf karne wale, ae rehmat karne wale"],
-  ["TU", "SubhanAllahi wal Hamdu Lillah", "Allah paak hai aur saari tareef Allah ke liye hai"],
-  ["WE", "Ya Rahman, Ya Raheem", "Ae bohot meherban, ae rehmat karne wale"],
-  ["TH", "HasbunAllahu Wa Ni'mal Wakeel", "Allah kaafi hai, woh behtareen kaam banane wala hai"],
-  ["FR", "Ya Zal Jalali Wal Ikram", "Ae jalal aur izzat wale"],
-  ["SA", "Ya Hayyu, Ya Qayyum", "Ae hamesha zinda aur sab ko sambhalne wale"]];
+const WEEK = [["SU", "Iyyaka Na'budu Wa Iyyaka Nasta'een", "You alone we worship and You alone we ask for help"],
+  ["MO", "Ya Ghafoor, Ya Raheem", "O Most Forgiving, O Most Merciful"],
+  ["TU", "SubhanAllahi wal Hamdu Lillah", "Glory be to Allah, and all praise is for Allah"],
+  ["WE", "Ya Rahman, Ya Raheem", "O Most Gracious, O Most Merciful"],
+  ["TH", "HasbunAllahu Wa Ni'mal Wakeel", "Allah is sufficient for us, and He is the best disposer of affairs"],
+  ["FR", "Ya Zal Jalali Wal Ikram", "O Lord of Majesty and Honour"],
+  ["SA", "Ya Hayyu, Ya Qayyum", "O Ever-Living, O Sustainer of all"]];
 const ROZI_ALARM = "PT8H", TASBIH_ALARM = "PT7H";  // 8:00 AM and 7:00 AM on the day
 function buildAmal(file) {
   const L = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//murtaza0053//hijri-calendar//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
@@ -87,14 +87,14 @@ function buildAmal(file) {
   let n = 0;
   for (let y = Y0; y <= Y1; y++) for (let m = 0; m < 12; m++) for (const [d, s, name] of ROZI) {
     const a = H.toAJD(y, m, d), g = H.ajdToG(a), g2 = H.ajdToG(a + 1), url = `${SITE}dua/quran.html?s=${s}`;
-    let desc = `${d} ${H.SHORT[m]} ${y}H — Rozi ma Barakat vaaste amal: ${name} 1 vaar padho.\n${url}`;
-    if (d === 7) desc += "\n\nAaj 7mi tarikh: Panjatan Paak (AS) aur Moulana Abbas Alamdaar (AS) par salawat — jetlu imkaan thai.";
-    ev(`amal-${y}-${m + 1}-${d}`, ymd(g), ymd(g2), `📖 ${d} tarikh: ${name}`, desc, url, ROZI_ALARM); n++;
+    let desc = `${d} ${H.SHORT[m]} ${y}H — amal for barakat in rozi: recite ${name} once.\n${url}`;
+    if (d === 7) desc += "\n\nToday is the 7th: recite salawat on the Panjatan Paak (AS) and Moulana Abbas Alamdaar (AS), as much as you can.";
+    ev(`amal-${y}-${m + 1}-${d}`, ymd(g), ymd(g2), `📖 Hijri ${d}: ${name}`, desc, url, ROZI_ALARM); n++;
   }
   // weekly recurring tasbih (first occurrence: the first such weekday on/after 2026-11-08, a Sunday)
   WEEK.forEach(([by, tas, mean], i) => {
     const a = H.gToAJD(2026, 10, 8) + i, g = H.ajdToG(a), g2 = H.ajdToG(a + 1), url = `${SITE}dua/tasbeeh.html?m=week`;
-    ev(`tasbih-${by}`, ymd(g), ymd(g2), `📿 Aaj ni tasbeeh: ${tas} (100×)`, `${tas} — 100 vaar\n${mean}\n${url}`, url, TASBIH_ALARM, [`RRULE:FREQ=WEEKLY;BYDAY=${by}`]); n++;
+    ev(`tasbih-${by}`, ymd(g), ymd(g2), `📿 Today's tasbeeh: ${tas} (100×)`, `${tas} — 100 times\n${mean}\n${url}`, url, TASBIH_ALARM, [`RRULE:FREQ=WEEKLY;BYDAY=${by}`]); n++;
   });
   L.push("END:VCALENDAR");
   fs.writeFileSync(path.join(__dirname, "calendar", file), L.map(fold).join("\r\n") + "\r\n");
