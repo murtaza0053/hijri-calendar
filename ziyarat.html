@@ -12,8 +12,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="icon" href="icons/icon-192.png">
-<link rel="stylesheet" href="themes.css?v=54">
-<script src="theme-init.js?v=54"></script>
+<link rel="stylesheet" href="themes.css?v=55">
+<script src="theme-init.js?v=55"></script>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
@@ -69,7 +69,7 @@ main{max-width:720px;margin:0 auto;padding:12px 12px calc(env(safe-area-inset-bo
   <div id="vd" class="hide"><div class="card" id="dl"></div></div>
   <p class="note" id="note"></p>
 </main>
-<script src="i18n.js?v=54"></script>
+<script src="i18n.js?v=55"></script>
 <script>
 "use strict";
 const $ = id => document.getElementById(id);
@@ -103,8 +103,8 @@ function render() {
   });
   $("vm").innerHTML = `<div class="legend"><span>🕌 ${t("zMzKey")}</span><span>🏠 ${t("zFaiz")}</span><span>${t("zNums")}</span></div>` + (html || `<p class="note">—</p>`);
   // Duat Mutlaqeen
-  const mark = d => d.current ? "⭐" : d.mz ? "🕌" : d.yemen ? "🇾🇪" : "";
-  $("dl").innerHTML = `<div class="legend"><span>⭐ ${t("zCur")}</span><span>🕌 ${t("zHasMz")}</span><span>🇾🇪 ${t("zYemenKey")}</span></div>` +
+  const mark = d => d.current ? "⭐" : d.yemen ? "🇾🇪" : d.rest ? "🇮🇳" : "";
+  $("dl").innerHTML = `<div class="legend"><span>⭐ ${t("zCur")}</span><span>🇮🇳 ${t("zIndiaKey")}</span><span>🇾🇪 ${t("zYemenKey")}</span></div>` +
     D.dais.filter(d => hit(`${d.no} ${d.name} ${d.rest}`)).map(d => `<div class="dai ${d.current ? "cur" : d.yemen ? "yem" : ""}"><span class="n">${arNum(d.no)}${mark(d) ? `<i>${mark(d)}</i>` : ""}</span><div><b>Syedna ${esc(d.name)}</b>
     <div class="r">${esc(d.period)}${d.current ? ` · <b>${t("zCur")}</b>` : ` · ${t("zRest")}: ${esc(d.rest)}`}${d.yemen ? ` <span class="tag">${t("zYemen")}</span>` : ""}</div>
     ${d.mz ? `<a href="#${d.mz}" data-goto="${d.mz}">→ ${t("zSeeMz")}</a>` : ""}</div></div>`).join("") || "—";
