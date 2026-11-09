@@ -1,6 +1,22 @@
 {
- "v": 28,
+ "v": 29,
  "history": [
+  {
+   "v": 29,
+   "date": "2026-11-09",
+   "en": [
+    "Cleaner home header: English date on the left, Hijri date on the right, a slim Sunrise / Zawaal / Maghrib strip (next one in bold) and the next miqaat.",
+    "Ashara Mubaraka countdown is now a single slim row."
+   ],
+   "gu": [
+    "હોમનો ઉપરનો ભાગ સરળ: ડાબે અંગ્રેજી તારીખ, જમણે હિજરી તારીખ, સૂર્યોદય / ઝવાલ / મગરિબની પટ્ટી અને આગલી મિકાત.",
+    "અશરા મુબારકા કાઉન્ટડાઉન હવે એક નાની લાઇનમાં."
+   ],
+   "hi": [
+    "Home ka upar wala hissa saaf: left me English tareekh, right me Hijri tareekh, Sunrise / Zawaal / Maghrib ki patti (agla time bold) aur agli miqaat.",
+    "Ashara Mubaraka countdown ab ek patli line me."
+   ]
+  },
   {
    "v": 28,
    "date": "2026-11-09",
