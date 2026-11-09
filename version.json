@@ -1,6 +1,19 @@
 {
- "v": 58,
+ "v": 59,
  "history": [
+  {
+   "v": 59,
+   "date": "2026-11-10",
+   "en": [
+    "Surah reader: neater alignment — ayat numbers stay with their last word and the final line is centred."
+   ],
+   "gu": [
+    "સૂરત રીડર: વધુ સુઘડ ગોઠવણ — આયતના નંબર તેના છેલ્લા શબ્દ સાથે રહે અને છેલ્લી લાઇન વચ્ચે."
+   ],
+   "hi": [
+    "Surah reader: behtar alignment — ayat ka number apne aakhri shabd ke saath rehta hai aur aakhri line beech me."
+   ]
+  },
   {
    "v": 58,
    "date": "2026-11-10",
