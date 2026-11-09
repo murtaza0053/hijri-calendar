@@ -1,6 +1,19 @@
 {
- "v": 56,
+ "v": 57,
  "history": [
+  {
+   "v": 57,
+   "date": "2026-11-10",
+   "en": [
+    "Surah reader now looks like a colour-coded Madani Mushaf page: green and gold frame, ornamental surah banner with order and ayah count, tajweed colours with a key, and rosette ayat markers."
+   ],
+   "gu": [
+    "સૂરત રીડર હવે રંગીન મદની મુશફના પાના જેવું: લીલી-સોનેરી ફ્રેમ, ક્રમ અને આયતની સંખ્યા સાથે સુશોભિત બેનર, તજવીદના રંગ અને ચાવી, અને ગુલાબ જેવા આયતના નિશાન."
+   ],
+   "hi": [
+    "Surah reader ab rangeen Madani Mushaf page jaisa: hara-sunehra frame, tarteeb aur ayat ginti ke saath sajawati banner, tajweed ke rang aur key, aur ayat ke gulab jaise nishaan."
+   ]
+  },
   {
    "v": 56,
    "date": "2026-11-09",
