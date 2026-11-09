@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=41">
-<script src="theme-init.js?v=41"></script>
+<link rel="stylesheet" href="themes.css?v=42">
+<script src="theme-init.js?v=42"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -110,6 +110,12 @@ nav.tabs button.on{color:var(--brand);font-weight:700}
 .sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;z-index:9}
 .sheet{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-radius:18px 18px 0 0;padding:16px 16px calc(20px + env(safe-area-inset-bottom));max-height:75vh;overflow:auto;transform:translateY(100%);transition:transform .22s ease;z-index:10;max-width:640px;margin:0 auto}
 .sheet.on{transform:none}
+.thumb{flex:none;width:44px;height:54px;padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#f3ead8}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+#imgView{position:fixed;inset:0;z-index:30;background:rgba(0,0,0,.85);display:none;overflow:auto;padding:calc(env(safe-area-inset-top) + 50px) 10px calc(env(safe-area-inset-bottom) + 20px)}
+#imgView.on{display:block}
+#imgView img{display:block;width:100%;max-width:600px;margin:0 auto;border-radius:10px}
+#imgView button{position:fixed;top:calc(env(safe-area-inset-top) + 8px);right:10px;width:40px;height:40px;border-radius:20px;border:0;font-size:22px;background:rgba(255,255,255,.9);color:#000}
 .ashara{display:flex;align-items:center;gap:10px;padding:10px 14px}
 .ashara .l{flex:1;min-width:0}
 .ashara .t2{font-size:15px;font-weight:700}
@@ -267,13 +273,13 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 
     <h3 class="sec" data-i18n="secAmal"></h3>
     <div class="card">
-      <b data-i18n="roziH"></b>
-      <div class="muted" style="font-size:13px;margin:2px 0 8px" data-i18n="roziDesc"></div>
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <div style="flex:1"><b data-i18n="roziH"></b>
+        <div class="muted" style="font-size:13px;margin:2px 0 8px" data-i18n="roziDesc"></div></div>
+        <button class="thumb" data-img="dua/img/rozi-barakat-amal.jpg" aria-label="Chart"><img src="dua/img/rozi-barakat-amal.jpg" alt=""></button>
+      </div>
       <div id="roziList"></div>
       <div class="muted" style="font-size:12px;margin-top:8px" data-i18n="roziExtra"></div>
-      <div class="row" style="margin-top:10px;gap:8px">
-        <a class="btn ghost" href="dua/img/rozi-barakat-amal.jpg" data-i18n="chart"></a>
-      </div>
     </div>
 
     <h3 class="sec" data-i18n="secQuran"></h3>
@@ -367,11 +373,12 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 </nav>
 
 <div class="upd" id="upd"></div>
+<div id="imgView"><button aria-label="Close">×</button><img alt=""></div>
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=41"></script>
-<script src="i18n.js?v=41"></script>
+<script src="hijri.js?v=42"></script>
+<script src="i18n.js?v=42"></script>
 <script>
 "use strict";
 
@@ -771,7 +778,7 @@ function renderAll() {
   if (curView === "up") renderUpcoming();
   if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD);
 }
-const APP_V = 41, APP_VERSION = APP_V + " (2026-11-09)";
+const APP_V = 42, APP_VERSION = APP_V + " (2026-11-09)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");
@@ -788,6 +795,9 @@ if ("serviceWorker" in navigator) {
   }).catch(() => {});
   navigator.serviceWorker.addEventListener("controllerchange", () => { if (hadSW && !reloaded) { reloaded = true; location.reload(); } });
 }
+document.addEventListener("click", e => { const b = e.target.closest("[data-img]"); if (b) { $("imgView").querySelector("img").src = b.dataset.img; $("imgView").classList.add("on"); } });
+$("imgView").onclick = e => { if (e.target.tagName !== "IMG") $("imgView").classList.remove("on"); };
+
 /* ---------- Ashara Mubaraka countdown ---------- */
 // Ashara = 1–10 Muharram. A Misri day begins at the previous Maghrib, so 1 Muharram starts at
 // sunset on the Gregorian eve. Before it: live countdown; during 1–10: "day n of 10"; then next year.
