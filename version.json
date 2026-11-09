@@ -1,0 +1,17 @@
+{
+  "v": 25,
+  "history": [
+    {
+      "v": 25, "date": "2026-11-09",
+      "en": ["Update notification: the app now tells you when a new version is out and shows what changed."],
+      "gu": ["અપડેટ સૂચના: નવું વર્ઝન આવે ત્યારે એપ જણાવશે અને શું બદલાયું તે બતાવશે."],
+      "hi": ["Update notification: naya version aate hi app batayegi aur kya badla wo dikhayegi."]
+    },
+    {
+      "v": 24, "date": "2026-11-09",
+      "en": ["New calendar design: big number = Hijri date, small = English date.", "Miqaats are colour-coded (gold = major day, blue = night, dots = urus).", "New list of the month's miqaats under the calendar.", "Settings: choose Hijri numbers as 12 or ١٢."],
+      "gu": ["કેલેન્ડરની નવી ડિઝાઇન: મોટો આંકડો = હિજરી તારીખ, નાનો = અંગ્રેજી તારીખ.", "મિકાત રંગથી ઓળખાય (સોનેરી = મોટી દિવસની, વાદળી = રાતની, ટપકાં = ઉરૂસ).", "કેલેન્ડર નીચે મહિનાની મિકાતની યાદી.", "સેટિંગ્સ: હિજરી આંકડા 12 કે ١٢."],
+      "hi": ["Calendar ka naya design: bada number = Hijri tareekh, chhota = English tareekh.", "Miqaat rang se (gold = badi din ki, neela = raat ki, dots = urus).", "Calendar ke neeche mahine ki miqaats ki list.", "Settings: Hijri number 12 ya ١٢ chuno."]
+    }
+  ]
+}

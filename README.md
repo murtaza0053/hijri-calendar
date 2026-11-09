@@ -38,3 +38,8 @@ Portal) on 2026-11-09, plus the Duat Mutlaqeen 1–52 and their resting places f
 (List_of_Dai_of_the_Dawoodi_Bohra; rows 29+ have a shifted column there — the resting place is in the next cell).
 Maps links are Google Maps searches of name + address (zaereen's own coordinates are rounded).
 Language: toggle only in Settings; first load defaults to English.
+
+## Releasing an update
+Every deploy: bump `APP_V` in index.html, `?v=N` on shared JS/CSS, cache names in sw.js / dua/sw.js, and add an entry
+(en/gu/hi notes) at the top of `version.json` with the same `v`. Open apps see an "update available" bar, and after
+updating they get a one-time "what's new" sheet listing every version since the one they last saw.
