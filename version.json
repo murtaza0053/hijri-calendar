@@ -1,6 +1,19 @@
 {
- "v": 50,
+ "v": 51,
  "history": [
+  {
+   "v": 51,
+   "date": "2026-11-09",
+   "en": [
+    "When the app is opened in a mobile browser, an 'Install' bar appears at the top (one tap on Android; steps on iPhone). It disappears once installed."
+   ],
+   "gu": [
+    "મોબાઇલ બ્રાઉઝરમાં એપ ખોલો ત્યારે ઉપર 'ઇન્સ્ટૉલ' પટ્ટી આવે (Android પર એક ટેપ; iPhone પર સ્ટેપ્સ). ઇન્સ્ટૉલ થયા પછી દેખાતી નથી."
+   ],
+   "hi": [
+    "Mobile browser me app kholne par upar 'Install' patti aati hai (Android par ek tap; iPhone par steps). Install hone ke baad nahi dikhti."
+   ]
+  },
   {
    "v": 50,
    "date": "2026-11-09",
