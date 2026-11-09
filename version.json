@@ -1,6 +1,19 @@
 {
- "v": 61,
+ "v": 62,
  "history": [
+  {
+   "v": 62,
+   "date": "2026-11-10",
+   "en": [
+    "Surat Yaseen: bolder Arabic text; the Mushaf page stays white in dark mode so the text is readable."
+   ],
+   "gu": [
+    "સૂરત યાસીન: અરબી લખાણ વધુ બોલ્ડ; ડાર્ક મોડમાં પણ મુશફનું પાનું સફેદ જેથી વાંચી શકાય."
+   ],
+   "hi": [
+    "Surat Yaseen: Arabic text zyada bold; dark mode me bhi Mushaf ka page safed taaki padha ja sake."
+   ]
+  },
   {
    "v": 61,
    "date": "2026-11-10",
