@@ -1,6 +1,19 @@
 {
- "v": 45,
+ "v": 46,
  "history": [
+  {
+   "v": 46,
+   "date": "2026-11-09",
+   "en": [
+    "Ashara countdown: removed the 'Starts after Maghrib' line."
+   ],
+   "gu": [
+    "અશરા કાઉન્ટડાઉન: 'મગરિબ પછી શરૂ' લાઇન કાઢી."
+   ],
+   "hi": [
+    "Ashara countdown: 'Maghrib ke baad shuru' wali line hata di."
+   ]
+  },
   {
    "v": 45,
    "date": "2026-11-09",
