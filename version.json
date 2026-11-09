@@ -1,6 +1,19 @@
 {
- "v": 60,
+ "v": 61,
  "history": [
+  {
+   "v": 61,
+   "date": "2026-11-10",
+   "en": [
+    "Surat Yaseen now uses the real Madani Mushaf pages: the exact 15-line page layout, tajweed colours, ornamental ayat marks and a colour key. Other surahs keep the previous look for now."
+   ],
+   "gu": [
+    "સૂરત યાસીન હવે અસલ મદની મુશફના પાનામાં: પાનાની ચોક્કસ ૧૫ લાઇન, તજવીદના રંગ, આયતના સુશોભિત નિશાન અને રંગની ચાવી. બીજી સૂરતો હાલ પહેલા જેવી."
+   ],
+   "hi": [
+    "Surat Yaseen ab asli Madani Mushaf pages me: page ki exact 15 lines, tajweed ke rang, ayat ke sajawati nishaan aur rang ki key. Baaki surahs abhi pehle jaisi."
+   ]
+  },
   {
    "v": 60,
    "date": "2026-11-10",
