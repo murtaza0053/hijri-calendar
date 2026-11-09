@@ -1,6 +1,19 @@
 {
- "v": 27,
+ "v": 28,
  "history": [
+  {
+   "v": 28,
+   "date": "2026-11-09",
+   "en": [
+    "Ashara Mubaraka countdown on the home screen (days, hours, minutes, seconds); during 1–10 Muharram it shows the day of Ashara."
+   ],
+   "gu": [
+    "હોમ સ્ક્રીન પર અશરા મુબારકાનું કાઉન્ટડાઉન; ૧–૧૦ મોહર્રમ દરમિયાન અશરાનો દિવસ બતાવે."
+   ],
+   "hi": [
+    "Home screen par Ashara Mubaraka ka countdown (din, ghante, minute, second); 1–10 Muharram me Ashara ka kaunsa din hai wo dikhega."
+   ]
+  },
   {
    "v": 27,
    "date": "2026-11-09",
