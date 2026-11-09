@@ -12,8 +12,8 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="icon" href="../icons/icon-192.png">
-<link rel="stylesheet" href="../themes.css?v=64">
-<script src="../theme-init.js?v=64"></script>
+<link rel="stylesheet" href="../themes.css?v=66">
+<script src="../theme-init.js?v=65"></script>
 <style>
 @font-face{font-family:"AmiriQuran";src:url(fonts/AmiriQuran-arabic.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"QNaskh";src:url(fonts/NotoNaskhArabic-arabic.woff2) format("woff2");font-weight:400 700;font-display:swap}
@@ -53,6 +53,21 @@ html.dark .banner .nm{background:var(--card);color:var(--ink);box-shadow:inset 0
 .tj-qalaqah{color:#1e88e5}
 .tj-ham_wasl,.tj-slnt,.tj-laam_shamsiyah,.tj-idgham_wo_ghunnah,.tj-idgham_mutajanisayn,.tj-idgham_mutaqaribayn{color:#9a9a9a}
 .w.on i{color:inherit}
+/* Indo-Pak script (like the Yaseen PDF): bold naskh, waqf signs, plain ayat rings, black double frame */
+body.ip .tjkey{display:none}
+body.ip .page{border:4px double #1a1a1a;border-image:none;border-radius:2px;background:var(--card);color:var(--ink);box-shadow:none}
+html:not(.dark) body.ip .page{background:#fffefb;color:#111}
+body.ip .page .in{border:0}
+body.ip #verses{font-family:IndoPak,AmiriQuran,serif;font-size:23px;line-height:2.1;text-align:justify;text-align-last:center}
+body.ip .bism,body.ip .banner .nm{font-family:IndoPak,AmiriQuran,serif}
+body.ip #verses,body.ip .bism{-webkit-text-stroke:.3px currentColor}
+body.ip .bism{font-size:26px;line-height:2}
+body.ip .banner{background:none;border:0;border-top:2px solid currentColor;border-bottom:2px solid currentColor;border-radius:0;padding:4px 0;margin:2px 0 6px}
+body.ip .banner .med{background:none;border:1.5px solid currentColor;box-shadow:none;color:var(--ink);width:48px;height:48px}
+body.ip .banner .nm{background:none;border:0;box-shadow:none;border-radius:0;color:var(--ink);padding:0 6px 8px;font-size:23px}
+body.ip .num{background:none;border:1.5px solid currentColor;border-radius:50%;box-shadow:0 0 0 2px var(--card),0 0 0 3px currentColor;width:1.55em;height:1.55em;margin:0 6px 0 4px;font-size:14px;font-weight:700;color:inherit;font-family:AmiriQuran,serif}
+html.dark body.ip .num{color:inherit}
+#scriptBtn{display:block;margin:0 auto 8px;border:0;border-radius:999px;background:var(--chip);color:var(--ink);font:inherit;font-size:12px;font-weight:600;padding:6px 14px}
 /* real Madani-mushaf pages: Quran.com page fonts, 15 fixed lines per page */
 .mlines,#verses.mlines{direction:rtl;font-size:var(--mfs,22px);line-height:1;text-align:initial;word-spacing:normal;padding:0}
 .ml{display:flex;justify-content:space-between;align-items:center;height:2.1em;white-space:nowrap}
@@ -108,6 +123,7 @@ body.fs main{padding-top:calc(env(safe-area-inset-top) + 10px);padding-bottom:ca
 </header>
 <main>
   <div id="yt"><div class="ytrow" id="ytRow"></div><div class="ytbox" id="ytBox"></div></div>
+  <button id="scriptBtn"></button>
   <div id="pagesWrap"><div class="page"><div class="in">
     <div class="banner" dir="rtl"><div class="med"><span>ترتيبها<b id="bNo"></b></span></div><div class="nm" id="bName"></div><div class="med"><span>آياتها<b id="bCnt"></b></span></div></div>
     <div class="bism" id="bism" dir="rtl">بِسۡـــــــمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ</div>
@@ -131,7 +147,7 @@ body.fs main{padding-top:calc(env(safe-area-inset-top) + 10px);padding-bottom:ca
   </div>
 </div>
 <audio id="audio" preload="metadata"></audio>
-<script src="../i18n.js?v=64"></script>
+<script src="../i18n.js?v=65"></script>
 <script>
 "use strict";
 const $ = id => document.getElementById(id);
@@ -144,6 +160,7 @@ const fmt = s => { s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60
 const AUDIO_CACHE = "quran-audio-v1";
 const audio = $("audio");
 const sn = +(new URLSearchParams(location.search).get("s") || 36);
+const SCRIPT = ls.get("qscript", "indopak");   // "indopak" (like the Yaseen PDF) | "madani"
 let D = null, M = null, vEls = [], wEls = [], curV = -1, curW = null, followUntil = 0, repeatV = -1;
 
 async function cachedAudio(url) {
@@ -162,7 +179,12 @@ async function downloadAudio(url) {  // background: save for offline, with progr
   } catch { $("status").textContent = navigator.onLine ? "" : t("qOnlineOnly"); }
 }
 
+const INDOPAK_FONT = "https://static-cdn.tarteel.ai/qul/fonts/nastaleeq/Hanafi/normal-v4.2.2/with-waqf-lazmi/font.woff2";  // Quran.com / QUL "Indopak Nastaleeq"
 async function load() {
+  let ip = SCRIPT === "indopak" && await loadPageFont("IndoPak", INDOPAK_FONT);
+  document.body.classList.toggle("ip", ip);
+  $("scriptBtn").textContent = t("qScriptBtn", { s: ip ? t("qIndo") : t("qMadani") });
+  $("scriptBtn").onclick = () => { ls.set("qscript", ip ? "madani" : "indopak"); location.reload(); };
   D = await fetch(`quran/${sn}.json`).then(r => r.json());
   document.title = D.name;
   const NAMES = { 36: "Yaseen", 18: "al-Kahf", 55: "ar-Rahman", 56: "al-Waqiah", 59: "al-Hashr", 62: "al-Jumuah", 72: "al-Jinn" };
@@ -176,9 +198,10 @@ async function load() {
   $("bismT").textContent = t("qBismillah");
   if (sn === 9 || sn === 1) { $("bism").style.display = "none"; $("bismT").style.display = "none"; }
   $("src").textContent = D.source;
-  const tj = w => w[3] ? w[3].replace(/<rule class=(\w+)>/g, '<i class="tj-$1">').replace(/<\/rule>/g, "</i>") : w[0];
+  const tj = w => ip ? w[0] : w[3] ? w[3].replace(/<rule class=(\w+)>/g, '<i class="tj-$1">').replace(/<\/rule>/g, "</i>") : w[0];
   const box = $("verses");
-  M = await fetch(`quran/madani-${sn}.json`).then(r => r.ok ? r.json() : null).catch(() => null);
+  if (ip) { $("bism").textContent = "بِسۡمِ اللّٰهِ الرَّحۡمٰنِ الرَّحِيۡمِ"; $("bName").textContent = "سُوۡرَةُ " + D.ar; }
+  M = ip ? null : await fetch(`quran/madani-${sn}.json`).then(r => r.ok ? r.json() : null).catch(() => null);
   if (M && await renderMadani(M)) {
     // colours as drawn by the page fonts themselves
     $("tjkey").innerHTML = [["#b50000", "مدّ ٦ حركات لزوماً"], ["#f40000", "مدّ ٤ أو ٥ حركات وجوباً"], ["#ff7b00", "مدّ ٢ أو ٤ أو ٦ جوازاً"], ["#ce9e00", "مدّ حركتان"], ["#09b000", "إخفاء، غنّة، إدغام، إقلاب"], ["#2fadff", "قلقلة"], ["#3f48e6", "تفخيم"], ["#a3a5a5", "لا يُلفظ"]].map(([c, x]) => `<span style="--c:${c}">${x}</span>`).join("");

@@ -1,6 +1,19 @@
 {
- "v": 62,
+ "v": 63,
  "history": [
+  {
+   "v": 63,
+   "date": "2026-11-10",
+   "en": [
+    "Surah reader now opens in the Indo-Pak script (like the Yaseen PDF). A 'Script' button switches to the Madani Mushaf look and back."
+   ],
+   "gu": [
+    "સૂરત રીડર હવે ઇન્ડો-પાક લિપિમાં ખૂલે છે (યાસીનની PDF જેવી). 'લિપિ' બટનથી મદની મુશફ અને પાછા બદલી શકાય."
+   ],
+   "hi": [
+    "Surah reader ab Indo-Pak lipi me khulta hai (Yaseen ki PDF jaisa). 'Lipi' button se Madani Mushaf look aur wapas badal sakte ho."
+   ]
+  },
   {
    "v": 62,
    "date": "2026-11-10",
