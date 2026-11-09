@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=47">
-<script src="theme-init.js?v=47"></script>
+<link rel="stylesheet" href="themes.css?v=48">
+<script src="theme-init.js?v=48"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -377,8 +377,8 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=47"></script>
-<script src="i18n.js?v=47"></script>
+<script src="hijri.js?v=48"></script>
+<script src="i18n.js?v=48"></script>
 <script>
 "use strict";
 
@@ -465,9 +465,11 @@ const fmtT = d => d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" 
 
 /* ---------- State ---------- */
 const DEFAULT_LOC = { lat: 22.7196, lng: 75.8577, key: "indore" };
-let loc = store.get("loc", DEFAULT_LOC);
+// key: "auto" = follow the phone's location (re-detected on every open), "indore", or "custom" lat/lng
+let loc = store.get("loc", { ...DEFAULT_LOC, key: "auto" });
 if (!loc.key) loc.key = { "Indore": "indore", "Meri location": "gps" }[loc.name] || "custom"; // migrate v1
-const locLabel = () => t({ indore: "locIndore", gps: "locGps" }[loc.key] || "locCustom");
+if (!store.get("locV2", false)) { if (loc.key !== "custom") loc = { ...loc, key: "auto" }; store.set("locV2", true); store.set("loc", loc); } // v48: auto by default
+const locLabel = () => loc.key === "auto" ? (loc.city || t("locGps")) : t({ indore: "locIndore", gps: "locGps" }[loc.key] || "locCustom");
 const now = new Date();
 const todayAJD = H.gToAJD(now.getFullYear(), now.getMonth(), now.getDate());
 const todayH = H.fromAJD(todayAJD);
@@ -754,20 +756,31 @@ calEl.addEventListener("touchend", e => {
 }, { passive: true });
 
 /* ---------- Location ---------- */
-function setLoc(l) { loc = l; store.set("loc", l); renderTimes(); renderHeader(); renderGhadi(); }
+function setLoc(l) { loc = l; store.set("loc", l); renderTimes(); renderHeader(); renderGhadi(); renderAshara(); }
 $("useIndore").onclick = () => setLoc(DEFAULT_LOC);
 $("saveLL").onclick = () => {
   const lat = parseFloat($("lat").value), lng = parseFloat($("lng").value);
   if (isFinite(lat) && isFinite(lng) && Math.abs(lat) <= 90 && Math.abs(lng) <= 180) setLoc({ lat, lng, key: "custom" });
 };
-$("useGps").onclick = () => {
-  if (!navigator.geolocation) return alert(t("geoNA"));
-  navigator.geolocation.getCurrentPosition(
-    p => setLoc({ lat: p.coords.latitude, lng: p.coords.longitude, key: "gps" }),
-    err => alert(t("geoErr") + err.message),
-    { enableHighAccuracy: false, timeout: 15000 }
-  );
-};
+// Auto location: ask the phone for its position on open/resume (at most every 30 min); keep the
+// last known place (or Indore) if it fails. City name via BigDataCloud's free client-side reverse geocoder.
+let lastDetect = 0;
+function detectLoc(manual) {
+  if (!navigator.geolocation) { if (manual) alert(t("geoNA")); return; }
+  if (!manual && (loc.key !== "auto" || Date.now() - lastDetect < 30 * 60000)) return;
+  lastDetect = Date.now();
+  navigator.geolocation.getCurrentPosition(p => {
+    const lat = +p.coords.latitude.toFixed(4), lng = +p.coords.longitude.toFixed(4);
+    const moved = Math.abs(lat - loc.lat) > 0.02 || Math.abs(lng - loc.lng) > 0.02;
+    const keepCity = !moved && loc.key === "auto" && loc.city;
+    setLoc({ lat, lng, key: "auto", city: keepCity ? loc.city : "" });
+    if (!keepCity) fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`)
+      .then(r => r.json()).then(j => { const c = j.city || j.locality || j.principalSubdivision; if (c && loc.key === "auto") setLoc({ ...loc, city: c }); }).catch(() => {});
+  }, err => { if (manual) alert(t("geoErr") + err.message); }, { enableHighAccuracy: false, timeout: 15000, maximumAge: 10 * 60000 });
+}
+$("useGps").onclick = () => { loc = { ...loc, key: "auto" }; detectLoc(true); };
+detectLoc();
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") detectLoc(); });
 
 /* ---------- Boot ---------- */
 let miqLoaded = false;
@@ -778,7 +791,7 @@ function renderAll() {
   if (curView === "up") renderUpcoming();
   if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD);
 }
-const APP_V = 47, APP_VERSION = APP_V + " (2026-11-09)";
+const APP_V = 48, APP_VERSION = APP_V + " (2026-11-09)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");

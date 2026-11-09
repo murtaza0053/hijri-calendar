@@ -1,6 +1,19 @@
 {
- "v": 47,
+ "v": 48,
  "history": [
+  {
+   "v": 48,
+   "date": "2026-11-09",
+   "en": [
+    "Location is now detected automatically: timings, Ghadi and the Ashara time follow where you are, with your city name at the top. Allow location when asked. Indore or a custom place can still be set in Settings."
+   ],
+   "gu": [
+    "લોકેશન હવે આપમેળે: સમય, ઘડી અને અશરાનો સમય તમે જ્યાં હો ત્યાં મુજબ, ઉપર શહેરનું નામ. પૂછે ત્યારે લોકેશન Allow કરો. સેટિંગ્સમાં ઇન્દોર કે બીજી જગ્યા પણ રાખી શકો."
+   ],
+   "hi": [
+    "Location ab apne aap: timings, Ghadi aur Ashara ka time aap jahan ho uske hisaab se, upar shehar ka naam. Poochhe to location Allow karna. Settings me Indore ya koi aur jagah bhi rakh sakte ho."
+   ]
+  },
   {
    "v": 47,
    "date": "2026-11-09",
