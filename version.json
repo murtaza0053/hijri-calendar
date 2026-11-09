@@ -1,6 +1,19 @@
 {
- "v": 39,
+ "v": 40,
  "history": [
+  {
+   "v": 40,
+   "date": "2026-11-09",
+   "en": [
+    "Tasabeeh: the 7-days tasbih chart is now in the top-right corner — tap it to view."
+   ],
+   "gu": [
+    "તસાબીહ: ૭ દિવસની તસ્બીહનો ચાર્ટ ઉપર જમણા ખૂણે — ટેપ કરીને જુઓ."
+   ],
+   "hi": [
+    "Tasabeeh: 7 din ki tasbeeh ka chart upar right corner me — tap karke dekho."
+   ]
+  },
   {
    "v": 39,
    "date": "2026-11-09",
