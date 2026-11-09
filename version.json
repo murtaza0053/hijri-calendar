@@ -1,6 +1,19 @@
 {
- "v": 64,
+ "v": 65,
  "history": [
+  {
+   "v": 65,
+   "date": "2026-11-10",
+   "en": [
+    "Surah reader (Indo-Pak): words sit closer together, with no stretched gaps."
+   ],
+   "gu": [
+    "સૂરત રીડર (ઇન્ડો-પાક): શબ્દો વચ્ચે ખેંચાયેલી જગ્યા નહીં, નજીક નજીક."
+   ],
+   "hi": [
+    "Surah reader (Indo-Pak): shabdon ke beech kheenchi hui jagah nahi, paas-paas."
+   ]
+  },
   {
    "v": 64,
    "date": "2026-11-10",
