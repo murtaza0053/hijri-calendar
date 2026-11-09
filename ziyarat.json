@@ -1012,6 +1012,15 @@
    "rest": "Mumbai",
    "mz": "mumbai-mazaar__raudat-tahera-mumbai",
    "yemen": false
+  },
+  {
+   "no": 53,
+   "name": "Mufaddal Saifuddin bin Syedna Mohammed Burhanuddin",
+   "period": "2014 – present",
+   "rest": "",
+   "mz": "",
+   "yemen": false,
+   "current": true
   }
  ]
 }
