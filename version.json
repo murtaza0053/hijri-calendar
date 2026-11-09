@@ -1,6 +1,19 @@
 {
- "v": 33,
+ "v": 34,
  "history": [
+  {
+   "v": 34,
+   "date": "2026-11-09",
+   "en": [
+    "'Tasbih of 7 days' is now called 'Tasabeeh'."
+   ],
+   "gu": [
+    "'7 દિવસની તસ્બીહ' હવે 'તસાબીહ'."
+   ],
+   "hi": [
+    "'7 din ki tasbeeh' ab 'Tasabeeh' kehlata hai."
+   ]
+  },
   {
    "v": 33,
    "date": "2026-11-09",
