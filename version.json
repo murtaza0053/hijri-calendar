@@ -1,6 +1,19 @@
 {
- "v": 59,
+ "v": 60,
  "history": [
+  {
+   "v": 60,
+   "date": "2026-11-10",
+   "en": [
+    "Surah reader: surah name centred inside its banner, ayat numbers no longer touch the word before them, header subtitle on one line."
+   ],
+   "gu": [
+    "સૂરત રીડર: બેનરમાં સૂરતનું નામ બરાબર વચ્ચે, આયતના નંબર આગળના શબ્દને અડતા નથી, હેડરની સબટાઇટલ એક લાઇનમાં."
+   ],
+   "hi": [
+    "Surah reader: banner me surah ka naam bilkul beech me, ayat ke number pichhle shabd ko nahi chhoote, header ki subtitle ek line me."
+   ]
+  },
   {
    "v": 59,
    "date": "2026-11-10",

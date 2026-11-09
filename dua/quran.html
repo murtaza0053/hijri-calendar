@@ -12,8 +12,8 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="icon" href="../icons/icon-192.png">
-<link rel="stylesheet" href="../themes.css?v=59">
-<script src="../theme-init.js?v=59"></script>
+<link rel="stylesheet" href="../themes.css?v=60">
+<script src="../theme-init.js?v=60"></script>
 <style>
 @font-face{font-family:"AmiriQuran";src:url(fonts/AmiriQuran-arabic.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"QNaskh";src:url(fonts/NotoNaskhArabic-arabic.woff2) format("woff2");font-weight:400 700;font-display:swap}
@@ -24,7 +24,8 @@ header{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;align-items:ce
 header a{color:inherit;text-decoration:none;font-size:26px;width:40px;height:40px;display:grid;place-items:center}
 header .tt{flex:1;min-width:0}
 header .tt b{display:block;font-size:16px}
-header .tt span{font-size:12px;opacity:.85}
+header .tt{min-width:0;flex:1}
+header .tt span{display:block;font-size:12px;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 header .ar{font-family:AmiriQuran,QNaskh,serif;font-size:24px;padding:0 6px}
 main{padding:calc(env(safe-area-inset-top) + 72px) 12px calc(env(safe-area-inset-bottom) + 150px);max-width:760px;margin:0 auto}
 .bism{font-family:AmiriQuran,QNaskh,serif;text-align:center;font-size:26px;line-height:1.9;margin:2px 0 10px}
@@ -37,7 +38,7 @@ html.dark .page{background:var(--card);color:var(--ink)}
   background:repeating-linear-gradient(45deg,#1b7a52 0 6px,#2aa876 6px 7px,#1b7a52 7px 13px);border:2px solid #e0b65a}
 .banner .med{flex:none;width:52px;height:52px;border-radius:50%;background:radial-gradient(#2fbf86,#14694a);border:2px solid #fff;box-shadow:0 0 0 2px #e0b65a;color:#fff;display:grid;place-items:center;text-align:center;font-family:AmiriQuran,QNaskh,serif;font-size:11px;line-height:1.1}
 .banner .med b{display:block;font-size:19px;line-height:1.05}
-.banner .nm{flex:1;text-align:center;background:#fffefb;color:#111;border:2px solid #e0b65a;border-radius:20px;font-family:AmiriQuran,QNaskh,serif;font-size:25px;line-height:1.7;padding:0 6px;box-shadow:inset 0 0 0 3px #fffefb,inset 0 0 0 4px #1b7a52}
+.banner .nm{flex:1;display:flex;align-items:center;justify-content:center;height:46px;text-align:center;background:#fffefb;color:#111;border:2px solid #e0b65a;border-radius:23px;font-family:AmiriQuran,QNaskh,serif;font-size:25px;line-height:1;padding:0 6px 11px;box-shadow:inset 0 0 0 3px #fffefb,inset 0 0 0 4px #1b7a52}
 html.dark .banner .nm{background:var(--card);color:var(--ink);box-shadow:inset 0 0 0 3px var(--card),inset 0 0 0 4px #1b7a52}
 #verses{direction:rtl;text-align:justify;text-justify:inter-word;font-family:AmiriQuran,QNaskh,"Geeza Pro",serif;font-size:23px;line-height:2.3}
 .v{display:inline;cursor:pointer;border-radius:6px;-webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background .2s}
@@ -56,7 +57,7 @@ html.dark .banner .nm{background:var(--card);color:var(--ink);box-shadow:inset 0
 .tjkey span::before{content:"";display:inline-block;width:11px;height:11px;border-radius:50%;background:var(--c);margin-left:5px;vertical-align:-1px}
 .w{border-radius:6px;padding:0 1px;transition:background .12s,color .12s}
 .w.on{background:var(--brand);color:var(--on-brand)}
-.num{display:inline-grid;place-items:center;width:1.7em;height:1.7em;margin:0 4px 0 3px;vertical-align:middle;font-size:16px;font-weight:700;line-height:1;color:#1b7a52;font-family:AmiriQuran,QNaskh,serif;
+.num{display:inline-grid;place-items:center;width:1.7em;height:1.7em;margin:0 3px 0 10px;vertical-align:middle;font-size:16px;font-weight:700;line-height:1;color:#1b7a52;font-family:AmiriQuran,QNaskh,serif;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cg fill='none' stroke='%23c9962b' stroke-width='1.8'%3E%3Ccircle cx='20' cy='20' r='17'/%3E%3Crect x='7' y='7' width='26' height='26' transform='rotate(45 20 20)' stroke='%231f8f7a'/%3E%3Crect x='7' y='7' width='26' height='26'/%3E%3C/g%3E%3C/svg%3E") center/100% 100% no-repeat;padding:0}
 html.dark .num{color:#7fe0b6}
 #bar{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--card);border-top:1px solid var(--line);
@@ -117,7 +118,7 @@ body.fs main{padding-top:calc(env(safe-area-inset-top) + 10px);padding-bottom:ca
   </div>
 </div>
 <audio id="audio" preload="metadata"></audio>
-<script src="../i18n.js?v=59"></script>
+<script src="../i18n.js?v=60"></script>
 <script>
 "use strict";
 const $ = id => document.getElementById(id);
