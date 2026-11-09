@@ -78,14 +78,19 @@
    "country": "India",
    "kind": "mazaar",
    "people": [
-    "41st Dai-al-Mutlaq Syedna Abdul Tayeb Zakiyuddin(RA)",
+    "Syedna Abdul Tayeb Zakiyuddin (RA)",
     "Syedi AbdulQader Hakimuddin (A.Q.)",
     "Syedi Jivanjee Bin Syedi Dawood (Q.R.)"
    ],
    "address": "Road, Shah Colony, Lodhipura, Burhanpur, Hamidpura, Madhya Pradesh 450331",
    "phone": "+91 73252 45152",
    "maps": "https://www.google.com/maps/search/?api=1&query=Dargah%20E%20Hakimi%2C%20Road%2C%20Shah%20Colony%2C%20Lodhipura%2C%20Burhanpur%2C%20Hamidpura%2C%20Madhya%20Pradesh%20450331",
-   "src": "https://zaereen.com/burhanpur-mazaar/dargah-e-hakimi"
+   "src": "https://zaereen.com/burhanpur-mazaar/dargah-e-hakimi",
+   "peopleNo": [
+    41,
+    0,
+    0
+   ]
   },
   {
    "id": "chechat-mazaar__mazar-e-shaikh-ibrahim-saheb-shaheed",
@@ -276,7 +281,10 @@
    "address": "MAZAR E NOORANI VOHRA HAJIRA HAJIRA ROAD MANDVI KUTCH- 370465 GUJARAT",
    "phone": "+91 2834 231786",
    "maps": "https://www.google.com/maps/search/?api=1&query=Mazaar%20E%20Noorani%20Mandvi%2C%20MAZAR%20E%20NOORANI%20VOHRA%20HAJIRA%20HAJIRA%20ROAD%20MANDVI%20KUTCH-%20370465%20GUJARAT",
-   "src": "https://zaereen.com/mandvi-mazaar/mazaar-e-noorani-mandvi"
+   "src": "https://zaereen.com/mandvi-mazaar/mazaar-e-noorani-mandvi",
+   "peopleNo": [
+    37
+   ]
   },
   {
    "id": "morbi-mazaar__mazar-e-maulai-raja-saheb-morbi",
@@ -302,15 +310,21 @@
    "country": "India",
    "kind": "mazaar",
    "people": [
-    "Syedna Taher Saifuddin(AQ)",
-    "Syedi Ishaq bhaisaheb Jamaluddin(QS)",
-    "Syedi Saleh bhaisaheb Safiyuddin(QS)",
-    "51st Dai Al-Mutlaq Syedna Taher Saifuddin (R.A)"
+    "Syedna Taher Saifuddin (AQ)",
+    "Syedna Mohammed Burhanuddin (RA)",
+    "Syedi Ishaq bhaisaheb Jamaluddin (QS)",
+    "Syedi Saleh bhaisaheb Safiyuddin (QS)"
    ],
    "address": "Ajmer, Bhendi Bazaar, Kumbharwada, Mumbai, Maharashtra 400003",
    "phone": "+91 22234 63752",
    "maps": "https://www.google.com/maps/search/?api=1&query=Raudat%20Tahera%20Mumbai%2C%20Ajmer%2C%20Bhendi%20Bazaar%2C%20Kumbharwada%2C%20Mumbai%2C%20Maharashtra%20400003",
-   "src": "https://zaereen.com/mumbai-mazaar/raudat-tahera-mumbai"
+   "src": "https://zaereen.com/mumbai-mazaar/raudat-tahera-mumbai",
+   "peopleNo": [
+    51,
+    52,
+    0,
+    0
+   ]
   },
   {
    "id": "mundra-mazaar__mazaar-e-rani-baisaheba-mundra",
@@ -456,7 +470,27 @@
    "address": "Devdi Mubarak, Zhampa Bazaar, Pathan Wara ,Surat-395003",
    "phone": "+91 26124 22749",
    "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20E%20Saifee%2C%20Devdi%20Mubarak%2C%20Zhampa%20Bazaar%2C%20Pathan%20Wara%20%2CSurat-395003",
-   "src": "https://zaereen.com/surat-mazaar/mazar-e-saifee"
+   "src": "https://zaereen.com/surat-mazaar/mazar-e-saifee",
+   "peopleNo": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    49,
+    50,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
   },
   {
    "id": "udaipur-mazaar__mazaar-e-luqmanji-udaipur",
@@ -491,7 +525,16 @@
    "address": "Qamari Marg, Kamri Marg, Ujjain, Madhya Pradesh 456006",
    "phone": "+91 73425 70786",
    "maps": "https://www.google.com/maps/search/?api=1&query=Mazar%20E%20Najmi%20Ujjain%2C%20Qamari%20Marg%2C%20Kamri%20Marg%2C%20Ujjain%2C%20Madhya%20Pradesh%20456006",
-   "src": "https://zaereen.com/ujjain-mazaar/mazar-e-najmi-ujjain"
+   "src": "https://zaereen.com/ujjain-mazaar/mazar-e-najmi-ujjain",
+   "peopleNo": [
+    39,
+    40,
+    47,
+    0,
+    0,
+    0,
+    0
+   ]
   },
   {
    "id": "umreth-mazaar__mazar-e-syedi-miyaji-bin-taj",

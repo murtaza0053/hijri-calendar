@@ -1,6 +1,19 @@
 {
- "v": 53,
+ "v": 54,
  "history": [
+  {
+   "v": 54,
+   "date": "2026-11-09",
+   "en": [
+    "Mazaraat: in each 'Resting here' list the Dais now show their Dai number (Arabic) in front of the name."
+   ],
+   "gu": [
+    "મઝારાત: 'અહીં આરામ ફરમાવે છે' યાદીમાં દાઈના નામ આગળ તેમનો દાઈ નંબર (અરબીમાં)."
+   ],
+   "hi": [
+    "Mazaraat: 'Resting here' list me Dai ke naam ke aage unka Dai number (Arabic me)."
+   ]
+  },
   {
    "v": 53,
    "date": "2026-11-09",
