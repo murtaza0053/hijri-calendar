@@ -1,5 +1,5 @@
 // Bump CACHE when app files change. Media (audio/pdf) is cached by app.js in 'readalong-media-v1'.
-const CACHE = 'readalong-shell-v22';
+const CACHE = 'readalong-shell-v23';
 const SHELL = ['./', 'index.html', 'app.js', 'vendor/pdf.min.js', 'vendor/pdf.worker.min.js',
   'quran.html', 'tasbeeh.html', 'quran/36.json', 'quran/18.json', 'quran/55.json', 'quran/56.json', 'quran/59.json', 'quran/62.json', 'quran/72.json', 'quran/youtube.json', 'fonts/NotoNaskhArabic-arabic.woff2',
   '../themes.css', '../theme-init.js', '../i18n.js'];

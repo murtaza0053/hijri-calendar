@@ -1,6 +1,19 @@
 {
- "v": 29,
+ "v": 30,
  "history": [
+  {
+   "v": 30,
+   "date": "2026-11-09",
+   "en": [
+    "The date converter has moved to Settings (🔁 Date converter); the bottom bar now has 4 tabs."
+   ],
+   "gu": [
+    "તારીખ કન્વર્ટર હવે સેટિંગ્સમાં (🔁 તારીખ કન્વર્ટર); નીચેની પટ્ટીમાં હવે ૪ ટેબ."
+   ],
+   "hi": [
+    "Date converter ab Settings me hai (🔁 Date converter); neeche ki patti me ab 4 tab."
+   ]
+  },
   {
    "v": 29,
    "date": "2026-11-09",

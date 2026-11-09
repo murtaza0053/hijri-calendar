@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=29">
-<script src="theme-init.js?v=29"></script>
+<link rel="stylesheet" href="themes.css?v=30">
+<script src="theme-init.js?v=30"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -276,27 +276,6 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
     <p class="muted" style="padding:0 4px" data-i18n="duaNote"></p>
   </section>
 
-  <!-- CONVERT -->
-  <section class="view" id="v-conv">
-    <div class="card">
-      <h3>Gregorian → Hijri</h3>
-      <div class="row"><input type="date" id="gIn"><button class="btn" id="gGo" data-i18n="convert"></button></div>
-      <div class="conv-out" id="gOut"></div>
-      <div class="ar" dir="rtl" id="gOutAr"></div>
-    </div>
-    <div class="card">
-      <h3>Hijri → Gregorian</h3>
-      <div class="row">
-        <input type="number" id="hD" min="1" max="30" data-i18n-ph="dayPh" style="width:70px">
-        <select id="hM"></select>
-        <input type="number" id="hY" min="1000" max="3000" data-i18n-ph="yearPh" style="width:90px">
-        <button class="btn" id="hGo" data-i18n="convert"></button>
-      </div>
-      <div class="conv-out" id="hOut"></div>
-      <div class="row" style="margin-top:8px"><button class="btn ghost" id="hShow" style="display:none" data-i18n="showCal"></button></div>
-    </div>
-  </section>
-
   <!-- SETTINGS -->
   <section class="view" id="v-set">
     <div class="card">
@@ -340,6 +319,22 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
         <button class="btn ghost" id="saveLL" data-i18n="save"></button>
       </div>
     </div>
+    <div class="card" id="convCard">
+      <h3>🔁 <span data-i18n="convH"></span></h3>
+      <h4 class="plat">Gregorian → Hijri</h4>
+      <div class="row"><input type="date" id="gIn"><button class="btn" id="gGo" data-i18n="convert"></button></div>
+      <div class="conv-out" id="gOut"></div>
+      <div class="ar" dir="rtl" id="gOutAr"></div>
+      <h4 class="plat">Hijri → Gregorian</h4>
+      <div class="row">
+        <input type="number" id="hD" min="1" max="30" data-i18n-ph="dayPh" style="width:70px">
+        <select id="hM"></select>
+        <input type="number" id="hY" min="1000" max="3000" data-i18n-ph="yearPh" style="width:90px">
+        <button class="btn" id="hGo" data-i18n="convert"></button>
+      </div>
+      <div class="conv-out" id="hOut"></div>
+      <div class="row" style="margin-top:8px"><button class="btn ghost" id="hShow" style="display:none" data-i18n="showCal"></button></div>
+    </div>
     <div class="card">
       <h3 data-i18n="installH"></h3>
       <h4 class="plat" data-i18n="platIphone"></h4>
@@ -359,7 +354,6 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
   <button data-v="cal" class="on"><span class="i">📅</span><span data-i18n="tabCal"></span></button>
   <button data-v="up"><span class="i">🕌</span><span data-i18n="tabUp"></span></button>
   <button data-v="dua"><span class="i">🤲</span><span data-i18n="tabDua"></span></button>
-  <button data-v="conv"><span class="i">🔁</span><span data-i18n="tabConv"></span></button>
   <button data-v="set"><span class="i">⚙️</span><span data-i18n="tabSet"></span></button>
 </nav>
 
@@ -367,8 +361,8 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=29"></script>
-<script src="i18n.js?v=29"></script>
+<script src="hijri.js?v=30"></script>
+<script src="i18n.js?v=30"></script>
 <script>
 "use strict";
 
@@ -768,7 +762,7 @@ function renderAll() {
   if (curView === "up") renderUpcoming();
   if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD);
 }
-const APP_V = 29, APP_VERSION = APP_V + " (2026-11-09)";
+const APP_V = 30, APP_VERSION = APP_V + " (2026-11-09)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");
