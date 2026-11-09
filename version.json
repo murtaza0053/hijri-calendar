@@ -1,6 +1,19 @@
 {
- "v": 55,
+ "v": 56,
  "history": [
+  {
+   "v": 56,
+   "date": "2026-11-09",
+   "en": [
+    "Surah reader (starting with Yaseen) now looks like a Quran-e-Majeed page: Quranic Amiri font, framed page, surah banner and running text with ayat circles."
+   ],
+   "gu": [
+    "સૂરત રીડર (યાસીનથી શરૂ) હવે કુરાને મજીદના પાના જેવું: કુરાની Amiri ફૉન્ટ, ફ્રેમવાળું પાનું, સૂરતનું બેનર અને આયતના ગોળ સાથે સળંગ લખાણ."
+   ],
+   "hi": [
+    "Surah reader (Yaseen se shuru) ab Quran-e-Majeed ke page jaisa: Quran wala Amiri font, frame wala page, surah banner aur ayat ke gol ke saath lagatar text."
+   ]
+  },
   {
    "v": 55,
    "date": "2026-11-09",
