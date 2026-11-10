@@ -84,9 +84,14 @@ async function loadBundled() {
   const audioBlob = !cfg.audio ? null : await fetchCached(BASE + cfg.audio, (g, t) =>
     status(t ? `Audio download: ${Math.round(g / t * 100)}% (${mb(g)} / ${mb(t)} MB)` : `Audio download: ${mb(g)} MB`));
   let fileMarks = null, frames = null;
-  let step = false;
+  let step = false, textData = null;
   if (cfg.sync) try { const r = await fetch(BASE + cfg.sync, { cache: 'no-cache' }); if (r.ok) { const j = await r.json(); fileMarks = j.marks; frames = j.frames || null; step = !!j.step; } } catch {}
-  await openMedia({ title: cfg.title, pdfBlob, audioBlob, key: `bundled:${cfg.pdf}|${cfg.audio}`, fileMarks, frames, step });
+  const tv = cfg.versions && cfg.versions.find(x => x.id === state.version);
+  if (tv && tv.text) {  // retyped Indo-Pak text laid out on the same line positions as the printed pages
+    textData = await fetch(BASE + tv.text).then(r => r.ok ? r.json() : null).catch(() => null);
+    if (textData && !(await loadIndoPak())) { textData = null; toast('Font not available offline — showing the PDF', 4000); }
+  }
+  await openMedia({ title: cfg.title, pdfBlob, audioBlob, key: `bundled:${cfg.pdf}|${cfg.audio}|${tv && tv.text ? 'text' : ''}`, fileMarks, frames, step, textData });
 }
 
 async function loadPicked() {
@@ -96,9 +101,9 @@ async function loadPicked() {
   return true;
 }
 
-async function openMedia({ title, pdfBlob, audioBlob, key, fileMarks, frames, step }) {
+async function openMedia({ title, pdfBlob, audioBlob, key, fileMarks, frames, step, textData }) {
   status('Opening PDF…');
-  state.key = key;
+  state.key = key; state.text = textData || null;
   state.frames = frames || null; // per page [left, right] of the printed border, as fractions of page width
   $('title').textContent = title; document.title = title;
   if (audio.src) URL.revokeObjectURL(audio.src);
@@ -136,16 +141,56 @@ async function buildPages() {
     const el = document.createElement('div');
     el.className = 'page'; el.dataset.n = i;
     el.style.aspectRatio = `${vp.width} / ${vp.height}`;
-    el.innerHTML = `<canvas></canvas><span class="num">${i}</span>`;
+    el.innerHTML = state.text ? textLayer(state.text.pages[i - 1]) + `<span class="num">${i}</span>` : `<canvas></canvas><span class="num">${i}</span>`;
+    if (state.text) el.classList.add('tp');
     pagesEl.appendChild(el); state.pageEls.push(el); observer.observe(el);
   }
+  if (state.text) fitText();
   drawTicks();
 }
+
+/* ---------- retyped text (Indo-Pak script), laid out on the printed pages' line positions ---------- */
+const INDOPAK_URL = 'https://static-cdn.tarteel.ai/qul/fonts/nastaleeq/Hanafi/normal-v4.2.2/with-waqf-lazmi/font.woff2';  // Quran.com / QUL "Indopak Nastaleeq"
+async function loadIndoPak() {
+  let data = null;
+  try {
+    const c = await caches.open('quran-fonts-v1'); let r = await c.match(INDOPAK_URL);
+    if (!r) { r = await fetch(INDOPAK_URL, { mode: 'cors' }); if (r.ok) await c.put(INDOPAK_URL, r.clone()); }
+    if (r.ok) data = await r.arrayBuffer();
+  } catch {}
+  try { const f = data ? new FontFace('IndoPak', data) : new FontFace('IndoPak', `url(${INDOPAK_URL})`); document.fonts.add(f); await f.load(); return true; } catch { return false; }
+}
+function textLayer(pg) {
+  const esc = (x) => x.replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+  return pg.lines.map((l, k) => {
+    const items = l.t.split(/\s+/).filter(Boolean).map(w => w === '*' ? '<i class="rs"></i>' : `<span>${esc(w)}</span>`).join('');
+    return `<div class="tl${l.n ? ' nt' : ''}${l.h ? ' hd' + l.h : ''}" style="top:${(pg.ys[k] * 100).toFixed(2)}%">${items}</div>`;
+  }).join('');
+}
+function fitText() {  // one font size for the whole book: the fullest line just fits between the printed borders
+  if (!state.text) return;
+  const els = state.pageEls; if (!els.length) return;
+  pagesEl.style.setProperty('--tfs', '100px');
+  let best = 1e9;
+  els.forEach((el, i) => {
+    const fr = (state.frames && state.frames[i]) || [0.08, 0.86];
+    const avail = el.clientWidth * (fr[1] - fr[0]) * 0.96;
+    el.style.setProperty('--tl', (fr[0] * 100) + '%'); el.style.setProperty('--tr', ((1 - fr[1]) * 100) + '%');
+    el.querySelectorAll('.tl:not(.nt):not(.hd1):not(.hd2)').forEach(r => {
+      const w = [...r.children].reduce((a, c) => a + c.getBoundingClientRect().width, 0);
+      if (w) best = Math.min(best, avail / w * 100);
+    });
+  });
+  const fs = Math.max(11, Math.min(34, best));
+  pagesEl.style.setProperty('--tfs', fs + 'px');
+}
+window.addEventListener('resize', () => { if (state.text) setTimeout(fitText, 250); });
 
 const rendering = new Map();
 function onIntersect(entries) {
   for (const e of entries) {
     const el = e.target, c = el.querySelector('canvas');
+    if (state.text) continue;
     if (e.isIntersecting) renderPage(el);
     else if (c.width) { c.width = 0; c.height = 0; el.dataset.rw = ''; } // free memory (iOS limit)
   }

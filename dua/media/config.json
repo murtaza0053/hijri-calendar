@@ -3,6 +3,13 @@
  "audio": "dua-e-kamil.m4a",
  "versions": [
   {
+   "id": "new-text",
+   "label": "New — Indo-Pak text (22 pages, draft)",
+   "pdf": "dua-e-kamil-v2.pdf",
+   "sync": "sync.json",
+   "text": "kamil-text.json"
+  },
+  {
    "id": "new",
    "label": "New PDF (22 pages)",
    "pdf": "dua-e-kamil-v2.pdf",

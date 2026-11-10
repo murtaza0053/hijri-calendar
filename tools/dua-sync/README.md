@@ -14,3 +14,9 @@ from tessdata_best in `./tessdata`, `ffmpeg`, `pdftoppm`):
 5. `python frames.py sync.json` — adds each page's printed-border x-range so the highlight stays inside it.
 
 For Dua e Kamil (2026-11-07) 213 of 468 script lines matched directly; spot checks were on the right line.
+
+## Text version of Dua e Kamil (2026-11-10)
+`dua/media/kamil-text.json` = the new PDF retyped (Google Drive OCR of each page, proofread line by line against the page
+images; draft until a reader confirms it — see `kamil-text-review.txt` for the uncertain words). `ys` are the line
+centres of each printed page, so the existing `sync.json` marks (page, y) work unchanged. The reader's "New — Indo-Pak text"
+version lays the lines at those positions in the Quran.com/QUL "Indopak Nastaleeq" font (loaded from their CDN, cached).
