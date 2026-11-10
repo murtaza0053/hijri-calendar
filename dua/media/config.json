@@ -6,7 +6,7 @@
    "id": "new-text",
    "label": "New — Indo-Pak text (22 pages, draft)",
    "pdf": "dua-e-kamil-v2.pdf",
-   "sync": "sync.json",
+   "sync": "sync-text.json",
    "text": "kamil-text.json",
    "words": "kamil-words.json"
   },

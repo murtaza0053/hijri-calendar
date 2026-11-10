@@ -144,8 +144,9 @@ async function buildPages() {
   state.pageEls = [];
   if (observer) observer.disconnect();
   observer = new IntersectionObserver(onIntersect, { root: viewer, rootMargin: '150% 0px' });
-  for (let i = 1; i <= state.pdf.numPages; i++) {
-    const page = await state.pdf.getPage(i);
+  const N = state.text ? state.text.pages.length : state.pdf.numPages;   // the text version writes the repeated parts out, so it has more pages than the PDF
+  for (let i = 1; i <= N; i++) {
+    const page = await state.pdf.getPage(Math.min(i, state.pdf.numPages));
     const vp = page.getViewport({ scale: 1 });
     const el = document.createElement('div');
     el.className = 'page'; el.dataset.n = i;
@@ -173,7 +174,7 @@ function textLayer(pg) {
   const esc = (x) => x.replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
   return pg.lines.map((l, k) => {
     const items = l.t.split(/\s+/).filter(Boolean).map(w => w === '*' ? '<i class="rs"></i>' : `<span>${esc(w)}</span>`).join('');
-    return `<div class="tl${l.n ? ' nt' : ''}${l.h ? ' hd' + l.h : ''}" style="top:${(pg.ys[k] * 100).toFixed(2)}%">${items}</div>`;
+    return `<div class="tl${l.n ? ' nt' : ''}${l.r ? ' nt rn' : ''}${l.h ? ' hd' + l.h : ''}" style="top:${(pg.ys[k] * 100).toFixed(2)}%">${items}</div>`;
   }).join('');
 }
 /* word highlight: the sync is per printed line, so inside a line the time is shared out by letter count */
@@ -183,7 +184,7 @@ function lineOf(m) {  // the text line a sync mark points at (nearest printed li
   if (m._l !== undefined) return m._l;
   const pg = state.text.pages[m.p - 1], el = state.pageEls[m.p - 1];
   let best = -1, bd = 1e9;
-  if (pg && el) pg.ys.forEach((y, k) => { if (pg.lines[k].h === 2) return; const d = Math.abs(y - m.y); if (d < bd) { bd = d; best = k; } });
+  if (pg && el) pg.ys.forEach((y, k) => { if (pg.lines[k].h === 2 || pg.lines[k].r) return; const d = Math.abs(y - m.y); if (d < bd) { bd = d; best = k; } });
   m._l = best >= 0 ? el.querySelectorAll('.tl')[best] : null;
   return m._l;
 }
