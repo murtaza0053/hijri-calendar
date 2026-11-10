@@ -190,7 +190,7 @@ function lineOf(m) {  // the text line a sync mark points at (nearest printed li
 let lastI = -1, lastJ = -1, lastT = 0;
 function markWord(t, snap) {
   let target = null;
-  const t0 = t; t += 0.08;   // show the word a hair early: reads as 'in time'
+  const t0 = t; t += 0.14;   // show the word a hair early: reads as 'in time'
   const ms = state.marks;
   if (ms.length) {
     let lo = 0, hi = ms.length - 1, i = -1;
@@ -234,15 +234,15 @@ function updateHl(snap) {
   if (!hl || snap || audio.paused && !dt) { hl = { ...tg, line: tg.y }; }
   else if (Math.abs(tg.y - hl.y) > tg.h * 0.8) {        // next line: don't swoop across the page — appear there with a short fade
     hl = { ...tg }; hlEl.classList.remove('pop'); void hlEl.offsetWidth; hlEl.classList.add('pop');
-  } else {                                               // same line: ease towards the word (≈70 ms time constant)
-    const k = 1 - Math.exp(-dt / 0.07);
+  } else {                                               // same line: ease towards the word (≈150 ms time constant)
+    const k = 1 - Math.exp(-dt / 0.15);
     hl.x += (tg.x - hl.x) * k; hl.y += (tg.y - hl.y) * k; hl.w += (tg.w - hl.w) * k; hl.h += (tg.h - hl.h) * k;
   }
   hlEl.style.opacity = '1';
   hlEl.style.transform = `translate(${hl.x.toFixed(1)}px, ${hl.y.toFixed(1)}px)`;
   hlEl.style.width = hl.w.toFixed(1) + 'px'; hlEl.style.height = hl.h.toFixed(1) + 'px';
 }
-function fitText() {  // global size fits ~90% of the lines edge to edge; the few longest lines are scaled down individually
+function fitText() {  // big shared font; each line then adjusts its word gap (0.1–0.3em), and only the very longest lines shrink a little
   if (!state.text) return;
   const els = state.pageEls; if (!els.length) return;
   pagesEl.style.setProperty('--tfs', '100px');
@@ -252,16 +252,23 @@ function fitText() {  // global size fits ~90% of the lines edge to edge; the fe
     const avail = el.clientWidth * (fr[1] - fr[0]) * 0.97;
     el.style.setProperty('--tl', (fr[0] * 100) + '%'); el.style.setProperty('--tr', ((1 - fr[1]) * 100) + '%');
     el.querySelectorAll('.tl:not(.nt):not(.hd1):not(.hd2)').forEach(r => {
-      r.style.fontSize = '';
-      const kids = [...r.children], w = kids.reduce((a, c) => a + c.getBoundingClientRect().width, 0) + Math.max(0, kids.length - 1) * 30;  // + .3em gaps (at 100px)
-      if (w) rows.push({ r, k: avail / w * 100 });
+      r.style.fontSize = ''; r.style.removeProperty('--tg');
+      const kids = [...r.children], W0 = kids.reduce((a, c) => a + c.getBoundingClientRect().width, 0), n = kids.length;
+      if (W0) rows.push({ r, W0, gaps: Math.max(0, n - 1), avail, kmin: avail / (W0 + Math.max(0, n - 1) * 10) * 100 });   // largest size with the tightest gap (0.1em)
     });
   });
   if (!rows.length) return;
-  const ks = rows.map(x => x.k).sort((a, b) => a - b);
-  const fs = Math.max(11, Math.min(34, ks[Math.floor(ks.length * 0.1)]));      // 10th percentile: 90% of the lines fit at this size
+  const ks = rows.map(x => x.kmin).sort((a, b) => a - b);
+  const fs = Math.max(11, Math.min(36, ks[Math.floor(ks.length * 0.2)]));       // 80% of the lines fit at this size
   pagesEl.style.setProperty('--tfs', fs + 'px');
-  rows.forEach(({ r, k }) => { if (k < fs) r.style.fontSize = `calc(var(--tfs) * ${(k / fs).toFixed(3)})`; });
+  rows.forEach(({ r, W0, gaps, avail, kmin }) => {
+    if (kmin >= fs) {                                                           // fits: spread the spare room over the gaps, but never wider than 0.3em
+      const g = gaps ? (avail - W0 * fs / 100) / (gaps * fs) : 0.3;
+      r.style.setProperty('--tg', Math.max(0.1, Math.min(0.3, g)).toFixed(3) + 'em');
+    } else {                                                                     // too long even with tight gaps: shrink just this line
+      r.style.setProperty('--tg', '0.1em'); r.style.fontSize = `calc(var(--tfs) * ${(kmin / fs).toFixed(3)})`;
+    }
+  });
 }
 window.addEventListener('resize', () => { if (state.text) setTimeout(fitText, 250); });
 

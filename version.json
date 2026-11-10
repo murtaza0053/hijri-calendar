@@ -1,6 +1,19 @@
 {
- "v": 73,
+ "v": 74,
  "history": [
+  {
+   "v": 74,
+   "date": "2026-11-10",
+   "en": [
+    "Dua e Kamil (text): bigger text, and the word highlight now glides more slowly and smoothly."
+   ],
+   "gu": [
+    "દુઆ એ કામિલ (ટેક્સ્ટ): મોટું લખાણ, અને શબ્દની હાઇલાઇટ હવે વધુ ધીમે અને સરળતાથી સરકે છે."
+   ],
+   "hi": [
+    "Dua e Kamil (text): bada text, aur shabd ka highlight ab zyada dheere aur smoothly glide karta hai."
+   ]
+  },
   {
    "v": 73,
    "date": "2026-11-10",
