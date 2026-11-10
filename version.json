@@ -1,6 +1,22 @@
 {
- "v": 69,
+ "v": 70,
  "history": [
+  {
+   "v": 70,
+   "date": "2026-11-10",
+   "en": [
+    "New: Sadaqah section in the Dua tab — the sadaqah item for each day of the week, with today's highlighted.",
+    "The app is now called Mumin (on an iPhone already installed, remove and re-add it to the Home Screen to see the new name)."
+   ],
+   "gu": [
+    "નવું: દુઆ ટેબમાં સદકા વિભાગ — અઠવાડિયાના દરેક દિવસની સદકાની વસ્તુ, આજની હાઇલાઇટ સાથે.",
+    "એપનું નામ હવે Mumin છે (iPhone પર પહેલેથી ઇન્સ્ટૉલ હોય તો નવું નામ જોવા હોમ સ્ક્રીન પરથી કાઢીને ફરી ઉમેરો)."
+   ],
+   "hi": [
+    "Naya: Dua tab me Sadaqah section — hafte ke har din ka sadaqah, aaj ka highlight ke saath.",
+    "App ka naam ab Mumin hai (iPhone par pehle se install ho to naya naam dekhne ke liye Home Screen se hata kar dobara add karo)."
+   ]
+  },
   {
    "v": 69,
    "date": "2026-11-10",

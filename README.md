@@ -1,4 +1,4 @@
-# Hijri Calendar (Misri) — PWA
+# Mumin — Misri (Fatimi) Hijri calendar + duas PWA
 
 Offline-capable Misri / Fatimi tabular Hijri calendar with miqaats, made to install on iPhone (Safari → Share → Add to Home Screen).
 
