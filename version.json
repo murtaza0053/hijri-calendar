@@ -1,6 +1,19 @@
 {
- "v": 79,
+ "v": 80,
  "history": [
+  {
+   "v": 80,
+   "date": "2026-11-10",
+   "en": [
+    "Settings → Calendar reminders now explains how to delete or switch off a reminder on iPhone and Android."
+   ],
+   "gu": [
+    "સેટિંગ્સ → કૅલેન્ડર રિમાઇન્ડરમાં હવે iPhone અને Androidમાં રિમાઇન્ડર ડિલીટ કે બંધ કરવાની રીત લખેલી છે."
+   ],
+   "hi": [
+    "Settings → Calendar reminders me ab iPhone aur Android dono me reminder delete ya band karne ka tareeka likha hai."
+   ]
+  },
   {
    "v": 79,
    "date": "2026-11-10",
