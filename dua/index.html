@@ -49,6 +49,9 @@ button:active{background:var(--accent-2)}
 .tp .tl.nt{justify-content:center;font-size:calc(var(--tfs,20px)*.62);color:#6a5a2a;-webkit-text-stroke:0;gap:.4em}
 .tp .tl .rs{width:.5em;height:.5em;border:1.5px solid #c9962b;border-radius:50%;box-shadow:0 0 0 1.5px #fffefb,0 0 0 2.5px #1f8f7a;margin:0 .25em}
 .tp .tl.nt .rs{display:none}
+.tp .tl span{border-radius:.25em;padding:0 .08em;transition:background .08s}
+.tp .tl span.on{background:rgba(224,160,40,.55);box-shadow:0 0 0 2px rgba(224,160,40,.55)}
+body.tmode #cursor{opacity:.3}
 .tp .tl.hd1{justify-content:center;font-size:calc(var(--tfs,20px)*1.9);-webkit-text-stroke:.5px currentColor}
 .tp .tl.hd2{justify-content:center;font-size:calc(var(--tfs,20px)*.8);color:#6a5a2a}
 #cursor{position:absolute;left:8px;right:8px;height:44px;margin-top:-22px;pointer-events:none;
@@ -138,6 +141,6 @@ input[type=file]{display:none}
 <audio id="audio" preload="auto"></audio>
 
 <script src="vendor/pdf.min.js"></script>
-<script src="app.js?v=68"></script>
+<script src="app.js?v=70"></script>
 </body>
 </html>

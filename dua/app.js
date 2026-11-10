@@ -84,14 +84,15 @@ async function loadBundled() {
   const audioBlob = !cfg.audio ? null : await fetchCached(BASE + cfg.audio, (g, t) =>
     status(t ? `Audio download: ${Math.round(g / t * 100)}% (${mb(g)} / ${mb(t)} MB)` : `Audio download: ${mb(g)} MB`));
   let fileMarks = null, frames = null;
-  let step = false, textData = null;
+  let step = false, textData = null, wordTimes = null;
   if (cfg.sync) try { const r = await fetch(BASE + cfg.sync, { cache: 'no-cache' }); if (r.ok) { const j = await r.json(); fileMarks = j.marks; frames = j.frames || null; step = !!j.step; } } catch {}
   const tv = cfg.versions && cfg.versions.find(x => x.id === state.version);
   if (tv && tv.text) {  // retyped Indo-Pak text laid out on the same line positions as the printed pages
     textData = await fetch(BASE + tv.text).then(r => r.ok ? r.json() : null).catch(() => null);
+    if (textData && tv.words) wordTimes = await fetch(BASE + tv.words).then(r => r.ok ? r.json() : null).catch(() => null);
     if (textData && !(await loadIndoPak())) { textData = null; toast('Font not available offline — showing the PDF', 4000); }
   }
-  await openMedia({ title: cfg.title, pdfBlob, audioBlob, key: `bundled:${cfg.pdf}|${cfg.audio}|${tv && tv.text ? 'text' : ''}`, fileMarks, frames, step, textData });
+  await openMedia({ title: cfg.title, pdfBlob, audioBlob, key: `bundled:${cfg.pdf}|${cfg.audio}|${tv && tv.text ? 'text' : ''}`, fileMarks, frames, step, textData, wordTimes });
 }
 
 async function loadPicked() {
@@ -101,9 +102,10 @@ async function loadPicked() {
   return true;
 }
 
-async function openMedia({ title, pdfBlob, audioBlob, key, fileMarks, frames, step, textData }) {
+async function openMedia({ title, pdfBlob, audioBlob, key, fileMarks, frames, step, textData, wordTimes }) {
   status('Opening PDF…');
-  state.key = key; state.text = textData || null;
+  state.key = key; state.text = textData || null; curWordEl = null;
+  document.body.classList.toggle('tmode', !!state.text);
   state.frames = frames || null; // per page [left, right] of the printed border, as fractions of page width
   $('title').textContent = title; document.title = title;
   if (audio.src) URL.revokeObjectURL(audio.src);
@@ -115,6 +117,8 @@ async function openMedia({ title, pdfBlob, audioBlob, key, fileMarks, frames, st
   state.marks = normalize(useSaved ? saved : (fileMarks || []));
   // dense per-line auto sync: jump line to line (never slide through page gaps); hand-made sparse marks: interpolate
   state.step = !!step && !useSaved;
+  // per-word start times (Whisper words matched to the retyped text) belong to the shipped marks only
+  state.wordTimes = (!useSaved && textData && wordTimes && wordTimes.length === state.marks.length) ? wordTimes : null;
   state.history = [];
 
   state.pdf = await pdfjsLib.getDocument({ data: new Uint8Array(await pdfBlob.arrayBuffer()) }).promise;
@@ -166,6 +170,43 @@ function textLayer(pg) {
     const items = l.t.split(/\s+/).filter(Boolean).map(w => w === '*' ? '<i class="rs"></i>' : `<span>${esc(w)}</span>`).join('');
     return `<div class="tl${l.n ? ' nt' : ''}${l.h ? ' hd' + l.h : ''}" style="top:${(pg.ys[k] * 100).toFixed(2)}%">${items}</div>`;
   }).join('');
+}
+/* word highlight: the sync is per printed line, so inside a line the time is shared out by letter count */
+const DIAC = /[\u064B-\u065F\u0670\u06D6-\u06ED\u0640]/g;
+let curWordEl = null;
+function lineOf(m) {  // the text line a sync mark points at (nearest printed line on that page; headings/notes excluded later)
+  if (m._l !== undefined) return m._l;
+  const pg = state.text.pages[m.p - 1], el = state.pageEls[m.p - 1];
+  let best = -1, bd = 1e9;
+  if (pg && el) pg.ys.forEach((y, k) => { if (pg.lines[k].h) return; const d = Math.abs(y - m.y); if (d < bd) { bd = d; best = k; } });
+  m._l = best >= 0 ? el.querySelectorAll('.tl')[best] : null;
+  return m._l;
+}
+function markWord(t) {
+  let target = null;
+  const ms = state.marks;
+  if (ms.length) {
+    let lo = 0, hi = ms.length - 1, i = -1;
+    while (lo <= hi) { const mid = (lo + hi) >> 1; if (ms[mid].t <= t) { i = mid; lo = mid + 1; } else hi = mid - 1; }
+    if (i >= 0) {
+      const m = ms[i], n = ms[i + 1], row = lineOf(m);
+      if (row && !row.classList.contains('nt')) {
+        if (!row._w) {
+          row._w = [...row.querySelectorAll('span')].map(sp => ({ sp, w: Math.max(1, sp.textContent.replace(DIAC, '').length) }));
+          row._tot = row._w.reduce((a, x) => a + x.w, 0);
+        }
+        const wt = state.wordTimes && state.wordTimes[i];
+        if (wt && wt.length === row._w.length) { let j = 0; for (let q = 0; q < wt.length; q++) if (wt[q] <= t) j = q; target = row._w[j].sp; }
+        else {
+        const dur = (n ? n.t - m.t : 4);
+        const f = Math.min(0.999, Math.max(0, (t - m.t) / Math.max(0.3, dur * 0.94)));   // speech ends a little before the next line starts
+        let acc = 0; const at = f * row._tot;
+        for (const x of row._w) { acc += x.w; if (at < acc) { target = x.sp; break; } }
+        }
+      }
+    }
+  }
+  if (target !== curWordEl) { curWordEl && curWordEl.classList.remove('on'); target && target.classList.add('on'); curWordEl = target; }
 }
 function fitText() {  // one font size for the whole book: the fullest line just fits between the printed borders
   if (!state.text) return;
@@ -314,6 +355,7 @@ function tick(force) {
   if (!seeking) { $('seek').max = d || 1; $('seek').value = t; }
   $('cur').textContent = fmt(t); $('dur').textContent = fmt(d);
   const pos = posAt(audio.paused ? t : smoothTime());
+  if (state.text) markWord(audio.paused ? t : smoothTime());
   const n = state.pageEls.length;
   if (pos == null) { cursorEl.style.display = 'none'; $('pageInfo').textContent = n ? `${visiblePage()} / ${n}` : ''; return; }
   const yRaw = pxOf(pos);

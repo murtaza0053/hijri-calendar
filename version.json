@@ -1,6 +1,19 @@
 {
- "v": 67,
+ "v": 68,
  "history": [
+  {
+   "v": 68,
+   "date": "2026-11-10",
+   "en": [
+    "Dua e Kamil (Indo-Pak text): the word being recited is now highlighted, not the whole line."
+   ],
+   "gu": [
+    "દુઆ એ કામિલ (ઇન્ડો-પાક ટેક્સ્ટ): હવે આખી લાઇનને બદલે જે શબ્દ પઢાય છે તે જ હાઇલાઇટ થાય છે."
+   ],
+   "hi": [
+    "Dua e Kamil (Indo-Pak text): ab poori line ki bajaye jo shabd padha ja raha hai wahi highlight hota hai."
+   ]
+  },
   {
    "v": 67,
    "date": "2026-11-10",
