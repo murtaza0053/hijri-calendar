@@ -3,6 +3,7 @@
 globalThis.I18N = {
   en: {
     _label: "EN",
+    remH: "🔔 Calendar reminders", remP: "Tick only the reminders you want, then press the button. Each one is added to your Calendar app separately (notifications come even when this app is closed).", rmMajor: "Major miqaats", rmMajorD: "Day miqaat: 9 PM the night before · night miqaat: 5 PM same day", rmAll: "All miqaats (incl. urus)", rmAllD: "Everything above plus urus and smaller occasions", rmRozi: "Rozi amal (Hijri 2–7)", rmRoziD: "Each month 2–7: that day's surah at 8:00 AM", rmSadaqah: "Sadaqah", rmSadaqahD: "Every day at 8:00 AM: that weekday's sadaqah (rice / moong / tuwar / wheat)", rmTasbeeh: "Daily tasbeeh", rmTasbeehD: "Every day at 7:00 AM: the weekday's tasbih (100×)", rmAdd: "Add ticked to Calendar", rmNext: "Add next ({n} left)", rmAllDone: "All ticked ones added", rmReset: "Clear", rmAdded: "added", rmMore: "Now tap \"Subscribe\" → Add, then come back here and press the button for the next one ({n} left).",
     zH: "Ziyarat", zDesc: "Dawoodi Bohra mazaraat — who rests there, address, phone and map.", zTabM: "Mazaraat", zTabD: "Duat Mutlaqeen", zSearch: "Search city or name…", zResting: "Resting here:", zMap: "Map", zSrc: "Source", zRest: "Resting place", zMzKey: "Mazaar", zNums: "Numbers = Dai no.", zCur: "Current Dai (53rd)", zHasMz: "Mazaar card in app", zIndiaKey: "Rests in India", zYemenKey: "Buried in Yemen", zYemen: "Yemen — exact site may be unknown", zSeeMz: "see mazaar & contact", zFaiz: "Faiz / stay", zNote: "Contacts and addresses from zaereen.com (Mumineen Travel Portal) as of {d} — some numbers are the musafirkhana / booking desk. Please confirm before travelling. Duat list from Wikipedia.",
     subAmal: "📖 Amal + Tasbeeh reminders", remAmalP: "Hijri 2–7 every month: that day's surah at 8:00 AM (Yaseen → Jinn). Every day: the weekday's tasbih at 7:00 AM.",
     ghH: "Ghadi", ghDay: "Day ghadi", ghNight: "Night ghadi", ghNow: "Now: {p} — {l} · until {t}", ghUntil: "until {t}",
@@ -41,8 +42,6 @@ globalThis.I18N = {
     upH: "Upcoming miqaats", upMajor: "Major miqaats only", upAll: "All (incl. urus)", nDays: "{n} days", oneYear: "1 year",
     toRem: "🔔 Set reminders", upNone: "No miqaats in this range.",
     convert: "Convert", dayPh: "Day", yearPh: "Year", showCal: "View in calendar", onlyDays: "{m} {y} has only {n} days.",
-    remH: "🔔 Miqaat reminders",
-    remP: "Subscribe to miqaats in the iPhone <b>Calendar</b> app — you'll get a notification for every miqaat, even when this app is closed.<br>☀ Day miqaat → reminder <b>9 PM the night before</b> · 🌙 Night miqaat → reminder <b>5 PM the same day</b>.",
     subMajor: "Subscribe: major miqaats",
     remSteps: "<li>Tap a button above → <b>Subscribe</b> → <b>Add</b>.</li><li><b>Important:</b> iPhone <b>Settings → Apps → Calendar → Calendar Accounts → Subscribed Calendars</b> → open this calendar and turn <b>\"Remove Alerts\" OFF</b>, otherwise no notifications will come.</li><li>Make sure notifications are ON in Settings → Notifications → Calendar.</li>",
     remFallback: "If the button doesn't work, paste this link in Safari:",
@@ -63,6 +62,7 @@ globalThis.I18N = {
 
   gu: {
     _label: "ગુ",
+    remH: "🔔 કૅલેન્ડર રિમાઇન્ડર", remP: "ફક્ત જોઈતા રિમાઇન્ડર પર ટિક કરો, પછી બટન દબાવો. દરેક અલગથી તમારી Calendar એપમાં ઉમેરાશે (એપ બંધ હોય તો પણ નોટિફિકેશન આવશે).", rmMajor: "મોટી મિકાત", rmMajorD: "દિવસની મિકાત: આગલી રાત્રે 9 વાગ્યે · રાતની મિકાત: એ જ દિવસે 5 વાગ્યે", rmAll: "બધી મિકાત (ઉર્સ સાથે)", rmAllD: "ઉપરનું બધું અને ઉર્સ તથા નાના પ્રસંગો", rmRozi: "રોઝી અમલ (હિજરી ૨–૭)", rmRoziD: "દર મહિને ૨–૭: તે દિવસની સૂરત સવારે 8:00 વાગ્યે", rmSadaqah: "સદકો", rmSadaqahD: "રોજ સવારે 8:00: તે વારનો સદકો (ચોખા / મગ / તુવેર / ઘઉં)", rmTasbeeh: "રોજની તસ્બીહ", rmTasbeehD: "રોજ સવારે 7:00: તે વારની તસ્બીહ (100×)", rmAdd: "ટિક કરેલા Calendarમાં ઉમેરો", rmNext: "આગળનું ઉમેરો ({n} બાકી)", rmAllDone: "ટિક કરેલા બધા ઉમેરાઈ ગયા", rmReset: "સાફ કરો", rmAdded: "ઉમેર્યું", rmMore: "હવે \"Subscribe\" → Add દબાવો, પછી અહીં પાછા આવીને આગળના માટે બટન દબાવો ({n} બાકી).",
     zH: "ઝિયારત", zDesc: "દાઉદી બોહરા મઝારાત — કોણ આરામ ફરમાવે છે, સરનામું, ફોન અને નકશો.", zTabM: "મઝારાત", zTabD: "દુઆત મુતલકીન", zSearch: "શહેર કે નામ શોધો…", zResting: "અહીં આરામ ફરમાવે છે:", zMap: "નકશો", zSrc: "સ્રોત", zRest: "આરામગાહ", zMzKey: "મઝાર", zNums: "આંકડા = દાઈ નં.", zCur: "હાલના દાઈ (૫૩મા)", zHasMz: "એપમાં મઝારનું કાર્ડ", zIndiaKey: "ભારતમાં આરામગાહ", zYemenKey: "યમનમાં આરામગાહ", zYemen: "યમન — ચોક્કસ જગ્યા કદાચ જાણીતી નથી", zSeeMz: "મઝાર અને સંપર્ક જુઓ", zFaiz: "ફૈઝ / રહેઠાણ", zNote: "સંપર્ક અને સરનામાં zaereen.com (મુમિનીન ટ્રાવેલ પોર્ટલ) પરથી, {d} મુજબ — કેટલાક નંબર મુસાફરખાના / બુકિંગના છે. પ્રવાસ પહેલાં ખાતરી કરી લેજો. દુઆતની યાદી વિકિપીડિયા પરથી.",
     subAmal: "📖 અમલ + તસ્બીહ રિમાઇન્ડર", remAmalP: "દર હિજરી મહિનાની 2–7 તારીખ: એ દિવસની સૂરત સવારે 8:00 વાગ્યે (યાસીન → જિન્ન). દરરોજ: એ દિવસની તસ્બીહ સવારે 7:00 વાગ્યે.",
     ghH: "ઘડી", ghDay: "દિવસની ઘડી", ghNight: "રાતની ઘડી", ghNow: "હાલ: {p} — {l} · {t} સુધી", ghUntil: "{t} સુધી",
@@ -101,8 +101,6 @@ globalThis.I18N = {
     upH: "આવનારી મિકાત", upMajor: "ફક્ત મોટી મિકાત", upAll: "બધી (ઉરૂસ સાથે)", nDays: "{n} દિવસ", oneYear: "૧ વર્ષ",
     toRem: "🔔 રિમાઇન્ડર સેટ કરો", upNone: "આ સમયગાળામાં કોઈ મિકાત નથી.",
     convert: "કન્વર્ટ", dayPh: "તારીખ", yearPh: "વર્ષ", showCal: "કેલેન્ડરમાં જુઓ", onlyDays: "{m} {y}માં ફક્ત {n} દિવસ છે.",
-    remH: "🔔 મિકાત રિમાઇન્ડર",
-    remP: "iPhoneની <b>Calendar</b> એપમાં મિકાત સબ્સ્ક્રાઇબ કરો — દરેક મિકાતની નોટિફિકેશન આવશે, એપ બંધ હોય ત્યારે પણ.<br>☀ દિવસની મિકાત → <b>આગલી રાત્રે 9 PM</b> રિમાઇન્ડર · 🌙 રાતની મિકાત → <b>એ જ દિવસે 5 PM</b> રિમાઇન્ડર.",
     subMajor: "મોટી મિકાત સબ્સ્ક્રાઇબ કરો",
     remSteps: "<li>ઉપરનું બટન દબાવો → <b>Subscribe</b> → <b>Add</b>.</li><li><b>જરૂરી:</b> iPhone <b>Settings → Apps → Calendar → Calendar Accounts → Subscribed Calendars</b> → આ કેલેન્ડરમાં જઈને <b>\"Remove Alerts\" OFF</b> કરો, નહીં તો નોટિફિકેશન નહીં આવે.</li><li>Settings → Notifications → Calendarમાં નોટિફિકેશન ON રાખો.</li>",
     remFallback: "બટન કામ ન કરે તો આ લિંક Safariમાં પેસ્ટ કરો:",
@@ -123,6 +121,7 @@ globalThis.I18N = {
 
   hi: {
     _label: "Hinglish",
+    remH: "🔔 Calendar reminders", remP: "Sirf wahi reminders tick karo jo chahiye, phir button dabao. Har ek alag se aapke Calendar app me judta hai (app band ho tab bhi notification aayegi).", rmMajor: "Badi miqaats", rmMajorD: "Din ki miqaat: pichli raat 9 PM · raat ki miqaat: usi din 5 PM", rmAll: "Sab miqaats (urus samet)", rmAllD: "Upar wali sab + urus aur chhote mauke", rmRozi: "Rozi amal (Hijri 2–7)", rmRoziD: "Har mahine 2–7: us din ki surah subah 8:00 baje", rmSadaqah: "Sadaqah", rmSadaqahD: "Roz subah 8:00 baje: us din ka sadaqah (chawal / moong / tuwar / ghau)", rmTasbeeh: "Roz ki tasbeeh", rmTasbeehD: "Roz subah 7:00 baje: us din ki tasbeeh (100×)", rmAdd: "Tick kiye hue Calendar me jodo", rmNext: "Agla jodo ({n} baaki)", rmAllDone: "Tick kiye sab jud gaye", rmReset: "Clear", rmAdded: "joda", rmMore: "Ab \"Subscribe\" → Add dabao, phir yahan wapas aakar agle ke liye button dabao ({n} baaki).",
     zH: "Ziyarat", zDesc: "Dawoodi Bohra mazaraat — kaun aaram farma rahe hain, address, phone aur map.", zTabM: "Mazaraat", zTabD: "Duat Mutlaqeen", zSearch: "Shehar ya naam dhoondho…", zResting: "Yahan aaram farma rahe hain:", zMap: "Map", zSrc: "Source", zRest: "Aaramgaah", zMzKey: "Mazaar", zNums: "Number = Dai no.", zCur: "Maujooda Dai (53ve)", zHasMz: "App me mazaar ka card", zIndiaKey: "India me aaramgaah", zYemenKey: "Yemen me aaramgaah", zYemen: "Yemen — exact jagah shayad maloom nahi", zSeeMz: "mazaar aur contact dekho", zFaiz: "Faiz / rehne ki jagah", zNote: "Contact aur address zaereen.com (Mumineen Travel Portal) se, {d} tak ke — kuch number musafirkhana / booking ke hain. Safar se pehle confirm kar lena. Duat ki list Wikipedia se.",
     subAmal: "📖 Amal + Tasbeeh reminders", remAmalP: "Har Hijri mahine ki 2–7 tarikh: us din ki surah subah 8:00 baje (Yaseen → Jinn). Roz: us din ki tasbeeh subah 7:00 baje.",
     ghH: "Ghadi", ghDay: "Din ki ghadi", ghNight: "Raat ki ghadi", ghNow: "Abhi: {p} — {l} · {t} tak", ghUntil: "{t} tak",
@@ -161,8 +160,6 @@ globalThis.I18N = {
     upH: "Aane wali miqaats", upMajor: "Sirf badi miqaats", upAll: "Sab (urus bhi)", nDays: "{n} din", oneYear: "1 saal",
     toRem: "🔔 Reminders set karo", upNone: "Is range me koi miqaat nahi.",
     convert: "Convert", dayPh: "Din", yearPh: "Saal", showCal: "Calendar me dekho", onlyDays: "{m} {y} me sirf {n} din hain.",
-    remH: "🔔 Miqaat reminders",
-    remP: "iPhone ke <b>Calendar</b> app me miqaats subscribe kar lo — har miqaat pe notification aayegi, app band ho tab bhi.<br>☀ Din ki miqaat → <b>pichli raat 9 PM</b> reminder · 🌙 Raat ki miqaat → <b>usi din 5 PM</b> reminder.",
     subMajor: "Badi miqaats subscribe karo",
     remSteps: "<li>Upar button dabao → <b>Subscribe</b> → <b>Add</b>.</li><li><b>Zaroori:</b> iPhone <b>Settings → Apps → Calendar → Calendar Accounts → Subscribed Calendars</b> → is calendar pe jaake <b>\"Remove Alerts\" OFF</b> karo, warna notification nahi aayegi.</li><li>Settings → Notifications → Calendar me notifications ON ho.</li>",
     remFallback: "Button kaam na kare to ye link Safari me paste karo:",

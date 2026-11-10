@@ -1,0 +1,130 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//murtaza0053//hijri-calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Sadaqah
+X-WR-CALDESC:Daily sadaqah (Shia Dawoodi Bohra weekday items)
+X-WR-TIMEZONE:Asia/Kolkata
+REFRESH-INTERVAL;VALUE=DURATION:P7D
+X-PUBLISHED-TTL:P7D
+BEGIN:VEVENT
+UID:sadaqah-SU@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+RRULE:FREQ=WEEKLY;BYDAY=SU
+SUMMARY:🤲 Today's sadaqah: Rice (Chawal)
+DESCRIPTION:Give sadaqah today: Rice (Chawal).\nhttps://murtaza0053.github.
+ io/hijri-calendar/
+URL:https://murtaza0053.github.io/hijri-calendar/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🤲 Today's sadaqah: Rice (Chawal)
+TRIGGER:PT8H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sadaqah-MO@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261109
+DTEND;VALUE=DATE:20261110
+RRULE:FREQ=WEEKLY;BYDAY=MO
+SUMMARY:🤲 Today's sadaqah: Rice (Chawal)
+DESCRIPTION:Give sadaqah today: Rice (Chawal).\nhttps://murtaza0053.github.
+ io/hijri-calendar/
+URL:https://murtaza0053.github.io/hijri-calendar/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🤲 Today's sadaqah: Rice (Chawal)
+TRIGGER:PT8H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sadaqah-TU@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261111
+RRULE:FREQ=WEEKLY;BYDAY=TU
+SUMMARY:🤲 Today's sadaqah: Moong dal
+DESCRIPTION:Give sadaqah today: Moong dal.\nhttps://murtaza0053.github.io/h
+ ijri-calendar/
+URL:https://murtaza0053.github.io/hijri-calendar/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🤲 Today's sadaqah: Moong dal
+TRIGGER:PT8H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sadaqah-WE@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261112
+RRULE:FREQ=WEEKLY;BYDAY=WE
+SUMMARY:🤲 Today's sadaqah: Tuwar dal
+DESCRIPTION:Give sadaqah today: Tuwar dal.\nhttps://murtaza0053.github.io/h
+ ijri-calendar/
+URL:https://murtaza0053.github.io/hijri-calendar/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🤲 Today's sadaqah: Tuwar dal
+TRIGGER:PT8H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sadaqah-TH@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261112
+DTEND;VALUE=DATE:20261113
+RRULE:FREQ=WEEKLY;BYDAY=TH
+SUMMARY:🤲 Today's sadaqah: Rice (Chawal)
+DESCRIPTION:Give sadaqah today: Rice (Chawal).\nhttps://murtaza0053.github.
+ io/hijri-calendar/
+URL:https://murtaza0053.github.io/hijri-calendar/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🤲 Today's sadaqah: Rice (Chawal)
+TRIGGER:PT8H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sadaqah-FR@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261114
+RRULE:FREQ=WEEKLY;BYDAY=FR
+SUMMARY:🤲 Today's sadaqah: Wheat (Ghau)
+DESCRIPTION:Give sadaqah today: Wheat (Ghau).\nhttps://murtaza0053.github.i
+ o/hijri-calendar/
+URL:https://murtaza0053.github.io/hijri-calendar/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🤲 Today's sadaqah: Wheat (Ghau)
+TRIGGER:PT8H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sadaqah-SA@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+RRULE:FREQ=WEEKLY;BYDAY=SA
+SUMMARY:🤲 Today's sadaqah: Rice (Chawal)
+DESCRIPTION:Give sadaqah today: Rice (Chawal).\nhttps://murtaza0053.github.
+ io/hijri-calendar/
+URL:https://murtaza0053.github.io/hijri-calendar/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🤲 Today's sadaqah: Rice (Chawal)
+TRIGGER:PT8H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

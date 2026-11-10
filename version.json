@@ -1,6 +1,19 @@
 {
- "v": 78,
+ "v": 79,
  "history": [
+  {
+   "v": 79,
+   "date": "2026-11-10",
+   "en": [
+    "Settings → Calendar reminders: tick only what you want (Rozi amal, Sadaqah, Daily tasbeeh, Miqaats) and each is added to your Calendar on its own. The Rozi amal calendar no longer includes the daily tasbeeh."
+   ],
+   "gu": [
+    "સેટિંગ્સ → કૅલેન્ડર રિમાઇન્ડર: જે જોઈએ તેના પર જ ટિક કરો (રોઝી અમલ, સદકો, રોજની તસ્બીહ, મિકાત) અને દરેક અલગથી Calendarમાં ઉમેરાશે. રોઝી અમલ કેલેન્ડરમાં હવે રોજની તસ્બીહ નથી."
+   ],
+   "hi": [
+    "Settings → Calendar reminders: sirf jo chahiye wahi tick karo (Rozi amal, Sadaqah, Roz ki tasbeeh, Miqaats) aur har ek alag se Calendar me judega. Rozi amal calendar me ab roz ki tasbeeh nahi hai."
+   ]
+  },
   {
    "v": 78,
    "date": "2026-11-10",

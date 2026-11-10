@@ -77,13 +77,21 @@ const WEEK = [["SU", "Iyyaka Na'budu Wa Iyyaka Nasta'een", "You alone we worship
   ["FR", "Ya Zal Jalali Wal Ikram", "O Lord of Majesty and Honour"],
   ["SA", "Ya Hayyu, Ya Qayyum", "O Ever-Living, O Sustainer of all"]];
 const ROZI_ALARM = "PT8H", TASBIH_ALARM = "PT7H";  // 8:00 AM and 7:00 AM on the day
-function buildAmal(file) {
+const SADAQAH = [["SU", "Rice (Chawal)"], ["MO", "Rice (Chawal)"], ["TU", "Moong dal"], ["WE", "Tuwar dal"], ["TH", "Rice (Chawal)"], ["FR", "Wheat (Ghau)"], ["SA", "Rice (Chawal)"]];  // Sun … Sat
+const SADAQAH_ALARM = "PT8H";
+function feed(file, name, desc, fill) {
   const L = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//murtaza0053//hijri-calendar//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
-    "X-WR-CALNAME:Amal + Tasbeeh", "X-WR-CALDESC:Rozi ma Barakat amal (Hijri 2-7) and the daily tasbih", "X-WR-TIMEZONE:Asia/Kolkata",
-    "REFRESH-INTERVAL;VALUE=DURATION:P7D", "X-PUBLISHED-TTL:P7D"];
-  const ev = (uid, date, date2, summary, desc, url, trigger, extra = []) => L.push("BEGIN:VEVENT", `UID:${uid}@murtaza0053.github.io`, `DTSTAMP:${stamp}`,
-    `DTSTART;VALUE=DATE:${date}`, `DTEND;VALUE=DATE:${date2}`, ...extra, `SUMMARY:${esc(summary)}`, `DESCRIPTION:${esc(desc)}`, `URL:${url}`,
+    `X-WR-CALNAME:${name}`, `X-WR-CALDESC:${desc}`, "X-WR-TIMEZONE:Asia/Kolkata", "REFRESH-INTERVAL;VALUE=DURATION:P7D", "X-PUBLISHED-TTL:P7D"];
+  const ev = (uid, date, date2, summary, d, url, trigger, extra = []) => L.push("BEGIN:VEVENT", `UID:${uid}@murtaza0053.github.io`, `DTSTAMP:${stamp}`,
+    `DTSTART;VALUE=DATE:${date}`, `DTEND;VALUE=DATE:${date2}`, ...extra, `SUMMARY:${esc(summary)}`, `DESCRIPTION:${esc(d)}`, `URL:${url}`,
     "TRANSP:TRANSPARENT", "BEGIN:VALARM", "ACTION:DISPLAY", `DESCRIPTION:${esc(summary)}`, `TRIGGER:${trigger}`, "END:VALARM", "END:VEVENT");
+  const n = fill(ev);
+  L.push("END:VCALENDAR");
+  fs.writeFileSync(path.join(__dirname, "calendar", file), L.map(fold).join("\r\n") + "\r\n");
+  console.log(`${file}: ${n} events`);
+}
+// Each reminder type is its own feed, so the app can offer "tick what you want" (amal.ics = Rozi amal only)
+feed("amal.ics", "Rozi Amal", "Rozi ma Barakat amal: Hijri 2-7 every month", ev => {
   let n = 0;
   for (let y = Y0; y <= Y1; y++) for (let m = 0; m < 12; m++) for (const [d, s, name] of ROZI) {
     const a = H.toAJD(y, m, d), g = H.ajdToG(a), g2 = H.ajdToG(a + 1), url = `${SITE}dua/quran.html?s=${s}`;
@@ -91,13 +99,19 @@ function buildAmal(file) {
     if (d === 7) desc += "\n\nToday is the 7th: recite salawat on the Panjatan Paak (AS) and Moulana Abbas Alamdaar (AS), as much as you can.";
     ev(`amal-${y}-${m + 1}-${d}`, ymd(g), ymd(g2), `📖 Hijri ${d}: ${name}`, desc, url, ROZI_ALARM); n++;
   }
-  // weekly recurring tasbih (first occurrence: the first such weekday on/after 2026-11-08, a Sunday)
-  WEEK.forEach(([by, tas, mean], i) => {
+  return n;
+});
+feed("tasbeeh.ics", "Daily Tasbeeh", "The daily tasbih of the weekday (100x)", ev => {
+  WEEK.forEach(([by, tas, mean], i) => {   // weekly recurring (first occurrence: first such weekday on/after 2026-11-08, a Sunday)
     const a = H.gToAJD(2026, 10, 8) + i, g = H.ajdToG(a), g2 = H.ajdToG(a + 1), url = `${SITE}dua/tasbeeh.html?m=week`;
-    ev(`tasbih-${by}`, ymd(g), ymd(g2), `📿 Today's tasbeeh: ${tas} (100×)`, `${tas} — 100 times\n${mean}\n${url}`, url, TASBIH_ALARM, [`RRULE:FREQ=WEEKLY;BYDAY=${by}`]); n++;
+    ev(`tasbih-${by}`, ymd(g), ymd(g2), `📿 Today's tasbeeh: ${tas} (100×)`, `${tas} — 100 times\n${mean}\n${url}`, url, TASBIH_ALARM, [`RRULE:FREQ=WEEKLY;BYDAY=${by}`]);
   });
-  L.push("END:VCALENDAR");
-  fs.writeFileSync(path.join(__dirname, "calendar", file), L.map(fold).join("\r\n") + "\r\n");
-  console.log(`${file}: ${n} events (Rozi Hijri ${Y0}–${Y1} + 7 weekly tasbih)`);
-}
-buildAmal("amal.ics");
+  return 7;
+});
+feed("sadaqah.ics", "Sadaqah", "Daily sadaqah (Shia Dawoodi Bohra weekday items)", ev => {
+  SADAQAH.forEach(([by, item], i) => {
+    const a = H.gToAJD(2026, 10, 8) + i, g = H.ajdToG(a), g2 = H.ajdToG(a + 1), url = SITE;
+    ev(`sadaqah-${by}`, ymd(g), ymd(g2), `🤲 Today's sadaqah: ${item}`, `Give sadaqah today: ${item}.\n${url}`, url, SADAQAH_ALARM, [`RRULE:FREQ=WEEKLY;BYDAY=${by}`]);
+  });
+  return 7;
+});

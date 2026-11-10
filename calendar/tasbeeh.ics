@@ -1,0 +1,137 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//murtaza0053//hijri-calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Daily Tasbeeh
+X-WR-CALDESC:The daily tasbih of the weekday (100x)
+X-WR-TIMEZONE:Asia/Kolkata
+REFRESH-INTERVAL;VALUE=DURATION:P7D
+X-PUBLISHED-TTL:P7D
+BEGIN:VEVENT
+UID:tasbih-SU@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+RRULE:FREQ=WEEKLY;BYDAY=SU
+SUMMARY:📿 Today's tasbeeh: Iyyaka Na'budu Wa Iyyaka Nasta'een (100×)
+DESCRIPTION:Iyyaka Na'budu Wa Iyyaka Nasta'een — 100 times\nYou alone we 
+ worship and You alone we ask for help\nhttps://murtaza0053.github.io/hijri
+ -calendar/dua/tasbeeh.html?m=week
+URL:https://murtaza0053.github.io/hijri-calendar/dua/tasbeeh.html?m=week
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:📿 Today's tasbeeh: Iyyaka Na'budu Wa Iyyaka Nasta'een (100×
+ )
+TRIGGER:PT7H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:tasbih-MO@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261109
+DTEND;VALUE=DATE:20261110
+RRULE:FREQ=WEEKLY;BYDAY=MO
+SUMMARY:📿 Today's tasbeeh: Ya Ghafoor\, Ya Raheem (100×)
+DESCRIPTION:Ya Ghafoor\, Ya Raheem — 100 times\nO Most Forgiving\, O Most
+  Merciful\nhttps://murtaza0053.github.io/hijri-calendar/dua/tasbeeh.html?m
+ =week
+URL:https://murtaza0053.github.io/hijri-calendar/dua/tasbeeh.html?m=week
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:📿 Today's tasbeeh: Ya Ghafoor\, Ya Raheem (100×)
+TRIGGER:PT7H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:tasbih-TU@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261111
+RRULE:FREQ=WEEKLY;BYDAY=TU
+SUMMARY:📿 Today's tasbeeh: SubhanAllahi wal Hamdu Lillah (100×)
+DESCRIPTION:SubhanAllahi wal Hamdu Lillah — 100 times\nGlory be to Allah\
+ , and all praise is for Allah\nhttps://murtaza0053.github.io/hijri-calenda
+ r/dua/tasbeeh.html?m=week
+URL:https://murtaza0053.github.io/hijri-calendar/dua/tasbeeh.html?m=week
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:📿 Today's tasbeeh: SubhanAllahi wal Hamdu Lillah (100×)
+TRIGGER:PT7H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:tasbih-WE@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261112
+RRULE:FREQ=WEEKLY;BYDAY=WE
+SUMMARY:📿 Today's tasbeeh: Ya Rahman\, Ya Raheem (100×)
+DESCRIPTION:Ya Rahman\, Ya Raheem — 100 times\nO Most Gracious\, O Most M
+ erciful\nhttps://murtaza0053.github.io/hijri-calendar/dua/tasbeeh.html?m=w
+ eek
+URL:https://murtaza0053.github.io/hijri-calendar/dua/tasbeeh.html?m=week
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:📿 Today's tasbeeh: Ya Rahman\, Ya Raheem (100×)
+TRIGGER:PT7H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:tasbih-TH@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261112
+DTEND;VALUE=DATE:20261113
+RRULE:FREQ=WEEKLY;BYDAY=TH
+SUMMARY:📿 Today's tasbeeh: HasbunAllahu Wa Ni'mal Wakeel (100×)
+DESCRIPTION:HasbunAllahu Wa Ni'mal Wakeel — 100 times\nAllah is sufficien
+ t for us\, and He is the best disposer of affairs\nhttps://murtaza0053.git
+ hub.io/hijri-calendar/dua/tasbeeh.html?m=week
+URL:https://murtaza0053.github.io/hijri-calendar/dua/tasbeeh.html?m=week
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:📿 Today's tasbeeh: HasbunAllahu Wa Ni'mal Wakeel (100×)
+TRIGGER:PT7H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:tasbih-FR@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261114
+RRULE:FREQ=WEEKLY;BYDAY=FR
+SUMMARY:📿 Today's tasbeeh: Ya Zal Jalali Wal Ikram (100×)
+DESCRIPTION:Ya Zal Jalali Wal Ikram — 100 times\nO Lord of Majesty and Ho
+ nour\nhttps://murtaza0053.github.io/hijri-calendar/dua/tasbeeh.html?m=week
+URL:https://murtaza0053.github.io/hijri-calendar/dua/tasbeeh.html?m=week
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:📿 Today's tasbeeh: Ya Zal Jalali Wal Ikram (100×)
+TRIGGER:PT7H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:tasbih-SA@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+RRULE:FREQ=WEEKLY;BYDAY=SA
+SUMMARY:📿 Today's tasbeeh: Ya Hayyu\, Ya Qayyum (100×)
+DESCRIPTION:Ya Hayyu\, Ya Qayyum — 100 times\nO Ever-Living\, O Sustainer
+  of all\nhttps://murtaza0053.github.io/hijri-calendar/dua/tasbeeh.html?m=w
+ eek
+URL:https://murtaza0053.github.io/hijri-calendar/dua/tasbeeh.html?m=week
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:📿 Today's tasbeeh: Ya Hayyu\, Ya Qayyum (100×)
+TRIGGER:PT7H
+END:VALARM
+END:VEVENT
+END:VCALENDAR
