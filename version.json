@@ -1,6 +1,19 @@
 {
- "v": 65,
+ "v": 66,
  "history": [
+  {
+   "v": 66,
+   "date": "2026-11-10",
+   "en": [
+    "Home header: the strip behind the phone's status bar is now solid header colour, so scrolled content no longer shows through it."
+   ],
+   "gu": [
+    "હોમ હેડર: ફોનની સ્ટેટસ બારની પાછળની પટ્ટી હવે હેડરના રંગની ઘન, સ્ક્રોલ કરતા પાછળથી લખાણ દેખાતું નથી."
+   ],
+   "hi": [
+    "Home header: phone ki status bar ke peeche ki patti ab header ke rang ki thos hai, scroll karne par peeche se text nahi dikhta."
+   ]
+  },
   {
    "v": 65,
    "date": "2026-11-10",
