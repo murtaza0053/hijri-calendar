@@ -1,6 +1,19 @@
 {
- "v": 68,
+ "v": 69,
  "history": [
+  {
+   "v": 69,
+   "date": "2026-11-10",
+   "en": [
+    "Dua e Kamil (text): green highlight bar removed, and the opening is fixed — the title and greeting are highlighted first, then word highlighting starts from the first line."
+   ],
+   "gu": [
+    "દુઆ એ કામિલ (ટેક્સ્ટ): લીલી હાઇલાઇટ પટ્ટી હટાવી, અને શરૂઆત સુધારી — પહેલા શીર્ષક અને સલામ હાઇલાઇટ થાય, પછી પહેલી લાઇનથી શબ્દ હાઇલાઇટ."
+   ],
+   "hi": [
+    "Dua e Kamil (text): hari highlight bar hata di, aur shuruaat theek ki — pehle title aur salaam highlight hote hain, phir pehli line se shabd highlight shuru hota hai."
+   ]
+  },
   {
    "v": 68,
    "date": "2026-11-10",

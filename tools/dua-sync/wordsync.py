@@ -9,7 +9,7 @@ marks=sorted(S['marks'],key=lambda m:m['t'])
 def line_of(m):
     pg=T['pages'][m['p']-1]; best=None;bd=9
     for k,y in enumerate(pg['ys']):
-        if pg['lines'][k].get('h'): continue
+        if pg['lines'][k].get('h')==2: continue
         d=abs(y-m['y'])
         if d<bd: bd=d;best=k
     return pg['lines'][best],best
@@ -62,7 +62,10 @@ for i,m in enumerate(marks):
         tb,cb=(starts[nxt],cum[nxt]) if nxt is not None else (t1,cum[-1])
         starts[j]=ta+(tb-ta)*((cum[j]-ca)/max(1,(cb-ca)))
     # enforce monotone and within [t0-0.2, ...]
+    for j in range(A): starts[j]=max(starts[j],t0)
     for j in range(1,A): starts[j]=max(starts[j],starts[j-1]+0.05)
+    if A>1 and nw[-1]=='و':   # a lone 'wa' printed at the line end is spoken with the next line
+        starts[-1]=max(starts[-2]+0.05, n-0.25)
     out.append([round(x,2) for x in starts])
 print('matched words',stat, round(stat[0]/stat[1],2))
 json.dump(out,open('kamil-words.json','w'),separators=(',',':'))

@@ -178,7 +178,7 @@ function lineOf(m) {  // the text line a sync mark points at (nearest printed li
   if (m._l !== undefined) return m._l;
   const pg = state.text.pages[m.p - 1], el = state.pageEls[m.p - 1];
   let best = -1, bd = 1e9;
-  if (pg && el) pg.ys.forEach((y, k) => { if (pg.lines[k].h) return; const d = Math.abs(y - m.y); if (d < bd) { bd = d; best = k; } });
+  if (pg && el) pg.ys.forEach((y, k) => { if (pg.lines[k].h === 2) return; const d = Math.abs(y - m.y); if (d < bd) { bd = d; best = k; } });
   m._l = best >= 0 ? el.querySelectorAll('.tl')[best] : null;
   return m._l;
 }
