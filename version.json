@@ -1,6 +1,19 @@
 {
- "v": 75,
+ "v": 76,
  "history": [
+  {
+   "v": 76,
+   "date": "2026-11-10",
+   "en": [
+    "The update notice now stays until you press OK, and only people who already had the app see it (new installs don't)."
+   ],
+   "gu": [
+    "અપડેટની સૂચના હવે OK દબાવો ત્યાં સુધી રહે છે, અને ફક્ત જેમની પાસે એપ પહેલેથી હતી તેમને જ દેખાય છે (નવા યુઝરને નહીં)."
+   ],
+   "hi": [
+    "Update ka notice ab OK dabane tak rehta hai, aur sirf unhi ko dikhta hai jinke paas app pehle se thi (naye user ko nahi)."
+   ]
+  },
   {
    "v": 75,
    "date": "2026-11-10",

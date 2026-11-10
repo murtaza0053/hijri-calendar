@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=75">
-<script src="theme-init.js?v=75"></script>
+<link rel="stylesheet" href="themes.css?v=76">
+<script src="theme-init.js?v=76"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -409,8 +409,8 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=75"></script>
-<script src="i18n.js?v=75"></script>
+<script src="hijri.js?v=76"></script>
+<script src="i18n.js?v=76"></script>
 <script>
 "use strict";
 
@@ -780,7 +780,7 @@ $("next").onclick = () => shiftMonth(1);
 $("goToday").onclick = () => { view = { y: todayH.y, m: todayH.m }; selAJD = null; renderCal(); };
 $("cal").onclick = e => { const td = e.target.closest("td[data-a]"); if (td && !td.classList.contains("filler")) openDay(+td.dataset.a); };
 $("upList").onclick = e => { const r = e.target.closest("[data-a]"); if (r) { const a = +r.dataset.a, h = H.fromAJD(a); view = { y: h.y, m: h.m }; switchView("cal"); openDay(a); } };
-$("sheetBg").onclick = closeSheet;
+$("sheetBg").onclick = () => { if (!wnOpen) closeSheet(); };
 $("monthMq").onclick = e => { const r = e.target.closest("[data-a]"); if (r) openDay(+r.dataset.a); };
 $("toRem").onclick = () => switchView("set");
 $("upFilter").onchange = $("upRange").onchange = renderUpcoming;
@@ -837,7 +837,7 @@ function renderAll() {
   if (curView === "up") renderUpcoming();
   if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD);
 }
-const APP_V = 75, APP_VERSION = APP_V + " (2026-11-10)";
+const APP_V = 76, APP_VERSION = APP_V + " (2026-11-10)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");
@@ -852,7 +852,7 @@ if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js", { updateViaCache: "none" }).then(r => {
     document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") r.update().catch(() => {}); });
   }).catch(() => {});
-  navigator.serviceWorker.addEventListener("controllerchange", () => { if (hadSW && !reloaded) { reloaded = true; location.reload(); } });
+  navigator.serviceWorker.addEventListener("controllerchange", () => { if (hadSW && !reloaded && !wnOpen) { reloaded = true; location.reload(); } });
 }
 document.addEventListener("click", e => { const b = e.target.closest("[data-img]"); if (b) { $("imgView").querySelector("img").src = b.dataset.img; $("imgView").classList.add("on"); } });
 $("imgView").onclick = e => { if (e.target.tagName !== "IMG") $("imgView").classList.remove("on"); };
@@ -916,13 +916,15 @@ updInstBar();
 // version.json is bumped with every deploy. If the server has a newer one than this code, show an
 // "update available" bar; after the update loads, show "what's new" once (versions newer than last seen).
 const notesOf = e => e[lang] || e.en || [];
+let wnOpen = false;   // the what's-new sheet only closes with its OK button (not by tapping outside, not by itself)
 function showWhatsNew(list) {
+  wnOpen = true;
   $("sheetBody").innerHTML = `<div style="font-size:20px;font-weight:700">🎉 ${t("updDone", { v: APP_V })}</div>` +
     list.map(e => `<h3 style="margin-top:12px">v${e.v} <span class="tag">${esc(e.date)}</span></h3><ul class="wn">${notesOf(e).map(x => `<li>${esc(x)}</li>`).join("")}</ul>`).join("") +
     `<div class="row" style="justify-content:center;margin-top:10px"><button class="btn" id="wnOk">${t("updOk")}</button></div>`;
   $("sheetBg").style.display = "block";
   requestAnimationFrame(() => $("sheet").classList.add("on"));
-  $("wnOk").onclick = closeSheet;
+  $("wnOk").onclick = () => { wnOpen = false; store.set("seenVer", APP_V); closeSheet(); };
 }
 function updBar(html) { $("upd").innerHTML = html; $("upd").classList.add("on"); }
 $("upd").onclick = e => {
@@ -934,17 +936,19 @@ $("upd").onclick = e => {
   }
 };
 let verInfo = null;
+let isNewUser = false;   // first ever open on this device: already on the latest version, so no update bar / what's-new
 function checkUpdate() {
+  if (isNewUser) return;
   fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).then(j => {
     verInfo = j;
     if (j.v > APP_V) updBar(`<span style="font-size:22px">🔔</span><div class="m"><b>${t("updNew", { v: j.v })}</b><br>${esc(notesOf(j.history.find(e => e.v === j.v) || {})[0] || "")}</div><button data-upd>${t("updBtn")}</button><button class="x" aria-label="Close">×</button>`);
   }).catch(() => {});
 }
 (() => {
-  const seen = store.get("seenVer", APP_V); // brand-new user: no "what's new" popup (everyone from v25 on already has seenVer)
-  store.set("seenVer", APP_V);
-  if (seen && seen < APP_V) fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json())
-    .then(j => { const l = j.history.filter(e => e.v > seen && e.v <= APP_V); if (l.length) showWhatsNew(l); }).catch(() => {});
+  const seen = store.get("seenVer", null);
+  if (seen == null) { isNewUser = true; store.set("seenVer", APP_V); }   // brand-new install: nothing to announce
+  else if (seen < APP_V) fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json())
+    .then(j => { const l = j.history.filter(e => e.v > seen && e.v <= APP_V); if (l.length) showWhatsNew(l); else store.set("seenVer", APP_V); }).catch(() => {});   // seenVer is saved only when OK is pressed
   checkUpdate();
   document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") checkUpdate(); });
 })();
