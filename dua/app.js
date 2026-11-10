@@ -255,19 +255,19 @@ function fitText() {  // big shared font; each line then adjusts its word gap (0
     el.querySelectorAll('.tl:not(.nt):not(.hd1):not(.hd2)').forEach(r => {
       r.style.fontSize = ''; r.style.removeProperty('--tg');
       const kids = [...r.children], W0 = kids.reduce((a, c) => a + c.getBoundingClientRect().width, 0), n = kids.length;
-      if (W0) rows.push({ r, W0, gaps: Math.max(0, n - 1), avail, kmin: avail / (W0 + Math.max(0, n - 1) * 10) * 100 });   // largest size with the tightest gap (0.1em)
+      if (W0) rows.push({ r, W0, gaps: Math.max(0, n - 1), avail, kmin: avail / (W0 + Math.max(0, n - 1) * 5) * 100 });   // largest size with the tightest gap (0.05em)
     });
   });
   if (!rows.length) return;
   const ks = rows.map(x => x.kmin).sort((a, b) => a - b);
-  const fs = Math.max(11, Math.min(36, ks[Math.floor(ks.length * 0.2)]));       // 80% of the lines fit at this size
+  const fs = Math.max(11, Math.min(36, ks[0]));       // one size for every line: the longest line sets it (gaps flex instead)
   pagesEl.style.setProperty('--tfs', fs + 'px');
   rows.forEach(({ r, W0, gaps, avail, kmin }) => {
     if (kmin >= fs) {                                                           // fits: spread the spare room over the gaps, but never wider than 0.3em
       const g = gaps ? (avail - W0 * fs / 100) / (gaps * fs) : 0.3;
-      r.style.setProperty('--tg', Math.max(0.1, Math.min(0.3, g)).toFixed(3) + 'em');
+      r.style.setProperty('--tg', Math.max(0.05, Math.min(0.3, g)).toFixed(3) + 'em');
     } else {                                                                     // too long even with tight gaps: shrink just this line
-      r.style.setProperty('--tg', '0.1em'); r.style.fontSize = `calc(var(--tfs) * ${(kmin / fs).toFixed(3)})`;
+      r.style.setProperty('--tg', '0.05em'); r.style.fontSize = `calc(var(--tfs) * ${(kmin / fs).toFixed(3)})`;
     }
   });
 }

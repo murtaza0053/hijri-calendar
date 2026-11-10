@@ -1,6 +1,19 @@
 {
- "v": 77,
+ "v": 78,
  "history": [
+  {
+   "v": 78,
+   "date": "2026-11-10",
+   "en": [
+    "Dua e Kamil (text): every line now has the same font size."
+   ],
+   "gu": [
+    "દુઆ એ કામિલ (ટેક્સ્ટ): દરેક લીટીનું ફોન્ટ સાઇઝ હવે સરખું છે."
+   ],
+   "hi": [
+    "Dua e Kamil (text): har line ka font size ab ek jaisa hai."
+   ]
+  },
   {
    "v": 77,
    "date": "2026-11-10",
