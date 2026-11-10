@@ -1,6 +1,6 @@
 {
  "title": "Dua e Kamil",
- "audio": "dua-e-kamil.m4a",
+ "audio": "dua-e-kamil-enhanced.m4a",
  "versions": [
   {
    "id": "new-text",
@@ -22,5 +22,18 @@
    "pdf": "dua-e-kamil.pdf",
    "sync": "sync-old.json"
   }
- ]
+ ],
+ "audios": [
+  {
+   "id": "enhanced",
+   "label": "Enhanced audio (even volume, less hiss)",
+   "file": "dua-e-kamil-enhanced.m4a"
+  },
+  {
+   "id": "original",
+   "label": "Original audio",
+   "file": "dua-e-kamil.m4a"
+  }
+ ],
+ "audioKey": "dua-e-kamil.m4a"
 }

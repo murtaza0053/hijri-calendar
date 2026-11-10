@@ -20,3 +20,10 @@ For Dua e Kamil (2026-11-07) 213 of 468 script lines matched directly; spot chec
 images; draft until a reader confirms it — see `kamil-text-review.txt` for the uncertain words). `ys` are the line
 centres of each printed page, so the existing `sync.json` marks (page, y) work unchanged. The reader's "New — Indo-Pak text"
 version lays the lines at those positions in the Quran.com/QUL "Indopak Nastaleeq" font (loaded from their CDN, cached).
+
+## Enhanced audio (2026-11-10)
+`dua-e-kamil-enhanced.m4a` = original run through ffmpeg:
+`highpass=f=90, afftdn=nr=14:nf=-45:tn=1:tr=1, dynaudnorm=f=400:g=25:p=0.9:m=6:s=6, volume=-3.7dB, alimiter=limit=0.89`, AAC 128k stereo.
+LRA 11.0 → 4.8 LU, 5 s loudness std 3.84 → 1.63 dB, clipped samples 699 → 0, integrated −14 LUFS; duration/timing identical
+(envelope cross-correlation lag 0), so sync.json is unchanged. No pitch correction (that would alter the recitation).
+`audioKey` in config.json keeps saved positions/hand-made sync marks valid across both audio files.

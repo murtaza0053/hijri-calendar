@@ -77,7 +77,12 @@ async function loadBundled() {
   if (cfg.versions && cfg.versions.length) {  // several PDF editions of the same dua, each with its own sync
     const want = ls.get('ver:' + BASE, cfg.versions[0].id);
     const v = cfg.versions.find(x => x.id === want) || cfg.versions[0];
-    cfg.pdf = v.pdf; cfg.sync = v.sync; state.version = v.id; renderVersions(cfg.versions);
+    cfg.pdf = v.pdf; cfg.sync = v.sync; state.version = v.id; renderVersions(cfg.versions, cfg.audios);
+  }
+  if (cfg.audios && cfg.audios.length) {  // several recordings of the same audio (e.g. original and cleaned-up)
+    const wantA = ls.get('aud:' + BASE, cfg.audios[0].id);
+    const a = cfg.audios.find(x => x.id === wantA) || cfg.audios[0];
+    cfg.audio = a.file; state.audioId = a.id; renderVersions(cfg.versions || [], cfg.audios);
   }
   const mb = (n) => (n / 1048576).toFixed(1);
   const pdfBlob = await fetchCached(BASE + cfg.pdf);
@@ -92,7 +97,7 @@ async function loadBundled() {
     if (textData && tv.words) wordTimes = await fetch(BASE + tv.words).then(r => r.ok ? r.json() : null).catch(() => null);
     if (textData && !(await loadIndoPak())) { textData = null; toast('Font not available offline — showing the PDF', 4000); }
   }
-  await openMedia({ title: cfg.title, pdfBlob, audioBlob, key: `bundled:${cfg.pdf}|${cfg.audio}|${tv && tv.text ? 'text' : ''}`, fileMarks, frames, step, textData, wordTimes });
+  await openMedia({ title: cfg.title, pdfBlob, audioBlob, key: `bundled:${cfg.pdf}|${cfg.audioKey || cfg.audio}|${tv && tv.text ? 'text' : ''}`, fileMarks, frames, step, textData, wordTimes });
 }
 
 async function loadPicked() {
@@ -465,10 +470,15 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* ---------- menu ---------- */
-function renderVersions(vs) {
+function renderVersions(vs, audios) {
   const box = $('versions'); if (!box) return;
-  box.innerHTML = vs.map(v => `<button data-ver="${v.id}">📄 ${v.label}${v.id === state.version ? ' ✓' : ''}</button>`).join('');
-  box.onclick = e => { const b = e.target.closest('[data-ver]'); if (!b || b.dataset.ver === state.version) return; ls.set('ver:' + BASE, b.dataset.ver); location.reload(); };
+  box.innerHTML = vs.map(v => `<button data-ver="${v.id}">📄 ${v.label}${v.id === state.version ? ' ✓' : ''}</button>`).join('') +
+    (audios && audios.length ? '<hr>' + audios.map(a => `<button data-aud="${a.id}">🎧 ${a.label}${a.id === state.audioId ? ' ✓' : ''}</button>`).join('') : '');
+  box.onclick = e => {
+    const b = e.target.closest('[data-ver]'), au = e.target.closest('[data-aud]');
+    if (au) { if (au.dataset.aud === state.audioId) return; ls.set('aud:' + BASE, au.dataset.aud); location.reload(); return; }
+    if (!b || b.dataset.ver === state.version) return; ls.set('ver:' + BASE, b.dataset.ver); location.reload();
+  };
 }
 $('menuBtn').onclick = (e) => { e.stopPropagation(); $('menu').classList.toggle('open'); };
 document.addEventListener('click', () => $('menu').classList.remove('open'));

@@ -1,6 +1,19 @@
 {
- "v": 70,
+ "v": 71,
  "history": [
+  {
+   "v": 71,
+   "date": "2026-11-10",
+   "en": [
+    "Dua e Kamil: new 'Enhanced audio' (volume evened out, less hiss and rumble, no clipping) is now the default; the original audio is one tap away in the ⋮ menu. Timing/sync is unchanged."
+   ],
+   "gu": [
+    "દુઆ એ કામિલ: નવો 'એન્હાન્સ્ડ ઓડિયો' (અવાજ સરખો, હિસ અને ગડગડાટ ઓછો, ક્લિપિંગ નહીં) હવે ડિફૉલ્ટ; અસલ ઓડિયો ⋮ મેનુમાં. સમય/સિંક એ જ."
+   ],
+   "hi": [
+    "Dua e Kamil: naya 'Enhanced audio' (awaaz barabar, hiss aur rumble kam, clipping nahi) ab default hai; original audio ⋮ menu me ek tap par. Timing/sync wahi hai."
+   ]
+  },
   {
    "v": 70,
    "date": "2026-11-10",
