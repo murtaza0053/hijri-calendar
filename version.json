@@ -1,6 +1,19 @@
 {
- "v": 71,
+ "v": 72,
  "history": [
+  {
+   "v": 72,
+   "date": "2026-11-10",
+   "en": [
+    "Dua e Kamil (text): the word highlight now glides smoothly from word to word and fades in on a new line, instead of jumping."
+   ],
+   "gu": [
+    "દુઆ એ કામિલ (ટેક્સ્ટ): શબ્દની હાઇલાઇટ હવે કૂદવાને બદલે એક શબ્દથી બીજા શબ્દ સુધી સરળતાથી સરકે છે, નવી લાઇનમાં હળવું ફેડ-ઇન."
+   ],
+   "hi": [
+    "Dua e Kamil (text): shabd ka highlight ab kudne ki bajaye ek shabd se doosre tak dheere se glide karta hai, nayi line par halka fade-in."
+   ]
+  },
   {
    "v": 71,
    "date": "2026-11-10",

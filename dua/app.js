@@ -187,8 +187,10 @@ function lineOf(m) {  // the text line a sync mark points at (nearest printed li
   m._l = best >= 0 ? el.querySelectorAll('.tl')[best] : null;
   return m._l;
 }
-function markWord(t) {
+let lastI = -1, lastJ = -1, lastT = 0;
+function markWord(t, snap) {
   let target = null;
+  const t0 = t; t += 0.08;   // show the word a hair early: reads as 'in time'
   const ms = state.marks;
   if (ms.length) {
     let lo = 0, hi = ms.length - 1, i = -1;
@@ -201,7 +203,11 @@ function markWord(t) {
           row._tot = row._w.reduce((a, x) => a + x.w, 0);
         }
         const wt = state.wordTimes && state.wordTimes[i];
-        if (wt && wt.length === row._w.length) { let j = 0; for (let q = 0; q < wt.length; q++) if (wt[q] <= t) j = q; target = row._w[j].sp; }
+        if (wt && wt.length === row._w.length) {
+          let j = 0; for (let q = 0; q < wt.length; q++) if (wt[q] <= t) j = q;
+          if (!snap && i === lastI && t0 >= lastT && t0 - lastT < 0.5 && j < lastJ) j = lastJ;   // never step back inside a line while playing forward
+          lastI = i; lastJ = j; target = row._w[j].sp;
+        }
         else {
         const dur = (n ? n.t - m.t : 4);
         const f = Math.min(0.999, Math.max(0, (t - m.t) / Math.max(0.3, dur * 0.94)));   // speech ends a little before the next line starts
@@ -211,7 +217,30 @@ function markWord(t) {
       }
     }
   }
-  if (target !== curWordEl) { curWordEl && curWordEl.classList.remove('on'); target && target.classList.add('on'); curWordEl = target; }
+  lastT = t0;
+  curWordEl = target;
+  updateHl(!!snap);
+}
+
+/* one highlight that glides from word to word (instead of each word flashing on/off) */
+let hlEl = null, hl = null, hlAt = 0;
+function updateHl(snap) {
+  if (!hlEl) { hlEl = document.createElement('div'); hlEl.className = 'whl'; pagesEl.appendChild(hlEl); }
+  const el = curWordEl;
+  if (!el) { hlEl.style.opacity = '0'; hl = null; return; }
+  const pr = pagesEl.getBoundingClientRect(), r = el.getBoundingClientRect();
+  const tg = { x: r.left - pr.left - 3, y: r.top - pr.top - 1, w: r.width + 6, h: r.height + 2 };
+  const now = performance.now(), dt = Math.min(0.1, (now - (hlAt || now)) / 1000); hlAt = now;
+  if (!hl || snap || audio.paused && !dt) { hl = { ...tg, line: tg.y }; }
+  else if (Math.abs(tg.y - hl.y) > tg.h * 0.8) {        // next line: don't swoop across the page — appear there with a short fade
+    hl = { ...tg }; hlEl.classList.remove('pop'); void hlEl.offsetWidth; hlEl.classList.add('pop');
+  } else {                                               // same line: ease towards the word (≈70 ms time constant)
+    const k = 1 - Math.exp(-dt / 0.07);
+    hl.x += (tg.x - hl.x) * k; hl.y += (tg.y - hl.y) * k; hl.w += (tg.w - hl.w) * k; hl.h += (tg.h - hl.h) * k;
+  }
+  hlEl.style.opacity = '1';
+  hlEl.style.transform = `translate(${hl.x.toFixed(1)}px, ${hl.y.toFixed(1)}px)`;
+  hlEl.style.width = hl.w.toFixed(1) + 'px'; hlEl.style.height = hl.h.toFixed(1) + 'px';
 }
 function fitText() {  // one font size for the whole book: the fullest line just fits between the printed borders
   if (!state.text) return;
@@ -360,7 +389,7 @@ function tick(force) {
   if (!seeking) { $('seek').max = d || 1; $('seek').value = t; }
   $('cur').textContent = fmt(t); $('dur').textContent = fmt(d);
   const pos = posAt(audio.paused ? t : smoothTime());
-  if (state.text) markWord(audio.paused ? t : smoothTime());
+  if (state.text) markWord(audio.paused ? t : smoothTime(), force || audio.paused);
   const n = state.pageEls.length;
   if (pos == null) { cursorEl.style.display = 'none'; $('pageInfo').textContent = n ? `${visiblePage()} / ${n}` : ''; return; }
   const yRaw = pxOf(pos);
