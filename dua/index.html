@@ -43,11 +43,11 @@ button:active{background:var(--accent-2)}
 .page .num{position:absolute;bottom:4px;right:8px;font-size:11px;color:#999}
 /* retyped Indo-Pak text pages */
 .page.tp{color:#111;border:3px double #c9a24a}
-.tp .tl{position:absolute;left:var(--tl,8%);right:var(--tr,14%);transform:translateY(-50%);display:flex;justify-content:space-between;align-items:center;white-space:nowrap;direction:rtl;
+.tp .tl{position:absolute;left:var(--tl,8%);right:var(--tr,14%);transform:translateY(-50%);display:flex;justify-content:center;gap:var(--tg,.3em);align-items:center;white-space:nowrap;direction:rtl;
   font-family:IndoPak,"Noto Naskh Arabic","Geeza Pro",serif;font-size:var(--tfs,20px);line-height:1.5;-webkit-text-stroke:.25px currentColor}
 .tp .tl>*{flex:none}
 .tp .tl.nt{justify-content:center;font-size:calc(var(--tfs,20px)*.62);color:#6a5a2a;-webkit-text-stroke:0;gap:.4em}
-.tp .tl .rs{width:.5em;height:.5em;border:1.5px solid #c9962b;border-radius:50%;box-shadow:0 0 0 1.5px #fffefb,0 0 0 2.5px #1f8f7a;margin:0 .25em}
+.tp .tl .rs{width:.5em;height:.5em;border:1.5px solid #c9962b;border-radius:50%;box-shadow:0 0 0 1.5px #fffefb,0 0 0 2.5px #1f8f7a;margin:0}
 .tp .tl.nt .rs{display:none}
 .tp .tl span{border-radius:.25em;padding:0 .08em;transition:background .08s}
 .whl{position:absolute;left:0;top:0;z-index:3;pointer-events:none;border-radius:.45em;background:rgba(224,160,40,.5);box-shadow:0 0 0 2px rgba(224,160,40,.35);mix-blend-mode:multiply;opacity:0;will-change:transform,width,height;transition:opacity .12s}
@@ -143,6 +143,6 @@ input[type=file]{display:none}
 <audio id="audio" preload="auto"></audio>
 
 <script src="vendor/pdf.min.js"></script>
-<script src="app.js?v=73"></script>
+<script src="app.js?v=74"></script>
 </body>
 </html>

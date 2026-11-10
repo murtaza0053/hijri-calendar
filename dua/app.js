@@ -242,22 +242,26 @@ function updateHl(snap) {
   hlEl.style.transform = `translate(${hl.x.toFixed(1)}px, ${hl.y.toFixed(1)}px)`;
   hlEl.style.width = hl.w.toFixed(1) + 'px'; hlEl.style.height = hl.h.toFixed(1) + 'px';
 }
-function fitText() {  // one font size for the whole book: the fullest line just fits between the printed borders
+function fitText() {  // global size fits ~90% of the lines edge to edge; the few longest lines are scaled down individually
   if (!state.text) return;
   const els = state.pageEls; if (!els.length) return;
   pagesEl.style.setProperty('--tfs', '100px');
-  let best = 1e9;
+  const rows = [];
   els.forEach((el, i) => {
     const fr = (state.frames && state.frames[i]) || [0.08, 0.86];
-    const avail = el.clientWidth * (fr[1] - fr[0]) * 0.96;
+    const avail = el.clientWidth * (fr[1] - fr[0]) * 0.97;
     el.style.setProperty('--tl', (fr[0] * 100) + '%'); el.style.setProperty('--tr', ((1 - fr[1]) * 100) + '%');
     el.querySelectorAll('.tl:not(.nt):not(.hd1):not(.hd2)').forEach(r => {
-      const w = [...r.children].reduce((a, c) => a + c.getBoundingClientRect().width, 0);
-      if (w) best = Math.min(best, avail / w * 100);
+      r.style.fontSize = '';
+      const kids = [...r.children], w = kids.reduce((a, c) => a + c.getBoundingClientRect().width, 0) + Math.max(0, kids.length - 1) * 30;  // + .3em gaps (at 100px)
+      if (w) rows.push({ r, k: avail / w * 100 });
     });
   });
-  const fs = Math.max(11, Math.min(34, best));
+  if (!rows.length) return;
+  const ks = rows.map(x => x.k).sort((a, b) => a - b);
+  const fs = Math.max(11, Math.min(34, ks[Math.floor(ks.length * 0.1)]));      // 10th percentile: 90% of the lines fit at this size
   pagesEl.style.setProperty('--tfs', fs + 'px');
+  rows.forEach(({ r, k }) => { if (k < fs) r.style.fontSize = `calc(var(--tfs) * ${(k / fs).toFixed(3)})`; });
 }
 window.addEventListener('resize', () => { if (state.text) setTimeout(fitText, 250); });
 
