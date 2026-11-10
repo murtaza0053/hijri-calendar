@@ -1,6 +1,19 @@
 {
- "v": 80,
+ "v": 81,
  "history": [
+  {
+   "v": 81,
+   "date": "2026-11-10",
+   "en": [
+    "Calendar reminders: the how-to steps are now behind an ⓘ button, so the section takes less space."
+   ],
+   "gu": [
+    "કૅલેન્ડર રિમાઇન્ડર: સમજૂતીના સ્ટેપ્સ હવે ⓘ બટન પાછળ છે, એટલે જગ્યા ઓછી લે છે."
+   ],
+   "hi": [
+    "Calendar reminders: samjhane wale steps ab ⓘ button ke peeche hain, isliye section kam jagah leta hai."
+   ]
+  },
   {
    "v": 80,
    "date": "2026-11-10",
