@@ -1,6 +1,19 @@
 {
- "v": 76,
+ "v": 77,
  "history": [
+  {
+   "v": 77,
+   "date": "2026-11-10",
+   "en": [
+    "Dua e Kamil (text): the round numbers (١ ٢ ٣ …) now show inside their circles."
+   ],
+   "gu": [
+    "દુઆ એ કામિલ (ટેક્સ્ટ): રાઉન્ડના નંબર (١ ٢ ٣ …) હવે વર્તુળની અંદર દેખાય છે."
+   ],
+   "hi": [
+    "Dua e Kamil (text): round ke numbers (١ ٢ ٣ …) ab circle ke andar dikhte hain."
+   ]
+  },
   {
    "v": 76,
    "date": "2026-11-10",
