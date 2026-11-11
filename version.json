@@ -1,6 +1,19 @@
 {
- "v": 83,
+ "v": 84,
  "history": [
+  {
+   "v": 84,
+   "date": "2026-11-11",
+   "en": [
+    "Versions now have a proper number like 1.8.4 instead of just 84."
+   ],
+   "gu": [
+    "વર્ઝનને હવે 84 ને બદલે 1.8.4 જેવો યોગ્ય નંબર મળ્યો છે."
+   ],
+   "hi": [
+    "Version ab sirf 84 nahi, 1.8.4 jaise proper number me dikhta hai."
+   ]
+  },
   {
    "v": 83,
    "date": "2026-11-11",
