@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=82">
-<script src="theme-init.js?v=82"></script>
+<link rel="stylesheet" href="themes.css?v=83">
+<script src="theme-init.js?v=83"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -281,6 +281,11 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
       <div style="flex:1"><b data-i18n="duaKamil"></b><div class="muted" data-i18n="duaKamilDesc"></div></div>
       <div class="dua-go">›</div>
     </a>
+    <a class="card dua-item" href="dua/joshan.html">
+      <div class="dua-ic">🛡️</div>
+      <div style="flex:1"><b data-i18n="joshanH"></b><div class="muted" data-i18n="joshanDesc"></div></div>
+      <div class="dua-go">›</div>
+    </a>
     <a class="card dua-item" href="dua/?d=jawahir">
       <div class="dua-ic">💎</div>
       <div style="flex:1"><b data-i18n="jawahirH"></b><div class="muted" data-i18n="jawahirDesc"></div></div>
@@ -420,8 +425,8 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=82"></script>
-<script src="i18n.js?v=82"></script>
+<script src="hijri.js?v=83"></script>
+<script src="i18n.js?v=83"></script>
 <script>
 "use strict";
 
@@ -867,7 +872,7 @@ function renderAll() {
   if (curView === "up") renderUpcoming();
   if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD);
 }
-const APP_V = 82, APP_VERSION = APP_V + " (2026-11-10)";
+const APP_V = 83, APP_VERSION = APP_V + " (2026-11-11)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");
