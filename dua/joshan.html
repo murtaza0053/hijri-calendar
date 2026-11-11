@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -12,79 +12,66 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="icon" href="../icons/icon-192.png">
-<link rel="stylesheet" href="../themes.css?v=84">
-<script src="../theme-init.js?v=84"></script>
+<link rel="stylesheet" href="../themes.css?v=85">
+<script src="../theme-init.js?v=85"></script>
 <style>
-@font-face{font-family:"AmiriQuran";src:url(fonts/AmiriQuran-arabic.woff2) format("woff2");font-weight:400;font-display:swap}
-@font-face{font-family:"QNaskh";src:url(fonts/NotoNaskhArabic-arabic.woff2) format("woff2");font-weight:400 700;font-display:swap}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-header{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;gap:6px;padding:calc(env(safe-area-inset-top) + 8px) 10px 8px;background:var(--hdr);color:var(--hdr-ink)}
-header a,header button{color:inherit;text-decoration:none;font-size:26px;width:40px;height:40px;display:grid;place-items:center;background:none;border:0;padding:0;font-family:inherit}
+header{position:fixed;top:0;left:0;right:0;z-index:5;background:var(--hdr);color:var(--hdr-ink);padding:calc(env(safe-area-inset-top) + 8px) 10px 8px}
+.hrow{display:flex;align-items:center;gap:6px}
+header a{color:inherit;text-decoration:none;font-size:26px;width:40px;height:40px;display:grid;place-items:center}
 header .tt{flex:1;min-width:0}
 header .tt b{display:block;font-size:16px}
 header .tt span{display:block;font-size:12px;opacity:.85}
-header button.s{font-size:15px;font-weight:700;width:36px}
-main{padding:calc(env(safe-area-inset-top) + 72px) 12px calc(env(safe-area-inset-bottom) + 40px);max-width:760px;margin:0 auto}
-.intro{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px;font-size:13px;color:var(--muted)}
-.bar{display:flex;gap:8px;margin:0 0 10px;flex-wrap:wrap}
-.bar button,.bar select{font:inherit;font-size:14px;font-weight:600;border:0;border-radius:10px;padding:9px 12px;background:var(--brand);color:var(--on-brand)}
-.bar select{background:var(--chip);color:var(--ink);flex:1;min-width:120px}
-.fs{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 12px 10px;margin-bottom:10px;position:relative;scroll-margin-top:calc(env(safe-area-inset-top) + 72px)}
-.fs.here{border-color:var(--brand);box-shadow:0 0 0 2px color-mix(in srgb,var(--brand) 35%,transparent)}
-.fs .n{display:inline-grid;place-items:center;min-width:34px;height:34px;padding:0 6px;border-radius:17px;background:var(--brand);color:var(--on-brand);font-family:"Geeza Pro","Noto Naskh Arabic","Segoe UI",sans-serif;font-size:17px;line-height:1}
-.fs .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;color:var(--muted);font-size:12px}
-.fs .t{font-family:AmiriQuran,QNaskh,"Geeza Pro",serif;font-size:var(--fz,26px);line-height:2.05;direction:rtl;text-align:justify;text-align-last:center}
-.fs .ref{margin-top:6px;padding-top:6px;border-top:1px dashed var(--line);font-family:AmiriQuran,QNaskh,"Geeza Pro",serif;font-size:calc(var(--fz,26px)*.78);line-height:1.9;direction:rtl;text-align:center;color:#8a6a1c}
-html.dark .fs .ref{color:#d9b25a}
-.note{color:var(--muted);font-size:11px;margin:14px 4px}
+.days{display:flex;gap:6px;overflow-x:auto;margin-top:6px;padding-bottom:2px;scrollbar-width:none}
+.days::-webkit-scrollbar{display:none}
+.days button{flex:none;border:0;border-radius:16px;padding:7px 12px;font:inherit;font-size:13px;font-weight:600;background:var(--hdr-chip);color:var(--hdr-ink)}
+.days button.on{background:#fff;color:var(--hdr-on)}
+.days button.today::after{content:" •"}
+main{padding:calc(env(safe-area-inset-top) + 118px) 10px calc(env(safe-area-inset-bottom) + 30px);max-width:760px;margin:0 auto}
+.pg{display:block;width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:6px;margin:0 0 10px;min-height:260px}
+.note{color:var(--muted);font-size:11px;margin:12px 4px}
+.note a{color:var(--brand)}
 </style>
 </head>
 <body>
 <header>
-  <a href="../#dua" aria-label="Back">‹</a>
-  <div class="tt"><b id="title"></b><span id="sub"></span></div>
-  <button class="s" id="fm" aria-label="Smaller">A−</button><button class="s" id="fp" aria-label="Bigger">A+</button>
+  <div class="hrow"><a href="../#dua" aria-label="Back">‹</a><div class="tt"><b id="title"></b><span id="sub"></span></div></div>
+  <div class="days" id="days"></div>
 </header>
 <main>
-  <div class="intro" id="intro"></div>
-  <div class="bar"><select id="jump"></select><button id="cont" hidden></button></div>
-  <div id="list"></div>
+  <div id="pages"></div>
   <p class="note" id="note"></p>
 </main>
-<script src="../i18n.js?v=84"></script>
+<script src="../i18n.js?v=85"></script>
 <script>
 "use strict";
 const $ = id => document.getElementById(id);
-const ls = { get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
+const ls = { get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch { return d; } } };
 const L = I18N[ls.get("lang", "en")] || I18N.en;
 const t = (k, v = {}) => String(L[k] ?? I18N.en[k] ?? k).replace(/\{(\w+)\}/g, (_, x) => v[x] ?? "");
-const AR = "٠١٢٣٤٥٦٧٨٩", ar = n => String(n).replace(/\d/g, c => AR[c]);
-let D = null, here = ls.get("joshanHere", 0), fz = ls.get("joshanFz", 26);
-document.title = t("joshanH"); $("title").textContent = "🤲 " + t("joshanH"); $("sub").textContent = t("joshanSub");
-$("intro").innerHTML = t("joshanIntro");
-function setFz() { document.documentElement.style.setProperty("--fz", fz + "px"); ls.set("joshanFz", fz); }
-$("fm").onclick = () => { fz = Math.max(18, fz - 2); setFz(); };
-$("fp").onclick = () => { fz = Math.min(44, fz + 2); setFz(); };
-setFz();
-function mark(n) {
-  here = n; ls.set("joshanHere", n);
-  document.querySelectorAll(".fs.here").forEach(e => e.classList.remove("here"));
-  const el = $("f" + n); if (el) el.classList.add("here");
-  $("cont").hidden = !n; $("cont").textContent = t("joshanCont", { n: ar(n) });
+// Dua e Joshan is a different dua for each weekday (Sunday … Saturday): first and last page of the printed book scan
+const SRC = "https://dawoodibohraapp.com/";
+const PG = n => `${SRC}Duas/pdf/Dua%20Joshan/Dua_Joshan-${String(n).padStart(2, "0")}-min.png`;
+const DAYS = [[1, 7], [8, 15], [16, 24], [25, 34], [35, 45], [46, 56], [57, 68]];   // Sun … Sat
+const today = new Date().getDay();
+const q = new URLSearchParams(location.search).get("d");
+let day = q != null && /^[0-6]$/.test(q) ? +q : today;
+document.title = t("joshanH");
+$("days").innerHTML = DAYS.map((_, d) => `<button data-d="${d}" class="${d === today ? "today" : ""}">${L.wd[d]}</button>`).join("");
+function show(d) {
+  day = d;
+  document.querySelectorAll("#days button").forEach(b => b.classList.toggle("on", +b.dataset.d === d));
+  $("title").textContent = "🤲 " + t("joshanH") + " — " + L.wd[d];
+  $("sub").textContent = (d === today ? t("today") + " · " : "") + t("joshanPages", { a: DAYS[d][0], b: DAYS[d][1] - DAYS[d][0] + 1 });
+  let h = "";
+  for (let n = DAYS[d][0]; n <= DAYS[d][1]; n++) h += `<img class="pg" src="${PG(n)}" alt="${L.wd[d]} ${n}" ${n > DAYS[d][0] + 1 ? 'loading="lazy"' : ""}>`;
+  $("pages").innerHTML = h; scrollTo(0, 0);
+  const b = document.querySelector(`#days button[data-d="${d}"]`); if (b) b.scrollIntoView({ inline: "center", block: "nearest" });
 }
-function go(n) { const el = $("f" + n); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }
-fetch("joshan.json").then(r => r.json()).then(j => {
-  D = j;
-  $("list").innerHTML = j.fasl.map(f => `<div class="fs" id="f${f.n}" data-n="${f.n}"><div class="top"><span class="n">${ar(f.n)}</span><span>${t("joshanTap")}</span></div><div class="t">${f.t}</div><div class="ref">${j.refrain}</div></div>`).join("");
-  $("jump").innerHTML = `<option value="">${t("joshanJump")}</option>` + j.fasl.map(f => `<option value="${f.n}">${ar(f.n)}</option>`).join("");
-  $("note").textContent = t("joshanNote");
-  mark(here);
-  if (here) setTimeout(() => go(here), 150);
-});
-$("list").onclick = e => { const c = e.target.closest(".fs"); if (c) mark(+c.dataset.n); };
-$("jump").onchange = e => { if (e.target.value) go(+e.target.value); e.target.value = ""; };
-$("cont").onclick = () => go(here);
+$("days").onclick = e => { const b = e.target.closest("[data-d]"); if (b) show(+b.dataset.d); };
+$("note").innerHTML = t("joshanNote") + ` <a href="${SRC}joshan.html" target="_blank" rel="noopener">dawoodibohraapp.com</a>`;
+show(day);
 if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js", { updateViaCache: "none" }).catch(() => {});
 </script>
 </body>
