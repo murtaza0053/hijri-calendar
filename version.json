@@ -1,6 +1,19 @@
 {
- "v": 81,
+ "v": 82,
  "history": [
+  {
+   "v": 82,
+   "date": "2026-11-11",
+   "en": [
+    "Calendar reminders: tapping ⓘ now scrolls down to the steps."
+   ],
+   "gu": [
+    "કૅલેન્ડર રિમાઇન્ડર: ⓘ દબાવતા હવે સ્ટેપ્સ સુધી નીચે સ્ક્રોલ થાય છે."
+   ],
+   "hi": [
+    "Calendar reminders: ⓘ dabane par ab screen khud steps tak neeche scroll hoti hai."
+   ]
+  },
   {
    "v": 81,
    "date": "2026-11-10",
