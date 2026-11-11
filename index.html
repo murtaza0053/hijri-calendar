@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=85">
-<script src="theme-init.js?v=85"></script>
+<link rel="stylesheet" href="themes.css?v=86">
+<script src="theme-init.js?v=86"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -281,6 +281,11 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
       <div style="flex:1"><b data-i18n="duaKamil"></b><div class="muted" data-i18n="duaKamilDesc"></div></div>
       <div class="dua-go">›</div>
     </a>
+    <a class="card dua-item" href="dua/faazil.html">
+      <div class="dua-ic">🤲</div>
+      <div style="flex:1"><b data-i18n="faazilH"></b><div class="muted" data-i18n="faazilDesc"></div></div>
+      <div class="dua-go">›</div>
+    </a>
     <a class="card dua-item" href="dua/joshan.html">
       <div class="dua-ic">🛡️</div>
       <div style="flex:1"><b data-i18n="joshanH"></b><div class="muted" data-i18n="joshanDesc"></div></div>
@@ -425,8 +430,8 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=85"></script>
-<script src="i18n.js?v=85"></script>
+<script src="hijri.js?v=86"></script>
+<script src="i18n.js?v=86"></script>
 <script>
 "use strict";
 
@@ -873,7 +878,7 @@ function renderAll() {
   if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD);
 }
 const vName = n => `1.${Math.floor(n / 10)}.${n % 10}`;   // shown to people (84 → 1.8.4); the plain number is what update checks compare
-const APP_V = 85, APP_VERSION = vName(APP_V) + " (2026-11-11)";
+const APP_V = 86, APP_VERSION = vName(APP_V) + " (2026-11-11)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");
