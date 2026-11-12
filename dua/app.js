@@ -109,7 +109,7 @@ async function loadPicked() {
 
 async function openMedia({ title, pdfBlob, audioBlob, key, fileMarks, frames, step, textData, wordTimes }) {
   status('Opening PDF…');
-  state.key = key; state.text = textData || null; curWordEl = null; state.rep = null; state.curMark = null; onEl = null; lnEl = null; ln = null; $('rep').classList.remove('on');
+  state.key = key; state.text = textData || null; curWordEl = null; state.rep = null; state.curMark = null; wbEl = null; wb = null; lnEl = null; ln = null; $('rep').classList.remove('on');
   document.body.classList.toggle('tmode', !!state.text);
   state.frames = frames || null; // per page [left, right] of the printed border, as fractions of page width
   $('title').textContent = title; document.title = title;
@@ -224,21 +224,31 @@ function markWord(t, snap) {
 }
 
 /* Yaseen-style highlight: the word being recited is filled, and a green bar under its line glides from line to line */
-let onEl = null, lnEl = null, ln = null, lnAt = 0;
+let wbEl = null, wb = null, wbAt = 0, lnEl = null, ln = null, lnAt = 0;
 function updateHl(snap) {
   const el = curWordEl;
-  if (el !== onEl) { onEl && onEl.classList.remove('on'); el && el.classList.add('on'); onEl = el; }
   if (!lnEl) { lnEl = document.createElement('div'); lnEl.className = 'lhl'; pagesEl.appendChild(lnEl); }
+  if (!wbEl) { wbEl = document.createElement('div'); wbEl.className = 'whl'; pagesEl.appendChild(wbEl); }
   const row = el ? el.parentElement : null;
-  if (!row) { lnEl.style.opacity = '0'; ln = null; return; }
-  const pr = pagesEl.getBoundingClientRect(), r = row.getBoundingClientRect();
+  if (!row) { lnEl.style.opacity = '0'; wbEl.style.opacity = '0'; ln = wb = null; return; }
+  const pr = pagesEl.getBoundingClientRect(), now = performance.now();
+  // green line bar: glides down from line to line
+  let r = row.getBoundingClientRect();
   const tg = { x: r.left - pr.left - 4, y: r.top - pr.top, w: r.width + 8, h: r.height };
-  const now = performance.now(), dt = Math.min(0.1, (now - (lnAt || now)) / 1000); lnAt = now;
-  if (!ln || snap || audio.paused || Math.abs(tg.y - ln.y) > tg.h * 4) ln = { ...tg };          // seek / first line: appear in place
-  else { const k = 1 - Math.exp(-dt / 0.2); ln.x += (tg.x - ln.x) * k; ln.y += (tg.y - ln.y) * k; ln.w += (tg.w - ln.w) * k; ln.h += (tg.h - ln.h) * k; }   // next line: glide down
-  lnEl.style.opacity = '1';
-  lnEl.style.transform = `translate(${ln.x.toFixed(1)}px, ${ln.y.toFixed(1)}px)`;
+  const dt = Math.min(0.1, (now - (lnAt || now)) / 1000); lnAt = now;
+  if (!ln || snap || audio.paused || Math.abs(tg.y - ln.y) > tg.h * 4) ln = { ...tg };
+  else { const k = 1 - Math.exp(-dt / 0.2); ln.x += (tg.x - ln.x) * k; ln.y += (tg.y - ln.y) * k; ln.w += (tg.w - ln.w) * k; ln.h += (tg.h - ln.h) * k; }
+  lnEl.style.opacity = '1'; lnEl.style.transform = `translate(${ln.x.toFixed(1)}px, ${ln.y.toFixed(1)}px)`;
   lnEl.style.width = ln.w.toFixed(1) + 'px'; lnEl.style.height = ln.h.toFixed(1) + 'px';
+  // word box: glides along the line from word to word (fades in again when the next line starts)
+  r = el.getBoundingClientRect();
+  const wg = { x: r.left - pr.left - 3, y: r.top - pr.top - 1, w: r.width + 6, h: r.height + 2 };
+  const wdt = Math.min(0.1, (now - (wbAt || now)) / 1000); wbAt = now;
+  if (!wb || snap || audio.paused) wb = { ...wg };
+  else if (Math.abs(wg.y - wb.y) > wg.h * 0.8) { wb = { ...wg }; wbEl.classList.remove('pop'); void wbEl.offsetWidth; wbEl.classList.add('pop'); }
+  else { const k = 1 - Math.exp(-wdt / 0.13); wb.x += (wg.x - wb.x) * k; wb.y += (wg.y - wb.y) * k; wb.w += (wg.w - wb.w) * k; wb.h += (wg.h - wb.h) * k; }
+  wbEl.style.opacity = '1'; wbEl.style.transform = `translate(${wb.x.toFixed(1)}px, ${wb.y.toFixed(1)}px)`;
+  wbEl.style.width = wb.w.toFixed(1) + 'px'; wbEl.style.height = wb.h.toFixed(1) + 'px';
 }
 /* text-mode controls (like the Yaseen reader): tap a line to play from it, previous / next line, repeat the line */
 const mLine = (i) => lineOf(state.marks[i]);

@@ -58,11 +58,10 @@ body.tmode .page{margin-bottom:6px}
 body.tmode .tonly{display:inline-grid}
 body.tmode #syncBtn{display:none}
 #rep.on{background:var(--accent-2);border-radius:10px}
-.tp .tl span.on{background:color-mix(in srgb,var(--accent) 72%,#000);color:#fff;-webkit-text-fill-color:#fff;box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 72%,#000)}
 .lhl{position:absolute;left:0;top:0;z-index:0;pointer-events:none;border-radius:.5em;background:color-mix(in srgb,#1f8f7a 24%,transparent);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,#1f8f7a 50%,transparent);opacity:0;will-change:transform,width,height;transition:opacity .15s}
 .tp .tl{z-index:1}   /* text rows sit above the green line bar, so the selected word stays crisp inside it */
 .tp .tl{cursor:pointer}
-.whl{position:absolute;left:0;top:0;z-index:3;pointer-events:none;border-radius:.45em;background:rgba(224,160,40,.5);box-shadow:0 0 0 2px rgba(224,160,40,.35);mix-blend-mode:multiply;opacity:0;will-change:transform,width,height;transition:opacity .12s}
+.whl{position:absolute;left:0;top:0;z-index:0;pointer-events:none;border-radius:.45em;background:color-mix(in srgb,var(--accent) 60%,transparent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 75%,transparent);opacity:0;will-change:transform,width,height;transition:opacity .12s}
 .whl.pop{animation:whpop .26s ease-out}
 @keyframes whpop{from{opacity:0;filter:blur(1px)}to{opacity:1;filter:none}}
 body.tmode #cursor{display:none!important}
@@ -158,6 +157,6 @@ input[type=file]{display:none}
 <audio id="audio" preload="auto"></audio>
 
 <script src="vendor/pdf.min.js"></script>
-<script src="app.js?v=92"></script>
+<script src="app.js?v=93"></script>
 </body>
 </html>
