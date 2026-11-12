@@ -1,6 +1,19 @@
 {
- "v": 91,
+ "v": 92,
  "history": [
+  {
+   "v": 92,
+   "date": "2026-11-12",
+   "en": [
+    "Dua e Kamil (text): the recited word is now actually filled inside the green line (it was not showing before)."
+   ],
+   "gu": [
+    "દુઆ એ કામિલ (ટેક્સ્ટ): બોલાતો શબ્દ હવે લીલી લીટીની અંદર ખરેખર ભરાયેલો દેખાય છે (પહેલાં દેખાતો નહોતો)."
+   ],
+   "hi": [
+    "Dua e Kamil (text): padha ja raha shabd ab hari line ke andar sach me bhara dikhta hai (pehle dikh nahi raha tha)."
+   ]
+  },
   {
    "v": 91,
    "date": "2026-11-12",
