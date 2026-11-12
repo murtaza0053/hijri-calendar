@@ -1,6 +1,19 @@
 {
- "v": 86,
+ "v": 87,
  "history": [
+  {
+   "v": 87,
+   "date": "2026-11-12",
+   "en": [
+    "Dua e Kamil (text) now works like the Yaseen reader: the recited word is filled and its line tinted, tap any line to play from it, previous/next line buttons, and a repeat-line button."
+   ],
+   "gu": [
+    "દુઆ એ કામિલ (ટેક્સ્ટ) હવે યાસીન રીડર જેવું: બોલાતો શબ્દ ભરાયેલો અને તેની લીટી રંગીન, કોઈ પણ લીટી દબાવો તો ત્યાંથી વાગે, પાછલી/આગળની લીટીના બટન, અને લીટી રિપીટ બટન."
+   ],
+   "hi": [
+    "Dua e Kamil (text) ab Yaseen reader jaisa: jo shabd padha ja raha hai wo bhara dikhta hai aur uski line tint hoti hai, kisi bhi line par tap karo to wahin se chalta hai, pichli/agli line ke buttons, aur line repeat button."
+   ]
+  },
   {
    "v": 86,
    "date": "2026-11-11",

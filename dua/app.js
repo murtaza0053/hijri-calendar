@@ -109,7 +109,7 @@ async function loadPicked() {
 
 async function openMedia({ title, pdfBlob, audioBlob, key, fileMarks, frames, step, textData, wordTimes }) {
   status('Opening PDF…');
-  state.key = key; state.text = textData || null; curWordEl = null;
+  state.key = key; state.text = textData || null; curWordEl = null; state.rep = null; state.curMark = null; onEl = null; onRow = null; $('rep').classList.remove('on');
   document.body.classList.toggle('tmode', !!state.text);
   state.frames = frames || null; // per page [left, right] of the printed border, as fractions of page width
   $('title').textContent = title; document.title = title;
@@ -197,7 +197,7 @@ function markWord(t, snap) {
     let lo = 0, hi = ms.length - 1, i = -1;
     while (lo <= hi) { const mid = (lo + hi) >> 1; if (ms[mid].t <= t) { i = mid; lo = mid + 1; } else hi = mid - 1; }
     if (i >= 0) {
-      const m = ms[i], n = ms[i + 1], row = lineOf(m);
+      state.curMark = i; const m = ms[i], n = ms[i + 1], row = lineOf(m);
       if (row && !row.classList.contains('nt')) {
         if (!row._w) {
           row._w = [...row.querySelectorAll('span')].map(sp => ({ sp, w: Math.max(1, sp.textContent.replace(DIAC, '').length) }));
@@ -220,28 +220,33 @@ function markWord(t, snap) {
   }
   lastT = t0;
   curWordEl = target;
-  updateHl(!!snap);
+  updateHl();
 }
 
-/* one highlight that glides from word to word (instead of each word flashing on/off) */
-let hlEl = null, hl = null, hlAt = 0;
-function updateHl(snap) {
-  if (!hlEl) { hlEl = document.createElement('div'); hlEl.className = 'whl'; pagesEl.appendChild(hlEl); }
+/* Yaseen-style highlight: the word being recited is filled, its line is tinted; both switch with a short fade */
+let onEl = null, onRow = null;
+function updateHl() {
   const el = curWordEl;
-  if (!el) { hlEl.style.opacity = '0'; hl = null; return; }
-  const pr = pagesEl.getBoundingClientRect(), r = el.getBoundingClientRect();
-  const tg = { x: r.left - pr.left - 3, y: r.top - pr.top - 1, w: r.width + 6, h: r.height + 2 };
-  const now = performance.now(), dt = Math.min(0.1, (now - (hlAt || now)) / 1000); hlAt = now;
-  if (!hl || snap || audio.paused && !dt) { hl = { ...tg, line: tg.y }; }
-  else if (Math.abs(tg.y - hl.y) > tg.h * 0.8) {        // next line: don't swoop across the page — appear there with a short fade
-    hl = { ...tg }; hlEl.classList.remove('pop'); void hlEl.offsetWidth; hlEl.classList.add('pop');
-  } else {                                               // same line: ease towards the word (≈150 ms time constant)
-    const k = 1 - Math.exp(-dt / 0.15);
-    hl.x += (tg.x - hl.x) * k; hl.y += (tg.y - hl.y) * k; hl.w += (tg.w - hl.w) * k; hl.h += (tg.h - hl.h) * k;
-  }
-  hlEl.style.opacity = '1';
-  hlEl.style.transform = `translate(${hl.x.toFixed(1)}px, ${hl.y.toFixed(1)}px)`;
-  hlEl.style.width = hl.w.toFixed(1) + 'px'; hlEl.style.height = hl.h.toFixed(1) + 'px';
+  if (el !== onEl) { onEl && onEl.classList.remove('on'); el && el.classList.add('on'); onEl = el; }
+  const row = el ? el.parentElement : null;
+  if (row !== onRow) { onRow && onRow.classList.remove('vc'); row && row.classList.add('vc'); onRow = row; }
+}
+/* text-mode controls (like the Yaseen reader): tap a line to play from it, previous / next line, repeat the line */
+const mLine = (i) => lineOf(state.marks[i]);
+const mReal = (i) => { const r = mLine(i); return r && !r.classList.contains('nt'); };
+function seekMark(i) { const m = state.marks[i]; if (!m) return; audio.currentTime = m.t + 0.01; if (state.rep) setRep(i); state.followPausedUntil = 0; tick(true); }
+function setRep(i) { state.rep = { a: state.marks[i].t, b: (state.marks[i + 1] ? state.marks[i + 1].t : audio.duration) - 0.05 }; }
+function jumpLine(d) {
+  const ms = state.marks; let ci = state.curMark ?? 0;
+  if (d < 0 && audio.currentTime - ms[ci].t > 1.2) { seekMark(ci); return; }     // first press: back to the start of this line
+  let j = ci + d;
+  while (j >= 0 && j < ms.length && (!mReal(j) || mLine(j) === mLine(ci))) j += d;
+  if (j >= 0 && j < ms.length) { seekMark(j); if (audio.paused) audio.play(); }
+}
+function tapLine(e) {
+  const row = e.target.closest('.tl'); if (!row || row.classList.contains('nt')) return false;
+  const i = state.marks.findIndex((m, k) => mLine(k) === row); if (i < 0) return false;
+  seekMark(i); audio.play(); return true;
 }
 function fitText() {  // big shared font; each line then adjusts its word gap (0.1–0.3em), and only the very longest lines shrink a little
   if (!state.text) return;
@@ -398,6 +403,7 @@ function smoothTime() {
 }
 function tick(force) {
   const t = audio.currentTime || 0, d = audio.duration || 0;
+  if (state.rep && !audio.paused && t >= state.rep.b) { audio.currentTime = state.rep.a; return; }
   if (!seeking) { $('seek').max = d || 1; $('seek').value = t; }
   $('cur').textContent = fmt(t); $('dur').textContent = fmt(d);
   const pos = posAt(audio.paused ? t : smoothTime());
@@ -448,6 +454,7 @@ $('follow').onclick = () => { state.followPausedUntil = 0; tick(true); };
 pagesEl.addEventListener('click', (e) => {
   const del = e.target.closest('.tick span');
   if (del) { pushHistory(); state.marks.splice(+del.dataset.i, 1); saveMarks(); toast('Mark removed'); return; }
+  if (state.text && !state.editing && tapLine(e)) return;
   const el = e.target.closest('.page'); if (!el) return;
   const r = el.getBoundingClientRect();
   const p = +el.dataset.n, y = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height));
@@ -468,6 +475,9 @@ pagesEl.addEventListener('click', (e) => {
 });
 
 /* ---------- controls ---------- */
+$('prevL').onclick = () => jumpLine(-1);
+$('nextL').onclick = () => jumpLine(1);
+$('rep').onclick = () => { if (state.rep) { state.rep = null; } else if (state.curMark != null) setRep(state.curMark); $('rep').classList.toggle('on', !!state.rep); };
 const playBtn = $('play');
 playBtn.onclick = () => audio.paused ? audio.play() : audio.pause();
 audio.onplay = () => { playBtn.textContent = '❚❚'; if (!rafId) loop(); };
