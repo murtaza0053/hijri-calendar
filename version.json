@@ -1,6 +1,19 @@
 {
- "v": 95,
+ "v": 96,
  "history": [
+  {
+   "v": 96,
+   "date": "2026-11-12",
+   "en": [
+    "Update bar: the note is now cut to two lines, so the bar stays small."
+   ],
+   "gu": [
+    "અપડેટ બાર: નોંધ હવે બે લીટીમાં કપાય છે, એટલે બાર નાનો રહે છે."
+   ],
+   "hi": [
+    "Update bar: note ab do line me kat jata hai, isliye bar chhota rehta hai."
+   ]
+  },
   {
    "v": 95,
    "date": "2026-11-12",
