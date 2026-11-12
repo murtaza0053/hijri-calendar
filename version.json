@@ -1,6 +1,19 @@
 {
- "v": 90,
+ "v": 91,
  "history": [
+  {
+   "v": 91,
+   "date": "2026-11-12",
+   "en": [
+    "Update notes: the OK button now stays fixed at the bottom even when there are many updates, and you can swipe the sheet down to close it."
+   ],
+   "gu": [
+    "અપડેટ નોંધ: ઘણા અપડેટ હોય ત્યારે પણ OK બટન નીચે સ્થિર રહે છે, અને શીટને નીચે સ્વાઇપ કરીને બંધ કરી શકાય છે."
+   ],
+   "hi": [
+    "Update notes: bahut saare updates hone par bhi OK button neeche fixed rehta hai, aur sheet ko neeche swipe karke band kar sakte ho."
+   ]
+  },
   {
    "v": 90,
    "date": "2026-11-12",
