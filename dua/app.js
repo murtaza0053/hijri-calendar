@@ -109,7 +109,7 @@ async function loadPicked() {
 
 async function openMedia({ title, pdfBlob, audioBlob, key, fileMarks, frames, step, textData, wordTimes }) {
   status('Opening PDF…');
-  state.key = key; state.text = textData || null; curWordEl = null; state.rep = null; state.curMark = null; wbEl = null; wb = null; lnEl = null; ln = null; $('rep').classList.remove('on');
+  state.key = key; state.text = textData || null; curWordEl = null; state.rep = null; state.curMark = null; wbEl = null; wb = null; wbRow = null; lnEl = null; ln = null; $('rep').classList.remove('on');
   document.body.classList.toggle('tmode', !!state.text);
   state.frames = frames || null; // per page [left, right] of the printed border, as fractions of page width
   $('title').textContent = title; document.title = title;
@@ -224,7 +224,7 @@ function markWord(t, snap) {
 }
 
 /* Yaseen-style highlight: the word being recited is filled, and a green bar under its line glides from line to line */
-let wbEl = null, wb = null, wbAt = 0, lnEl = null, ln = null, lnAt = 0;
+let wbEl = null, wb = null, wbAt = 0, wbRow = null, lnEl = null, ln = null, lnAt = 0;
 function updateHl(snap) {
   const el = curWordEl;
   if (!lnEl) { lnEl = document.createElement('div'); lnEl.className = 'lhl'; pagesEl.appendChild(lnEl); }
@@ -241,12 +241,13 @@ function updateHl(snap) {
   lnEl.style.opacity = '1'; lnEl.style.transform = `translate(${ln.x.toFixed(1)}px, ${ln.y.toFixed(1)}px)`;
   lnEl.style.width = ln.w.toFixed(1) + 'px'; lnEl.style.height = ln.h.toFixed(1) + 'px';
   // word box: glides along the line from word to word (fades in again when the next line starts)
-  r = el.getBoundingClientRect();
-  const wg = { x: r.left - pr.left - 3, y: r.top - pr.top - 1, w: r.width + 6, h: r.height + 2 };
+  const wr = el.getBoundingClientRect();   // x / width from the word; y / height follow the green line exactly (same glide), so both are always the same height
+  const wg = { x: wr.left - pr.left - 3, y: ln.y, w: wr.width + 6, h: ln.h };
   const wdt = Math.min(0.1, (now - (wbAt || now)) / 1000); wbAt = now;
   if (!wb || snap || audio.paused) wb = { ...wg };
-  else if (Math.abs(wg.y - wb.y) > wg.h * 0.8) { wb = { ...wg }; wbEl.classList.remove('pop'); void wbEl.offsetWidth; wbEl.classList.add('pop'); }
-  else { const k = 1 - Math.exp(-wdt / 0.27); wb.x += (wg.x - wb.x) * k; wb.y += (wg.y - wb.y) * k; wb.w += (wg.w - wb.w) * k; wb.h += (wg.h - wb.h) * k; }
+  else if (row !== wbRow) { wb = { ...wg }; wbEl.classList.remove('pop'); void wbEl.offsetWidth; wbEl.classList.add('pop'); }   // next line: fade in at its first word
+  else { const k = 1 - Math.exp(-wdt / 0.27); wb.x += (wg.x - wb.x) * k; wb.w += (wg.w - wb.w) * k; wb.y = wg.y; wb.h = wg.h; }
+  wbRow = row;
   wbEl.style.opacity = '1'; wbEl.style.transform = `translate(${wb.x.toFixed(1)}px, ${wb.y.toFixed(1)}px)`;
   wbEl.style.width = wb.w.toFixed(1) + 'px'; wbEl.style.height = wb.h.toFixed(1) + 'px';
 }
