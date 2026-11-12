@@ -1,6 +1,19 @@
 {
- "v": 94,
+ "v": 95,
  "history": [
+  {
+   "v": 95,
+   "date": "2026-11-12",
+   "en": [
+    "Calendar reminders: a reminder you've added now shows ticked and locked with “✓ added”, so you can see which are on and which are not. Use Undo to turn one off here (delete it in your Calendar app too)."
+   ],
+   "gu": [
+    "કૅલેન્ડર રિમાઇન્ડર: ઉમેરેલું રિમાઇન્ડર હવે ટિક અને લૉક સાથે “✓ ઉમેર્યું” દેખાય છે, એટલે કયું ચાલુ છે અને કયું નથી તે ખબર પડે. અહીં બંધ કરવા “પાછું” દબાવો (તમારી Calendar એપમાંથી પણ ડિલીટ કરો)."
+   ],
+   "hi": [
+    "Calendar reminders: jo reminder add ho gaya wo ab tick aur lock ke saath “✓ joda” dikhta hai, isliye pata chalta hai kaun sa chalu hai aur kaun sa nahi. Yahan band karne ke liye Undo dabao (apne Calendar app se bhi delete karo)."
+   ]
+  },
   {
    "v": 94,
    "date": "2026-11-12",
