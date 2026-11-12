@@ -1,6 +1,19 @@
 {
- "v": 88,
+ "v": 89,
  "history": [
+  {
+   "v": 89,
+   "date": "2026-11-12",
+   "en": [
+    "Dua e Kamil (text): thinner page margins and padding, so the text uses almost the full width and is bigger."
+   ],
+   "gu": [
+    "દુઆ એ કામિલ (ટેક્સ્ટ): પાનાના માર્જિન અને પૅડિંગ ઓછા, એટલે લખાણ લગભગ પૂરી પહોળાઈ વાપરે છે અને મોટું દેખાય છે."
+   ],
+   "hi": [
+    "Dua e Kamil (text): page ka margin aur padding kam, isliye text lagbhag poori chaudai leta hai aur bada dikhta hai."
+   ]
+  },
   {
    "v": 88,
    "date": "2026-11-12",

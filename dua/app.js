@@ -263,7 +263,7 @@ function fitText() {  // big shared font; each line then adjusts its word gap (0
   pagesEl.style.setProperty('--tfs', '100px');
   const rows = [];
   els.forEach((el, i) => {
-    const fr = (state.frames && state.frames[i]) || [0.08, 0.86];
+    const fr = (state.frames && state.frames[i]) || [0.025, 0.975];   // text uses nearly the full page width
     const avail = el.clientWidth * (fr[1] - fr[0]) * 0.97;
     el.style.setProperty('--tl', (fr[0] * 100) + '%'); el.style.setProperty('--tr', ((1 - fr[1]) * 100) + '%');
     el.querySelectorAll('.tl:not(.nt):not(.hd1):not(.hd2)').forEach(r => {
@@ -274,7 +274,8 @@ function fitText() {  // big shared font; each line then adjusts its word gap (0
   });
   if (!rows.length) return;
   const ks = rows.map(x => x.kmin).sort((a, b) => a - b);
-  const fs = Math.max(11, Math.min(36, ks[0]));       // one size for every line: the longest line sets it (gaps flex instead)
+  const lineGap = Math.min(...els.map(el => el.clientHeight)) * 0.06;     // keep the font small enough that neighbouring lines don't touch
+  const fs = Math.max(11, Math.min(36, lineGap / 1.5, ks[0]));       // one size for every line: the longest line sets it (gaps flex instead)
   pagesEl.style.setProperty('--tfs', fs + 'px');
   rows.forEach(({ r, W0, gaps, avail, kmin }) => {
     if (kmin >= fs) {                                                           // fits: spread the spare room over the gaps, but never wider than 0.3em
