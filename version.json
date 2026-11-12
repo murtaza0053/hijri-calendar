@@ -1,6 +1,19 @@
 {
- "v": 99,
+ "v": 100,
  "history": [
+  {
+   "v": 100,
+   "date": "2026-11-12",
+   "en": [
+    "Calendar reminders: your “added” ticks are now stored more safely (extra copy in the browser database), so they don't get lost."
+   ],
+   "gu": [
+    "કૅલેન્ડર રિમાઇન્ડર: તમારા “ઉમેર્યું” ટિક હવે વધુ સુરક્ષિત રીતે સચવાય છે (બ્રાઉઝર ડેટાબેઝમાં વધારાની નકલ), એટલે ખોવાતા નથી."
+   ],
+   "hi": [
+    "Calendar reminders: aapke “joda” wale tick ab zyada surakshit save hote hain (browser database me extra copy), isliye kho nahi jate."
+   ]
+  },
   {
    "v": 99,
    "date": "2026-11-12",
