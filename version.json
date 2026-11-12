@@ -1,6 +1,19 @@
 {
- "v": 98,
+ "v": 99,
  "history": [
+  {
+   "v": 99,
+   "date": "2026-11-12",
+   "en": [
+    "Calendar reminders: new “Already added” button for reminders you've already put in your Calendar, so they show as ticked and locked."
+   ],
+   "gu": [
+    "કૅલેન્ડર રિમાઇન્ડર: જે રિમાઇન્ડર તમે Calendarમાં પહેલેથી ઉમેરેલા છે તેના માટે નવું “પહેલેથી ઉમેરેલું” બટન, જેથી તે ટિક અને લૉક દેખાય."
+   ],
+   "hi": [
+    "Calendar reminders: jo reminder aap Calendar me pehle se jod chuke ho unke liye naya “Pehle se joda hai” button, taaki wo tick aur lock dikhein."
+   ]
+  },
   {
    "v": 98,
    "date": "2026-11-12",

@@ -3,7 +3,8 @@
 globalThis.I18N = {
   en: {
     _label: "EN",
-    rmUndo: "Undo", rmEnabledNote: "✓ = added to your Calendar from here and locked. This app can't see your Calendar, so if you cancelled the prompt or deleted that calendar, press Undo to enable it again.",
+    rmHave: "Already added", rmEnabledNote: "✓ = marked as added in this app (locked). This app cannot see your Calendar, and the iPhone app and Safari keep separate memories. If a reminder is already in your Calendar, press “Already added”; if you cancelled or deleted it, press Undo.",
+    rmUndo: "Undo",
     faazilH: "Dua e Fadil", faazilSub: "Dua Faazil · 5 pages", faazilDesc: "Dua Faazil of Syedna Fakhruddin (RA) — read between the adhan and iqamah, and after namaz.", faazilNote: "Pages from the printed book as published in the Dawoodi Bohra app (source not independently verified):",
     joshanH: "Dua e Joshan", joshanDesc: "A different dua for each day of the week (Sunday – Saturday). Opens today's dua.", joshanPages: "{b} pages", joshanNote: "Pages from the printed book as published in the Dawoodi Bohra app:",
    
@@ -67,7 +68,8 @@ globalThis.I18N = {
 
   gu: {
     _label: "ગુ",
-    rmUndo: "પાછું", rmEnabledNote: "✓ = અહીંથી તમારા Calendarમાં ઉમેરાઈ ગયું અને લૉક છે. આ એપ તમારું Calendar જોઈ શકતી નથી, એટલે જો તમે પ્રોમ્પ્ટ કૅન્સલ કર્યું હોય કે તે કેલેન્ડર ડિલીટ કર્યું હોય, તો ફરી ચાલુ કરવા \"પાછું\" દબાવો.",
+    rmHave: "પહેલેથી ઉમેરેલું", rmEnabledNote: "✓ = આ એપમાં ઉમેરેલું તરીકે નોંધાયેલું (લૉક). આ એપ તમારું Calendar જોઈ શકતી નથી, અને iPhone એપ તથા Safari અલગ યાદ રાખે છે. રિમાઇન્ડર તમારા Calendarમાં પહેલેથી હોય તો “પહેલેથી ઉમેરેલું” દબાવો; કૅન્સલ કે ડિલીટ કર્યું હોય તો “પાછું” દબાવો.",
+    rmUndo: "પાછું",
     faazilH: "દુઆ એ ફાઝિલ", faazilSub: "દુઆ ફાઝિલ · ૫ પાના", faazilDesc: "સૈયદના ફખરુદ્દીન (રઃ) ની દુઆ ફાઝિલ — અઝાન અને ઇકામત વચ્ચે અને નમાઝ પછી પઢવાની.", faazilNote: "છાપેલા પુસ્તકના પાના, Dawoodi Bohra એપમાં પ્રકાશિત થયેલા (સ્ત્રોત અલગથી ચકાસ્યો નથી):",
     joshanH: "દુઆ એ જોશન", joshanDesc: "અઠવાડિયાના દરેક દિવસની અલગ દુઆ (રવિવાર – શનિવાર). આજના દિવસની દુઆ ખુલે છે.", joshanPages: "{b} પાના", joshanNote: "છાપેલા પુસ્તકના પાના, Dawoodi Bohra એપમાં પ્રકાશિત થયેલા:",
    
@@ -131,7 +133,8 @@ globalThis.I18N = {
 
   hi: {
     _label: "Hinglish",
-    rmUndo: "Undo", rmEnabledNote: "✓ = yahan se aapke Calendar me jud gaya aur lock hai. Ye app aapka Calendar dekh nahi sakta, isliye agar aapne prompt cancel kiya ya wo calendar delete kiya, to dobara chalu karne ke liye \"Undo\" dabao.",
+    rmHave: "Pehle se joda hai", rmEnabledNote: "✓ = is app me joda hua note hai (lock). Ye app aapka Calendar dekh nahi sakta, aur iPhone ka app aur Safari alag-alag yaad rakhte hain. Reminder aapke Calendar me pehle se hai to \"Pehle se joda hai\" dabao; cancel ya delete kiya ho to \"Undo\" dabao.",
+    rmUndo: "Undo",
     faazilH: "Dua e Fadil", faazilSub: "Dua Faazil · 5 pages", faazilDesc: "Syedna Fakhruddin (RA) ki Dua Faazil — azan aur iqamat ke beech aur namaz ke baad padhne ki.", faazilNote: "Chhapi kitab ke pages, Dawoodi Bohra app me chhape hue (source alag se verify nahi kiya):",
     joshanH: "Dua e Joshan", joshanDesc: "Hafte ke har din ki alag dua (Sunday – Saturday). Aaj ke din ki dua khulti hai.", joshanPages: "{b} pages", joshanNote: "Chhapi kitab ke pages, Dawoodi Bohra app me chhape hue:",
    
