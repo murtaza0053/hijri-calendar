@@ -115,3 +115,8 @@ feed("sadaqah.ics", "Sadaqah", "Daily sadaqah (Shia Dawoodi Bohra weekday items)
   });
   return 7;
 });
+feed("kumail.ics", "Dua e Kumail", "Shab-e-Juma (Thursday night): recite Dua e Kumail", ev => {
+  const a = H.gToAJD(2026, 10, 12), g = H.ajdToG(a), g2 = H.ajdToG(a + 1), url = `${SITE}dua/kumail.html`;   // 2026-11-12 is a Thursday
+  ev("kumail-TH", ymd(g), ymd(g2), "🌙 Shab-e-Juma: recite Dua e Kumail", `Tonight (Thursday night, after Maghrib) is Shab-e-Juma: recite Dua e Kumail.\n${url}`, url, "PT19H", ["RRULE:FREQ=WEEKLY;BYDAY=TH"]);
+  return 1;
+});

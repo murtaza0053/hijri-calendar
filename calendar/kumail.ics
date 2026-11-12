@@ -1,0 +1,29 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//murtaza0053//hijri-calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Dua e Kumail
+X-WR-CALDESC:Shab-e-Juma (Thursday night): recite Dua e Kumail
+X-WR-TIMEZONE:Asia/Kolkata
+REFRESH-INTERVAL;VALUE=DURATION:P7D
+X-PUBLISHED-TTL:P7D
+BEGIN:VEVENT
+UID:kumail-TH@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261112
+DTEND;VALUE=DATE:20261113
+RRULE:FREQ=WEEKLY;BYDAY=TH
+SUMMARY:🌙 Shab-e-Juma: recite Dua e Kumail
+DESCRIPTION:Tonight (Thursday night\, after Maghrib) is Shab-e-Juma: recite
+  Dua e Kumail.\nhttps://murtaza0053.github.io/hijri-calendar/dua/kumail.ht
+ ml
+URL:https://murtaza0053.github.io/hijri-calendar/dua/kumail.html
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🌙 Shab-e-Juma: recite Dua e Kumail
+TRIGGER:PT19H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

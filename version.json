@@ -1,6 +1,19 @@
 {
- "v": 100,
+ "v": 101,
  "history": [
+  {
+   "v": 101,
+   "date": "2026-11-12",
+   "en": [
+    "New: Dua e Kumail (Moula Ali AS) in the Dua tab, a Thursday-night (Shab-e-Juma) banner for it on the home screen, and an optional Thursday 7 PM calendar reminder in Settings."
+   ],
+   "gu": [
+    "નવું: દુઆ ટૅબમાં દુઆ એ કુમૈલ (મૌલા અલી અ.સ.), હોમ સ્ક્રીન પર ગુરુવારની રાત (શબે જુમ્આ) માટે બેનર, અને સેટિંગ્સમાં ગુરુવારે સાંજે 7 વાગ્યાનું વૈકલ્પિક કૅલેન્ડર રિમાઇન્ડર."
+   ],
+   "hi": [
+    "Naya: Dua tab me Dua e Kumail (Moula Ali AS), home screen par Thursday raat (Shab-e-Juma) ka banner, aur Settings me Thursday shaam 7 baje ka optional calendar reminder."
+   ]
+  },
   {
    "v": 100,
    "date": "2026-11-12",
