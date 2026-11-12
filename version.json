@@ -1,6 +1,19 @@
 {
- "v": 97,
+ "v": 98,
  "history": [
+  {
+   "v": 98,
+   "date": "2026-11-12",
+   "en": [
+    "Dua e Kamil (text): new Highlight On/Off switch in the ⋮ menu."
+   ],
+   "gu": [
+    "દુઆ એ કામિલ (ટેક્સ્ટ): ⋮ મેનૂમાં હાઇલાઇટ ચાલુ/બંધ કરવાનું નવું સ્વિચ."
+   ],
+   "hi": [
+    "Dua e Kamil (text): ⋮ menu me Highlight On/Off ka naya switch."
+   ]
+  },
   {
    "v": 97,
    "date": "2026-11-12",

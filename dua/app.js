@@ -225,12 +225,13 @@ function markWord(t, snap) {
 
 /* Yaseen-style highlight: the word being recited is filled, and a green bar under its line glides from line to line */
 let wbEl = null, wb = null, wbAt = 0, wbRow = null, lnEl = null, ln = null, lnAt = 0;
+let hlOn = ls.get('hlOn', true);   // highlight (green line + word box) on/off
 function updateHl(snap) {
   const el = curWordEl;
   if (!lnEl) { lnEl = document.createElement('div'); lnEl.className = 'lhl'; pagesEl.appendChild(lnEl); }
   if (!wbEl) { wbEl = document.createElement('div'); wbEl.className = 'whl'; pagesEl.appendChild(wbEl); }
   const row = el ? el.parentElement : null;
-  if (!row) { lnEl.style.opacity = '0'; wbEl.style.opacity = '0'; ln = wb = null; return; }
+  if (!row || !hlOn) { lnEl.style.opacity = '0'; wbEl.style.opacity = '0'; ln = wb = null; return; }
   const pr = pagesEl.getBoundingClientRect(), now = performance.now();
   // green line bar: glides down from line to line
   let r = row.getBoundingClientRect();
@@ -552,6 +553,9 @@ function renderVersions(vs, audios) {
     if (!b || b.dataset.ver === state.version) return; ls.set('ver:' + BASE, b.dataset.ver); location.reload();
   };
 }
+function drawHlToggle() { $('hlToggle').textContent = `🖍 Highlight: ${hlOn ? 'On ✓' : 'Off'}`; }
+$('hlToggle').onclick = () => { hlOn = !hlOn; ls.set('hlOn', hlOn); drawHlToggle(); tick(true); };
+drawHlToggle();
 $('menuBtn').onclick = (e) => { e.stopPropagation(); $('menu').classList.toggle('open'); };
 document.addEventListener('click', () => $('menu').classList.remove('open'));
 $('openFiles').onclick = () => $('filePick').click();
