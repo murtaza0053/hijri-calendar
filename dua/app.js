@@ -191,7 +191,7 @@ function lineOf(m) {  // the text line a sync mark points at (nearest printed li
 let lastI = -1, lastJ = -1, lastT = 0;
 function markWord(t, snap) {
   let target = null;
-  const t0 = t; t += 0.14;   // show the word a hair early: reads as 'in time'
+  const t0 = t; t += 0.2;   // show the word a hair early: reads as 'in time'
   const ms = state.marks;
   if (ms.length) {
     let lo = 0, hi = ms.length - 1, i = -1;
@@ -237,7 +237,7 @@ function updateHl(snap) {
   const tg = { x: r.left - pr.left - 4, y: r.top - pr.top, w: r.width + 8, h: r.height };
   const dt = Math.min(0.1, (now - (lnAt || now)) / 1000); lnAt = now;
   if (!ln || snap || audio.paused || Math.abs(tg.y - ln.y) > tg.h * 4) ln = { ...tg };
-  else { const k = 1 - Math.exp(-dt / 0.2); ln.x += (tg.x - ln.x) * k; ln.y += (tg.y - ln.y) * k; ln.w += (tg.w - ln.w) * k; ln.h += (tg.h - ln.h) * k; }
+  else { const k = 1 - Math.exp(-dt / 0.32); ln.x += (tg.x - ln.x) * k; ln.y += (tg.y - ln.y) * k; ln.w += (tg.w - ln.w) * k; ln.h += (tg.h - ln.h) * k; }
   lnEl.style.opacity = '1'; lnEl.style.transform = `translate(${ln.x.toFixed(1)}px, ${ln.y.toFixed(1)}px)`;
   lnEl.style.width = ln.w.toFixed(1) + 'px'; lnEl.style.height = ln.h.toFixed(1) + 'px';
   // word box: glides along the line from word to word (fades in again when the next line starts)
@@ -246,7 +246,7 @@ function updateHl(snap) {
   const wdt = Math.min(0.1, (now - (wbAt || now)) / 1000); wbAt = now;
   if (!wb || snap || audio.paused) wb = { ...wg };
   else if (Math.abs(wg.y - wb.y) > wg.h * 0.8) { wb = { ...wg }; wbEl.classList.remove('pop'); void wbEl.offsetWidth; wbEl.classList.add('pop'); }
-  else { const k = 1 - Math.exp(-wdt / 0.13); wb.x += (wg.x - wb.x) * k; wb.y += (wg.y - wb.y) * k; wb.w += (wg.w - wb.w) * k; wb.h += (wg.h - wb.h) * k; }
+  else { const k = 1 - Math.exp(-wdt / 0.27); wb.x += (wg.x - wb.x) * k; wb.y += (wg.y - wb.y) * k; wb.w += (wg.w - wb.w) * k; wb.h += (wg.h - wb.h) * k; }
   wbEl.style.opacity = '1'; wbEl.style.transform = `translate(${wb.x.toFixed(1)}px, ${wb.y.toFixed(1)}px)`;
   wbEl.style.width = wb.w.toFixed(1) + 'px'; wbEl.style.height = wb.h.toFixed(1) + 'px';
 }

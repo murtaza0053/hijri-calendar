@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=93">
-<script src="theme-init.js?v=93"></script>
+<link rel="stylesheet" href="themes.css?v=94">
+<script src="theme-init.js?v=94"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -434,8 +434,8 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=93"></script>
-<script src="i18n.js?v=93"></script>
+<script src="hijri.js?v=94"></script>
+<script src="i18n.js?v=94"></script>
 <script>
 "use strict";
 
@@ -882,7 +882,7 @@ function renderAll() {
   if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD);
 }
 const vName = n => `1.${Math.floor(n / 10)}.${n % 10}`;   // shown to people (84 → 1.8.4); the plain number is what update checks compare
-const APP_V = 93, APP_VERSION = vName(APP_V) + " (2026-11-12)";
+const APP_V = 94, APP_VERSION = vName(APP_V) + " (2026-11-12)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");

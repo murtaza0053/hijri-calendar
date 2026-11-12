@@ -1,6 +1,19 @@
 {
- "v": 93,
+ "v": 94,
  "history": [
+  {
+   "v": 94,
+   "date": "2026-11-12",
+   "en": [
+    "Dua e Kamil (text): the word and line highlight now move more slowly and gently."
+   ],
+   "gu": [
+    "દુઆ એ કામિલ (ટેક્સ્ટ): શબ્દ અને લીટીની હાઇલાઇટ હવે વધુ ધીમે અને નરમાશથી ચાલે છે."
+   ],
+   "hi": [
+    "Dua e Kamil (text): shabd aur line ka highlight ab zyada dheere aur narmi se chalta hai."
+   ]
+  },
   {
    "v": 93,
    "date": "2026-11-12",
