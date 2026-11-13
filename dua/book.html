@@ -12,8 +12,8 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="icon" href="../icons/icon-192.png">
-<link rel="stylesheet" href="../themes.css?v=109">
-<script src="../theme-init.js?v=109"></script>
+<link rel="stylesheet" href="../themes.css?v=110">
+<script src="../theme-init.js?v=110"></script>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
@@ -74,8 +74,8 @@ header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:
 <div class="sheet-bg" id="sbg"></div>
 <div class="sheet" id="sheet"></div>
 <script src="vendor/pdf.min.js"></script>
-<script src="../i18n.js?v=109"></script>
-<script src="../wakelock.js?v=109"></script>
+<script src="../i18n.js?v=110"></script>
+<script src="../wakelock.js?v=110"></script>
 <script>
 "use strict";
 // Large PDF reader: loads the file with HTTP range requests (no full download), renders only the
@@ -278,7 +278,7 @@ function openTree() {
   $("sheet").innerHTML = `<div class="stk"><h3>${t("bkContents")}</h3>
     <div class="jump"><input id="jp" type="number" inputmode="numeric" min="1" max="${N}" placeholder="${t("bkPage")} (1–${N})"><button id="jgo">${t("bkGo")}</button></div>
     <div class="jump"><input id="sq" type="search" placeholder="${SRCH[lang] || SRCH.en}" autocomplete="off"></div></div>
-    <div id="tree">${secs.map((x, i) => `<div class="grp${i === curSec ? " open" : ""}" data-sf="${esc(fold(x.title))}"><div class="sec" data-p="${x.p}"><b>${esc(x.title)}</b><span>${x.p}</span></div><div class="kids">${x.kids.map(row).join("") || `<div class="it" data-p="${x.p}"><b>${t("bkGo")}</b><span>${x.p}</span></div>`}</div></div>`).join("")}</div>
+    <div id="tree">${secs.map((x, i) => `<div class="grp" data-sf="${esc(fold(x.title))}"><div class="sec" data-p="${x.p}"><b>${esc(x.title)}</b><span>${x.p}</span></div><div class="kids">${x.kids.map(row).join("") || `<div class="it" data-p="${x.p}"><b>${t("bkGo")}</b><span>${x.p}</span></div>`}</div></div>`).join("")}</div>
     <div class="none" id="nm" hidden>${NOMATCH[lang] || NOMATCH.en}</div>`;
   $("sbg").style.display = "block"; requestAnimationFrame(() => $("sheet").classList.add("on"));
   $("jgo").onclick = () => { const p = +$("jp").value; if (p) { closeSheet(); goto(p, true); } };
@@ -288,7 +288,7 @@ function openTree() {
       const secHit = q && g.dataset.sf.includes(q); let hit = 0;
       g.querySelectorAll(".kids .it").forEach(it => { const m = !q || secHit || it.dataset.f.includes(q); it.style.display = m ? "" : "none"; if (it.nextElementSibling && it.nextElementSibling.classList.contains("items")) it.nextElementSibling.style.display = m ? "" : "none"; if (m) hit++; });
       g.style.display = hit ? "" : "none"; if (hit) any = true;
-      if (q) g.classList.add("open"); else g.classList.toggle("open", g === document.querySelectorAll("#tree .grp")[curSec]);
+      if (q) g.classList.add("open"); else g.classList.remove("open");
     });
     $("nm").hidden = any;
   };
