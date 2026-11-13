@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=113">
-<script src="theme-init.js?v=113"></script>
+<link rel="stylesheet" href="themes.css?v=114">
+<script src="theme-init.js?v=114"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -110,6 +110,7 @@ input,select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid
 nav.tabs{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:5}
 nav.tabs button{flex:1;background:none;border:0;color:var(--muted);padding:8px 0 10px;font-size:11px}
 nav.tabs button .i{display:block;font-size:20px;line-height:1.2}
+#v-zy iframe{position:fixed;left:0;top:0;width:100%;height:calc(100vh - var(--navh,58px));height:calc(100dvh - var(--navh,58px));border:0;background:var(--bg);z-index:6}
 nav.tabs button.on{color:var(--brand);font-weight:700}
 .view{display:none}.view.on{display:block}
 .sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;z-index:9}
@@ -285,11 +286,6 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 
   <!-- DUA -->
   <section class="view" id="v-dua">
-    <a class="card dua-item" href="ziyarat.html">
-      <div class="dua-ic">🕌</div>
-      <div style="flex:1"><b data-i18n="zH"></b><div class="muted" data-i18n="zDesc"></div></div>
-      <div class="dua-go">›</div>
-    </a>
     <h3 class="sec" data-i18n="secDuas"></h3>
     <a class="card dua-item" href="dua/">
       <div class="dua-ic">🤲</div>
@@ -359,6 +355,9 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
     </a>
     <div id="quranList"></div>
   </section>
+
+  <!-- ZIYARAT (embedded page, loaded on first open) -->
+  <section class="view" id="v-zy"><iframe id="zyFrame" title="Ziyarat" data-src="ziyarat.html?embed=1"></iframe></section>
 
   <!-- SETTINGS -->
   <section class="view" id="v-set">
@@ -445,6 +444,7 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
   <button data-v="cal" class="on"><span class="i">📅</span><span data-i18n="tabCal"></span></button>
   <button data-v="up"><span class="i">🕌</span><span data-i18n="tabUp"></span></button>
   <button data-v="dua"><span class="i">🤲</span><span data-i18n="tabDua"></span></button>
+  <button data-v="zy"><span class="i">🕋</span><span data-i18n="tabZy"></span></button>
   <button data-v="set"><span class="i">⚙️</span><span data-i18n="tabSet"></span></button>
 </nav>
 
@@ -453,8 +453,8 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=113"></script>
-<script src="i18n.js?v=113"></script>
+<script src="hijri.js?v=114"></script>
+<script src="i18n.js?v=114"></script>
 <script>
 "use strict";
 
@@ -848,6 +848,7 @@ function switchView(v) {
   document.querySelectorAll(".view").forEach(s => s.classList.toggle("on", s.id === "v-" + v));
   document.querySelectorAll("nav.tabs button").forEach(b => b.classList.toggle("on", b.dataset.v === v));
   if (v === "up") renderUpcoming();
+  if (v === "zy") { const f = $("zyFrame"); document.documentElement.style.setProperty("--navh", document.querySelector("nav.tabs").offsetHeight + "px"); if (!f.src) f.src = f.dataset.src; }
   window.scrollTo(0, 0);
 }
 $("prev").onclick = () => shiftMonth(-1);
@@ -930,10 +931,11 @@ const vName = n => `1.${Math.floor(n / 10)}.${n % 10}`;   // shown to people (84
     });
   });
 })();
-const APP_V = 113, APP_VERSION = vName(APP_V) + " (2026-11-12)";
+const APP_V = 114, APP_VERSION = vName(APP_V) + " (2026-11-12)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");
+else if (location.hash === "#zy") switchView("zy");
 fetch("miqaats.json").then(r => r.json()).then(d => { MIQ = d; miqLoaded = true; renderAll(); }).catch(() => { $("todayMq").innerHTML = `<p class="muted">${t("loadFail")}</p>`; });
 // refresh "today" when app resumes on a new day
 document.addEventListener("visibilitychange", () => {

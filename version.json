@@ -1,6 +1,19 @@
 {
- "v": 113,
+ "v": 114,
  "history": [
+  {
+   "v": 114,
+   "date": "2026-11-14",
+   "en": [
+    "Ziyarat is now its own tab in the bottom bar (no longer inside Dua)."
+   ],
+   "gu": [
+    "ઝિયારત હવે નીચેની બારમાં પોતાનું અલગ ટેબ છે (દુઆની અંદર નહીં)."
+   ],
+   "hi": [
+    "Ziyarat ab neeche ki bar me apna alag tab hai (Dua ke andar nahi)."
+   ]
+  },
   {
    "v": 113,
    "date": "2026-11-14",
