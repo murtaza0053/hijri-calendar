@@ -1,6 +1,19 @@
 {
- "v": 111,
+ "v": 112,
  "history": [
+  {
+   "v": 112,
+   "date": "2026-11-14",
+   "en": [
+    "Book contents sheet (Zikre Husain, Quran) now closes with a swipe down."
+   ],
+   "gu": [
+    "બુક ફેહરિસ્ત શીટ (ઝિક્રે હુસૈન, કુરાન) હવે નીચે સ્વાઇપ કરવાથી બંધ થાય છે."
+   ],
+   "hi": [
+    "Book fehrist sheet (Zikre Husain, Quran) ab neeche swipe karne par band hoti hai."
+   ]
+  },
   {
    "v": 111,
    "date": "2026-11-14",

@@ -12,8 +12,8 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="icon" href="../icons/icon-192.png">
-<link rel="stylesheet" href="../themes.css?v=111">
-<script src="../theme-init.js?v=111"></script>
+<link rel="stylesheet" href="../themes.css?v=112">
+<script src="../theme-init.js?v=112"></script>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
@@ -34,6 +34,7 @@ header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:
 .sheet{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-radius:18px 18px 0 0;padding:14px 14px calc(18px + env(safe-area-inset-bottom));max-height:75vh;overflow:auto;transform:translateY(100%);transition:transform .22s;z-index:10;max-width:640px;margin:0 auto}
 .sheet.on{transform:none}
 .sheet h3{margin:0 0 8px}
+.sheet .grab{width:40px;height:4px;border-radius:2px;background:var(--line);margin:0 auto 8px}
 .sheet .it{display:flex;justify-content:space-between;gap:10px;padding:11px 6px;border-top:1px solid var(--line);cursor:pointer}
 .sheet .it span{color:var(--muted);font-size:13px}
 .jump{display:flex;gap:8px;margin:4px 0 10px}
@@ -74,8 +75,8 @@ header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:
 <div class="sheet-bg" id="sbg"></div>
 <div class="sheet" id="sheet"></div>
 <script src="vendor/pdf.min.js"></script>
-<script src="../i18n.js?v=111"></script>
-<script src="../wakelock.js?v=111"></script>
+<script src="../i18n.js?v=112"></script>
+<script src="../wakelock.js?v=112"></script>
 <script>
 "use strict";
 // Large PDF reader: loads the file with HTTP range requests (no full download), renders only the
@@ -275,7 +276,7 @@ function openTree() {
   const secs = outline.map((o, i) => ({ ...o, kids: ZSUB.filter(k => k[0] >= o.p && (i + 1 >= outline.length || k[0] < outline[i + 1].p)) }));
   const curSec = secs.filter(x => x.p <= cur).length - 1;
   const row = k => `<div class="it" data-p="${k[0]}" data-f="${esc(fold(k[1] + k[2] + k[0]))}"><div class="lt"><b>${esc(k[1])}</b><span class="ur">${esc(k[2])}</span></div><span>${k[0]}</span>${ZIDX[k[0]] ? `<button class="xp" data-x="${k[0]}">${t("bkItems")} ▾</button>` : ""}</div>${ZIDX[k[0]] ? `<div class="items" id="it${k[0]}"></div>` : ""}`;
-  $("sheet").innerHTML = `<div class="stk"><h3>${t("bkContents")}</h3>
+  $("sheet").innerHTML = `<div class="stk"><div class="grab"></div><h3>${t("bkContents")}</h3>
     <div class="jump"><input id="jp" type="number" inputmode="numeric" min="1" max="${N}" placeholder="${t("bkPage")} (1–${N})"><button id="jgo">${t("bkGo")}</button></div>
     <div class="jump"><input id="sq" type="search" placeholder="${SRCH[lang] || SRCH.en}" autocomplete="off"></div></div>
     <div id="tree">${secs.map((x, i) => `<div class="grp" data-sf="${esc(fold(x.title))}"><div class="sec" data-p="${x.p}"><b>${esc(x.title)}</b><span>${x.p}</span></div><div class="kids">${x.kids.map(row).join("") || `<div class="it" data-p="${x.p}"><b>${t("bkGo")}</b><span>${x.p}</span></div>`}</div></div>`).join("")}</div>
@@ -294,6 +295,26 @@ function openTree() {
   };
 }
 function closeSheet() { $("sheet").classList.remove("on"); $("sbg").style.display = "none"; }
+
+// swipe down to close the contents sheet (works when the list is at the top, or when dragging the header)
+(function () {
+  const sh = $("sheet"); let y0 = null, dy = 0, drag = false;
+  sh.style.overscrollBehavior = "contain";
+  sh.addEventListener("touchstart", e => { y0 = e.touches[0].clientY; dy = 0; drag = false; }, { passive: true });
+  sh.addEventListener("touchmove", e => {
+    if (y0 == null) return;
+    const d = e.touches[0].clientY - y0;
+    if (!drag && d > 6 && sh.scrollTop <= 0) { drag = true; sh.style.transition = "none"; }
+    if (!drag) return;
+    dy = Math.max(0, d); e.preventDefault(); sh.style.transform = `translateY(${dy}px)`;
+  }, { passive: false });
+  const end = () => {
+    if (y0 == null) return; y0 = null;
+    if (!drag) return; drag = false; sh.style.transition = "";
+    if (dy > 90) { sh.style.transform = ""; closeSheet(); } else sh.style.transform = "";
+  };
+  sh.addEventListener("touchend", end); sh.addEventListener("touchcancel", end);
+})();
 $("sbg").onclick = closeSheet;
 $("tocBtn").onclick = $("pg").onclick = openSheet;
 $("sheet").onclick = e => {
