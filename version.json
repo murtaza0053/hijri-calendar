@@ -1,6 +1,19 @@
 {
- "v": 107,
+ "v": 108,
  "history": [
+  {
+   "v": 108,
+   "date": "2026-11-14",
+   "en": [
+    "Zikre Husain contents are now broken into sections you can expand and collapse, with 34 named sub-sections (with the Urdu title) and a search box."
+   ],
+   "gu": [
+    "ઝિક્રે હુસૈનની ફેહરિસ્ત હવે વિભાગોમાં વહેંચાયેલી છે જે ખોલી-બંધ કરી શકાય, 34 નામવાળા પેટા-વિભાગો (ઉર્દૂ શીર્ષક સાથે) અને શોધ બોક્સ સાથે."
+   ],
+   "hi": [
+    "Zikre Husain ki fehrist ab sections me bati hai jinhe expand/collapse kar sakte ho, 34 naam wale sub-sections (Urdu title ke saath) aur search box ke saath."
+   ]
+  },
   {
    "v": 107,
    "date": "2026-11-14",
