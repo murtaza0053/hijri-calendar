@@ -12,8 +12,8 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="icon" href="../icons/icon-192.png">
-<link rel="stylesheet" href="../themes.css?v=112">
-<script src="../theme-init.js?v=112"></script>
+<link rel="stylesheet" href="../themes.css?v=113">
+<script src="../theme-init.js?v=113"></script>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
@@ -56,8 +56,12 @@ header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:
 .sheet .items.on{display:block}
 .sheet .lets{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
 .sheet .lets canvas{height:34px;width:auto;border:1px solid var(--line);border-radius:6px;background:#fff;cursor:pointer}
-.sheet .ipg{min-height:40px;border-top:1px dashed var(--line);padding-top:4px}
-.sheet .ipg small{color:var(--muted);font-size:11px;display:block}
+.sheet .ipg{border-top:1px solid var(--line)}
+.sheet .ph{display:flex;gap:8px;align-items:center;padding:8px 4px;font-size:12px;cursor:pointer}
+.sheet .ph b{flex:none}.sheet .ph span{flex:1;color:var(--muted);text-align:right}
+.sheet .ph::after{content:"›";font-size:18px;color:var(--muted);transform:rotate(90deg);transition:transform .2s}
+.sheet .ipg.open>.ph::after{transform:rotate(-90deg)}
+.sheet .pb{display:none;min-height:30px}.sheet .ipg.open>.pb{display:block}
 .sheet .row{display:block;margin:0 0 2px;background:#fff;border-radius:3px;cursor:pointer;overflow:hidden}
 .sheet .row canvas{display:block;width:100%;height:auto}
 .sheet .row:active{outline:2px solid var(--brand)}
@@ -75,8 +79,8 @@ header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:
 <div class="sheet-bg" id="sbg"></div>
 <div class="sheet" id="sheet"></div>
 <script src="vendor/pdf.min.js"></script>
-<script src="../i18n.js?v=112"></script>
-<script src="../wakelock.js?v=112"></script>
+<script src="../i18n.js?v=113"></script>
+<script src="../wakelock.js?v=113"></script>
 <script>
 "use strict";
 // Large PDF reader: loads the file with HTTP range requests (no full download), renders only the
@@ -237,17 +241,19 @@ async function fillIdx(box) {
   try {
     const rows = await idxRows(p); if (!rows.length) { box.remove(); return; }
     const cs = await renderCrops(p, rows.map(r => [0, r.y1 - 1, 612, r.y2 + 1]), 340, 0);
-    box.querySelectorAll(".row").forEach(e => e.remove());
-    cs.forEach((c, i) => { const r = document.createElement("div"); r.className = "row"; r.dataset.p = rows[i].dest; r.append(c); box.append(r); });
+    const pb = box.querySelector(".pb"); pb.innerHTML = "";
+    cs.forEach((c, i) => { const r = document.createElement("div"); r.className = "row"; r.dataset.p = rows[i].dest; r.append(c); pb.append(r); });
   } catch (e) {}
 }
 async function openItems(sub, host) {
   host.classList.toggle("on"); if (host.dataset.built) return; host.dataset.built = 1;
   let h = "";
   if (LETTERS.has(sub)) h += `<div class="lets" id="lt${sub}"></div>`;
-  h += ZIDX[sub].map(p => `<div class="ipg" data-ip="${p}"><small>${t("bkPage")} ${p}</small></div>`).join("");
+  h += ZIDX[sub].map((p, i) => `<div class="ipg" data-ip="${p}"><div class="ph" data-n="${i + 1}"><b>${t("bkPart")} ${i + 1}</b><span>${t("bkPage")} ${p}</span></div><div class="pb"></div></div>`).join("");
   host.innerHTML = h;
-  host.querySelectorAll(".ipg").forEach(b => ioItems ? ioItems.observe(b) : fillIdx(b));
+  host.querySelectorAll(".ipg").forEach(async b => {   // label each part with the pages its items lead to
+    try { const rows = await idxRows(+b.dataset.ip); if (rows.length) { const ds = rows.map(r => r.dest), lo = Math.min(...ds), hi = Math.max(...ds); b.querySelector(".ph span").textContent = `${t("bkItems")}: ${rows.length} · ${t("bkPage")} ${lo}–${hi}`; } } catch {}
+  });
   if (LETTERS.has(sub)) { // alphabet: one chip per letter, cropped from the section's own header page
     const pg = await pdf.getPage(sub), g = new Map();
     for (const a of await pg.getAnnotations()) {
@@ -268,7 +274,7 @@ function openSheet() {
     <div class="jump"><input id="jp" type="number" inputmode="numeric" min="1" max="${N}" placeholder="${t("bkPage")} (1–${N})"><button id="jgo">${t("bkGo")}</button></div>
     <div class="it" data-p="1"><b>${t("bkIndex")}</b><span>1</span></div>
     ${B.note ? `<p style="color:var(--muted);font-size:12px;margin:6px">${esc(t(B.note))}</p>` : ""}${outline.map(o => `<div class="it" data-p="${o.p}"><b>${esc(o.title)}</b><span>${o.p}</span></div>`).join("")}`;
-  $("sbg").style.display = "block"; requestAnimationFrame(() => $("sheet").classList.add("on"));
+  $("sbg").style.display = "block"; lockBody(); requestAnimationFrame(() => $("sheet").classList.add("on"));
   $("jgo").onclick = () => { const p = +$("jp").value; if (p) { closeSheet(); goto(p, true); } };
 }
 
@@ -281,7 +287,7 @@ function openTree() {
     <div class="jump"><input id="sq" type="search" placeholder="${SRCH[lang] || SRCH.en}" autocomplete="off"></div></div>
     <div id="tree">${secs.map((x, i) => `<div class="grp" data-sf="${esc(fold(x.title))}"><div class="sec" data-p="${x.p}"><b>${esc(x.title)}</b><span>${x.p}</span></div><div class="kids">${x.kids.map(row).join("") || `<div class="it" data-p="${x.p}"><b>${t("bkGo")}</b><span>${x.p}</span></div>`}</div></div>`).join("")}</div>
     <div class="none" id="nm" hidden>${NOMATCH[lang] || NOMATCH.en}</div>`;
-  $("sbg").style.display = "block"; requestAnimationFrame(() => $("sheet").classList.add("on"));
+  $("sbg").style.display = "block"; lockBody(); requestAnimationFrame(() => $("sheet").classList.add("on"));
   $("jgo").onclick = () => { const p = +$("jp").value; if (p) { closeSheet(); goto(p, true); } };
   $("sq").oninput = () => {
     const q = fold($("sq").value); let any = false;
@@ -294,7 +300,11 @@ function openTree() {
     $("nm").hidden = any;
   };
 }
-function closeSheet() { $("sheet").classList.remove("on"); $("sbg").style.display = "none"; }
+let lockY = null;
+function lockBody() { if (lockY != null) return; lockY = scrollY; const b = document.body.style; b.position = "fixed"; b.top = -lockY + "px"; b.left = "0"; b.right = "0"; b.width = "100%"; }
+function unlockBody() { if (lockY == null) return; const y = lockY; lockY = null; const b = document.body.style; b.position = b.top = b.left = b.right = b.width = ""; scrollTo(0, y); }
+$("sbg").addEventListener("touchmove", e => e.preventDefault(), { passive: false });
+function closeSheet() { $("sheet").classList.remove("on"); $("sbg").style.display = "none"; unlockBody(); }
 
 // swipe down to close the contents sheet (works when the list is at the top, or when dragging the header)
 (function () {
@@ -320,6 +330,8 @@ $("tocBtn").onclick = $("pg").onclick = openSheet;
 $("sheet").onclick = e => {
   const xb = e.target.closest(".xp");
   if (xb) { e.stopPropagation(); openItems(+xb.dataset.x, $("it" + xb.dataset.x)); return; }
+  const ph = e.target.closest(".ph");
+  if (ph) { const b = ph.parentElement; b.classList.toggle("open"); if (b.classList.contains("open") && !b.dataset.done) fillIdx(b); return; }
   const cv = e.target.closest(".lets canvas"); if (cv) { closeSheet(); goto(+cv.dataset.p, true); return; }
   const sc = e.target.closest(".sec");
   if (sc) { if (e.target.tagName === "SPAN") { closeSheet(); goto(+sc.dataset.p, true); } else sc.parentElement.classList.toggle("open"); return; }

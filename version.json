@@ -1,6 +1,19 @@
 {
- "v": 112,
+ "v": 113,
  "history": [
+  {
+   "v": 113,
+   "date": "2026-11-14",
+   "en": [
+    "Book contents: the page behind no longer scrolls while the sheet is open; each sub-section's items are now split into collapsible parts with their page range."
+   ],
+   "gu": [
+    "બુક ફેહરિસ્ત: શીટ ખુલ્લી હોય ત્યારે પાછળનું પાનું હવે સ્ક્રોલ થતું નથી; દરેક પેટા-વિભાગની આઇટમો હવે પાનાની રેન્જ સાથે ખુલ-બંધ થતા ભાગોમાં વહેંચાયેલી છે."
+   ],
+   "hi": [
+    "Book fehrist: sheet khuli ho to peeche ka page ab scroll nahi hota; har sub-section ke items ab page range ke saath expand/collapse hone wale parts me bante hain."
+   ]
+  },
   {
    "v": 112,
    "date": "2026-11-14",
