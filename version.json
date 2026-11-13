@@ -1,6 +1,19 @@
 {
- "v": 103,
+ "v": 104,
  "history": [
+  {
+   "v": 104,
+   "date": "2026-11-13",
+   "en": [
+    "Surat al-Kahf now plays Husain bhaisaheb's recitation inside the app (offline after the first play), with ayat and word highlighting like Yaseen."
+   ],
+   "gu": [
+    "સૂરત અલ-કહફ હવે એપમાં જ હુસૈન ભાઈસાહેબની તિલાવત વગાડે છે (પહેલી વાર પછી ઑફલાઇન), યાસીન જેવા આયત અને શબ્દ હાઇલાઇટ સાથે."
+   ],
+   "hi": [
+    "Surat al-Kahf ab app me hi Husain bhaisaheb ki tilawat chalati hai (pehli baar ke baad offline), Yaseen jaisa ayat aur shabd highlight ke saath."
+   ]
+  },
   {
    "v": 103,
    "date": "2026-11-13",
