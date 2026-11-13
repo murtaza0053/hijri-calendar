@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=108">
-<script src="theme-init.js?v=108"></script>
+<link rel="stylesheet" href="themes.css?v=109">
+<script src="theme-init.js?v=109"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -453,8 +453,8 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=108"></script>
-<script src="i18n.js?v=108"></script>
+<script src="hijri.js?v=109"></script>
+<script src="i18n.js?v=109"></script>
 <script>
 "use strict";
 
@@ -930,7 +930,7 @@ const vName = n => `1.${Math.floor(n / 10)}.${n % 10}`;   // shown to people (84
     });
   });
 })();
-const APP_V = 108, APP_VERSION = vName(APP_V) + " (2026-11-12)";
+const APP_V = 109, APP_VERSION = vName(APP_V) + " (2026-11-12)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");

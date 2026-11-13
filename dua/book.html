@@ -12,8 +12,8 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="icon" href="../icons/icon-192.png">
-<link rel="stylesheet" href="../themes.css?v=108">
-<script src="../theme-init.js?v=108"></script>
+<link rel="stylesheet" href="../themes.css?v=109">
+<script src="../theme-init.js?v=109"></script>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
@@ -40,16 +40,26 @@ header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:
 .jump input{flex:1;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 10px}
 .jump button{border:0;border-radius:10px;padding:9px 14px;font:inherit;font-weight:700;background:var(--brand);color:var(--on-brand)}
 .sheet .stk{position:sticky;top:-14px;background:var(--card);padding:6px 0 4px;z-index:2}
-.sheet .sec{display:flex;align-items:center;gap:8px;padding:12px 6px;border-top:1px solid var(--line);cursor:pointer}
+.sheet .sec{display:flex;align-items:center;gap:8px;font-size:14px;padding:9px 6px;border-top:1px solid var(--line);cursor:pointer}
 .sheet .sec b{flex:1}.sheet .sec span{color:var(--muted);font-size:13px}
 .sheet .sec::after{content:"›";font-size:22px;color:var(--muted);transform:rotate(90deg);transition:transform .2s}
 .sheet .grp.open>.sec::after{transform:rotate(-90deg)}
 .sheet .kids{display:none;margin:0 0 6px 10px;border-left:2px solid var(--line)}
 .sheet .grp.open>.kids{display:block}
-.sheet .kids .it{padding:9px 8px;border-top:0;border-bottom:1px solid var(--line)}
-.sheet .kids .it .ur{display:block;font-size:17px;direction:rtl;text-align:right;color:var(--ink);font-family:"Noto Nastaliq Urdu","Geeza Pro","Arial",serif;margin-top:2px}
+.sheet .kids .it{font-size:13px;padding:7px 8px;border-top:0;border-bottom:1px solid var(--line)}
+.sheet .kids .it .ur{display:block;font-size:14px;direction:rtl;text-align:right;color:var(--ink);font-family:"Noto Nastaliq Urdu","Geeza Pro","Arial",serif;margin-top:2px}
 .sheet .kids .it .lt{flex:1}
 .sheet .none{color:var(--muted);text-align:center;padding:18px}
+.sheet .it .xp{flex:none;border:1px solid var(--line);background:var(--bg);color:var(--brand);border-radius:8px;font:inherit;font-size:12px;font-weight:700;padding:2px 8px;margin-left:6px;align-self:center}
+.sheet .items{display:none;margin:0 0 6px 8px;padding:6px 4px;background:var(--bg);border-radius:8px}
+.sheet .items.on{display:block}
+.sheet .lets{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.sheet .lets canvas{height:34px;width:auto;border:1px solid var(--line);border-radius:6px;background:#fff;cursor:pointer}
+.sheet .ipg{min-height:40px;border-top:1px dashed var(--line);padding-top:4px}
+.sheet .ipg small{color:var(--muted);font-size:11px;display:block}
+.sheet .row{display:block;margin:0 0 2px;background:#fff;border-radius:3px;cursor:pointer;overflow:hidden}
+.sheet .row canvas{display:block;width:100%;height:auto}
+.sheet .row:active{outline:2px solid var(--brand)}
 </style>
 </head>
 <body>
@@ -64,8 +74,8 @@ header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:
 <div class="sheet-bg" id="sbg"></div>
 <div class="sheet" id="sheet"></div>
 <script src="vendor/pdf.min.js"></script>
-<script src="../i18n.js?v=108"></script>
-<script src="../wakelock.js?v=108"></script>
+<script src="../i18n.js?v=109"></script>
+<script src="../wakelock.js?v=109"></script>
 <script>
 "use strict";
 // Large PDF reader: loads the file with HTTP range requests (no full download), renders only the
@@ -191,6 +201,65 @@ const SRCH = { en: "Search contents…", gu: "ફેહરિસ્તમાં 
 const NOMATCH = { en: "Nothing found", gu: "કંઈ મળ્યું નથી", hi: "Kuch nahi mila" };
 const lang = ls.get("lang", "en");
 const fold = x => String(x).toLowerCase().replace(/[\u064b-\u065f\u0670]/g, "").replace(/ee/g, "i").replace(/oo/g, "u").replace(/[^a-z0-9\u0600-\u06ff]/g, "").replace(/(.)\1+/g, "$1");
+
+const ZIDX = {"62":[62,63,64],"66":[66],"67":[67,68,69,70],"71":[71],"73":[73],"75":[75],"76":[76,77],"79":[79,80,81,82,83,85,86,87,88,89,90,91,92,93,94],"96":[96,97,98],"99":[99,100],"101":[101,102],"105":[105],"106":[106],"108":[108],"109":[109,110],"1156":[1156],"1173":[1173,1174],"1278":[1278],"1316":[1316,1317],"1376":[1376,1377,1378,1379,1380,1381,1382,1383,1384,1385,1386,1387,1388,1389,1390,1391,1392,1393,1394,1395,1396,1397,1398,1399,1400,1401,1402,1403],"2279":[2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291],"2711":[2711,2712,2713,2714,2715,2716,2717,2718,2719,2720,2721,2722,2723,2724,2725,2726,2727,2728,2729,2730,2731,2732,2733,2734,2735,2736,2737,2738],"3648":[3648,3649,3650,3651,3652,3653,3654,3655,3656,3657,3658,3659,3660,3661,3662,3663,3664,3665,3666,3667],"4186":[4186,4187,4188,4189,4190,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4202,4203,4204,4205,4206,4207,4208,4209,4210,4211,4212,4213,4214,4215,4216,4217]};
+const LETTERS = new Set([1376, 2279, 2711, 3648, 4186]);
+const idxCache = new Map();
+async function idxRows(p) { // rows of an index page: [{y1,y2,dest}]
+  if (idxCache.has(p)) return idxCache.get(p);
+  const pg = await pdf.getPage(p), bands = new Map();
+  for (const a of await pg.getAnnotations()) {
+    if (a.subtype !== "Link" || !a.dest) continue;
+    const [x1, y1, x2, y2] = a.rect; if (y2 > 792 - 70) continue;
+    const d = await destToPage(a.dest).catch(() => 0); if (!d || d <= p) continue;
+    const k = Math.round((y1 + y2) / 12), b = bands.get(k);
+    if (!b) bands.set(k, { y1: Math.min(y1, y2), y2: Math.max(y1, y2), dest: d });
+    else { b.y1 = Math.min(b.y1, y1, y2); b.y2 = Math.max(b.y2, y1, y2); }
+  }
+  const rows = [...bands.values()].filter(b => b.y2 - b.y1 > 8 && b.y2 - b.y1 < 90).sort((a, b) => b.y2 - a.y2);
+  idxCache.set(p, rows); return rows;
+}
+async function renderCrops(p, rects, wPx, pad) { // rects: [x1,y1,x2,y2] in pdf pts → canvases
+  const pg = await pdf.getPage(p), base = pg.getViewport({ scale: 1 });
+  const sc = wPx / base.width * 2, vp = pg.getViewport({ scale: sc });
+  const c = document.createElement("canvas"); c.width = Math.floor(vp.width); c.height = Math.floor(vp.height);
+  await pg.render({ canvasContext: c.getContext("2d"), viewport: vp }).promise;
+  return rects.map(([x1, y1, x2, y2]) => {
+    const sx = Math.max(0, x1 * sc - pad), sy = Math.max(0, (792 - y2) * sc - pad), sw = Math.min(c.width - sx, (x2 - x1) * sc + 2 * pad), sh = Math.min(c.height - sy, (y2 - y1) * sc + 2 * pad);
+    const o = document.createElement("canvas"); o.width = Math.max(1, Math.floor(sw)); o.height = Math.max(1, Math.floor(sh));
+    o.getContext("2d").drawImage(c, sx, sy, sw, sh, 0, 0, o.width, o.height); return o;
+  });
+}
+const ioItems = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { ioItems.unobserve(e.target); fillIdx(e.target); } }), { root: null, rootMargin: "300px" }) : null;
+async function fillIdx(box) {
+  const p = +box.dataset.ip; box.dataset.done = 1;
+  try {
+    const rows = await idxRows(p); if (!rows.length) { box.remove(); return; }
+    const cs = await renderCrops(p, rows.map(r => [0, r.y1 - 1, 612, r.y2 + 1]), 340, 0);
+    box.querySelectorAll(".row").forEach(e => e.remove());
+    cs.forEach((c, i) => { const r = document.createElement("div"); r.className = "row"; r.dataset.p = rows[i].dest; r.append(c); box.append(r); });
+  } catch (e) {}
+}
+async function openItems(sub, host) {
+  host.classList.toggle("on"); if (host.dataset.built) return; host.dataset.built = 1;
+  let h = "";
+  if (LETTERS.has(sub)) h += `<div class="lets" id="lt${sub}"></div>`;
+  h += ZIDX[sub].map(p => `<div class="ipg" data-ip="${p}"><small>${t("bkPage")} ${p}</small></div>`).join("");
+  host.innerHTML = h;
+  host.querySelectorAll(".ipg").forEach(b => ioItems ? ioItems.observe(b) : fillIdx(b));
+  if (LETTERS.has(sub)) { // alphabet: one chip per letter, cropped from the section's own header page
+    const pg = await pdf.getPage(sub), g = new Map();
+    for (const a of await pg.getAnnotations()) {
+      if (a.subtype !== "Link" || !a.dest) continue;
+      const d = await destToPage(a.dest).catch(() => 0); if (!ZIDX[sub].includes(d)) continue;
+      const [x1, y1, x2, y2] = a.rect, b = g.get(d);
+      if (!b) g.set(d, [Math.min(x1, x2), Math.min(y1, y2), Math.max(x1, x2), Math.max(y1, y2)]);
+      else { b[0] = Math.min(b[0], x1, x2); b[1] = Math.min(b[1], y1, y2); b[2] = Math.max(b[2], x1, x2); b[3] = Math.max(b[3], y1, y2); }
+    }
+    const ds = [...g.keys()].sort((a, b) => a - b), cs = await renderCrops(sub, ds.map(d => g.get(d)), 600, 2);
+    const box = $("lt" + sub); if (box) cs.forEach((c, i) => { c.dataset.p = ds[i]; box.append(c); });
+  }
+}
 function openSheet() {
   if (id === "zikre" && outline.length) return openTree();
 
@@ -205,7 +274,7 @@ function openSheet() {
 function openTree() {
   const secs = outline.map((o, i) => ({ ...o, kids: ZSUB.filter(k => k[0] >= o.p && (i + 1 >= outline.length || k[0] < outline[i + 1].p)) }));
   const curSec = secs.filter(x => x.p <= cur).length - 1;
-  const row = k => `<div class="it" data-p="${k[0]}" data-f="${esc(fold(k[1] + k[2] + k[0]))}"><div class="lt"><b>${esc(k[1])}</b><span class="ur">${esc(k[2])}</span></div><span>${k[0]}</span></div>`;
+  const row = k => `<div class="it" data-p="${k[0]}" data-f="${esc(fold(k[1] + k[2] + k[0]))}"><div class="lt"><b>${esc(k[1])}</b><span class="ur">${esc(k[2])}</span></div><span>${k[0]}</span>${ZIDX[k[0]] ? `<button class="xp" data-x="${k[0]}">${t("bkItems")} ▾</button>` : ""}</div>${ZIDX[k[0]] ? `<div class="items" id="it${k[0]}"></div>` : ""}`;
   $("sheet").innerHTML = `<div class="stk"><h3>${t("bkContents")}</h3>
     <div class="jump"><input id="jp" type="number" inputmode="numeric" min="1" max="${N}" placeholder="${t("bkPage")} (1–${N})"><button id="jgo">${t("bkGo")}</button></div>
     <div class="jump"><input id="sq" type="search" placeholder="${SRCH[lang] || SRCH.en}" autocomplete="off"></div></div>
@@ -217,7 +286,7 @@ function openTree() {
     const q = fold($("sq").value); let any = false;
     document.querySelectorAll("#tree .grp").forEach(g => {
       const secHit = q && g.dataset.sf.includes(q); let hit = 0;
-      g.querySelectorAll(".kids .it").forEach(it => { const m = !q || secHit || it.dataset.f.includes(q); it.style.display = m ? "" : "none"; if (m) hit++; });
+      g.querySelectorAll(".kids .it").forEach(it => { const m = !q || secHit || it.dataset.f.includes(q); it.style.display = m ? "" : "none"; if (it.nextElementSibling && it.nextElementSibling.classList.contains("items")) it.nextElementSibling.style.display = m ? "" : "none"; if (m) hit++; });
       g.style.display = hit ? "" : "none"; if (hit) any = true;
       if (q) g.classList.add("open"); else g.classList.toggle("open", g === document.querySelectorAll("#tree .grp")[curSec]);
     });
@@ -228,6 +297,9 @@ function closeSheet() { $("sheet").classList.remove("on"); $("sbg").style.displa
 $("sbg").onclick = closeSheet;
 $("tocBtn").onclick = $("pg").onclick = openSheet;
 $("sheet").onclick = e => {
+  const xb = e.target.closest(".xp");
+  if (xb) { e.stopPropagation(); openItems(+xb.dataset.x, $("it" + xb.dataset.x)); return; }
+  const cv = e.target.closest(".lets canvas"); if (cv) { closeSheet(); goto(+cv.dataset.p, true); return; }
   const sc = e.target.closest(".sec");
   if (sc) { if (e.target.tagName === "SPAN") { closeSheet(); goto(+sc.dataset.p, true); } else sc.parentElement.classList.toggle("open"); return; }
   const it = e.target.closest("[data-p]"); if (it) { closeSheet(); goto(+it.dataset.p, true); } };
