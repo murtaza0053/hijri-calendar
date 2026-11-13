@@ -12,8 +12,8 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="icon" href="../icons/icon-192.png">
-<link rel="stylesheet" href="../themes.css?v=114">
-<script src="../theme-init.js?v=114"></script>
+<link rel="stylesheet" href="../themes.css?v=115">
+<script src="../theme-init.js?v=115"></script>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
@@ -65,6 +65,9 @@ header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:
 .sheet .row{display:block;margin:0 0 2px;background:#fff;border-radius:3px;cursor:pointer;overflow:hidden}
 .sheet .row canvas{display:block;width:100%;height:auto}
 .sheet .row:active{outline:2px solid var(--brand)}
+.sheet .row.nm{display:flex;gap:8px;padding:8px 8px;font-size:13px;background:var(--card);border-bottom:1px solid var(--line);border-radius:0}
+.sheet .row.nm .t{flex:1}.sheet .row.nm .g{flex:none;color:var(--muted);font-size:12px}
+.sheet #sres .row.nm{flex-wrap:wrap}.sheet #sres .row.nm small{flex-basis:100%;color:var(--muted);font-size:11px}
 </style>
 </head>
 <body>
@@ -79,8 +82,8 @@ header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:
 <div class="sheet-bg" id="sbg"></div>
 <div class="sheet" id="sheet"></div>
 <script src="vendor/pdf.min.js"></script>
-<script src="../i18n.js?v=114"></script>
-<script src="../wakelock.js?v=114"></script>
+<script src="../i18n.js?v=115"></script>
+<script src="../wakelock.js?v=115"></script>
 <script>
 "use strict";
 // Large PDF reader: loads the file with HTTP range requests (no full download), renders only the
@@ -210,6 +213,8 @@ const fold = x => String(x).toLowerCase().replace(/[\u064b-\u065f\u0670]/g, "").
 const ZIDX = {"62":[62,63,64],"66":[66],"67":[67,68,69,70],"71":[71],"73":[73],"75":[75],"76":[76,77],"79":[79,80,81,82,83,85,86,87,88,89,90,91,92,93,94],"96":[96,97,98],"99":[99,100],"101":[101,102],"105":[105],"106":[106],"108":[108],"109":[109,110],"1156":[1156],"1173":[1173,1174],"1278":[1278],"1316":[1316,1317],"1376":[1376,1377,1378,1379,1380,1381,1382,1383,1384,1385,1386,1387,1388,1389,1390,1391,1392,1393,1394,1395,1396,1397,1398,1399,1400,1401,1402,1403],"2279":[2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291],"2711":[2711,2712,2713,2714,2715,2716,2717,2718,2719,2720,2721,2722,2723,2724,2725,2726,2727,2728,2729,2730,2731,2732,2733,2734,2735,2736,2737,2738],"3648":[3648,3649,3650,3651,3652,3653,3654,3655,3656,3657,3658,3659,3660,3661,3662,3663,3664,3665,3666,3667],"4186":[4186,4187,4188,4189,4190,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4202,4203,4204,4205,4206,4207,4208,4209,4210,4211,4212,4213,4214,4215,4216,4217]};
 const LETTERS = new Set([1376, 2279, 2711, 3648, 4186]);
 const idxCache = new Map();
+let ZN = null;   // marsiya names: {indexPage: [[name, targetPage], …]} (same row order as the index page)
+if (id === "zikre") fetch("books/zikre-items.json").then(r => r.ok ? r.json() : null).then(j => { ZN = j; }).catch(() => {});
 async function idxRows(p) { // rows of an index page: [{y1,y2,dest}]
   if (idxCache.has(p)) return idxCache.get(p);
   const pg = await pdf.getPage(p), bands = new Map();
@@ -239,10 +244,23 @@ const ioItems = "IntersectionObserver" in window ? new IntersectionObserver(es =
 async function fillIdx(box) {
   const p = +box.dataset.ip; box.dataset.done = 1;
   try {
-    const rows = await idxRows(p); if (!rows.length) { box.remove(); return; }
-    const cs = await renderCrops(p, rows.map(r => [0, r.y1 - 1, 612, r.y2 + 1]), 340, 0);
     const pb = box.querySelector(".pb"); pb.innerHTML = "";
-    cs.forEach((c, i) => { const r = document.createElement("div"); r.className = "row"; r.dataset.p = rows[i].dest; r.append(c); pb.append(r); });
+    const nm = ZN && ZN[p];
+    if (nm && nm.every(x => x[0])) {   // every item has its name: plain text list, no page rendering needed
+      nm.forEach(([name, dest], i) => { const r = document.createElement("div"); r.className = "row nm"; r.dataset.p = dest; r.innerHTML = `<span class="t">${esc(name)}</span><span class="g">${dest}</span>`; pb.append(r); });
+      return;
+    }
+    const rows = await idxRows(p); if (!rows.length) { box.remove(); return; }
+    const need = rows.map((r, i) => !(nm && nm[i] && nm[i][0]));
+    const idx = []; rows.forEach((r, i) => { if (need[i]) idx.push(i); });
+    const cs = idx.length ? await renderCrops(p, idx.map(i => [0, rows[i].y1 - 1, 612, rows[i].y2 + 1]), 340, 0) : [];
+    let ci = 0;
+    rows.forEach((r, i) => {
+      const e = document.createElement("div"); e.dataset.p = r.dest;
+      if (need[i]) { e.className = "row"; e.append(cs[ci++]); }
+      else { e.className = "row nm"; e.innerHTML = `<span class="t">${esc(nm[i][0])}</span><span class="g">${r.dest}</span>`; }
+      pb.append(e);
+    });
   } catch (e) {}
 }
 async function openItems(sub, host) {
@@ -252,7 +270,7 @@ async function openItems(sub, host) {
   h += ZIDX[sub].map((p, i) => `<div class="ipg" data-ip="${p}"><div class="ph" data-n="${i + 1}"><b>${t("bkPart")} ${i + 1}</b><span>${t("bkPage")} ${p}</span></div><div class="pb"></div></div>`).join("");
   host.innerHTML = h;
   host.querySelectorAll(".ipg").forEach(async b => {   // label each part with the pages its items lead to
-    try { const rows = await idxRows(+b.dataset.ip); if (rows.length) { const ds = rows.map(r => r.dest), lo = Math.min(...ds), hi = Math.max(...ds); b.querySelector(".ph span").textContent = `${t("bkItems")}: ${rows.length} · ${t("bkPage")} ${lo}–${hi}`; } } catch {}
+    try { const rows = await idxRows(+b.dataset.ip); if (rows.length) { const ds = rows.map(r => r.dest), lo = Math.min(...ds), hi = Math.max(...ds); const n0 = ZN && ZN[b.dataset.ip] && ZN[b.dataset.ip][0] && ZN[b.dataset.ip][0][0]; b.querySelector(".ph span").textContent = (n0 ? n0.slice(0, 28) + "… · " : "") + `${rows.length} · ${t("bkPage")} ${lo}–${hi}`; } } catch {}
   });
   if (LETTERS.has(sub)) { // alphabet: one chip per letter, cropped from the section's own header page
     const pg = await pdf.getPage(sub), g = new Map();
@@ -286,6 +304,7 @@ function openTree() {
     <div class="jump"><input id="jp" type="number" inputmode="numeric" min="1" max="${N}" placeholder="${t("bkPage")} (1–${N})"><button id="jgo">${t("bkGo")}</button></div>
     <div class="jump"><input id="sq" type="search" placeholder="${SRCH[lang] || SRCH.en}" autocomplete="off"></div></div>
     <div id="tree">${secs.map((x, i) => `<div class="grp" data-sf="${esc(fold(x.title))}"><div class="sec" data-p="${x.p}"><b>${esc(x.title)}</b><span>${x.p}</span></div><div class="kids">${x.kids.map(row).join("") || `<div class="it" data-p="${x.p}"><b>${t("bkGo")}</b><span>${x.p}</span></div>`}</div></div>`).join("")}</div>
+    <div id="sres"></div>
     <div class="none" id="nm" hidden>${NOMATCH[lang] || NOMATCH.en}</div>`;
   $("sbg").style.display = "block"; lockBody(); requestAnimationFrame(() => $("sheet").classList.add("on"));
   $("jgo").onclick = () => { const p = +$("jp").value; if (p) { closeSheet(); goto(p, true); } };
@@ -297,6 +316,14 @@ function openTree() {
       g.style.display = hit ? "" : "none"; if (hit) any = true;
       if (q) g.classList.add("open"); else g.classList.remove("open");
     });
+    // marsiya names (items) that match
+    const box = $("sres"); box.innerHTML = "";
+    if (q.length >= 2 && ZN) {
+      const hits = []; const subFor = p => { let b = ZSUB[0]; for (const k of ZSUB) if (k[0] <= p) b = k; return b[1]; };
+      outer: for (const ip in ZN) for (const [name, dest] of ZN[ip]) { if (name && fold(name).includes(q)) { hits.push([name, dest, +ip]); if (hits.length >= 80) break outer; } }
+      box.innerHTML = hits.map(([name, dest, ip]) => `<div class="row nm" data-p="${dest}"><span class="t">${esc(name)}</span><span class="g">${dest}</span><small>${esc(subFor(ip))}</small></div>`).join("");
+      if (hits.length) any = true;
+    }
     $("nm").hidden = any;
   };
 }
