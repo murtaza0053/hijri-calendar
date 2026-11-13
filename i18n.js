@@ -3,6 +3,7 @@
 globalThis.I18N = {
   en: {
     _label: "EN",
+    wakeH: "Keep screen on while reading", wakeD: "Dua, Quran, books and Ziyarat pages stop the screen from locking while they are open.",
     kumailH: "Dua e Kumail", kumailSub: "Dua Kumail · 9 pages", kumailDesc: "Dua Kumail of Moula Ali (AS) — for Shab-e-Juma (Thursday night) and the night of 15 Shaban.", kumailNote: "Pages from the printed book as published in the Dawoodi Bohra app (source not independently verified):", bDuaKumail: "Shab-e-Juma — recite Dua e Kumail 🤲", rmKumail: "Dua e Kumail (Thursday night)", rmKumailD: "Every Thursday at 7:00 PM: Shab-e-Juma, recite Dua e Kumail",
     rmHave: "Already added", rmEnabledNote: "✓ = marked as added in this app (locked). This app cannot see your Calendar, and the iPhone app and Safari keep separate memories. If a reminder is already in your Calendar, press “Already added”; if you cancelled or deleted it, press Undo.",
     rmUndo: "Undo",
@@ -69,6 +70,7 @@ globalThis.I18N = {
 
   gu: {
     _label: "ગુ",
+    wakeH: "વાંચતી વખતે સ્ક્રીન ચાલુ રાખો", wakeD: "દુઆ, કુરાન, પુસ્તકો અને ઝિયારતના પાના ખુલ્લા હોય ત્યારે સ્ક્રીન લૉક થતી નથી.",
     kumailH: "દુઆ એ કુમૈલ", kumailSub: "દુઆ કુમૈલ · ૯ પાના", kumailDesc: "મૌલા અલી (અ.સ.) ની દુઆ કુમૈલ — શબે જુમ્આ (ગુરુવારની રાત) અને પંદરમી શાબાનની રાત માટે.", kumailNote: "છાપેલા પુસ્તકના પાના, Dawoodi Bohra એપમાં પ્રકાશિત થયેલા (સ્ત્રોત અલગથી ચકાસ્યો નથી):", bDuaKumail: "શબે જુમ્આ — દુઆ એ કુમૈલ પઢો 🤲", rmKumail: "દુઆ એ કુમૈલ (ગુરુવારની રાત)", rmKumailD: "દર ગુરુવારે સાંજે 7:00: શબે જુમ્આ, દુઆ એ કુમૈલ પઢો",
     rmHave: "પહેલેથી ઉમેરેલું", rmEnabledNote: "✓ = આ એપમાં ઉમેરેલું તરીકે નોંધાયેલું (લૉક). આ એપ તમારું Calendar જોઈ શકતી નથી, અને iPhone એપ તથા Safari અલગ યાદ રાખે છે. રિમાઇન્ડર તમારા Calendarમાં પહેલેથી હોય તો “પહેલેથી ઉમેરેલું” દબાવો; કૅન્સલ કે ડિલીટ કર્યું હોય તો “પાછું” દબાવો.",
     rmUndo: "પાછું",
@@ -135,6 +137,7 @@ globalThis.I18N = {
 
   hi: {
     _label: "Hinglish",
+    wakeH: "Padhte waqt screen on rakho", wakeD: "Dua, Quran, kitabein aur Ziyarat ke pages khule hon to screen lock nahi hoti.",
     kumailH: "Dua e Kumail", kumailSub: "Dua Kumail · 9 pages", kumailDesc: "Moula Ali (AS) ki Dua Kumail — Shab-e-Juma (Thursday raat) aur 15 Shaban ki raat ke liye.", kumailNote: "Chhapi kitab ke pages, Dawoodi Bohra app me chhape hue (source alag se verify nahi kiya):", bDuaKumail: "Shab-e-Juma — Dua e Kumail padhiye 🤲", rmKumail: "Dua e Kumail (Thursday raat)", rmKumailD: "Har Thursday shaam 7:00 baje: Shab-e-Juma, Dua e Kumail padhiye",
     rmHave: "Pehle se joda hai", rmEnabledNote: "✓ = is app me joda hua note hai (lock). Ye app aapka Calendar dekh nahi sakta, aur iPhone ka app aur Safari alag-alag yaad rakhte hain. Reminder aapke Calendar me pehle se hai to \"Pehle se joda hai\" dabao; cancel ya delete kiya ho to \"Undo\" dabao.",
     rmUndo: "Undo",

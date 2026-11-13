@@ -1,6 +1,19 @@
 {
- "v": 101,
+ "v": 102,
  "history": [
+  {
+   "v": 102,
+   "date": "2026-11-13",
+   "en": [
+    "The screen no longer locks while a dua, Quran, book or Ziyarat page is open (needs iPhone iOS 16.4+; can be switched off in Settings)."
+   ],
+   "gu": [
+    "દુઆ, કુરાન, પુસ્તક કે ઝિયારતનું પાનું ખુલ્લું હોય ત્યારે સ્ક્રીન હવે લૉક થતી નથી (iPhone iOS 16.4+ જોઈએ; સેટિંગ્સમાં બંધ કરી શકાય)."
+   ],
+   "hi": [
+    "Dua, Quran, kitab ya Ziyarat ka page khula ho to screen ab lock nahi hoti (iPhone iOS 16.4+ chahiye; Settings me band kar sakte ho)."
+   ]
+  },
   {
    "v": 101,
    "date": "2026-11-12",
