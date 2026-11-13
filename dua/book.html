@@ -12,8 +12,8 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="icon" href="../icons/icon-192.png">
-<link rel="stylesheet" href="../themes.css?v=104">
-<script src="../theme-init.js?v=104"></script>
+<link rel="stylesheet" href="../themes.css?v=106">
+<script src="../theme-init.js?v=106"></script>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
@@ -53,14 +53,14 @@ header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:
 <div class="sheet-bg" id="sbg"></div>
 <div class="sheet" id="sheet"></div>
 <script src="vendor/pdf.min.js"></script>
-<script src="../i18n.js?v=104"></script>
-<script src="../wakelock.js?v=104"></script>
+<script src="../i18n.js?v=106"></script>
+<script src="../wakelock.js?v=106"></script>
 <script>
 "use strict";
 // Large PDF reader: loads the file with HTTP range requests (no full download), renders only the
 // pages near the screen, and keeps the PDF's own hyperlinks working (index → page, and web links).
 const BOOKS = {
-  zikre: { title: "Zikre Husain (AS) 1443", pdf: "books/zikre-husain-1443.pdf" },
+  zikre: { title: "Zikre Husain (AS) 1446", pdf: "books/zikre-husain-1446.pdf" },
   // page images (no PDF): shown as-is, with a credit link to where they came from
   azam: { title: "Tasbih ul Azam", images: ["books/tasbih-ul-azam/p1.png", "books/tasbih-ul-azam/p2.png", "books/tasbih-ul-azam/p3.png"], ratio: 1360 / 939,
     src: "https://dawoodibohraapp.com/Duas/66%20tasbih%20ul%20azam.html", srcName: "dawoodibohraapp.com" },
