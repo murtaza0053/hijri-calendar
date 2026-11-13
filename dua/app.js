@@ -93,8 +93,8 @@ async function loadBundled() {
   if (cfg.sync) try { const r = await fetch(BASE + cfg.sync, { cache: 'no-cache' }); if (r.ok) { const j = await r.json(); fileMarks = j.marks; frames = j.frames || null; step = !!j.step; } } catch {}
   const tv = cfg.versions && cfg.versions.find(x => x.id === state.version);
   if (tv && tv.text) {  // retyped Indo-Pak text laid out on the same line positions as the printed pages
-    textData = await fetch(BASE + tv.text).then(r => r.ok ? r.json() : null).catch(() => null);
-    if (textData && tv.words) wordTimes = await fetch(BASE + tv.words).then(r => r.ok ? r.json() : null).catch(() => null);
+    textData = await fetch(BASE + tv.text, { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null);
+    if (textData && tv.words) wordTimes = await fetch(BASE + tv.words, { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null);
     if (textData && !(await loadIndoPak())) { textData = null; toast('Font not available offline — showing the PDF', 4000); }
   }
   await openMedia({ title: cfg.title, pdfBlob, audioBlob, key: `bundled:${cfg.pdf}|${cfg.audioKey || cfg.audio}|${tv && tv.text ? 'text' : ''}`, fileMarks, frames, step, textData, wordTimes });
@@ -109,7 +109,7 @@ async function loadPicked() {
 
 async function openMedia({ title, pdfBlob, audioBlob, key, fileMarks, frames, step, textData, wordTimes }) {
   status('Opening PDF…');
-  state.key = key; state.text = textData || null; curWordEl = null; state.rep = null; state.curMark = null; wbEl = null; wb = null; wbRow = null; lnEl = null; ln = null; $('rep').classList.remove('on');
+  state.key = key; state.text = textData || null; curWordEl = null; state.rep = null; state.curMark = null; wbEl = null; wb = null; wbRow = null; rkBands = []; rkKey = ''; state.rk = []; $('rep').classList.remove('on');
   document.body.classList.toggle('tmode', !!state.text);
   state.frames = frames || null; // per page [left, right] of the printed border, as fractions of page width
   $('title').textContent = title; document.title = title;
@@ -140,7 +140,7 @@ async function openMedia({ title, pdfBlob, audioBlob, key, fileMarks, frames, st
 /* ---------- PDF rendering (lazy) ---------- */
 let observer;
 async function buildPages() {
-  pagesEl.querySelectorAll('.page').forEach(e => e.remove());
+  pagesEl.querySelectorAll('.page,.lhl,.whl').forEach(e => e.remove());
   state.pageEls = [];
   if (observer) observer.disconnect();
   observer = new IntersectionObserver(onIntersect, { root: viewer, rootMargin: '150% 0px' });
@@ -155,7 +155,7 @@ async function buildPages() {
     if (state.text) el.classList.add('tp');
     pagesEl.appendChild(el); state.pageEls.push(el); observer.observe(el);
   }
-  if (state.text) fitText();
+  if (state.text) { fitText(); buildRuku(); }
   drawTicks();
 }
 
@@ -223,30 +223,54 @@ function markWord(t, snap) {
   updateHl(!!snap);
 }
 
-/* Yaseen-style highlight: the word being recited is filled, and a green bar under its line glides from line to line */
-let wbEl = null, wb = null, wbAt = 0, wbRow = null, lnEl = null, ln = null, lnAt = 0;
-let hlOn = ls.get('hlOn', true);   // highlight (green line + word box) on/off
+/* highlight by ruku: the green band covers one ruku (the part between two ○ marks), across lines when it wraps;
+   the word box is an optional extra (Menu → Word highlight) */
+let wbEl = null, wb = null, wbAt = 0, wbRow = null, rkBands = [], rkKey = '';
+let hlOn = ls.get('hlOn', true);     // highlight on/off
+let wdOn = ls.get('wdOn', false);    // word box on/off (off by default)
+function buildRuku() {   // number every word with its ruku; the ○ marks (and heading lines) close a ruku
+  state.rk = []; let id = 0, cur = [];
+  const close = () => { if (cur.length) { state.rk[id] = cur; id++; cur = []; } };
+  pagesEl.querySelectorAll('.tp .tl').forEach(row => {
+    if (row.classList.contains('nt')) return;
+    const head = /\bhd\d\b/.test(row.className); if (head) close();
+    row.querySelectorAll('span, i.rs').forEach(x => { if (x.tagName === 'I') close(); else { x._rk = id; cur.push(x); } });
+    if (head) close();
+  });
+  close(); rkKey = '';
+}
+function clearBands(fade) {
+  rkBands.forEach(b => { b.style.opacity = '0'; if (fade) setTimeout(() => b.remove(), 320); else b.remove(); });
+  rkBands = [];
+}
 function updateHl(snap) {
   const el = curWordEl;
-  if (!lnEl) { lnEl = document.createElement('div'); lnEl.className = 'lhl'; pagesEl.appendChild(lnEl); }
   if (!wbEl) { wbEl = document.createElement('div'); wbEl.className = 'whl'; pagesEl.appendChild(wbEl); }
   const row = el ? el.parentElement : null;
-  if (!row || !hlOn) { lnEl.style.opacity = '0'; wbEl.style.opacity = '0'; ln = wb = null; return; }
+  if (!row || !hlOn || el._rk === undefined) { clearBands(false); rkKey = ''; wbEl.style.opacity = '0'; wb = null; return; }
   const pr = pagesEl.getBoundingClientRect(), now = performance.now();
-  // green line bar: glides down from line to line
-  let r = row.getBoundingClientRect();
-  const tg = { x: r.left - pr.left - 4, y: r.top - pr.top, w: r.width + 8, h: r.height };
-  const dt = Math.min(0.1, (now - (lnAt || now)) / 1000); lnAt = now;
-  if (!ln || snap || audio.paused || Math.abs(tg.y - ln.y) > tg.h * 4) ln = { ...tg };
-  else { const k = 1 - Math.exp(-dt / 0.32); ln.x += (tg.x - ln.x) * k; ln.y += (tg.y - ln.y) * k; ln.w += (tg.w - ln.w) * k; ln.h += (tg.h - ln.h) * k; }
-  lnEl.style.opacity = '1'; lnEl.style.transform = `translate(${ln.x.toFixed(1)}px, ${ln.y.toFixed(1)}px)`;
-  lnEl.style.width = ln.w.toFixed(1) + 'px'; lnEl.style.height = ln.h.toFixed(1) + 'px';
-  // word box: glides along the line from word to word (fades in again when the next line starts)
-  const wr = el.getBoundingClientRect();   // x / width from the word; y / height follow the green line exactly (same glide), so both are always the same height
-  const wg = { x: wr.left - pr.left - 3, y: ln.y, w: wr.width + 6, h: ln.h };
+  const key = el._rk + ':' + pagesEl.clientWidth;
+  if (key !== rkKey) {   // new ruku (or the layout changed): draw its bands, fading the old ones out
+    const same = rkKey.split(':')[1] === String(pagesEl.clientWidth);
+    clearBands(same && !snap && !audio.paused); rkKey = key;
+    const byRow = new Map();
+    (state.rk[el._rk] || []).forEach(x => { const r = x.getBoundingClientRect(), o = byRow.get(x.parentElement); if (!o) byRow.set(x.parentElement, [r.left, r.right]); else { o[0] = Math.min(o[0], r.left); o[1] = Math.max(o[1], r.right); } });
+    byRow.forEach((xr, rw) => {
+      const r = rw.getBoundingClientRect(), d = document.createElement('div');
+      d.className = 'lhl rb';
+      d.style.transform = `translate(${(xr[0] - pr.left - 5).toFixed(1)}px, ${(r.top - pr.top).toFixed(1)}px)`;
+      d.style.width = (xr[1] - xr[0] + 10).toFixed(1) + 'px'; d.style.height = r.height.toFixed(1) + 'px';
+      pagesEl.appendChild(d); rkBands.push(d); d.style.opacity = '0';
+      requestAnimationFrame(() => requestAnimationFrame(() => { d.style.opacity = '1'; }));
+    });
+  }
+  if (!wdOn) { wbEl.style.opacity = '0'; wb = null; return; }
+  // optional word box: glides along the line from word to word
+  const rr = row.getBoundingClientRect(), wr = el.getBoundingClientRect();
+  const wg = { x: wr.left - pr.left - 3, y: rr.top - pr.top, w: wr.width + 6, h: rr.height };
   const wdt = Math.min(0.1, (now - (wbAt || now)) / 1000); wbAt = now;
   if (!wb || snap || audio.paused) wb = { ...wg };
-  else if (row !== wbRow) { wb = { ...wg }; wbEl.classList.remove('pop'); void wbEl.offsetWidth; wbEl.classList.add('pop'); }   // next line: fade in at its first word
+  else if (row !== wbRow) { wb = { ...wg }; wbEl.classList.remove('pop'); void wbEl.offsetWidth; wbEl.classList.add('pop'); }
   else { const k = 1 - Math.exp(-wdt / 0.27); wb.x += (wg.x - wb.x) * k; wb.w += (wg.w - wb.w) * k; wb.y = wg.y; wb.h = wg.h; }
   wbRow = row;
   wbEl.style.opacity = '1'; wbEl.style.transform = `translate(${wb.x.toFixed(1)}px, ${wb.y.toFixed(1)}px)`;
@@ -553,7 +577,8 @@ function renderVersions(vs, audios) {
     if (!b || b.dataset.ver === state.version) return; ls.set('ver:' + BASE, b.dataset.ver); location.reload();
   };
 }
-function drawHlToggle() { $('hlToggle').textContent = `🖍 Highlight: ${hlOn ? 'On ✓' : 'Off'}`; }
+function drawHlToggle() { $('hlToggle').textContent = `🖍 Ruku highlight: ${hlOn ? 'On ✓' : 'Off'}`; $('wdToggle').textContent = `🔤 Word highlight: ${wdOn ? 'On ✓' : 'Off'}`; }
+$('wdToggle').onclick = () => { wdOn = !wdOn; ls.set('wdOn', wdOn); drawHlToggle(); tick(true); };
 $('hlToggle').onclick = () => { hlOn = !hlOn; ls.set('hlOn', hlOn); drawHlToggle(); tick(true); };
 drawHlToggle();
 $('menuBtn').onclick = (e) => { e.stopPropagation(); $('menu').classList.toggle('open'); };

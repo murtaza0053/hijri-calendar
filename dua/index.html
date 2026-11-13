@@ -60,6 +60,7 @@ body.tmode .tonly{display:inline-grid}
 body.tmode #menu button.tonly{display:block}
 body.tmode #syncBtn{display:none}
 #rep.on{background:var(--accent-2);border-radius:10px}
+.lhl.rb{transition:opacity .3s}
 .lhl{position:absolute;left:0;top:0;z-index:0;pointer-events:none;border-radius:.5em;background:color-mix(in srgb,#1f8f7a 24%,transparent);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,#1f8f7a 50%,transparent);opacity:0;will-change:transform,width,height;transition:opacity .15s}
 .tp .tl{z-index:1}   /* text rows sit above the green line bar, so the selected word stays crisp inside it */
 .tp .tl{cursor:pointer}
@@ -122,6 +123,7 @@ input[type=file]{display:none}
 </header>
 <div id="menu">
   <button id="hlToggle" class="tonly"></button>
+  <button id="wdToggle" class="tonly"></button>
   <div id="versions"></div>
   <button id="openFiles">📂 Open audio + PDF from phone</button>
   <button id="useBundled">📦 Use bundled files</button>
@@ -160,7 +162,7 @@ input[type=file]{display:none}
 <audio id="audio" preload="auto"></audio>
 
 <script src="vendor/pdf.min.js"></script>
-<script src="../wakelock.js?v=110"></script>
-<script src="app.js?v=110"></script>
+<script src="../wakelock.js?v=111"></script>
+<script src="app.js?v=111"></script>
 </body>
 </html>

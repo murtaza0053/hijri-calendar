@@ -1,6 +1,19 @@
 {
- "v": 110,
+ "v": 111,
  "history": [
+  {
+   "v": 111,
+   "date": "2026-11-14",
+   "en": [
+    "Dua e Kamil: page 20 (and the lines around it) now follow the recitation. The green highlight now moves ruku by ruku (the part between two ○ marks) instead of line by line; word highlight is now an optional setting (off by default)."
+   ],
+   "gu": [
+    "દુઆ એ કમીલ: પાનું 20 (અને આસપાસની લીટીઓ) હવે તિલાવત સાથે સાચી ચાલે છે. લીલું હાઇલાઇટ હવે લીટી પ્રમાણે નહીં, પણ રુકૂઅ પ્રમાણે (બે ○ ની વચ્ચેનો ભાગ) ચાલે છે; શબ્દ હાઇલાઇટ હવે વૈકલ્પિક સેટિંગ છે (ડિફોલ્ટ બંધ)."
+   ],
+   "hi": [
+    "Dua e Kamil: page 20 (aur uske aas-paas ki lines) ab recitation ke saath sahi chalte hain. Green highlight ab line-by-line nahi, ruku-by-ruku (do ○ ke beech ka hissa) chalta hai; word highlight ab optional setting hai (default off)."
+   ]
+  },
   {
    "v": 110,
    "date": "2026-11-14",
