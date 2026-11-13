@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=104">
-<script src="theme-init.js?v=104"></script>
+<link rel="stylesheet" href="themes.css?v=105">
+<script src="theme-init.js?v=105"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -188,6 +188,13 @@ h4.plat{margin:14px 0 2px;font-size:14px}
 .gh.cur{outline:2px solid var(--brand);background:var(--chip)!important;font-weight:700}
 .lv-vgood{background:#1f9d55} .lv-good{background:#5bb974} .lv-normal{background:#d4a72c} .lv-unfav{background:#d14b4b}
 #ghToggle button{font-size:12px;padding:6px 10px}
+.acc>.acc-h{display:flex;align-items:center;gap:8px;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none}
+.acc>.acc-h>h3{flex:1;margin:0!important}
+.acc>.acc-h::after{content:"›";font-size:22px;line-height:1;color:var(--muted);transition:transform .2s;transform:rotate(90deg)}
+.acc.open>.acc-h::after{transform:rotate(-90deg)}
+.acc>.acc-b{display:none;margin-top:10px}
+.acc.open>.acc-b{display:block}
+.acc>.acc-h>.infobtn{order:2}
 h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .rz{display:flex;align-items:center;gap:10px;padding:8px 6px;border-top:1px solid var(--line);text-decoration:none;color:var(--ink)}
 .rz:first-child{border-top:0}
@@ -446,8 +453,8 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=104"></script>
-<script src="i18n.js?v=104"></script>
+<script src="hijri.js?v=105"></script>
+<script src="i18n.js?v=105"></script>
 <script>
 "use strict";
 
@@ -906,7 +913,24 @@ function renderAll() {
   if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD);
 }
 const vName = n => `1.${Math.floor(n / 10)}.${n % 10}`;   // shown to people (84 → 1.8.4); the plain number is what update checks compare
-const APP_V = 104, APP_VERSION = vName(APP_V) + " (2026-11-12)";
+/* Settings: collapsible sections */
+(function(){
+  let st={}; try{st=JSON.parse(localStorage.getItem("setOpen")||"{}")}catch(e){}
+  const save=()=>{try{localStorage.setItem("setOpen",JSON.stringify(st))}catch(e){}};
+  document.querySelectorAll("#v-set > .card").forEach((c,i)=>{
+    const first=c.firstElementChild; if(!first||!/^(H3|DIV)$/.test(first.tagName)||!first.querySelector("h3")&&first.tagName!=="H3")return;
+    const id=c.id||("c"+i), body=document.createElement("div"); body.className="acc-b";
+    while(first.nextSibling)body.appendChild(first.nextSibling);
+    c.appendChild(body); first.classList.add("acc-h"); c.classList.add("acc");
+    if(st[id])c.classList.add("open");
+    first.setAttribute("role","button");
+    first.addEventListener("click",e=>{
+      if(e.target.closest(".infobtn")){ if(!c.classList.contains("open")){c.classList.add("open");st[id]=1;save();} return; }
+      c.classList.toggle("open"); st[id]=c.classList.contains("open")?1:0; save();
+    });
+  });
+})();
+const APP_V = 105, APP_VERSION = vName(APP_V) + " (2026-11-12)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");

@@ -1,6 +1,19 @@
 {
- "v": 104,
+ "v": 105,
  "history": [
+  {
+   "v": 105,
+   "date": "2026-11-13",
+   "en": [
+    "Settings page is now tidy: every section collapses and expands with a tap, and remembers what you left open."
+   ],
+   "gu": [
+    "સેટિંગ્સ પેજ હવે વ્યવસ્થિત છે: દરેક વિભાગ ટેપથી ખુલે અને બંધ થાય છે, અને તમે જે ખુલ્લું રાખ્યું તે યાદ રાખે છે."
+   ],
+   "hi": [
+    "Settings page ab saaf-suthra hai: har section tap se khulta aur band hota hai, aur yaad rakhta hai ki aapne kya khula chhoda."
+   ]
+  },
   {
    "v": 104,
    "date": "2026-11-13",
