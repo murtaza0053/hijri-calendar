@@ -1,6 +1,19 @@
 {
- "v": 119,
+ "v": 120,
  "history": [
+  {
+   "v": 120,
+   "date": "2026-11-14",
+   "en": [
+    "New book in the Dua tab: Tasabeeh e Barakat (27 pages — tasbeehs for rozi, health, debt, protection, seven-day tasbeeh and travel duas). Ziyarat tab header now sits below the iPhone status bar."
+   ],
+   "gu": [
+    "દુઆ ટેબમાં નવું પુસ્તક: તસાબીહ બરકાત (27 પાના — રોઝી, આરોગ્ય, કરજ, રક્ષણ, સાત દિવસની તસ્બીહ અને સફરની દુઆ). ઝિયારત ટેબનું હેડર હવે iPhone ના સ્ટેટસ બારની નીચે આવે છે."
+   ],
+   "hi": [
+    "Dua tab me nayi book: Tasabeeh e Barakat (27 pages — rozi, sehat, qarz, hifazat, saat din ki tasbeeh aur safar ki dua). Ziyarat tab ka header ab iPhone ke status bar ke neeche aata hai."
+   ]
+  },
   {
    "v": 119,
    "date": "2026-11-14",

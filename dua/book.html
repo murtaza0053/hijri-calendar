@@ -12,8 +12,8 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="icon" href="../icons/icon-192.png">
-<link rel="stylesheet" href="../themes.css?v=119">
-<script src="../theme-init.js?v=119"></script>
+<link rel="stylesheet" href="../themes.css?v=120">
+<script src="../theme-init.js?v=120"></script>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
@@ -82,14 +82,15 @@ header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:
 <div class="sheet-bg" id="sbg"></div>
 <div class="sheet" id="sheet"></div>
 <script src="vendor/pdf.min.js"></script>
-<script src="../i18n.js?v=119"></script>
-<script src="../wakelock.js?v=119"></script>
+<script src="../i18n.js?v=120"></script>
+<script src="../wakelock.js?v=120"></script>
 <script>
 "use strict";
 // Large PDF reader: loads the file with HTTP range requests (no full download), renders only the
 // pages near the screen, and keeps the PDF's own hyperlinks working (index → page, and web links).
 const BOOKS = {
   zikre: { title: "Zikre Husain (AS) 1446", pdf: "books/zikre-husain-1446.pdf" },
+  tasabeeh: { title: "Tasabeeh e Barakat", images: ["books/tasabeeh/p01.jpg", "books/tasabeeh/p02.jpg", "books/tasabeeh/p03.jpg", "books/tasabeeh/p04.jpg", "books/tasabeeh/p05.jpg", "books/tasabeeh/p06.jpg", "books/tasabeeh/p07.jpg", "books/tasabeeh/p08.jpg", "books/tasabeeh/p09.jpg", "books/tasabeeh/p10.jpg", "books/tasabeeh/p11.jpg", "books/tasabeeh/p12.jpg", "books/tasabeeh/p13.jpg", "books/tasabeeh/p14.jpg", "books/tasabeeh/p15.jpg", "books/tasabeeh/p16.jpg", "books/tasabeeh/p17.jpg", "books/tasabeeh/p18.jpg", "books/tasabeeh/p19.jpg", "books/tasabeeh/p20.jpg", "books/tasabeeh/p21.jpg", "books/tasabeeh/p22.jpg", "books/tasabeeh/p23.jpg", "books/tasabeeh/p24.jpg", "books/tasabeeh/p25.jpg", "books/tasabeeh/p26.jpg", "books/tasabeeh/p27.jpg"], ratios: [1.523, 1.6473, 1.352, 1.8299, 1.5377, 1.6934, 1.6985, 1.6425, 1.5917, 1.4856, 1.6117, 1.5813, 1.7153, 0.932, 1.6952, 1.5296, 1.6134, 0.917, 1.6658, 1.7942, 1.8257, 1.6034, 1.7026, 1.462, 1.8139, 2.6457, 1.6658], ratio: 1.45 },
   // page images (no PDF): shown as-is, with a credit link to where they came from
   azam: { title: "Tasbih ul Azam", images: ["books/tasbih-ul-azam/p1.png", "books/tasbih-ul-azam/p2.png", "books/tasbih-ul-azam/p3.png"], ratio: 1360 / 939,
     src: "https://dawoodibohraapp.com/Duas/66%20tasbih%20ul%20azam.html", srcName: "dawoodibohraapp.com" },
@@ -369,7 +370,7 @@ $("sheet").onclick = e => {
     N = B.images.length;
     B.images.forEach((src, i) => {
       const d = document.createElement("div");
-      d.className = "pg"; d.style.aspectRatio = `1 / ${B.ratio}`;
+      d.className = "pg"; d.style.aspectRatio = `1 / ${(B.ratios && B.ratios[i]) || B.ratio}`;
       d.innerHTML = `<img src="${src}" alt="${i + 1}" style="width:100%;height:100%;display:block" loading="${i < 2 ? "eager" : "lazy"}"><span class="no">${i + 1}</span>`;
       els.push(d);
     });
