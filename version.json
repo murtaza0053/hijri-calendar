@@ -1,6 +1,19 @@
 {
- "v": 115,
+ "v": 116,
  "history": [
+  {
+   "v": 116,
+   "date": "2026-11-14",
+   "en": [
+    "Added Asr end and Nisful Layl to the home screen timings, and Zohr end + Asr end to Today's timings (calculated like aajnodin: Zawaal to Maghrib split in thirds)."
+   ],
+   "gu": [
+    "હોમ સ્ક્રીનના સમયમાં અસર અંત અને નિસ્ફુલ લૈલ ઉમેર્યા, અને આજના સમયમાં ઝોહર અંત + અસર અંત (aajnodin મુજબ: ઝવાલથી મગરિબ સુધી ત્રણ ભાગ)."
+   ],
+   "hi": [
+    "Home screen ke timings me Asr end aur Nisful Layl jode, aur Aaj ke timings me Zohr end + Asr end (aajnodin ki tarah: Zawaal se Maghrib ke teen barabar hisse)."
+   ]
+  },
   {
    "v": 115,
    "date": "2026-11-14",
