@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=123">
-<script src="theme-init.js?v=123"></script>
+<link rel="stylesheet" href="themes.css?v=124">
+<script src="theme-init.js?v=124"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -115,10 +115,10 @@ nav.tabs button .i{display:block;font-size:20px;line-height:1.2}
 #v-zy iframe{position:fixed;left:0;top:env(safe-area-inset-top);width:100%;height:calc(100vh - var(--navh,58px) - env(safe-area-inset-top));height:calc(100dvh - var(--navh,58px) - env(safe-area-inset-top));border:0;background:var(--bg);z-index:6}
 .slhead{display:flex;align-items:center;gap:8px;margin:2px 0 10px}
 .slhead b{flex:1;font-size:18px}
-.slb{border:0;background:var(--card);color:var(--ink);width:36px;height:36px;border-radius:12px;font-size:22px;line-height:1;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.slb{border:0;background:var(--card);color:var(--ink);width:36px;height:36px;border-radius:12px;font-size:22px;line-height:1;box-shadow:0 1px 2px rgba(0,0,0,.1)}
 .slcity{border:0;background:var(--card);color:var(--ink);font:inherit;font-size:13px;font-weight:600;padding:8px 12px;border-radius:20px;box-shadow:0 1px 3px rgba(0,0,0,.12);max-width:48%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .slcity::before{content:"📍 "}
-.slhero{background:linear-gradient(145deg,var(--brand),color-mix(in srgb,var(--brand) 62%,#000));color:var(--on-brand);border-radius:22px;padding:16px 14px 14px;text-align:center;box-shadow:0 6px 18px color-mix(in srgb,var(--brand) 35%,transparent)}
+.slhero{background:linear-gradient(145deg,var(--brand),color-mix(in srgb,var(--brand) 85%,#000));color:var(--on-brand);border-radius:22px;padding:16px 14px 14px;text-align:center;box-shadow:0 2px 6px color-mix(in srgb,var(--brand) 25%,transparent)}
 .sldate{font-size:14px;opacity:.92;line-height:1.4}.sldate b{font-size:16px}
 .slring{position:relative;width:190px;height:190px;margin:10px auto 8px}
 .slring svg{width:100%;height:100%}
@@ -526,10 +526,10 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=123"></script>
-<script src="i18n.js?v=123"></script>
-<script src="cities.js?v=123"></script>
-<script src="haptic.js?v=123"></script>
+<script src="hijri.js?v=124"></script>
+<script src="i18n.js?v=124"></script>
+<script src="cities.js?v=124"></script>
+<script src="haptic.js?v=124"></script>
 <script>
 "use strict";
 
@@ -1097,7 +1097,7 @@ const vName = n => `1.${Math.floor(n / 10)}.${n % 10}`;   // shown to people (84
     });
   });
 })();
-const APP_V = 123, APP_VERSION = vName(APP_V) + " (2026-11-12)";
+const APP_V = 124, APP_VERSION = vName(APP_V) + " (2026-11-12)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");

@@ -12,13 +12,13 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="icon" href="../icons/icon-192.png">
-<link rel="stylesheet" href="../themes.css?v=123">
-<script src="../theme-init.js?v=123"></script>
+<link rel="stylesheet" href="../themes.css?v=124">
+<script src="../theme-init.js?v=124"></script>
 <style>
 @font-face{font-family:"AmiriQ";src:url(fonts/AmiriQuran-arabic.woff2) format("woff2");font-display:swap}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-header{position:sticky;top:0;z-index:5;background:linear-gradient(160deg,var(--hdr),color-mix(in srgb,var(--hdr) 70%,#000));color:var(--hdr-ink);padding:calc(env(safe-area-inset-top) + 8px) 12px 10px;box-shadow:0 2px 12px rgba(0,0,0,.18)}
+header{position:sticky;top:0;z-index:5;background:var(--hdr);color:var(--hdr-ink);padding:calc(env(safe-area-inset-top) + 8px) 12px 10px;box-shadow:0 1px 3px rgba(0,0,0,.15)}
 .hrow{display:flex;align-items:center;gap:6px}
 header a{color:inherit;text-decoration:none;font-size:26px;width:40px;height:40px;display:grid;place-items:center}
 header b{flex:1;font-size:18px;letter-spacing:.2px}
@@ -81,9 +81,9 @@ ol.deeds li small{display:block;color:var(--muted);margin-top:2px}
   <div id="list"></div>
   <div id="none">Nothing found</div>
 </main>
-<script src="../i18n.js?v=123"></script>
-<script src="../wakelock.js?v=123"></script>
-<script src="../haptic.js?v=123"></script>
+<script src="../i18n.js?v=124"></script>
+<script src="../wakelock.js?v=124"></script>
+<script src="../haptic.js?v=124"></script>
 <script>
 "use strict";
 const $ = id => document.getElementById(id);

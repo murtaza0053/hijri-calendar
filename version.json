@@ -1,6 +1,19 @@
 {
- "v": 123,
+ "v": 124,
  "history": [
+  {
+   "v": 124,
+   "date": "2026-11-14",
+   "en": [
+    "Softer headers: the soft glow/shadow under the Tasabeeh e Barakat header and the Salaat timings card is reduced."
+   ],
+   "gu": [
+    "હેડર હળવા: તસાબીહ બરકાત હેડર અને સલાત સમય કાર્ડ નીચેનો નરમ ગ્લો/શેડો ઓછો કર્યો."
+   ],
+   "hi": [
+    "Headers halke: Tasabeeh e Barakat header aur Salaat timings card ke neeche ka soft glow/shadow kam kiya."
+   ]
+  },
   {
    "v": 123,
    "date": "2026-11-14",
