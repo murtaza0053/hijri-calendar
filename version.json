@@ -1,6 +1,19 @@
 {
- "v": 117,
+ "v": 118,
  "history": [
+  {
+   "v": 118,
+   "date": "2026-11-14",
+   "en": [
+    "New Salaat timings section: a card on the home screen (next timing + countdown) opens a dedicated page with all 8 timings, today's date, a live clock and previous/next day."
+   ],
+   "gu": [
+    "નવો સલાત સમય વિભાગ: હોમ સ્ક્રીન પરનું કાર્ડ (હવે પછીનો સમય + કાઉન્ટડાઉન) બધા 8 સમય, આજની તારીખ, લાઇવ ઘડિયાળ અને આગલો/પાછલો દિવસ સાથેનું અલગ પેજ ખોલે છે."
+   ],
+   "hi": [
+    "Naya Salaat timings section: home screen ka card (agla timing + countdown) ek alag page kholta hai jisme saare 8 timings, aaj ki date, live clock aur pichla/agla din hai."
+   ]
+  },
   {
    "v": 117,
    "date": "2026-11-14",

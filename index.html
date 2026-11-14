@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=117">
-<script src="theme-init.js?v=117"></script>
+<link rel="stylesheet" href="themes.css?v=118">
+<script src="theme-init.js?v=118"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -112,6 +112,16 @@ nav.tabs{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--ca
 nav.tabs button{flex:1;background:none;border:0;color:var(--muted);padding:8px 0 10px;font-size:11px}
 nav.tabs button .i{display:block;font-size:20px;line-height:1.2}
 #v-zy iframe{position:fixed;left:0;top:0;width:100%;height:calc(100vh - var(--navh,58px));height:calc(100dvh - var(--navh,58px));border:0;background:var(--bg);z-index:6}
+.slnav{display:flex;align-items:center;gap:6px;margin:6px 0}
+.slrow{display:flex;gap:12px;align-items:center;margin-top:8px}
+.sllist{flex:1}
+.slr{display:flex;justify-content:space-between;padding:9px 6px;border-bottom:1px solid var(--line);font-size:15px}
+.slr b{font-size:16px}
+.slr.cur{background:color-mix(in srgb,var(--brand) 10%,transparent);border-radius:8px}
+.slr.nx{background:var(--brand);color:var(--on-brand);border-radius:8px;border-bottom-color:transparent}
+.slclkw{width:104px;color:var(--ink)}
+.slclk{width:100%;height:auto;display:block}
+@media(max-width:360px){.slrow{flex-direction:column}}
 nav.tabs button.on{color:var(--brand);font-weight:700}
 .view{display:none}.view.on{display:block}
 .sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;z-index:9}
@@ -236,6 +246,7 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
   <!-- CALENDAR -->
   <section class="view on" id="v-cal">
     <div class="card banner" id="banner" style="display:none"></div>
+    <a class="card dua-item" id="slCard" href="#sl"></a>
     <div class="card ashara" id="ashara"></div>
     <div class="card">
       <div class="monthbar">
@@ -360,6 +371,19 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
   <!-- ZIYARAT (embedded page, loaded on first open) -->
   <section class="view" id="v-zy"><iframe id="zyFrame" title="Ziyarat" data-src="ziyarat.html?embed=1"></iframe></section>
 
+  <!-- SALAAT TIMINGS -->
+  <section class="view" id="v-sl">
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:8px"><button class="btn ghost" id="slBack" aria-label="Back">‹</button><h3 style="flex:1;margin:0">🕌 <span data-i18n="slH"></span></h3></div>
+      <p id="slLoc" class="muted" style="margin:8px 0 2px"></p>
+      <div class="slnav"><button class="btn ghost" id="slPrev" aria-label="Previous day">‹</button><div id="slDate" style="flex:1;text-align:center"></div><button class="btn ghost" id="slNextD" aria-label="Next day">›</button></div>
+      <div style="text-align:center"><button class="btn ghost" id="slToday" hidden data-i18n="today"></button></div>
+      <div class="slrow"><div id="slList" class="sllist"></div><div><div id="slClk" class="slclkw"></div><p class="muted" id="slLeft" style="font-size:12px;text-align:center;margin:4px 0 0"></p></div></div>
+      <p class="muted" style="font-size:12px" data-i18n="timesNote"></p>
+      <div class="row" style="margin-top:6px"><button class="btn ghost" id="slSet" data-i18n="slLoc"></button></div>
+    </div>
+  </section>
+
   <!-- SETTINGS -->
   <section class="view" id="v-set">
     <div class="card">
@@ -454,8 +478,8 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=117"></script>
-<script src="i18n.js?v=117"></script>
+<script src="hijri.js?v=118"></script>
+<script src="i18n.js?v=118"></script>
 <script>
 "use strict";
 
@@ -654,18 +678,52 @@ function renderTodayMq() {
   $("todayMq").innerHTML = `<h3>${t("todayMq")}</h3>${mqHTML(miqaatsFor(todayH.y, todayH.m, todayH.d))}`;
 }
 
-function renderTimes() {
-  const s = sunTimes(now.getFullYear(), now.getMonth(), now.getDate(), loc.lat, loc.lng);
-  const t2 = new Date(now); t2.setDate(t2.getDate() + 1);
+function salatList(d0) {   // the 8 timings of the local date d0, as on aajnodin
+  const s = sunTimes(d0.getFullYear(), d0.getMonth(), d0.getDate(), loc.lat, loc.lng);
+  const t2 = new Date(d0); t2.setDate(t2.getDate() + 1);
   const s2 = sunTimes(t2.getFullYear(), t2.getMonth(), t2.getDate(), loc.lat, loc.lng);
   const nisf = new Date((s.sunset.getTime() + s2.sunrise.getTime()) / 2);
-  const fajr = new Date(s.sunrise.getTime() - 60 * 6e4);
   const zEnd = new Date(s.noon.getTime() + (s.sunset - s.noon) / 3), aEnd = new Date(s.noon.getTime() + (s.sunset - s.noon) * 2 / 3);
-  const fe = new Date(s.sunrise.getTime() + 60e3), fj = new Date(fe.getTime() - 65 * 6e4), sih = new Date(fj.getTime() - 10 * 6e4);   // Fajr / Sihori as on aajnodin (Fajr ≈ sunrise − 65 min, Sihori = Fajr − 10 min)
-  const items = [["tSihori", sih], ["tFajr", fj], ["tFajrEnd", fe], ["tZawaal", s.noon], ["tZohrEnd", zEnd], ["tAsrEnd", aEnd], ["tMaghrib", s.sunset], ["tIshaEnd", nisf]];
+  const fe = new Date(s.sunrise.getTime() + 60e3), fj = new Date(fe.getTime() - 65 * 6e4), sih = new Date(fj.getTime() - 10 * 6e4);   // Fajr ≈ sunrise − 65 min, Sihori = Fajr − 10 min
+  return [["tSihori", sih], ["tFajr", fj], ["tFajrEnd", fe], ["tZawaal", s.noon], ["tZohrEnd", zEnd], ["tAsrEnd", aEnd], ["tMaghrib", s.sunset], ["tIshaEnd", nisf]];
+}
+function renderTimes() {
+  const items = salatList(new Date());
   $("times").innerHTML = items.map(([k, v]) => `<div><small>${t(k)}</small><b>${fmtT(v)}</b></div>`).join("");
   $("locName").textContent = locLabel();
   $("locCur").textContent = t("locNow", { name: locLabel(), lat: loc.lat.toFixed(4), lng: loc.lng.toFixed(4) });
+  renderSalatCard();
+}
+
+/* ---------- Salaat timings: home card + dedicated page ---------- */
+let slOff = 0;   // days from today shown on the page
+function nextSalat() {   // [key, Date] of the next timing from now (tomorrow's Sihori after Isha end)
+  const n = new Date(), tm = new Date(n); tm.setDate(tm.getDate() + 1);
+  const all = salatList(n).concat([salatList(tm)[0]]);
+  return all.find(x => x[1] > n) || all[all.length - 1];
+}
+const fmtLeft = ms => { const m = Math.max(0, Math.round(ms / 6e4)), h = Math.floor(m / 60); return h ? `${h}h ${m % 60}m` : `${m}m`; };
+function renderSalatCard() {
+  const c = $("slCard"); if (!c) return;
+  const [k, d] = nextSalat();
+  c.innerHTML = `<div class="dua-ic">🕌</div><div style="flex:1"><b>${t("slH")}</b><div class="muted">${t("slNext")}: ${t(k)} · <b>${fmtT(d)}</b> · ${t("slIn", { t: fmtLeft(d - new Date()) })}</div></div><div class="dua-go">›</div>`;
+}
+function clockSvg(d) {
+  const h = (d.getHours() % 12) + d.getMinutes() / 60, m = d.getMinutes() + d.getSeconds() / 60, sec = d.getSeconds();
+  const tick = Array.from({ length: 12 }, (_, i) => `<line x1="50" y1="6" x2="50" y2="${i % 3 ? 10 : 13}" transform="rotate(${i * 30} 50 50)" stroke="currentColor" stroke-width="${i % 3 ? 1.5 : 3}"/>`).join("");
+  const hand = (deg, len, w) => `<line x1="50" y1="50" x2="50" y2="${50 - len}" transform="rotate(${deg} 50 50)" stroke="currentColor" stroke-width="${w}" stroke-linecap="round"/>`;
+  return `<svg viewBox="0 0 100 100" class="slclk"><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="2" opacity=".5"/>${tick}${hand(h * 30, 24, 4)}${hand(m * 6, 34, 3)}<g transform="rotate(${sec * 6} 50 50)"><line x1="50" y1="56" x2="50" y2="14" stroke="#c0392b" stroke-width="1.4"/></g><circle cx="50" cy="50" r="3" fill="#c0392b"/></svg>`;
+}
+function renderSalatPage() {
+  const n = new Date(), d0 = new Date(n.getFullYear(), n.getMonth(), n.getDate() + slOff);
+  const items = salatList(d0), ajd = H.gToAJD(d0.getFullYear(), d0.getMonth(), d0.getDate()), h = H.fromAJD(ajd);
+  const nx = slOff === 0 ? items.findIndex(x => x[1] > n) : -1, cur = slOff === 0 ? (nx < 0 ? items.length - 1 : nx - 1) : -1;
+  $("slDate").innerHTML = `<b>${wd(ajd)}, ${d0.getDate()} ${L.gShort[d0.getMonth()]} ${d0.getFullYear()}</b><br><span class="muted">${h.d} ${L.hijriMonths[h.m]} ${h.y}${L.hSuffix}</span>`;
+  $("slLoc").textContent = "📍 " + locLabel();
+  $("slList").innerHTML = items.map(([k, v], i) => `<div class="slr${i === nx ? " nx" : ""}${i === cur ? " cur" : ""}"><span>${t(k)}</span><b>${fmtT(v)}</b></div>`).join("");
+  $("slClk").innerHTML = clockSvg(n);
+  $("slToday").hidden = slOff === 0;
+  $("slLeft").textContent = nx >= 0 ? `${t("slNext")}: ${t(items[nx][0])} ${t("slIn", { t: fmtLeft(items[nx][1] - n) })}` : "";
 }
 
 /* ---------- Ghadi (planetary hours, as on aajnodin.com / Busaheba Sahifa) ---------- */
@@ -854,9 +912,17 @@ function switchView(v) {
   document.querySelectorAll(".view").forEach(s => s.classList.toggle("on", s.id === "v-" + v));
   document.querySelectorAll("nav.tabs button").forEach(b => b.classList.toggle("on", b.dataset.v === v));
   if (v === "up") renderUpcoming();
+  if (v === "sl") { slOff = 0; renderSalatPage(); }
   if (v === "zy") { const f = $("zyFrame"); document.documentElement.style.setProperty("--navh", document.querySelector("nav.tabs").offsetHeight + "px"); if (!f.src) f.src = f.dataset.src; }
   window.scrollTo(0, 0);
 }
+$("slCard").onclick = e => { e.preventDefault(); switchView("sl"); };
+$("slBack").onclick = () => switchView("cal");
+$("slPrev").onclick = () => { slOff--; renderSalatPage(); };
+$("slNextD").onclick = () => { slOff++; renderSalatPage(); };
+$("slToday").onclick = () => { slOff = 0; renderSalatPage(); };
+$("slSet").onclick = () => switchView("set");
+setInterval(() => { if (document.visibilityState === "visible") { if (curView === "sl") renderSalatPage(); else renderSalatCard(); } }, 1000);
 $("prev").onclick = () => shiftMonth(-1);
 $("next").onclick = () => shiftMonth(1);
 $("goToday").onclick = () => { view = { y: todayH.y, m: todayH.m }; selAJD = null; renderCal(); };
@@ -937,10 +1003,11 @@ const vName = n => `1.${Math.floor(n / 10)}.${n % 10}`;   // shown to people (84
     });
   });
 })();
-const APP_V = 117, APP_VERSION = vName(APP_V) + " (2026-11-12)";
+const APP_V = 118, APP_VERSION = vName(APP_V) + " (2026-11-12)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");
+else if (location.hash === "#sl") switchView("sl");
 else if (location.hash === "#zy") switchView("zy");
 fetch("miqaats.json").then(r => r.json()).then(d => { MIQ = d; miqLoaded = true; renderAll(); }).catch(() => { $("todayMq").innerHTML = `<p class="muted">${t("loadFail")}</p>`; });
 // refresh "today" when app resumes on a new day
