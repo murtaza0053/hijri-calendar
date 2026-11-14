@@ -1,6 +1,19 @@
 {
- "v": 122,
+ "v": 123,
  "history": [
+  {
+   "v": 123,
+   "date": "2026-11-14",
+   "en": [
+    "Tasbeeh vibration fix for iPhone (haptic now fires from the touch event), a new “Tick sound” option that works on every phone, and a Test button that tells you what your phone supports."
+   ],
+   "gu": [
+    "iPhone માટે તસ્બીહ વાઇબ્રેશન ફિક્સ (હેપ્ટિક હવે ટચ ઇવેન્ટમાંથી ચાલે છે), દરેક ફોન પર ચાલતો નવો “ટિક અવાજ” વિકલ્પ, અને ટેસ્ટ બટન જે બતાવે છે કે તમારો ફોન શું સપોર્ટ કરે છે."
+   ],
+   "hi": [
+    "iPhone ke liye tasbeeh vibration fix (haptic ab touch event se chalta hai), har phone par chalne wala naya “Tick sound” option, aur Test button jo batata hai ki aapka phone kya support karta hai."
+   ]
+  },
   {
    "v": 122,
    "date": "2026-11-14",

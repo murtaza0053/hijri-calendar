@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=122">
-<script src="theme-init.js?v=122"></script>
+<link rel="stylesheet" href="themes.css?v=123">
+<script src="theme-init.js?v=123"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -442,7 +442,9 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
     <div class="card" id="vibCard">
       <div style="display:flex;align-items:center;gap:10px"><span class="ri" style="font-size:22px">📳</span><div style="flex:1"><b data-i18n="vibH"></b><div class="muted" style="font-size:13px" data-i18n="vibD"></div></div></div>
       <div class="langset" id="vibSet" style="margin-top:10px"></div>
-      <div class="row" style="margin-top:8px"><button class="btn ghost" id="vibTest" data-i18n="vibTest"></button></div>
+      <label class="remrow" style="border-top:0;padding-left:0"><input type="checkbox" id="vibSnd"><span class="rt"><b data-i18n="vibSnd"></b><br><span class="muted" data-i18n="vibSndD"></span></span></label>
+      <div class="row" style="margin-top:4px"><button class="btn ghost" id="vibTest" data-i18n="vibTest"></button></div>
+      <p class="muted" style="font-size:12px;margin:6px 0 0" id="vibStat"></p>
       <p class="muted" style="font-size:12px;margin:6px 0 0" data-i18n="vibNote"></p>
     </div>
     <div class="card" id="remCard">
@@ -524,10 +526,10 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=122"></script>
-<script src="i18n.js?v=122"></script>
-<script src="cities.js?v=122"></script>
-<script src="haptic.js?v=122"></script>
+<script src="hijri.js?v=123"></script>
+<script src="i18n.js?v=123"></script>
+<script src="cities.js?v=123"></script>
+<script src="haptic.js?v=123"></script>
 <script>
 "use strict";
 
@@ -877,7 +879,8 @@ $("remInfoBtn").onclick = () => { const o = $("remInfo").hidden; $("remInfo").hi
   const box = $("vibSet"), L2 = [["off", "vibOff"], ["light", "vibLight"], ["medium", "vibMed"], ["strong", "vibStrong"]];
   const draw = () => { const m = haptic.mode(); box.innerHTML = L2.map(([k, n]) => `<button data-m="${k}" class="${k === m ? "on" : ""}">${t(n)}</button>`).join(""); };
   box.onclick = e => { const b = e.target.closest("[data-m]"); if (!b) return; haptic.set(b.dataset.m); draw(); haptic("tap"); };
-  $("vibTest").onclick = () => { haptic("tap"); setTimeout(() => haptic("done"), 450); };
+  $("vibSnd").checked = haptic.sound(); $("vibSnd").onchange = e => { haptic.setSound(e.target.checked); haptic("tap"); };
+  $("vibTest").onclick = () => { haptic("tap"); $("vibStat").textContent = haptic.api() ? t("vibApi") : t("vibNoApi"); setTimeout(() => haptic("done"), 450); };
   draw(); window.drawVib = draw;
 })();
 $("wakeChk").checked = store.get("wake", true) !== false;
@@ -1094,7 +1097,7 @@ const vName = n => `1.${Math.floor(n / 10)}.${n % 10}`;   // shown to people (84
     });
   });
 })();
-const APP_V = 122, APP_VERSION = vName(APP_V) + " (2026-11-12)";
+const APP_V = 123, APP_VERSION = vName(APP_V) + " (2026-11-12)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");
