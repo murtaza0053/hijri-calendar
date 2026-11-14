@@ -12,8 +12,8 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="icon" href="../icons/icon-192.png">
-<link rel="stylesheet" href="../themes.css?v=121">
-<script src="../theme-init.js?v=121"></script>
+<link rel="stylesheet" href="../themes.css?v=122">
+<script src="../theme-init.js?v=122"></script>
 <style>
 @font-face{font-family:"AmiriQ";src:url(fonts/AmiriQuran-arabic.woff2) format("woff2");font-display:swap}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -81,8 +81,9 @@ ol.deeds li small{display:block;color:var(--muted);margin-top:2px}
   <div id="list"></div>
   <div id="none">Nothing found</div>
 </main>
-<script src="../i18n.js?v=121"></script>
-<script src="../wakelock.js?v=121"></script>
+<script src="../i18n.js?v=122"></script>
+<script src="../wakelock.js?v=122"></script>
+<script src="../haptic.js?v=122"></script>
 <script>
 "use strict";
 const $ = id => document.getElementById(id);
@@ -251,7 +252,7 @@ $("list").onclick = e => {
   const tp = e.target.closest("[data-tap]");
   if (tp) {
     const id = tp.dataset.tap, x = T.find(y => y.id === id), n = (counts[id] || 0) + 1; counts[id] = n; saveCounts();
-    if (navigator.vibrate) navigator.vibrate(n === x.c ? [60, 40, 60] : 12);
+    haptic(n === x.c ? "done" : "tap");
     const card = tp.closest(".card"); card.querySelector(".cb").innerHTML = body(x);
     const cnt = card.querySelector(".cnt"); if (cnt) cnt.classList.toggle("d", n >= x.c);
     return;

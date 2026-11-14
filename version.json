@@ -1,6 +1,19 @@
 {
- "v": 121,
+ "v": 122,
  "history": [
+  {
+   "v": 122,
+   "date": "2026-11-14",
+   "en": [
+    "Vibration on every tasbeeh count (Tasabeeh e Barakat and the Tasbeeh counter), with a new Settings option: Off / Light / Medium / Strong and a test button."
+   ],
+   "gu": [
+    "દરેક તસ્બીહ ગણતરી પર વાઇબ્રેશન (તસાબીહ બરકાત અને તસ્બીહ કાઉન્ટર), સેટિંગ્સમાં નવો વિકલ્પ: બંધ / હળવું / મધ્યમ / તેજ અને ટેસ્ટ બટન."
+   ],
+   "hi": [
+    "Har tasbeeh gintee par vibration (Tasabeeh e Barakat aur Tasbeeh counter), Settings me naya option: Off / Halka / Medium / Tez aur test button."
+   ]
+  },
   {
    "v": 121,
    "date": "2026-11-14",

@@ -12,8 +12,8 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="icon" href="../icons/icon-192.png">
-<link rel="stylesheet" href="../themes.css?v=121">
-<script src="../theme-init.js?v=121"></script>
+<link rel="stylesheet" href="../themes.css?v=122">
+<script src="../theme-init.js?v=122"></script>
 <style>
 @font-face{font-family:"QNaskh";src:url(fonts/NotoNaskhArabic-arabic.woff2) format("woff2");font-weight:400 700;font-display:swap}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
@@ -65,8 +65,9 @@ header b{flex:1;font-size:16px}
   <div class="hint" id="hint"></div>
 </div>
 <div id="foot"><button id="undo">−1</button><span id="total"></span><button id="reset"></button></div>
-<script src="../i18n.js?v=121"></script>
-<script src="../wakelock.js?v=121"></script>
+<script src="../i18n.js?v=122"></script>
+<script src="../haptic.js?v=122"></script>
+<script src="../wakelock.js?v=122"></script>
 <script>
 "use strict";
 const $ = id => document.getElementById(id);
@@ -113,7 +114,7 @@ function render(pulse) {
   $("reset").textContent = t("tReset");
   if (pulse) { const r = document.querySelector(".ring"); r.classList.remove("pulse"); void r.offsetWidth; r.classList.add("pulse"); }
 }
-const buzz = ms => { try { navigator.vibrate && navigator.vibrate(ms); } catch {} };
+const buzz = ms => { haptic(Array.isArray(ms) ? "done" : "tap"); };
 function inc() {
   const S = steps();
   if (st.step >= S.length) { st.step = 0; st.c = 0; st.round++; }  // tap after completion starts the next round
