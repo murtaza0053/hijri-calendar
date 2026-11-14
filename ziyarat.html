@@ -12,8 +12,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="icon" href="icons/icon-192.png">
-<link rel="stylesheet" href="themes.css?v=124">
-<script src="theme-init.js?v=124"></script>
+<link rel="stylesheet" href="themes.css?v=125">
+<script src="theme-init.js?v=125"></script>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
@@ -58,6 +58,7 @@ main{max-width:720px;margin:0 auto;padding:12px 12px calc(env(safe-area-inset-bo
 .city .mk{margin-right:4px}
 html.emb header .hrow a{display:none}
 html.emb header{padding-top:10px}
+@media (min-width:700px){header{padding-left:max(10px,calc((100% - 720px)/2 + 10px));padding-right:max(10px,calc((100% - 720px)/2 + 10px))}}
 </style>
 </head>
 <body>
@@ -72,8 +73,8 @@ html.emb header{padding-top:10px}
   <p class="note" id="note"></p>
 </main>
 <script>if (/[?&]embed=1/.test(location.search)) document.documentElement.classList.add("emb");</script>
-<script src="i18n.js?v=124"></script>
-<script src="wakelock.js?v=124"></script>
+<script src="i18n.js?v=125"></script>
+<script src="wakelock.js?v=125"></script>
 <script>
 "use strict";
 const $ = id => document.getElementById(id);

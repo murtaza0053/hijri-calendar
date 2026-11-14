@@ -12,8 +12,8 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="icon" href="../icons/icon-192.png">
-<link rel="stylesheet" href="../themes.css?v=124">
-<script src="../theme-init.js?v=124"></script>
+<link rel="stylesheet" href="../themes.css?v=125">
+<script src="../theme-init.js?v=125"></script>
 <style>
 @font-face{font-family:"AmiriQ";src:url(fonts/AmiriQuran-arabic.woff2) format("woff2");font-display:swap}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -69,6 +69,7 @@ ol.deeds li small{display:block;color:var(--muted);margin-top:2px}
 .tap.done .fg{stroke:var(--gold,#c9962b)}
 .dn{text-align:center;color:var(--gold,#c9962b);font-weight:700;margin-top:8px;min-height:20px}
 #none{text-align:center;color:var(--muted);padding:40px 10px;display:none}
+@media (min-width:700px){header{padding-left:max(12px,calc((100% - 640px)/2 + 12px));padding-right:max(12px,calc((100% - 640px)/2 + 12px))}}
 </style>
 </head>
 <body>
@@ -81,9 +82,9 @@ ol.deeds li small{display:block;color:var(--muted);margin-top:2px}
   <div id="list"></div>
   <div id="none">Nothing found</div>
 </main>
-<script src="../i18n.js?v=124"></script>
-<script src="../wakelock.js?v=124"></script>
-<script src="../haptic.js?v=124"></script>
+<script src="../i18n.js?v=125"></script>
+<script src="../wakelock.js?v=125"></script>
+<script src="../haptic.js?v=125"></script>
 <script>
 "use strict";
 const $ = id => document.getElementById(id);

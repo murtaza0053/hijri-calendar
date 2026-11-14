@@ -1,6 +1,19 @@
 {
- "v": 124,
+ "v": 125,
  "history": [
+  {
+   "v": 125,
+   "date": "2026-11-14",
+   "en": [
+    "Web version: on tablets and computers the app now uses the wider screen (sidebar navigation, two-column Today and Settings screens, two-column Dua list, centred pop-ups), plus mouse hover, keyboard focus, Esc to close and ← → to change month. Phone layout is unchanged."
+   ],
+   "gu": [
+    "વેબ વર્ઝન: ટેબલેટ અને કમ્પ્યુટર પર એપ હવે પહોળી સ્ક્રીનનો ઉપયોગ કરે છે (સાઇડબાર નેવિગેશન, બે-કૉલમ આજ અને સેટિંગ્સ, બે-કૉલમ દુઆ યાદી, વચ્ચે પોપ-અપ), સાથે માઉસ હોવર, કીબોર્ડ ફોકસ, બંધ કરવા Esc અને મહિનો બદલવા ← →. ફોનનું લેઆઉટ બદલાયું નથી."
+   ],
+   "hi": [
+    "Web version: tablet aur computer par app ab badi screen ka use karta hai (sidebar navigation, do-column Today aur Settings, do-column Dua list, beech me pop-up), saath me mouse hover, keyboard focus, band karne ke liye Esc aur mahina badalne ke liye ← →. Phone ka layout wahi hai."
+   ]
+  },
   {
    "v": 124,
    "date": "2026-11-14",
