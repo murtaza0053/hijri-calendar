@@ -1,6 +1,19 @@
 {
- "v": 118,
+ "v": 119,
  "history": [
+  {
+   "v": 119,
+   "date": "2026-11-14",
+   "en": [
+    "Salaat timings redesigned: countdown ring to the next timing, clean list with icons and Now/Next markers. You can now choose a city from a list of 175 cities worldwide (also in Settings → Location); times follow that city's time zone."
+   ],
+   "gu": [
+    "સલાત સમયની નવી ડિઝાઇન: આગલા સમય સુધીનો કાઉન્ટડાઉન રિંગ, આઇકન અને હવે/આગળ માર્ક સાથે સરળ યાદી. હવે દુનિયાના 175 શહેરોની યાદીમાંથી શહેર પસંદ કરી શકો છો (સેટિંગ્સ → સ્થાનમાં પણ); સમય તે શહેરના ટાઇમ ઝોન મુજબ."
+   ],
+   "hi": [
+    "Salaat timings ka naya design: agle timing tak countdown ring, icons aur Abhi/Agla markers ke saath saaf list. Ab duniya ke 175 shehron ki list se shehar chun sakte ho (Settings → Location me bhi); timings us shehar ke time zone ke hisaab se."
+   ]
+  },
   {
    "v": 118,
    "date": "2026-11-14",
