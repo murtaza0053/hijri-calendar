@@ -1,6 +1,19 @@
 {
- "v": 116,
+ "v": 117,
  "history": [
+  {
+   "v": 117,
+   "date": "2026-11-14",
+   "en": [
+    "Today's timings now match aajnodin: Sihori, Fajr, Fajr end, Zawaal, Zohr end, Asr end, Maghrib, Isha end (Nisful Layl)."
+   ],
+   "gu": [
+    "આજના સમય હવે aajnodin જેવા: સિહોરી, ફજર, ફજર અંત, ઝવાલ, ઝોહર અંત, અસર અંત, મગરિબ, ઇશા અંત (નિસ્ફુલ લૈલ)."
+   ],
+   "hi": [
+    "Aaj ke timings ab aajnodin jaise: Sihori, Fajr, Fajr end, Zawaal, Zohr end, Asr end, Maghrib, Isha end (Nisful Layl)."
+   ]
+  },
   {
    "v": 116,
    "date": "2026-11-14",
