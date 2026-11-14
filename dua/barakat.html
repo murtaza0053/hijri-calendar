@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tasabeeh e Barakat</title>
+<meta name="theme-color" content="#6b1824">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mumin">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<link rel="icon" href="../icons/icon-192.png">
+<link rel="stylesheet" href="../themes.css?v=121">
+<script src="../theme-init.js?v=121"></script>
+<style>
+@font-face{font-family:"AmiriQ";src:url(fonts/AmiriQuran-arabic.woff2) format("woff2");font-display:swap}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:0;z-index:5;background:linear-gradient(160deg,var(--hdr),color-mix(in srgb,var(--hdr) 70%,#000));color:var(--hdr-ink);padding:calc(env(safe-area-inset-top) + 8px) 12px 10px;box-shadow:0 2px 12px rgba(0,0,0,.18)}
+.hrow{display:flex;align-items:center;gap:6px}
+header a{color:inherit;text-decoration:none;font-size:26px;width:40px;height:40px;display:grid;place-items:center}
+header b{flex:1;font-size:18px;letter-spacing:.2px}
+#q{width:100%;margin-top:8px;font:inherit;font-size:16px;border:0;border-radius:14px;padding:11px 14px;background:var(--card);color:var(--ink);box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:none;border:0;border-radius:20px;padding:7px 14px;font:inherit;font-size:13px;font-weight:600;background:var(--hdr-chip);color:var(--hdr-ink);white-space:nowrap}
+.chips button.on{background:#fff;color:var(--hdr-on,var(--brand));box-shadow:0 2px 8px rgba(0,0,0,.2)}
+main{max-width:640px;margin:0 auto;padding:14px 12px calc(env(safe-area-inset-bottom) + 40px)}
+.sec{margin:18px 6px 8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.card{background:var(--card);border-radius:20px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 6px 18px rgba(0,0,0,.05);overflow:hidden;border:1px solid var(--line)}
+.ch{display:flex;align-items:center;gap:12px;padding:13px 14px;cursor:pointer}
+.ic{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:22px;background:color-mix(in srgb,var(--brand) 12%,transparent)}
+.tt{flex:1;min-width:0}
+.tt b{display:block;font-size:15.5px;line-height:1.25}
+.tt small{display:block;color:var(--muted);font-size:12px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cnt{flex:none;min-width:46px;text-align:center;padding:5px 10px;border-radius:12px;background:var(--brand);color:var(--on-brand);font-weight:700;font-size:13px}
+.cnt.d{background:color-mix(in srgb,var(--gold,#c9962b) 90%,#000);}
+.cnt.i{background:var(--chip);color:var(--muted)}
+.chev{flex:none;color:var(--muted);font-size:20px;transition:transform .2s}
+.card.open .chev{transform:rotate(90deg)}
+.cb{display:none;padding:2px 16px 18px;border-top:1px dashed var(--line)}
+.card.open .cb{display:block}
+.ar{font-family:IndoPak,AmiriQ,"Noto Naskh Arabic","Geeza Pro",serif;direction:rtl;text-align:center;font-size:30px;line-height:2.15;color:var(--ink);margin:14px 0 6px;-webkit-text-stroke:.25px currentColor;word-spacing:.05em}
+.ar.sm{font-size:25px}
+.tr{font-style:italic;color:var(--muted);text-align:center;font-size:14px;line-height:1.5;margin:4px 6px 10px}
+.nt{background:color-mix(in srgb,var(--brand) 7%,transparent);border-radius:12px;padding:9px 12px;font-size:13.5px;margin:8px 0;line-height:1.45}
+.nt b{color:var(--brand)}
+.days{margin:10px 0}
+.days div{display:flex;align-items:center;gap:10px;padding:6px 10px;border-radius:12px}
+.days div.today{background:color-mix(in srgb,var(--brand) 14%,transparent);box-shadow:inset 0 0 0 1.5px var(--brand)}
+.days span{flex:none;width:68px;font-size:12.5px;font-weight:700;color:var(--muted)}
+.days i{flex:1;font-style:normal;font-family:IndoPak,AmiriQ,serif;direction:rtl;text-align:center;font-size:23px;line-height:1.9;-webkit-text-stroke:.2px currentColor}
+ol.deeds{margin:10px 0 0;padding:0;list-style:none;counter-reset:d}
+ol.deeds li{counter-increment:d;position:relative;padding:8px 8px 8px 44px;margin:6px 0;border-radius:14px;background:color-mix(in srgb,var(--brand) 6%,transparent);font-size:14px}
+ol.deeds li::before{content:counter(d);position:absolute;left:10px;top:8px;width:26px;height:26px;border-radius:50%;background:var(--brand);color:var(--on-brand);display:grid;place-items:center;font-weight:700;font-size:13px}
+ol.deeds li small{display:block;color:var(--muted);margin-top:2px}
+.ctr{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:14px}
+.ctr button.rs{border:0;background:var(--chip);color:var(--ink);width:44px;height:44px;border-radius:50%;font-size:18px}
+.tap{position:relative;width:124px;height:124px;border:0;background:none;padding:0;touch-action:manipulation;color:var(--ink)}
+.tap svg{width:100%;height:100%;transform:rotate(-90deg)}
+.tap .bg{fill:color-mix(in srgb,var(--brand) 6%,var(--card));stroke:var(--line);stroke-width:8}
+.tap .fg{fill:none;stroke:var(--brand);stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset .12s}
+.tap .n{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1}
+.tap .n b{font-size:34px;font-variant-numeric:tabular-nums}
+.tap .n span{font-size:12px;color:var(--muted)}
+.tap:active{transform:scale(.97)}
+.tap.done .fg{stroke:var(--gold,#c9962b)}
+.dn{text-align:center;color:var(--gold,#c9962b);font-weight:700;margin-top:8px;min-height:20px}
+#none{text-align:center;color:var(--muted);padding:40px 10px;display:none}
+</style>
+</head>
+<body>
+<header>
+  <div class="hrow"><a href="../#dua" aria-label="Back">‹</a><b>📿 Tasabeeh e Barakat</b></div>
+  <input id="q" type="search" placeholder="Search — rozi, fever, travel, Allaho…" autocomplete="off">
+  <div class="chips" id="chips"></div>
+</header>
+<main>
+  <div id="list"></div>
+  <div id="none">Nothing found</div>
+</main>
+<script src="../i18n.js?v=121"></script>
+<script src="../wakelock.js?v=121"></script>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const ls = { get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
+
+const CATS = [["all", "All"], ["rozi", "Rozi"], ["health", "Health"], ["mind", "Mind & heart"], ["protect", "Protection"], ["daily", "Daily"], ["travel", "Travel"]];
+
+/* Tasabeeh e Barakat (pocket booklet) — typed from the booklet's pages. c = count to recite (0 = no counter). */
+const T = [
+ // ---- Rozi
+ { id: "rizq", cat: "rozi", ic: "🌅", t: "Rizq with dignity", c: 110, note: "Recite after Fajr namaz, before sunrise.",
+   ar: "اَللّٰهُ لَطِيفٌ بِعِبَادِهٖ يَرْزُقُ مَنْ يَّشَآءُ وَهُوَ الْقَوِيُّ الْعَزِيزُ", tr: "Allaho Latifun Be Ibadehi Yarzoko Man Yashao Vahoval Qaviyul Azeez" },
+ { id: "rozi100", cat: "rozi", ic: "💰", t: "Daily for Rozi", c: 100, note: "Recite 100 times daily.",
+   ar: "يَا اَللّٰهُ يَا فَتَّاحُ يَا وَهَّابُ يَا قَادِرُ يَا رَزَّاقُ يَا غَنِيُّ يَا عَزِيزُ يَا اَللّٰهُ", tr: "Ya Allaho Ya Fattaho Ya Wahhabo Ya Qadiro Ya Raaziqo Ya Ganiyyo Ya Azizo Ya Allah" },
+ { id: "rozidoor", cat: "rozi", ic: "🚪", t: "Open the doors of livelihood", c: 110, note: "To open doors of earning livelihood (Rozi). Recite with faith.",
+   ar: "وَمَنْ يَّتَّقِ اللّٰهَ يَجْعَلْ لَّهٗ مَخْرَجًا ۙ وَّيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ ؕ وَمَنْ يَّتَوَكَّلْ عَلَى اللّٰهِ فَهُوَ حَسْبُهٗ",
+   tr: "Waman Yattaqillaha Yaj-al Lahu Makhrajan Wayarzokohu Min Hayso La Yahtasib Waman Tawakkal Alallaho Fahowa Hasbohu" },
+ { id: "razzaq", cat: "rozi", ic: "🤲", t: "Wide sustenance", c: 110, note: "Urdu line on the page: for opening the door of Rozi and getting wide sustenance. (The English line printed in the booklet repeats “for pain in the joints”.)",
+   ar: "اِنَّ اللّٰهَ هُوَ الرَّزَّاقُ ذُو الْقُوَّةِ الْمَتِينُ", tr: "Inallaha Hovarrazzako Zul Quwwatil Mateen" },
+ { id: "debt", cat: "rozi", ic: "🧾", t: "Paying off debt", c: 110, note: "Recite after Isha namaaz. Imam Husain (AS) prescribed this tasbeeh for paying debt.",
+   ar: "يَا اَللّٰهُ يَا اَللّٰهُ يَا اَللّٰهُ بَلٰى وَاللّٰهُ اَنْتَ اللّٰهُ لَا اِلٰهَ اِلَّا اَنْتَ يَا حَيُّ يَا قَيُّومُ", tr: "Ya Allaho - Ya Allaho - Ya Allaho Bala Wallaho Antallaho La Ilaha Illa Anta Ya Hayyo Ya Kayyum" },
+ { id: "halal", cat: "rozi", ic: "🌿", t: "Halal rizq, free from others’ need", c: 40, note: "Recite 40 times.",
+   ar: "اَللّٰهُمَّ عَفِّفْنِي بِحَلَالِكَ عَنْ حَرَامِكَ وَاَغْنِنِي بِفَضْلِكَ عَنْ فَضْلِ مَنْ سِوَاكَ", tr: "Allahumma Affifni Behalaleka An Harameka Wa Agneni Befadleka An Fazle Man Siwak" },
+ // ---- Health
+ { id: "fever", cat: "health", ic: "🌡️", t: "Relief from fever — Surah Fateha", c: 40, note: "Surah Fateha is called “Ummul Kitab”. Reciting this Surat 40 times brings relief from fever.",
+   ar: "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيمِ ۝ اَلْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِينَ ۝ الرَّحْمٰنِ الرَّحِيمِ ۝ مٰلِكِ يَوْمِ الدِّينِ ۝ اِيَّاكَ نَعْبُدُ وَاِيَّاكَ نَسْتَعِينُ ۝ اِهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ۝ صِرَاطَ الَّذِينَ اَنْعَمْتَ عَلَيْهِمْ ۙ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّآلِّينَ", sm: 1 },
+ { id: "cure", cat: "health", ic: "💊", t: "Cure of illness", c: 1000, note: "Recite after Fajr namaz — 1000 times.",
+   ar: "وَاِذَا مَرِضْتُ فَهُوَ يَشْفِينِ", tr: "Waiza Marizto Fahowa Yashfeen" },
+ { id: "anydis", cat: "health", ic: "🩺", t: "Dua for relief from any disease", c: 0, note: "Recite this dua over the patient (or over water) and blow; Allah grants shifa.", sm: 1,
+   ar: "بِسْمِ اللّٰهِ الشَّافِي بِسْمِ اللّٰهِ الْكَافِي بِسْمِ اللّٰهِ الْمُعَافِي بِسْمِ اللّٰهِ الْوَافِي بِسْمِ اللّٰهِ لَهُ الْاَسْمَآءُ الْحُسْنٰى بِسْمِ اللّٰهِ رَبِّ الْاَرْضِ وَالسَّمَآءِ بِسْمِ اللّٰهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهٖ شَيْءٌ فِي الْاَرْضِ وَلَا فِي السَّمَآءِ وَهُوَ السَّمِيعُ الْعَلِيمُ ۝ سُبْحَانَ اللّٰهِ وَالْحَمْدُ لِلّٰهِ وَلَا اِلٰهَ اِلَّا اللّٰهُ وَاللّٰهُ اَكْبَرُ وَلَا حَوْلَ وَلَا قُوَّةَ اِلَّا بِاللّٰهِ الْعَلِيِّ الْعَظِيمِ ۝ الٓمٓ ۝ الٓمٓصٓ ۝ كٓهٰيٰعٓصٓ ۝ طٰهٰ ۝ طٰسٓ ۝ طٰسٓمٓ ۝ يٰسٓ ۝ حٰمٓ ۝ عٓسٓقٓ ۝ وَصَلَّى اللّٰهُ عَلٰى خَيْرِ خَلْقِهٖ مُحَمَّدٍ وَّاٰلِهِ الطَّاهِرِينَ" },
+ { id: "joints", cat: "health", ic: "🦴", t: "Pain in the joints / rheumatic pains", c: 110, note: "Recite 110 times.",
+   ar: "اِهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ", tr: "Ehdenas Sirat al Mustaqeem" },
+ { id: "head", cat: "health", ic: "🤕", t: "Relief from severe headache", c: 0, note: "Recite as a tasbeeh as much as you can.",
+   ar: "لَا يُصَدَّعُونَ عَنْهَا وَلَا يُنْزِفُونَ", tr: "La Yusaddaunna Anha Wala Yunzefoon" },
+ { id: "child", cat: "health", ic: "👶", t: "To conceive a child", c: 110, note: "For those deprived of children, recite 110 times.",
+   ar: "رَبِّ لَا تَذَرْنِي فَرْدًا وَّاَنْتَ خَيْرُ الْوَارِثِينَ", tr: "Rabbe La Tazarni Fardan Wa Anta Khairul Wareseen" },
+ // ---- Mind & heart
+ { id: "wish", cat: "mind", ic: "✨", t: "Wishes & hopes realised quickly", c: 836, note: "To have your wishes, hopes (ummeed) realised immediately — 836 times.",
+   ar: "اِيَّاكَ نَعْبُدُ وَاِيَّاكَ نَسْتَعِينُ", tr: "Iyyaka Na-abodo Wa Iyyaka Nastaeen" },
+ { id: "anx", cat: "mind", ic: "🕊️", t: "Anxiety & depression", c: 110, note: "Recite in the morning and in the evening — 110 times.",
+   ar: "اِنَّمَآ اَشْكُوا بَثِّي وَحُزْنِي اِلَى اللّٰهِ", tr: "Innama Ashku Bassi Wa Huzni Elallahe" },
+ { id: "worry", cat: "mind", ic: "🧘", t: "Worries & mental equilibrium", c: 110, note: "For mental worry (zehni pareshani), recite 110 times.",
+   ar: "قُلْ رَّبِّ اَعُوْذُ بِكَ مِنْ هَمَزَاتِ الشَّيٰطِينِ ۙ وَاَعُوْذُ بِكَ رَبِّ اَنْ يَّحْضُرُونِ", tr: "Qul Rabbe Auzobeka min Hamazatis Shayateene wa Auzobeka Rabbe an Yahzorun" },
+ { id: "mem", cat: "mind", ic: "🧠", t: "Remembrance & good memory", c: 1062, note: "For good memory, recite 1062 times.",
+   ar: "سَنُقْرِئُكَ فَلَا تَنْسٰى", tr: "Sanukreoka Fala Tansa" },
+ { id: "doubt", cat: "mind", ic: "🪔", t: "When in doubt in faith & beliefs", c: 110, note: "Recite 110 times when in doubt.",
+   ar: "رَبَّنَا ظَلَمْنَآ اَنْفُسَنَا وَاِنْ لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخٰسِرِينَ", tr: "Rabbana Zalamna Anfosana Wainlam Tagfirlana wa Tarhamana Lanakunanna Minal Khasereen" },
+ { id: "lost", cat: "mind", ic: "🔎", t: "To find anything which is lost", c: 110, note: "Recite 110 times.",
+   ar: "هٰذِهٖ بِضَاعَتُنَا رُدَّتْ اِلَيْنَا", tr: "Hazehi Bida-atona Ruddat Elayna" },
+ { id: "peace", cat: "mind", ic: "☮️", t: "Peaceful & serene life", c: 110, note: "Recite 110 times.",
+   ar: "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيمِ", tr: "Bismillahir Rahmanir Rahim" },
+ // ---- Protection
+ { id: "three", cat: "protect", ic: "🛡️", t: "Three things protect you from all evils", c: 0, note: "1) Vuzu  ·  2) Tasbeeh of لَا حَوْلَ وَلَا قُوَّةَ اِلَّا بِاللّٰهِ  ·  3) Tilavat of Quran Majeed.", ar: "" },
+ { id: "prot", cat: "protect", ic: "🔒", t: "Protection from difficulties", c: 110, note: "Recite 110 times.",
+   ar: "اِنْ كُلُّ نَفْسٍ لَّمَّا عَلَيْهَا حَافِظٌ", tr: "In Kullo Nafsin Lamma Alaiha Hafiz" },
+ { id: "magic", cat: "protect", ic: "🧿", t: "Protection against evils, evil eye & magic", c: 0, note: "Recite with faith: Surah Falaq and Surah Naas, together with Surah Ikhlas.", sm: 1,
+   ar: "قُلْ اَعُوْذُ بِرَبِّ النَّاسِ ۝ قُلْ اَعُوْذُ بِرَبِّ الْفَلَقِ" },
+ { id: "hard", cat: "protect", ic: "⛑️", t: "In difficult times", c: 100, note: "In difficult times recite 100 times daily.", sm: 1,
+   ar: "اَللّٰهُمَّ يَا عُدَّتِي عِنْدَ شِدَّتِي وَيَا غَوْثِي عِنْدَ كُرْبَتِي اُحْرُسْنِي بِعَيْنِكَ الَّتِي لَا تَنَامُ وَاكْنُفْنِي بِرَحْمَتِكَ الَّتِي لَا تُرَامُ بِحَقِّ مُحَمَّدٍ وَّعَلِيٍّ وَّفَاطِمَةَ وَّالْحَسَنِ وَالْحُسَيْنِ وَالْاَئِمَّةِ الرَّاشِدِينَ صَلَوَاتُ اللّٰهِ عَلَيْهِمْ اَجْمَعِينَ",
+   tr: "Allahumma Ya Uddati Inda Shiddati Wa Ya Gausi Inda Kurbati Ohrusni Be Aynekallati La Tanaamo Wa Aknifni Be Rahmatekallati La Turaam Behaqqe Mohammedin Wa Aliyin Wa Fatemata Wal Hasana Wal Husaine wal Aimmatir Rashedden Salwatullahe Alaihim Ajmaeen" },
+ { id: "kafa", cat: "protect", ic: "📖", t: "Ayat of sufficiency (Wa kafa billah)", c: 0, note: "Verses of the Quran Majeed from this page of the booklet.", sm: 1,
+   ar: "وَكَفٰى بِاللّٰهِ وَلِيًّا ۝ وَكَفٰى بِاللّٰهِ نَصِيرًا ۝ وَكَفٰى بِاللّٰهِ حَسِيبًا ۝ وَكَفٰى بِاللّٰهِ وَكِيلًا ۝ وَكَفٰى بِرَبِّكَ هَادِيًا وَّنَصِيرًا ۝ وَكَفٰى بِرَبِّكَ بِذُنُوبِ عِبَادِهٖ خَبِيرًا ۢ بَصِيرًا ۝ وَكَفَى اللّٰهُ الْمُؤْمِنِينَ الْقِتَالَ ؕ وَكَانَ اللّٰهُ قَوِيًّا عَزِيزًا ۝" },
+ { id: "rain", cat: "protect", ic: "🌧️", t: "Shortage of rain", c: 110, note: "Recite 110 times. When you see the new moon, recite Surat us Shams.", sm: 1,
+   ar: "وَهُوَ الَّذِي يُنَزِّلُ الْغَيْثَ مِنْ بَعْدِ مَا قَنَطُوْا وَيَنْشُرُ رَحْمَتَهٗ ؕ وَهُوَ الْوَلِيُّ الْحَمِيدُ", tr: "Wahowallazi Yonazzelul Gaysa Min Baade Ma Kanatu Wayanshoro Rahmatohu Wahowal Waliyul Hameed" },
+ // ---- Daily
+ { id: "wake", cat: "daily", ic: "⏰", t: "Wake up at the proper time", c: 0, note: "Recite before going to sleep, and say the hour you want to wake at in place of “kaza wa kaza”.", sm: 1,
+   ar: "اَللّٰهُمَّ لَا تُؤْمِنِّي مَكْرَكَ وَلَا تُنْسِنِي ذِكْرَكَ وَلَا تَجْعَلْنِي مِنَ الْقَوْمِ الْغَافِلِينَ اَقُومُ اِنْ شَآءَ اللّٰهُ تَعَالٰى سَاعَةً (كَذَا وَكَذَا)",
+   tr: "Allahumma La Tuminni Makraka Wala Tunseni Zikraka Wala Taja-alni Minal Qaumil Gafeleen Aqumo Insha Allaho Ta-ala Sa-at (Kaza Wa Kaza)" },
+ { id: "week", cat: "daily", ic: "📅", t: "Tasbih of seven days — Syedna Moayyed-Fid-Din", c: 100, note: "Recite 100 times — the tasbih of the day.", week: 1 },
+ { id: "five", cat: "daily", ic: "🌙", t: "5 deeds before going to sleep at night", c: 0, note: "Rasulullah (S.A.W.) once said to Maula Ali (A.S.):", deeds: [
+     ["Recite Surah Fateha (Al Hamdo) 4 times.", "The sawab is equal to Sadaqa of 4000 Dinars."],
+     ["Recite Surah Ikhlas (Qul Howallah) 3 times.", "The sawab is equal to reciting the full Quran Majeed."],
+     ["Recite Salawat 3 times with Ikhlas.", "The sawab is equal to paying the cost of Jannat."],
+     ["Recite “Astaghferullah” 10 times.", "The sawab is equal to making “Suleh” between two persons."],
+     ["Recite “Kalematus Shahadat” 4 times with Ikhlas.", "The sawab is equal to performing a Hajj."]] },
+ { id: "water", cat: "daily", ic: "💧", t: "After drinking water", c: 0, note: "Recite after drinking water.", sm: 1,
+   ar: "اَلْحَمْدُ لِلّٰهِ الَّذِي سَقَانِي مَآءً عَذْبًا زُلَالًا بِرَحْمَتِهٖ وَفَضْلِهٖ وَلَمْ يَسْقِنِي مِلْحًا اُجَاجًا بِذُنُوبِي وَاَوْزَارِي بِمَنِّهٖ وَكَرَمِهٖ",
+   tr: "Alhamdo Lilahillazi Saqaani Ma-an Azban Zulalan be Rahmatehi Wa Fazlehi Walam Yasqeni Milhan Ujajan be Zunubi Wa Awzari Bemannehi Wa Karamehi" },
+ { id: "mirror", cat: "daily", ic: "🪞", t: "While looking in the mirror", c: 0, note: "Recite while looking in the mirror.", sm: 1,
+   ar: "اَلْحَمْدُ لِلّٰهِ الَّذِي خَلَقَنِي فَاَحْسَنَ خَلْقِي وَصَوَّرَنِي فَاَحْسَنَ صُورَتِي وَزَانَ مِنِّي مَا شَانَ مِنْ غَيْرِي ۝ اَلْحَمْدُ لِلّٰهِ الَّذِي اَكْرَمَنِي بِالْاِسْلَامِ وَالْاِيمَانِ",
+   tr: "Alhamdo Lillahillazi Khalakani Fa Ahsana Khalki Wa Sawwarani Fa Ahsana Surati Wa Zaana minni ma Shaana min Gairi Alhamdo Lillahillazi Akramani Bil Islame Wal Imaan" },
+ // ---- Travel (in the order of the booklet)
+ { id: "t1", cat: "travel", ic: "🧳", t: "1 · Before travelling — sadaqa & Talab al-Hawaij namaz", c: 0, step: 1, sm: 1,
+   note: "Give sadaqa for safety on the journey. Before travelling pray the 2 rakat namaz of Talab al-Hawaij (custom: keep the sadaqa under the musalla during the namaz). Niyyat:",
+   ar: "اُصَلِّي صَلٰوةَ طَلَبِ الْحَوَائِجِ مِنَ اللّٰهِ تَعَالٰى رَكْعَتَيْنِ لِلّٰهِ عَزَّ وَجَلَّ اَدَآءً مُسْتَقْبِلَ الْكَعْبَةِ الْحَرَامِ اَللّٰهُ اَكْبَرُ" },
+ { id: "t2", cat: "travel", ic: "🕌", t: "2 · The namaz & dua before leaving", c: 0, step: 2, sm: 1,
+   note: "1st rakat: Alhamd + Qul Huwallahu Ahad. 2nd rakat: Alhamd + Qul ya ayyuhal Kafirun. Then recite this dua:",
+   ar: "اَللّٰهُمَّ اِنِّي اَسْتَوْدِعُكَ نَفْسِي وَاَهْلِي وَمَالِي وَدِينِي وَدُنْيَايَ وَاٰخِرَتِي وَاَمَانَتِي وَخَاتِمَةَ عَمَلِي ۝ اَللّٰهُمَّ احْفَظْنِي وَاحْفَظْ مَا مَعِي ۝ وَبَلِّغْنِي وَبَلِّغْ مَا مَعِي بَلَاغَكَ الْحَسَنَ" },
+ { id: "t3", cat: "travel", ic: "🚪", t: "3 · When leaving home", c: 3, step: 3, sm: 1,
+   note: "Recite this dua when leaving home, then say Allahu Akbar 3 times.",
+   ar: "بِسْمِ اللّٰهِ ۝ اٰمَنْتُ بِاللّٰهِ ۝ تَوَكَّلْتُ عَلَى اللّٰهِ ۝ مَا شَآءَ اللّٰهُ ۝ وَلَا حَوْلَ وَلَا قُوَّةَ اِلَّا بِاللّٰهِ ۝ اَللّٰهُمَّ اِنِّي اَسْاَلُكَ خَيْرَ مَا خَرَجْتُ لَهٗ ۝ اَللّٰهُمَّ وَسِّعْ عَلَيَّ فَضْلَكَ ۝ وَاَتْمِمْ عَلَيَّ نِعْمَتَكَ وَاسْتَعْمِلْنِي فِي طَاعَتِكَ ۝ وَاجْعَلْ رَغْبَتِي فِيمَا عِنْدَكَ ۝ وَتَوَفَّنِي عَلٰى مِلَّتِكَ وَمِلَّةِ رَسُولِكَ صَلَّى اللّٰهُ عَلَيْهِ وَعَلٰى اٰلِهٖ" },
+ { id: "t4", cat: "travel", ic: "🚗", t: "4 · On setting out & boarding", c: 0, step: 4, sm: 1,
+   note: "Say “Bi-llahi akhruj” 3 times, then “Bi-llahi adkhul” 3 times, then this dua. When you take a ride say “Bismillah, Allahu Akbar”.",
+   ar: "بِاللّٰهِ اَخْرُجُ ۝ بِاللّٰهِ اَدْخُلُ ۝ وَعَلَى اللّٰهِ اَتَوَكَّلُ ۝ اَللّٰهُمَّ افْتَحْ لِي فِي وَجْهِي هٰذَا بِخَيْرٍ ۝ وَاخْتِمْ لِي فِيهِ بِخَيْرٍ ۝ وَاكْفِنِي شَرَّ كُلِّ دَآبَّةٍ ۝ اَنْتَ اٰخِذٌ بِنَاصِيَتِهَا ۝ اِنَّ رَبِّي عَلٰى صِرَاطٍ مُّسْتَقِيمٍ ۝ بِسْمِ اللّٰهِ اَللّٰهُ اَكْبَرُ" },
+ { id: "t5", cat: "travel", ic: "🧭", t: "5 · After you are seated", c: 7, step: 5, sm: 1,
+   note: "After boarding recite 7 times each: Subhanallah, Alhamdulillah, Allahu Akbar, La ilaha illallah — then this dua:",
+   ar: "سُبْحَانَ اللّٰهِ ۝ اَلْحَمْدُ لِلّٰهِ ۝ اَللّٰهُ اَكْبَرُ ۝ لَا اِلٰهَ اِلَّا اللّٰهُ ۝ ثُمَّ اَلْحَمْدُ لِلّٰهِ الَّذِي هَدَانَا لِلْاِسْلَامِ وَمَنَّ عَلَيْنَا بِمُحَمَّدٍ نَبِيِّهٖ صَلَّى اللّٰهُ عَلَيْهِ وَعَلٰى اَهْلِ بَيْتِهٖ ۝ سُبْحَانَ الَّذِي سَخَّرَ لَنَا هٰذَا وَمَا كُنَّا لَهٗ مُقْرِنِينَ ۝ وَاِنَّآ اِلٰى رَبِّنَا لَمُنْقَلِبُونَ ۝ وَالْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِينَ ۝ اَللّٰهُمَّ اَنْتَ الْحَامِلُ عَلَى الظَّهْرِ وَالْمُسْتَعَانُ عَلَى الْاَمْرِ" },
+ { id: "t6", cat: "travel", ic: "🛣️", t: "6 · Dua for the journey", c: 0, step: 6, sm: 1,
+   note: "Dua of the traveller.",
+   ar: "بَلِّغْ بِنَآ اِلٰى خَيْرِ بَلَاغٍ ۝ يُبَلِّغُ اِلٰى مَغْفِرَتِكَ وَرِضْوَانِكَ ۝ اَللّٰهُمَّ لَا طَيْرَ اِلَّا طَيْرُكَ ۝ وَلَا خَيْرَ اِلَّا خَيْرُكَ ۝ وَلَا حَافِظَ غَيْرُكَ ۝ اَعُوْذُ بِكَ مِنْ وَّعْثَآءِ السَّفَرِ وَكَاٰبَةِ الْمُنْقَلَبِ ۝ وَمِنْ سُوْٓءِ الْمَنْظَرِ فِي الْاَهْلِ وَالْمَالِ وَالْوَلَدِ ۝ اَللّٰهُمَّ اِنِّي اَسْاَلُكَ فِي سَفَرِي هٰذَا التَّقْوٰى وَالسُّرُورَ وَالْعَمَلَ بِمَا يُرْضِيكَ ۝ اَللّٰهُمَّ اقْطَعْ عَنِّي بُعْدَهٗ وَمَشَقَّتَهٗ ۝ وَاَصْلِحْ لِي ۝ وَاخْلُفْنِي بِخَيْرٍ فِي اَهْلِي" },
+ { id: "t7", cat: "travel", ic: "🚢", t: "7 · On a ship", c: 0, step: 7, sm: 1,
+   note: "Recite Surah Yaseen and any verses of the Quran Majeed you remember, and when boarding a ship recite this dua:",
+   ar: "وَمَا قَدَرُوا اللّٰهَ حَقَّ قَدْرِهٖ ۝ وَالْاَرْضُ جَمِيعًا قَبْضَتُهٗ يَوْمَ الْقِيٰمَةِ ۝ وَالسَّمٰوٰتُ مَطْوِيّٰتٌ بِيَمِينِهٖ ؕ سُبْحٰنَهٗ وَتَعٰلٰى عَمَّا يُشْرِكُونَ ۝ بِسْمِ اللّٰهِ مَجْرٰىهَا وَمُرْسٰىهَا ؕ اِنَّ رَبِّي لَغَفُورٌ رَّحِيمٌ ۝ اَللّٰهُمَّ بَارِكْ لَنَا فِي مَوْكِبِنَا وَاَحْسِنْ سَيْرَنَا وَعَافِنَا مِنْ شَرِّ بَحْرِنَا" },
+ { id: "t8", cat: "travel", ic: "🌊", t: "8 · High waves & reaching a manzil", c: 0, step: 8, sm: 1,
+   note: "When the waves of the sea rise, point towards the wave with your hand and say the first dua. When you alight at any manzil say the second dua.",
+   ar: "قَرِّي بِقَرَارِ اللّٰهِ وَاسْكُنِي بِسَكِينَةِ اللّٰهِ ۝ وَلَا حَوْلَ وَلَا قُوَّةَ اِلَّا بِاللّٰهِ ۝ رَبِّ اَنْزِلْنِي مُنْزَلًا مُّبَارَكًا وَّاَنْتَ خَيْرُ الْمُنْزِلِينَ" }
+];
+const DAYS = [["Sunday", "اِيَّاكَ نَعْبُدُ وَاِيَّاكَ نَسْتَعِينُ"], ["Monday", "يَا غَفُورُ يَا رَحِيمُ"], ["Tuesday", "سُبْحَانَ اللّٰهِ وَالْحَمْدُ لِلّٰهِ"], ["Wednesday", "يَا رَحْمٰنُ يَا رَحِيمُ"], ["Thursday", "حَسْبِيَ اللّٰهُ وَنِعْمَ الْوَكِيلُ"], ["Friday", "يَا ذَا الْجَلَالِ وَالْاِكْرَامِ"], ["Saturday", "يَا حَيُّ يَا قَيُّومُ"]];
+const DAYTR = ["Iyyaka Na-Abodo Wa Iyyaka Nastaeen", "Ya Gafooro Ya Rahim", "Subahanllahe wal Hamdo Lillah", "Ya Rahmano Ya Rahim", "Hasbonallahe Wa Nemal Wakeel", "Ya Zal Jalale Wal Ikraam", "Ya Hayyo Ya Qayyum"];
+
+/* Indo-Pak (Nastaleeq) font from Quran.com / QUL, cached for offline use */
+const INDOPAK_URL = "https://static-cdn.tarteel.ai/qul/fonts/nastaleeq/Hanafi/normal-v4.2.2/with-waqf-lazmi/font.woff2";
+async function loadIndoPak() {
+  let data = null;
+  try {
+    const c = await caches.open("quran-fonts-v1"); let r = await c.match(INDOPAK_URL);
+    if (!r) { r = await fetch(INDOPAK_URL, { mode: "cors" }); if (r.ok) await c.put(INDOPAK_URL, r.clone()); }
+    if (r.ok) data = await r.arrayBuffer();
+  } catch {}
+  try { const f = data ? new FontFace("IndoPak", data) : new FontFace("IndoPak", `url(${INDOPAK_URL})`); document.fonts.add(f); await f.load(); } catch {}
+}
+loadIndoPak();
+
+let cat = "all", open = null;
+const counts = ls.get("barakat:counts", {});
+const saveCounts = () => ls.set("barakat:counts", counts);
+const R = 52, C = 2 * Math.PI * R;
+
+function body(x) {
+  let h = "";
+  if (x.note) h += `<div class="nt">${esc(x.note)}</div>`;
+  if (x.week) {
+    const today = new Date().getDay();
+    h += `<div class="days">${DAYS.map(([d, a], i) => `<div class="${i === today ? "today" : ""}"><span>${d}</span><i>${a}</i></div>`).join("")}</div>`;
+  }
+  if (x.deeds) h += `<ol class="deeds">${x.deeds.map(([a, b]) => `<li>${esc(a)}<small>${esc(b)}</small></li>`).join("")}</ol>`;
+  if (x.ar) h += `<div class="ar${x.sm ? " sm" : ""}">${x.ar}</div>`;
+  if (x.tr) h += `<div class="tr">${esc(x.tr)}</div>`;
+  if (x.c) h += counter(x);
+  return h;
+}
+function counter(x) {
+  const n = counts[x.id] || 0, p = Math.min(1, n / x.c);
+  return `<div class="ctr"><button class="rs" data-reset="${x.id}" aria-label="Reset">↺</button>
+    <button class="tap${n >= x.c ? " done" : ""}" data-tap="${x.id}" aria-label="Count"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="${R}"/><circle class="fg" cx="60" cy="60" r="${R}" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${(C * (1 - p)).toFixed(1)}"/></svg><div class="n"><b>${n}</b><span>/ ${x.c}</span></div></button>
+    <div style="width:44px"></div></div><div class="dn">${n >= x.c ? "✓ " + (n === x.c ? "Complete — Allah accept it" : "Complete (+" + (n - x.c) + ")") : ""}</div>`;
+}
+function render() {
+  const q = $("q").value.trim().toLowerCase();
+  const items = T.filter(x => (cat === "all" || x.cat === cat) && (!q || (x.t + " " + (x.tr || "") + " " + (x.note || "") + " " + (x.cat)).toLowerCase().includes(q)));
+  let last = "", h = "";
+  for (const x of items) {
+    if (cat === "all" && x.cat !== last) { last = x.cat; h += `<div class="sec">${esc(CATS.find(c => c[0] === x.cat)[1])}</div>`; }
+    const sub = (x.note || x.tr || "").split(/[.:—]/)[0];
+    h += `<div class="card${open === x.id ? " open" : ""}" data-id="${x.id}"><div class="ch" data-toggle="${x.id}"><div class="ic">${x.ic}</div><div class="tt"><b>${esc(x.t)}</b><small>${esc(sub)}</small></div>${x.c ? `<div class="cnt${(counts[x.id] || 0) >= x.c ? " d" : ""}">${x.c}×</div>` : ""}<div class="chev">›</div></div><div class="cb">${open === x.id ? body(x) : ""}</div></div>`;
+  }
+  $("list").innerHTML = h; $("none").style.display = items.length ? "none" : "block";
+}
+$("chips").innerHTML = CATS.map(([k, l]) => `<button data-c="${k}"${k === "all" ? ' class="on"' : ""}>${l}</button>`).join("");
+$("chips").onclick = e => { const b = e.target.closest("[data-c]"); if (!b) return; cat = b.dataset.c; $("chips").querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b)); render(); scrollTo(0, 0); };
+$("q").oninput = render;
+$("list").onclick = e => {
+  const tg = e.target.closest("[data-toggle]");
+  if (tg) { const id = tg.dataset.toggle; open = open === id ? null : id; render(); if (open) setTimeout(() => document.querySelector(`.card[data-id="${id}"]`)?.scrollIntoView({ behavior: "smooth", block: "nearest" }), 30); return; }
+  const tp = e.target.closest("[data-tap]");
+  if (tp) {
+    const id = tp.dataset.tap, x = T.find(y => y.id === id), n = (counts[id] || 0) + 1; counts[id] = n; saveCounts();
+    if (navigator.vibrate) navigator.vibrate(n === x.c ? [60, 40, 60] : 12);
+    const card = tp.closest(".card"); card.querySelector(".cb").innerHTML = body(x);
+    const cnt = card.querySelector(".cnt"); if (cnt) cnt.classList.toggle("d", n >= x.c);
+    return;
+  }
+  const rs = e.target.closest("[data-reset]");
+  if (rs) { const id = rs.dataset.reset, x = T.find(y => y.id === id); delete counts[id]; saveCounts(); const card = rs.closest(".card"); card.querySelector(".cb").innerHTML = body(x); const cnt = card.querySelector(".cnt"); if (cnt) cnt.classList.remove("d"); }
+};
+render();
+const openId = new URLSearchParams(location.search).get("i"); if (openId && T.find(x => x.id === openId)) { open = openId; render(); }
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+</script>
+</body>
+</html>
