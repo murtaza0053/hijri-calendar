@@ -1,6 +1,19 @@
 {
- "v": 126,
+ "v": 127,
  "history": [
+  {
+   "v": 127,
+   "date": "2026-11-15",
+   "en": [
+    "New bottom tabs: the selected tab now has a clear pill behind its icon, a coloured bar on top and bold label; other tabs are muted. On computers the sidebar shows a side marker."
+   ],
+   "gu": [
+    "નવા નીચેના ટેબ: પસંદ કરેલ ટેબના આઇકન પાછળ સ્પષ્ટ પિલ, ઉપર રંગીન પટ્ટી અને બોલ્ડ નામ; બીજા ટેબ ફિકા. કમ્પ્યુટર પર સાઇડબારમાં બાજુનું નિશાન."
+   ],
+   "hi": [
+    "Naye neeche ke tabs: selected tab ke icon ke peeche saaf pill, upar rangeen patti aur bold naam; baaki tabs halke. Computer par sidebar me side ka marker."
+   ]
+  },
   {
    "v": 126,
    "date": "2026-11-15",

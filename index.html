@@ -13,13 +13,13 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=126">
-<script src="theme-init.js?v=126"></script>
+<link rel="stylesheet" href="themes.css?v=127">
+<script src="theme-init.js?v=127"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-body{padding:env(safe-area-inset-top) 0 calc(64px + env(safe-area-inset-bottom));min-height:100vh}
+body{padding:env(safe-area-inset-top) 0 calc(80px + env(safe-area-inset-bottom));min-height:100vh}
 .ar{font-family:"Geeza Pro","Noto Naskh Arabic","Traditional Arabic",serif}
 header.top{background:var(--hdr);color:var(--hdr-ink);padding:14px 0 0}
 .top .hd{display:flex;justify-content:space-between;align-items:flex-end;padding:4px 18px 12px;gap:10px}
@@ -263,6 +263,15 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 .sw.on{border-color:var(--brand);font-weight:700}
 .sw i{width:22px;height:22px;border-radius:50%;display:inline-block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.18)}
 
+/* ---- bottom tabs: modern pill indicator ---- */
+nav.tabs{background:var(--card);border-top:1px solid var(--line);box-shadow:0 -4px 16px rgba(0,0,0,.06);padding-top:4px}
+nav.tabs button{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0 8px;font-size:11px;font-weight:600;color:var(--muted);transition:color .2s;-webkit-tap-highlight-color:transparent}
+nav.tabs button .i{display:grid;place-items:center;width:58px;height:30px;border-radius:16px;font-size:20px;line-height:1;transition:background .25s,transform .25s,filter .25s}
+nav.tabs button:not(.on) .i{filter:grayscale(.85) opacity(.7)}
+nav.tabs button.on{color:var(--brand);font-weight:800}
+nav.tabs button.on .i{background:color-mix(in srgb,var(--brand) 18%,transparent);transform:translateY(-1px) scale(1.06);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--brand) 35%,transparent)}
+nav.tabs button.on::before{content:"";position:absolute;top:-5px;left:50%;width:30px;height:3px;margin-left:-15px;border-radius:0 0 4px 4px;background:var(--brand)}
+nav.tabs button:active .i{transform:scale(.92)}
 /* ================= Responsive / web layout ================= */
 /* keyboard + mouse niceties (all sizes) */
 :focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:6px}
@@ -321,6 +330,12 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
   .sheet,.csheet{left:var(--sbw)}
   .upd{left:calc(var(--sbw) + 12px)}
   .slring{width:240px;height:240px}
+  nav.tabs{background:var(--card);box-shadow:none}
+  nav.tabs button{flex-direction:row;gap:12px;padding:11px 14px;font-size:15px;font-weight:600}
+  nav.tabs button .i{width:28px;height:28px;border-radius:9px;font-size:19px}
+  nav.tabs button.on{background:color-mix(in srgb,var(--brand) 10%,transparent)}
+  nav.tabs button.on .i{background:none;box-shadow:none;transform:none}
+  nav.tabs button.on::before{top:50%;left:0;width:4px;height:24px;margin:-12px 0 0;border-radius:0 4px 4px 0}
 }
 @media (min-width:1400px){ main{max-width:1240px} #v-cal.on{column-gap:24px} }
 </style>
@@ -589,10 +604,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=126"></script>
-<script src="i18n.js?v=126"></script>
-<script src="cities.js?v=126"></script>
-<script src="haptic.js?v=126"></script>
+<script src="hijri.js?v=127"></script>
+<script src="i18n.js?v=127"></script>
+<script src="cities.js?v=127"></script>
+<script src="haptic.js?v=127"></script>
 <script>
 "use strict";
 
@@ -1169,7 +1184,7 @@ document.addEventListener("keydown", e => {
   if (e.key === "Escape") { if ($("citySheet").classList.contains("on")) closeCity(); else if ($("sheet").classList.contains("on") && !wnOpen) closeSheet(); return; }
   if (curView === "cal" && !$("sheet").classList.contains("on")) { if (e.key === "ArrowLeft") shiftMonth(-1); else if (e.key === "ArrowRight") shiftMonth(1); }
 });
-const APP_V = 126, APP_VERSION = vName(APP_V) + " (2026-11-12)";
+const APP_V = 127, APP_VERSION = vName(APP_V) + " (2026-11-12)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");
