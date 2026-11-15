@@ -1,6 +1,19 @@
 {
- "v": 125,
+ "v": 126,
  "history": [
+  {
+   "v": 126,
+   "date": "2026-11-15",
+   "en": [
+    "Calendar now highlights the Rozi barakat amal days (Hijri 2–7 every month) with a green outline and 📖; tap a day to see which surah to recite. The Ziyarat tab now always opens scrolled to the top."
+   ],
+   "gu": [
+    "કેલેન્ડરમાં હવે રોઝી બરકત અમલના દિવસો (દર મહિને હિજરી ૨–૭) લીલી રેખા અને 📖 સાથે દેખાય છે; દિવસ પર ટેપ કરતાં કઈ સૂરત પઢવી તે દેખાય છે. ઝિયારત ટેબ હવે હંમેશાં ઉપરથી ખુલે છે."
+   ],
+   "hi": [
+    "Calendar me ab Rozi barakat amal ke din (har mahine Hijri 2–7) hari line aur 📖 ke saath dikhte hain; din par tap karne par dikhta hai kaunsi surah padhni hai. Ziyarat tab ab hamesha upar se khulta hai."
+   ]
+  },
   {
    "v": 125,
    "date": "2026-11-14",
