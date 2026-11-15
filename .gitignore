@@ -1,0 +1,4 @@
+push/.vapid.json
+push/node_modules
+push/.wrangler
+push/.dev.vars

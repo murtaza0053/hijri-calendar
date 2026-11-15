@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=129">
-<script src="theme-init.js?v=129"></script>
+<link rel="stylesheet" href="themes.css?v=130">
+<script src="theme-init.js?v=130"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -146,6 +146,9 @@ nav.tabs button .i{display:block;font-size:20px;line-height:1.2}
 .slr.nx+.slr,.slr.cur+.slr.nx{border-top-color:transparent}
 .slr.nx .ic{background:rgba(255,255,255,.2)}
 .slr.nx .nm small{color:inherit;opacity:.85}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:2px 10px}
+.pgrid label,#pushOth label{display:flex;align-items:center;gap:8px;padding:7px 2px;font-size:14px}
+.pgrid input,#pushOth input{width:20px;height:20px;accent-color:var(--brand);flex:none}
 .cbg{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:30}
 .csheet{position:fixed;left:0;right:0;bottom:0;max-height:82vh;background:var(--card);border-radius:20px 20px 0 0;padding:8px 14px calc(14px + env(safe-area-inset-bottom));overflow:auto;transform:translateY(100%);transition:transform .22s;z-index:31;overscroll-behavior:contain}
 .csheet.on{transform:none}
@@ -527,6 +530,18 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
     <div class="card">
       <label class="remrow" style="border-top:0"><input type="checkbox" id="wakeChk"><span class="ri">💡</span><span class="rt"><b data-i18n="wakeH"></b><br><span class="muted" data-i18n="wakeD"></span></span></label>
     </div>
+    <div class="card" id="pushCard">
+      <div style="display:flex;align-items:center;gap:10px"><span class="ri" style="font-size:22px">🔔</span><div style="flex:1"><b data-i18n="pushH"></b><div class="muted" style="font-size:13px" data-i18n="pushD"></div></div></div>
+      <p class="muted" style="font-size:13px;margin:8px 0 0" id="pushState"></p>
+      <div class="row" style="margin-top:8px"><button class="btn" id="pushOn"></button><button class="btn ghost" id="pushTest" hidden data-i18n="pushTest"></button></div>
+      <div id="pushPrefs" hidden>
+        <h4 class="plat" data-i18n="pushSal"></h4>
+        <div class="pgrid" id="pushSal"></div>
+        <h4 class="plat" data-i18n="pushOther"></h4>
+        <div id="pushOth"></div>
+      </div>
+      <p class="muted" style="font-size:12px;margin:8px 0 0" id="pushMsg"></p>
+    </div>
     <div class="card" id="vibCard">
       <div style="display:flex;align-items:center;gap:10px"><span class="ri" style="font-size:22px">📳</span><div style="flex:1"><b data-i18n="vibH"></b><div class="muted" style="font-size:13px" data-i18n="vibD"></div></div></div>
       <div class="langset" id="vibSet" style="margin-top:10px"></div>
@@ -624,10 +639,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=129"></script>
-<script src="i18n.js?v=129"></script>
-<script src="cities.js?v=129"></script>
-<script src="haptic.js?v=129"></script>
+<script src="hijri.js?v=130"></script>
+<script src="i18n.js?v=130"></script>
+<script src="cities.js?v=130"></script>
+<script src="haptic.js?v=130"></script>
 <script>
 "use strict";
 
@@ -998,6 +1013,67 @@ $("wdgCopy").onclick = async () => {
   try { const r = await fetch("widgets/salaat-scriptable.js", { cache: "no-cache" }), txt = await r.text(); await navigator.clipboard.writeText(txt); $("wdgMsg").textContent = t("wdgCopied"); }
   catch { $("wdgMsg").innerHTML = `<a href="widgets/salaat-scriptable.js" target="_blank" rel="noopener">${t("wdgOpen")}</a>`; }
 };
+/* ---------- Push alerts (Cloudflare worker mumin-push) ---------- */
+const PUSH_URL = "https://mumin-push.masspeshi.workers.dev", VAPID_PUB = "BMOJDR0xcJ82MmiVY3D9lIXsgZDChLbuGhGZ-9oM8paslqXtTjFGoj_0Hf84EiO-m9HCZsKOFPVQ6Z3UKE9brAo";
+const PUSH_SAL = [["sih", "tSihori"], ["faj", "tFajr"], ["fe", "tFajrEnd"], ["zaw", "tZawaal"], ["ze", "tZohrEnd"], ["ae", "tAsrEnd"], ["mag", "tMaghrib"], ["nis", "tIshaEnd"]];
+const PUSH_OTH = [["rozi", "pushRozi"], ["tasbeeh", "pushTas"], ["sadaqah", "pushSdq"], ["kumail", "pushKum"]];
+(function () {
+  const sup = "serviceWorker" in navigator && "PushManager" in window && "Notification" in window;
+  const ios = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const standalone = navigator.standalone === true || matchMedia("(display-mode: standalone)").matches;
+  let prefs = store.get("pushPrefs", { sal: ["sih", "faj", "zaw", "mag", "nis"], rozi: true, tasbeeh: false, sadaqah: false, kumail: true });
+  const u8 = b => { const s = atob((b + "=".repeat((4 - b.length % 4) % 4)).replace(/-/g, "+").replace(/_/g, "/")); return Uint8Array.from(s, c => c.charCodeAt(0)); };
+  const post = (path, body) => fetch(PUSH_URL + path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }).then(r => r.json());
+  const getSub = async () => (await navigator.serviceWorker.ready).pushManager.getSubscription();
+  const tzNow = () => loc.tz || Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
+  async function sync() {
+    const sub = await getSub(); if (!sub) return null;
+    return post("/subscribe", { subscription: sub.toJSON(), prefs, lat: loc.lat, lng: loc.lng, tz: tzNow(), city: locLabel(), lang: store.get("lang", "en") });
+  }
+  window.pushSync = () => { if (store.get("pushOn", false) && sup && Notification.permission === "granted") sync().catch(() => {}); };
+  async function draw() {
+    const st = $("pushState"), on = $("pushOn"), tst = $("pushTest"), pf = $("pushPrefs");
+    let sub = null; if (sup) try { sub = await getSub(); } catch {}
+    const active = !!sub && store.get("pushOn", false) && Notification.permission === "granted";
+    pf.hidden = !active; tst.hidden = !active; on.disabled = false;
+    if (!sup) { st.textContent = ios && !standalone ? t("pushIos") : t("pushUnsup"); on.hidden = true; return; }
+    on.hidden = false;
+    if (ios && !standalone) { st.textContent = t("pushIos"); on.hidden = true; return; }
+    if (Notification.permission === "denied") { st.textContent = t("pushDenied"); on.hidden = true; return; }
+    st.textContent = active ? t("pushOnNow", { c: locLabel() }) : t("pushOffNow");
+    on.textContent = active ? t("pushTurnOff") : t("pushTurnOn");
+    if (active) {
+      $("pushSal").innerHTML = PUSH_SAL.map(([k, n]) => `<label><input type="checkbox" data-s="${k}" ${prefs.sal.includes(k) ? "checked" : ""}>${t(n)}</label>`).join("");
+      $("pushOth").innerHTML = PUSH_OTH.map(([k, n]) => `<label><input type="checkbox" data-o="${k}" ${prefs[k] ? "checked" : ""}>${t(n)}</label>`).join("");
+    }
+  }
+  $("pushOn").onclick = async () => {
+    const msg = $("pushMsg"); msg.textContent = ""; $("pushOn").disabled = true;
+    try {
+      const sub = await getSub();
+      if (sub && store.get("pushOn", false)) { await post("/unsubscribe", { endpoint: sub.endpoint }); await sub.unsubscribe(); store.set("pushOn", false); }
+      else {
+        const perm = await Notification.requestPermission(); if (perm !== "granted") { await draw(); return; }
+        const reg = await navigator.serviceWorker.ready;
+        const s2 = (await reg.pushManager.getSubscription()) || await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: u8(VAPID_PUB) });
+        const r = await post("/subscribe", { subscription: s2.toJSON(), prefs, lat: loc.lat, lng: loc.lng, tz: tzNow(), city: locLabel(), lang: store.get("lang", "en") });
+        if (!r.ok) throw new Error(r.error || "failed");
+        store.set("pushOn", true);
+        post("/test", { endpoint: s2.endpoint }).catch(() => {});
+        msg.textContent = t("pushSent");
+      }
+    } catch (e) { msg.textContent = t("pushFail") + " (" + (e && e.message || e) + ")"; }
+    draw();
+  };
+  $("pushTest").onclick = async () => { const sub = await getSub(); if (!sub) return; $("pushMsg").textContent = "…"; try { const r = await post("/test", { endpoint: sub.endpoint }); $("pushMsg").textContent = r.ok ? t("pushSent") : t("pushFail") + " (" + (r.status || r.error) + ")"; } catch { $("pushMsg").textContent = t("pushFail"); } };
+  $("pushPrefs").onchange = e => {
+    const s = e.target.dataset.s, o = e.target.dataset.o;
+    if (s) prefs.sal = e.target.checked ? [...new Set([...prefs.sal, s])] : prefs.sal.filter(x => x !== s);
+    if (o) prefs[o] = e.target.checked;
+    store.set("pushPrefs", prefs); sync().then(() => { $("pushMsg").textContent = t("pushSaved"); }).catch(() => {});
+  };
+  window.drawPush = draw; draw(); window.pushSync();
+})();
 $("wakeChk").checked = store.get("wake", true) !== false;
 $("wakeChk").onchange = e => store.set("wake", e.target.checked);
 function setupSubscribe() {
@@ -1152,7 +1228,7 @@ calEl.addEventListener("touchend", e => {
 }, { passive: true });
 
 /* ---------- Location ---------- */
-function setLoc(l) { loc = l; store.set("loc", l); renderTimes(); renderHeader(); renderGhadi(); renderAshara(); }
+function setLoc(l) { loc = l; store.set("loc", l); renderTimes(); renderHeader(); renderGhadi(); renderAshara(); if (window.pushSync) pushSync(); }
 $("useIndore").onclick = () => setLoc(DEFAULT_LOC);
 $("setCity").onclick = openCity;
 $("saveLL").onclick = () => {
@@ -1187,6 +1263,7 @@ document.addEventListener("visibilitychange", () => { if (document.visibilitySta
 let miqLoaded = false;
 function renderAll() {
   if (window.drawVib) drawVib();
+  if (window.drawPush) drawPush();
   renderHeader(); renderAshara(); renderCal(); renderTimes(); renderMonthSelect(); gConvert(); hConvert();
   renderDuaTab(); renderGhadi();
   if (miqLoaded) { renderTodayMq(); renderBanner(); }
@@ -1227,7 +1304,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 129, APP_VERSION = vName(APP_V) + " (2026-11-12)";
+const APP_V = 130, APP_VERSION = vName(APP_V) + " (2026-11-12)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");

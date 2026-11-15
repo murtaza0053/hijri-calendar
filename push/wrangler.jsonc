@@ -1,0 +1,9 @@
+{
+  "name": "mumin-push",
+  "main": "worker.js",
+  "compatibility_date": "2024-11-01",
+  "workers_dev": true,
+  "triggers": { "crons": ["* * * * *"] },
+  "d1_databases": [ { "binding": "DB", "database_name": "mumin-push", "database_id": "5b4e97a7-593e-40ac-8953-ac4598adfee3" } ],
+  "vars": { "VAPID_PUBLIC": "BMOJDR0xcJ82MmiVY3D9lIXsgZDChLbuGhGZ-9oM8paslqXtTjFGoj_0Hf84EiO-m9HCZsKOFPVQ6Z3UKE9brAo", "VAPID_SUBJECT": "https://murtaza0053.github.io/hijri-calendar/" }
+}

@@ -1,0 +1,142 @@
+// Mumin push worker (Cloudflare Workers + D1). Stores push subscriptions with the user's city / language / chosen alerts, and a
+// cron trigger (every minute) sends the alerts that fall in that minute as encrypted Web Push messages.
+import "../hijri.js";                    // sets globalThis.H (same Misri calendar as the app)
+import { sendPush, b64u } from "./webpush.js";
+
+const ORIGINS = ["https://murtaza0053.github.io", "http://localhost:8765", "http://127.0.0.1:8765"];
+const PUSH_HOSTS = ["fcm.googleapis.com", "push.services.mozilla.com", "push.apple.com", "notify.windows.com"];
+const SITE = "https://murtaza0053.github.io/hijri-calendar/";
+const SAL_KEYS = ["sih", "faj", "fe", "zaw", "ze", "ae", "mag", "nis"];
+const MAX_SEND = 30;   // free plan: 50 subrequests per invocation
+
+function sunTimes(Y, M, D, lat, lng) {
+  const rad = Math.PI / 180;
+  const jd = H.gToAJD(Y, M, D) + 0.5 - lng / 360; // ~local noon
+  const T = (jd - 2451545) / 36525;
+  const L0 = (280.46646 + T * (36000.76983 + 0.0003032 * T)) % 360;
+  const Ma = 357.52911 + T * (35999.05029 - 0.0001537 * T);
+  const e = 0.016708634 - T * (0.000042037 + 0.0000001267 * T);
+  const C = Math.sin(Ma * rad) * (1.914602 - T * (0.004817 + 0.000014 * T)) + Math.sin(2 * Ma * rad) * (0.019993 - 0.000101 * T) + Math.sin(3 * Ma * rad) * 0.000289;
+  const lam = L0 + C - 0.00569 - 0.00478 * Math.sin((125.04 - 1934.136 * T) * rad);
+  const eps0 = 23 + (26 + (21.448 - T * (46.815 + T * (0.00059 - T * 0.001813))) / 60) / 60;
+  const eps = eps0 + 0.00256 * Math.cos((125.04 - 1934.136 * T) * rad);
+  const decl = Math.asin(Math.sin(eps * rad) * Math.sin(lam * rad));
+  const yv = Math.tan(eps / 2 * rad) ** 2;
+  const eqt = 4 / rad * (yv * Math.sin(2 * L0 * rad) - 2 * e * Math.sin(Ma * rad) + 4 * e * yv * Math.sin(Ma * rad) * Math.cos(2 * L0 * rad) - 0.5 * yv * yv * Math.sin(4 * L0 * rad) - 1.25 * e * e * Math.sin(2 * Ma * rad));
+  const noon = 720 - 4 * lng - eqt; // minutes UTC
+  const cosH = (Math.cos(90.833 * rad) - Math.sin(lat * rad) * Math.sin(decl)) / (Math.cos(lat * rad) * Math.cos(decl));
+  const ha = Math.acos(Math.max(-1, Math.min(1, cosH))) / rad;
+  const at = min => new Date(Date.UTC(Y, M, D) + min * 6e4);
+  return { sunrise: at(noon - 4 * ha), noon: at(noon), sunset: at(noon + 4 * ha) };
+}
+
+function salaatDay(Y, M, D, lat, lng) {   // same formulas as the app (index.html: salatList) and build-ics.js
+  const s = sunTimes(Y, M, D, lat, lng), n = new Date(Date.UTC(Y, M, D + 1)), s2 = sunTimes(n.getUTCFullYear(), n.getUTCMonth(), n.getUTCDate(), lat, lng);
+  const fe = new Date(s.sunrise.getTime() + 60e3), fj = new Date(fe.getTime() - 65 * 6e4), sih = new Date(fj.getTime() - 10 * 6e4);
+  const ze = new Date(s.noon.getTime() + (s.sunset - s.noon) / 3), ae = new Date(s.noon.getTime() + (s.sunset - s.noon) * 2 / 3);
+  return [["sih", sih], ["faj", fj], ["fe", fe], ["zaw", s.noon], ["ze", ze], ["ae", ae], ["mag", s.sunset], ["nis", new Date((s.sunset.getTime() + s2.sunrise.getTime()) / 2)]];
+}
+
+const TXT = {
+  en: { sih: "Sihori", faj: "Fajr", fe: "Fajr end", zaw: "Zawaal", ze: "Zohr end", ae: "Asr end", mag: "Maghrib", nis: "Nisful Layl", now: "It is {n} time.",
+        rozi: "📖 Rozi amal: Surat {s}", roziB: "Hijri {d} — recite it once for barakat in rozi.", tas: "📿 Today's tasbeeh", tasB: "{t} — 100 times.",
+        sdq: "🤲 Today's sadaqah", sdqB: "Give sadaqah today: {i}.", kum: "🌙 Shab-e-Juma", kumB: "Tonight, after Maghrib: recite Dua e Kumail.", test: "🔔 Alerts are on", testB: "You will get your Salaat and amal alerts on this device." },
+  gu: { sih: "સિહોરી", faj: "ફજર", fe: "ફજર અંત", zaw: "ઝવાલ", ze: "ઝોહર અંત", ae: "અસર અંત", mag: "મગરિબ", nis: "નિસ્ફુલ લૈલ", now: "{n} નો સમય થયો.",
+        rozi: "📖 રોઝી અમલ: સૂરત {s}", roziB: "હિજરી {d} — રોઝીમાં બરકત માટે એક વાર પઢો.", tas: "📿 આજની તસ્બીહ", tasB: "{t} — 100 વાર.",
+        sdq: "🤲 આજનો સદકો", sdqB: "આજે સદકો આપો: {i}.", kum: "🌙 શબે જુમા", kumB: "આજે રાત્રે, મગરિબ પછી: દુઆ એ કુમૈલ પઢો.", test: "🔔 અલર્ટ ચાલુ છે", testB: "આ ડિવાઇસ પર તમને સલાત અને અમલના અલર્ટ મળશે." },
+  hi: { sih: "Sihori", faj: "Fajr", fe: "Fajr end", zaw: "Zawaal", ze: "Zohr end", ae: "Asr end", mag: "Maghrib", nis: "Nisful Layl", now: "{n} ka waqt ho gaya.",
+        rozi: "📖 Rozi amal: Surat {s}", roziB: "Hijri {d} — rozi me barakat ke liye ek baar padho.", tas: "📿 Aaj ki tasbeeh", tasB: "{t} — 100 baar.",
+        sdq: "🤲 Aaj ka sadaqah", sdqB: "Aaj sadaqah do: {i}.", kum: "🌙 Shab-e-Juma", kumB: "Aaj raat, Maghrib ke baad: Dua e Kumail padho.", test: "🔔 Alerts on hain", testB: "Is device par aapko Salaat aur amal ke alerts milenge." }
+};
+const ROZI = [[2, "Yaseen"], [3, "ar-Rahman"], [4, "al-Waqiah"], [5, "al-Hashr"], [6, "al-Jumuah"], [7, "al-Jinn"]];
+const WEEK = ["Iyyaka Na'budu Wa Iyyaka Nasta'een", "Ya Ghafoor, Ya Raheem", "SubhanAllahi wal Hamdu Lillah", "Ya Rahman, Ya Raheem", "HasbunAllahu Wa Ni'mal Wakeel", "Ya Zal Jalali Wal Ikram", "Ya Hayyu, Ya Qayyum"];
+const SADAQAH = ["Rice (Chawal)", "Rice (Chawal)", "Moong dal", "Tuwar dal", "Rice (Chawal)", "Wheat (Ghau)", "Rice (Chawal)"];
+const fill = (s, v) => s.replace(/\{(\w+)\}/g, (_, k) => v[k] ?? "");
+
+function localParts(ms, tz) {
+  const f = new Intl.DateTimeFormat("en-US", { timeZone: tz, hourCycle: "h23", year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric", weekday: "short" });
+  const p = Object.fromEntries(f.formatToParts(new Date(ms)).map(x => [x.type, x.value]));
+  return { y: +p.year, m: +p.month - 1, d: +p.day, hh: +p.hour, mm: +p.minute, dow: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(p.weekday) };
+}
+/** Alerts of one subscription that fall in the minute starting at ws (ms). */
+export function dueEvents(s, ws) {
+  const pr = JSON.parse(s.prefs || "{}"), T = TXT[s.lang] || TXT.en, out = [];
+  let p; try { p = localParts(ws, s.tz || "UTC"); } catch { p = localParts(ws, "UTC"); }
+  const city = s.city || "";
+  if (pr.sal && pr.sal.length) for (const off of [-1, 0, 1]) {
+    const d0 = new Date(Date.UTC(p.y, p.m, p.d + off));
+    for (const [k, t] of salaatDay(d0.getUTCFullYear(), d0.getUTCMonth(), d0.getUTCDate(), s.lat, s.lng))
+      if (pr.sal.includes(k) && t.getTime() >= ws && t.getTime() < ws + 60000)
+        out.push({ title: `🕌 ${T[k]}${city ? " — " + city : ""}`, body: fill(T.now, { n: T[k] }), url: "./#sl", tag: "sal-" + k });
+  }
+  if (p.hh === 8 && p.mm === 0 && pr.rozi) { const h = H.fromAJD(H.gToAJD(p.y, p.m, p.d)), r = ROZI.find(x => x[0] === h.d); if (r) out.push({ title: fill(T.rozi, { s: r[1] }), body: fill(T.roziB, { d: h.d }), url: "./#dua", tag: "rozi" }); }
+  if (p.hh === 7 && p.mm === 0 && pr.tasbeeh) out.push({ title: T.tas, body: fill(T.tasB, { t: WEEK[p.dow] }), url: "./dua/tasbeeh.html?m=week", tag: "tasbeeh" });
+  if (p.hh === 8 && p.mm === 0 && pr.sadaqah) out.push({ title: T.sdq, body: fill(T.sdqB, { i: SADAQAH[p.dow] }), url: "./#dua", tag: "sadaqah" });
+  if (p.hh === 19 && p.mm === 0 && p.dow === 4 && pr.kumail) out.push({ title: T.kum, body: T.kumB, url: "./dua/kumail.html", tag: "kumail" });
+  return out;
+}
+
+const cors = req => { const o = req.headers.get("Origin"); return { "Access-Control-Allow-Origin": ORIGINS.includes(o) ? o : ORIGINS[0], "Access-Control-Allow-Methods": "POST, GET, OPTIONS", "Access-Control-Allow-Headers": "Content-Type", "Vary": "Origin" }; };
+const json = (req, obj, status = 200) => new Response(JSON.stringify(obj), { status, headers: { "Content-Type": "application/json", ...cors(req) } });
+const sha = async s => b64u.enc(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s))).slice(0, 32);
+function cleanPrefs(p = {}) { return { sal: (Array.isArray(p.sal) ? p.sal : []).filter(k => SAL_KEYS.includes(k)), rozi: !!p.rozi, tasbeeh: !!p.tasbeeh, sadaqah: !!p.sadaqah, kumail: !!p.kumail }; }
+const okEndpoint = e => { try { const u = new URL(e); return u.protocol === "https:" && PUSH_HOSTS.some(h => u.hostname === h || u.hostname.endsWith("." + h)); } catch { return false; } };
+
+async function handle(req, env) {
+  const url = new URL(req.url);
+  if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: cors(req) });
+  if (req.method === "GET") return json(req, { ok: true, service: "mumin-push" });
+  if (req.method !== "POST") return json(req, { error: "method" }, 405);
+  let b; try { b = await req.json(); } catch { return json(req, { error: "json" }, 400); }
+  if (url.pathname === "/subscribe") {
+    const sub = b.subscription || {}, k = sub.keys || {};
+    if (!okEndpoint(sub.endpoint) || !k.p256dh || !k.auth) return json(req, { error: "subscription" }, 400);
+    const lat = +b.lat, lng = +b.lng; if (!(Math.abs(lat) <= 90 && Math.abs(lng) <= 180)) return json(req, { error: "location" }, 400);
+    const id = await sha(sub.endpoint), tz = String(b.tz || "UTC").slice(0, 60), city = String(b.city || "").slice(0, 60), lang = ["en", "gu", "hi"].includes(b.lang) ? b.lang : "en";
+    try { new Intl.DateTimeFormat("en", { timeZone: tz }); } catch { return json(req, { error: "tz" }, 400); }
+    await env.DB.prepare("INSERT INTO subs(id,endpoint,p256dh,auth,prefs,lat,lng,tz,city,lang,created,last_tick) VALUES(?,?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET p256dh=excluded.p256dh,auth=excluded.auth,prefs=excluded.prefs,lat=excluded.lat,lng=excluded.lng,tz=excluded.tz,city=excluded.city,lang=excluded.lang")
+      .bind(id, sub.endpoint, k.p256dh, k.auth, JSON.stringify(cleanPrefs(b.prefs)), lat, lng, tz, city, lang, Date.now(), Math.floor(Date.now() / 60000) * 60000).run();
+    return json(req, { ok: true, id });
+  }
+  if (url.pathname === "/unsubscribe") {
+    if (!b.endpoint) return json(req, { error: "endpoint" }, 400);
+    const id = await sha(b.endpoint); await env.DB.batch([env.DB.prepare("DELETE FROM outbox WHERE sub_id=?").bind(id), env.DB.prepare("DELETE FROM subs WHERE id=?").bind(id)]);
+    return json(req, { ok: true });
+  }
+  if (url.pathname === "/test") {
+    if (!b.endpoint) return json(req, { error: "endpoint" }, 400);
+    const s = await env.DB.prepare("SELECT * FROM subs WHERE id=?").bind(await sha(b.endpoint)).first();
+    if (!s) return json(req, { error: "not subscribed" }, 404);
+    const T = TXT[s.lang] || TXT.en, st = await sendPush(s, { title: T.test, body: T.testB, url: "./", tag: "test" }, env);
+    return json(req, { ok: st >= 200 && st < 300, status: st });
+  }
+  return json(req, { error: "not found" }, 404);
+}
+
+export async function tick(env, now = Date.now()) {
+  const ws = Math.floor(now / 60000) * 60000;
+  const { results: subs } = await env.DB.prepare("SELECT * FROM subs WHERE last_tick < ?").bind(ws).all();
+  const stmts = [];
+  for (const s of subs) {
+    for (const e of dueEvents(s, ws)) stmts.push(env.DB.prepare("INSERT INTO outbox(sub_id,payload,due,tries) VALUES(?,?,?,0)").bind(s.id, JSON.stringify(e), ws));
+    stmts.push(env.DB.prepare("UPDATE subs SET last_tick=? WHERE id=?").bind(ws, s.id));
+  }
+  for (let i = 0; i < stmts.length; i += 40) await env.DB.batch(stmts.slice(i, i + 40));
+  await env.DB.prepare("DELETE FROM outbox WHERE due < ?").bind(ws - 2 * 3600e3).run();
+  const { results: q } = await env.DB.prepare("SELECT o.id AS oid, o.payload, o.tries, s.* FROM outbox o JOIN subs s ON s.id=o.sub_id ORDER BY o.id LIMIT ?").bind(MAX_SEND).all();
+  const dels = [];
+  await Promise.all(q.map(async r => {
+    let st = 0; try { st = await sendPush(r, JSON.parse(r.payload), env); } catch { st = 0; }
+    if (st >= 200 && st < 300) dels.push(env.DB.prepare("DELETE FROM outbox WHERE id=?").bind(r.oid));
+    else if (st === 404 || st === 410) { dels.push(env.DB.prepare("DELETE FROM outbox WHERE sub_id=?").bind(r.id), env.DB.prepare("DELETE FROM subs WHERE id=?").bind(r.id)); }
+    else if (r.tries >= 3) dels.push(env.DB.prepare("DELETE FROM outbox WHERE id=?").bind(r.oid));
+    else dels.push(env.DB.prepare("UPDATE outbox SET tries=tries+1 WHERE id=?").bind(r.oid));
+  }));
+  for (let i = 0; i < dels.length; i += 40) await env.DB.batch(dels.slice(i, i + 40));
+  return { subs: subs.length, queued: stmts.length, sent: q.length };
+}
+
+export default {
+  fetch: (req, env) => handle(req, env).catch(e => json(req, { error: String(e && e.message || e) }, 500)),
+  scheduled: (ev, env, ctx) => ctx.waitUntil(tick(env))
+};

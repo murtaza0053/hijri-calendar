@@ -1,6 +1,19 @@
 {
- "v": 129,
+ "v": 130,
  "history": [
+  {
+   "v": 130,
+   "date": "2026-11-16",
+   "en": [
+    "Push alerts: Settings → Push alerts turns on real notifications on your phone (Android Chrome, and iPhone when the app is added to the Home Screen) for each Salaat timing, Rozi amal, daily tasbeeh, sadaqah and Dua e Kumail — even when the app is closed."
+   ],
+   "gu": [
+    "પુશ અલર્ટ: સેટિંગ્સ → Push alerts માં ચાલુ કરતાં ફોન પર અસલ નોટિફિકેશન (Android Chrome, અને iPhone પર એપ હોમ સ્ક્રીનમાં ઉમેરેલી હોય ત્યારે) દરેક સલાત સમય, રોઝી અમલ, રોજની તસ્બીહ, સદકો અને દુઆ એ કુમૈલ માટે — એપ બંધ હોય ત્યારે પણ."
+   ],
+   "hi": [
+    "Push alerts: Settings → Push alerts on karne par phone par asli notification (Android Chrome, aur iPhone par jab app Home Screen me jodi ho) har Salaat timing, Rozi amal, roz ki tasbeeh, sadaqah aur Dua e Kumail ke liye — app band ho tab bhi."
+   ]
+  },
   {
    "v": 129,
    "date": "2026-11-16",
