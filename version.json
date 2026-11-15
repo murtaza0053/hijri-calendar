@@ -1,6 +1,19 @@
 {
- "v": 128,
+ "v": 129,
  "history": [
+  {
+   "v": 129,
+   "date": "2026-11-16",
+   "en": [
+    "New: “Salaat timing alerts” under Settings → Reminders — a calendar alert at Sihori, Fajr, Zawaal, Maghrib and Nisful Layl for the next 6 months (13 cities; nearest to your city is used). Also a home-screen widget for iPhone (Scriptable) with the Salaat timings; on Android use the calendar widget."
+   ],
+   "gu": [
+    "નવું: સેટિંગ્સ → Reminders માં “સલાત સમયના અલર્ટ” — સિહોરી, ફજર, ઝવાલ, મગરિબ અને નિસ્ફુલ લૈલ પર આવતા 6 મહિના કેલેન્ડર અલર્ટ (13 શહેર; તમારા શહેરની નજીકનું વપરાય છે). સાથે iPhone માટે Salaat સમયનું હોમ-સ્ક્રીન વિજેટ (Scriptable); Android પર કેલેન્ડર વિજેટ વાપરો."
+   ],
+   "hi": [
+    "Naya: Settings → Reminders me “Salaat timing alerts” — Sihori, Fajr, Zawaal, Maghrib aur Nisful Layl par agle 6 mahine calendar alert (13 shehar; aapke shehar ke sabse paas wala use hota hai). Saath me iPhone ke liye Salaat timings ka home-screen widget (Scriptable); Android par calendar widget use karo."
+   ]
+  },
   {
    "v": 128,
    "date": "2026-11-15",
