@@ -111,6 +111,10 @@ body.editing #follow{bottom:calc(env(safe-area-inset-bottom) + 230px)}
   background:var(--text);color:var(--bg);padding:8px 14px;border-radius:20px;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none}
 #toast.show{opacity:.92}
 input[type=file]{display:none}
+/* frosted-glass header (works on Android Chrome and iOS Safari) */
+@supports ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+  header{background:color-mix(in srgb,var(--hdr) 78%,transparent)!important;-webkit-backdrop-filter:blur(14px) saturate(1.5);backdrop-filter:blur(14px) saturate(1.5)}
+}
 </style>
 </head>
 <body>
@@ -162,7 +166,7 @@ input[type=file]{display:none}
 <audio id="audio" preload="auto"></audio>
 
 <script src="vendor/pdf.min.js"></script>
-<script src="../wakelock.js?v=127"></script>
-<script src="app.js?v=127"></script>
+<script src="../wakelock.js?v=128"></script>
+<script src="app.js?v=128"></script>
 </body>
 </html>

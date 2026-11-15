@@ -1,6 +1,19 @@
 {
- "v": 127,
+ "v": 128,
  "history": [
+  {
+   "v": 128,
+   "date": "2026-11-15",
+   "en": [
+    "Frosted-glass (blur) headers and bottom tabs on Android too, and a compact blurred top bar with the date and next timing that appears when you scroll the Today screen."
+   ],
+   "gu": [
+    "Android પર પણ ફ્રોસ્ટેડ-ગ્લાસ (બ્લર) હેડર અને નીચેના ટેબ, અને આજની સ્ક્રીન સ્ક્રોલ કરતાં તારીખ અને આગલા સમય સાથે નાની બ્લર ટોપ બાર."
+   ],
+   "hi": [
+    "Android par bhi frosted-glass (blur) header aur neeche ke tabs, aur Today screen scroll karne par date aur agle timing ke saath chhoti blur top bar."
+   ]
+  },
   {
    "v": 127,
    "date": "2026-11-15",
