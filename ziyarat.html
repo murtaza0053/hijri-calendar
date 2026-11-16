@@ -12,8 +12,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="icon" href="icons/icon-192.png">
-<link rel="stylesheet" href="themes.css?v=134">
-<script src="theme-init.js?v=134"></script>
+<link rel="stylesheet" href="themes.css?v=135">
+<script src="theme-init.js?v=135"></script>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
@@ -79,8 +79,8 @@ html.emb header{padding-top:10px}
   <p class="note" id="note"></p>
 </main>
 <script>if (/[?&]embed=1/.test(location.search)) document.documentElement.classList.add("emb");</script>
-<script src="i18n.js?v=134"></script>
-<script src="wakelock.js?v=134"></script>
+<script src="i18n.js?v=135"></script>
+<script src="wakelock.js?v=135"></script>
 <script>
 "use strict";
 const $ = id => document.getElementById(id);
@@ -123,9 +123,14 @@ function render() {
 const ARD = "٠١٢٣٤٥٦٧٨٩", arNum = n => String(n).replace(/\d/g, c => ARD[c]);
 const FLAG = { India: "🇮🇳", Iraq: "🇮🇶", Egypt: "🇪🇬", Yemen: "🇾🇪" };
 const ord = n => (n % 100 >= 11 && n % 100 <= 13) ? "th" : ({ 1: "st", 2: "nd", 3: "rd" }[n % 10] || "th");
+const scrollOf = { m: 0, d: 0 };   // each sub-tab remembers its own scroll position
+window.resetScroll = () => { scrollOf.m = scrollOf.d = 0; scrollTo(0, 0); };
 function setTab(x) {
+  if (x !== tab) scrollOf[tab] = scrollY;
+  const changed = x !== tab;
   tab = x; $("tM").classList.toggle("on", x === "m"); $("tD").classList.toggle("on", x === "d");
   $("vm").classList.toggle("hide", x !== "m"); $("vd").classList.toggle("hide", x !== "d");
+  if (changed) scrollTo(0, scrollOf[x] || 0);
 }
 document.querySelector(".tabs").onclick = e => { const b = e.target.closest("[data-t]"); if (b) setTab(b.dataset.t); };
 document.addEventListener("click", e => {
@@ -133,7 +138,7 @@ document.addEventListener("click", e => {
   e.preventDefault(); $("q").value = ""; render(); setTab("m");
   const el = $(a.dataset.goto); if (el) { el.scrollIntoView({ block: "start" }); scrollBy(0, -150); el.style.outline = "2px solid var(--brand)"; setTimeout(() => el.style.outline = "", 2000); }
 });
-$("q").oninput = render;
+$("q").oninput = () => { scrollOf.m = 0; render(); };
 $("title").textContent = "🕌 " + t("zH");
 $("q").placeholder = t("zSearch");
 $("tM").textContent = t("zTabM"); $("tD").textContent = t("zTabD");

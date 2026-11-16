@@ -1,6 +1,19 @@
 {
- "v": 134,
+ "v": 135,
  "history": [
+  {
+   "v": 135,
+   "date": "2026-11-16",
+   "en": [
+    "Ziyarat: the Mazaraat and Duat Mutlaqeen tabs now keep their own scroll position — switch between them and each opens where you left it."
+   ],
+   "gu": [
+    "ઝિયારત: મઝારાત અને દુઆત મુત્લકીન ટેબ હવે પોતપોતાની સ્ક્રોલ જગ્યા યાદ રાખે છે — બંને વચ્ચે બદલો તો દરેક તમે જ્યાં છોડ્યું ત્યાં ખુલે છે."
+   ],
+   "hi": [
+    "Ziyarat: Mazaraat aur Duat Mutlaqeen tabs ab apni-apni scroll position yaad rakhte hain — dono ke beech badlo to har ek wahin khulta hai jahan chhoda tha."
+   ]
+  },
   {
    "v": 134,
    "date": "2026-11-16",
