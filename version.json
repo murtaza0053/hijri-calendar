@@ -1,6 +1,19 @@
 {
- "v": 132,
+ "v": 133,
  "history": [
+  {
+   "v": 133,
+   "date": "2026-11-16",
+   "en": [
+    "A welcome window now explains the alerts the first time you open the app, with “Turn on alerts” and “Not now” (shown once; on iPhone it also explains adding the app to the Home Screen)."
+   ],
+   "gu": [
+    "એપ પહેલી વાર ખોલતાં હવે સ્વાગત વિન્ડો અલર્ટ સમજાવે છે, “અલર્ટ ચાલુ કરો” અને “હમણાં નહીં” સાથે (એક જ વાર દેખાય; iPhone પર એપ હોમ સ્ક્રીનમાં ઉમેરવાનું પણ સમજાવે છે)."
+   ],
+   "hi": [
+    "App pehli baar kholne par ab ek welcome window alerts samjhati hai, “Alerts on karo” aur “Abhi nahi” ke saath (sirf ek baar dikhti hai; iPhone par app ko Home Screen me jodna bhi samjhati hai)."
+   ]
+  },
   {
    "v": 132,
    "date": "2026-11-16",

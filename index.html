@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=132">
-<script src="theme-init.js?v=132"></script>
+<link rel="stylesheet" href="themes.css?v=133">
+<script src="theme-init.js?v=133"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -157,6 +157,16 @@ nav.tabs button .i{display:block;font-size:20px;line-height:1.2}
 .prow input[type=time]{flex:none;width:104px;padding:7px 8px;font-size:15px;text-align:center;background:var(--card)}
 .prow input[type=time]:disabled{opacity:.35}
 #pushLead{min-width:150px}
+.ppbg{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:18px;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.ppbg.on{display:flex}
+.ppcard{background:var(--card);color:var(--ink);border-radius:24px;padding:22px 20px 16px;width:min(420px,100%);max-height:90vh;overflow:auto;box-shadow:0 20px 50px rgba(0,0,0,.35);animation:ppin .25s ease-out}
+@keyframes ppin{from{transform:translateY(24px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+.ppic{width:60px;height:60px;border-radius:20px;background:color-mix(in srgb,var(--brand) 14%,transparent);display:grid;place-items:center;font-size:30px;margin:0 auto 10px}
+.ppcard h3{text-align:center;font-size:19px;margin:0 0 8px}
+.pplist{list-style:none;margin:0;padding:0}
+.pplist li{display:flex;gap:10px;align-items:flex-start;padding:7px 4px;font-size:14.5px;line-height:1.35}
+.ppbtn{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.ppbtn .btn{width:100%;padding:13px 14px;font-size:16px;border-radius:14px}
 .cbg{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:30}
 .csheet{position:fixed;left:0;right:0;bottom:0;max-height:82vh;background:var(--card);border-radius:20px 20px 0 0;padding:8px 14px calc(14px + env(safe-area-inset-bottom));overflow:auto;transform:translateY(100%);transition:transform .22s;z-index:31;overscroll-behavior:contain}
 .csheet.on{transform:none}
@@ -633,6 +643,18 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
   </section>
 </main>
 
+<div class="ppbg" id="pushPrompt" role="dialog" aria-modal="true" aria-labelledby="ppT">
+  <div class="ppcard">
+    <div class="ppic">🔔</div>
+    <h3 id="ppT" data-i18n="ppTitle"></h3>
+    <p class="muted" style="font-size:14px;margin:0 0 8px" data-i18n="ppBody"></p>
+    <ul class="pplist" data-i18n="ppList"></ul>
+    <p class="muted" id="ppIos" style="font-size:13px;margin:8px 0 0;background:var(--chip);border-radius:12px;padding:10px" hidden data-i18n="pushIos"></p>
+    <p class="muted" id="ppErr" style="font-size:12px;color:#c0392b;margin:6px 0 0"></p>
+    <div class="ppbtn"><button class="btn" id="ppYes" data-i18n="ppYes"></button><button class="btn ghost" id="ppLater"></button></div>
+    <p class="muted" style="font-size:12px;margin:8px 0 0;text-align:center" data-i18n="ppNote"></p>
+  </div>
+</div>
 <div id="miniBar"><span id="mbL"></span><span id="mbR"></span></div>
 <div class="cbg" id="cityBg"></div><div class="csheet" id="citySheet"></div>
 <nav class="tabs">
@@ -648,10 +670,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=132"></script>
-<script src="i18n.js?v=132"></script>
-<script src="cities.js?v=132"></script>
-<script src="haptic.js?v=132"></script>
+<script src="hijri.js?v=133"></script>
+<script src="i18n.js?v=133"></script>
+<script src="cities.js?v=133"></script>
+<script src="haptic.js?v=133"></script>
 <script>
 "use strict";
 
@@ -1058,24 +1080,50 @@ const PUSH_OTH = [["rozi", "pushRozi"], ["tasbeeh", "pushTas"], ["sadaqah", "pus
       $("pushLead").innerHTML = [0, 5, 10, 15, 20, 30, 45, 60].map(m => `<option value="${m}" ${prefs.lead === m ? "selected" : ""}>${m ? t("pushMin", { m }) : t("pushAtTime")}</option>`).join("");
     }
   }
+  async function turnOn() {   // asks for permission, subscribes, tells the server; returns true when alerts are on
+    const perm = await Notification.requestPermission(); if (perm !== "granted") return false;
+    const reg = await navigator.serviceWorker.ready;
+    const s2 = (await reg.pushManager.getSubscription()) || await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: u8(VAPID_PUB) });
+    const r = await post("/subscribe", { subscription: s2.toJSON(), prefs, lat: loc.lat, lng: loc.lng, tz: tzNow(), city: locLabel(), lang: store.get("lang", "en") });
+    if (!r.ok) throw new Error(r.error || "failed");
+    store.set("pushOn", true);
+    post("/test", { endpoint: s2.endpoint }).catch(() => {});
+    return true;
+  }
   $("pushOn").onclick = async () => {
     const msg = $("pushMsg"); msg.textContent = ""; $("pushOn").disabled = true;
     try {
       const sub = await getSub();
       if (sub && store.get("pushOn", false)) { await post("/unsubscribe", { endpoint: sub.endpoint }); await sub.unsubscribe(); store.set("pushOn", false); }
-      else {
-        const perm = await Notification.requestPermission(); if (perm !== "granted") { await draw(); return; }
-        const reg = await navigator.serviceWorker.ready;
-        const s2 = (await reg.pushManager.getSubscription()) || await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: u8(VAPID_PUB) });
-        const r = await post("/subscribe", { subscription: s2.toJSON(), prefs, lat: loc.lat, lng: loc.lng, tz: tzNow(), city: locLabel(), lang: store.get("lang", "en") });
-        if (!r.ok) throw new Error(r.error || "failed");
-        store.set("pushOn", true);
-        post("/test", { endpoint: s2.endpoint }).catch(() => {});
-        msg.textContent = t("pushSent");
-      }
+      else if (await turnOn()) msg.textContent = t("pushSent");
     } catch (e) { msg.textContent = t("pushFail") + " (" + (e && e.message || e) + ")"; }
     draw();
   };
+  /* first-visit window that explains the alerts */
+  const pp = $("pushPrompt");
+  const closePrompt = () => { pp.classList.remove("on"); store.set("pushPromptSeen", Date.now()); };
+  function showPrompt() {
+    const needA2HS = ios && !standalone;
+    $("ppIos").hidden = !needA2HS; $("ppYes").hidden = needA2HS; $("ppLater").textContent = needA2HS ? t("ppOk") : t("ppLater");
+    pp.classList.add("on");
+  }
+  $("ppLater").onclick = closePrompt;
+  pp.onclick = e => { if (e.target === pp) closePrompt(); };
+  $("ppYes").onclick = async () => {
+    const lbl = $("ppYes").textContent; $("ppYes").disabled = true; $("ppYes").textContent = "…"; $("ppErr").textContent = "";
+    try { if (await turnOn()) { closePrompt(); draw(); $("pushMsg").textContent = t("pushSent"); } else { closePrompt(); draw(); } }
+    catch (e) { $("ppErr").textContent = t("pushFail") + " (" + (e && e.message || e) + ")"; }
+    $("ppYes").disabled = false; $("ppYes").textContent = lbl;
+  };
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && pp.classList.contains("on")) closePrompt(); });
+  const maybe = (tries = 0) => {   // wait for the "what's new" window to be closed first
+    if (store.get("pushPromptSeen", 0) || store.get("pushOn", false)) return;
+    if (!sup && !(ios && !standalone)) return;                 // nothing to offer on this browser
+    if (sup && Notification.permission === "denied") return;
+    if (wnOpen || $("sheet").classList.contains("on")) { if (tries < 40) setTimeout(() => maybe(tries + 1), 1500); return; }
+    setTimeout(showPrompt, tries ? 400 : 1800);
+  };
+  setTimeout(() => maybe(), 800);
   $("pushTest").onclick = async () => { const sub = await getSub(); if (!sub) return; $("pushMsg").textContent = "…"; try { const r = await post("/test", { endpoint: sub.endpoint }); $("pushMsg").textContent = r.ok ? t("pushSent") : t("pushFail") + " (" + (r.status || r.error) + ")"; } catch { $("pushMsg").textContent = t("pushFail"); } };
   $("pushPrefs").onchange = e => {
     const s = e.target.dataset.s, o = e.target.dataset.o, tt = e.target.dataset.t;
@@ -1319,7 +1367,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 132, APP_VERSION = vName(APP_V) + " (2026-11-12)";
+const APP_V = 133, APP_VERSION = vName(APP_V) + " (2026-11-12)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");
