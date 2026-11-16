@@ -1,6 +1,19 @@
 {
- "v": 131,
+ "v": 132,
  "history": [
+  {
+   "v": 132,
+   "date": "2026-11-16",
+   "en": [
+    "Alert settings screen tidied: Salaat timings are now tap-to-select chips, and each amal alert is a clean row with its own time box."
+   ],
+   "gu": [
+    "અલર્ટ સેટિંગ્સ સ્ક્રીન વ્યવસ્થિત: સલાત સમય હવે ટેપ કરીને પસંદ થતા ચિપ છે, અને દરેક અમલ અલર્ટ પોતાના સમય બોક્સ સાથેની સ્વચ્છ પંક્તિ છે."
+   ],
+   "hi": [
+    "Alert settings screen saaf kiya: Salaat timings ab tap karke chunne wale chips hain, aur har amal alert apne time box ke saath saaf row hai."
+   ]
+  },
   {
    "v": 131,
    "date": "2026-11-16",
