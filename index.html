@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=133">
-<script src="theme-init.js?v=133"></script>
+<link rel="stylesheet" href="themes.css?v=134">
+<script src="theme-init.js?v=134"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -113,6 +113,9 @@ input,select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid
 nav.tabs{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:5}
 nav.tabs button{flex:1;background:none;border:0;color:var(--muted);padding:8px 0 10px;font-size:11px}
 nav.tabs button .i{display:block;font-size:20px;line-height:1.2}
+.view#v-zy{display:block;visibility:hidden;pointer-events:none}
+.view#v-zy.on{visibility:visible;pointer-events:auto}
+html.zyon,html.zyon body{overflow:hidden;height:100%;overscroll-behavior:none}
 #v-zy::before{content:"";position:fixed;left:0;right:0;top:0;height:env(safe-area-inset-top);background:var(--hdr,var(--brand));z-index:6}
 #v-zy iframe{position:fixed;left:0;top:env(safe-area-inset-top);width:100%;height:calc(100vh - var(--navh,58px) - env(safe-area-inset-top));height:calc(100dvh - var(--navh,58px) - env(safe-area-inset-top));border:0;background:var(--bg);z-index:6}
 .slhead{display:flex;align-items:center;gap:8px;margin:2px 0 10px}
@@ -670,10 +673,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=133"></script>
-<script src="i18n.js?v=133"></script>
-<script src="cities.js?v=133"></script>
-<script src="haptic.js?v=133"></script>
+<script src="hijri.js?v=134"></script>
+<script src="i18n.js?v=134"></script>
+<script src="cities.js?v=134"></script>
+<script src="haptic.js?v=134"></script>
 <script>
 "use strict";
 
@@ -1246,10 +1249,11 @@ function shiftMonth(k) {
 function switchView(v) {
   curView = v;
   document.querySelectorAll(".view").forEach(s => s.classList.toggle("on", s.id === "v-" + v));
+  document.documentElement.classList.toggle("zyon", v === "zy");
   document.querySelectorAll("nav.tabs button").forEach(b => b.classList.toggle("on", b.dataset.v === v));
   if (v === "up") renderUpcoming();
   if (v === "sl") { slOff = 0; renderSalatPage(); }
-  if (v === "zy") { const f = $("zyFrame"); document.documentElement.style.setProperty("--navh", document.querySelector("nav.tabs").offsetHeight + "px"); if (!f.src) f.src = f.dataset.src; else { const top = () => { try { f.contentWindow.scrollTo(0, 0); } catch {} }; top(); requestAnimationFrame(() => { top(); setTimeout(top, 80); setTimeout(top, 250); }); } }
+  if (v === "zy") { const f = $("zyFrame"); document.documentElement.style.setProperty("--navh", document.querySelector("nav.tabs").offsetHeight + "px"); if (!f.src) f.src = f.dataset.src; else { const top = () => { try { f.contentWindow.scrollTo(0, 0); } catch {} }; top(); requestAnimationFrame(top); } }
   window.scrollTo(0, 0);
 }
 $("slCard").onclick = e => { e.preventDefault(); switchView("sl"); };
@@ -1367,7 +1371,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 133, APP_VERSION = vName(APP_V) + " (2026-11-12)";
+const APP_V = 134, APP_VERSION = vName(APP_V) + " (2026-11-12)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");

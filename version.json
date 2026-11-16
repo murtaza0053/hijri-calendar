@@ -1,6 +1,19 @@
 {
- "v": 133,
+ "v": 134,
  "history": [
+  {
+   "v": 134,
+   "date": "2026-11-16",
+   "en": [
+    "Fix: the Ziyarat tab no longer gets stuck while scrolling (the page behind is locked, the tab stays loaded, and its header no longer uses blur inside the tab)."
+   ],
+   "gu": [
+    "ફિક્સ: ઝિયારત ટેબ સ્ક્રોલ કરતાં હવે અટકતું નથી (પાછળનું પેજ લૉક, ટેબ લોડ રહે છે, અને ટેબની અંદર હેડરમાં બ્લર નથી)."
+   ],
+   "hi": [
+    "Fix: Ziyarat tab ab scroll karte waqt atakta nahi (peeche ka page lock, tab loaded rehta hai, aur tab ke andar header me blur nahi)."
+   ]
+  },
   {
    "v": 133,
    "date": "2026-11-16",
