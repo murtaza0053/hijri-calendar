@@ -1,6 +1,19 @@
 {
- "v": 136,
+ "v": 137,
  "history": [
+  {
+   "v": 137,
+   "date": "2026-11-17",
+   "en": [
+    "Push alerts: new “Miqaats + Washeq raat” alert — the evening before a day miqaat, on the day of a night miqaat, and a heads-up one month before every Washeq raat. Pick the time in Settings → Push alerts."
+   ],
+   "gu": [
+    "પુશ અલર્ટ: નવો “મિકાત + વાશિક રાત” અલર્ટ — દિવસના મિકાતની આગલી સાંજે, રાતના મિકાતના દિવસે, અને દરેક વાશિક રાતના 1 મહિના પહેલાં. સમય સેટિંગ્સ → Push alerts માં પસંદ કરો."
+   ],
+   "hi": [
+    "पुश अलर्ट: नया “मीक़ात + वाशिक रात” अलर्ट — दिन के मीक़ात की पिछली शाम, रात के मीक़ात के दिन, और हर वाशिक रात से 1 महीना पहले। समय Settings → Push alerts में चुनें।"
+   ]
+  },
   {
    "v": 136,
    "date": "2026-11-16",
