@@ -53,6 +53,8 @@ function build(maxPriority, name, file) {
         `DTSTART;VALUE=DATE:${ymd(g)}`, `DTEND;VALUE=DATE:${ymd(g2)}`, `SUMMARY:${esc(summary)}`, `DESCRIPTION:${esc(desc)}`,
         "TRANSP:TRANSPARENT",
         "BEGIN:VALARM", "ACTION:DISPLAY", `DESCRIPTION:${esc(summary)}`, `TRIGGER:${trigger}`, "END:VALARM",
+        // Washeq raat → an early heads-up one month before (9 AM), so there is time to prepare
+        ...(qs.some(q => /washeq/i.test(q.description || "")) ? ["BEGIN:VALARM", "ACTION:DISPLAY", `DESCRIPTION:${esc("1 month to go (" + hdate + "): " + summary)}`, "TRIGGER:-P29DT15H", "END:VALARM"] : []),
         "END:VEVENT");
       n++;
     }

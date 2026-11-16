@@ -9,86 +9,6 @@ X-WR-CALDESC:Sihori, Fajr, Zawaal, Maghrib and Nisful Layl alerts for Hyder
 REFRESH-INTERVAL;VALUE=DURATION:P7D
 X-PUBLISHED-TTL:P7D
 BEGIN:VEVENT
-UID:sal-hyderabad-20261115-sih@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261114T233600Z
-DTEND:20261114T233700Z
-SUMMARY:🕌 Sihori — Hyderabad
-DESCRIPTION:Sihori time for Hyderabad (approximate). https://murtaza0053.gi
- thub.io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Sihori
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sal-hyderabad-20261115-faj@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261114T234600Z
-DTEND:20261114T234700Z
-SUMMARY:🕌 Fajr — Hyderabad
-DESCRIPTION:Fajr time for Hyderabad (approximate). https://murtaza0053.gith
- ub.io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Fajr
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sal-hyderabad-20261115-zaw@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261115T063000Z
-DTEND:20261115T063100Z
-SUMMARY:🕌 Zawaal — Hyderabad
-DESCRIPTION:Zawaal time for Hyderabad (approximate). https://murtaza0053.gi
- thub.io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Zawaal
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sal-hyderabad-20261115-mag@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261115T121000Z
-DTEND:20261115T121100Z
-SUMMARY:🕌 Maghrib — Hyderabad
-DESCRIPTION:Maghrib time for Hyderabad (approximate). https://murtaza0053.g
- ithub.io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Maghrib
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sal-hyderabad-20261115-nis@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261115T183000Z
-DTEND:20261115T183100Z
-SUMMARY:🕌 Nisful Layl — Hyderabad
-DESCRIPTION:Nisful Layl time for Hyderabad (approximate). https://murtaza00
- 53.github.io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Nisful Layl
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:sal-hyderabad-20261116-sih@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART:20261115T233700Z
@@ -14637,6 +14557,86 @@ UID:sal-hyderabad-20270516-nis@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART:20270516T184200Z
 DTEND:20270516T184300Z
+SUMMARY:🕌 Nisful Layl — Hyderabad
+DESCRIPTION:Nisful Layl time for Hyderabad (approximate). https://murtaza00
+ 53.github.io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Nisful Layl
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-hyderabad-20270517-sih@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270516T225900Z
+DTEND:20270516T230000Z
+SUMMARY:🕌 Sihori — Hyderabad
+DESCRIPTION:Sihori time for Hyderabad (approximate). https://murtaza0053.gi
+ thub.io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Sihori
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-hyderabad-20270517-faj@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270516T230900Z
+DTEND:20270516T231000Z
+SUMMARY:🕌 Fajr — Hyderabad
+DESCRIPTION:Fajr time for Hyderabad (approximate). https://murtaza0053.gith
+ ub.io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Fajr
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-hyderabad-20270517-zaw@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270517T064200Z
+DTEND:20270517T064300Z
+SUMMARY:🕌 Zawaal — Hyderabad
+DESCRIPTION:Zawaal time for Hyderabad (approximate). https://murtaza0053.gi
+ thub.io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Zawaal
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-hyderabad-20270517-mag@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270517T131100Z
+DTEND:20270517T131200Z
+SUMMARY:🕌 Maghrib — Hyderabad
+DESCRIPTION:Maghrib time for Hyderabad (approximate). https://murtaza0053.g
+ ithub.io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Maghrib
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-hyderabad-20270517-nis@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270517T184200Z
+DTEND:20270517T184300Z
 SUMMARY:🕌 Nisful Layl — Hyderabad
 DESCRIPTION:Nisful Layl time for Hyderabad (approximate). https://murtaza00
  53.github.io/hijri-calendar/#sl

@@ -9,86 +9,6 @@ X-WR-CALDESC:Sihori, Fajr, Zawaal, Maghrib and Nisful Layl alerts for Pune
 REFRESH-INTERVAL;VALUE=DURATION:P7D
 X-PUBLISHED-TTL:P7D
 BEGIN:VEVENT
-UID:sal-pune-20261115-sih@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261114T235700Z
-DTEND:20261114T235800Z
-SUMMARY:🕌 Sihori — Pune
-DESCRIPTION:Sihori time for Pune (approximate). https://murtaza0053.github.
- io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Sihori
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sal-pune-20261115-faj@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261115T000700Z
-DTEND:20261115T000800Z
-SUMMARY:🕌 Fajr — Pune
-DESCRIPTION:Fajr time for Pune (approximate). https://murtaza0053.github.io
- /hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Fajr
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sal-pune-20261115-zaw@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261115T064900Z
-DTEND:20261115T065000Z
-SUMMARY:🕌 Zawaal — Pune
-DESCRIPTION:Zawaal time for Pune (approximate). https://murtaza0053.github.
- io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Zawaal
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sal-pune-20261115-mag@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261115T122700Z
-DTEND:20261115T122800Z
-SUMMARY:🕌 Maghrib — Pune
-DESCRIPTION:Maghrib time for Pune (approximate). https://murtaza0053.github
- .io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Maghrib
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sal-pune-20261115-nis@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261115T184900Z
-DTEND:20261115T185000Z
-SUMMARY:🕌 Nisful Layl — Pune
-DESCRIPTION:Nisful Layl time for Pune (approximate). https://murtaza0053.gi
- thub.io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Nisful Layl
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:sal-pune-20261116-sih@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART:20261115T235700Z
@@ -14637,6 +14557,86 @@ UID:sal-pune-20270516-nis@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART:20270516T190000Z
 DTEND:20270516T190100Z
+SUMMARY:🕌 Nisful Layl — Pune
+DESCRIPTION:Nisful Layl time for Pune (approximate). https://murtaza0053.gi
+ thub.io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Nisful Layl
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-pune-20270517-sih@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270516T231600Z
+DTEND:20270516T231700Z
+SUMMARY:🕌 Sihori — Pune
+DESCRIPTION:Sihori time for Pune (approximate). https://murtaza0053.github.
+ io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Sihori
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-pune-20270517-faj@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270516T232600Z
+DTEND:20270516T232700Z
+SUMMARY:🕌 Fajr — Pune
+DESCRIPTION:Fajr time for Pune (approximate). https://murtaza0053.github.io
+ /hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Fajr
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-pune-20270517-zaw@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270517T070000Z
+DTEND:20270517T070100Z
+SUMMARY:🕌 Zawaal — Pune
+DESCRIPTION:Zawaal time for Pune (approximate). https://murtaza0053.github.
+ io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Zawaal
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-pune-20270517-mag@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270517T133100Z
+DTEND:20270517T133200Z
+SUMMARY:🕌 Maghrib — Pune
+DESCRIPTION:Maghrib time for Pune (approximate). https://murtaza0053.github
+ .io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Maghrib
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-pune-20270517-nis@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270517T190000Z
+DTEND:20270517T190100Z
 SUMMARY:🕌 Nisful Layl — Pune
 DESCRIPTION:Nisful Layl time for Pune (approximate). https://murtaza0053.gi
  thub.io/hijri-calendar/#sl

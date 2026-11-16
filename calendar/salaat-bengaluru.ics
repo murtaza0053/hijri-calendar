@@ -9,86 +9,6 @@ X-WR-CALDESC:Sihori, Fajr, Zawaal, Maghrib and Nisful Layl alerts for Benga
 REFRESH-INTERVAL;VALUE=DURATION:P7D
 X-PUBLISHED-TTL:P7D
 BEGIN:VEVENT
-UID:sal-bengaluru-20261115-sih@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261114T233400Z
-DTEND:20261114T233500Z
-SUMMARY:🕌 Sihori — Bengaluru
-DESCRIPTION:Sihori time for Bengaluru (approximate). https://murtaza0053.gi
- thub.io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Sihori
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sal-bengaluru-20261115-faj@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261114T234400Z
-DTEND:20261114T234500Z
-SUMMARY:🕌 Fajr — Bengaluru
-DESCRIPTION:Fajr time for Bengaluru (approximate). https://murtaza0053.gith
- ub.io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Fajr
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sal-bengaluru-20261115-zaw@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261115T063400Z
-DTEND:20261115T063500Z
-SUMMARY:🕌 Zawaal — Bengaluru
-DESCRIPTION:Zawaal time for Bengaluru (approximate). https://murtaza0053.gi
- thub.io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Zawaal
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sal-bengaluru-20261115-mag@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261115T122000Z
-DTEND:20261115T122100Z
-SUMMARY:🕌 Maghrib — Bengaluru
-DESCRIPTION:Maghrib time for Bengaluru (approximate). https://murtaza0053.g
- ithub.io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Maghrib
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sal-bengaluru-20261115-nis@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261115T183400Z
-DTEND:20261115T183500Z
-SUMMARY:🕌 Nisful Layl — Bengaluru
-DESCRIPTION:Nisful Layl time for Bengaluru (approximate). https://murtaza00
- 53.github.io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Nisful Layl
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:sal-bengaluru-20261116-sih@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART:20261115T233400Z
@@ -14637,6 +14557,86 @@ UID:sal-bengaluru-20270516-nis@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART:20270516T184500Z
 DTEND:20270516T184600Z
+SUMMARY:🕌 Nisful Layl — Bengaluru
+DESCRIPTION:Nisful Layl time for Bengaluru (approximate). https://murtaza00
+ 53.github.io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Nisful Layl
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-bengaluru-20270517-sih@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270516T230900Z
+DTEND:20270516T231000Z
+SUMMARY:🕌 Sihori — Bengaluru
+DESCRIPTION:Sihori time for Bengaluru (approximate). https://murtaza0053.gi
+ thub.io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Sihori
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-bengaluru-20270517-faj@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270516T231900Z
+DTEND:20270516T232000Z
+SUMMARY:🕌 Fajr — Bengaluru
+DESCRIPTION:Fajr time for Bengaluru (approximate). https://murtaza0053.gith
+ ub.io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Fajr
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-bengaluru-20270517-zaw@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270517T064600Z
+DTEND:20270517T064700Z
+SUMMARY:🕌 Zawaal — Bengaluru
+DESCRIPTION:Zawaal time for Bengaluru (approximate). https://murtaza0053.gi
+ thub.io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Zawaal
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-bengaluru-20270517-mag@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270517T130800Z
+DTEND:20270517T130900Z
+SUMMARY:🕌 Maghrib — Bengaluru
+DESCRIPTION:Maghrib time for Bengaluru (approximate). https://murtaza0053.g
+ ithub.io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Maghrib
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-bengaluru-20270517-nis@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270517T184500Z
+DTEND:20270517T184600Z
 SUMMARY:🕌 Nisful Layl — Bengaluru
 DESCRIPTION:Nisful Layl time for Bengaluru (approximate). https://murtaza00
  53.github.io/hijri-calendar/#sl

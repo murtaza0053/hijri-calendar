@@ -9,86 +9,6 @@ X-WR-CALDESC:Sihori, Fajr, Zawaal, Maghrib and Nisful Layl alerts for Udaip
 REFRESH-INTERVAL;VALUE=DURATION:P7D
 X-PUBLISHED-TTL:P7D
 BEGIN:VEVENT
-UID:sal-udaipur-20261115-sih@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261115T000600Z
-DTEND:20261115T000700Z
-SUMMARY:🕌 Sihori — Udaipur
-DESCRIPTION:Sihori time for Udaipur (approximate). https://murtaza0053.gith
- ub.io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Sihori
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sal-udaipur-20261115-faj@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261115T001600Z
-DTEND:20261115T001700Z
-SUMMARY:🕌 Fajr — Udaipur
-DESCRIPTION:Fajr time for Udaipur (approximate). https://murtaza0053.github
- .io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Fajr
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sal-udaipur-20261115-zaw@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261115T064900Z
-DTEND:20261115T065000Z
-SUMMARY:🕌 Zawaal — Udaipur
-DESCRIPTION:Zawaal time for Udaipur (approximate). https://murtaza0053.gith
- ub.io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Zawaal
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sal-udaipur-20261115-mag@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261115T121800Z
-DTEND:20261115T121900Z
-SUMMARY:🕌 Maghrib — Udaipur
-DESCRIPTION:Maghrib time for Udaipur (approximate). https://murtaza0053.git
- hub.io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Maghrib
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sal-udaipur-20261115-nis@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261115T185000Z
-DTEND:20261115T185100Z
-SUMMARY:🕌 Nisful Layl — Udaipur
-DESCRIPTION:Nisful Layl time for Udaipur (approximate). https://murtaza0053
- .github.io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Nisful Layl
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:sal-udaipur-20261116-sih@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART:20261116T000700Z
@@ -14637,6 +14557,86 @@ UID:sal-udaipur-20270516-nis@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART:20270516T190100Z
 DTEND:20270516T190200Z
+SUMMARY:🕌 Nisful Layl — Udaipur
+DESCRIPTION:Nisful Layl time for Udaipur (approximate). https://murtaza0053
+ .github.io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Nisful Layl
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-udaipur-20270517-sih@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270516T230600Z
+DTEND:20270516T230700Z
+SUMMARY:🕌 Sihori — Udaipur
+DESCRIPTION:Sihori time for Udaipur (approximate). https://murtaza0053.gith
+ ub.io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Sihori
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-udaipur-20270517-faj@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270516T231600Z
+DTEND:20270516T231700Z
+SUMMARY:🕌 Fajr — Udaipur
+DESCRIPTION:Fajr time for Udaipur (approximate). https://murtaza0053.github
+ .io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Fajr
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-udaipur-20270517-zaw@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270517T070100Z
+DTEND:20270517T070200Z
+SUMMARY:🕌 Zawaal — Udaipur
+DESCRIPTION:Zawaal time for Udaipur (approximate). https://murtaza0053.gith
+ ub.io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Zawaal
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-udaipur-20270517-mag@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270517T134200Z
+DTEND:20270517T134300Z
+SUMMARY:🕌 Maghrib — Udaipur
+DESCRIPTION:Maghrib time for Udaipur (approximate). https://murtaza0053.git
+ hub.io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Maghrib
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-udaipur-20270517-nis@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270517T190100Z
+DTEND:20270517T190200Z
 SUMMARY:🕌 Nisful Layl — Udaipur
 DESCRIPTION:Nisful Layl time for Udaipur (approximate). https://murtaza0053
  .github.io/hijri-calendar/#sl

@@ -9,86 +9,6 @@ X-WR-CALDESC:Sihori, Fajr, Zawaal, Maghrib and Nisful Layl alerts for Karac
 REFRESH-INTERVAL;VALUE=DURATION:P7D
 X-PUBLISHED-TTL:P7D
 BEGIN:VEVENT
-UID:sal-karachi-20261115-sih@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261115T003400Z
-DTEND:20261115T003500Z
-SUMMARY:🕌 Sihori — Karachi
-DESCRIPTION:Sihori time for Karachi (approximate). https://murtaza0053.gith
- ub.io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Sihori
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sal-karachi-20261115-faj@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261115T004400Z
-DTEND:20261115T004500Z
-SUMMARY:🕌 Fajr — Karachi
-DESCRIPTION:Fajr time for Karachi (approximate). https://murtaza0053.github
- .io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Fajr
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sal-karachi-20261115-zaw@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261115T071600Z
-DTEND:20261115T071700Z
-SUMMARY:🕌 Zawaal — Karachi
-DESCRIPTION:Zawaal time for Karachi (approximate). https://murtaza0053.gith
- ub.io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Zawaal
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sal-karachi-20261115-mag@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261115T124400Z
-DTEND:20261115T124500Z
-SUMMARY:🕌 Maghrib — Karachi
-DESCRIPTION:Maghrib time for Karachi (approximate). https://murtaza0053.git
- hub.io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Maghrib
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:sal-karachi-20261115-nis@murtaza0053.github.io
-DTSTAMP:20260101T000000Z
-DTSTART:20261115T191600Z
-DTEND:20261115T191700Z
-SUMMARY:🕌 Nisful Layl — Karachi
-DESCRIPTION:Nisful Layl time for Karachi (approximate). https://murtaza0053
- .github.io/hijri-calendar/#sl
-URL:https://murtaza0053.github.io/hijri-calendar/#sl
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Nisful Layl
-TRIGGER:PT0S
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:sal-karachi-20261116-sih@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART:20261116T003400Z
@@ -14637,6 +14557,86 @@ UID:sal-karachi-20270516-nis@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART:20270516T192800Z
 DTEND:20270516T192900Z
+SUMMARY:🕌 Nisful Layl — Karachi
+DESCRIPTION:Nisful Layl time for Karachi (approximate). https://murtaza0053
+ .github.io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Nisful Layl
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-karachi-20270517-sih@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270516T233300Z
+DTEND:20270516T233400Z
+SUMMARY:🕌 Sihori — Karachi
+DESCRIPTION:Sihori time for Karachi (approximate). https://murtaza0053.gith
+ ub.io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Sihori
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-karachi-20270517-faj@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270516T234300Z
+DTEND:20270516T234400Z
+SUMMARY:🕌 Fajr — Karachi
+DESCRIPTION:Fajr time for Karachi (approximate). https://murtaza0053.github
+ .io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Fajr
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-karachi-20270517-zaw@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270517T072800Z
+DTEND:20270517T072900Z
+SUMMARY:🕌 Zawaal — Karachi
+DESCRIPTION:Zawaal time for Karachi (approximate). https://murtaza0053.gith
+ ub.io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Zawaal
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-karachi-20270517-mag@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270517T140900Z
+DTEND:20270517T141000Z
+SUMMARY:🕌 Maghrib — Karachi
+DESCRIPTION:Maghrib time for Karachi (approximate). https://murtaza0053.git
+ hub.io/hijri-calendar/#sl
+URL:https://murtaza0053.github.io/hijri-calendar/#sl
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Maghrib
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sal-karachi-20270517-nis@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART:20270517T192800Z
+DTEND:20270517T192900Z
 SUMMARY:🕌 Nisful Layl — Karachi
 DESCRIPTION:Nisful Layl time for Karachi (approximate). https://murtaza0053
  .github.io/hijri-calendar/#sl

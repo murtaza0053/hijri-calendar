@@ -1,6 +1,19 @@
 {
- "v": 135,
+ "v": 136,
  "history": [
+  {
+   "v": 136,
+   "date": "2026-11-16",
+   "en": [
+    "Washeq raat alerts (Rajab first night, Shab-e-Meraaj, Shab-e-Baraat, Lailat al-Fahdil, Lailat ul-Eid) now start one month early: the Miqaats calendar feeds add an extra reminder 30 days before. Re-subscribe or refresh the feed to get it."
+   ],
+   "gu": [
+    "વાશિક રાત અલર્ટ હવે એક મહિના પહેલાં શરૂ: મિકાત કેલેન્ડર ફીડમાં 30 દિવસ પહેલાંનું વધારાનું રિમાઇન્ડર ઉમેર્યું. મેળવવા માટે ફીડ રિફ્રેશ કરો."
+   ],
+   "hi": [
+    "वाशिक रात के अलर्ट अब एक महीने पहले से शुरू: मीक़ात कैलेंडर फ़ीड में 30 दिन पहले का अतिरिक्त रिमाइंडर जुड़ा। पाने के लिए फ़ीड रिफ्रेश करें।"
+   ]
+  },
   {
    "v": 135,
    "date": "2026-11-16",
