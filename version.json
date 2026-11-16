@@ -1,6 +1,19 @@
 {
- "v": 130,
+ "v": 131,
  "history": [
+  {
+   "v": 131,
+   "date": "2026-11-16",
+   "en": [
+    "Alert timing settings: choose how long before each Salaat timing you want the alert (at the time, 5–60 minutes before), and set your own time for the Rozi amal, tasbeeh, sadaqah and Dua e Kumail alerts."
+   ],
+   "gu": [
+    "અલર્ટ સમય સેટિંગ્સ: દરેક સલાત સમયના કેટલા પહેલાં અલર્ટ જોઈએ (સમયે, 5–60 મિનિટ પહેલાં) તે પસંદ કરો, અને રોઝી અમલ, તસ્બીહ, સદકો અને દુઆ એ કુમૈલના અલર્ટ માટે તમારો પોતાનો સમય સેટ કરો."
+   ],
+   "hi": [
+    "Alert timing settings: har Salaat timing se kitna pehle alert chahiye (waqt par, 5–60 minute pehle) chuno, aur Rozi amal, tasbeeh, sadaqah aur Dua e Kumail ke alerts ke liye apna waqt set karo."
+   ]
+  },
   {
    "v": 130,
    "date": "2026-11-16",

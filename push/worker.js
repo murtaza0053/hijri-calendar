@@ -38,13 +38,13 @@ function salaatDay(Y, M, D, lat, lng) {   // same formulas as the app (index.htm
 }
 
 const TXT = {
-  en: { sih: "Sihori", faj: "Fajr", fe: "Fajr end", zaw: "Zawaal", ze: "Zohr end", ae: "Asr end", mag: "Maghrib", nis: "Nisful Layl", now: "It is {n} time.",
+  en: { sih: "Sihori", faj: "Fajr", fe: "Fajr end", zaw: "Zawaal", ze: "Zohr end", ae: "Asr end", mag: "Maghrib", nis: "Nisful Layl", now: "It is {n} time.", soon: "{n} in {m} minutes.",
         rozi: "📖 Rozi amal: Surat {s}", roziB: "Hijri {d} — recite it once for barakat in rozi.", tas: "📿 Today's tasbeeh", tasB: "{t} — 100 times.",
         sdq: "🤲 Today's sadaqah", sdqB: "Give sadaqah today: {i}.", kum: "🌙 Shab-e-Juma", kumB: "Tonight, after Maghrib: recite Dua e Kumail.", test: "🔔 Alerts are on", testB: "You will get your Salaat and amal alerts on this device." },
-  gu: { sih: "સિહોરી", faj: "ફજર", fe: "ફજર અંત", zaw: "ઝવાલ", ze: "ઝોહર અંત", ae: "અસર અંત", mag: "મગરિબ", nis: "નિસ્ફુલ લૈલ", now: "{n} નો સમય થયો.",
+  gu: { sih: "સિહોરી", faj: "ફજર", fe: "ફજર અંત", zaw: "ઝવાલ", ze: "ઝોહર અંત", ae: "અસર અંત", mag: "મગરિબ", nis: "નિસ્ફુલ લૈલ", now: "{n} નો સમય થયો.", soon: "{m} મિનિટમાં {n}.",
         rozi: "📖 રોઝી અમલ: સૂરત {s}", roziB: "હિજરી {d} — રોઝીમાં બરકત માટે એક વાર પઢો.", tas: "📿 આજની તસ્બીહ", tasB: "{t} — 100 વાર.",
         sdq: "🤲 આજનો સદકો", sdqB: "આજે સદકો આપો: {i}.", kum: "🌙 શબે જુમા", kumB: "આજે રાત્રે, મગરિબ પછી: દુઆ એ કુમૈલ પઢો.", test: "🔔 અલર્ટ ચાલુ છે", testB: "આ ડિવાઇસ પર તમને સલાત અને અમલના અલર્ટ મળશે." },
-  hi: { sih: "Sihori", faj: "Fajr", fe: "Fajr end", zaw: "Zawaal", ze: "Zohr end", ae: "Asr end", mag: "Maghrib", nis: "Nisful Layl", now: "{n} ka waqt ho gaya.",
+  hi: { sih: "Sihori", faj: "Fajr", fe: "Fajr end", zaw: "Zawaal", ze: "Zohr end", ae: "Asr end", mag: "Maghrib", nis: "Nisful Layl", now: "{n} ka waqt ho gaya.", soon: "{n} me {m} minute baaki.",
         rozi: "📖 Rozi amal: Surat {s}", roziB: "Hijri {d} — rozi me barakat ke liye ek baar padho.", tas: "📿 Aaj ki tasbeeh", tasB: "{t} — 100 baar.",
         sdq: "🤲 Aaj ka sadaqah", sdqB: "Aaj sadaqah do: {i}.", kum: "🌙 Shab-e-Juma", kumB: "Aaj raat, Maghrib ke baad: Dua e Kumail padho.", test: "🔔 Alerts on hain", testB: "Is device par aapko Salaat aur amal ke alerts milenge." }
 };
@@ -63,23 +63,30 @@ export function dueEvents(s, ws) {
   const pr = JSON.parse(s.prefs || "{}"), T = TXT[s.lang] || TXT.en, out = [];
   let p; try { p = localParts(ws, s.tz || "UTC"); } catch { p = localParts(ws, "UTC"); }
   const city = s.city || "";
+  const lead = Math.min(120, Math.max(0, +pr.lead || 0)) * 60000, tm = pr.t || {};
+  const at = (k, def) => { const m = /^(\d\d):(\d\d)$/.exec(tm[k] || def) || /^(\d\d):(\d\d)$/.exec(def); return +m[1] === p.hh && +m[2] === p.mm; };
   if (pr.sal && pr.sal.length) for (const off of [-1, 0, 1]) {
     const d0 = new Date(Date.UTC(p.y, p.m, p.d + off));
-    for (const [k, t] of salaatDay(d0.getUTCFullYear(), d0.getUTCMonth(), d0.getUTCDate(), s.lat, s.lng))
-      if (pr.sal.includes(k) && t.getTime() >= ws && t.getTime() < ws + 60000)
-        out.push({ title: `🕌 ${T[k]}${city ? " — " + city : ""}`, body: fill(T.now, { n: T[k] }), url: "./#sl", tag: "sal-" + k });
+    for (const [k, t] of salaatDay(d0.getUTCFullYear(), d0.getUTCMonth(), d0.getUTCDate(), s.lat, s.lng)) {
+      const due = t.getTime() - lead;
+      if (pr.sal.includes(k) && due >= ws && due < ws + 60000)
+        out.push({ title: `🕌 ${T[k]}${city ? " — " + city : ""}`, body: lead ? fill(T.soon, { n: T[k], m: Math.round(lead / 60000) }) : fill(T.now, { n: T[k] }), url: "./#sl", tag: "sal-" + k });
+    }
   }
-  if (p.hh === 8 && p.mm === 0 && pr.rozi) { const h = H.fromAJD(H.gToAJD(p.y, p.m, p.d)), r = ROZI.find(x => x[0] === h.d); if (r) out.push({ title: fill(T.rozi, { s: r[1] }), body: fill(T.roziB, { d: h.d }), url: "./#dua", tag: "rozi" }); }
-  if (p.hh === 7 && p.mm === 0 && pr.tasbeeh) out.push({ title: T.tas, body: fill(T.tasB, { t: WEEK[p.dow] }), url: "./dua/tasbeeh.html?m=week", tag: "tasbeeh" });
-  if (p.hh === 8 && p.mm === 0 && pr.sadaqah) out.push({ title: T.sdq, body: fill(T.sdqB, { i: SADAQAH[p.dow] }), url: "./#dua", tag: "sadaqah" });
-  if (p.hh === 19 && p.mm === 0 && p.dow === 4 && pr.kumail) out.push({ title: T.kum, body: T.kumB, url: "./dua/kumail.html", tag: "kumail" });
+  if (at("rozi", "08:00") && pr.rozi) { const h = H.fromAJD(H.gToAJD(p.y, p.m, p.d)), r = ROZI.find(x => x[0] === h.d); if (r) out.push({ title: fill(T.rozi, { s: r[1] }), body: fill(T.roziB, { d: h.d }), url: "./#dua", tag: "rozi" }); }
+  if (at("tasbeeh", "07:00") && pr.tasbeeh) out.push({ title: T.tas, body: fill(T.tasB, { t: WEEK[p.dow] }), url: "./dua/tasbeeh.html?m=week", tag: "tasbeeh" });
+  if (at("sadaqah", "08:00") && pr.sadaqah) out.push({ title: T.sdq, body: fill(T.sdqB, { i: SADAQAH[p.dow] }), url: "./#dua", tag: "sadaqah" });
+  if (at("kumail", "19:00") && p.dow === 4 && pr.kumail) out.push({ title: T.kum, body: T.kumB, url: "./dua/kumail.html", tag: "kumail" });
   return out;
 }
 
 const cors = req => { const o = req.headers.get("Origin"); return { "Access-Control-Allow-Origin": ORIGINS.includes(o) ? o : ORIGINS[0], "Access-Control-Allow-Methods": "POST, GET, OPTIONS", "Access-Control-Allow-Headers": "Content-Type", "Vary": "Origin" }; };
 const json = (req, obj, status = 200) => new Response(JSON.stringify(obj), { status, headers: { "Content-Type": "application/json", ...cors(req) } });
 const sha = async s => b64u.enc(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s))).slice(0, 32);
-function cleanPrefs(p = {}) { return { sal: (Array.isArray(p.sal) ? p.sal : []).filter(k => SAL_KEYS.includes(k)), rozi: !!p.rozi, tasbeeh: !!p.tasbeeh, sadaqah: !!p.sadaqah, kumail: !!p.kumail }; }
+function cleanPrefs(p = {}) {
+  const t = {}; for (const k of ["rozi", "tasbeeh", "sadaqah", "kumail"]) if (/^([01]\d|2[0-3]):[0-5]\d$/.test((p.t || {})[k])) t[k] = p.t[k];
+  return { sal: (Array.isArray(p.sal) ? p.sal : []).filter(k => SAL_KEYS.includes(k)), lead: [0, 5, 10, 15, 20, 30, 45, 60].includes(+p.lead) ? +p.lead : 0, t, rozi: !!p.rozi, tasbeeh: !!p.tasbeeh, sadaqah: !!p.sadaqah, kumail: !!p.kumail };
+}
 const okEndpoint = e => { try { const u = new URL(e); return u.protocol === "https:" && PUSH_HOSTS.some(h => u.hostname === h || u.hostname.endsWith("." + h)); } catch { return false; } };
 
 async function handle(req, env) {
