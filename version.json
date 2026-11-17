@@ -1,6 +1,19 @@
 {
- "v": 137,
+ "v": 138,
  "history": [
+  {
+   "v": 138,
+   "date": "2026-11-17",
+   "en": [
+    "New: Qibla compass. Open Salaat timings → Qibla compass: a live compass shows the direction of the Kaaba from your city (or GPS) and turns green when you face it."
+   ],
+   "gu": [
+    "નવું: કિબ્લા કંપાસ. સલાત સમય → કિબ્લા કંપાસ ખોલો: લાઇવ કંપાસ તમારા શહેર (કે GPS) થી કાબાની દિશા બતાવે છે અને કિબ્લા તરફ ફરો ત્યારે લીલો થાય છે."
+   ],
+   "hi": [
+    "नया: क़िब्ला कंपास। Salaat timings → Qibla compass खोलें: लाइव कंपास आपके शहर (या GPS) से काबा की दिशा दिखाता है और क़िब्ला की तरफ़ मुँह करते ही हरा हो जाता है।"
+   ]
+  },
   {
    "v": 137,
    "date": "2026-11-17",

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Qibla</title>
+<meta name="theme-color" content="#6b1824">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="themes.css?v=138">
+<script src="theme-init.js?v=138"></script>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:0;z-index:5;background:var(--hdr);color:var(--hdr-ink);padding:calc(env(safe-area-inset-top) + 8px) 10px 8px;display:flex;align-items:center;gap:6px}
+header a{color:inherit;text-decoration:none;font-size:26px;width:40px;height:40px;display:grid;place-items:center}
+header b{flex:1;font-size:17px}
+main{max-width:480px;margin:0 auto;padding:16px 16px calc(env(safe-area-inset-bottom) + 24px);text-align:center}
+.deg{font-size:44px;font-weight:700;letter-spacing:-1px;margin:4px 0 0}
+.sub{color:var(--muted,#777);font-size:14px;margin:2px 0 14px}
+.cmp{position:relative;width:min(80vw,320px);aspect-ratio:1;margin:0 auto}
+.cmp svg{width:100%;height:100%;display:block}
+#dial{transform-origin:50% 50%;transition:transform .12s linear}
+.fix{position:absolute;left:50%;top:-6px;transform:translateX(-50%);width:0;height:0;border:9px solid transparent;border-top:0;border-bottom:16px solid var(--brand,#6b1824)}
+.cmp.ok .ring{stroke:#1e9e5a}
+.ring{stroke:var(--line,#ccc);fill:var(--card,#fff);stroke-width:2}
+.tick{stroke:var(--muted,#999);stroke-width:1.5}
+.nrd{fill:var(--ink);font:700 15px sans-serif;text-anchor:middle}
+.status{margin:16px 0 4px;font-weight:600;min-height:22px}
+.ok-t{color:#1e9e5a}
+button.pri{border:0;border-radius:24px;background:var(--brand,#6b1824);color:#fff;font:inherit;font-weight:600;padding:12px 22px;margin:6px 4px}
+button.sec{border:1px solid var(--line,#ccc);border-radius:24px;background:transparent;color:var(--ink);font:inherit;padding:10px 18px;margin:6px 4px}
+.card{background:var(--card,#fff);border-radius:14px;padding:12px 14px;margin-top:16px;text-align:left;font-size:13px;color:var(--muted,#777)}
+</style>
+</head>
+<body>
+<header><a href="./#sl" id="back" aria-label="Back">‹</a><b id="tt"></b></header>
+<main>
+  <div class="deg" id="deg">—</div>
+  <div class="sub" id="sub"></div>
+  <div class="cmp" id="cmp">
+    <div class="fix"></div>
+    <svg viewBox="0 0 200 200" aria-hidden="true">
+      <g id="dial">
+        <circle class="ring" cx="100" cy="100" r="92"/>
+        <g id="ticks"></g>
+        <text class="nrd" x="100" y="30" style="fill:#c0392b">N</text><text class="nrd" x="172" y="105">E</text><text class="nrd" x="100" y="182">S</text><text class="nrd" x="28" y="105">W</text>
+        <g id="kaaba"><line x1="100" y1="100" x2="100" y2="40" stroke="#1e9e5a" stroke-width="3" stroke-linecap="round"/><g transform="translate(100 34)"><rect x="-11" y="-11" width="22" height="22" rx="3" fill="#111"/><rect x="-11" y="-5" width="22" height="3" fill="#d4af37"/></g></g>
+      </g>
+      <circle cx="100" cy="100" r="4" fill="var(--ink)"/>
+    </svg>
+  </div>
+  <div class="status" id="st"></div>
+  <div><button class="pri" id="go"></button><button class="sec" id="gps"></button></div>
+  <div class="card" id="note"></div>
+</main>
+<script>
+const ls = { get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
+const TX = {
+  en: { t: "Qibla", from: "Direction of the Kaaba from {c}", dist: "{k} km to Makkah", go: "Start compass", gps: "Use my GPS location", ok: "✓ You are facing the Qibla", turn: "Turn {d}° to the {s}", left: "left", right: "right", wait: "Move your phone in a figure 8 to calibrate…", noSens: "No compass on this device — hold the phone flat and point to {b}° from North (the green line).", deny: "Compass permission denied — allow it in settings, or use the {b}° bearing from North.",
+        note: "Keep the phone flat and away from metal / magnets. If the needle drifts, move your phone in a figure 8. The bearing is calculated from your city (Settings → location); tap “Use my GPS location” for better accuracy.", gpsFail: "Could not get GPS location." },
+  gu: { t: "કિબ્લા", from: "{c} થી કાબાની દિશા", dist: "મક્કા {k} કિમી", go: "કંપાસ શરૂ કરો", gps: "મારું GPS લોકેશન વાપરો", ok: "✓ તમે કિબ્લા તરફ છો", turn: "{s} તરફ {d}° ફરો", left: "ડાબી", right: "જમણી", wait: "કેલિબ્રેટ કરવા ફોનને 8 ના આકારમાં ફેરવો…", noSens: "આ ડિવાઇસમાં કંપાસ નથી — ફોન સીધો રાખી ઉત્તરથી {b}° (લીલી રેખા) તરફ ફરો.", deny: "કંપાસની પરવાનગી નકારી — સેટિંગ્સમાં મંજૂરી આપો, અથવા ઉત્તરથી {b}° વાપરો.",
+        note: "ફોન સીધો રાખો અને લોખંડ/ચુંબકથી દૂર રાખો. સોય ફરે તો ફોનને 8 ના આકારમાં ફેરવો. દિશા તમારા શહેર (સેટિંગ્સ → લોકેશન) પરથી ગણાય છે; વધુ સચોટતા માટે “મારું GPS લોકેશન વાપરો” દબાવો.", gpsFail: "GPS લોકેશન મળ્યું નહીં." },
+  hi: { t: "Qibla", from: "{c} se Kaaba ki disha", dist: "Makkah {k} km", go: "Compass shuru karo", gps: "Mera GPS location lo", ok: "✓ Aap Qibla ki taraf ho", turn: "{s} taraf {d}° ghumo", left: "baayi", right: "daayi", wait: "Calibrate karne ke liye phone ko 8 ke aakar me ghumao…", noSens: "Is device me compass nahi hai — phone seedha rakho aur North se {b}° (hari line) ki taraf ghumo.", deny: "Compass ki permission mana hui — settings me allow karo, ya North se {b}° use karo.",
+        note: "Phone seedha rakho aur loha/magnet se door rakho. Needle hile to phone ko 8 ke aakar me ghumao. Disha aapke shehar (Settings → location) se nikalti hai; behtar accuracy ke liye “Mera GPS location lo” dabao.", gpsFail: "GPS location nahi mila." }
+};
+const L = TX[ls.get("lang", "en")] || TX.en, $ = id => document.getElementById(id);
+const f = (s, v) => s.replace(/\{(\w+)\}/g, (_, k) => v[k]);
+const KAABA = { lat: 21.422487, lng: 39.826206 };
+function bearing(lat, lng) { const r = Math.PI / 180, p1 = lat * r, p2 = KAABA.lat * r, dl = (KAABA.lng - lng) * r;
+  return (Math.atan2(Math.sin(dl) * Math.cos(p2), Math.cos(p1) * Math.sin(p2) - Math.sin(p1) * Math.cos(p2) * Math.cos(dl)) / r + 360) % 360; }
+function dist(lat, lng) { const r = Math.PI / 180, a = Math.sin((KAABA.lat - lat) * r / 2) ** 2 + Math.cos(lat * r) * Math.cos(KAABA.lat * r) * Math.sin((KAABA.lng - lng) * r / 2) ** 2; return 6371 * 2 * Math.asin(Math.sqrt(a)); }
+let loc = ls.get("loc", { lat: 22.7196, lng: 75.8577, city: "Indore" }), B = 0, heading = null, sensing = false;
+const city = () => loc.city || (loc.key === "gps" || loc.key === "auto" ? "GPS" : "Indore");
+function setLoc() {
+  B = bearing(loc.lat, loc.lng);
+  $("deg").textContent = Math.round(B) + "°";
+  $("sub").textContent = f(L.from, { c: city() }) + " · " + f(L.dist, { k: Math.round(dist(loc.lat, loc.lng)).toLocaleString() });
+  $("kaaba").setAttribute("transform", `rotate(${B} 100 100)`);
+  draw();
+}
+let lastOk = false;
+function draw() {
+  const dial = $("dial"), st = $("st"), cmp = $("cmp");
+  if (heading == null) { dial.style.transform = "rotate(0deg)"; cmp.classList.remove("ok"); return; }
+  dial.style.transform = `rotate(${-heading}deg)`;
+  let d = ((B - heading + 540) % 360) - 180;   // + → Qibla is to the right
+  const ok = Math.abs(d) <= 3;
+  cmp.classList.toggle("ok", ok);
+  if (ok) { st.className = "status ok-t"; st.textContent = L.ok; if (!lastOk && navigator.vibrate) navigator.vibrate(40); }
+  else { st.className = "status"; st.textContent = f(L.turn, { d: Math.round(Math.abs(d)), s: d > 0 ? L.right : L.left }); }
+  lastOk = ok;
+}
+function onOrient(e) {
+  let h = null;
+  if (typeof e.webkitCompassHeading === "number") h = e.webkitCompassHeading;
+  else if (e.absolute && e.alpha != null) h = 360 - e.alpha;
+  else if (e.type === "deviceorientationabsolute" && e.alpha != null) h = 360 - e.alpha;
+  if (h == null || isNaN(h)) return;
+  const so = (screen.orientation && screen.orientation.angle) || 0; h = (h + so) % 360;
+  if (heading == null) heading = h; else { const d = ((h - heading + 540) % 360) - 180; heading = (heading + d * 0.35 + 360) % 360; }
+  draw();
+}
+async function start() {
+  const st = $("st");
+  try {
+    if (typeof DeviceOrientationEvent !== "undefined" && typeof DeviceOrientationEvent.requestPermission === "function") {
+      const r = await DeviceOrientationEvent.requestPermission(); if (r !== "granted") { st.textContent = f(L.deny, { b: Math.round(B) }); return; }
+    }
+  } catch { st.textContent = f(L.deny, { b: Math.round(B) }); return; }
+  if (sensing) return;
+  if (!("ondeviceorientation" in window)) { st.textContent = f(L.noSens, { b: Math.round(B) }); return; }
+  sensing = true; $("go").hidden = true; st.textContent = L.wait;
+  window.addEventListener("deviceorientationabsolute", onOrient, true);
+  window.addEventListener("deviceorientation", onOrient, true);
+  setTimeout(() => { if (heading == null) { sensing = false; $("go").hidden = false; st.textContent = f(L.noSens, { b: Math.round(B) }); } }, 3500);
+}
+$("tt").textContent = L.t; document.title = L.t; $("go").textContent = L.go; $("gps").textContent = L.gps; $("note").textContent = L.note;
+let tk = ""; for (let i = 0; i < 72; i++) { const a = i * 5, big = a % 30 === 0, r1 = 92 - (big ? 10 : 5); tk += `<line class="tick" x1="100" y1="${100 - r1}" x2="100" y2="${100 - 90}" transform="rotate(${a} 100 100)"/>`; } $("ticks").innerHTML = tk;
+$("go").onclick = start;
+$("gps").onclick = () => { if (!navigator.geolocation) return; navigator.geolocation.getCurrentPosition(p => { loc = { lat: p.coords.latitude, lng: p.coords.longitude, key: "gps", city: "GPS" }; setLoc(); }, () => { $("st").textContent = L.gpsFail; }, { enableHighAccuracy: true, timeout: 10000 }); };
+setLoc();
+// Android/desktop Chrome need no permission: start straight away
+if (typeof DeviceOrientationEvent !== "undefined" && typeof DeviceOrientationEvent.requestPermission !== "function" && "ondeviceorientation" in window && /Android|Mobi/i.test(navigator.userAgent)) start();
+</script>
+</body>
+</html>
