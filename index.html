@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=138">
-<script src="theme-init.js?v=138"></script>
+<link rel="stylesheet" href="themes.css?v=139">
+<script src="theme-init.js?v=139"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -674,10 +674,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=138"></script>
-<script src="i18n.js?v=138"></script>
-<script src="cities.js?v=138"></script>
-<script src="haptic.js?v=138"></script>
+<script src="hijri.js?v=139"></script>
+<script src="i18n.js?v=139"></script>
+<script src="cities.js?v=139"></script>
+<script src="haptic.js?v=139"></script>
 <script>
 "use strict";
 
@@ -1372,7 +1372,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 138, APP_VERSION = vName(APP_V) + " (2026-11-17)";
+const APP_V = 139, APP_VERSION = vName(APP_V) + " (2026-11-17)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 if (location.hash === "#dua") switchView("dua");

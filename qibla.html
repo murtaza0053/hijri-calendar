@@ -11,8 +11,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="icon" href="icons/icon-192.png">
-<link rel="stylesheet" href="themes.css?v=138">
-<script src="theme-init.js?v=138"></script>
+<link rel="stylesheet" href="themes.css?v=139">
+<script src="theme-init.js?v=139"></script>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
@@ -24,7 +24,7 @@ main{max-width:480px;margin:0 auto;padding:16px 16px calc(env(safe-area-inset-bo
 .sub{color:var(--muted,#777);font-size:14px;margin:2px 0 14px}
 .cmp{position:relative;width:min(80vw,320px);aspect-ratio:1;margin:0 auto}
 .cmp svg{width:100%;height:100%;display:block}
-#dial{transform-origin:50% 50%;transition:transform .12s linear}
+#dial{transform-origin:50% 50%;will-change:transform}
 .fix{position:absolute;left:50%;top:-6px;transform:translateX(-50%);width:0;height:0;border:9px solid transparent;border-top:0;border-bottom:16px solid var(--brand,#6b1824)}
 .cmp.ok .ring{stroke:#1e9e5a}
 .ring{stroke:var(--line,#ccc);fill:var(--card,#fff);stroke-width:2}
@@ -83,27 +83,41 @@ function setLoc() {
   $("kaaba").setAttribute("transform", `rotate(${B} 100 100)`);
   draw();
 }
-let lastOk = false;
-function draw() {
-  const dial = $("dial"), st = $("st"), cmp = $("cmp");
-  if (heading == null) { dial.style.transform = "rotate(0deg)"; cmp.classList.remove("ok"); return; }
-  dial.style.transform = `rotate(${-heading}deg)`;
-  let d = ((B - heading + 540) % 360) - 180;   // + → Qibla is to the right
+let lastOk = false, target = null, shown = null, raf = 0;
+const norm = a => ((a % 360) + 360) % 360, diff = (a, b) => ((a - b + 540) % 360) - 180;
+function frame() {
+  raf = 0;
+  if (target == null) return;
+  if (shown == null) shown = target;
+  const d = diff(target, shown);                     // shortest way round, never spins through 360°
+  shown = Math.abs(d) < 0.05 ? target : norm(shown + d * 0.18);   // ease toward the sensor every frame
+  paint();
+  if (shown !== target) raf = requestAnimationFrame(frame);
+}
+function paint() {
+  const st = $("st"), cmp = $("cmp");
+  $("dial").style.transform = `rotate(${(-shown).toFixed(2)}deg)`;
+  const d = diff(B, shown);                           // + → Qibla is to the right
   const ok = Math.abs(d) <= 3;
   cmp.classList.toggle("ok", ok);
   if (ok) { st.className = "status ok-t"; st.textContent = L.ok; if (!lastOk && navigator.vibrate) navigator.vibrate(40); }
-  else { st.className = "status"; st.textContent = f(L.turn, { d: Math.round(Math.abs(d)), s: d > 0 ? L.right : L.left }); }
+  else { const t = f(L.turn, { d: Math.round(Math.abs(d)), s: d > 0 ? L.right : L.left }); if (st.textContent !== t) st.textContent = t; st.className = "status"; }
   lastOk = ok;
 }
+function draw() { if (target == null) { $("dial").style.transform = "rotate(0deg)"; $("cmp").classList.remove("ok"); } else if (!raf) raf = requestAnimationFrame(frame); }
+let sx = 0, sy = 0, have = false;
 function onOrient(e) {
   let h = null;
   if (typeof e.webkitCompassHeading === "number") h = e.webkitCompassHeading;
   else if (e.absolute && e.alpha != null) h = 360 - e.alpha;
   else if (e.type === "deviceorientationabsolute" && e.alpha != null) h = 360 - e.alpha;
   if (h == null || isNaN(h)) return;
-  const so = (screen.orientation && screen.orientation.angle) || 0; h = (h + so) % 360;
-  if (heading == null) heading = h; else { const d = ((h - heading + 540) % 360) - 180; heading = (heading + d * 0.35 + 360) % 360; }
-  draw();
+  const so = (screen.orientation && screen.orientation.angle) || 0; h = norm(h + so);
+  // low-pass filter on the unit vector (no jump at 359°→0°), then the rAF loop eases the dial
+  const r = h * Math.PI / 180, k = have ? 0.25 : 1; have = true;
+  sx += (Math.cos(r) - sx) * k; sy += (Math.sin(r) - sy) * k;
+  target = norm(Math.atan2(sy, sx) * 180 / Math.PI);
+  if (!raf) raf = requestAnimationFrame(frame);
 }
 async function start() {
   const st = $("st");
@@ -117,7 +131,7 @@ async function start() {
   sensing = true; $("go").hidden = true; st.textContent = L.wait;
   window.addEventListener("deviceorientationabsolute", onOrient, true);
   window.addEventListener("deviceorientation", onOrient, true);
-  setTimeout(() => { if (heading == null) { sensing = false; $("go").hidden = false; st.textContent = f(L.noSens, { b: Math.round(B) }); } }, 3500);
+  setTimeout(() => { if (target == null) { sensing = false; $("go").hidden = false; st.textContent = f(L.noSens, { b: Math.round(B) }); } }, 3500);
 }
 $("tt").textContent = L.t; document.title = L.t; $("go").textContent = L.go; $("gps").textContent = L.gps; $("note").textContent = L.note;
 let tk = ""; for (let i = 0; i < 72; i++) { const a = i * 5, big = a % 30 === 0, r1 = 92 - (big ? 10 : 5); tk += `<line class="tick" x1="100" y1="${100 - r1}" x2="100" y2="${100 - 90}" transform="rotate(${a} 100 100)"/>`; } $("ticks").innerHTML = tk;

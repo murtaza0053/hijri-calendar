@@ -1,6 +1,19 @@
 {
- "v": 138,
+ "v": 139,
  "history": [
+  {
+   "v": 139,
+   "date": "2026-11-18",
+   "en": [
+    "Qibla compass now moves smoothly: the dial glides to the new heading every frame, the sensor jitter is filtered out, and it no longer jerks when you cross North."
+   ],
+   "gu": [
+    "કિબ્લા કંપાસ હવે સરળતાથી ફરે છે: ડાયલ દરેક ફ્રેમે નવી દિશા તરફ સરકે છે, સેન્સરની ધ્રુજારી ફિલ્ટર થાય છે, અને ઉત્તર પાર કરતી વખતે ઝટકો લાગતો નથી."
+   ],
+   "hi": [
+    "क़िब्ला कंपास अब smooth चलता है: dial हर frame पर नई दिशा की तरफ़ सरकता है, sensor की कंपन filter होती है, और North पार करते समय झटका नहीं लगता।"
+   ]
+  },
   {
    "v": 138,
    "date": "2026-11-17",
