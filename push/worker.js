@@ -81,7 +81,7 @@ export function dueEvents(s, ws) {
     for (const [k, t] of salaatDay(d0.getUTCFullYear(), d0.getUTCMonth(), d0.getUTCDate(), s.lat, s.lng)) {
       const due = t.getTime() - lead;
       if (pr.sal.includes(k) && due >= ws && due < ws + 60000)
-        out.push({ title: `🕌 ${T[k]}${city ? " — " + city : ""}`, body: lead ? fill(T.soon, { n: T[k], m: Math.round(lead / 60000) }) : fill(T.now, { n: T[k] }), url: "./#sl", tag: "sal-" + k });
+        out.push({ title: `🕌 ${T[k]}${city ? " — " + city : ""}`, body: lead ? fill(T.soon, { n: T[k], m: Math.round(lead / 60000) }) : fill(T.now, { n: T[k] }), url: ["faj", "zaw", "mag"].includes(k) ? "./#azaan" : "./#sl", tag: "sal-" + k });
     }
   }
   if (at("rozi", "08:00") && pr.rozi) { const h = H.fromAJD(H.gToAJD(p.y, p.m, p.d)), r = ROZI.find(x => x[0] === h.d); if (r) out.push({ title: fill(T.rozi, { s: r[1] }), body: fill(T.roziB, { d: h.d }), url: "./#dua", tag: "rozi" }); }

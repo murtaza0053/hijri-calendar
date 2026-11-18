@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=139">
-<script src="theme-init.js?v=139"></script>
+<link rel="stylesheet" href="themes.css?v=140">
+<script src="theme-init.js?v=140"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -136,6 +136,8 @@ html.zyon,html.zyon body{overflow:hidden;height:100%;overscroll-behavior:none}
 .slseg{display:inline-flex;margin-top:4px;background:rgba(255,255,255,.16);border-radius:14px;padding:3px}
 .slseg button{border:0;background:none;color:inherit;font:inherit;font-size:14px;font-weight:600;padding:6px 16px;border-radius:11px}
 .slseg button:active{background:rgba(255,255,255,.25)}
+.azopts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.azopts label{display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:18px;background:var(--chip,rgba(127,127,127,.14));font-size:14px}.azopts label.on{background:var(--brand);color:#fff}.azopts input{accent-color:#fff}
+#azPlay.on{background:#c0392b}#azCard.hot{outline:2px solid var(--brand)}
 .slcard{padding:6px 8px;margin-top:12px}
 .slr{display:flex;align-items:center;gap:12px;padding:11px 8px;border-radius:14px}
 .slr+.slr{border-top:1px solid var(--line)}
@@ -531,6 +533,11 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
       <div class="slseg"><button id="slPrev" aria-label="Previous day">‹</button><button id="slToday" data-i18n="today"></button><button id="slNextD" aria-label="Next day">›</button></div>
     </div>
     <a class="card" href="qibla.html" id="qiblaLink" style="display:flex;align-items:center;gap:12px;margin-top:12px;text-decoration:none;color:inherit"><span style="font-size:26px">🧭</span><span style="flex:1"><b data-i18n="qblH"></b><br><small class="muted" data-i18n="qblD"></small></span><span style="font-size:22px;opacity:.5">›</span></a>
+    <div class="card" id="azCard" style="margin-top:12px">
+      <div class="row" style="gap:12px"><span style="font-size:26px">🔊</span><span style="flex:1"><b data-i18n="azH"></b><br><small class="muted" data-i18n="azD"></small></span><button class="btn" id="azPlay" style="min-width:92px"></button></div>
+      <div class="azopts" id="azOpts"></div>
+      <small class="muted" data-i18n="azNote" style="display:block;margin-top:8px"></small>
+    </div>
     <div class="card slcard" id="slList"></div>
     <p class="muted" style="font-size:12px;margin:8px 6px" data-i18n="timesNote"></p>
   </section>
@@ -674,10 +681,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=139"></script>
-<script src="i18n.js?v=139"></script>
-<script src="cities.js?v=139"></script>
-<script src="haptic.js?v=139"></script>
+<script src="hijri.js?v=140"></script>
+<script src="i18n.js?v=140"></script>
+<script src="cities.js?v=140"></script>
+<script src="haptic.js?v=140"></script>
 <script>
 "use strict";
 
@@ -1372,10 +1379,44 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 139, APP_VERSION = vName(APP_V) + " (2026-11-17)";
+const APP_V = 140, APP_VERSION = vName(APP_V) + " (2026-11-17)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
-if (location.hash === "#dua") switchView("dua");
+/* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
+const AZ = [["faj", "tFajr", 1], ["zaw", "tZawaal", 3], ["mag", "tMaghrib", 6]];
+const azAudio = new Audio("azaan.mp3?v=1"); azAudio.preload = "none";
+let azPrefs = Object.assign({ faj: false, zaw: false, mag: false }, store.get("azaan", {})), azDone = store.get("azaanDone", {}), azUnlocked = false;
+function azDraw() {
+  const on = !azAudio.paused;
+  $("azPlay").textContent = on ? "■ " + t("azStop") : "▶ " + t("azPlay"); $("azPlay").classList.toggle("on", on);
+  $("azOpts").innerHTML = AZ.map(([k, n]) => `<label class="${azPrefs[k] ? "on" : ""}"><input type="checkbox" data-az="${k}" ${azPrefs[k] ? "checked" : ""}>${t(n)}</label>`).join("");
+}
+function azPlay() {
+  azAudio.currentTime = 0;
+  if ("mediaSession" in navigator) navigator.mediaSession.metadata = new MediaMetadata({ title: t("azH"), artist: "Mumin", artwork: [{ src: "icons/icon-192.png", sizes: "192x192", type: "image/png" }] });
+  return azAudio.play().then(azDraw).catch(() => { $("azCard").classList.add("hot"); azDraw(); return false; });
+}
+function azStop() { azAudio.pause(); azAudio.currentTime = 0; azDraw(); }
+azAudio.onended = azAudio.onpause = azDraw;
+$("azPlay").onclick = () => { $("azCard").classList.remove("hot"); azAudio.paused ? azPlay() : azStop(); };
+$("azOpts").onchange = e => { const k = e.target.dataset.az; if (!k) return; azPrefs[k] = e.target.checked; store.set("azaan", azPrefs); e.target.parentElement.classList.toggle("on", e.target.checked); azUnlock(); };
+function azUnlock() {   // browsers only allow sound after a tap: do one silent play/pause so the later automatic azaan can start
+  if (azUnlocked) return; azUnlocked = true;
+  azAudio.muted = true; azAudio.play().then(() => { azAudio.pause(); azAudio.currentTime = 0; azAudio.muted = false; }).catch(() => { azAudio.muted = false; azUnlocked = false; });
+}
+document.addEventListener("pointerdown", () => { if (azPrefs.faj || azPrefs.zaw || azPrefs.mag) azUnlock(); }, { once: true });
+function azCheck() {   // called every second: plays the azaan within a minute after an enabled timing
+  if (!(azPrefs.faj || azPrefs.zaw || azPrefs.mag) || !azAudio.paused) return;
+  const td = todayIn(), items = salatList(new Date(td.getFullYear(), td.getMonth(), td.getDate())), now = Date.now(), dk = td.getFullYear() + "-" + td.getMonth() + "-" + td.getDate();
+  for (const [k, , i] of AZ) { const dt = now - items[i][1].getTime(); if (azPrefs[k] && dt >= 0 && dt < 60000 && azDone[k] !== dk) { azDone = { ...azDone, [k]: dk }; store.set("azaanDone", azDone); azPlay(); break; } }
+}
+setInterval(() => { if (document.visibilityState === "visible") azCheck(); }, 1000);
+function azFromHash() { if (location.hash === "#azaan") { switchView("sl"); azPlay(); history.replaceState(null, "", location.pathname + location.search); } }
+window.addEventListener("hashchange", azFromHash);
+azDraw();
+
+if (location.hash === "#azaan") azFromHash();
+else if (location.hash === "#dua") switchView("dua");
 else if (location.hash === "#sl") switchView("sl");
 else if (location.hash === "#zy") switchView("zy");
 fetch("miqaats.json").then(r => r.json()).then(d => { MIQ = d; miqLoaded = true; renderAll(); }).catch(() => { $("todayMq").innerHTML = `<p class="muted">${t("loadFail")}</p>`; });

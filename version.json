@@ -1,6 +1,19 @@
 {
- "v": 139,
+ "v": 140,
  "history": [
+  {
+   "v": 140,
+   "date": "2026-11-18",
+   "en": [
+    "Azaan: the Salaat timings page has an Azaan card — play the Bohra azaan any time, or tick Fajr / Zawaal / Maghrib and it plays by itself at that time while the app is open. Tapping a Fajr, Zawaal or Maghrib alert now opens the app and plays the azaan."
+   ],
+   "gu": [
+    "અઝાન: સલાત સમય પેજ પર અઝાન કાર્ડ — બોહરા અઝાન ગમે ત્યારે વગાડો, અથવા ફજર / ઝવાલ / મગરિબ ટિક કરો તો એપ ખુલ્લી હોય ત્યારે તે સમયે આપમેળે વાગે. ફજર, ઝવાલ કે મગરિબ અલર્ટ ટેપ કરતાં એપ ખુલે છે અને અઝાન વાગે છે."
+   ],
+   "hi": [
+    "अज़ान: Salaat timings पेज पर Azaan card — Bohra azaan कभी भी चलाएँ, या Fajr / Zawaal / Maghrib tick करें तो app खुली होने पर उस वक़्त अपने आप चलेगी। Fajr, Zawaal या Maghrib का alert tap करने पर app खुलती है और azaan चलती है।"
+   ]
+  },
   {
    "v": 139,
    "date": "2026-11-18",
