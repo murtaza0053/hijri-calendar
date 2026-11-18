@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=141">
-<script src="theme-init.js?v=141"></script>
+<link rel="stylesheet" href="themes.css?v=142">
+<script src="theme-init.js?v=142"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -136,7 +136,7 @@ html.zyon,html.zyon body{overflow:hidden;height:100%;overscroll-behavior:none}
 .slseg{display:inline-flex;margin-top:4px;background:rgba(255,255,255,.16);border-radius:14px;padding:3px}
 .slseg button{border:0;background:none;color:inherit;font:inherit;font-size:14px;font-weight:600;padding:6px 16px;border-radius:11px}
 .slseg button:active{background:rgba(255,255,255,.25)}
-.azopts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.azopts label{display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:18px;background:var(--chip,rgba(127,127,127,.14));font-size:14px}.azopts label.on{background:var(--brand);color:#fff}.azopts input{accent-color:#fff}
+html.native #pushCard,html.native #azApk,html.native #pushPrompt{display:none!important}.azopts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.azopts label{display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:18px;background:var(--chip,rgba(127,127,127,.14));font-size:14px}.azopts label.on{background:var(--brand);color:#fff}.azopts input{accent-color:#fff}
 #azPlay.on{background:#c0392b}#azCard.hot{outline:2px solid var(--brand)}
 .slcard{padding:6px 8px;margin-top:12px}
 .slr{display:flex;align-items:center;gap:12px;padding:11px 8px;border-radius:14px}
@@ -536,7 +536,9 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
     <div class="card" id="azCard" style="margin-top:12px">
       <div class="row" style="gap:12px"><span style="font-size:26px">🔊</span><span style="flex:1"><b data-i18n="azH"></b><br><small class="muted" data-i18n="azD"></small></span><button class="btn" id="azPlay" style="min-width:92px"></button></div>
       <div class="azopts" id="azOpts"></div>
+      <div id="azAlertWrap" hidden><small class="muted" data-i18n="azAlerts" style="display:block;margin-top:12px"></small><div class="azopts" id="azAl"></div></div>
       <small class="muted" data-i18n="azNote" style="display:block;margin-top:8px"></small>
+      <a id="azApk" class="btn ghost" href="https://github.com/murtaza0053/hijri-calendar/releases/latest/download/mumin.apk" style="display:inline-block;margin-top:10px;text-decoration:none" data-i18n="azApk"></a>
     </div>
     <div class="card slcard" id="slList"></div>
     <p class="muted" style="font-size:12px;margin:8px 6px" data-i18n="timesNote"></p>
@@ -682,10 +684,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=141"></script>
-<script src="i18n.js?v=141"></script>
-<script src="cities.js?v=141"></script>
-<script src="haptic.js?v=141"></script>
+<script src="hijri.js?v=142"></script>
+<script src="i18n.js?v=142"></script>
+<script src="cities.js?v=142"></script>
+<script src="haptic.js?v=142"></script>
 <script>
 "use strict";
 
@@ -1304,7 +1306,7 @@ calEl.addEventListener("touchend", e => {
 }, { passive: true });
 
 /* ---------- Location ---------- */
-function setLoc(l) { loc = l; store.set("loc", l); renderTimes(); renderHeader(); renderGhadi(); renderAshara(); if (window.pushSync) pushSync(); }
+function setLoc(l) { loc = l; store.set("loc", l); if (typeof nativeSync === "function") setTimeout(nativeSync, 0); renderTimes(); renderHeader(); renderGhadi(); renderAshara(); if (window.pushSync) pushSync(); }
 $("useIndore").onclick = () => setLoc(DEFAULT_LOC);
 $("setCity").onclick = openCity;
 $("saveLL").onclick = () => {
@@ -1380,33 +1382,36 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 141, APP_VERSION = vName(APP_V) + " (2026-11-17)";
+const APP_V = 142, APP_VERSION = vName(APP_V) + " (2026-11-17)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
 const AZ = [["faj", "tFajr", 1], ["zaw", "tZawaal", 3], ["mag", "tMaghrib", 6]];
 const azAudio = new Audio("azaan.mp3?v=1"); azAudio.preload = "none";
 let azPrefs = Object.assign({ faj: false, zaw: false, mag: false }, store.get("azaan", {})), azDone = store.get("azaanDone", {}), azUnlocked = false;
+let azNat = false;
 function azDraw() {
-  const on = !azAudio.paused;
+  const on = window.MuminNative ? azNat : !azAudio.paused;
   $("azPlay").textContent = on ? "■ " + t("azStop") : "▶ " + t("azPlay"); $("azPlay").classList.toggle("on", on);
   $("azOpts").innerHTML = AZ.map(([k, n]) => `<label class="${azPrefs[k] ? "on" : ""}"><input type="checkbox" data-az="${k}" ${azPrefs[k] ? "checked" : ""}>${t(n)}</label>`).join("");
 }
 function azPlay() {
+  if (window.MuminNative && MuminNative.playAzaan) { MuminNative.playAzaan(); azNat = true; setTimeout(() => { azNat = false; azDraw(); }, 205000); azDraw(); return Promise.resolve(); }
   azAudio.currentTime = 0;
   if ("mediaSession" in navigator) navigator.mediaSession.metadata = new MediaMetadata({ title: t("azH"), artist: "Mumin", artwork: [{ src: "icons/icon-192.png", sizes: "192x192", type: "image/png" }] });
   return azAudio.play().then(azDraw).catch(() => { $("azCard").classList.add("hot"); azDraw(); return false; });
 }
-function azStop() { azAudio.pause(); azAudio.currentTime = 0; azDraw(); }
+function azStop() { azNat = false; if (window.MuminNative && MuminNative.stopAzaan) MuminNative.stopAzaan(); azAudio.pause(); azAudio.currentTime = 0; azDraw(); }
 azAudio.onended = azAudio.onpause = azDraw;
-$("azPlay").onclick = () => { $("azCard").classList.remove("hot"); azAudio.paused ? azPlay() : azStop(); };
-$("azOpts").onchange = e => { const k = e.target.dataset.az; if (!k) return; azPrefs[k] = e.target.checked; store.set("azaan", azPrefs); e.target.parentElement.classList.toggle("on", e.target.checked); azUnlock(); };
+$("azPlay").onclick = () => { $("azCard").classList.remove("hot"); (window.MuminNative ? !azNat : azAudio.paused) ? azPlay() : azStop(); };
+$("azOpts").onchange = e => { const k = e.target.dataset.az; if (!k) return; azPrefs[k] = e.target.checked; store.set("azaan", azPrefs); nativeSync(); e.target.parentElement.classList.toggle("on", e.target.checked); azUnlock(); };
 function azUnlock() {   // browsers only allow sound after a tap: do one silent play/pause so the later automatic azaan can start
   if (azUnlocked) return; azUnlocked = true;
   azAudio.muted = true; azAudio.play().then(() => { azAudio.pause(); azAudio.currentTime = 0; azAudio.muted = false; }).catch(() => { azAudio.muted = false; azUnlocked = false; });
 }
 document.addEventListener("pointerdown", () => { if (azPrefs.faj || azPrefs.zaw || azPrefs.mag) azUnlock(); }, { once: true });
 function azCheck() {   // called every second: plays the azaan within a minute after an enabled timing
+  if (window.MuminNative) return;   // the Android app does this natively
   if (!(azPrefs.faj || azPrefs.zaw || azPrefs.mag) || !azAudio.paused) return;
   const td = todayIn(), items = salatList(new Date(td.getFullYear(), td.getMonth(), td.getDate())), now = Date.now(), dk = td.getFullYear() + "-" + td.getMonth() + "-" + td.getDate();
   for (const [k, , i] of AZ) { const dt = now - items[i][1].getTime(); if (azPrefs[k] && dt >= 0 && dt < 60000 && azDone[k] !== dk) { azDone = { ...azDone, [k]: dk }; store.set("azaanDone", azDone); azPlay(); break; } }
@@ -1416,7 +1421,32 @@ function azOpen() { switchView("sl"); setTimeout(() => { const c = $("azCard"); 
 $("azSetLink").onclick = e => { e.preventDefault(); azOpen(); };
 function azFromHash() { if (location.hash === "#azaan") { switchView("sl"); azPlay(); history.replaceState(null, "", location.pathname + location.search); } }
 window.addEventListener("hashchange", azFromHash);
-azDraw();
+/* ---------- Android app bridge: exact alarms that play the azaan even when the app is closed ---------- */
+const NATIVE = window.MuminNative && MuminNative.isNative && MuminNative.isNative();
+const NAT_KEYS = ["sih", "faj", "fe", "zaw", "ze", "ae", "mag", "nis"];     // same order as salatList()
+function nativeSync() {
+  try {
+    if (!NATIVE) return;
+    const td = todayIn(), pp = store.get("pushPrefs", null), sal = pp && Array.isArray(pp.sal) ? pp.sal : ["sih", "faj", "zaw", "mag", "nis"], lead = (pp && +pp.lead) || 0, out = [], now = Date.now();
+    const nm = { sih: "tSihori", faj: "tFajr", fe: "tFajrEnd", zaw: "tZawaal", ze: "tZohrEnd", ae: "tAsrEnd", mag: "tMaghrib", nis: "tIshaEnd" };
+    for (let i = 0; i < 14; i++) salatList(new Date(td.getFullYear(), td.getMonth(), td.getDate() + i)).forEach(([, dt], j) => {
+      const k = NAT_KEYS[j], az = !!azPrefs[k] && AZ.some(a => a[0] === k);
+      if (!az && !sal.includes(k)) return;
+      const at = dt.getTime() - (az ? 0 : lead * 60000);
+      if (at > now) out.push({ at, title: (az ? "🔊 " : "🕌 ") + t(nm[k]) + " — " + locLabel(), body: az ? t("azH") : (lead ? t("slIn", { t: lead + " min" }) : t("slNow")), azaan: az });
+    });
+    out.sort((a, b) => a.at - b.at);
+    MuminNative.schedule(JSON.stringify(out));
+  } catch (e) {}
+}
+if (NATIVE) { document.documentElement.classList.add("native"); setTimeout(nativeSync, 1500); document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") nativeSync(); }); }
+function azAlDraw() {
+  if (!window.MuminNative) return; $("azAlertWrap").hidden = false;
+  const pp = store.get("pushPrefs", null) || {}, sal = Array.isArray(pp.sal) ? pp.sal : ["sih", "faj", "zaw", "mag", "nis"];
+  $("azAl").innerHTML = [["sih", "tSihori"], ["faj", "tFajr"], ["fe", "tFajrEnd"], ["zaw", "tZawaal"], ["ze", "tZohrEnd"], ["ae", "tAsrEnd"], ["mag", "tMaghrib"], ["nis", "tIshaEnd"]].map(([k, n]) => `<label class="${sal.includes(k) ? "on" : ""}"><input type="checkbox" data-al="${k}" ${sal.includes(k) ? "checked" : ""}>${t(n)}</label>`).join("");
+}
+$("azAl").onchange = e => { const k = e.target.dataset.al; if (!k) return; const pp = store.get("pushPrefs", null) || {}, sal = new Set(Array.isArray(pp.sal) ? pp.sal : ["sih", "faj", "zaw", "mag", "nis"]); e.target.checked ? sal.add(k) : sal.delete(k); pp.sal = [...sal]; store.set("pushPrefs", pp); e.target.parentElement.classList.toggle("on", e.target.checked); nativeSync(); };
+azDraw(); azAlDraw();
 
 if (location.hash === "#azaan") azFromHash();
 else if (location.hash === "#dua") switchView("dua");

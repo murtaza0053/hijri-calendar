@@ -1,6 +1,19 @@
 {
- "v": 141,
+ "v": 142,
  "history": [
+  {
+   "v": 142,
+   "date": "2026-11-18",
+   "en": [
+    "Android app (APK): azaan now plays at Fajr, Zawaal and Maghrib even when the app is closed, using exact phone alarms. Download it from the Azaan card (Salaat timings page)."
+   ],
+   "gu": [
+    "Android એપ (APK): ફજર, ઝવાલ અને મગરિબ પર એપ બંધ હોય ત્યારે પણ અઝાન વાગે છે (ફોનના એક્ઝેક્ટ એલાર્મથી). અઝાન કાર્ડ (સલાત સમય પેજ) માંથી ડાઉનલોડ કરો."
+   ],
+   "hi": [
+    "Android app (APK): Fajr, Zawaal aur Maghrib par app band ho tab bhi azaan chalti hai (phone ke exact alarm se). Azaan card (Salaat timings page) se download karo।"
+   ]
+  },
   {
    "v": 141,
    "date": "2026-11-18",
