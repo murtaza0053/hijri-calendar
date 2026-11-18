@@ -1,6 +1,19 @@
 {
- "v": 140,
+ "v": 141,
  "history": [
+  {
+   "v": 141,
+   "date": "2026-11-18",
+   "en": [
+    "Azaan reminder is now easy to find: Settings has an “Azaan reminder” row that opens the Azaan card (Salaat timings page)."
+   ],
+   "gu": [
+    "અઝાન રિમાઇન્ડર શોધવું સહેલું: સેટિંગ્સમાં “અઝાન રિમાઇન્ડર” પંક્તિ અઝાન કાર્ડ (સલાત સમય પેજ) ખોલે છે."
+   ],
+   "hi": [
+    "Azaan reminder ab aasaani se milta hai: Settings me “Azaan reminder” row Azaan card (Salaat timings page) kholti hai।"
+   ]
+  },
   {
    "v": 140,
    "date": "2026-11-18",

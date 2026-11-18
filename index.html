@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=140">
-<script src="theme-init.js?v=140"></script>
+<link rel="stylesheet" href="themes.css?v=141">
+<script src="theme-init.js?v=141"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -559,6 +559,7 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
     <div class="card">
       <label class="remrow" style="border-top:0"><input type="checkbox" id="wakeChk"><span class="ri">💡</span><span class="rt"><b data-i18n="wakeH"></b><br><span class="muted" data-i18n="wakeD"></span></span></label>
     </div>
+    <a class="card" href="#azaan-set" id="azSetLink" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit"><span style="font-size:24px">🔊</span><span style="flex:1"><b data-i18n="azSetH"></b><br><small class="muted" data-i18n="azSetD"></small></span><span style="font-size:22px;opacity:.5">›</span></a>
     <div class="card" id="pushCard">
       <div style="display:flex;align-items:center;gap:10px"><span class="ri" style="font-size:22px">🔔</span><div style="flex:1"><b data-i18n="pushH"></b><div class="muted" style="font-size:13px" data-i18n="pushD"></div></div></div>
       <p class="muted" style="font-size:13px;margin:8px 0 0" id="pushState"></p>
@@ -681,10 +682,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=140"></script>
-<script src="i18n.js?v=140"></script>
-<script src="cities.js?v=140"></script>
-<script src="haptic.js?v=140"></script>
+<script src="hijri.js?v=141"></script>
+<script src="i18n.js?v=141"></script>
+<script src="cities.js?v=141"></script>
+<script src="haptic.js?v=141"></script>
 <script>
 "use strict";
 
@@ -1379,7 +1380,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 140, APP_VERSION = vName(APP_V) + " (2026-11-17)";
+const APP_V = 141, APP_VERSION = vName(APP_V) + " (2026-11-17)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1411,6 +1412,8 @@ function azCheck() {   // called every second: plays the azaan within a minute a
   for (const [k, , i] of AZ) { const dt = now - items[i][1].getTime(); if (azPrefs[k] && dt >= 0 && dt < 60000 && azDone[k] !== dk) { azDone = { ...azDone, [k]: dk }; store.set("azaanDone", azDone); azPlay(); break; } }
 }
 setInterval(() => { if (document.visibilityState === "visible") azCheck(); }, 1000);
+function azOpen() { switchView("sl"); setTimeout(() => { const c = $("azCard"); c.scrollIntoView({ behavior: "smooth", block: "center" }); c.classList.add("hot"); setTimeout(() => c.classList.remove("hot"), 2500); }, 120); }
+$("azSetLink").onclick = e => { e.preventDefault(); azOpen(); };
 function azFromHash() { if (location.hash === "#azaan") { switchView("sl"); azPlay(); history.replaceState(null, "", location.pathname + location.search); } }
 window.addEventListener("hashchange", azFromHash);
 azDraw();
