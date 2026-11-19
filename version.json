@@ -1,6 +1,19 @@
 {
- "v": 144,
+ "v": 145,
  "history": [
+  {
+   "v": 145,
+   "date": "2026-11-19",
+   "en": [
+    "New: app tour. First-time users get a short spotlight walkthrough of Mumin (dates, Salaat timings, calendar, tabs, reminders, azaan). Replay it any time from Settings → Take the app tour."
+   ],
+   "gu": [
+    "નવું: એપ ટૂર. નવા યુઝરને મુમિનની ટૂંકી સ્પોટલાઇટ ટૂર મળે છે (તારીખ, સલાત સમય, કેલેન્ડર, ટૅબ, રિમાઇન્ડર, અઝાન). સેટિંગ્સ → એપ ટૂર લો માંથી ગમે ત્યારે ફરી જુઓ."
+   ],
+   "hi": [
+    "Naya: app tour. Naye user ko Mumin ka chhota spotlight walkthrough milta hai (dates, Salaat timings, calendar, tabs, reminders, azaan). Settings → App tour lo se kabhi bhi dobara dekho।"
+   ]
+  },
   {
    "v": 144,
    "date": "2026-11-19",
