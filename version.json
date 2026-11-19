@@ -1,6 +1,19 @@
 {
- "v": 147,
+ "v": 148,
  "history": [
+  {
+   "v": 148,
+   "date": "2026-11-20",
+   "en": [
+    "Android app 1.1: golden splash screen with the ornament logo, and the status/navigation bars now follow your theme colour."
+   ],
+   "gu": [
+    "Android એપ 1.1: ઓર્નામેન્ટ લોગો સાથે સોનેરી સ્પ્લેશ સ્ક્રીન, અને સ્ટેટસ/નેવિગેશન બાર હવે તમારી થીમના રંગને અનુસરે છે."
+   ],
+   "hi": [
+    "Android app 1.1: ornament logo ke saath golden splash screen, aur status/navigation bar ab aapki theme ke rang ke hote hain।"
+   ]
+  },
   {
    "v": 147,
    "date": "2026-11-19",

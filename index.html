@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=147">
-<script src="theme-init.js?v=147"></script>
+<link rel="stylesheet" href="themes.css?v=148">
+<script src="theme-init.js?v=148"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -696,10 +696,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=147"></script>
-<script src="i18n.js?v=147"></script>
-<script src="cities.js?v=147"></script>
-<script src="haptic.js?v=147"></script>
+<script src="hijri.js?v=148"></script>
+<script src="i18n.js?v=148"></script>
+<script src="cities.js?v=148"></script>
+<script src="haptic.js?v=148"></script>
 <script>
 "use strict";
 
@@ -745,6 +745,7 @@ function applyTheme() {
   r.setAttribute("data-theme", theme);
   r.classList.toggle("dark", mode === "dark" || (mode === "auto" && darkMQ.matches));
   document.querySelector('meta[name="theme-color"]').content = getComputedStyle(r).getPropertyValue("--hdr").trim();
+  if (window.MuminNative && MuminNative.setBars) try { MuminNative.setBars(getComputedStyle(r).getPropertyValue("--hdr").trim()); } catch {}
   $("themeSet").innerHTML = Object.entries(THEMES).map(([k, c]) => `<button class="sw ${k === theme ? "on" : ""}" data-theme-k="${k}"><i style="background:${c}"></i>${t("th_" + k)}</button>`).join("");
   $("modeSet").innerHTML = MODES.map(k => `<button data-mode-k="${k}" class="${k === mode ? "on" : ""}">${t("md_" + k)}</button>`).join("");
 }
@@ -1396,7 +1397,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 147, APP_VERSION = vName(APP_V) + " (2026-11-17)";
+const APP_V = 148, APP_VERSION = vName(APP_V) + " (2026-11-17)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
