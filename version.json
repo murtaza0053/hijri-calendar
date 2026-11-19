@@ -1,6 +1,19 @@
 {
- "v": 143,
+ "v": 144,
  "history": [
+  {
+   "v": 144,
+   "date": "2026-11-19",
+   "en": [
+    "Android app: the “Install app” banner and install instructions are hidden inside the app."
+   ],
+   "gu": [
+    "Android એપ: એપની અંદર “એપ ઇન્સ્ટૉલ કરો” બેનર અને ઇન્સ્ટૉલ સૂચનાઓ છુપાવી."
+   ],
+   "hi": [
+    "Android app: app ke andar “Install app” banner aur install instructions chhupa diye।"
+   ]
+  },
   {
    "v": 143,
    "date": "2026-11-19",
