@@ -1,6 +1,19 @@
 {
- "v": 146,
+ "v": 147,
  "history": [
+  {
+   "v": 147,
+   "date": "2026-11-19",
+   "en": [
+    "New users now start with the Golden theme. Your existing theme is unchanged."
+   ],
+   "gu": [
+    "નવા યુઝર હવે સોનેરી થીમ સાથે શરૂ કરે છે. તમારી હાલની થીમ બદલાશે નહીં."
+   ],
+   "hi": [
+    "Naye users ab Golden theme ke saath shuru karte hain. Aapki maujooda theme nahi badalegi।"
+   ]
+  },
   {
    "v": 146,
    "date": "2026-11-19",
