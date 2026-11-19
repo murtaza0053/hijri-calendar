@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=142">
-<script src="theme-init.js?v=142"></script>
+<link rel="stylesheet" href="themes.css?v=143">
+<script src="theme-init.js?v=143"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -536,6 +536,7 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
     <div class="card" id="azCard" style="margin-top:12px">
       <div class="row" style="gap:12px"><span style="font-size:26px">🔊</span><span style="flex:1"><b data-i18n="azH"></b><br><small class="muted" data-i18n="azD"></small></span><button class="btn" id="azPlay" style="min-width:92px"></button></div>
       <div class="azopts" id="azOpts"></div>
+      <div class="row" style="margin-top:10px"><span style="flex:1;font-size:14px" data-i18n="azZohrT"></span><input type="time" id="azZohrIn" style="font:inherit;padding:6px 8px;border-radius:10px;border:1px solid var(--line,#ccc);background:var(--card,#fff);color:inherit"></div>
       <div id="azAlertWrap" hidden><small class="muted" data-i18n="azAlerts" style="display:block;margin-top:12px"></small><div class="azopts" id="azAl"></div></div>
       <small class="muted" data-i18n="azNote" style="display:block;margin-top:8px"></small>
       <a id="azApk" class="btn ghost" href="https://github.com/murtaza0053/hijri-calendar/releases/latest/download/mumin.apk" style="display:inline-block;margin-top:10px;text-decoration:none" data-i18n="azApk"></a>
@@ -684,10 +685,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=142"></script>
-<script src="i18n.js?v=142"></script>
-<script src="cities.js?v=142"></script>
-<script src="haptic.js?v=142"></script>
+<script src="hijri.js?v=143"></script>
+<script src="i18n.js?v=143"></script>
+<script src="cities.js?v=143"></script>
+<script src="haptic.js?v=143"></script>
 <script>
 "use strict";
 
@@ -1382,11 +1383,19 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 142, APP_VERSION = vName(APP_V) + " (2026-11-17)";
+const APP_V = 143, APP_VERSION = vName(APP_V) + " (2026-11-17)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
-const AZ = [["faj", "tFajr", 1], ["zaw", "tZawaal", 3], ["mag", "tMaghrib", 6]];
+const AZ = [["faj", "tFajr", 1], ["zaw", "azZohr", 3], ["mag", "tMaghrib", 6]];
+const azZohrT = () => /^\d\d:\d\d$/.test(store.get("azZohr", "")) ? store.get("azZohr", "") : "12:45";   // Zohr azaan is at a fixed clock time (default 12:45), not at Zawaal
+function atLocal(y, m, d, hh, mm) {   // the instant when the clock of the chosen city shows hh:mm on y-m-d
+  let g = Date.UTC(y, m, d, hh, mm);
+  if (!loc.tz) return new Date(y, m, d, hh, mm).getTime();
+  try { for (let i = 0; i < 2; i++) { const p = Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: loc.tz, hourCycle: "h23", year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric" }).formatToParts(new Date(g)).map(x => [x.type, x.value])); g += Date.UTC(y, m, d, hh, mm) - Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour, +p.minute); } } catch {}
+  return g;
+}
+const azTime = (k, d0, dt) => { if (k !== "zaw") return dt.getTime(); const [h, m] = azZohrT().split(":"); return atLocal(d0.getFullYear(), d0.getMonth(), d0.getDate(), +h, +m); };
 const azAudio = new Audio("azaan.mp3?v=1"); azAudio.preload = "none";
 let azPrefs = Object.assign({ faj: false, zaw: false, mag: false }, store.get("azaan", {})), azDone = store.get("azaanDone", {}), azUnlocked = false;
 let azNat = false;
@@ -1414,7 +1423,7 @@ function azCheck() {   // called every second: plays the azaan within a minute a
   if (window.MuminNative) return;   // the Android app does this natively
   if (!(azPrefs.faj || azPrefs.zaw || azPrefs.mag) || !azAudio.paused) return;
   const td = todayIn(), items = salatList(new Date(td.getFullYear(), td.getMonth(), td.getDate())), now = Date.now(), dk = td.getFullYear() + "-" + td.getMonth() + "-" + td.getDate();
-  for (const [k, , i] of AZ) { const dt = now - items[i][1].getTime(); if (azPrefs[k] && dt >= 0 && dt < 60000 && azDone[k] !== dk) { azDone = { ...azDone, [k]: dk }; store.set("azaanDone", azDone); azPlay(); break; } }
+  for (const [k, , i] of AZ) { const dt = now - azTime(k, new Date(td.getFullYear(), td.getMonth(), td.getDate()), items[i][1]); if (azPrefs[k] && dt >= 0 && dt < 60000 && azDone[k] !== dk) { azDone = { ...azDone, [k]: dk }; store.set("azaanDone", azDone); azPlay(); break; } }
 }
 setInterval(() => { if (document.visibilityState === "visible") azCheck(); }, 1000);
 function azOpen() { switchView("sl"); setTimeout(() => { const c = $("azCard"); c.scrollIntoView({ behavior: "smooth", block: "center" }); c.classList.add("hot"); setTimeout(() => c.classList.remove("hot"), 2500); }, 120); }
@@ -1429,12 +1438,12 @@ function nativeSync() {
     if (!NATIVE) return;
     const td = todayIn(), pp = store.get("pushPrefs", null), sal = pp && Array.isArray(pp.sal) ? pp.sal : ["sih", "faj", "zaw", "mag", "nis"], lead = (pp && +pp.lead) || 0, out = [], now = Date.now();
     const nm = { sih: "tSihori", faj: "tFajr", fe: "tFajrEnd", zaw: "tZawaal", ze: "tZohrEnd", ae: "tAsrEnd", mag: "tMaghrib", nis: "tIshaEnd" };
-    for (let i = 0; i < 14; i++) salatList(new Date(td.getFullYear(), td.getMonth(), td.getDate() + i)).forEach(([, dt], j) => {
+    for (let i = 0; i < 14; i++) { const dd = new Date(td.getFullYear(), td.getMonth(), td.getDate() + i); salatList(dd).forEach(([, dt], j) => {
       const k = NAT_KEYS[j], az = !!azPrefs[k] && AZ.some(a => a[0] === k);
       if (!az && !sal.includes(k)) return;
-      const at = dt.getTime() - (az ? 0 : lead * 60000);
-      if (at > now) out.push({ at, title: (az ? "🔊 " : "🕌 ") + t(nm[k]) + " — " + locLabel(), body: az ? t("azH") : (lead ? t("slIn", { t: lead + " min" }) : t("slNow")), azaan: az });
-    });
+      const at = az ? azTime(k, dd, dt) : dt.getTime() - lead * 60000;
+      if (at > now) out.push({ at, title: (az ? "🔊 " : "🕌 ") + (az && k === "zaw" ? t("azZohr") : t(nm[k])) + " — " + locLabel(), body: az ? t("azH") : (lead ? t("slIn", { t: lead + " min" }) : t("slNow")), azaan: az });
+    }); }
     out.sort((a, b) => a.at - b.at);
     MuminNative.schedule(JSON.stringify(out));
   } catch (e) {}
@@ -1446,6 +1455,7 @@ function azAlDraw() {
   $("azAl").innerHTML = [["sih", "tSihori"], ["faj", "tFajr"], ["fe", "tFajrEnd"], ["zaw", "tZawaal"], ["ze", "tZohrEnd"], ["ae", "tAsrEnd"], ["mag", "tMaghrib"], ["nis", "tIshaEnd"]].map(([k, n]) => `<label class="${sal.includes(k) ? "on" : ""}"><input type="checkbox" data-al="${k}" ${sal.includes(k) ? "checked" : ""}>${t(n)}</label>`).join("");
 }
 $("azAl").onchange = e => { const k = e.target.dataset.al; if (!k) return; const pp = store.get("pushPrefs", null) || {}, sal = new Set(Array.isArray(pp.sal) ? pp.sal : ["sih", "faj", "zaw", "mag", "nis"]); e.target.checked ? sal.add(k) : sal.delete(k); pp.sal = [...sal]; store.set("pushPrefs", pp); e.target.parentElement.classList.toggle("on", e.target.checked); nativeSync(); };
+$("azZohrIn").value = azZohrT(); $("azZohrIn").onchange = e => { if (/^\d\d:\d\d$/.test(e.target.value)) { store.set("azZohr", e.target.value); azDone = { ...azDone, zaw: "" }; store.set("azaanDone", azDone); nativeSync(); } };
 azDraw(); azAlDraw();
 
 if (location.hash === "#azaan") azFromHash();

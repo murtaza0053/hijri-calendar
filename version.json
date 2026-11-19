@@ -1,6 +1,19 @@
 {
- "v": 142,
+ "v": 143,
  "history": [
+  {
+   "v": 143,
+   "date": "2026-11-19",
+   "en": [
+    "Azaan: Zohr azaan now plays at a fixed time every day — 12:45 by default (change it in the Azaan card) — instead of at Zawaal."
+   ],
+   "gu": [
+    "અઝાન: ઝોહરની અઝાન હવે ઝવાલ પર નહીં, રોજ નક્કી કરેલા સમયે વાગે છે — ડિફોલ્ટ 12:45 (અઝાન કાર્ડમાં બદલી શકાય)."
+   ],
+   "hi": [
+    "Azaan: Zohr ki azaan ab Zawaal par nahi, roz tay waqt par chalti hai — default 12:45 (Azaan card me badal sakte ho)।"
+   ]
+  },
   {
    "v": 142,
    "date": "2026-11-18",
