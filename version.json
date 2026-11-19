@@ -1,6 +1,19 @@
 {
- "v": 145,
+ "v": 146,
  "history": [
+  {
+   "v": 146,
+   "date": "2026-11-19",
+   "en": [
+    "New Golden theme (Settings → Theme), with a matching dark mode."
+   ],
+   "gu": [
+    "નવી સોનેરી થીમ (સેટિંગ્સ → થીમ), મેળ ખાતા ડાર્ક મોડ સાથે."
+   ],
+   "hi": [
+    "Nayi Golden theme (Settings → Theme), uske dark mode ke saath."
+   ]
+  },
   {
    "v": 145,
    "date": "2026-11-19",

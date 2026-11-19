@@ -13,8 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="themes.css?v=145">
-<script src="theme-init.js?v=145"></script>
+<link rel="stylesheet" href="themes.css?v=146">
+<script src="theme-init.js?v=146"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -696,10 +696,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=145"></script>
-<script src="i18n.js?v=145"></script>
-<script src="cities.js?v=145"></script>
-<script src="haptic.js?v=145"></script>
+<script src="hijri.js?v=146"></script>
+<script src="i18n.js?v=146"></script>
+<script src="cities.js?v=146"></script>
+<script src="haptic.js?v=146"></script>
 <script>
 "use strict";
 
@@ -735,7 +735,7 @@ function setLang(k) {
 document.addEventListener("click", e => { const b = e.target.closest("[data-l]"); if (b) setLang(b.dataset.l); });
 
 /* ---------- Theme ---------- */
-const THEMES = { green: "#0f5132", maroon: "#7a1f2b", navy: "#1d3a6e", teal: "#0e6e6a", rose: "#f4b6ca", sky: "#a9d4f2", lavender: "#cbb9f0" };
+const THEMES = { gold: "#c9a227", green: "#0f5132", maroon: "#7a1f2b", navy: "#1d3a6e", teal: "#0e6e6a", rose: "#f4b6ca", sky: "#a9d4f2", lavender: "#cbb9f0" };
 const MODES = ["auto", "light", "dark"];
 let theme = store.get("theme", "maroon"); if (!THEMES[theme]) theme = "maroon";
 let mode = store.get("mode", "light"); if (!MODES.includes(mode)) mode = "light";
@@ -1396,7 +1396,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 145, APP_VERSION = vName(APP_V) + " (2026-11-17)";
+const APP_V = 146, APP_VERSION = vName(APP_V) + " (2026-11-17)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
