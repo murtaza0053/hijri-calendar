@@ -1,6 +1,19 @@
 {
- "v": 148,
+ "v": 149,
  "history": [
+  {
+   "v": 149,
+   "date": "2026-11-20",
+   "en": [
+    "Qibla compass fixed: heading is now tilt-compensated, so it stays accurate even when the phone is not perfectly flat."
+   ],
+   "gu": [
+    "કિબલા હોકાયંત્ર સુધાર્યું: ફોન સપાટ ન હોય ત્યારે પણ દિશા હવે સાચી બતાવે છે."
+   ],
+   "hi": [
+    "Qibla compass theek kiya: phone bilkul flat na ho tab bhi ab direction sahi aati hai।"
+   ]
+  },
   {
    "v": 148,
    "date": "2026-11-20",
