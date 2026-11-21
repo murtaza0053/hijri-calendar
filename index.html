@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=156">
-<script src="theme-init.js?v=156"></script>
+<link rel="stylesheet" href="themes.css?v=157">
+<script src="theme-init.js?v=157"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -180,7 +180,14 @@ html.tourlock{overflow:hidden}#tour{position:fixed;inset:0;z-index:60;display:no
 #pushOth{margin-top:4px}
 .prow{display:flex;align-items:center;gap:10px;padding:8px 8px 8px 12px;border:1px solid var(--line);border-radius:14px;margin-bottom:8px;background:var(--bg)}
 .prow label{flex:1;min-width:0;display:flex;align-items:center;gap:10px;font-size:14px;line-height:1.25}
-.prow label input[type=checkbox]{width:20px;height:20px;accent-color:var(--brand);flex:none;margin:0}
+/* one checkbox look everywhere: theme colours, clear tick, focus ring */
+input[type=checkbox]{-webkit-appearance:none;appearance:none;width:22px;height:22px;flex:none;margin:0;border:2px solid var(--muted);border-radius:7px;background:var(--card);display:inline-grid;place-content:center;cursor:pointer;transition:background .15s,border-color .15s}
+input[type=checkbox]::after{content:"";width:11px;height:6px;border:solid var(--on-brand);border-width:0 0 2.5px 2.5px;transform:rotate(-45deg) scale(0);margin-top:-2px;transition:transform .12s}
+input[type=checkbox]:checked{background:var(--brand);border-color:var(--brand)}
+input[type=checkbox]:checked::after{transform:rotate(-45deg) scale(1)}
+input[type=checkbox]:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.azopts label.on input:checked,#pushSal label.on input:checked{background:transparent;border-color:var(--on-brand)}
+@media (prefers-reduced-motion:reduce){input[type=checkbox],input[type=checkbox]::after{transition:none}}
 .prow input[type=time]{flex:none;width:104px;padding:7px 8px;font-size:15px;text-align:center;background:var(--card)}
 .prow input[type=time]:disabled{opacity:.35}
 #pushLead{min-width:150px}
@@ -713,10 +720,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=156"></script>
-<script src="i18n.js?v=156"></script>
-<script src="cities.js?v=156"></script>
-<script src="haptic.js?v=156"></script>
+<script src="hijri.js?v=157"></script>
+<script src="i18n.js?v=157"></script>
+<script src="cities.js?v=157"></script>
+<script src="haptic.js?v=157"></script>
 <script>
 "use strict";
 
@@ -1415,7 +1422,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 156, APP_VERSION = vName(APP_V) + " (2026-11-22)";
+const APP_V = 157, APP_VERSION = vName(APP_V) + " (2026-11-22)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */

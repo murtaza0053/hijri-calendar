@@ -1,6 +1,19 @@
 {
- "v": 156,
+ "v": 157,
  "history": [
+  {
+   "v": 157,
+   "date": "2026-11-22",
+   "en": [
+    "Cleaner checkboxes: one consistent look in every theme and in dark mode, with a clear tick."
+   ],
+   "gu": [
+    "વધુ સ્વચ્છ ચેકબોક્સ: દરેક થીમ અને ડાર્ક મોડમાં એકસરખો દેખાવ અને સ્પષ્ટ ટિક."
+   ],
+   "hi": [
+    "Saaf checkbox: har theme aur dark mode me ek jaisa look aur saaf tick।"
+   ]
+  },
   {
    "v": 156,
    "date": "2026-11-22",
