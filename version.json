@@ -1,6 +1,19 @@
 {
- "v": 153,
+ "v": 154,
  "history": [
+  {
+   "v": 154,
+   "date": "2026-11-22",
+   "en": [
+    "Easier to read and use: darker small text in the Golden theme, and you can now pinch-zoom the app."
+   ],
+   "gu": [
+    "વાંચવા અને વાપરવામાં સરળ: ગોલ્ડન થીમમાં નાનું લખાણ વધુ ઘેરું છે, અને હવે એપમાં પિંચ-ઝૂમ કરી શકાય છે."
+   ],
+   "hi": [
+    "Padhna aur use karna aasan: Golden theme me chhota text zyada gehra hai, aur ab app me pinch-zoom kar sakte ho।"
+   ]
+  },
   {
    "v": 153,
    "date": "2026-11-22",

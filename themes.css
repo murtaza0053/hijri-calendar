@@ -78,7 +78,7 @@ html.dark[data-theme=lavender]{
 }
 html.dark{color-scheme:dark}
 html[data-theme=gold]{
-  --bg:#faf5e6; --card:#fffdf4; --ink:#2a2008; --muted:#7a6a3e; --line:#ecdfb8;
+  --bg:#faf5e6; --card:#fffdf4; --ink:#2a2008; --muted:#6e5f35; --line:#ecdfb8;
   --brand:#8a6508; --brand-2:#b8892b; --gold:#b8892b; --today:#8a6508; --today-ink:#fff;
   --filler:#c4b88f; --night:#3b4a8c; --chip:#f3e8c4; --hdr:#2b2108; --on-brand:#fff;
 }
