@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=151">
-<script src="theme-init.js?v=151"></script>
+<link rel="stylesheet" href="themes.css?v=152">
+<script src="theme-init.js?v=152"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -34,7 +34,7 @@ body{padding:env(safe-area-inset-top) 0 calc(80px + env(safe-area-inset-bottom))
 header.top{background:var(--hdr);color:var(--hdr-ink);padding:14px 0 0}
 .top .hd{display:flex;justify-content:space-between;align-items:flex-end;padding:4px 18px 12px;gap:10px}
 .top .wdn{font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.8}
-.top .big{font-size:44px;font-weight:600;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums;margin:2px 0}
+.top .big{font-size:44px;font-weight:600;line-height:1;color:var(--hdr-gold,var(--gold));font-variant-numeric:tabular-nums;margin:2px 0}
 .top .big.ar{font-size:50px;font-weight:400;line-height:.9}
 .top .hcol{text-align:right}
 .top .hm{font-size:17px;line-height:1.2}
@@ -53,7 +53,7 @@ header.top{background:var(--hdr);color:var(--hdr-ink);padding:14px 0 0}
 .top .tstrip span.nx{opacity:1;font-weight:700}
 .top .nextmq{padding:8px 18px 10px;font-size:13px;border-top:1px solid var(--hdr-chip);cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .top .nextmq:empty{display:none}
-.top .nextmq small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-right:6px}
+.top .nextmq small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--hdr-gold,var(--gold));margin-right:6px}
 main{max-width:640px;margin:0 auto;padding:12px 12px 0}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:12px}
 .monthbar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
@@ -710,10 +710,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=151"></script>
-<script src="i18n.js?v=151"></script>
-<script src="cities.js?v=151"></script>
-<script src="haptic.js?v=151"></script>
+<script src="hijri.js?v=152"></script>
+<script src="i18n.js?v=152"></script>
+<script src="cities.js?v=152"></script>
+<script src="haptic.js?v=152"></script>
 <script>
 "use strict";
 
@@ -1412,7 +1412,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 151, APP_VERSION = vName(APP_V) + " (2026-11-22)";
+const APP_V = 152, APP_VERSION = vName(APP_V) + " (2026-11-22)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */

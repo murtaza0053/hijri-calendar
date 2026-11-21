@@ -1,6 +1,19 @@
 {
- "v": 151,
+ "v": 152,
  "history": [
+  {
+   "v": 152,
+   "date": "2026-11-22",
+   "en": [
+    "Easier to read: the gold date and 'next miqaat' label in the header are now clearer in every theme, and grey helper text is darker in the Green and Rose themes."
+   ],
+   "gu": [
+    "વાંચવામાં સરળ: હેડરમાં સોનેરી તારીખ અને 'આગામી મિકાત' લેબલ દરેક થીમમાં વધુ સ્પષ્ટ છે, અને ગ્રીન તથા રોઝ થીમમાં ભૂખરા સહાયક લખાણ વધુ ઘેરા છે."
+   ],
+   "hi": [
+    "Padhna aasan: header me gold date aur 'next miqaat' label ab har theme me zyada saaf hai, aur Green aur Rose theme me grey helper text zyada gehra hai।"
+   ]
+  },
   {
    "v": 151,
    "date": "2026-11-22",
