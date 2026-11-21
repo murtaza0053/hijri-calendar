@@ -1,6 +1,19 @@
 {
- "v": 152,
+ "v": 153,
  "history": [
+  {
+   "v": 153,
+   "date": "2026-11-22",
+   "en": [
+    "Salaat page in dark mode: the countdown ring and the day arrows now use a dark colour on the light card, so they are easy to see."
+   ],
+   "gu": [
+    "ડાર્ક મોડમાં સલાત પેજ: કાઉન્ટડાઉન રિંગ અને દિવસના તીર હવે હળવા કાર્ડ પર ઘેરા રંગના છે, એટલે સ્પષ્ટ દેખાય છે."
+   ],
+   "hi": [
+    "Dark mode me Salaat page: countdown ring aur din ke arrows ab halke card par gehre rang ke hain, to saaf dikhte hain।"
+   ]
+  },
   {
    "v": 152,
    "date": "2026-11-22",

@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=152">
-<script src="theme-init.js?v=152"></script>
+<link rel="stylesheet" href="themes.css?v=153">
+<script src="theme-init.js?v=153"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -137,15 +137,15 @@ html.zyon,html.zyon body{overflow:hidden;height:100%;overscroll-behavior:none}
 .sldate{font-size:14px;opacity:.92;line-height:1.4}.sldate b{font-size:16px}
 .slring{position:relative;width:190px;height:190px;margin:10px auto 8px}
 .slring svg{width:100%;height:100%}
-.slring .bg{fill:none;stroke:rgba(255,255,255,.2);stroke-width:7}
-.slring .fg{fill:none;stroke:#fff;stroke-width:7;stroke-linecap:round;stroke-dasharray:326.7;stroke-dashoffset:326.7;transition:stroke-dashoffset .9s linear}
+.slring .bg{fill:none;stroke:color-mix(in srgb,currentColor 22%,transparent);stroke-width:7}
+.slring .fg{fill:none;stroke:currentColor;stroke-width:7;stroke-linecap:round;stroke-dasharray:326.7;stroke-dashoffset:326.7;transition:stroke-dashoffset .9s linear}
 .slc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 26px}
 .slc small{font-size:12px;opacity:.85;text-transform:uppercase;letter-spacing:.06em}
 .slc b{font-size:30px;font-weight:700;line-height:1.1}
 .slc span{font-size:13px;opacity:.9}
-.slseg{display:inline-flex;margin-top:4px;background:rgba(255,255,255,.16);border-radius:14px;padding:3px}
+.slseg{display:inline-flex;margin-top:4px;background:color-mix(in srgb,currentColor 16%,transparent);border-radius:14px;padding:3px}
 .slseg button{border:0;background:none;color:inherit;font:inherit;font-size:14px;font-weight:600;padding:6px 16px;border-radius:11px}
-.slseg button:active{background:rgba(255,255,255,.25)}
+.slseg button:active{background:color-mix(in srgb,currentColor 25%,transparent)}
 html.native #pushCard,html.native #instCard,html.native #instBar,html.native #azApk,html.native #pushPrompt{display:none!important}/* app tour (first-visit walkthrough) */
 html.tourlock{overflow:hidden}#tour{position:fixed;inset:0;z-index:60;display:none;touch-action:none}#tour.on{display:block}
 #tour .th{position:absolute;border-radius:14px;box-shadow:0 0 0 9999px rgba(10,6,8,.72);transition:all .28s ease;pointer-events:none}
@@ -710,10 +710,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=152"></script>
-<script src="i18n.js?v=152"></script>
-<script src="cities.js?v=152"></script>
-<script src="haptic.js?v=152"></script>
+<script src="hijri.js?v=153"></script>
+<script src="i18n.js?v=153"></script>
+<script src="cities.js?v=153"></script>
+<script src="haptic.js?v=153"></script>
 <script>
 "use strict";
 
@@ -1412,7 +1412,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 152, APP_VERSION = vName(APP_V) + " (2026-11-22)";
+const APP_V = 153, APP_VERSION = vName(APP_V) + " (2026-11-22)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
