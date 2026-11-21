@@ -1,6 +1,19 @@
 {
- "v": 150,
+ "v": 151,
  "history": [
+  {
+   "v": 151,
+   "date": "2026-11-22",
+   "en": [
+    "Less repetition: the Salaat page no longer repeats the date and city in the header, and the Miqaats tab skips the extra 'next miqaat' strip."
+   ],
+   "gu": [
+    "ઓછું પુનરાવર્તન: સલાત પેજ પર હેડરમાં તારીખ અને શહેર ફરી દેખાતા નથી, અને મિકાત ટૅબમાં વધારાની 'આગામી મિકાત' પટ્ટી નથી."
+   ],
+   "hi": [
+    "Kam dohrav: Salaat page par header me date aur city dobara nahi aate, aur Miqaats tab me extra 'next miqaat' strip nahi hai।"
+   ]
+  },
   {
    "v": 150,
    "date": "2026-11-22",
