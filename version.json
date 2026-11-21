@@ -1,6 +1,19 @@
 {
- "v": 154,
+ "v": 155,
  "history": [
+  {
+   "v": 155,
+   "date": "2026-11-22",
+   "en": [
+    "Faster, steadier start: the calendar no longer jumps down while it loads on phones, and a large picture is loaded only when needed."
+   ],
+   "gu": [
+    "વધુ ઝડપી અને સ્થિર શરૂઆત: ફોનમાં લોડ થતી વખતે કેલેન્ડર હવે નીચે કૂદતું નથી, અને મોટો ફોટો ફક્ત જરૂર પડે ત્યારે જ લોડ થાય છે."
+   ],
+   "hi": [
+    "Tez aur sthir shuruaat: phone me load hote waqt calendar ab neeche nahi kudta, aur bada photo sirf zaroorat par load hota hai।"
+   ]
+  },
   {
    "v": 154,
    "date": "2026-11-22",
