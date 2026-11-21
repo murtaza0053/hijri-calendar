@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=149">
-<script src="theme-init.js?v=149"></script>
+<link rel="stylesheet" href="themes.css?v=150">
+<script src="theme-init.js?v=150"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -281,7 +281,9 @@ h4.plat{margin:14px 0 2px;font-size:14px}
 .lv-vgood{background:#1f9d55} .lv-good{background:#5bb974} .lv-normal{background:#d4a72c} .lv-unfav{background:#d14b4b}
 #ghToggle button{font-size:12px;padding:6px 10px}
 .acc>.acc-h{display:flex;align-items:center;gap:8px;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none}
-.acc>.acc-h>h3{flex:1;margin:0!important}
+.acc>.acc-h>h3,.acc>h3.acc-h{flex:1;margin:0!important}
+/* long header (times + next miqaat) only on Calendar / Miqaats: more room for Dua, Ziyarat, Salaat, Settings */
+html[data-view]:not([data-view=cal]):not([data-view=up]) .top .tstrip,html[data-view]:not([data-view=cal]):not([data-view=up]) .top .nextmq{display:none}
 .acc>.acc-h::after{content:"›";font-size:22px;line-height:1;color:var(--muted);transition:transform .2s;transform:rotate(90deg)}
 .acc.open>.acc-h::after{transform:rotate(-90deg)}
 .acc>.acc-b{display:none;margin-top:10px}
@@ -706,10 +708,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=149"></script>
-<script src="i18n.js?v=149"></script>
-<script src="cities.js?v=149"></script>
-<script src="haptic.js?v=149"></script>
+<script src="hijri.js?v=150"></script>
+<script src="i18n.js?v=150"></script>
+<script src="cities.js?v=150"></script>
+<script src="haptic.js?v=150"></script>
 <script>
 "use strict";
 
@@ -1284,6 +1286,7 @@ function shiftMonth(k) {
 }
 function switchView(v) {
   curView = v;
+  document.documentElement.dataset.view = v;
   document.querySelectorAll(".view").forEach(s => s.classList.toggle("on", s.id === "v-" + v));
   document.documentElement.classList.toggle("zyon", v === "zy");
   document.querySelectorAll("nav.tabs button").forEach(b => b.classList.toggle("on", b.dataset.v === v));
@@ -1407,7 +1410,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 149, APP_VERSION = vName(APP_V) + " (2026-11-20)";
+const APP_V = 150, APP_VERSION = vName(APP_V) + " (2026-11-22)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */

@@ -1,6 +1,19 @@
 {
- "v": 149,
+ "v": 150,
  "history": [
+  {
+   "v": 150,
+   "date": "2026-11-22",
+   "en": [
+    "Cleaner layout: on Dua, Ziyarat, Salaat and Settings the header is shorter, so there is more room for content. Language and Theme cards no longer have extra empty space."
+   ],
+   "gu": [
+    "વધુ સ્વચ્છ લેઆઉટ: દુઆ, ઝિયારત, સલાત અને સેટિંગ્સમાં હેડર નાનું છે, એટલે કન્ટેન્ટ માટે વધુ જગ્યા. ભાષા અને થીમ કાર્ડમાં વધારાની ખાલી જગ્યા નથી."
+   ],
+   "hi": [
+    "Saaf layout: Dua, Ziyarat, Salaat aur Settings me header chhota hai, to content ke liye zyada jagah. Language aur Theme card me ab extra khali jagah nahi।"
+   ]
+  },
   {
    "v": 149,
    "date": "2026-11-20",
