@@ -1,6 +1,19 @@
 {
- "v": 159,
+ "v": 160,
  "history": [
+  {
+   "v": 160,
+   "date": "2026-11-23",
+   "en": [
+    "Hafti opens faster the first time too: it no longer loads extra files in the background."
+   ],
+   "gu": [
+    "હફ્તી પહેલી વાર પણ ઝડપથી ખુલે છે: હવે તે પાછળ વધારાની ફાઇલો લોડ કરતી નથી."
+   ],
+   "hi": [
+    "Hafti pehli baar bhi tez khulti hai: ab ye background me extra files load nahi karti।"
+   ]
+  },
   {
    "v": 159,
    "date": "2026-11-23",

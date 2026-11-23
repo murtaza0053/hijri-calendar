@@ -390,7 +390,7 @@ $("sheet").onclick = e => {
     B.images.forEach((src, i) => {
       const d = document.createElement("div");
       d.className = "pg"; d.style.aspectRatio = `1 / ${B.ratio}`;
-      d.innerHTML = `<img src="${src}" alt="${i + 1}" style="width:100%;height:100%;display:block" loading="${i < 2 ? "eager" : "lazy"}"><span class="no">${i + 1}</span>`;
+      d.innerHTML = `<img src="${src}" alt="${i + 1}" style="width:100%;height:100%;display:block" loading="lazy"><span class="no">${i + 1}</span>`;
       els.push(d);
     });
     $("pages").replaceChildren(...els);
@@ -432,7 +432,8 @@ $("sheet").onclick = e => {
   if (last > 1) goto(last, false);
   update();
 })();
-if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+// Hafti: do not start the Dua SW's ~3 MB precache on a first visit (it slows the first pages); an already installed SW still caches viewed pages
+if ("serviceWorker" in navigator && !B.hd) navigator.serviceWorker.register("sw.js").catch(() => {});
 </script>
 </body>
 </html>
