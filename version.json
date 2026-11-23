@@ -1,6 +1,19 @@
 {
- "v": 161,
+ "v": 162,
  "history": [
+  {
+   "v": 162,
+   "date": "2026-11-23",
+   "en": [
+    "New: a daily quote from Raudat Hidayaat on the calendar page — Arabic with its English meaning, a new one every day. Turn on the 10:00 alert in Settings → Push alerts."
+   ],
+   "gu": [
+    "નવું: કેલેન્ડર પેજ પર રૌઝતુલ હિદાયાતનું રોજનું સુવચન — અરબી અને તેનો અંગ્રેજી અર્થ, દરરોજ નવું. સેટિંગ્સ → પુશ અલર્ટ માં સવારે 10:00 નો અલર્ટ ચાલુ કરો."
+   ],
+   "hi": [
+    "Naya: calendar page par Raudat Hidayaat ka roz ka quote — Arabic aur uska English matlab, har din naya. Settings → Push alerts me subah 10:00 ka alert on karo."
+   ]
+  },
   {
    "v": 161,
    "date": "2026-11-23",

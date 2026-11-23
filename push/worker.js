@@ -3,6 +3,7 @@
 import "../hijri.js";                    // sets globalThis.H (same Misri calendar as the app)
 import { sendPush, b64u } from "./webpush.js";
 import MIQ from "../miqaats.json" with { type: "json" };
+import QUOTES from "../quotes.json" with { type: "json" };
 
 const ORIGINS = ["https://murtaza0053.github.io", "http://localhost:8765", "http://127.0.0.1:8765"];
 const PUSH_HOSTS = ["fcm.googleapis.com", "push.services.mozilla.com", "push.apple.com", "notify.windows.com"];
@@ -42,15 +43,15 @@ const TXT = {
   en: { sih: "Sihori", faj: "Fajr", fe: "Fajr end", zaw: "Zawaal", ze: "Zohr end", ae: "Asr end", mag: "Maghrib", nis: "Nisful Layl", now: "It is {n} time.", soon: "{n} in {m} minutes.",
         rozi: "📖 Rozi amal: Surat {s}", roziB: "Hijri {d} — recite it once for barakat in rozi.", tas: "📿 Today's tasbeeh", tasB: "{t} — 100 times.",
         sdq: "🤲 Today's sadaqah", sdqB: "Give sadaqah today: {i}.", miq: "🕌 Miqaat", miqN: "🌙 Tonight: {t}", miqT: "📅 Tomorrow: {t}", wsq: "🌙 Washeq raat in 1 month", wsqB: "{t} — {d}. Time to prepare.",
-        kum: "🌙 Shab-e-Juma", kumB: "Tonight, after Maghrib: recite Dua e Kumail.", test: "🔔 Alerts are on", testB: "You will get your Salaat and amal alerts on this device." },
+        qt: "✨ Quote of the day", kum: "🌙 Shab-e-Juma", kumB: "Tonight, after Maghrib: recite Dua e Kumail.", test: "🔔 Alerts are on", testB: "You will get your Salaat and amal alerts on this device." },
   gu: { sih: "સિહોરી", faj: "ફજર", fe: "ફજર અંત", zaw: "ઝવાલ", ze: "ઝોહર અંત", ae: "અસર અંત", mag: "મગરિબ", nis: "નિસ્ફુલ લૈલ", now: "{n} નો સમય થયો.", soon: "{m} મિનિટમાં {n}.",
         rozi: "📖 રોઝી અમલ: સૂરત {s}", roziB: "હિજરી {d} — રોઝીમાં બરકત માટે એક વાર પઢો.", tas: "📿 આજની તસ્બીહ", tasB: "{t} — 100 વાર.",
         sdq: "🤲 આજનો સદકો", sdqB: "આજે સદકો આપો: {i}.", miq: "🕌 મિકાત", miqN: "🌙 આજે રાત્રે: {t}", miqT: "📅 આવતી કાલે: {t}", wsq: "🌙 વાશિક રાત 1 મહિના પછી", wsqB: "{t} — {d}. તૈયારીનો સમય.",
-        kum: "🌙 શબે જુમા", kumB: "આજે રાત્રે, મગરિબ પછી: દુઆ એ કુમૈલ પઢો.", test: "🔔 અલર્ટ ચાલુ છે", testB: "આ ડિવાઇસ પર તમને સલાત અને અમલના અલર્ટ મળશે." },
+        qt: "✨ આજનું સુવચન", kum: "🌙 શબે જુમા", kumB: "આજે રાત્રે, મગરિબ પછી: દુઆ એ કુમૈલ પઢો.", test: "🔔 અલર્ટ ચાલુ છે", testB: "આ ડિવાઇસ પર તમને સલાત અને અમલના અલર્ટ મળશે." },
   hi: { sih: "Sihori", faj: "Fajr", fe: "Fajr end", zaw: "Zawaal", ze: "Zohr end", ae: "Asr end", mag: "Maghrib", nis: "Nisful Layl", now: "{n} ka waqt ho gaya.", soon: "{n} me {m} minute baaki.",
         rozi: "📖 Rozi amal: Surat {s}", roziB: "Hijri {d} — rozi me barakat ke liye ek baar padho.", tas: "📿 Aaj ki tasbeeh", tasB: "{t} — 100 baar.",
         sdq: "🤲 Aaj ka sadaqah", sdqB: "Aaj sadaqah do: {i}.", miq: "🕌 Miqaat", miqN: "🌙 Aaj raat: {t}", miqT: "📅 Kal: {t}", wsq: "🌙 Washeq raat 1 mahine baad", wsqB: "{t} — {d}. Taiyari ka waqt.",
-        kum: "🌙 Shab-e-Juma", kumB: "Aaj raat, Maghrib ke baad: Dua e Kumail padho.", test: "🔔 Alerts on hain", testB: "Is device par aapko Salaat aur amal ke alerts milenge." }
+        qt: "✨ Aaj ka quote", kum: "🌙 Shab-e-Juma", kumB: "Aaj raat, Maghrib ke baad: Dua e Kumail padho.", test: "🔔 Alerts on hain", testB: "Is device par aapko Salaat aur amal ke alerts milenge." }
 };
 const ROZI = [[2, "Yaseen"], [3, "ar-Rahman"], [4, "al-Waqiah"], [5, "al-Hashr"], [6, "al-Jumuah"], [7, "al-Jinn"]];
 const WEEK = ["Iyyaka Na'budu Wa Iyyaka Nasta'een", "Ya Ghafoor, Ya Raheem", "SubhanAllahi wal Hamdu Lillah", "Ya Rahman, Ya Raheem", "HasbunAllahu Wa Ni'mal Wakeel", "Ya Zal Jalali Wal Ikram", "Ya Hayyu, Ya Qayyum"];
@@ -96,6 +97,7 @@ export function dueEvents(s, ws) {
     if (ws2.length) { const h2 = H.fromAJD(H.gToAJD(wy, wm, wd)); out.push({ title: T.wsq, body: fill(T.wsqB, { t: ws2.map(q => q.title).join(" · "), d: `${h2.d} ${H.SHORT[h2.m]} ${h2.y}H` }), url: "./", tag: "miq-washeq" }); }
   }
   if (at("kumail", "19:00") && p.dow === 4 && pr.kumail) out.push({ title: T.kum, body: T.kumB, url: "./dua/kumail.html", tag: "kumail" });
+  if (at("quote", "10:00") && pr.quote) out.push({ title: T.qt, body: QUOTES[Math.floor(Date.UTC(p.y, p.m, p.d) / 864e5) % QUOTES.length], url: "./", tag: "quote" });   // same day→quote rule as the app
   return out;
 }
 
@@ -103,8 +105,8 @@ const cors = req => { const o = req.headers.get("Origin"); return { "Access-Cont
 const json = (req, obj, status = 200) => new Response(JSON.stringify(obj), { status, headers: { "Content-Type": "application/json", ...cors(req) } });
 const sha = async s => b64u.enc(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s))).slice(0, 32);
 function cleanPrefs(p = {}) {
-  const t = {}; for (const k of ["rozi", "tasbeeh", "sadaqah", "kumail", "miq"]) if (/^([01]\d|2[0-3]):[0-5]\d$/.test((p.t || {})[k])) t[k] = p.t[k];
-  return { sal: (Array.isArray(p.sal) ? p.sal : []).filter(k => SAL_KEYS.includes(k)), lead: [0, 5, 10, 15, 20, 30, 45, 60].includes(+p.lead) ? +p.lead : 0, t, rozi: !!p.rozi, tasbeeh: !!p.tasbeeh, sadaqah: !!p.sadaqah, kumail: !!p.kumail, miq: !!p.miq };
+  const t = {}; for (const k of ["rozi", "tasbeeh", "sadaqah", "kumail", "miq", "quote"]) if (/^([01]\d|2[0-3]):[0-5]\d$/.test((p.t || {})[k])) t[k] = p.t[k];
+  return { sal: (Array.isArray(p.sal) ? p.sal : []).filter(k => SAL_KEYS.includes(k)), lead: [0, 5, 10, 15, 20, 30, 45, 60].includes(+p.lead) ? +p.lead : 0, t, rozi: !!p.rozi, tasbeeh: !!p.tasbeeh, sadaqah: !!p.sadaqah, kumail: !!p.kumail, miq: !!p.miq, quote: !!p.quote };
 }
 const okEndpoint = e => { try { const u = new URL(e); return u.protocol === "https:" && PUSH_HOSTS.some(h => u.hostname === h || u.hostname.endsWith("." + h)); } catch { return false; } };
 
