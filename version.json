@@ -1,6 +1,19 @@
 {
- "v": 165,
+ "v": 166,
  "history": [
+  {
+   "v": 166,
+   "date": "2026-11-24",
+   "en": [
+    "Daily quote: the English meaning is now typed in a handwritten cursive font, and every day's alert shows the full quote."
+   ],
+   "gu": [
+    "રોજનું સુવચન: અંગ્રેજી અર્થ હવે હસ્તલિખિત કર્સિવ ફોન્ટમાં છે, અને દરરોજના અલર્ટમાં પૂરું સુવચન દેખાય છે."
+   ],
+   "hi": [
+    "Roz ka quote: English matlab ab handwritten cursive font me hai, aur har din ke alert me poora quote aata hai."
+   ]
+  },
   {
    "v": 165,
    "date": "2026-11-23",

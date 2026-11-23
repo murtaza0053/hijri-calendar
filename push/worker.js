@@ -102,7 +102,7 @@ export function dueEvents(s, ws) {
     if (ws2.length) { const h2 = H.fromAJD(H.gToAJD(wy, wm, wd)); out.push({ title: T.wsq, body: fill(T.wsqB, { t: ws2.map(q => q.title).join(" · "), d: `${h2.d} ${H.SHORT[h2.m]} ${h2.y}H` }), url: "./", tag: "miq-washeq" }); }
   }
   if (at("kumail", "19:00") && p.dow === 4 && pr.kumail) out.push({ title: T.kum, body: T.kumB, url: "./dua/kumail.html", tag: "kumail" });
-  if (at("quote", "10:00") && pr.quote) out.push({ title: T.qt, body: quoteOn(p) || T.qtG, url: "./", tag: "quote" });
+  if (at("quote", "10:00") && pr.quote) out.push({ title: T.qt, body: quoteOn(p), url: "./", tag: "quote" });
   return out;
 }
 
@@ -142,7 +142,7 @@ async function handle(req, env) {
     if (!s) return json(req, { error: "not subscribed" }, 404);
     const T = TXT[s.lang] || TXT.en, pr = JSON.parse(s.prefs || "{}");
     let msg = { title: T.test, body: T.testB, url: "./", tag: "test" };
-    if (pr.quote) { let p; try { p = localParts(Date.now(), s.tz || "UTC"); } catch { p = localParts(Date.now(), "UTC"); } msg = { title: T.qt, body: quoteOn(p) || T.qtG, url: "./", tag: "quote-now" }; }   // turning alerts on / the test button shows today's quote
+    if (pr.quote) { let p; try { p = localParts(Date.now(), s.tz || "UTC"); } catch { p = localParts(Date.now(), "UTC"); } msg = { title: T.qt, body: quoteOn(p), url: "./", tag: "quote-now" }; }   // turning alerts on / the test button shows today's quote
     const st = await sendPush(s, msg, env);
     return json(req, { ok: st >= 200 && st < 300, status: st });
   }
