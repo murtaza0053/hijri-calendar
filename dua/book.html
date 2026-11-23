@@ -95,6 +95,11 @@ header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:
 // pages near the screen, and keeps the PDF's own hyperlinks working (index → page, and web links).
 const BOOKS = {
   zikre: { title: "Zikre Husain (AS) 1446", pdf: "books/zikre-husain-1446.pdf" },
+  // Hafti: contents = the PDF's own outline (62 entries) + the Hirze Saifee timing sections (page, title, search words)
+  hafti: { title: "Hafti — Duas & Tasbeeh", pdf: "books/hafti.pdf",
+    extra: [[242, "Hirze Saifee — Fajr: ayaat", "fajr fajar subah morning ayat ayaat"], [246, "Hirze Saifee — Fajr: dua", "fajr fajar subah morning dua"],
+            [248, "Hirze Saifee — Zawaal / Zohr–Asr: dua", "zohr zuhr zawal zawaal asr dua"], [249, "Hirze Saifee — Zohr–Asr: ayaat", "zohr zuhr zawal zawaal asr ayat ayaat"],
+            [251, "Hirze Saifee — Raat: ayaat", "raat night maghrib isha ayat ayaat"], [253, "Hirze Saifee — Raat: dua", "raat night maghrib isha dua"]] },
   // page images (no PDF): shown as-is, with a credit link to where they came from
   azam: { title: "Tasbih ul Azam", images: ["books/tasbih-ul-azam/p1.png", "books/tasbih-ul-azam/p2.png", "books/tasbih-ul-azam/p3.png"], ratio: 1360 / 939,
     src: "https://dawoodibohraapp.com/Duas/66%20tasbih%20ul%20azam.html", srcName: "dawoodibohraapp.com" },
@@ -293,10 +298,14 @@ async function openItems(sub, host) {
 function openSheet() {
   if (id === "zikre" && outline.length) return openTree();
 
-  $("sheet").innerHTML = `<h3>${t("bkContents")}</h3>
+  const srch = outline.length > 12;   // long contents: add a search box (title words or page number)
+  $("sheet").innerHTML = `<div class="stk"><div class="grab"></div><h3>${t("bkContents")}</h3>
     <div class="jump"><input id="jp" type="number" inputmode="numeric" min="1" max="${N}" placeholder="${t("bkPage")} (1–${N})"><button id="jgo">${t("bkGo")}</button></div>
-    <div class="it" data-p="1"><b>${t("bkIndex")}</b><span>1</span></div>
-    ${B.note ? `<p style="color:var(--muted);font-size:12px;margin:6px">${esc(t(B.note))}</p>` : ""}${outline.map(o => `<div class="it" data-p="${o.p}"><b>${esc(o.title)}</b><span>${o.p}</span></div>`).join("")}`;
+    ${srch ? `<div class="jump"><input id="sq" type="search" placeholder="${SRCH[lang] || SRCH.en}" autocomplete="off"></div>` : ""}</div>
+    <div class="it" data-p="1" data-f="${fold(t("bkIndex") + " index 1")}"><b>${t("bkIndex")}</b><span>1</span></div>
+    ${B.note ? `<p style="color:var(--muted);font-size:12px;margin:6px">${esc(t(B.note))}</p>` : ""}${outline.map(o => `<div class="it" data-p="${o.p}" data-f="${esc(fold(o.title + " " + (o.kw || "") + " " + o.p))}"><b>${esc(o.title)}</b><span>${o.p}</span></div>`).join("")}
+    <div class="none" id="nm" hidden>${NOMATCH[lang] || NOMATCH.en}</div>`;
+  if (srch) $("sq").oninput = () => { const q = fold($("sq").value); let n = 0; $("sheet").querySelectorAll(".it").forEach(it => { const m = !q || it.dataset.f.includes(q); it.style.display = m ? "" : "none"; if (m) n++; }); $("nm").hidden = !q || n > 0; };
   $("sbg").style.display = "block"; lockBody(); requestAnimationFrame(() => $("sheet").classList.add("on"));
   $("jgo").onclick = () => { const p = +$("jp").value; if (p) { closeSheet(); goto(p, true); } };
 }
@@ -402,6 +411,7 @@ $("sheet").onclick = e => {
   else {
     const ol = await pdf.getOutline().catch(() => null) || [];
     for (const o of ol) { const p = await destToPage(o.dest).catch(() => null); if (p) outline.push({ title: o.title, p }); }
+    if (B.extra) { B.extra.forEach(([p, title, kw]) => outline.push({ title, p, kw })); outline = outline.map((o, i) => ({ ...o, i })).sort((x, y) => x.p - y.p || x.i - y.i); }
   }
   const last = +new URLSearchParams(location.search).get("p") || ls.get("book:" + id, 1);
   if (last > 1) goto(last, false);

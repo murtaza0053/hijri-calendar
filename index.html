@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=157">
-<script src="theme-init.js?v=157"></script>
+<link rel="stylesheet" href="themes.css?v=158">
+<script src="theme-init.js?v=158"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -158,6 +158,7 @@ html.tourlock{overflow:hidden}#tour{position:fixed;inset:0;z-index:60;display:no
 #tour .tb .ti{font-size:30px;line-height:1}#tour .tb h4{margin:6px 0 4px;font-size:17px}#tour .tb p{margin:0 0 12px;font-size:14px;line-height:1.45;color:var(--muted)}
 #tour .tf{display:flex;align-items:center;gap:8px}#tour .tf .dots{flex:1;display:flex;gap:3px}#tour .tf .dots i{width:6px;height:6px;border-radius:50%;background:var(--line)}#tour .tf .dots i.on{background:var(--brand);width:14px;border-radius:4px}
 #tour .tf button{font:inherit;border:0;border-radius:18px;padding:8px 16px;font-weight:600;background:var(--brand);color:#fff}#tour .tf button.g{background:transparent;color:var(--muted);padding:8px 10px}
+.hfq{display:flex;flex-wrap:wrap;gap:8px;margin:0 4px 12px}.hfq a{padding:7px 14px;border-radius:18px;background:var(--chip);color:var(--ink);text-decoration:none;font-size:14px;font-weight:600}.hfq a:active{background:var(--line)}
 .azopts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.azopts label{display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:18px;background:var(--chip,rgba(127,127,127,.14));font-size:14px}.azopts label.on{background:var(--brand);color:#fff}.azopts input{accent-color:#fff}
 #azPlay.on{background:#c0392b}#azCard.hot{outline:2px solid var(--brand)}
 .slcard{padding:6px 8px;margin-top:12px}
@@ -479,6 +480,12 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
   <!-- DUA -->
   <section class="view" id="v-dua">
     <h3 class="sec" data-i18n="secDuas"></h3>
+    <a class="card dua-item" href="dua/book.html?b=hafti" style="margin-bottom:8px">
+      <div class="dua-ic">📖</div>
+      <div style="flex:1"><b data-i18n="haftiH"></b><div class="muted" data-i18n="haftiDesc"></div></div>
+      <div class="dua-go">›</div>
+    </a>
+    <div class="hfq"><a href="dua/book.html?b=hafti&p=242" data-i18n="hfFajrA"></a><a href="dua/book.html?b=hafti&p=246" data-i18n="hfFajrD"></a><a href="dua/book.html?b=hafti&p=249" data-i18n="hfZA"></a><a href="dua/book.html?b=hafti&p=251" data-i18n="hfRaat"></a></div>
     <a class="card dua-item" href="dua/">
       <div class="dua-ic">🤲</div>
       <div style="flex:1"><b data-i18n="duaKamil"></b><div class="muted" data-i18n="duaKamilDesc"></div></div>
@@ -720,10 +727,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=157"></script>
-<script src="i18n.js?v=157"></script>
-<script src="cities.js?v=157"></script>
-<script src="haptic.js?v=157"></script>
+<script src="hijri.js?v=158"></script>
+<script src="i18n.js?v=158"></script>
+<script src="cities.js?v=158"></script>
+<script src="haptic.js?v=158"></script>
 <script>
 "use strict";
 
@@ -1422,7 +1429,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 157, APP_VERSION = vName(APP_V) + " (2026-11-22)";
+const APP_V = 158, APP_VERSION = vName(APP_V) + " (2026-11-23)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
