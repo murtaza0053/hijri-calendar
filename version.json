@@ -1,6 +1,19 @@
 {
- "v": 160,
+ "v": 161,
  "history": [
+  {
+   "v": 161,
+   "date": "2026-11-23",
+   "en": [
+    "Hafti: the first page now appears without waiting for the contents to load."
+   ],
+   "gu": [
+    "હફ્તી: ફેહરિસ્ત લોડ થવાની રાહ જોયા વગર પહેલું પાનું હવે દેખાય છે."
+   ],
+   "hi": [
+    "Hafti: contents load hone ka intezaar kiye bina ab pehla page dikh jaata hai।"
+   ]
+  },
   {
    "v": 160,
    "date": "2026-11-23",

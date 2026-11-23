@@ -98,7 +98,7 @@ const BOOKS = {
   // Hafti: contents = the PDF's own outline (62 entries) + the Hirze Saifee timing sections (page, title, search words)
   // Hafti: 605 pre-rendered WebP pages (fast on phones, no PDF engine). books/hafti.json = outline + the printed index's link hotspots.
   // extra = Hirze Saifee timing sections (page, title, search words)
-  hafti: { title: "Hafti — Duas & Tasbeeh", imgDir: "books/hafti/", data: "books/hafti.json",
+  hafti: { title: "Hafti — Duas & Tasbeeh", imgDir: "books/hafti/", data: "books/hafti.json", n: 605, ratio: 842 / 595,
     extra: [[242, "Hirze Saifee — Fajr: ayaat", "fajr fajar subah morning ayat ayaat"], [246, "Hirze Saifee — Fajr: dua", "fajr fajar subah morning dua"],
             [248, "Hirze Saifee — Zawaal / Zohr–Asr: dua", "zohr zuhr zawal zawaal asr dua"], [249, "Hirze Saifee — Zohr–Asr: ayaat", "zohr zuhr zawal zawaal asr ayat ayaat"],
             [251, "Hirze Saifee — Raat: ayaat", "raat night maghrib isha ayat ayaat"], [253, "Hirze Saifee — Raat: dua", "raat night maghrib isha dua"]] },
@@ -381,10 +381,7 @@ $("sheet").onclick = e => {
   const it = e.target.closest("[data-p]"); if (it) { closeSheet(); goto(+it.dataset.p, true); } };
 
 (async () => {
-  if (B.data) {
-    try { B.hd = await (await fetch(B.data)).json(); } catch (e) { $("msg").textContent = t("bkFail") + " (" + e.message + ")"; return; }
-    B.images = Array.from({ length: B.hd.n }, (_, i) => `${B.imgDir}p${String(i + 1).padStart(3, "0")}.webp`); B.ratio = B.hd.ratio;
-  }
+  if (B.data) B.images = Array.from({ length: B.n }, (_, i) => `${B.imgDir}p${String(i + 1).padStart(3, "0")}.webp`);   // no wait for the json: pages start loading at once
   if (B.images) {
     N = B.images.length;
     B.images.forEach((src, i) => {
@@ -395,15 +392,17 @@ $("sheet").onclick = e => {
     });
     $("pages").replaceChildren(...els);
     if (B.src) $("pages").insertAdjacentHTML("beforeend", `<p style="text-align:center;color:var(--muted);font-size:12px">${t("bkSrc")}: <a style="color:var(--brand)" href="${B.src}" target="_blank" rel="noopener">${esc(B.srcName)}</a></p>`);
-    if (B.hd) {
-      outline = B.hd.outline.map(([title, p]) => ({ title, p }));
-      (B.extra || []).forEach(([p, title, kw]) => outline.push({ title, p, kw }));
-      outline = outline.map((o, i) => ({ ...o, i })).sort((x, y) => x.p - y.p || x.i - y.i);
-      B.hd.links.forEach(([pg, x, y, w, h, to]) => {   // the printed index's own links (page numbers, titles)
-        const a = document.createElement("a"); a.className = "lk"; a.href = "#";
-        Object.assign(a.style, { left: x + "%", top: y + "%", width: w + "%", height: h + "%" });
-        a.onclick = e => { e.preventDefault(); goto(to, true); }; els[pg - 1].append(a);
-      });
+    if (B.data) {
+      fetch(B.data).then(r => r.json()).then(hd => {
+        outline = hd.outline.map(([title, p]) => ({ title, p }));
+        (B.extra || []).forEach(([p, title, kw]) => outline.push({ title, p, kw }));
+        outline = outline.map((o, i) => ({ ...o, i })).sort((x, y) => x.p - y.p || x.i - y.i);
+        hd.links.forEach(([pg, x, y, w, h, to]) => {   // the printed index's own links (page numbers, titles)
+          const a = document.createElement("a"); a.className = "lk"; a.href = "#";
+          Object.assign(a.style, { left: x + "%", top: y + "%", width: w + "%", height: h + "%" });
+          a.onclick = e => { e.preventDefault(); goto(to, true); }; els[pg - 1].append(a);
+        });
+      }).catch(() => {});
     } else $("tocBtn").style.display = "none";
     const last = +new URLSearchParams(location.search).get("p") || ls.get("book:" + id, 1); if (last > 1) goto(last, false);
     update(); return;
@@ -433,7 +432,7 @@ $("sheet").onclick = e => {
   update();
 })();
 // Hafti: do not start the Dua SW's ~3 MB precache on a first visit (it slows the first pages); an already installed SW still caches viewed pages
-if ("serviceWorker" in navigator && !B.hd) navigator.serviceWorker.register("sw.js").catch(() => {});
+if ("serviceWorker" in navigator && !B.data) navigator.serviceWorker.register("sw.js").catch(() => {});
 </script>
 </body>
 </html>
