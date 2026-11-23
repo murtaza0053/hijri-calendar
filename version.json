@@ -1,6 +1,19 @@
 {
- "v": 162,
+ "v": 163,
  "history": [
+  {
+   "v": 163,
+   "date": "2026-11-23",
+   "en": [
+    "The daily quote now sits at the top of the calendar page, right below the Salaat card."
+   ],
+   "gu": [
+    "રોજનું સુવચન હવે કેલેન્ડર પેજ પર સૌથી ઉપર, સલાત કાર્ડની નીચે દેખાય છે."
+   ],
+   "hi": [
+    "Roz ka quote ab calendar page par sabse upar, Salaat card ke neeche dikhta hai."
+   ]
+  },
   {
    "v": 162,
    "date": "2026-11-23",
