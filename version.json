@@ -1,6 +1,19 @@
 {
- "v": 169,
+ "v": 170,
  "history": [
+  {
+   "v": 170,
+   "date": "2026-11-24",
+   "en": [
+    "Android app: the daily quote now arrives as a native notification at 10:00 (Settings → Azaan → Daily quote alert), even when the app is closed."
+   ],
+   "gu": [
+    "Android એપ: રોજનું સુવચન હવે સવારે 10:00 વાગ્યે નેટિવ નોટિફિકેશન તરીકે આવે છે (સેટિંગ્સ → અઝાન → રોજનું સુવચન અલર્ટ), એપ બંધ હોય ત્યારે પણ."
+   ],
+   "hi": [
+    "Android app: roz ka quote ab subah 10:00 baje native notification me aata hai (Settings → Azaan → Roz ka quote alert), app band ho tab bhi."
+   ]
+  },
   {
    "v": 169,
    "date": "2026-11-24",
