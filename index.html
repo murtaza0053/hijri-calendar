@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=166">
-<script src="theme-init.js?v=166"></script>
+<link rel="stylesheet" href="themes.css?v=167">
+<script src="theme-init.js?v=167"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -254,6 +254,8 @@ nav.tabs button.on{color:var(--brand);font-weight:700}
 .qcard .qt{margin:16px auto 0;max-width:30em;white-space:pre-line;font:500 23px/1.4 "Dancing Script","Segoe Script","Brush Script MT",cursive;color:var(--ink);text-wrap:pretty}
 .qcard .qn{margin-top:14px;font-size:11px;color:var(--muted)}
 @font-face{font-family:"Dancing Script";font-weight:500;font-display:swap;src:url(fonts/DancingScript-500.woff2) format("woff2")}
+@font-face{font-family:Amiri;font-weight:400;font-display:swap;src:url(fonts/Amiri-400.woff2) format("woff2")}
+.qcard .qar{margin:14px auto;white-space:pre-line;text-wrap:balance;font:400 26px/1.95 Amiri,"Noto Naskh Arabic","Traditional Arabic",serif;color:var(--ink)}
 .ashara{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:10px;padding:10px 14px}
 .ashara .l{display:contents}
 .ashara .t2{grid-row:1;grid-column:1;font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -738,10 +740,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=166"></script>
-<script src="i18n.js?v=166"></script>
-<script src="cities.js?v=166"></script>
-<script src="haptic.js?v=166"></script>
+<script src="hijri.js?v=167"></script>
+<script src="i18n.js?v=167"></script>
+<script src="cities.js?v=167"></script>
+<script src="haptic.js?v=167"></script>
 <script>
 "use strict";
 
@@ -1441,7 +1443,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 166, APP_VERSION = vName(APP_V) + " (2026-11-23)";
+const APP_V = 167, APP_VERSION = vName(APP_V) + " (2026-11-23)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1528,7 +1530,7 @@ function renderQuote() {
   const i = (((Math.floor((Date.UTC(n.getFullYear(), n.getMonth(), n.getDate()) - Date.UTC(+p[0], p[1] - 1, +p[2])) / 864e5)) % N) + N) % N;   // same day→quote rule as the push worker
   const r = QJ.r[i], id = String(i).padStart(3, "0");
   const im = (tag, k, c) => r[k] ? `<div class="qm ${c}" role="img" aria-label="${c === "qa" ? "Arabic" : c === "qu" ? "Lisan ud-Dawat" : "English"}" style="--w:${r[k]};--r:${r[k] / r[k + 1]};--m:url(quotes/${id}${tag}.webp)"></div>` : "";
-  el.innerHTML = `<div class="qk">✨ ${t("qH")}</div>${im("a", 0, "qa")}<div class="qd"></div>${im("u", 2, "qu")}<p class="qt">${esc(QJ.q[i])}</p><div class="qn">${t("qSrc")}</div>`;
+  el.innerHTML = `<div class="qk">✨ ${t("qH")}</div>${QJ.a && QJ.a[i] ? `<div class="qar" lang="ar" dir="rtl">${esc(QJ.a[i])}</div>` : im("a", 0, "qa")}<div class="qd"></div>${im("u", 2, "qu")}<p class="qt">${esc(QJ.q[i])}</p><div class="qn">${t("qSrc")}</div>`;
 }
 fetch("quotes.json").then(r => r.json()).then(q => { QJ = q; renderQuote(); }).catch(() => { $("qCard").hidden = true; });
 fetch("miqaats.json").then(r => r.json()).then(d => { MIQ = d; miqLoaded = true; renderAll(); }).catch(() => { $("todayMq").innerHTML = `<p class="muted">${t("loadFail")}</p>`; });
