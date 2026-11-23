@@ -86,7 +86,7 @@ header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:
 <button id="backJump"></button>
 <div class="sheet-bg" id="sbg"></div>
 <div class="sheet" id="sheet"></div>
-<script src="vendor/pdf.min.js"></script>
+<script>if(!/[?&]b=(hafti|azam)\b/.test(location.search))document.write('<script src="vendor/pdf.min.js"><\/script>')</script>
 <script src="../i18n.js?v=135"></script>
 <script src="../wakelock.js?v=135"></script>
 <script>
@@ -96,7 +96,9 @@ header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:
 const BOOKS = {
   zikre: { title: "Zikre Husain (AS) 1446", pdf: "books/zikre-husain-1446.pdf" },
   // Hafti: contents = the PDF's own outline (62 entries) + the Hirze Saifee timing sections (page, title, search words)
-  hafti: { title: "Hafti — Duas & Tasbeeh", pdf: "books/hafti.pdf",
+  // Hafti: 605 pre-rendered WebP pages (fast on phones, no PDF engine). books/hafti.json = outline + the printed index's link hotspots.
+  // extra = Hirze Saifee timing sections (page, title, search words)
+  hafti: { title: "Hafti — Duas & Tasbeeh", imgDir: "books/hafti/", data: "books/hafti.json",
     extra: [[242, "Hirze Saifee — Fajr: ayaat", "fajr fajar subah morning ayat ayaat"], [246, "Hirze Saifee — Fajr: dua", "fajr fajar subah morning dua"],
             [248, "Hirze Saifee — Zawaal / Zohr–Asr: dua", "zohr zuhr zawal zawaal asr dua"], [249, "Hirze Saifee — Zohr–Asr: ayaat", "zohr zuhr zawal zawaal asr ayat ayaat"],
             [251, "Hirze Saifee — Raat: ayaat", "raat night maghrib isha ayat ayaat"], [253, "Hirze Saifee — Raat: dua", "raat night maghrib isha dua"]] },
@@ -109,7 +111,7 @@ const BOOKS = {
     toc: [[1, 9], [2, 30], [3, 50], [4, 70], [5, 90], [6, 112], [7, 132], [8, 152], [9, 172], [10, 192], [11, 217], [12, 237], [13, 257], [14, 277], [15, 297],
           [16, 322], [17, 342], [18, 362], [19, 382], [20, 402], [21, 427], [22, 447], [23, 467], [24, 487], [25, 507], [30, 539]] },
 };
-pdfjsLib.GlobalWorkerOptions.workerSrc = "vendor/pdf.worker.min.js";
+if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = "vendor/pdf.worker.min.js";
 const $ = id => document.getElementById(id);
 const ls = { get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch { return d; } },
              set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
@@ -379,6 +381,10 @@ $("sheet").onclick = e => {
   const it = e.target.closest("[data-p]"); if (it) { closeSheet(); goto(+it.dataset.p, true); } };
 
 (async () => {
+  if (B.data) {
+    try { B.hd = await (await fetch(B.data)).json(); } catch (e) { $("msg").textContent = t("bkFail") + " (" + e.message + ")"; return; }
+    B.images = Array.from({ length: B.hd.n }, (_, i) => `${B.imgDir}p${String(i + 1).padStart(3, "0")}.webp`); B.ratio = B.hd.ratio;
+  }
   if (B.images) {
     N = B.images.length;
     B.images.forEach((src, i) => {
@@ -389,8 +395,17 @@ $("sheet").onclick = e => {
     });
     $("pages").replaceChildren(...els);
     if (B.src) $("pages").insertAdjacentHTML("beforeend", `<p style="text-align:center;color:var(--muted);font-size:12px">${t("bkSrc")}: <a style="color:var(--brand)" href="${B.src}" target="_blank" rel="noopener">${esc(B.srcName)}</a></p>`);
-    $("tocBtn").style.display = "none";
-    const last = ls.get("book:" + id, 1); if (last > 1) goto(last, false);
+    if (B.hd) {
+      outline = B.hd.outline.map(([title, p]) => ({ title, p }));
+      (B.extra || []).forEach(([p, title, kw]) => outline.push({ title, p, kw }));
+      outline = outline.map((o, i) => ({ ...o, i })).sort((x, y) => x.p - y.p || x.i - y.i);
+      B.hd.links.forEach(([pg, x, y, w, h, to]) => {   // the printed index's own links (page numbers, titles)
+        const a = document.createElement("a"); a.className = "lk"; a.href = "#";
+        Object.assign(a.style, { left: x + "%", top: y + "%", width: w + "%", height: h + "%" });
+        a.onclick = e => { e.preventDefault(); goto(to, true); }; els[pg - 1].append(a);
+      });
+    } else $("tocBtn").style.display = "none";
+    const last = +new URLSearchParams(location.search).get("p") || ls.get("book:" + id, 1); if (last > 1) goto(last, false);
     update(); return;
   }
   try {
