@@ -43,15 +43,15 @@ const TXT = {
   en: { sih: "Sihori", faj: "Fajr", fe: "Fajr end", zaw: "Zawaal", ze: "Zohr end", ae: "Asr end", mag: "Maghrib", nis: "Nisful Layl", now: "It is {n} time.", soon: "{n} in {m} minutes.",
         rozi: "📖 Rozi amal: Surat {s}", roziB: "Hijri {d} — recite it once for barakat in rozi.", tas: "📿 Today's tasbeeh", tasB: "{t} — 100 times.",
         sdq: "🤲 Today's sadaqah", sdqB: "Give sadaqah today: {i}.", miq: "🕌 Miqaat", miqN: "🌙 Tonight: {t}", miqT: "📅 Tomorrow: {t}", wsq: "🌙 Washeq raat in 1 month", wsqB: "{t} — {d}. Time to prepare.",
-        qt: "✨ Quote of the day", kum: "🌙 Shab-e-Juma", kumB: "Tonight, after Maghrib: recite Dua e Kumail.", test: "🔔 Alerts are on", testB: "You will get your Salaat and amal alerts on this device." },
+        qt: "✨ Quote of the day", qtG: "Open Mumin to read today’s quote from Raudat Hidayaat.", kum: "🌙 Shab-e-Juma", kumB: "Tonight, after Maghrib: recite Dua e Kumail.", test: "🔔 Alerts are on", testB: "You will get your Salaat and amal alerts on this device." },
   gu: { sih: "સિહોરી", faj: "ફજર", fe: "ફજર અંત", zaw: "ઝવાલ", ze: "ઝોહર અંત", ae: "અસર અંત", mag: "મગરિબ", nis: "નિસ્ફુલ લૈલ", now: "{n} નો સમય થયો.", soon: "{m} મિનિટમાં {n}.",
         rozi: "📖 રોઝી અમલ: સૂરત {s}", roziB: "હિજરી {d} — રોઝીમાં બરકત માટે એક વાર પઢો.", tas: "📿 આજની તસ્બીહ", tasB: "{t} — 100 વાર.",
         sdq: "🤲 આજનો સદકો", sdqB: "આજે સદકો આપો: {i}.", miq: "🕌 મિકાત", miqN: "🌙 આજે રાત્રે: {t}", miqT: "📅 આવતી કાલે: {t}", wsq: "🌙 વાશિક રાત 1 મહિના પછી", wsqB: "{t} — {d}. તૈયારીનો સમય.",
-        qt: "✨ આજનું સુવચન", kum: "🌙 શબે જુમા", kumB: "આજે રાત્રે, મગરિબ પછી: દુઆ એ કુમૈલ પઢો.", test: "🔔 અલર્ટ ચાલુ છે", testB: "આ ડિવાઇસ પર તમને સલાત અને અમલના અલર્ટ મળશે." },
+        qt: "✨ આજનું સુવચન", qtG: "રૌઝતુલ હિદાયાતનું આજનું સુવચન વાંચવા મુમિન ખોલો.", kum: "🌙 શબે જુમા", kumB: "આજે રાત્રે, મગરિબ પછી: દુઆ એ કુમૈલ પઢો.", test: "🔔 અલર્ટ ચાલુ છે", testB: "આ ડિવાઇસ પર તમને સલાત અને અમલના અલર્ટ મળશે." },
   hi: { sih: "Sihori", faj: "Fajr", fe: "Fajr end", zaw: "Zawaal", ze: "Zohr end", ae: "Asr end", mag: "Maghrib", nis: "Nisful Layl", now: "{n} ka waqt ho gaya.", soon: "{n} me {m} minute baaki.",
         rozi: "📖 Rozi amal: Surat {s}", roziB: "Hijri {d} — rozi me barakat ke liye ek baar padho.", tas: "📿 Aaj ki tasbeeh", tasB: "{t} — 100 baar.",
         sdq: "🤲 Aaj ka sadaqah", sdqB: "Aaj sadaqah do: {i}.", miq: "🕌 Miqaat", miqN: "🌙 Aaj raat: {t}", miqT: "📅 Kal: {t}", wsq: "🌙 Washeq raat 1 mahine baad", wsqB: "{t} — {d}. Taiyari ka waqt.",
-        qt: "✨ Aaj ka quote", kum: "🌙 Shab-e-Juma", kumB: "Aaj raat, Maghrib ke baad: Dua e Kumail padho.", test: "🔔 Alerts on hain", testB: "Is device par aapko Salaat aur amal ke alerts milenge." }
+        qt: "✨ Aaj ka quote", qtG: "Raudat Hidayaat ka aaj ka quote padhne ke liye Mumin kholo.", kum: "🌙 Shab-e-Juma", kumB: "Aaj raat, Maghrib ke baad: Dua e Kumail padho.", test: "🔔 Alerts on hain", testB: "Is device par aapko Salaat aur amal ke alerts milenge." }
 };
 const ROZI = [[2, "Yaseen"], [3, "ar-Rahman"], [4, "al-Waqiah"], [5, "al-Hashr"], [6, "al-Jumuah"], [7, "al-Jinn"]];
 const WEEK = ["Iyyaka Na'budu Wa Iyyaka Nasta'een", "Ya Ghafoor, Ya Raheem", "SubhanAllahi wal Hamdu Lillah", "Ya Rahman, Ya Raheem", "HasbunAllahu Wa Ni'mal Wakeel", "Ya Zal Jalali Wal Ikram", "Ya Hayyu, Ya Qayyum"];
@@ -70,6 +70,11 @@ function miqOn(y, m, d) {
   return e ? e.miqaats.filter(q => q.priority <= 2 && (!q.year || q.year <= h.y)).map(q => ({ title: q.title, phase: q.phase, washeq: /washeq/i.test(q.description || "") })) : [];
 }
 const ymd = (y, m, d, add) => { const x = new Date(Date.UTC(y, m, d + add)); return [x.getUTCFullYear(), x.getUTCMonth(), x.getUTCDate()]; };
+/** English text of the day's quote ("" when that quote has no proof-read text); same day→quote rule as the app */
+function quoteOn(p) {
+  const [y, m, d] = QUOTES.start.split("-").map(Number), n = QUOTES.q.length;
+  return QUOTES.q[((Math.floor((Date.UTC(p.y, p.m, p.d) - Date.UTC(y, m - 1, d)) / 864e5) % n) + n) % n];
+}
 /** Alerts of one subscription that fall in the minute starting at ws (ms). */
 export function dueEvents(s, ws) {
   const pr = JSON.parse(s.prefs || "{}"), T = TXT[s.lang] || TXT.en, out = [];
@@ -97,7 +102,7 @@ export function dueEvents(s, ws) {
     if (ws2.length) { const h2 = H.fromAJD(H.gToAJD(wy, wm, wd)); out.push({ title: T.wsq, body: fill(T.wsqB, { t: ws2.map(q => q.title).join(" · "), d: `${h2.d} ${H.SHORT[h2.m]} ${h2.y}H` }), url: "./", tag: "miq-washeq" }); }
   }
   if (at("kumail", "19:00") && p.dow === 4 && pr.kumail) out.push({ title: T.kum, body: T.kumB, url: "./dua/kumail.html", tag: "kumail" });
-  if (at("quote", "10:00") && pr.quote) out.push({ title: T.qt, body: QUOTES[Math.floor(Date.UTC(p.y, p.m, p.d) / 864e5) % QUOTES.length], url: "./", tag: "quote" });   // same day→quote rule as the app
+  if (at("quote", "10:00") && pr.quote) out.push({ title: T.qt, body: quoteOn(p) || T.qtG, url: "./", tag: "quote" });
   return out;
 }
 
@@ -135,7 +140,10 @@ async function handle(req, env) {
     if (!b.endpoint) return json(req, { error: "endpoint" }, 400);
     const s = await env.DB.prepare("SELECT * FROM subs WHERE id=?").bind(await sha(b.endpoint)).first();
     if (!s) return json(req, { error: "not subscribed" }, 404);
-    const T = TXT[s.lang] || TXT.en, st = await sendPush(s, { title: T.test, body: T.testB, url: "./", tag: "test" }, env);
+    const T = TXT[s.lang] || TXT.en, pr = JSON.parse(s.prefs || "{}");
+    let msg = { title: T.test, body: T.testB, url: "./", tag: "test" };
+    if (pr.quote) { let p; try { p = localParts(Date.now(), s.tz || "UTC"); } catch { p = localParts(Date.now(), "UTC"); } msg = { title: T.qt, body: quoteOn(p) || T.qtG, url: "./", tag: "quote-now" }; }   // turning alerts on / the test button shows today's quote
+    const st = await sendPush(s, msg, env);
     return json(req, { ok: st >= 200 && st < 300, status: st });
   }
   return json(req, { error: "not found" }, 404);

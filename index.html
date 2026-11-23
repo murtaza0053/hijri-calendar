@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=163">
-<script src="theme-init.js?v=163"></script>
+<link rel="stylesheet" href="themes.css?v=164">
+<script src="theme-init.js?v=164"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -245,12 +245,14 @@ nav.tabs button.on{color:var(--brand);font-weight:700}
 #imgView.on{display:block}
 #imgView img{display:block;width:100%;max-width:600px;margin:0 auto;border-radius:10px}
 #imgView button{position:fixed;top:calc(env(safe-area-inset-top) + 8px);right:10px;width:40px;height:40px;border-radius:20px;border:0;font-size:22px;background:rgba(255,255,255,.9);color:#000}
-.qcard{text-align:center;padding:16px 18px 14px;min-height:190px}
+.qcard{text-align:center;padding:16px 18px 14px;min-height:340px}
 .qcard .qk{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.qcard .qa{margin:14px auto 12px;color:var(--ink);background:currentColor;aspect-ratio:var(--r);width:min(100%,calc(var(--r)*120px));-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
-.qcard .qt{text-wrap:balance;margin:0 auto;max-width:34em;font:italic 16px/1.55 Georgia,"Times New Roman",serif;color:var(--ink)}
-.qcard .qt::before{content:"";display:block;width:28px;height:2px;border-radius:1px;background:var(--gold);margin:0 auto 10px}
-.qcard .qn{margin-top:10px;font-size:11px;color:var(--muted)}
+.qcard .qm{display:block;margin:14px auto 0;color:var(--ink);background:currentColor;aspect-ratio:var(--r);width:min(100%,calc(var(--w)*.56px));-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
+.qcard .qm.qa{margin-bottom:14px}.qcard .qm.qu{opacity:.88}
+.qcard .qm.qa::after{content:""}
+.qcard .qd{width:28px;height:2px;border-radius:1px;background:var(--gold);margin:0 auto}
+.qcard .qm.qe{margin-top:14px}
+.qcard .qn{margin-top:14px;font-size:11px;color:var(--muted)}
 .ashara{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:10px;padding:10px 14px}
 .ashara .l{display:contents}
 .ashara .t2{grid-row:1;grid-column:1;font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -735,10 +737,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=163"></script>
-<script src="i18n.js?v=163"></script>
-<script src="cities.js?v=163"></script>
-<script src="haptic.js?v=163"></script>
+<script src="hijri.js?v=164"></script>
+<script src="i18n.js?v=164"></script>
+<script src="cities.js?v=164"></script>
+<script src="haptic.js?v=164"></script>
 <script>
 "use strict";
 
@@ -1438,7 +1440,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 163, APP_VERSION = vName(APP_V) + " (2026-11-23)";
+const APP_V = 164, APP_VERSION = vName(APP_V) + " (2026-11-23)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1518,14 +1520,16 @@ else if (location.hash === "#dua") switchView("dua");
 else if (location.hash === "#sl") switchView("sl");
 else if (location.hash === "#zy") switchView("zy");
 /* ---------- Daily quote (Raudat Hidayaat) — same day→quote rule as the push worker ---------- */
-const QAR = [8.0, 5.255, 4.768, 4.39, 6.429, 6.05, 1.694, 3.913, 3.978, 4.0, 4.0, 4.211, 3.731, 3.978, 4.5, 4.417, 2.581, 2.769, 2.748, 3.462, 4.768, 2.544, 4.472, 2.667, 1.426, 3.529, 7.826, 6.154, 5.455, 1.69, 2.323, 2.802, 7.273, 2.257, 3.144, 6.923, 4.472, 3.0, 2.491, 6.207, 3.077, 2.677, 2.791, 5.333, 2.087, 3.144, 5.902, 4.865, 3.83, 7.579, 2.78, 3.364, 2.408, 2.581, 5.414, 2.293];
-var QUOTES = [];
+var QJ = null;
 function renderQuote() {
-  const el = $("qCard"); if (!QUOTES || !QUOTES.length) return;
-  const n = new Date(), i = Math.floor(Date.UTC(n.getFullYear(), n.getMonth(), n.getDate()) / 864e5) % QUOTES.length;
-  el.innerHTML = `<div class="qk">✨ ${t("qH")}</div><div class="qa" role="img" aria-label="Arabic text" style="--r:${QAR[i]};--m:url(quotes/${String(i).padStart(3, "0")}.webp)"></div><p class="qt">${esc(QUOTES[i])}</p><div class="qn">${t("qSrc")}</div>`;
+  const el = $("qCard"); if (!QJ) return;
+  const n = new Date(), p = QJ.start.split("-"), N = QJ.q.length;
+  const i = (((Math.floor((Date.UTC(n.getFullYear(), n.getMonth(), n.getDate()) - Date.UTC(+p[0], p[1] - 1, +p[2])) / 864e5)) % N) + N) % N;   // same day→quote rule as the push worker
+  const r = QJ.r[i], id = String(i).padStart(3, "0");
+  const im = (tag, k, c) => r[k] ? `<div class="qm ${c}" role="img" aria-label="${c === "qa" ? "Arabic" : c === "qu" ? "Lisan ud-Dawat" : "English"}" style="--w:${r[k]};--r:${r[k] / r[k + 1]};--m:url(quotes/${id}${tag}.webp)"></div>` : "";
+  el.innerHTML = `<div class="qk">✨ ${t("qH")}</div>${im("a", 0, "qa")}<div class="qd"></div>${im("u", 2, "qu")}${im("e", 4, "qe")}<div class="qn">${t("qSrc")}</div>`;
 }
-fetch("quotes.json").then(r => r.json()).then(q => { QUOTES = q; renderQuote(); }).catch(() => { $("qCard").hidden = true; });
+fetch("quotes.json").then(r => r.json()).then(q => { QJ = q; renderQuote(); }).catch(() => { $("qCard").hidden = true; });
 fetch("miqaats.json").then(r => r.json()).then(d => { MIQ = d; miqLoaded = true; renderAll(); }).catch(() => { $("todayMq").innerHTML = `<p class="muted">${t("loadFail")}</p>`; });
 // refresh "today" when app resumes on a new day
 document.addEventListener("visibilitychange", () => {
