@@ -1,6 +1,19 @@
 {
- "v": 179,
+ "v": 180,
  "history": [
+  {
+   "v": 180,
+   "date": "2026-11-24",
+   "en": [
+    "Ashara countdown: more breathing room between the timer digits."
+   ],
+   "gu": [
+    "અશરા કાઉન્ટડાઉન: ટાઇમરના અંકો વચ્ચે થોડી વધુ જગ્યા."
+   ],
+   "hi": [
+    "Ashara countdown: timer ke digits ke bich thodi zyada space."
+   ]
+  },
   {
    "v": 179,
    "date": "2026-11-24",
