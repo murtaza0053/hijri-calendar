@@ -1,6 +1,19 @@
 {
- "v": 180,
+ "v": 181,
  "history": [
+  {
+   "v": 181,
+   "date": "2026-11-24",
+   "en": [
+    "Tap the Ashara countdown to jump to that date in the calendar."
+   ],
+   "gu": [
+    "અશરા કાઉન્ટડાઉન પર ટેપ કરતાં કેલેન્ડરમાં તે તારીખે પહોંચશે."
+   ],
+   "hi": [
+    "Ashara countdown par tap karo to calendar me us date par pahunchoge."
+   ]
+  },
   {
    "v": 180,
    "date": "2026-11-24",
