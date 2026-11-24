@@ -1,6 +1,19 @@
 {
- "v": 182,
+ "v": 183,
  "history": [
+  {
+   "v": 183,
+   "date": "2026-11-24",
+   "en": [
+    "Quote card on the home page no longer shows the book name; it stays in the detail view."
+   ],
+   "gu": [
+    "હોમ પેજના સુવચન કાર્ડમાંથી પુસ્તકનું નામ હટાવ્યું; વિગતમાં રહેશે."
+   ],
+   "hi": [
+    "Home page ke quote card se book ka naam hata diya; detail me rahega."
+   ]
+  },
   {
    "v": 182,
    "date": "2026-11-24",
