@@ -1,6 +1,19 @@
 {
- "v": 178,
+ "v": 179,
  "history": [
+  {
+   "v": 179,
+   "date": "2026-11-24",
+   "en": [
+    "Date tap now stops a little higher so the month heading stays visible."
+   ],
+   "gu": [
+    "તારીખ ટેપ કરતાં સ્ક્રોલ થોડું ઉપર અટકે છે જેથી મહિનાનું હેડિંગ દેખાય."
+   ],
+   "hi": [
+    "Date tap par scroll thoda upar rukta hai taaki month ki heading dikhe."
+   ]
+  },
   {
    "v": 178,
    "date": "2026-11-24",
