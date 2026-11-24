@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=184">
-<script src="theme-init.js?v=184"></script>
+<link rel="stylesheet" href="themes.css?v=185">
+<script src="theme-init.js?v=185"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -81,7 +81,7 @@ table.cal{width:100%;border-collapse:separate;border-spacing:2px;table-layout:fi
 .dot{position:absolute;left:0;right:0;bottom:4px;height:5px;display:flex;justify-content:center;gap:2px}
 .dot i{width:5px;height:5px;border-radius:50%;background:var(--brand-2)}
 .dot i.d{background:var(--gold)} .dot i.n{background:var(--night)}
-.cal td.rzd:not(.today){box-shadow:inset 0 0 0 2px color-mix(in srgb,#2e8b57 55%,transparent)}
+.cal td.rzd:not(.today){box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--brand) 70%,transparent)}
 .cal td .rzm{position:absolute;top:3px;left:4px;font-size:10px;line-height:1}
 .cal td.today{background:var(--today);color:var(--today-ink);box-shadow:0 2px 8px color-mix(in srgb,var(--today) 40%,transparent)}
 .cal td.today .g,.cal td.today .g b{color:var(--today-ink);opacity:.95}
@@ -737,10 +737,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=184"></script>
-<script src="i18n.js?v=184"></script>
-<script src="cities.js?v=184"></script>
-<script src="haptic.js?v=184"></script>
+<script src="hijri.js?v=185"></script>
+<script src="i18n.js?v=185"></script>
+<script src="cities.js?v=185"></script>
+<script src="haptic.js?v=185"></script>
 <script>
 "use strict";
 
@@ -907,7 +907,7 @@ function renderCal() {
     <span><span class="ksw" style="background:color-mix(in srgb,var(--gold) 35%,transparent)"></span>${t("legendDay")}</span>
     <span><span class="ksw" style="background:color-mix(in srgb,var(--night) 28%,transparent)"></span>${t("legendNight")}</span>
     <span><span class="ksw" style="width:6px;height:6px;border-radius:50%;background:var(--brand-2);vertical-align:1px"></span>${t("legendOther")}</span>
-    <span><span class="ksw" style="background:none;box-shadow:inset 0 0 0 2px color-mix(in srgb,#2e8b57 70%,transparent)"></span>📖 ${t("keyRozi")}</span>`;
+    <span><span class="ksw" style="background:none;box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--brand) 70%,transparent)"></span>📖 ${t("keyRozi")}</span>`;
   renderMonthMq();
 }
 
@@ -1042,7 +1042,7 @@ function openDay(ajd) {
   $("sheetBody").innerHTML = `<div style="font-size:20px;font-weight:700">${hStr(h)}</div>
     <div class="ar" dir="rtl" style="font-size:18px;color:var(--gold)">${hStrAr(h)}</div>
     <div class="muted" style="font-size:14px;margin:2px 0 10px">${wd(ajd)}, ${gStr(g)} · ${t("tMaghrib")} ${fmtT(s.sunset)}</div>
-    ${(() => { const r = ROZI.find(x => x[0] === h.d); return r ? `<a class="rz" href="dua/quran.html?s=${r[1]}" style="margin-bottom:8px;background:color-mix(in srgb,#2e8b57 12%,transparent);border-radius:12px;padding:10px"><span class="d" style="background:none;font-size:22px">📖</span><span class="n">${t("roziDay", { s: surahName(r[1]) })}</span><span class="go">›</span></a>` : ""; })()}
+    ${(() => { const r = ROZI.find(x => x[0] === h.d); return r ? `<a class="rz" href="dua/quran.html?s=${r[1]}" style="margin-bottom:8px;background:color-mix(in srgb,var(--brand) 12%,transparent);border-radius:12px;padding:10px"><span class="d" style="background:none;font-size:22px">📖</span><span class="n">${t("roziDay", { s: surahName(r[1]) })}</span><span class="go">›</span></a>` : ""; })()}
     <h3>${t("miqaats")}</h3>${mqHTML(miqaatsFor(h.y, h.m, h.d))}`;
   $("sheetBg").style.display = "block";
   requestAnimationFrame(() => $("sheet").classList.add("on"));
@@ -1425,7 +1425,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 184, APP_VERSION = vName(APP_V) + " (2026-11-23)";
+const APP_V = 185, APP_VERSION = vName(APP_V) + " (2026-11-23)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
