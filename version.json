@@ -1,6 +1,19 @@
 {
- "v": 175,
+ "v": 176,
  "history": [
+  {
+   "v": 176,
+   "date": "2026-11-24",
+   "en": [
+    "Notification banner is now a compact single line."
+   ],
+   "gu": [
+    "નોટિફિકેશન બેનર હવે એક જ લાઇનમાં, ઓછી ઊંચાઈ."
+   ],
+   "hi": [
+    "Notification banner ab ek line me, height kam."
+   ]
+  },
   {
    "v": 175,
    "date": "2026-11-24",
