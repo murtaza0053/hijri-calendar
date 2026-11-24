@@ -1,6 +1,25 @@
 {
- "v": 172,
+ "v": 173,
  "history": [
+  {
+   "v": 173,
+   "date": "2026-11-24",
+   "en": [
+    "Quote font fixed to Dancing Script (picker removed).",
+    "Header: Ashara countdown now sits inside the top banner; the next-miqaat line and the separate Ashara and Salat cards are gone.",
+    "Tap the prayer-times strip in the header to open the Salat page."
+   ],
+   "gu": [
+    "સુવચનનો ફોન્ટ Dancing Script પર નક્કી (પસંદગી હટાવી).",
+    "હેડરમાં અશરા કાઉન્ટડાઉન ઉપરના બેનરમાં; આગલી મિકાત લાઇન અને અલગ અશરા/સલાત કાર્ડ હટાવ્યા.",
+    "હેડરની નમાઝ સમયની પટ્ટી પર ટેપ કરતાં સલાત પેજ ખુલશે."
+   ],
+   "hi": [
+    "Quote ka font Dancing Script pe fix (picker hata diya).",
+    "Header me Ashara countdown ab upar banner ke andar; next-miqaat line aur alag Ashara/Salat cards hata diye.",
+    "Header ki salat timing strip par tap karo to Salat page khulega."
+   ]
+  },
   {
    "v": 172,
    "date": "2026-11-24",

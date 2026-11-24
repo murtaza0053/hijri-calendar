@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=172">
-<script src="theme-init.js?v=172"></script>
+<link rel="stylesheet" href="themes.css?v=173">
+<script src="theme-init.js?v=173"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -55,7 +55,7 @@ header.top{background:var(--hdr);color:var(--hdr-ink);padding:14px 0 0}
 .top .nextmq{padding:8px 18px 10px;font-size:13px;border-top:1px solid var(--hdr-chip);cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .top .nextmq:empty{display:none}
 /* phones: reserve the header rows before JS fills them, so the page does not jump down on load (CLS) */
-@media (max-width:599px){.top .hd{min-height:104px}.top .hstrip{min-height:39px}.top .tstrip{min-height:52px}.top .nextmq:empty{display:block;min-height:37px}#slCard{min-height:72px}#ashara{min-height:60px}#mTitle{min-height:67px}#cal{min-height:309px}#calKey{min-height:85px}}
+@media (max-width:599px){.top .hd{min-height:104px}.top .hstrip{min-height:39px}.top .tstrip{min-height:52px}.top .nextmq:empty{display:block;min-height:37px}#mTitle{min-height:67px}#cal{min-height:309px}#calKey{min-height:85px}}
 .top .nextmq small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--hdr-gold,var(--gold));margin-right:6px}
 main{max-width:640px;margin:0 auto;padding:12px 12px 0}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:12px}
@@ -253,20 +253,11 @@ nav.tabs button.on{color:var(--brand);font-weight:700}
 .qcard .qd{width:28px;height:2px;border-radius:1px;background:var(--gold);margin:0 auto}
 .qcard .qt{margin:16px auto 0;max-width:30em;white-space:pre-line;font-family:var(--qf,"Dancing Script"),"Segoe Script","Brush Script MT",cursive;font-weight:var(--qw,500);font-size:var(--qs,23px);line-height:1.4;color:var(--ink);text-wrap:pretty}
 .qcard .qn{margin-top:14px;font-size:11px;color:var(--muted)}
-@font-face{font-family:"Great Vibes";font-weight:400;font-display:swap;src:url(fonts/GreatVibes-400.woff2) format("woff2")}
-@font-face{font-family:"Pacifico";font-weight:400;font-display:swap;src:url(fonts/Pacifico-400.woff2) format("woff2")}
-@font-face{font-family:"Satisfy";font-weight:400;font-display:swap;src:url(fonts/Satisfy-400.woff2) format("woff2")}
-@font-face{font-family:"Caveat";font-weight:500;font-display:swap;src:url(fonts/Caveat-500.woff2) format("woff2")}
-@font-face{font-family:"Parisienne";font-weight:400;font-display:swap;src:url(fonts/Parisienne-400.woff2) format("woff2")}
-@font-face{font-family:"Allura";font-weight:400;font-display:swap;src:url(fonts/Allura-400.woff2) format("woff2")}
-@font-face{font-family:"Sacramento";font-weight:400;font-display:swap;src:url(fonts/Sacramento-400.woff2) format("woff2")}
-@font-face{font-family:"Kalam";font-weight:400;font-display:swap;src:url(fonts/Kalam-400.woff2) format("woff2")}
 @font-face{font-family:"Dancing Script";font-weight:500;font-display:swap;src:url(fonts/DancingScript-500.woff2) format("woff2")}
 @font-face{font-family:Amiri;font-weight:400;font-display:swap;src:url(fonts/Amiri-400.woff2) format("woff2")}
 .qcard .qar{margin:14px auto;white-space:pre-line;text-wrap:balance;font:400 26px/1.95 Amiri,"Noto Naskh Arabic","Traditional Arabic",serif;color:var(--ink)}
 @font-face{font-family:"Noto Nastaliq Urdu";font-weight:400;font-display:swap;src:url(fonts/NotoNastaliqUrdu-400.woff2) format("woff2")}
 .qcard .qur{margin:6px auto 4px;white-space:pre-line;font:400 19px/2.3 "Noto Nastaliq Urdu","Jameel Noori Nastaleeq",serif;color:var(--ink);opacity:.92;text-wrap:balance}
-.qfs{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.qfs button{border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:12px;padding:6px 14px;min-height:44px;font-size:22px;line-height:1.2;cursor:pointer}.qfs button.on{border-color:var(--brand);background:color-mix(in srgb,var(--brand) 14%,var(--card))}
 .ashara{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:10px;padding:10px 14px}
 .ashara .l{display:contents}
 .ashara .t2{grid-row:1;grid-column:1;font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -409,11 +400,9 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
   .top .lang{margin-right:max(24px,calc((100% - 1120px)/2 + 24px))}
   #v-cal.on{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);column-gap:18px;align-items:start}
   #v-cal>#banner{grid-column:1/-1;grid-row:1}
-  #v-cal>#slCard{grid-column:1;grid-row:2}
-  #v-cal>#ashara{grid-column:2;grid-row:2}
-  #v-cal>#qCard{grid-column:1/-1;grid-row:3}
-  #v-cal>:nth-child(5){grid-column:1;grid-row:4/span 5}
-  #v-cal>:nth-child(n+6){grid-column:2}
+  #v-cal>#qCard{grid-column:1/-1;grid-row:2}
+  #v-cal>:nth-child(3){grid-column:1;grid-row:3/span 5}
+  #v-cal>:nth-child(n+4){grid-column:2}
   .cal td{height:74px} .cal td .h{font-size:24px} .cal td .h.ar{font-size:25px} .cal td .g{font-size:11px;top:5px;right:7px}
   #v-set.on{display:grid;grid-template-columns:1fr 1fr;column-gap:16px;align-items:start}
   #v-set>#remCard{grid-column:1/-1}
@@ -442,7 +431,7 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
     <div class="hcol"><div class="big ar" id="tHd"></div><div class="hm ar" dir="rtl" id="tHijriAr"></div><div class="my" id="tHijri"></div></div>
   </div>
   <div class="hstrip"><span id="tLoc"></span><button id="locBtn" hidden></button><span id="tEve"></span></div>
-  <div class="tstrip" id="tStrip"></div>
+  <div class="tstrip" id="tStrip" role="link" tabindex="0" style="cursor:pointer"></div>
   <div class="nextmq" id="tNext"></div>
 </header>
 
@@ -450,8 +439,6 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
   <!-- CALENDAR -->
   <section class="view on" id="v-cal">
     <div class="card banner" id="banner" style="display:none"></div>
-    <a class="card dua-item" id="slCard" href="#sl"></a>
-    <div class="card ashara" id="ashara"></div>
     <div class="card qcard" id="qCard"></div>
     <div class="card">
       <div class="monthbar">
@@ -619,10 +606,6 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
       <div class="langset" id="numSet"></div>
     </div>
     <div class="card">
-      <h3 data-i18n="qfH"></h3>
-      <div class="qfs" id="qfSet"></div>
-    </div>
-    <div class="card">
       <h3 data-i18n="themeH"></h3>
       <div class="swatches" id="themeSet"></div>
       <h3 style="margin-top:14px" data-i18n="modeH"></h3>
@@ -755,10 +738,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=172"></script>
-<script src="i18n.js?v=172"></script>
-<script src="cities.js?v=172"></script>
-<script src="haptic.js?v=172"></script>
+<script src="hijri.js?v=173"></script>
+<script src="i18n.js?v=173"></script>
+<script src="cities.js?v=173"></script>
+<script src="haptic.js?v=173"></script>
 <script>
 "use strict";
 
@@ -884,14 +867,6 @@ function renderHeader() {
   const tl = [["tSunrise", s.sunrise], ["tZawaal", s.noon], ["tAsrEnd", asrEnd], ["tMaghrib", s.sunset], ["tNisf", nisfH]];
   const nx = tl.findIndex(x => x[1] > n);
   $("tStrip").innerHTML = tl.map(([k, d], i) => `<span class="${i === nx ? "nx" : ""}">${t(k)}<b>${fmtT(d)}</b></span>`).join("");
-  // next miqaat (today's night or later)
-  let nm = "";
-  for (let k = 0; k < 60 && !nm; k++) {
-    const a = todayAJD + k, h = H.fromAJD(a);
-    const q = miqaatsFor(h.y, h.m, h.d).filter(q => q.priority <= 2 && (k > 0 || (q.phase === "night" && n < s.sunset)))[0];
-    if (q) nm = `<span data-a="${a}"><small>${t("nextMq")}</small>${esc(q.title)} · ${hShort(h)}${k === 0 ? "" : " · " + (k === 1 ? t("relTomorrow") : wd(a))}</span>`;
-  }
-  $("tNext").innerHTML = nm;
 }
 
 /* ---------- Calendar grid ---------- */
@@ -979,7 +954,6 @@ function renderTimes() {
   $("times").innerHTML = items.map(([k, v]) => `<div><small>${t(k)}</small><b>${fmtT(v)}</b></div>`).join("");
   $("locName").textContent = locLabel();
   $("locCur").textContent = t("locNow", { name: locLabel(), lat: loc.lat.toFixed(4), lng: loc.lng.toFixed(4) });
-  renderSalatCard();
 }
 
 /* ---------- Salaat timings: home card + dedicated page ---------- */
@@ -990,11 +964,6 @@ function nextSalat() {   // [key, Date] of the next timing from now (tomorrow's 
   return all.find(x => x[1] > n) || all[all.length - 1];
 }
 const fmtLeft = ms => { const m = Math.max(0, Math.round(ms / 6e4)), h = Math.floor(m / 60); return h ? `${h}h ${m % 60}m` : `${m}m`; };
-function renderSalatCard() {
-  const c = $("slCard"); if (!c) return;
-  const [k, d] = nextSalat();
-  c.innerHTML = `<div class="dua-ic">🕌</div><div style="flex:1"><b>${t("slH")}</b><div class="muted">${t("slNext")}: ${t(k)} · <b>${fmtT(d)}</b> · ${t("slIn", { t: fmtLeft(d - new Date()) })}</div></div><div class="dua-go">›</div>`;
-}
 const SL_IC = { tSihori: "🌙", tFajr: "🌅", tFajrEnd: "🌄", tZawaal: "☀️", tZohrEnd: "🌤️", tAsrEnd: "🌇", tMaghrib: "🌆", tIshaEnd: "🌌" };
 function renderSalatPage() {
   const n = new Date(), td = todayIn(), d0 = new Date(td.getFullYear(), td.getMonth(), td.getDate() + slOff);
@@ -1342,7 +1311,6 @@ function switchView(v) {
   if (v === "zy") { const f = $("zyFrame"); document.documentElement.style.setProperty("--navh", document.querySelector("nav.tabs").offsetHeight + "px"); if (!f.src) f.src = f.dataset.src; else { const top = () => { try { f.contentWindow.resetScroll ? f.contentWindow.resetScroll() : f.contentWindow.scrollTo(0, 0); } catch {} }; top(); requestAnimationFrame(top); } }
   window.scrollTo(0, 0);
 }
-$("slCard").onclick = e => { e.preventDefault(); switchView("sl"); };
 $("slBack").onclick = () => switchView("cal");
 $("slPrev").onclick = () => { slOff--; renderSalatPage(); };
 $("slNextD").onclick = () => { slOff++; renderSalatPage(); };
@@ -1357,7 +1325,7 @@ $("citySheet").onclick = e => { const r = e.target.closest(".ct"); if (!r) retur
   const end = () => { if (y0 == null) return; y0 = null; if (!drag) return; drag = false; sh.style.transition = ""; sh.style.transform = ""; if (dy > 90) closeCity(); };
   sh.addEventListener("touchend", end); sh.addEventListener("touchcancel", end);
 })();
-setInterval(() => { if (document.visibilityState === "visible") { if (curView === "sl") renderSalatPage(); else renderSalatCard(); } }, 1000);
+setInterval(() => { if (document.visibilityState === "visible") { if (curView === "sl") renderSalatPage(); } }, 1000);
 $("prev").onclick = () => shiftMonth(-1);
 $("next").onclick = () => shiftMonth(1);
 $("goToday").onclick = () => { view = { y: todayH.y, m: todayH.m }; selAJD = null; renderCal(); };
@@ -1458,7 +1426,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 172, APP_VERSION = vName(APP_V) + " (2026-11-23)";
+const APP_V = 173, APP_VERSION = vName(APP_V) + " (2026-11-23)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1546,17 +1514,6 @@ if (location.hash === "#azaan") azFromHash();
 else if (location.hash === "#dua") switchView("dua");
 else if (location.hash === "#sl") switchView("sl");
 else if (location.hash === "#zy") switchView("zy");
-const QFONTS = [["dancing", "Dancing Script", 500, 23], ["vibes", "Great Vibes", 400, 29], ["pacifico", "Pacifico", 400, 19], ["satisfy", "Satisfy", 400, 24], ["caveat", "Caveat", 500, 27], ["parisienne", "Parisienne", 400, 28], ["allura", "Allura", 400, 30], ["sacramento", "Sacramento", 400, 32], ["kalam", "Kalam", 400, 19]];   // [key, family, weight, size px]
-function qfApply() {
-  const k = store.get("qfont", "dancing"), f = QFONTS.find(x => x[0] === k) || QFONTS[0], r = document.documentElement.style;
-  r.setProperty("--qf", `"${f[1]}"`); r.setProperty("--qw", f[2]); r.setProperty("--qs", f[3] + "px");
-}
-function qfDraw() {
-  const k = store.get("qfont", "dancing");
-  $("qfSet").innerHTML = QFONTS.map(f => `<button type="button" data-qf="${f[0]}" class="${f[0] === k ? "on" : ""}" style="font-family:'${f[1]}';font-weight:${f[2]}">${f[1]}</button>`).join("");
-}
-$("qfSet").onclick = e => { const b = e.target.closest("[data-qf]"); if (!b) return; store.set("qfont", b.dataset.qf); qfApply(); qfDraw(); };
-qfApply(); qfDraw();
 /* ---------- Daily quote (Raudat Hidayaat) — same day→quote rule as the push worker ---------- */
 var QJ = null;
 function quoteIdx(n) {
@@ -1599,10 +1556,10 @@ function renderAshara() {
   const nowT = new Date(), cur = H.fromAJD(todayAJD);
   const s = sunTimes(nowT.getFullYear(), nowT.getMonth(), nowT.getDate(), loc.lat, loc.lng);
   const hNow = H.fromAJD(todayAJD + (nowT > s.sunset ? 1 : 0)); // after Maghrib = next Hijri day
-  const el = $("ashara");
+  const el = $("tNext");
   if (hNow.m === 0 && hNow.d <= 10) {
     const n = hNow.d;
-    el.innerHTML = `<div class="l"><div class="t2">🕌 ${t("ashName")} ${hNow.y}${L.hSuffix}</div><div class="t3">${n === 10 ? t("ashAshura") : t("ashLeft", { n: 10 - n })}</div><div class="bar"><i style="width:${n * 10}%"></i></div></div><div class="cd">${n}<small>/10</small></div>`;
+    el.innerHTML = `<small>🕌 ${t("ashName")} ${hNow.y}${L.hSuffix}</small>${n === 10 ? t("ashAshura") : t("ashLeft", { n: 10 - n })} · <b>${n}/10</b>`;
     return;
   }
   let st = asharaStart(cur.m === 0 ? cur.y + 1 : cur.y + 1);
@@ -1611,12 +1568,11 @@ function renderAshara() {
   const sec = Math.floor((st.at - nowT) / 1000), p2 = v => String(v).padStart(2, "0");
   const D = Math.floor(sec / 86400), Hh = Math.floor(sec % 86400 / 3600), M = Math.floor(sec % 3600 / 60), S = sec % 60;
   const g = H.ajdToG(st.a - 1);
-  el.innerHTML = `<div class="l"><div class="t2">🕌 ${t("ashName")} ${st.y}${L.hSuffix}</div><div class="t3">${g.d} ${L.gShort[g.m]} ${g.y} · ${fmtT(st.at)}</div></div>
-    <div class="cd">${D}<small>${t("ashDs")}</small> ${p2(Hh)}:${p2(M)}:${p2(S)}</div>`;
+  el.innerHTML = `<small>🕌 ${t("ashName")} ${st.y}${L.hSuffix}</small>${g.d} ${L.gShort[g.m]} · <b>${D}${t("ashDs")} ${p2(Hh)}:${p2(M)}:${p2(S)}</b>`;
 }
 setInterval(() => { if (document.visibilityState === "visible" && curView === "cal") renderAshara(); }, 1000);
 setInterval(() => { if (document.visibilityState === "visible") renderHeader(); }, 60000);
-$("tNext").onclick = e => { const r = e.target.closest("[data-a]"); if (r) { const a = +r.dataset.a, h = H.fromAJD(a); view = { y: h.y, m: h.m }; switchView("cal"); renderCal(); openDay(a); } };
+$("tStrip").onclick = () => switchView("sl");
 
 /* ---------- "Install app" button (mobile browser only) ---------- */
 // Hidden when already installed (standalone), on desktop, or after the user closed it (shown again after 7 days).
@@ -1708,7 +1664,7 @@ window.tourOn = false;
 const TOUR = [
   { i: "🌙", k: 1 },
   { i: "📅", k: 2, sel: "header.top", v: "cal" },
-  { i: "🕌", k: 3, sel: "#slCard", v: "cal" },
+  { i: "🕌", k: 3, sel: "#tStrip", v: "cal" },
   { i: "🗓️", k: 4, sel: "#cal", v: "cal" },
   { i: "⏳", k: 5, sel: 'nav.tabs [data-v="up"]' },
   { i: "🤲", k: 6, sel: 'nav.tabs [data-v="dua"]' },
