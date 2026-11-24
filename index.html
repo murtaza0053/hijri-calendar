@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=183">
-<script src="theme-init.js?v=183"></script>
+<link rel="stylesheet" href="themes.css?v=184">
+<script src="theme-init.js?v=184"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -44,7 +44,7 @@ header.top{background:var(--hdr);color:var(--hdr-ink);padding:14px 0 0}
 .top .hstrip span:last-child{text-align:right;opacity:.85}
 .top .hstrip{align-items:center}
 .top .hstrip #tLoc{white-space:nowrap;flex:none}
-.top .hstrip #tEve{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top .hstrip:has(#locBtn:not([hidden])){flex-wrap:wrap}.top .hstrip:has(#locBtn:not([hidden])) #tNext{flex-basis:100%;text-align:center}.top .hstrip #tNext{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;opacity:1;font-size:12px}.top .hstrip #tNext small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--hdr-gold,var(--gold));margin-right:6px}.top .hstrip #tEve{text-align:right;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .top .hstrip #locBtn{flex:none}
 #locBtn{border:1px solid var(--gold);background:none;color:var(--hdr-ink);font:inherit;font-size:11px;font-weight:700;letter-spacing:.02em;border-radius:999px;padding:4px 10px;white-space:nowrap}
 .top .tstrip{display:flex;justify-content:space-between;gap:4px;padding:8px 14px;font-size:11px}
@@ -430,9 +430,8 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
     <div class="gcol"><div class="wdn" id="tWd"></div><div class="big" id="tGd"></div><div class="my" id="tGmy"></div></div>
     <div class="hcol"><div class="big ar" id="tHd"></div><div class="hm ar" dir="rtl" id="tHijriAr"></div><div class="my" id="tHijri"></div></div>
   </div>
-  <div class="hstrip"><span id="tLoc"></span><button id="locBtn" hidden></button><span id="tEve"></span></div>
+  <div class="hstrip"><span id="tLoc"></span><button id="locBtn" hidden></button><span id="tEve"></span><span id="tNext"></span></div>
   <div class="tstrip" id="tStrip" role="link" tabindex="0" style="cursor:pointer"></div>
-  <div class="nextmq" id="tNext"></div>
 </header>
 
 <main>
@@ -738,10 +737,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=183"></script>
-<script src="i18n.js?v=183"></script>
-<script src="cities.js?v=183"></script>
-<script src="haptic.js?v=183"></script>
+<script src="hijri.js?v=184"></script>
+<script src="i18n.js?v=184"></script>
+<script src="cities.js?v=184"></script>
+<script src="haptic.js?v=184"></script>
 <script>
 "use strict";
 
@@ -1426,7 +1425,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 183, APP_VERSION = vName(APP_V) + " (2026-11-23)";
+const APP_V = 184, APP_VERSION = vName(APP_V) + " (2026-11-23)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1564,7 +1563,7 @@ function renderAshara() {
   el.dataset.a = hNow.m === 0 && hNow.d <= 10 ? todayAJD + (nowT > s.sunset ? 1 : 0) : "";
   if (hNow.m === 0 && hNow.d <= 10) {
     const n = hNow.d;
-    el.innerHTML = `<small>🕌 ${t("ashName")} ${hNow.y}${L.hSuffix}</small>${n === 10 ? t("ashAshura") : t("ashLeft", { n: 10 - n })} · <b>${n}/10</b>`;
+    el.innerHTML = `🕌 <small>${t("ashName").split(" ")[0]}</small><b>${n}/10</b>`;
     return;
   }
   let st = asharaStart(cur.m === 0 ? cur.y + 1 : cur.y + 1);
@@ -1574,7 +1573,7 @@ function renderAshara() {
   const D = Math.floor(sec / 86400), Hh = Math.floor(sec % 86400 / 3600), M = Math.floor(sec % 3600 / 60), S = sec % 60;
   const g = H.ajdToG(st.a - 1);
   el.dataset.a = st.a;
-  el.innerHTML = `<small>🕌 ${t("ashName")} ${st.y}${L.hSuffix}</small><b style="letter-spacing:.06em;font-variant-numeric:tabular-nums">${D}${t("ashDs")}&ensp;${p2(Hh)} : ${p2(M)} : ${p2(S)}</b>`;
+  el.innerHTML = `🕌 <small>${t("ashName").split(" ")[0]}</small><b style="letter-spacing:.04em;font-variant-numeric:tabular-nums">${D}${t("ashDs")}&ensp;${p2(Hh)} : ${p2(M)} : ${p2(S)}</b>`;
 }
 setInterval(() => { if (document.visibilityState === "visible" && curView === "cal") renderAshara(); }, 1000);
 setInterval(() => { if (document.visibilityState === "visible") renderHeader(); }, 60000);
