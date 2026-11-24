@@ -43,15 +43,15 @@ const TXT = {
   en: { sih: "Sihori", faj: "Fajr", fe: "Fajr end", zaw: "Zawaal", ze: "Zohr end", ae: "Asr end", mag: "Maghrib", nis: "Nisful Layl", now: "It is {n} time.", soon: "{n} in {m} minutes.",
         rozi: "📖 Rozi amal: Surat {s}", roziB: "Hijri {d} — recite it once for barakat in rozi.", tas: "📿 Today's tasbeeh", tasB: "{t} — 100 times.",
         sdq: "🤲 Today's sadaqah", sdqB: "Give sadaqah today: {i}.", miq: "🕌 Miqaat", miqN: "🌙 Tonight: {t}", miqT: "📅 Tomorrow: {t}", wsq: "🌙 Washeq raat in 1 month", wsqB: "{t} — {d}. Time to prepare.",
-        qt: "✨ Quote of the day", qtG: "Open Mumin to read today’s quote from Raudat Hidayaat.", kum: "🌙 Shab-e-Juma", kumB: "Tonight, after Maghrib: recite Dua e Kumail.", test: "🔔 Alerts are on", testB: "You will get your Salaat and amal alerts on this device." },
+        qt: "✨ Quote of the day ✨", qtG: "Open Mumin to read today’s quote from Raudat Hidayaat.", kum: "🌙 Shab-e-Juma", kumB: "Tonight, after Maghrib: recite Dua e Kumail.", test: "🔔 Alerts are on", testB: "You will get your Salaat and amal alerts on this device." },
   gu: { sih: "સિહોરી", faj: "ફજર", fe: "ફજર અંત", zaw: "ઝવાલ", ze: "ઝોહર અંત", ae: "અસર અંત", mag: "મગરિબ", nis: "નિસ્ફુલ લૈલ", now: "{n} નો સમય થયો.", soon: "{m} મિનિટમાં {n}.",
         rozi: "📖 રોઝી અમલ: સૂરત {s}", roziB: "હિજરી {d} — રોઝીમાં બરકત માટે એક વાર પઢો.", tas: "📿 આજની તસ્બીહ", tasB: "{t} — 100 વાર.",
         sdq: "🤲 આજનો સદકો", sdqB: "આજે સદકો આપો: {i}.", miq: "🕌 મિકાત", miqN: "🌙 આજે રાત્રે: {t}", miqT: "📅 આવતી કાલે: {t}", wsq: "🌙 વાશિક રાત 1 મહિના પછી", wsqB: "{t} — {d}. તૈયારીનો સમય.",
-        qt: "✨ આજનું સુવચન", qtG: "રૌઝતુલ હિદાયાતનું આજનું સુવચન વાંચવા મુમિન ખોલો.", kum: "🌙 શબે જુમા", kumB: "આજે રાત્રે, મગરિબ પછી: દુઆ એ કુમૈલ પઢો.", test: "🔔 અલર્ટ ચાલુ છે", testB: "આ ડિવાઇસ પર તમને સલાત અને અમલના અલર્ટ મળશે." },
+        qt: "✨ આજનું સુવચન ✨", qtG: "રૌઝતુલ હિદાયાતનું આજનું સુવચન વાંચવા મુમિન ખોલો.", kum: "🌙 શબે જુમા", kumB: "આજે રાત્રે, મગરિબ પછી: દુઆ એ કુમૈલ પઢો.", test: "🔔 અલર્ટ ચાલુ છે", testB: "આ ડિવાઇસ પર તમને સલાત અને અમલના અલર્ટ મળશે." },
   hi: { sih: "Sihori", faj: "Fajr", fe: "Fajr end", zaw: "Zawaal", ze: "Zohr end", ae: "Asr end", mag: "Maghrib", nis: "Nisful Layl", now: "{n} ka waqt ho gaya.", soon: "{n} me {m} minute baaki.",
         rozi: "📖 Rozi amal: Surat {s}", roziB: "Hijri {d} — rozi me barakat ke liye ek baar padho.", tas: "📿 Aaj ki tasbeeh", tasB: "{t} — 100 baar.",
         sdq: "🤲 Aaj ka sadaqah", sdqB: "Aaj sadaqah do: {i}.", miq: "🕌 Miqaat", miqN: "🌙 Aaj raat: {t}", miqT: "📅 Kal: {t}", wsq: "🌙 Washeq raat 1 mahine baad", wsqB: "{t} — {d}. Taiyari ka waqt.",
-        qt: "✨ Aaj ka quote", qtG: "Raudat Hidayaat ka aaj ka quote padhne ke liye Mumin kholo.", kum: "🌙 Shab-e-Juma", kumB: "Aaj raat, Maghrib ke baad: Dua e Kumail padho.", test: "🔔 Alerts on hain", testB: "Is device par aapko Salaat aur amal ke alerts milenge." }
+        qt: "✨ Aaj ka quote ✨", qtG: "Raudat Hidayaat ka aaj ka quote padhne ke liye Mumin kholo.", kum: "🌙 Shab-e-Juma", kumB: "Aaj raat, Maghrib ke baad: Dua e Kumail padho.", test: "🔔 Alerts on hain", testB: "Is device par aapko Salaat aur amal ke alerts milenge." }
 };
 const ROZI = [[2, "Yaseen"], [3, "ar-Rahman"], [4, "al-Waqiah"], [5, "al-Hashr"], [6, "al-Jumuah"], [7, "al-Jinn"]];
 const WEEK = ["Iyyaka Na'budu Wa Iyyaka Nasta'een", "Ya Ghafoor, Ya Raheem", "SubhanAllahi wal Hamdu Lillah", "Ya Rahman, Ya Raheem", "HasbunAllahu Wa Ni'mal Wakeel", "Ya Zal Jalali Wal Ikram", "Ya Hayyu, Ya Qayyum"];
