@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=176">
-<script src="theme-init.js?v=176"></script>
+<link rel="stylesheet" href="themes.css?v=177">
+<script src="theme-init.js?v=177"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -245,7 +245,7 @@ nav.tabs button.on{color:var(--brand);font-weight:700}
 #imgView.on{display:block}
 #imgView img{display:block;width:100%;max-width:600px;margin:0 auto;border-radius:10px}
 #imgView button{position:fixed;top:calc(env(safe-area-inset-top) + 8px);right:10px;width:40px;height:40px;border-radius:20px;border:0;font-size:22px;background:rgba(255,255,255,.9);color:#000}
-.qcard{text-align:center;padding:16px 18px 14px;min-height:340px}
+.qcard{text-align:center;padding:16px 18px 14px;min-height:190px;cursor:pointer}.qcard.qsheet{min-height:0;padding:4px 0 8px;cursor:auto}
 .qcard .qk{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .qcard .qm{display:block;margin:14px auto 0;color:var(--ink);background:currentColor;aspect-ratio:var(--r);width:min(100%,calc(var(--w)*.56px));-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
 .qcard .qm.qa{margin-bottom:14px}.qcard .qm.qu{opacity:.88}
@@ -738,10 +738,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=176"></script>
-<script src="i18n.js?v=176"></script>
-<script src="cities.js?v=176"></script>
-<script src="haptic.js?v=176"></script>
+<script src="hijri.js?v=177"></script>
+<script src="i18n.js?v=177"></script>
+<script src="cities.js?v=177"></script>
+<script src="haptic.js?v=177"></script>
 <script>
 "use strict";
 
@@ -1426,7 +1426,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 176, APP_VERSION = vName(APP_V) + " (2026-11-23)";
+const APP_V = 177, APP_VERSION = vName(APP_V) + " (2026-11-23)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1521,12 +1521,16 @@ function quoteIdx(n) {
   return (((Math.floor((Date.UTC(n.getFullYear(), n.getMonth(), n.getDate()) - Date.UTC(+p[0], p[1] - 1, +p[2])) / 864e5)) % N) + N) % N;
 }
 const quoteFor = n => QJ.q[quoteIdx(n)];
+let qFull = "";
+$("qCard").onclick = () => { if (!qFull) return; $("sheetBody").innerHTML = qFull; $("sheetBg").style.display = "block"; requestAnimationFrame(() => $("sheet").classList.add("on")); };
 function renderQuote() {
   const el = $("qCard"); if (!QJ) return;
   const i = quoteIdx(new Date());   // same day→quote rule as the push worker
   const r = QJ.r[i], id = String(i).padStart(3, "0");
   const im = (tag, k, c) => r[k] ? `<div class="qm ${c}" role="img" aria-label="${c === "qa" ? "Arabic" : c === "qu" ? "Lisan ud-Dawat" : "English"}" style="--w:${r[k]};--r:${r[k] / r[k + 1]};--m:url(quotes/${id}${tag}.webp)"></div>` : "";
-  el.innerHTML = `<div class="qk">✨ ${t("qH")} ✨</div>${QJ.a && QJ.a[i] ? `<div class="qar" lang="ar" dir="rtl">${esc(QJ.a[i])}</div>` : im("a", 0, "qa")}<div class="qd"></div>${QJ.u && QJ.u[i] ? `<div class="qur" lang="ur" dir="rtl">${esc(QJ.u[i])}</div>` : im("u", 2, "qu")}<p class="qt">${esc(QJ.q[i])}</p><div class="qn">${t("qSrc")}</div>`;
+  const hd = `<div class="qk">✨ ${t("qH")} ✨</div>`, en = `<p class="qt">${esc(QJ.q[i])}</p>`;
+  el.innerHTML = hd + en + `<div class="qn">${t("qSrc")}</div>`;
+  qFull = `<div class="qcard qsheet">${hd}${QJ.a && QJ.a[i] ? `<div class="qar" lang="ar" dir="rtl">${esc(QJ.a[i])}</div>` : im("a", 0, "qa")}<div class="qd"></div>${QJ.u && QJ.u[i] ? `<div class="qur" lang="ur" dir="rtl">${esc(QJ.u[i])}</div>` : im("u", 2, "qu")}${en}<div class="qn">${t("qSrc")}</div></div>`;
 }
 fetch("quotes.json").then(r => r.json()).then(q => { QJ = q; renderQuote(); nativeSync(); azAlDraw(); }).catch(() => { $("qCard").hidden = true; });
 fetch("miqaats.json").then(r => r.json()).then(d => { MIQ = d; miqLoaded = true; renderAll(); }).catch(() => { $("todayMq").innerHTML = `<p class="muted">${t("loadFail")}</p>`; });
