@@ -1,6 +1,19 @@
 {
- "v": 174,
+ "v": 175,
  "history": [
+  {
+   "v": 175,
+   "date": "2026-11-24",
+   "en": [
+    "Removed the next-miqaat line from the header again; Ashara countdown stays."
+   ],
+   "gu": [
+    "હેડરમાંથી આગલી મિકાત લાઇન ફરી હટાવી; અશરા કાઉન્ટડાઉન રહેશે."
+   ],
+   "hi": [
+    "Header se next-miqaat line wapas hata di; Ashara countdown rahega."
+   ]
+  },
   {
    "v": 174,
    "date": "2026-11-24",
