@@ -1,6 +1,19 @@
 {
- "v": 177,
+ "v": 178,
  "history": [
+  {
+   "v": 178,
+   "date": "2026-11-24",
+   "en": [
+    "Tap the date in the header to scroll down to the calendar."
+   ],
+   "gu": [
+    "હેડરની તારીખ પર ટેપ કરતાં કેલેન્ડર સુધી સ્ક્રોલ થશે."
+   ],
+   "hi": [
+    "Header ki date par tap karo to calendar tak scroll hoga."
+   ]
+  },
   {
    "v": 177,
    "date": "2026-11-24",
