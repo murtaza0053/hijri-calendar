@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=171">
-<script src="theme-init.js?v=171"></script>
+<link rel="stylesheet" href="themes.css?v=172">
+<script src="theme-init.js?v=172"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -251,13 +251,22 @@ nav.tabs button.on{color:var(--brand);font-weight:700}
 .qcard .qm.qa{margin-bottom:14px}.qcard .qm.qu{opacity:.88}
 .qcard .qm.qa::after{content:""}
 .qcard .qd{width:28px;height:2px;border-radius:1px;background:var(--gold);margin:0 auto}
-.qcard .qt{margin:16px auto 0;max-width:30em;white-space:pre-line;font:500 23px/1.4 "Dancing Script","Segoe Script","Brush Script MT",cursive;color:var(--ink);text-wrap:pretty}
+.qcard .qt{margin:16px auto 0;max-width:30em;white-space:pre-line;font-family:var(--qf,"Dancing Script"),"Segoe Script","Brush Script MT",cursive;font-weight:var(--qw,500);font-size:var(--qs,23px);line-height:1.4;color:var(--ink);text-wrap:pretty}
 .qcard .qn{margin-top:14px;font-size:11px;color:var(--muted)}
+@font-face{font-family:"Great Vibes";font-weight:400;font-display:swap;src:url(fonts/GreatVibes-400.woff2) format("woff2")}
+@font-face{font-family:"Pacifico";font-weight:400;font-display:swap;src:url(fonts/Pacifico-400.woff2) format("woff2")}
+@font-face{font-family:"Satisfy";font-weight:400;font-display:swap;src:url(fonts/Satisfy-400.woff2) format("woff2")}
+@font-face{font-family:"Caveat";font-weight:500;font-display:swap;src:url(fonts/Caveat-500.woff2) format("woff2")}
+@font-face{font-family:"Parisienne";font-weight:400;font-display:swap;src:url(fonts/Parisienne-400.woff2) format("woff2")}
+@font-face{font-family:"Allura";font-weight:400;font-display:swap;src:url(fonts/Allura-400.woff2) format("woff2")}
+@font-face{font-family:"Sacramento";font-weight:400;font-display:swap;src:url(fonts/Sacramento-400.woff2) format("woff2")}
+@font-face{font-family:"Kalam";font-weight:400;font-display:swap;src:url(fonts/Kalam-400.woff2) format("woff2")}
 @font-face{font-family:"Dancing Script";font-weight:500;font-display:swap;src:url(fonts/DancingScript-500.woff2) format("woff2")}
 @font-face{font-family:Amiri;font-weight:400;font-display:swap;src:url(fonts/Amiri-400.woff2) format("woff2")}
 .qcard .qar{margin:14px auto;white-space:pre-line;text-wrap:balance;font:400 26px/1.95 Amiri,"Noto Naskh Arabic","Traditional Arabic",serif;color:var(--ink)}
 @font-face{font-family:"Noto Nastaliq Urdu";font-weight:400;font-display:swap;src:url(fonts/NotoNastaliqUrdu-400.woff2) format("woff2")}
 .qcard .qur{margin:6px auto 4px;white-space:pre-line;font:400 19px/2.3 "Noto Nastaliq Urdu","Jameel Noori Nastaleeq",serif;color:var(--ink);opacity:.92;text-wrap:balance}
+.qfs{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.qfs button{border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:12px;padding:6px 14px;min-height:44px;font-size:22px;line-height:1.2;cursor:pointer}.qfs button.on{border-color:var(--brand);background:color-mix(in srgb,var(--brand) 14%,var(--card))}
 .ashara{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:10px;padding:10px 14px}
 .ashara .l{display:contents}
 .ashara .t2{grid-row:1;grid-column:1;font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -610,6 +619,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
       <div class="langset" id="numSet"></div>
     </div>
     <div class="card">
+      <h3 data-i18n="qfH"></h3>
+      <div class="qfs" id="qfSet"></div>
+    </div>
+    <div class="card">
       <h3 data-i18n="themeH"></h3>
       <div class="swatches" id="themeSet"></div>
       <h3 style="margin-top:14px" data-i18n="modeH"></h3>
@@ -742,10 +755,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=171"></script>
-<script src="i18n.js?v=171"></script>
-<script src="cities.js?v=171"></script>
-<script src="haptic.js?v=171"></script>
+<script src="hijri.js?v=172"></script>
+<script src="i18n.js?v=172"></script>
+<script src="cities.js?v=172"></script>
+<script src="haptic.js?v=172"></script>
 <script>
 "use strict";
 
@@ -1445,7 +1458,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 171, APP_VERSION = vName(APP_V) + " (2026-11-23)";
+const APP_V = 172, APP_VERSION = vName(APP_V) + " (2026-11-23)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1533,6 +1546,17 @@ if (location.hash === "#azaan") azFromHash();
 else if (location.hash === "#dua") switchView("dua");
 else if (location.hash === "#sl") switchView("sl");
 else if (location.hash === "#zy") switchView("zy");
+const QFONTS = [["dancing", "Dancing Script", 500, 23], ["vibes", "Great Vibes", 400, 29], ["pacifico", "Pacifico", 400, 19], ["satisfy", "Satisfy", 400, 24], ["caveat", "Caveat", 500, 27], ["parisienne", "Parisienne", 400, 28], ["allura", "Allura", 400, 30], ["sacramento", "Sacramento", 400, 32], ["kalam", "Kalam", 400, 19]];   // [key, family, weight, size px]
+function qfApply() {
+  const k = store.get("qfont", "dancing"), f = QFONTS.find(x => x[0] === k) || QFONTS[0], r = document.documentElement.style;
+  r.setProperty("--qf", `"${f[1]}"`); r.setProperty("--qw", f[2]); r.setProperty("--qs", f[3] + "px");
+}
+function qfDraw() {
+  const k = store.get("qfont", "dancing");
+  $("qfSet").innerHTML = QFONTS.map(f => `<button type="button" data-qf="${f[0]}" class="${f[0] === k ? "on" : ""}" style="font-family:'${f[1]}';font-weight:${f[2]}">${f[1]}</button>`).join("");
+}
+$("qfSet").onclick = e => { const b = e.target.closest("[data-qf]"); if (!b) return; store.set("qfont", b.dataset.qf); qfApply(); qfDraw(); };
+qfApply(); qfDraw();
 /* ---------- Daily quote (Raudat Hidayaat) — same day→quote rule as the push worker ---------- */
 var QJ = null;
 function quoteIdx(n) {
