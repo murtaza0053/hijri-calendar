@@ -1,6 +1,19 @@
 {
- "v": 194,
+ "v": 195,
  "history": [
+  {
+   "v": 195,
+   "date": "2026-11-25",
+   "en": [
+    "Zikre Husain (and Quran) reader: faster page rendering, night-reading mode, bookmarks, and Save-for-offline so the book opens instantly without internet."
+   ],
+   "gu": [
+    "ઝિક્રે હુસૈન (અને કુરાન) રીડર: ઝડપી પાનાં, નાઇટ મોડ, બુકમાર્ક અને ઓફલાઇન સેવ — ઇન્ટરનેટ વગર તરત ખુલે."
+   ],
+   "hi": [
+    "Zikre Husain (aur Quran) reader: tez pages, night mode, bookmarks aur Offline save — bina internet ke turant khulta hai."
+   ]
+  },
   {
    "v": 194,
    "date": "2026-11-25",
