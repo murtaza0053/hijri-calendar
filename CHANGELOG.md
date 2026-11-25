@@ -54,6 +54,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-25
 
+**v200**
+
+- Bottom bar redesigned: clean minimal line icons, no pill or shadow.
+
 **v199**
 
 - Android: new updates are now found while the app is open or when you come back to it — no need to kill the app.
