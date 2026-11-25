@@ -66,6 +66,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v221**
+
+- Modern style now shows only the night themes (Midnight, Violet, Ocean, Emerald, Pink); Classic keeps the plain colours and remembers your old theme.
+
 **v220**
 
 - Four new dark colour themes: Violet, Ocean, Emerald and Pink night. In Modern style the Salat ring takes the theme's colours.

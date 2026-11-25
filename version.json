@@ -1,6 +1,19 @@
 {
- "v": 220,
+ "v": 221,
  "history": [
+  {
+   "v": 221,
+   "date": "2026-11-26",
+   "en": [
+    "Modern style now shows only the night themes (Midnight, Violet, Ocean, Emerald, Pink); Classic keeps the plain colours and remembers your old theme."
+   ],
+   "gu": [
+    "મોડર્ન સ્ટાઇલમાં હવે ફક્ત નાઇટ થીમ (મિડનાઇટ, વાયોલેટ, ઓશન, એમેરલ્ડ, પિંક) દેખાય છે; ક્લાસિકમાં સાદા રંગ અને તમારી જૂની થીમ યાદ રહે છે."
+   ],
+   "hi": [
+    "Modern स्टाइल में अब सिर्फ़ नाइट थीम (Midnight, Violet, Ocean, Emerald, Pink) दिखती हैं; Classic में सादे रंग और आपकी पुरानी थीम याद रहती है।"
+   ]
+  },
   {
    "v": 220,
    "date": "2026-11-26",

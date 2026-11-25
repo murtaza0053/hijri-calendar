@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=220">
-<script src="theme-init.js?v=220"></script>
+<link rel="stylesheet" href="themes.css?v=221">
+<script src="theme-init.js?v=221"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -805,10 +805,10 @@ html.ui-modern .slc b{font-size:34px}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=220"></script>
-<script src="i18n.js?v=220"></script>
-<script src="cities.js?v=220"></script>
-<script src="haptic.js?v=220"></script>
+<script src="hijri.js?v=221"></script>
+<script src="i18n.js?v=221"></script>
+<script src="cities.js?v=221"></script>
+<script src="haptic.js?v=221"></script>
 <script>
 "use strict";
 
@@ -849,25 +849,27 @@ const MODES = ["auto", "light", "dark"];
 let theme = store.get("theme", "maroon"); if (!THEMES[theme]) theme = "maroon";
 let mode = store.get("mode", "light"); if (!MODES.includes(mode)) mode = "light";
 const darkMQ = matchMedia("(prefers-color-scheme: dark)");
+const MODERN_TH = ["midnight", "nightviolet", "nightocean", "nightgreen", "nightpink"];   // Modern style shows only these
 function applyTheme() {
+  if (ui === "modern" && !MODERN_TH.includes(theme)) { store.set("themeClassic", theme); theme = store.get("themeModern", "midnight"); if (!MODERN_TH.includes(theme)) theme = "midnight"; store.set("theme", theme); }
   const r = document.documentElement;
   r.setAttribute("data-theme", theme);
   r.classList.toggle("dark", mode === "dark" || (mode === "auto" && darkMQ.matches));
   document.querySelector('meta[name="theme-color"]').content = getComputedStyle(r).getPropertyValue("--hdr").trim();
   if (window.MuminNative && MuminNative.setBars) try { MuminNative.setBars(getComputedStyle(r).getPropertyValue("--hdr").trim()); } catch {}
-  $("themeSet").innerHTML = Object.entries(THEMES).map(([k, c]) => `<button class="sw ${k === theme ? "on" : ""}" data-theme-k="${k}"><i style="background:${c}"></i>${t("th_" + k)}</button>`).join("");
+  $("themeSet").innerHTML = Object.entries(THEMES).filter(([k]) => ui !== "modern" || MODERN_TH.includes(k)).map(([k, c]) => `<button class="sw ${k === theme ? "on" : ""}" data-theme-k="${k}"><i style="background:${c}"></i>${t("th_" + k)}</button>`).join("");
   $("modeSet").innerHTML = MODES.map(k => `<button data-mode-k="${k}" class="${k === mode ? "on" : ""}">${t("md_" + k)}</button>`).join("");
   applyUi();
 }
 /* ---------- Style: classic (default) / modern ---------- */
 const UIS = ["classic", "modern"]; let ui = store.get("ui", "classic"); if (!UIS.includes(ui)) ui = "classic";
 function applyUi() { document.documentElement.classList.toggle("ui-modern", ui === "modern"); $("uiSet").innerHTML = UIS.map(k => `<button data-ui-k="${k}" class="${k === ui ? "on" : ""}">${t("ui_" + k)}</button>`).join(""); }
-$("uiSet").onclick = e => { const b = e.target.closest("[data-ui-k]"); if (b) { ui = b.dataset.uiK; store.set("ui", ui); applyUi(); } };
+$("uiSet").onclick = e => { const b = e.target.closest("[data-ui-k]"); if (b) { if (ui === "modern" && MODERN_TH.includes(theme)) store.set("themeModern", theme); ui = b.dataset.uiK; store.set("ui", ui); if (ui === "classic") { const c = store.get("themeClassic", null); if (c && THEMES[c] && !MODERN_TH.includes(c) && MODERN_TH.includes(theme)) { theme = c; store.set("theme", c); } } applyTheme(); } };
 (() => { const v = $("v-dua"); let g = -1; [...v.children].forEach(el => { if (el.matches("h3.sec")) g++; if (g >= 0) el.dataset.g = g; }); v.dataset.gs = "0";
   $("duaPills").onclick = e => { const b = e.target.closest("[data-g]"); if (!b) return; v.dataset.gs = b.dataset.g; $("duaPills").querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b)); window.scrollTo({ top: 0 }); }; })();
 darkMQ.addEventListener?.("change", applyTheme);
 document.addEventListener("click", e => {
-  const a = e.target.closest("[data-theme-k]"); if (a) { theme = a.dataset.themeK; store.set("theme", theme); applyTheme(); }
+  const a = e.target.closest("[data-theme-k]"); if (a) { theme = a.dataset.themeK; store.set("theme", theme); if (ui === "modern") store.set("themeModern", theme); applyTheme(); }
   const b = e.target.closest("[data-mode-k]"); if (b) { mode = b.dataset.modeK; store.set("mode", mode); applyTheme(); }
 });
 
@@ -1505,7 +1507,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 220, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 221, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
