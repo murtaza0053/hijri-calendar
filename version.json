@@ -1,6 +1,19 @@
 {
- "v": 223,
+ "v": 224,
  "history": [
+  {
+   "v": 224,
+   "date": "2026-11-26",
+   "en": [
+    "Classic style shows only the plain colour themes; Modern shows only the night themes and hides the Light/Dark option (they are always dark)."
+   ],
+   "gu": [
+    "ક્લાસિકમાં ફક્ત સાદા રંગની થીમ; મોડર્નમાં ફક્ત નાઇટ થીમ અને લાઇટ/ડાર્ક વિકલ્પ છુપાયેલો (તે હંમેશાં ડાર્ક છે)."
+   ],
+   "hi": [
+    "Classic में सिर्फ़ सादे रंग की थीम; Modern में सिर्फ़ नाइट थीम और Light/Dark विकल्प छुपा हुआ (ये हमेशा डार्क हैं)।"
+   ]
+  },
   {
    "v": 223,
    "date": "2026-11-26",
