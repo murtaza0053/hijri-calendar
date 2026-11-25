@@ -6,7 +6,11 @@ Web app build numbers are `APP_V` in `index.html`. The notes are the user-facing
 
 ## Android APK
 
-### Mumin Android 1.5 — 2026-11-25 (latest)
+### Mumin Android 1.6 — 2026-11-25 (latest)
+
+Opening screen now shows "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ" in gold under the logo. Includes instant update check on resume and azaan Stop options.
+
+### Mumin Android 1.5 — 2026-11-25
 
 Updates appear the moment you reopen the app (no need to kill it). Includes the azaan Stop options from 1.4.
 
