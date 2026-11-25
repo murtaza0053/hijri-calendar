@@ -66,6 +66,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v209**
+
+- Banner: removed the Dua e Kamil reminder (it is recited daily) and the "Shab-e-Juma" wording.
+
 **v208**
 
 - Notification banner: shorter label ("Tonight") so more of the text is visible.

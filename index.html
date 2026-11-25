@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=208">
-<script src="theme-init.js?v=208"></script>
+<link rel="stylesheet" href="themes.css?v=209">
+<script src="theme-init.js?v=209"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -750,10 +750,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=208"></script>
-<script src="i18n.js?v=208"></script>
-<script src="cities.js?v=208"></script>
-<script src="haptic.js?v=208"></script>
+<script src="hijri.js?v=209"></script>
+<script src="i18n.js?v=209"></script>
+<script src="cities.js?v=209"></script>
+<script src="haptic.js?v=209"></script>
 <script>
 "use strict";
 
@@ -1073,7 +1073,6 @@ function renderBanner() {
     if (night.length) items.push({ a, when: k === 0 ? t("bTonight") : k === 1 ? t("bTomorrowNight") : t("bWdNight", { wd: wd(a) }), qs: night });
   }
   if (H.dow(todayAJD) === 4) items.unshift({ a: null, when: t("bTonight"), dua: "dua/kumail.html", txt: t("bDuaKumail"), ic: "🌙" });
-  if (H.dow(todayAJD) === 4) items.unshift({ a: null, when: t("bTonight"), dua: "dua/", txt: t("bDuaKamil"), ic: "🤲" });
   const rz = ROZI.find(r => r[0] === todayH.d);
   if (rz) items.unshift({ a: null, when: t("relToday"), dua: `dua/quran.html?s=${rz[1]}`, txt: t("bRozi", { s: surahName(rz[1]) }), ic: "📖" });
   if (H.dow(todayAJD) === 5) items.unshift({ a: null, when: t("relToday"), dua: "dua/quran.html?s=18", txt: t("bKahf"), ic: "📖" });
@@ -1443,7 +1442,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 208, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 209, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
