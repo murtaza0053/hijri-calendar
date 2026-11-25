@@ -1,6 +1,19 @@
 {
- "v": 197,
+ "v": 198,
  "history": [
+  {
+   "v": 198,
+   "date": "2026-11-25",
+   "en": [
+    "The book opening tip now shows once for each book (Zikre Husain, Quran)."
+   ],
+   "gu": [
+    "બુક ખુલવાની ટિપ હવે દરેક બુક માટે એક વાર દેખાશે."
+   ],
+   "hi": [
+    "Book khulne wali tip ab har book ke liye ek-ek baar dikhegi."
+   ]
+  },
   {
    "v": 197,
    "date": "2026-11-25",

@@ -482,7 +482,7 @@ $("sheet").onclick = e => {
   if (meta) {   // lazy path: frames + contents come from a tiny json, so the reader is usable (scroll, jump, contents) while the PDF opens
     N = meta.n; ratio = meta.ratio; outline = meta.outline.map(([title, p]) => ({ title, p }));
     buildPages(); if (last > 1) goto(last, false); update();
-    if (!src.data && !ls.get("openNote", false)) { ls.set("openNote", true); document.body.insertAdjacentHTML("beforeend", `<div id="openNote">⏳ ${bt("open")}</div>`); }   // shown only the very first time
+    if (!src.data && !ls.get("openNote:" + id, false)) { ls.set("openNote:" + id, true); document.body.insertAdjacentHTML("beforeend", `<div id="openNote">⏳ ${bt("open")}</div>`); }   // shown only the very first time
   }
   try { pdf = await docP; pdfRes(); } catch (e) { const m = $("msg") || $("pages").insertAdjacentElement("afterbegin", Object.assign(document.createElement("p"), { id: "msg" })); m.textContent = t("bkFail") + " (" + e.message + ")"; return; }
   if (!meta) {
