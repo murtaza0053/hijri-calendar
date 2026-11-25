@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=200">
-<script src="theme-init.js?v=200"></script>
+<link rel="stylesheet" href="themes.css?v=201">
+<script src="theme-init.js?v=201"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -352,9 +352,9 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 nav.tabs{background:var(--card);border-top:1px solid var(--line);box-shadow:none;padding-top:2px}
 nav.tabs button{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 0 8px;font-size:10.5px;font-weight:500;color:var(--muted);transition:color .2s;-webkit-tap-highlight-color:transparent}
 nav.tabs button .i{display:grid;place-items:center;width:26px;height:26px;transition:transform .2s}
-nav.tabs button .i svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+nav.tabs button .i svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 nav.tabs button.on{color:var(--brand);font-weight:700}
-nav.tabs button.on .i svg{stroke-width:2.1}
+nav.tabs button.on .i svg{stroke-width:1.9}nav.tabs button .i svg .f{transition:fill .2s}nav.tabs button.on .i svg .f{fill:color-mix(in srgb,var(--brand) 26%,transparent)}nav.tabs button:not(.on){opacity:.85}nav.tabs button.on::after{content:"";position:absolute;bottom:2px;width:4px;height:4px;border-radius:50%;background:var(--brand)}
 nav.tabs button:active .i{transform:scale(.9)}
 /* ================= Responsive / web layout ================= */
 /* keyboard + mouse niceties (all sizes) */
@@ -418,6 +418,7 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
   nav.tabs button .i{width:28px;height:28px}
   nav.tabs button.on{background:color-mix(in srgb,var(--brand) 10%,transparent)}
   nav.tabs button.on .i{background:none;box-shadow:none;transform:none}
+  nav.tabs button.on::after{display:none}
   nav.tabs button.on::before{content:"";position:absolute;background:var(--brand);top:50%;left:0;width:4px;height:24px;margin:-12px 0 0;border-radius:0 4px 4px 0}
 }
 @media (min-width:1400px){ main{max-width:1240px} #v-cal.on{column-gap:24px} }
@@ -725,11 +726,11 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div id="miniBar"><span id="mbL"></span><span id="mbR"></span></div>
 <div class="cbg" id="cityBg"></div><div class="csheet" id="citySheet"></div>
 <nav class="tabs">
-  <button data-v="cal" class="on"><span class="i"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><span data-i18n="tabCal"></span></button>
-  <button data-v="up"><span class="i"><svg viewBox="0 0 24 24"><path d="M20 14.500A8 8 0 0 1 9.500 4a8 8 0 1 0 10.500 10.500z"/><path d="M17 3.500v3M15.500 5h3"/></svg></span><span data-i18n="tabUp"></span></button>
-  <button data-v="dua"><span class="i"><svg viewBox="0 0 24 24"><path d="M12 20c-3.5-2-7-4.5-8-8 0-1.5 1-2.5 2.2-2.5 1 0 1.8.6 2.3 1.5.4-3 2-5 3.5-7 1.500 2 3.100 4 3.500 7 .5-.9 1.300-1.500 2.300-1.500C18.900 9.500 20 10.500 20 12c-1 3.500-4.500 6-8 8z"/></svg></span><span data-i18n="tabDua"></span></button>
-  <button data-v="zy"><span class="i"><svg viewBox="0 0 24 24"><path d="M5 20V9l7-5 7 5v11zM9 20v-6h6v6M3 20h18"/></svg></span><span data-i18n="tabZy"></span></button>
-  <button data-v="set"><span class="i"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2.800v2.400M12 18.800v2.400M2.800 12h2.400M18.800 12h2.400M5.500 5.500l1.700 1.700M16.800 16.800l1.700 1.700M5.500 18.500l1.700-1.700M16.800 7.200l1.700-1.700"/></svg></span><span data-i18n="tabSet"></span></button>
+  <button data-v="cal" class="on"><span class="i"><svg viewBox="0 0 24 24"><rect class="f" x="3.5" y="5" width="17" height="15.5" rx="3.5"/><path d="M3.5 10h17M8 3v3.5M16 3v3.5"/><circle cx="12" cy="15" r="1.2" fill="currentColor" stroke="none"/></svg></span><span data-i18n="tabCal"></span></button>
+  <button data-v="up"><span class="i"><svg viewBox="0 0 24 24"><path class="f" d="M20 14.5A8.2 8.2 0 0 1 9.5 3.800 8.200 8.200 0 1 0 20 14.500z"/><path d="M17.500 3v4M15.500 5h4"/></svg></span><span data-i18n="tabUp"></span></button>
+  <button data-v="dua"><span class="i"><svg viewBox="0 0 24 24"><path class="f" d="M12 6.500C10 5 7 4.500 3.500 5v13c3.500-.500 6.500 0 8.500 1.500 2-1.500 5-2 8.500-1.500V5C17 4.500 14 5 12 6.500z"/><path d="M12 6.500v13"/></svg></span><span data-i18n="tabDua"></span></button>
+  <button data-v="zy"><span class="i"><svg viewBox="0 0 24 24"><path class="f" d="M5 20v-7a7 7 0 0 1 14 0v7z"/><path d="M12 3.500V6M10.800 4.700h2.400M3 20h18M10 20v-3.500a2 2 0 0 1 4 0V20"/></svg></span><span data-i18n="tabZy"></span></button>
+  <button data-v="set"><span class="i"><svg viewBox="0 0 24 24"><path d="M4 7h8.800M17.200 7H20M4 12h2M10.400 12H20M4 17h8.800M17.200 17H20"/><circle class="f" cx="15" cy="7" r="2.200"/><circle class="f" cx="8.200" cy="12" r="2.200"/><circle class="f" cx="15" cy="17" r="2.200"/></svg></span><span data-i18n="tabSet"></span></button>
 </nav>
 
 <div id="tour"><div class="th" id="tourHole"></div><div class="tb" id="tourBox"></div></div>
@@ -738,10 +739,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=200"></script>
-<script src="i18n.js?v=200"></script>
-<script src="cities.js?v=200"></script>
-<script src="haptic.js?v=200"></script>
+<script src="hijri.js?v=201"></script>
+<script src="i18n.js?v=201"></script>
+<script src="cities.js?v=201"></script>
+<script src="haptic.js?v=201"></script>
 <script>
 "use strict";
 
@@ -1431,7 +1432,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 200, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 201, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
