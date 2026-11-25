@@ -66,6 +66,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v212**
+
+- Quote of the day: new font (Playfair Display).
+
 **v211**
 
 - Dua tab: cleaner, minimal list — one line per dua, no boxes or long descriptions.

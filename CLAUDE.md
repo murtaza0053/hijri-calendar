@@ -27,7 +27,7 @@ Owner writes and expects replies in **Hinglish** (Hindi in Latin letters). Keep 
 ## Quote of the day (Raudat Hidayaat Part 1)
 - `quotes.json` = `{start:"2026-11-24", q:[English], r:[[aw,ah,uw,uh],…], a:[Arabic], u:[Lisan ud-Dawat (Gujarati in Urdu script)]}`, N = 173. Index 0 = book PDF page 29.
 - **Same day→index rule everywhere** (card, push worker, Android alarms): `idx = ((floor((UTC(y,m,d) − UTC(start)) / 864e5) % N) + N) % N`.
-- Landing card shows English only (font: Courgette, theme-coloured corner art `quotes/corner.webp` via CSS mask); tapping opens a sheet with Arabic + Lisan + English + source. A few items still fall back to scan masks `quotes/NNN{a,u}.webp`.
+- Landing card shows English only (font: Playfair Display italic, theme-coloured corner art `quotes/corner.webp` via CSS mask); tapping opens a sheet with Arabic + Lisan + English + source. A few items still fall back to scan masks `quotes/NNN{a,u}.webp`.
 - Arabic harakat and Lisan spellings were typed by the model → owner should proofread against the book.
 
 ## Push notifications (web) — `push/`
