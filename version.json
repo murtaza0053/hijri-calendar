@@ -1,6 +1,22 @@
 {
- "v": 195,
+ "v": 196,
  "history": [
+  {
+   "v": 196,
+   "date": "2026-11-25",
+   "en": [
+    "Quote font changed to Playball.",
+    "Zikre Husain / Quran reader: page frames and contents appear instantly (lazy loading) while the PDF opens in the background."
+   ],
+   "gu": [
+    "સુવચનનો ફોન્ટ Playball.",
+    "ઝિક્રે હુસૈન / કુરાન રીડર: PDF ખુલતી હોય ત્યારે પણ પાનાં અને ફેહરિસ્ત તરત દેખાય (લેઝી લોડિંગ)."
+   ],
+   "hi": [
+    "Quote ka font Playball.",
+    "Zikre Husain / Quran reader: PDF khulte waqt bhi page frames aur contents turant dikhte hain (lazy loading)."
+   ]
+  },
   {
    "v": 195,
    "date": "2026-11-25",

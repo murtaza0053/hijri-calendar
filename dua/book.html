@@ -24,6 +24,9 @@ header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:
 #pages{max-width:900px;margin:0 auto;padding:8px 6px 90px}
 .pg{position:relative;background:#fff;margin:0 auto 8px;box-shadow:0 1px 4px rgba(0,0,0,.15);width:100%}
 .pg canvas{position:absolute;inset:0;width:100%;height:100%}
+.pg:not(:has(canvas)):not(:has(img)){background:linear-gradient(100deg,#fff 30%,#f1ede4 50%,#fff 70%) 0 0/300% 100%;animation:shim 1.4s linear infinite}
+@keyframes shim{to{background-position:-300% 0}}
+.night .pg:not(:has(canvas)):not(:has(img)){background:#15171a;animation:none}
 .pg .no{position:absolute;right:6px;bottom:4px;font-size:10px;color:#999}
 .pg a.lk{position:absolute;display:block;border-radius:3px}
 .pg a.lk:active{background:rgba(255,200,0,.35)}
@@ -68,6 +71,7 @@ header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:
 .sheet .row.nm{display:flex;gap:8px;padding:8px 8px;font-size:13px;background:var(--card);border-bottom:1px solid var(--line);border-radius:0}
 .sheet .row.nm .t{flex:1}.sheet .row.nm .g{flex:none;color:var(--muted);font-size:12px}
 .sheet #sres .row.nm{flex-wrap:wrap}.sheet #sres .row.nm small{flex-basis:100%;color:var(--muted);font-size:11px}
+#openNote{position:fixed;left:12px;right:12px;bottom:calc(env(safe-area-inset-bottom) + 14px);z-index:6;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:12px;line-height:1.35;box-shadow:0 4px 14px rgba(0,0,0,.2);max-width:560px;margin:0 auto}
 .night .pg{background:#15171a}.night .pg canvas,.night .pg img{filter:invert(.92) hue-rotate(180deg)}.night .pg .no{color:#888}
 .sheet .bm,.sheet .off{display:flex;align-items:center;gap:8px;padding:9px 6px;border-top:1px solid var(--line);cursor:pointer;font-size:14px}
 .sheet .bm b{flex:1}.sheet .bm span{color:var(--muted);font-size:13px}.sheet .bm .bx{flex:none;border:0;background:none;color:var(--muted);font-size:18px;min-width:32px}
@@ -102,7 +106,7 @@ header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:
 // Large PDF reader: loads the file with HTTP range requests (no full download), renders only the
 // pages near the screen, and keeps the PDF's own hyperlinks working (index → page, and web links).
 const BOOKS = {
-  zikre: { title: "Zikre Husain (AS) 1446", pdf: "books/zikre-husain-1446.pdf" },
+  zikre: { title: "Zikre Husain (AS) 1446", pdf: "books/zikre-husain-1446.pdf", meta: "books/zikre-meta.json" },   // meta = page count, page ratio, contents: the page frames and contents appear at once, before the 38 MB PDF has opened
   // Hafti: contents = the PDF's own outline (62 entries) + the Hirze Saifee timing sections (page, title, search words)
   // Hafti: 605 pre-rendered WebP pages (fast on phones, no PDF engine). books/hafti.json = outline + the printed index's link hotspots.
   // extra = Hirze Saifee timing sections (page, title, search words)
@@ -115,7 +119,7 @@ const BOOKS = {
     src: "https://dawoodibohraapp.com/Duas/66%20tasbih%20ul%20azam.html", srcName: "dawoodibohraapp.com" },
   // Khazain ma'ani al-Quran al-Faiqa. Contents = targets of the PDF's own Juz index (page 1).
   // This file has Juz 1–25 and 30 only (26–29 are not in it).
-  quran: { title: "Quran — Khazain (Juz 1–25, 30)", pdf: "books/quran-khazain-30-juz.pdf", label: "Juz", note: "bkQNote",
+  quran: { title: "Quran — Khazain (Juz 1–25, 30)", pdf: "books/quran-khazain-30-juz.pdf", meta: "books/quran-meta.json", label: "Juz", note: "bkQNote",
     toc: [[1, 9], [2, 30], [3, 50], [4, 70], [5, 90], [6, 112], [7, 132], [8, 152], [9, 172], [10, 192], [11, 217], [12, 237], [13, 257], [14, 277], [15, 297],
           [16, 322], [17, 342], [18, 362], [19, 382], [20, 402], [21, 427], [22, 447], [23, 467], [24, 487], [25, 507], [30, 539]] },
 };
@@ -130,6 +134,7 @@ const id = new URLSearchParams(location.search).get("b") || "zikre";
 const B = BOOKS[id] || BOOKS.zikre;
 document.title = B.title; $("title").textContent = B.title;
 
+let pdfRes; const pdfReady = new Promise(r => pdfRes = r);
 let pdf, N = 0, ratio = 792 / 612, cur = 1, outline = [];
 const els = [], rendered = new Map(); // page → {task}
 const jumpStack = [];
@@ -162,7 +167,7 @@ async function destToPage(dest) {
 }
 
 async function renderPage(n) {
-  if (B.images || rendered.has(n)) return;
+  if (B.images || !pdf || rendered.has(n)) return;
   const box = els[n - 1], rec = { cancel: false };
   rendered.set(n, rec);
   const page = await pdf.getPage(n);
@@ -177,6 +182,7 @@ async function renderPage(n) {
   if (rec.cancel) return;
   box.querySelectorAll("canvas,a.lk").forEach(e => e.remove());
   box.prepend(c);
+  const on = document.getElementById("openNote"); if (on) on.remove();
   // hyperlinks
   const vp1 = page.getViewport({ scale });
   for (const a of await page.getAnnotations()) {
@@ -237,6 +243,7 @@ const idxCache = new Map();
 let ZN = null;   // marsiya names: {indexPage: [[name, targetPage], …]} (same row order as the index page)
 if (id === "zikre") fetch("books/zikre-items.json").then(r => r.ok ? r.json() : null).then(j => { ZN = j; }).catch(() => {});
 async function idxRows(p) { // rows of an index page: [{y1,y2,dest}]
+  await pdfReady;
   if (idxCache.has(p)) return idxCache.get(p);
   const pg = await pdf.getPage(p), bands = new Map();
   for (const a of await pg.getAnnotations()) {
@@ -251,6 +258,7 @@ async function idxRows(p) { // rows of an index page: [{y1,y2,dest}]
   idxCache.set(p, rows); return rows;
 }
 async function renderCrops(p, rects, wPx, pad) { // rects: [x1,y1,x2,y2] in pdf pts → canvases
+  await pdfReady;
   const pg = await pdf.getPage(p), base = pg.getViewport({ scale: 1 });
   const sc = wPx / base.width * 2, vp = pg.getViewport({ scale: sc });
   const c = document.createElement("canvas"); c.width = Math.floor(vp.width); c.height = Math.floor(vp.height);
@@ -294,7 +302,7 @@ async function openItems(sub, host) {
     try { const rows = await idxRows(+b.dataset.ip); if (rows.length) { const ds = rows.map(r => r.dest), lo = Math.min(...ds), hi = Math.max(...ds); const n0 = ZN && ZN[b.dataset.ip] && ZN[b.dataset.ip][0] && ZN[b.dataset.ip][0][0]; b.querySelector(".ph span").textContent = (n0 ? n0.slice(0, 28) + "… · " : "") + `${rows.length} · ${t("bkPage")} ${lo}–${hi}`; } } catch {}
   });
   if (LETTERS.has(sub)) { // alphabet: one chip per letter, cropped from the section's own header page
-    const pg = await pdf.getPage(sub), g = new Map();
+    await pdfReady; const pg = await pdf.getPage(sub), g = new Map();
     for (const a of await pg.getAnnotations()) {
       if (a.subtype !== "Link" || !a.dest) continue;
       const d = await destToPage(a.dest).catch(() => 0); if (!ZIDX[sub].includes(d)) continue;
@@ -307,9 +315,9 @@ async function openItems(sub, host) {
   }
 }
 // ---- night reading, bookmarks, offline copy
-const BT = { en: { bm: "Bookmarks", add: "Bookmark this page", off: "Save for offline", offOn: "Saved for offline", offSz: "{m} MB — opens instantly, works without internet", save: "Save", rm: "Remove", wait: "Saving… {p}%", fail: "Could not save — check space/internet" },
-  gu: { bm: "બુકમાર્ક", add: "આ પાનું બુકમાર્ક કરો", off: "ઓફલાઇન માટે સેવ કરો", offOn: "ઓફલાઇન સેવ છે", offSz: "{m} MB — તરત ખુલે, ઇન્ટરનેટ વગર ચાલે", save: "સેવ", rm: "કાઢો", wait: "સેવ થઈ રહ્યું છે… {p}%", fail: "સેવ ન થયું — જગ્યા/ઇન્ટરનેટ તપાસો" },
-  hi: { bm: "Bookmarks", add: "Is page ko bookmark karo", off: "Offline ke liye save karo", offOn: "Offline save hai", offSz: "{m} MB — turant khulta hai, internet ke bina chalta hai", save: "Save", rm: "Hatao", wait: "Save ho raha hai… {p}%", fail: "Save nahi hua — jagah/internet check karo" } };
+const BT = { en: { bm: "Bookmarks", add: "Bookmark this page", off: "Save for offline", offOn: "Saved for offline", offSz: "{m} MB — opens instantly, works without internet", save: "Save", rm: "Remove", wait: "Saving… {p}%", fail: "Could not save — check space/internet", open: "Opening the book… the first time takes a while. Use ☰ → Save for offline to make it instant." },
+  gu: { bm: "બુકમાર્ક", add: "આ પાનું બુકમાર્ક કરો", off: "ઓફલાઇન માટે સેવ કરો", offOn: "ઓફલાઇન સેવ છે", offSz: "{m} MB — તરત ખુલે, ઇન્ટરનેટ વગર ચાલે", save: "સેવ", rm: "કાઢો", wait: "સેવ થઈ રહ્યું છે… {p}%", fail: "સેવ ન થયું — જગ્યા/ઇન્ટરનેટ તપાસો", open: "બુક ખુલી રહી છે… પહેલી વાર વાર લાગે છે. ☰ → ઓફલાઇન સેવ કરશો તો તરત ખુલશે." },
+  hi: { bm: "Bookmarks", add: "Is page ko bookmark karo", off: "Offline ke liye save karo", offOn: "Offline save hai", offSz: "{m} MB — turant khulta hai, internet ke bina chalta hai", save: "Save", rm: "Hatao", wait: "Save ho raha hai… {p}%", fail: "Save nahi hua — jagah/internet check karo", open: "Book khul rahi hai… pehli baar time lagta hai. ☰ → Offline save karoge to turant khulegi." } };
 const bt = (k, v = {}) => String((BT[lang] || BT.en)[k]).replace(/\{(\w+)\}/g, (_, x) => v[x] ?? "");
 const OFFC = "books-offline-v1";
 function night(on) { document.body.classList.toggle("night", on); $("nightBtn").textContent = on ? "☀️" : "🌙"; }
@@ -455,30 +463,41 @@ $("sheet").onclick = e => {
     const last = +new URLSearchParams(location.search).get("p") || ls.get("book:" + id, 1); if (last > 1) goto(last, false);
     update(); return;
   }
-  try {
-    let src = { url: B.pdf, rangeChunkSize: 262144, disableAutoFetch: true, disableStream: true };
-    try { const hit = await (await caches.open(OFFC)).match(B.pdf); if (hit) src = { data: new Uint8Array(await hit.arrayBuffer()) }; } catch {}   // saved for offline: opens at once, no network
-    pdf = await pdfjsLib.getDocument(src).promise;
-  } catch (e) { $("msg").textContent = t("bkFail") + " (" + e.message + ")"; return; }
-  N = pdf.numPages;
-  const p1 = await pdf.getPage(1), v = p1.getViewport({ scale: 1 });
-  ratio = v.height / v.width;
-  const frag = document.createDocumentFragment();
-  for (let i = 1; i <= N; i++) {
-    const d = document.createElement("div");
-    d.className = "pg"; d.style.aspectRatio = `1 / ${ratio}`;
-    d.innerHTML = `<span class="no">${i}</span>`;
-    els.push(d); frag.append(d);
-  }
-  $("pages").replaceChildren(frag);
-  if (B.toc) outline = B.toc.map(([k, p]) => ({ title: `${B.label} ${k}`, p }));
-  else {
-    const ol = await pdf.getOutline().catch(() => null) || [];
-    (await Promise.all(ol.map(o => destToPage(o.dest).catch(() => null)))).forEach((p, i) => { if (p) outline.push({ title: ol[i].title, p }); });
-    if (B.extra) { B.extra.forEach(([p, title, kw]) => outline.push({ title, p, kw })); outline = outline.map((o, i) => ({ ...o, i })).sort((x, y) => x.p - y.p || x.i - y.i); }
-  }
+  let src = { url: B.pdf, rangeChunkSize: 262144, disableAutoFetch: true, disableStream: true };
+  try { const hit = await (await caches.open(OFFC)).match(B.pdf); if (hit) src = { data: new Uint8Array(await hit.arrayBuffer()) }; } catch {}   // saved for offline: opens at once, no network
+  const docP = pdfjsLib.getDocument(src).promise;   // starts now; everything below runs while the PDF is still opening
+  docP.catch(() => {});
+  const meta = B.meta ? await fetch(B.meta).then(r => r.ok ? r.json() : null).catch(() => null) : null;
+  const buildPages = () => {
+    const frag = document.createDocumentFragment();
+    for (let i = 1; i <= N; i++) {
+      const d = document.createElement("div");
+      d.className = "pg"; d.style.aspectRatio = `1 / ${ratio}`;
+      d.innerHTML = `<span class="no">${i}</span>`;
+      els.push(d); frag.append(d);
+    }
+    $("pages").replaceChildren(frag);
+  };
   const last = +new URLSearchParams(location.search).get("p") || ls.get("book:" + id, 1);
-  if (last > 1) goto(last, false);
+  if (meta) {   // lazy path: frames + contents come from a tiny json, so the reader is usable (scroll, jump, contents) while the PDF opens
+    N = meta.n; ratio = meta.ratio; outline = meta.outline.map(([title, p]) => ({ title, p }));
+    buildPages(); if (last > 1) goto(last, false); update();
+    document.body.insertAdjacentHTML("beforeend", `<div id="openNote">⏳ ${bt("open")}</div>`);
+  }
+  try { pdf = await docP; pdfRes(); } catch (e) { const m = $("msg") || $("pages").insertAdjacentElement("afterbegin", Object.assign(document.createElement("p"), { id: "msg" })); m.textContent = t("bkFail") + " (" + e.message + ")"; return; }
+  if (!meta) {
+    N = pdf.numPages;
+    const p1 = await pdf.getPage(1), v = p1.getViewport({ scale: 1 });
+    ratio = v.height / v.width;
+    buildPages();
+    if (B.toc) outline = B.toc.map(([k, p]) => ({ title: `${B.label} ${k}`, p }));
+    else {
+      const ol = await pdf.getOutline().catch(() => null) || [];
+      (await Promise.all(ol.map(o => destToPage(o.dest).catch(() => null)))).forEach((p, i) => { if (p) outline.push({ title: ol[i].title, p }); });
+      if (B.extra) { B.extra.forEach(([p, title, kw]) => outline.push({ title, p, kw })); outline = outline.map((o, i) => ({ ...o, i })).sort((x, y) => x.p - y.p || x.i - y.i); }
+    }
+    if (last > 1) goto(last, false);
+  }
   update();
 })();
 // Hafti: do not start the Dua SW's ~3 MB precache on a first visit (it slows the first pages); an already installed SW still caches viewed pages
