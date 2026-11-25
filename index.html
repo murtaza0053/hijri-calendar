@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=193">
-<script src="theme-init.js?v=193"></script>
+<link rel="stylesheet" href="themes.css?v=194">
+<script src="theme-init.js?v=194"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -739,10 +739,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=193"></script>
-<script src="i18n.js?v=193"></script>
-<script src="cities.js?v=193"></script>
-<script src="haptic.js?v=193"></script>
+<script src="hijri.js?v=194"></script>
+<script src="i18n.js?v=194"></script>
+<script src="cities.js?v=194"></script>
+<script src="haptic.js?v=194"></script>
 <script>
 "use strict";
 
@@ -1072,7 +1072,12 @@ function renderBanner() {
   b.style.display = "";
   b.innerHTML = items.map(i => i.dua ? `<div class="mq" data-dua="${i.dua}"><div class="when">${i.ic} ${i.when}</div><div class="t">${i.txt}</div></div>` : `<div class="mq" data-a="${i.a}"><div class="when">🔔 ${i.when}</div>${i.qs.map(q => `<div class="t">${q.phase === "night" ? "☾ " : "☀ "}${esc(q.title)}</div>`).join("")}</div>`).join("");
 }
-$("banner").onclick = e => { const d = e.target.closest("[data-dua]"); if (d) { location.href = d.dataset.dua; return; } const r = e.target.closest("[data-a]"); if (r) { const a = +r.dataset.a, h = H.fromAJD(a); view = { y: h.y, m: h.m }; renderCal(); openDay(a); } };
+function goDay(a) {   // jump to a date: right month, scrolled to the calendar, day sheet open
+  const h = H.fromAJD(a); view = { y: h.y, m: h.m }; if (curView !== "cal") switchView("cal"); renderCal();
+  setTimeout(() => { const c = $("cal").closest(".card"); c.style.scrollMarginTop = "calc(env(safe-area-inset-top) + 64px)"; c.scrollIntoView({ behavior: "smooth", block: "start" }); }, 60);
+  openDay(a);
+}
+$("banner").onclick = e => { const d = e.target.closest("[data-dua]"); if (d) { location.href = d.dataset.dua; return; } const r = e.target.closest("[data-a]"); if (r) goDay(+r.dataset.a); };
 
 /* Reminders: tick what you want; each type is its own calendar feed (calendar/*.ics) */
 const REMS = [["major", "🕌", "miqaats-major.ics", "rmMajor", "rmMajorD"], ["all", "🕌", "miqaats-all.ics", "rmAll", "rmAllD"],
@@ -1427,7 +1432,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 193, APP_VERSION = vName(APP_V) + " (2026-11-23)";
+const APP_V = 194, APP_VERSION = vName(APP_V) + " (2026-11-23)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1590,7 +1595,7 @@ function renderAshara() {
 setInterval(() => { if (document.visibilityState === "visible" && curView === "cal") renderAshara(); }, 1000);
 setInterval(() => { if (document.visibilityState === "visible") renderHeader(); }, 60000);
 $("tStrip").onclick = () => switchView("sl");
-$("tNext").onclick = () => { const a = +$("tNext").dataset.a, h = a && H.fromAJD(a); if (!a) return; view = { y: h.y, m: h.m }; switchView("cal"); renderCal(); setTimeout(() => { const c = $("cal").closest(".card"); c.style.scrollMarginTop = "calc(env(safe-area-inset-top) + 64px)"; c.scrollIntoView({ behavior: "smooth", block: "start" }); }, 60); openDay(a); };
+$("tNext").onclick = () => { const a = +$("tNext").dataset.a; if (a) goDay(a); };
 document.querySelector(".top .hd").onclick = () => { if (curView !== "cal") switchView("cal"); setTimeout(() => (c => { c.style.scrollMarginTop = "calc(env(safe-area-inset-top) + 64px)"; c.scrollIntoView({ behavior: "smooth", block: "start" }); })($("cal").closest(".card")), 60); };
 
 /* ---------- "Install app" button (mobile browser only) ---------- */

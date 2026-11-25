@@ -1,6 +1,19 @@
 {
- "v": 193,
+ "v": 194,
  "history": [
+  {
+   "v": 194,
+   "date": "2026-11-25",
+   "en": [
+    "Tapping a miqaat in the banner now scrolls to the calendar on that date and opens its details."
+   ],
+   "gu": [
+    "બેનરમાં મિકાત પર ટેપ કરતાં તે તારીખે કેલેન્ડર સુધી સ્ક્રોલ થઈ વિગત ખુલે છે."
+   ],
+   "hi": [
+    "Banner me miqaat par tap karne se us date par calendar tak scroll hokar detail khulti hai."
+   ]
+  },
   {
    "v": 193,
    "date": "2026-11-25",
