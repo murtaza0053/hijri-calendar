@@ -1,6 +1,19 @@
 {
- "v": 196,
+ "v": 197,
  "history": [
+  {
+   "v": 197,
+   "date": "2026-11-25",
+   "en": [
+    "The book \"opening\" tip is now shown only the first time."
+   ],
+   "gu": [
+    "બુક ખુલવાની ટિપ હવે ફક્ત પહેલી વાર દેખાશે."
+   ],
+   "hi": [
+    "Book khulne wali tip ab sirf pehli baar dikhegi."
+   ]
+  },
   {
    "v": 196,
    "date": "2026-11-25",
