@@ -66,6 +66,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v223**
+
+- Ziyarat: in Modern style the cards, search box and buttons are rounded like the rest of the app.
+
 **v222**
 
 - Ziyarat: theme, dark mode and style changes now apply there at once.
