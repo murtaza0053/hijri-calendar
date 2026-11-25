@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=216">
-<script src="theme-init.js?v=216"></script>
+<link rel="stylesheet" href="themes.css?v=217">
+<script src="theme-init.js?v=217"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -313,7 +313,7 @@ h4.plat{margin:14px 0 2px;font-size:14px}
 html[data-view]:not([data-view=cal]):not([data-view=up]) .top .tstrip,html[data-view]:not([data-view=cal]) .top .nextmq{display:none}
 /* Salaat page repeats the date and city in its own card: drop the header there; Miqaats list already shows the next miqaat */
 html[data-view=sl] header.top,html[data-view=sl] #miniBar{display:none}
-.acc>.acc-h::after{content:"›";font-size:22px;line-height:1;color:var(--muted);transition:transform .2s;transform:rotate(90deg)}
+.acc>.acc-h::after{margin-left:auto;content:"›";font-size:22px;line-height:1;color:var(--muted);transition:transform .2s;transform:rotate(90deg)}
 .acc.open>.acc-h::after{transform:rotate(-90deg)}
 .acc>.acc-b{display:none;margin-top:10px}
 .acc.open>.acc-b{display:block}
@@ -334,7 +334,7 @@ h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacin
 #v-dua>.card:not(.dua-item){background:none;border:0;border-radius:0;box-shadow:none;padding:6px 4px 10px;margin-bottom:6px}
 #v-dua .sd.today{background:none;border-radius:0}#v-dua .sd.today .it{font-weight:700}
 #v-dua #sdqCard{border-top:1px solid var(--line);padding-top:16px;margin-top:6px}
-#v-dua .card>div>div>.muted[data-i18n=roziDesc],#v-dua #sdqCard>.muted[data-i18n=sdqDesc],#v-dua #sdqNow{display:none}
+#v-dua .card>div>div>.muted[data-i18n=roziDesc],#v-dua #sdqCard .muted[data-i18n=sdqDesc],#v-dua #sdqNow{display:none}
 #v-dua .card>b,#v-dua .card>div>div>b{font-size:16px}
 #v-dua .thumb{width:34px;height:42px;opacity:.85}
 #v-dua .rz{padding:11px 4px}#v-dua .rz .d{background:none;min-width:30px;height:auto;color:var(--muted);font-weight:600}#v-dua .rz .go{color:var(--muted);opacity:.7}
@@ -777,10 +777,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=216"></script>
-<script src="i18n.js?v=216"></script>
-<script src="cities.js?v=216"></script>
-<script src="haptic.js?v=216"></script>
+<script src="hijri.js?v=217"></script>
+<script src="i18n.js?v=217"></script>
+<script src="cities.js?v=217"></script>
+<script src="haptic.js?v=217"></script>
 <script>
 "use strict";
 
@@ -1440,14 +1440,15 @@ const vName = n => `1.${Math.floor(n / 10)}.${n % 10}`;   // shown to people (84
 (function(){
   let st={}; try{st=JSON.parse(localStorage.getItem("setOpen")||"{}")}catch(e){}
   const save=()=>{try{localStorage.setItem("setOpen",JSON.stringify(st))}catch(e){}};
-  document.querySelectorAll("#v-set > .card").forEach((c,i)=>{
-    const first=c.firstElementChild; if(!first||!/^(H3|DIV)$/.test(first.tagName)||!first.querySelector("h3")&&first.tagName!=="H3")return;
-    const id=c.id||("c"+i), body=document.createElement("div"); body.className="acc-b";
+  document.querySelectorAll("#v-set > .card, #v-dua > .card:not(.dua-item)").forEach((c,i)=>{
+    const first=c.firstElementChild; if(!first||!/^(H3|B|DIV)$/.test(first.tagName)||!first.querySelector("h3,b")&&!/^(H3|B)$/.test(first.tagName))return;
+    const id=c.id||((c.parentNode.id==="v-dua"?"d":"c")+i), body=document.createElement("div"); body.className="acc-b";
     while(first.nextSibling)body.appendChild(first.nextSibling);
     c.appendChild(body); first.classList.add("acc-h"); c.classList.add("acc");
     if(st[id])c.classList.add("open");
     first.setAttribute("role","button");
     first.addEventListener("click",e=>{
+      if(e.target.closest(".thumb")||e.target.closest("a"))return;
       if(e.target.closest(".infobtn")){ if(!c.classList.contains("open")){c.classList.add("open");st[id]=1;save();} return; }
       c.classList.toggle("open"); st[id]=c.classList.contains("open")?1:0; save();
     });
@@ -1469,7 +1470,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 216, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 217, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */

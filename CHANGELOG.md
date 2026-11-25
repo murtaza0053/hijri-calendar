@@ -66,6 +66,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v217**
+
+- Settings and Dua tab: Push alerts, Tasbeeh vibration, Home-screen widget, Rozi and Sadaqah can now be collapsed (tap the title).
+
 **v216**
 
 - New theme: Mono — black, white and grey, minimal.
