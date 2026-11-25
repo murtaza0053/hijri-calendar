@@ -1,6 +1,19 @@
 {
- "v": 204,
+ "v": 205,
  "history": [
+  {
+   "v": 205,
+   "date": "2026-11-25",
+   "en": [
+    "Android app: you will now get a pop-up when a new app version is available, with a Download button."
+   ],
+   "gu": [
+    "Android એપ: નવી એપ આવે ત્યારે પૉપ-અપ દેખાશે, ડાઉનલોડ બટન સાથે."
+   ],
+   "hi": [
+    "Android ऐप: नया ऐप आने पर पॉप-अप दिखेगा, डाउनलोड बटन के साथ।"
+   ]
+  },
   {
    "v": 204,
    "date": "2026-11-25",
@@ -2339,5 +2352,9 @@
     "Settings: Hijri number 12 ya ١٢ chuno."
    ]
   }
- ]
+ ],
+ "android": {
+  "code": 13,
+  "name": "2.2"
+ }
 }

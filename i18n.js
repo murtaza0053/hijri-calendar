@@ -2,6 +2,7 @@
 "use strict";
 globalThis.I18N = {
   en: {
+    apkT: "New Android app available", apkB: "Mumin {v} is ready. Download it and install over the current app — your data stays.", apkN: "Your phone may ask to allow installs from your browser the first time.", apkYes: "Download",
     _label: "EN",
     wakeH: "Keep screen on while reading", wakeD: "Dua, Quran, books and Ziyarat pages stop the screen from locking while they are open.",
     kumailH: "Dua e Kumail", kumailSub: "Dua Kumail · 9 pages", kumailDesc: "Dua Kumail of Moula Ali (AS) — for Shab-e-Juma (Thursday night) and the night of 15 Shaban.", kumailNote: "Pages from the printed book as published in the Dawoodi Bohra app (source not independently verified):", bDuaKumail: "Shab-e-Juma — recite Dua e Kumail 🤲", rmKumail: "Dua e Kumail (Thursday night)", rmKumailD: "Every Thursday at 7:00 PM: Shab-e-Juma, recite Dua e Kumail",
@@ -70,6 +71,7 @@ globalThis.I18N = {
   },
 
   gu: {
+    apkT: "નવી Android એપ ઉપલબ્ધ છે", apkB: "Mumin {v} તૈયાર છે. ડાઉનલોડ કરીને હાલની એપ પર ઇન્સ્ટૉલ કરો — તમારો ડેટા રહેશે.", apkN: "પહેલી વાર ફોન બ્રાઉઝરને ઇન્સ્ટૉલની પરવાનગી પૂછી શકે છે.", apkYes: "ડાઉનલોડ",
     _label: "ગુ",
     wakeH: "વાંચતી વખતે સ્ક્રીન ચાલુ રાખો", wakeD: "દુઆ, કુરાન, પુસ્તકો અને ઝિયારતના પાના ખુલ્લા હોય ત્યારે સ્ક્રીન લૉક થતી નથી.",
     kumailH: "દુઆ એ કુમૈલ", kumailSub: "દુઆ કુમૈલ · ૯ પાના", kumailDesc: "મૌલા અલી (અ.સ.) ની દુઆ કુમૈલ — શબે જુમ્આ (ગુરુવારની રાત) અને પંદરમી શાબાનની રાત માટે.", kumailNote: "છાપેલા પુસ્તકના પાના, Dawoodi Bohra એપમાં પ્રકાશિત થયેલા (સ્ત્રોત અલગથી ચકાસ્યો નથી):", bDuaKumail: "શબે જુમ્આ — દુઆ એ કુમૈલ પઢો 🤲", rmKumail: "દુઆ એ કુમૈલ (ગુરુવારની રાત)", rmKumailD: "દર ગુરુવારે સાંજે 7:00: શબે જુમ્આ, દુઆ એ કુમૈલ પઢો",
@@ -138,6 +140,7 @@ globalThis.I18N = {
   },
 
   hi: {
+    apkT: "नया Android ऐप उपलब्ध है", apkB: "Mumin {v} तैयार है। डाउनलोड करके मौजूदा ऐप के ऊपर इंस्टॉल करें — आपका डेटा बना रहेगा।", apkN: "पहली बार फ़ोन ब्राउज़र को इंस्टॉल की अनुमति पूछ सकता है।", apkYes: "डाउनलोड",
     _label: "Hinglish",
     wakeH: "Padhte waqt screen on rakho", wakeD: "Dua, Quran, kitabein aur Ziyarat ke pages khule hon to screen lock nahi hoti.",
     kumailH: "Dua e Kumail", kumailSub: "Dua Kumail · 9 pages", kumailDesc: "Moula Ali (AS) ki Dua Kumail — Shab-e-Juma (Thursday raat) aur 15 Shaban ki raat ke liye.", kumailNote: "Chhapi kitab ke pages, Dawoodi Bohra app me chhape hue (source alag se verify nahi kiya):", bDuaKumail: "Shab-e-Juma — Dua e Kumail padhiye 🤲", rmKumail: "Dua e Kumail (Thursday raat)", rmKumailD: "Har Thursday shaam 7:00 baje: Shab-e-Juma, Dua e Kumail padhiye",
