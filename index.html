@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=218">
-<script src="theme-init.js?v=218"></script>
+<link rel="stylesheet" href="themes.css?v=219">
+<script src="theme-init.js?v=219"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -473,6 +473,8 @@ html.ui-modern .slc b{font-size:34px}
   html.ui-modern nav.tabs button:nth-child(3) .i svg{width:26px;height:26px}
   html.ui-modern nav.tabs button:nth-child(3) .i svg .f,html.ui-modern nav.tabs button.on:nth-child(3) .i svg .f{fill:color-mix(in srgb,var(--on-brand) 30%,transparent)}
   html.ui-modern nav.tabs button:nth-child(3){padding-top:2px}
+  html.ui-modern nav.tabs{z-index:7}   /* above the Ziyarat iframe (z 6) so the raised Dua button is not cut */
+  html.ui-modern #v-zy iframe{height:calc(100vh - var(--navh,58px) - 10px - env(safe-area-inset-bottom) - env(safe-area-inset-top));height:calc(100dvh - var(--navh,58px) - 10px - env(safe-area-inset-bottom) - env(safe-area-inset-top))}
 }
 </style>
 </head>
@@ -803,10 +805,10 @@ html.ui-modern .slc b{font-size:34px}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=218"></script>
-<script src="i18n.js?v=218"></script>
-<script src="cities.js?v=218"></script>
-<script src="haptic.js?v=218"></script>
+<script src="hijri.js?v=219"></script>
+<script src="i18n.js?v=219"></script>
+<script src="cities.js?v=219"></script>
+<script src="haptic.js?v=219"></script>
 <script>
 "use strict";
 
@@ -1503,7 +1505,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 218, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 219, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
