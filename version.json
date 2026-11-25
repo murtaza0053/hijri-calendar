@@ -1,6 +1,19 @@
 {
- "v": 198,
+ "v": 199,
  "history": [
+  {
+   "v": 199,
+   "date": "2026-11-25",
+   "en": [
+    "Android: new updates are now found while the app is open or when you come back to it — no need to kill the app."
+   ],
+   "gu": [
+    "Android: એપ ખુલ્લી હોય કે પાછા આવો ત્યારે નવા અપડેટ મળી જશે — એપ કિલ કરવાની જરૂર નથી."
+   ],
+   "hi": [
+    "Android: app khuli ho ya wapas aao to naye update apne aap mil jayenge — app kill karne ki zarurat nahi."
+   ]
+  },
   {
    "v": 198,
    "date": "2026-11-25",

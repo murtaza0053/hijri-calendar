@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=198">
-<script src="theme-init.js?v=198"></script>
+<link rel="stylesheet" href="themes.css?v=199">
+<script src="theme-init.js?v=199"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -739,10 +739,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=198"></script>
-<script src="i18n.js?v=198"></script>
-<script src="cities.js?v=198"></script>
-<script src="haptic.js?v=198"></script>
+<script src="hijri.js?v=199"></script>
+<script src="i18n.js?v=199"></script>
+<script src="cities.js?v=199"></script>
+<script src="haptic.js?v=199"></script>
 <script>
 "use strict";
 
@@ -1432,7 +1432,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 198, APP_VERSION = vName(APP_V) + " (2026-11-23)";
+const APP_V = 199, APP_VERSION = vName(APP_V) + " (2026-11-23)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1680,7 +1680,12 @@ function checkUpdate() {
   else if (seen < APP_V) fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json())
     .then(j => { const l = j.history.filter(e => e.v > seen && e.v <= APP_V); if (l.length) showWhatsNew(l); else store.set("seenVer", APP_V); }).catch(() => {});   // seenVer is saved only when OK is pressed
   checkUpdate();
+  // The Android WebView often keeps the page alive without firing visibilitychange when the app is reopened, so also check on focus / pageshow / online,
+  // and every 45 s while the page runs (WebView timers resume the moment the app is reopened) — no need to kill the app to get an update.
+  const pulse = () => { if (document.visibilityState !== "visible") return; checkUpdate(); if (navigator.serviceWorker) navigator.serviceWorker.getRegistration().then(r => r && r.update()).catch(() => {}); };
   document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") checkUpdate(); });
+  ["focus", "pageshow", "online", "mumin-resume"].forEach(ev => addEventListener(ev, pulse));
+  setInterval(pulse, 45000);
 })();
 
 /* ---------- App tour: spotlight walkthrough for new users (and Settings → Take the app tour) ---------- */
