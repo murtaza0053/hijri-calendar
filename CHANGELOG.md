@@ -58,6 +58,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-25
 
+**v204**
+
+- Quote of the day: the English text now takes your theme colour.
+
 **v203**
 
 - Header: removed the "Now the night of…" line for a cleaner look.

@@ -1,6 +1,19 @@
 {
- "v": 203,
+ "v": 204,
  "history": [
+  {
+   "v": 204,
+   "date": "2026-11-25",
+   "en": [
+    "Quote of the day: the English text now takes your theme colour."
+   ],
+   "gu": [
+    "Quote of the day: અંગ્રેજી લખાણ હવે તમારા થીમના રંગમાં દેખાય છે."
+   ],
+   "hi": [
+    "Quote of the day: अंग्रेज़ी टेक्स्ट अब आपकी थीम के रंग में दिखता है।"
+   ]
+  },
   {
    "v": 203,
    "date": "2026-11-25",
