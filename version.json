@@ -1,6 +1,19 @@
 {
- "v": 202,
+ "v": 203,
  "history": [
+  {
+   "v": 203,
+   "date": "2026-11-25",
+   "en": [
+    "Header: removed the \"Now the night of…\" line for a cleaner look."
+   ],
+   "gu": [
+    "હેડર: વધુ સાફ દેખાવ માટે \"Now the night of…\" લાઇન કાઢી નાખી."
+   ],
+   "hi": [
+    "हेडर: साफ़ दिखावट के लिए \"Now the night of…\" वाली लाइन हटा दी।"
+   ]
+  },
   {
    "v": 202,
    "date": "2026-11-25",

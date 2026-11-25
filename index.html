@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=202">
-<script src="theme-init.js?v=202"></script>
+<link rel="stylesheet" href="themes.css?v=203">
+<script src="theme-init.js?v=203"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -44,9 +44,8 @@ header.top{background:var(--hdr);color:var(--hdr-ink);padding:14px 0 0}
 .top .hstrip span:last-child{text-align:right;opacity:.85}
 .top .hstrip{align-items:center}
 .top .hstrip #tLoc{white-space:nowrap;flex:none}
-.top .hstrip:has(#locBtn:not([hidden])){flex-wrap:wrap}.top .hstrip:has(#locBtn:not([hidden])) #tNext{flex-basis:100%;text-align:center}.top .hstrip #tNext{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;opacity:1;font-size:12px}.top .hstrip #tNext small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--hdr-gold,var(--gold));margin-right:6px}.top .hstrip #tEve{text-align:right;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top .hstrip:has(#locBtn:not([hidden])){flex-wrap:wrap}.top .hstrip:has(#locBtn:not([hidden])) #tNext{flex-basis:100%;text-align:center}.top .hstrip #tNext{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;opacity:1;font-size:12px}.top .hstrip #tNext small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--hdr-gold,var(--gold));margin-right:6px}
 .top .hstrip #locBtn{flex:none}
-.top .hstrip #tEve{flex:1 1 0;min-width:0;overflow:hidden;white-space:nowrap;text-align:right}.top .hstrip #tEve .mq{display:inline-block}.top .hstrip #tEve.run{text-align:left;-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}.top .hstrip #tEve.run .mq{padding-left:8px;animation:eveMq var(--mqt,9s) linear infinite alternate}@keyframes eveMq{0%,12%{transform:none}88%,100%{transform:translateX(calc(-1 * var(--mqd,0px)))}}@media (prefers-reduced-motion:reduce){.top .hstrip #tEve.run .mq{animation:none}}
 #locBtn{border:1px solid var(--gold);background:none;color:var(--hdr-ink);font:inherit;font-size:11px;font-weight:700;letter-spacing:.02em;border-radius:999px;padding:4px 10px;white-space:nowrap}
 .top .tstrip{display:flex;justify-content:space-between;gap:4px;padding:8px 14px;font-size:11px}
 .top .tstrip span{opacity:.55}
@@ -433,7 +432,7 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
     <div class="gcol"><div class="wdn" id="tWd"></div><div class="big" id="tGd"></div><div class="my" id="tGmy"></div></div>
     <div class="hcol"><div class="big ar" id="tHd"></div><div class="hm ar" dir="rtl" id="tHijriAr"></div><div class="my" id="tHijri"></div></div>
   </div>
-  <div class="hstrip"><span id="tLoc"></span><button id="locBtn" hidden></button><span id="tEve"></span><span id="tNext"></span></div>
+  <div class="hstrip"><span id="tLoc"></span><button id="locBtn" hidden></button><span id="tNext"></span></div>
   <div class="tstrip" id="tStrip" role="link" tabindex="0" style="cursor:pointer"></div>
 </header>
 
@@ -740,10 +739,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=202"></script>
-<script src="i18n.js?v=202"></script>
-<script src="cities.js?v=202"></script>
-<script src="haptic.js?v=202"></script>
+<script src="hijri.js?v=203"></script>
+<script src="i18n.js?v=203"></script>
+<script src="cities.js?v=203"></script>
+<script src="haptic.js?v=203"></script>
 <script>
 "use strict";
 
@@ -862,8 +861,6 @@ function renderHeader() {
   $("tLoc").textContent = "📍 " + locLabel();
   const denied = loc.key === "auto" && store.get("locDenied", false);
   $("locBtn").hidden = !denied; $("locBtn").textContent = t("locOn");
-  { const e = $("tEve"); e.classList.remove("run"); e.style.removeProperty("--mqd"); const m = document.createElement("span"); m.className = "mq"; m.textContent = n > s.sunset ? "🌙 " + t("eveNight", { d: hShort(H.fromAJD(todayAJD + 1)) }) : ""; e.replaceChildren(m);
-    requestAnimationFrame(() => { const d = m.offsetWidth - e.clientWidth; if (d > 2) { e.style.setProperty("--mqd", d + 8 + "px"); e.style.setProperty("--mqt", Math.max(5, d / 18) + "s"); e.classList.add("run"); } }); }
   const s2h = sunTimes(n.getFullYear(), n.getMonth(), n.getDate() + 1, loc.lat, loc.lng);
   const asrEnd = new Date(s.noon.getTime() + (s.sunset - s.noon) * 2 / 3);   // aajnodin: Zohar end / Asar end split Zawaal→Maghrib in thirds
   const nisfH = new Date((s.sunset.getTime() + s2h.sunrise.getTime()) / 2);
@@ -1434,7 +1431,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 202, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 203, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */

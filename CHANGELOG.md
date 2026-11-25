@@ -58,6 +58,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-25
 
+**v203**
+
+- Header: removed the "Now the night of…" line for a cleaner look.
+
 **v202**
 
 - Header: the "Now the night of…" text now scrolls slowly when it is too long, instead of being cut with “…”.
