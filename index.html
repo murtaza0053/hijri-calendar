@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=206">
-<script src="theme-init.js?v=206"></script>
+<link rel="stylesheet" href="themes.css?v=207">
+<script src="theme-init.js?v=207"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -290,6 +290,7 @@ nav.tabs button.on{color:var(--brand);font-weight:700}
 .banner{border-left:4px solid var(--gold);cursor:pointer}
 .banner .when{font-size:12px;color:var(--brand);font-weight:700;text-transform:uppercase;letter-spacing:.03em}
 .banner{padding:9px 12px}.banner .mq{display:flex;align-items:baseline;gap:8px;padding:3px 0;white-space:nowrap;overflow:hidden}.banner .when{flex:none;font-size:11px}.banner .t{font-weight:600;font-size:14px;margin:0;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.banner .tw{flex:1;min-width:0;overflow:hidden}.banner .ts{display:flex;gap:16px;white-space:nowrap;width:max-content}.banner .ts .t{flex:none;overflow:visible;text-overflow:clip}.banner .tw.run{-webkit-mask:linear-gradient(90deg,#000 94%,transparent);mask:linear-gradient(90deg,#000 94%,transparent)}.banner .tw.run .ts{animation:bnMq var(--mqt,10s) linear infinite alternate}@keyframes bnMq{0%,14%{transform:none}86%,100%{transform:translateX(calc(-1 * var(--mqd,0px)))}}@media (prefers-reduced-motion:reduce){.banner .tw.run .ts{animation:none}}
 a.btn{text-decoration:none;display:inline-block}
 h4.plat{margin:14px 0 2px;font-size:14px}
 .dua-item{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
@@ -749,10 +750,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=206"></script>
-<script src="i18n.js?v=206"></script>
-<script src="cities.js?v=206"></script>
-<script src="haptic.js?v=206"></script>
+<script src="hijri.js?v=207"></script>
+<script src="i18n.js?v=207"></script>
+<script src="cities.js?v=207"></script>
+<script src="haptic.js?v=207"></script>
 <script>
 "use strict";
 
@@ -1079,7 +1080,8 @@ function renderBanner() {
   const b = $("banner");
   if (!items.length) { b.style.display = "none"; return; }
   b.style.display = "";
-  b.innerHTML = items.map(i => i.dua ? `<div class="mq" data-dua="${i.dua}"><div class="when">${i.ic} ${i.when}</div><div class="t">${i.txt}</div></div>` : `<div class="mq" data-a="${i.a}"><div class="when">🔔 ${i.when}</div>${i.qs.map(q => `<div class="t">${q.phase === "night" ? "☾ " : "☀ "}${esc(q.title)}</div>`).join("")}</div>`).join("");
+  b.innerHTML = items.map(i => i.dua ? `<div class="mq" data-dua="${i.dua}"><div class="when">${i.ic} ${i.when}</div><div class="tw"><div class="ts"><div class="t">${i.txt}</div></div></div></div>` : `<div class="mq" data-a="${i.a}"><div class="when">🔔 ${i.when}</div><div class="tw"><div class="ts">${i.qs.map(q => `<div class="t">${q.phase === "night" ? "☾ " : "☀ "}${esc(q.title)}</div>`).join("")}</div></div></div>`).join("");
+  requestAnimationFrame(() => b.querySelectorAll(".tw").forEach(w => { const x = w.firstElementChild, d = x.scrollWidth - w.clientWidth; w.classList.remove("run"); if (d > 2) { w.style.setProperty("--mqd", d + 8 + "px"); w.style.setProperty("--mqt", Math.max(6, d / 16) + "s"); w.classList.add("run"); } }));
 }
 function goDay(a) {   // jump to a date: right month, scrolled to the calendar, day sheet open
   const h = H.fromAJD(a); view = { y: h.y, m: h.m }; if (curView !== "cal") switchView("cal"); renderCal();
@@ -1441,7 +1443,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 206, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 207, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */

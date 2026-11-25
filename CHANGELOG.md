@@ -64,6 +64,12 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ## Web app
 
+### 2026-11-26
+
+**v207**
+
+- Notification banner: long text now scrolls slowly so you can read all of it, instead of being cut with “…”.
+
 ### 2026-11-25
 
 **v206**
