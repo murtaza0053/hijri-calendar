@@ -20,7 +20,7 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-sy
 header{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:4px;padding:calc(env(safe-area-inset-top) + 6px) 6px 6px;background:var(--hdr);color:var(--hdr-ink)}
 header a,header button{color:inherit;background:none;border:0;font:inherit;text-decoration:none;font-size:22px;min-width:40px;height:40px;display:grid;place-items:center;border-radius:10px}
 header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#pg{font-size:13px;font-weight:600;background:var(--hdr-chip);padding:0 10px;min-width:0}
+#bmBtn,#nightBtn{font-size:19px!important;min-width:36px!important}#pg{font-size:13px;font-weight:600;background:var(--hdr-chip);padding:0 10px;min-width:0}
 #pages{max-width:900px;margin:0 auto;padding:8px 6px 90px}
 .pg{position:relative;background:#fff;margin:0 auto 8px;box-shadow:0 1px 4px rgba(0,0,0,.15);width:100%}
 .pg canvas{position:absolute;inset:0;width:100%;height:100%}
@@ -68,6 +68,12 @@ header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:
 .sheet .row.nm{display:flex;gap:8px;padding:8px 8px;font-size:13px;background:var(--card);border-bottom:1px solid var(--line);border-radius:0}
 .sheet .row.nm .t{flex:1}.sheet .row.nm .g{flex:none;color:var(--muted);font-size:12px}
 .sheet #sres .row.nm{flex-wrap:wrap}.sheet #sres .row.nm small{flex-basis:100%;color:var(--muted);font-size:11px}
+.night .pg{background:#15171a}.night .pg canvas,.night .pg img{filter:invert(.92) hue-rotate(180deg)}.night .pg .no{color:#888}
+.sheet .bm,.sheet .off{display:flex;align-items:center;gap:8px;padding:9px 6px;border-top:1px solid var(--line);cursor:pointer;font-size:14px}
+.sheet .bm b{flex:1}.sheet .bm span{color:var(--muted);font-size:13px}.sheet .bm .bx{flex:none;border:0;background:none;color:var(--muted);font-size:18px;min-width:32px}
+.sheet .off{background:var(--bg);border:1px solid var(--line);border-radius:10px;margin:6px 0}.sheet .off b{flex:1;font-weight:600}.sheet .off small{color:var(--muted);display:block;font-weight:400;font-size:12px}
+.sheet .off button{flex:none;border:0;border-radius:10px;padding:8px 12px;font:inherit;font-weight:700;background:var(--brand);color:var(--on-brand)}.sheet .off.on button{background:var(--chip);color:var(--ink)}
+.sheet .sh{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:10px 6px 2px}
 @media (min-width:700px){header{padding-left:max(6px,calc((100% - 900px)/2 + 6px));padding-right:max(6px,calc((100% - 900px)/2 + 6px))}}
 /* frosted-glass header (works on Android Chrome and iOS Safari) */
 @supports ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
@@ -79,6 +85,8 @@ header b{flex:1;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:
 <header>
   <a href="../#dua" aria-label="Back">‹</a>
   <b id="title"></b>
+  <button id="bmBtn" aria-label="Bookmark">☆</button>
+  <button id="nightBtn" aria-label="Night reading">🌙</button>
   <button id="pg" aria-label="Contents"></button>
   <button id="tocBtn" aria-label="Contents">☰</button>
 </header>
@@ -160,7 +168,7 @@ async function renderPage(n) {
   const page = await pdf.getPage(n);
   if (rec.cancel) return;
   const w = box.clientWidth, base = page.getViewport({ scale: 1 });
-  const scale = w / base.width, dpr = Math.min(devicePixelRatio || 1, 3);
+  const scale = w / base.width, dpr = Math.min(devicePixelRatio || 1, 2);
   const vp = page.getViewport({ scale: scale * dpr });
   const c = document.createElement("canvas");
   c.width = Math.floor(vp.width); c.height = Math.floor(vp.height);
@@ -195,10 +203,11 @@ function update() {
   cur = pageAt();
   $("pg").textContent = `${cur} / ${N}`;
   ls.set("book:" + id, cur);
-  const want = new Set();
-  for (let p = cur - 2; p <= cur + 3; p++) if (p >= 1 && p <= N) want.add(p);
-  for (const p of [...rendered.keys()]) if (!want.has(p)) unrender(p);
+  const want = [];
+  for (const d of [0, 1, -1, 2, -2, 3, -3, 4]) { const p = cur + d; if (p >= 1 && p <= N) want.push(p); }   // visible page first, then the ones scrolling will reach
+  for (const p of [...rendered.keys()]) if (!want.includes(p)) unrender(p);
   want.forEach(p => renderPage(p));
+  bmDraw();
 }
 addEventListener("scroll", () => { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
 addEventListener("resize", () => { [...rendered.keys()].forEach(unrender); update(); });
@@ -297,13 +306,49 @@ async function openItems(sub, host) {
     const box = $("lt" + sub); if (box) cs.forEach((c, i) => { c.dataset.p = ds[i]; box.append(c); });
   }
 }
-function openSheet() {
+// ---- night reading, bookmarks, offline copy
+const BT = { en: { bm: "Bookmarks", add: "Bookmark this page", off: "Save for offline", offOn: "Saved for offline", offSz: "{m} MB — opens instantly, works without internet", save: "Save", rm: "Remove", wait: "Saving… {p}%", fail: "Could not save — check space/internet" },
+  gu: { bm: "બુકમાર્ક", add: "આ પાનું બુકમાર્ક કરો", off: "ઓફલાઇન માટે સેવ કરો", offOn: "ઓફલાઇન સેવ છે", offSz: "{m} MB — તરત ખુલે, ઇન્ટરનેટ વગર ચાલે", save: "સેવ", rm: "કાઢો", wait: "સેવ થઈ રહ્યું છે… {p}%", fail: "સેવ ન થયું — જગ્યા/ઇન્ટરનેટ તપાસો" },
+  hi: { bm: "Bookmarks", add: "Is page ko bookmark karo", off: "Offline ke liye save karo", offOn: "Offline save hai", offSz: "{m} MB — turant khulta hai, internet ke bina chalta hai", save: "Save", rm: "Hatao", wait: "Save ho raha hai… {p}%", fail: "Save nahi hua — jagah/internet check karo" } };
+const bt = (k, v = {}) => String((BT[lang] || BT.en)[k]).replace(/\{(\w+)\}/g, (_, x) => v[x] ?? "");
+const OFFC = "books-offline-v1";
+function night(on) { document.body.classList.toggle("night", on); $("nightBtn").textContent = on ? "☀️" : "🌙"; }
+night(ls.get("bookNight", false));
+$("nightBtn").onclick = () => { const on = !document.body.classList.contains("night"); ls.set("bookNight", on); night(on); };
+let BM = ls.get("bm:" + id, []);
+function bmDraw() { $("bmBtn").textContent = BM.includes(cur) ? "★" : "☆"; }
+$("bmBtn").onclick = () => { BM = BM.includes(cur) ? BM.filter(p => p !== cur) : [...BM, cur].sort((a, b) => a - b); ls.set("bm:" + id, BM); bmDraw(); };
+async function offHTML() {
+  if (B.images) return "";
+  let on = false; try { on = !!(await (await caches.open(OFFC)).match(B.pdf)); } catch { return ""; }
+  const mb = ls.get("offmb:" + id, 0);
+  return `<div class="off ${on ? "on" : ""}" id="offBox"><b>${on ? bt("offOn") : bt("off")}<small>${mb ? bt("offSz", { m: mb }) : ""}</small></b><button data-off="${on ? "rm" : "save"}">${on ? bt("rm") : bt("save")}</button></div>`;
+}
+function bmHTML() {
+  return BM.length ? `<div class="sh">★ ${bt("bm")}</div>` + BM.map(p => `<div class="bm" data-p="${p}"><b>${t("bkPage")} ${p}</b><button class="bx" data-bx="${p}" aria-label="${bt("rm")}">✕</button></div>`).join("") : "";
+}
+async function offSave(btn) {
+  const box = $("offBox"), sm = box.querySelector("small");
+  try {
+    btn.disabled = true;
+    const r = await fetch(B.pdf); if (!r.ok) throw 0;
+    const total = +r.headers.get("content-length") || 0, rd = r.body.getReader(), parts = []; let got = 0;
+    for (;;) { const { done, value } = await rd.read(); if (done) break; parts.push(value); got += value.length; sm.textContent = bt("wait", { p: total ? Math.floor(got / total * 100) : Math.floor(got / 1048576) }); }
+    await (await caches.open(OFFC)).put(B.pdf, new Response(new Blob(parts), { headers: { "Content-Type": "application/pdf" } }));
+    ls.set("offmb:" + id, Math.round(got / 1048576)); if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
+    openSheet();
+  } catch { btn.disabled = false; sm.textContent = bt("fail"); }
+}
+async function offRemove() { try { await (await caches.open(OFFC)).delete(B.pdf); } catch {} openSheet(); }
+
+async function openSheet() {
   if (id === "zikre" && outline.length) return openTree();
 
   const srch = outline.length > 12;   // long contents: add a search box (title words or page number)
   $("sheet").innerHTML = `<div class="stk"><div class="grab"></div><h3>${t("bkContents")}</h3>
     <div class="jump"><input id="jp" type="number" inputmode="numeric" min="1" max="${N}" placeholder="${t("bkPage")} (1–${N})"><button id="jgo">${t("bkGo")}</button></div>
     ${srch ? `<div class="jump"><input id="sq" type="search" placeholder="${SRCH[lang] || SRCH.en}" autocomplete="off"></div>` : ""}</div>
+    ${await offHTML()}${bmHTML()}
     <div class="it" data-p="1" data-f="${fold(t("bkIndex") + " index 1")}"><b>${t("bkIndex")}</b><span>1</span></div>
     ${B.note ? `<p style="color:var(--muted);font-size:12px;margin:6px">${esc(t(B.note))}</p>` : ""}${outline.map(o => `<div class="it" data-p="${o.p}" data-f="${esc(fold(o.title + " " + (o.kw || "") + " " + o.p))}"><b>${esc(o.title)}</b><span>${o.p}</span></div>`).join("")}
     <div class="none" id="nm" hidden>${NOMATCH[lang] || NOMATCH.en}</div>`;
@@ -312,13 +357,14 @@ function openSheet() {
   $("jgo").onclick = () => { const p = +$("jp").value; if (p) { closeSheet(); goto(p, true); } };
 }
 
-function openTree() {
+async function openTree() {
   const secs = outline.map((o, i) => ({ ...o, kids: ZSUB.filter(k => k[0] >= o.p && (i + 1 >= outline.length || k[0] < outline[i + 1].p)) }));
   const curSec = secs.filter(x => x.p <= cur).length - 1;
   const row = k => `<div class="it" data-p="${k[0]}" data-f="${esc(fold(k[1] + k[2] + k[0]))}"><div class="lt"><b>${esc(k[1])}</b><span class="ur">${esc(k[2])}</span></div><span>${k[0]}</span>${ZIDX[k[0]] ? `<button class="xp" data-x="${k[0]}">${t("bkItems")} ▾</button>` : ""}</div>${ZIDX[k[0]] ? `<div class="items" id="it${k[0]}"></div>` : ""}`;
   $("sheet").innerHTML = `<div class="stk"><div class="grab"></div><h3>${t("bkContents")}</h3>
     <div class="jump"><input id="jp" type="number" inputmode="numeric" min="1" max="${N}" placeholder="${t("bkPage")} (1–${N})"><button id="jgo">${t("bkGo")}</button></div>
     <div class="jump"><input id="sq" type="search" placeholder="${SRCH[lang] || SRCH.en}" autocomplete="off"></div></div>
+    ${await offHTML()}${bmHTML()}
     <div id="tree">${secs.map((x, i) => `<div class="grp" data-sf="${esc(fold(x.title))}"><div class="sec" data-p="${x.p}"><b>${esc(x.title)}</b><span>${x.p}</span></div><div class="kids">${x.kids.map(row).join("") || `<div class="it" data-p="${x.p}"><b>${t("bkGo")}</b><span>${x.p}</span></div>`}</div></div>`).join("")}</div>
     <div id="sres"></div>
     <div class="none" id="nm" hidden>${NOMATCH[lang] || NOMATCH.en}</div>`;
@@ -371,6 +417,8 @@ function closeSheet() { $("sheet").classList.remove("on"); $("sbg").style.displa
 $("sbg").onclick = closeSheet;
 $("tocBtn").onclick = $("pg").onclick = openSheet;
 $("sheet").onclick = e => {
+  const bx = e.target.closest("[data-bx]"); if (bx) { e.stopPropagation(); BM = BM.filter(p => p !== +bx.dataset.bx); ls.set("bm:" + id, BM); bmDraw(); bx.closest(".bm").remove(); return; }
+  const of = e.target.closest("[data-off]"); if (of) { e.stopPropagation(); of.dataset.off === "save" ? offSave(of) : offRemove(); return; }
   const xb = e.target.closest(".xp");
   if (xb) { e.stopPropagation(); openItems(+xb.dataset.x, $("it" + xb.dataset.x)); return; }
   const ph = e.target.closest(".ph");
@@ -408,7 +456,9 @@ $("sheet").onclick = e => {
     update(); return;
   }
   try {
-    pdf = await pdfjsLib.getDocument({ url: B.pdf, rangeChunkSize: 262144, disableAutoFetch: true, disableStream: true }).promise;
+    let src = { url: B.pdf, rangeChunkSize: 262144, disableAutoFetch: true, disableStream: true };
+    try { const hit = await (await caches.open(OFFC)).match(B.pdf); if (hit) src = { data: new Uint8Array(await hit.arrayBuffer()) }; } catch {}   // saved for offline: opens at once, no network
+    pdf = await pdfjsLib.getDocument(src).promise;
   } catch (e) { $("msg").textContent = t("bkFail") + " (" + e.message + ")"; return; }
   N = pdf.numPages;
   const p1 = await pdf.getPage(1), v = p1.getViewport({ scale: 1 });
@@ -424,7 +474,7 @@ $("sheet").onclick = e => {
   if (B.toc) outline = B.toc.map(([k, p]) => ({ title: `${B.label} ${k}`, p }));
   else {
     const ol = await pdf.getOutline().catch(() => null) || [];
-    for (const o of ol) { const p = await destToPage(o.dest).catch(() => null); if (p) outline.push({ title: o.title, p }); }
+    (await Promise.all(ol.map(o => destToPage(o.dest).catch(() => null)))).forEach((p, i) => { if (p) outline.push({ title: ol[i].title, p }); });
     if (B.extra) { B.extra.forEach(([p, title, kw]) => outline.push({ title, p, kw })); outline = outline.map((o, i) => ({ ...o, i })).sort((x, y) => x.p - y.p || x.i - y.i); }
   }
   const last = +new URLSearchParams(location.search).get("p") || ls.get("book:" + id, 1);
