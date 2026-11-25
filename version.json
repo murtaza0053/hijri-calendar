@@ -1,6 +1,19 @@
 {
- "v": 187,
+ "v": 188,
  "history": [
+  {
+   "v": 188,
+   "date": "2026-11-25",
+   "en": [
+    "Stop bar for the azaan now also works in the older Android app — no new APK needed."
+   ],
+   "gu": [
+    "અઝાન માટેનો Stop બાર હવે જૂની Android એપમાં પણ ચાલે છે — નવી APK જરૂરી નથી."
+   ],
+   "hi": [
+    "Azaan ka Stop bar ab purani Android app me bhi chalta hai — nayi APK ki zarurat nahi."
+   ]
+  },
   {
    "v": 187,
    "date": "2026-11-25",

@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=187">
-<script src="theme-init.js?v=187"></script>
+<link rel="stylesheet" href="themes.css?v=188">
+<script src="theme-init.js?v=188"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -738,10 +738,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=187"></script>
-<script src="i18n.js?v=187"></script>
-<script src="cities.js?v=187"></script>
-<script src="haptic.js?v=187"></script>
+<script src="hijri.js?v=188"></script>
+<script src="i18n.js?v=188"></script>
+<script src="cities.js?v=188"></script>
+<script src="haptic.js?v=188"></script>
 <script>
 "use strict";
 
@@ -1426,7 +1426,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 187, APP_VERSION = vName(APP_V) + " (2026-11-23)";
+const APP_V = 188, APP_VERSION = vName(APP_V) + " (2026-11-23)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1455,11 +1455,14 @@ function azPlay() {
 }
 function azStop() { azNat = false; if (window.MuminNative && MuminNative.stopAzaan) MuminNative.stopAzaan(); azAudio.pause(); azAudio.currentTime = 0; azDraw(); }
 azAudio.onended = azAudio.onpause = azDraw;
-if (window.MuminNative && MuminNative.isAzaanPlaying) {   // Android: azaan may start from a background alarm — show a Stop bar anywhere in the app
+if (window.MuminNative) {   // Android: azaan may start from a background alarm — show a Stop bar anywhere in the app (older APKs lack isAzaanPlaying, so fall back to the scheduled azaan times)
   const bar = document.createElement("div"); bar.id = "azBar"; bar.hidden = true;
   bar.innerHTML = `<span>🔊 ${t("azOn")}</span><button type="button">■ ${t("azStop")}</button>`; document.body.appendChild(bar);
   bar.querySelector("button").onclick = azStop;
-  setInterval(() => { let p = false; try { p = MuminNative.isAzaanPlaying(); } catch {} bar.hidden = !p; if (p !== azNat) { azNat = p; azDraw(); } }, 1000);
+  let azOff = 0;
+  bar.querySelector("button").addEventListener("click", () => { azOff = Date.now(); });
+  const azWin = () => { const n = Date.now(); return store.get("azTimes", []).some(a => n >= a && n - a < 205000 && azOff < a); };
+  setInterval(() => { let p; try { p = MuminNative.isAzaanPlaying ? MuminNative.isAzaanPlaying() : azWin(); } catch { p = azWin(); } bar.hidden = !p; if (p !== azNat) { azNat = p; azDraw(); } }, 1000);
 }
 $("azPlay").onclick = () => { $("azCard").classList.remove("hot"); (window.MuminNative ? !azNat : azAudio.paused) ? azPlay() : azStop(); };
 $("azOpts").onchange = e => { const k = e.target.dataset.az; if (!k) return; azPrefs[k] = e.target.checked; store.set("azaan", azPrefs); nativeSync(); e.target.parentElement.classList.toggle("on", e.target.checked); azUnlock(); };
@@ -1499,6 +1502,7 @@ function nativeSync() {
       if (at > now) out.push({ at, title: "✨ " + t("qH") + " ✨", body: quoteFor(new Date(at)), azaan: false, hash: "#q" });
     }
     out.sort((a, b) => a.at - b.at);
+    store.set("azTimes", out.filter(o => o.azaan).map(o => o.at));
     MuminNative.schedule(JSON.stringify(out));
   } catch (e) {}
 }
