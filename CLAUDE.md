@@ -14,7 +14,8 @@ Owner writes and expects replies in **Hinglish** (Hindi in Latin letters). Keep 
 3. Prepend a `version.json` history entry `{v, date, en[], gu[], hi[]}` and set the top-level `"v"`. Notes are short and for non-technical users. The app shows an update bar when server v > `APP_V`.
 4. If you touched `dua/` files, bump the cache name in `dua/sw.js` (`readalong-shell-vN`).
 5. Syntax-check the inline JS before pushing (needs Node ≥ 12 with `?.`; use `source ~/.nvm/nvm.sh; nvm use 22`).
-6. `git add -A && git commit && git push`.
+6. Run `python3 tools/make-changelog.py` (rebuilds `CHANGELOG.md` from `version.json` + GitHub APK releases; needs `gh` logged in).
+7. `git add -A && git commit && git push`.
    - Commit trailer: `Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>` (per current harness setting).
    - Do **not** chain `pkill` into the same command as `git commit` (it killed the whole chain twice → nothing was committed). Run it separately.
 
