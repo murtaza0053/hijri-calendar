@@ -1,6 +1,19 @@
 {
- "v": 201,
+ "v": 202,
  "history": [
+  {
+   "v": 202,
+   "date": "2026-11-25",
+   "en": [
+    "Header: the \"Now the night of…\" text now scrolls slowly when it is too long, instead of being cut with “…”."
+   ],
+   "gu": [
+    "હેડર: \"Now the night of…\" લખાણ લાંબું હોય ત્યારે “…” થી કપાતું નથી, ધીમે ધીમે ખસે છે."
+   ],
+   "hi": [
+    "हेडर: \"Now the night of…\" वाला टेक्स्ट लंबा होने पर “…” से कटता नहीं, धीरे-धीरे खिसकता है।"
+   ]
+  },
   {
    "v": 201,
    "date": "2026-11-25",
