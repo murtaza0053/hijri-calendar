@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=212">
-<script src="theme-init.js?v=212"></script>
+<link rel="stylesheet" href="themes.css?v=213">
+<script src="theme-init.js?v=213"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -320,6 +320,14 @@ html[data-view=sl] header.top,html[data-view=sl] #miniBar{display:none}
 .acc>.acc-h>.infobtn{order:2}
 h3.sec{margin:16px 4px 8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 /* Dua tab: minimal flat list */
+#v-dua>.card:not(.dua-item){background:none;border:0;border-radius:0;box-shadow:none;padding:6px 4px 10px;margin-bottom:6px}
+#v-dua .sd.today{background:none;border-radius:0}#v-dua .sd.today .it{font-weight:700}
+#v-dua #sdqCard{border-top:1px solid var(--line);padding-top:16px;margin-top:6px}
+#v-dua .card>div>div>.muted[data-i18n=roziDesc],#v-dua #sdqCard>.muted[data-i18n=sdqDesc],#v-dua #sdqNow{display:none}
+#v-dua .card>b,#v-dua .card>div>div>b{font-size:16px}
+#v-dua .thumb{width:34px;height:42px;opacity:.85}
+#v-dua .rz{padding:11px 4px}#v-dua .rz .d{background:none;min-width:30px;height:auto;color:var(--muted);font-weight:600}#v-dua .rz .go{color:var(--muted);opacity:.7}
+#v-dua .rz.today{background:none;border-radius:0}#v-dua .rz.today .d{background:none;color:var(--brand)}#v-dua .rz.today .n{color:var(--brand)}
 #v-dua .dua-item{background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none;margin:0!important;padding:14px 4px;gap:14px}
 #v-dua .dua-item:hover{box-shadow:none;transform:none;background:none}
 #v-dua .dua-item .dua-ic{width:28px;height:28px;background:none;font-size:21px;filter:grayscale(.35)}
@@ -758,10 +766,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=212"></script>
-<script src="i18n.js?v=212"></script>
-<script src="cities.js?v=212"></script>
-<script src="haptic.js?v=212"></script>
+<script src="hijri.js?v=213"></script>
+<script src="i18n.js?v=213"></script>
+<script src="cities.js?v=213"></script>
+<script src="haptic.js?v=213"></script>
 <script>
 "use strict";
 
@@ -1450,7 +1458,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 212, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 213, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */

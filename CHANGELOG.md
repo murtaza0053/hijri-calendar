@@ -66,6 +66,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v213**
+
+- Dua tab: the Rozi and Sadaqah cards in the Amal section are now minimal too.
+
 **v212**
 
 - Quote of the day: new font (Playfair Display).
