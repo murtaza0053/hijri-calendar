@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=189">
-<script src="theme-init.js?v=189"></script>
+<link rel="stylesheet" href="themes.css?v=190">
+<script src="theme-init.js?v=190"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -252,9 +252,9 @@ nav.tabs button.on{color:var(--brand);font-weight:700}
 .qcard .qm.qa{margin-bottom:14px}.qcard .qm.qu{opacity:.88}
 .qcard .qm.qa::after{content:""}
 .qcard .qd{width:28px;height:2px;border-radius:1px;background:var(--gold);margin:0 auto}
-.qcard .qt{margin:16px auto 0;max-width:30em;white-space:pre-line;font-family:"Kaushan Script","Segoe Script","Brush Script MT",cursive;font-weight:400;font-size:21px;line-height:1.6;color:var(--ink);text-wrap:pretty}
+.qcard .qt{margin:16px auto 0;max-width:30em;white-space:pre-line;font-family:Merienda,"Segoe Script","Brush Script MT",cursive;font-weight:400;font-size:19px;line-height:1.65;color:var(--ink);text-wrap:pretty}
 .qcard .qn{margin-top:14px;font-size:11px;color:var(--muted)}
-@font-face{font-family:"Kaushan Script";font-weight:400;font-display:swap;src:url(fonts/KaushanScript-400.woff2) format("woff2")}
+@font-face{font-family:Merienda;font-weight:300 900;font-display:swap;src:url(fonts/Merienda-400.woff2) format("woff2")}
 @font-face{font-family:Amiri;font-weight:400;font-display:swap;src:url(fonts/Amiri-400.woff2) format("woff2")}
 .qcard .qar{margin:14px auto;white-space:pre-line;text-wrap:balance;font:400 26px/1.95 Amiri,"Noto Naskh Arabic","Traditional Arabic",serif;color:var(--ink)}
 @font-face{font-family:"Noto Nastaliq Urdu";font-weight:400;font-display:swap;src:url(fonts/NotoNastaliqUrdu-400.woff2) format("woff2")}
@@ -738,10 +738,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=189"></script>
-<script src="i18n.js?v=189"></script>
-<script src="cities.js?v=189"></script>
-<script src="haptic.js?v=189"></script>
+<script src="hijri.js?v=190"></script>
+<script src="i18n.js?v=190"></script>
+<script src="cities.js?v=190"></script>
+<script src="haptic.js?v=190"></script>
 <script>
 "use strict";
 
@@ -1426,7 +1426,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 189, APP_VERSION = vName(APP_V) + " (2026-11-23)";
+const APP_V = 190, APP_VERSION = vName(APP_V) + " (2026-11-23)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
