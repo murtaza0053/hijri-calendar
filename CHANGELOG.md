@@ -66,6 +66,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v215**
+
+- Settings: tick boxes moved to the right, and every row now has an icon on the left.
+
 **v214**
 
 - Settings: cleaner, minimal list — no boxes, shorter rows.
