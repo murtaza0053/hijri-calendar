@@ -6,7 +6,11 @@ Web app build numbers are `APP_V` in `index.html`. The notes are the user-facing
 
 ## Android APK
 
-### Mumin Android 2.0 — 2026-11-25 (latest)
+### Mumin Android 2.1 — 2026-11-25 (latest)
+
+New engraved gold launcher icon (adaptive + legacy).
+
+### Mumin Android 2.0 — 2026-11-25
 
 Opening screen: Bismillah calligraphy at the top, a deeper engraved high-definition gold logo exactly in the centre, MUMIN below. Single splash, no flicker.
 
