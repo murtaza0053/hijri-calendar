@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=219">
-<script src="theme-init.js?v=219"></script>
+<link rel="stylesheet" href="themes.css?v=220">
+<script src="theme-init.js?v=220"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -635,7 +635,7 @@ html.ui-modern .slc b{font-size:34px}
     <div class="slhead"><button class="slb" id="slBack" aria-label="Back">‹</button><b data-i18n="slH"></b><button class="slcity" id="slCity"><span id="slLoc"></span> ▾</button></div>
     <div class="slhero">
       <div class="sldate" id="slDate"></div>
-      <div class="slring" id="slRing"><svg viewBox="0 0 120 120"><defs><linearGradient id="slGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8a4c"/><stop offset=".35" stop-color="#ff4fa3"/><stop offset=".65" stop-color="#8c7bff"/><stop offset="1" stop-color="#2fd6c8"/></linearGradient></defs><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" id="slArc" cx="60" cy="60" r="52" transform="rotate(-90 60 60)"/></svg>
+      <div class="slring" id="slRing"><svg viewBox="0 0 120 120"><defs><linearGradient id="slGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--g1,#ff8a4c)"/><stop offset=".35" style="stop-color:var(--g2,#ff4fa3)"/><stop offset=".65" style="stop-color:var(--g3,#8c7bff)"/><stop offset="1" style="stop-color:var(--g4,#2fd6c8)"/></linearGradient></defs><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" id="slArc" cx="60" cy="60" r="52" transform="rotate(-90 60 60)"/></svg>
         <div class="slc"><small id="slNextL"></small><b id="slNextT"></b><span id="slLeft"></span></div></div>
       <div class="slseg"><button id="slPrev" aria-label="Previous day">‹</button><button id="slToday" data-i18n="today"></button><button id="slNextD" aria-label="Next day">›</button></div>
     </div>
@@ -805,10 +805,10 @@ html.ui-modern .slc b{font-size:34px}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=219"></script>
-<script src="i18n.js?v=219"></script>
-<script src="cities.js?v=219"></script>
-<script src="haptic.js?v=219"></script>
+<script src="hijri.js?v=220"></script>
+<script src="i18n.js?v=220"></script>
+<script src="cities.js?v=220"></script>
+<script src="haptic.js?v=220"></script>
 <script>
 "use strict";
 
@@ -844,7 +844,7 @@ function setLang(k) {
 document.addEventListener("click", e => { const b = e.target.closest("[data-l]"); if (b) setLang(b.dataset.l); });
 
 /* ---------- Theme ---------- */
-const THEMES = { gold: "#c9a227", green: "#0f5132", maroon: "#7a1f2b", navy: "#1d3a6e", teal: "#0e6e6a", rose: "#f4b6ca", sky: "#a9d4f2", lavender: "#cbb9f0", mono: "#111111", midnight: "linear-gradient(135deg,#2a2940 55%,#ff8a4c 55%)" };
+const THEMES = { gold: "#c9a227", green: "#0f5132", maroon: "#7a1f2b", navy: "#1d3a6e", teal: "#0e6e6a", rose: "#f4b6ca", sky: "#a9d4f2", lavender: "#cbb9f0", mono: "#111111", midnight: "linear-gradient(135deg,#2a2940 55%,#ff8a4c 55%)", nightviolet: "linear-gradient(135deg,#1e1a33 55%,#a78bfa 55%)", nightocean: "linear-gradient(135deg,#0f2230 55%,#38bdf8 55%)", nightgreen: "linear-gradient(135deg,#0f241d 55%,#34d399 55%)", nightpink: "linear-gradient(135deg,#2a1a2a 55%,#f472b6 55%)" };
 const MODES = ["auto", "light", "dark"];
 let theme = store.get("theme", "maroon"); if (!THEMES[theme]) theme = "maroon";
 let mode = store.get("mode", "light"); if (!MODES.includes(mode)) mode = "light";
@@ -1505,7 +1505,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 219, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 220, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */

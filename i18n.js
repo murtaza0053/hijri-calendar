@@ -2,6 +2,7 @@
 "use strict";
 globalThis.I18N = {
   en: {
+    th_nightviolet: "Violet night", th_nightocean: "Ocean night", th_nightgreen: "Emerald night", th_nightpink: "Pink night",
     uiH: "Style", ui_classic: "Classic", ui_modern: "Modern", th_midnight: "Midnight",
     azVib: "Vibrate during azaan", azVol: "Azaan volume",
     apkT: "New Android app available", apkB: "Mumin {v} is ready. Download it and install over the current app — your data stays.", apkN: "Your phone may ask to allow installs from your browser the first time.", apkYes: "Download",
@@ -73,6 +74,7 @@ globalThis.I18N = {
   },
 
   gu: {
+    th_nightviolet: "વાયોલેટ નાઇટ", th_nightocean: "ઓશન નાઇટ", th_nightgreen: "એમેરલ્ડ નાઇટ", th_nightpink: "પિંક નાઇટ",
     uiH: "સ્ટાઇલ", ui_classic: "ક્લાસિક", ui_modern: "મોડર્ન", th_midnight: "મિડનાઇટ",
     azVib: "અઝાન વખતે વાઇબ્રેટ", azVol: "અઝાન અવાજ",
     apkT: "નવી Android એપ ઉપલબ્ધ છે", apkB: "Mumin {v} તૈયાર છે. ડાઉનલોડ કરીને હાલની એપ પર ઇન્સ્ટૉલ કરો — તમારો ડેટા રહેશે.", apkN: "પહેલી વાર ફોન બ્રાઉઝરને ઇન્સ્ટૉલની પરવાનગી પૂછી શકે છે.", apkYes: "ડાઉનલોડ",
@@ -144,6 +146,7 @@ globalThis.I18N = {
   },
 
   hi: {
+    th_nightviolet: "Violet raat", th_nightocean: "Ocean raat", th_nightgreen: "Emerald raat", th_nightpink: "Pink raat",
     uiH: "Style", ui_classic: "Classic", ui_modern: "Modern", th_midnight: "Midnight (raat)",
     azVib: "Azaan ke dauran vibrate", azVol: "Azaan ki awaaz",
     apkT: "नया Android ऐप उपलब्ध है", apkB: "Mumin {v} तैयार है। डाउनलोड करके मौजूदा ऐप के ऊपर इंस्टॉल करें — आपका डेटा बना रहेगा।", apkN: "पहली बार फ़ोन ब्राउज़र को इंस्टॉल की अनुमति पूछ सकता है।", apkYes: "डाउनलोड",
