@@ -68,7 +68,7 @@ globalThis.I18N = {
     eveBefore: "After Maghrib ({t}): night of {d}",
     leap: "Leap year", nightTag: "night · after Maghrib", loadFail: "Couldn't load miqaats.",
     relToday: "Today", relTomorrow: "Tomorrow", relIn: "in {n} days",
-    bTonight: "Tonight (after Maghrib)", bTomorrowNight: "Tomorrow night", bWdNight: "{wd} night", bInDays: "in {n} days · {wd}",
+    bTonight: "Tonight", bTomorrowNight: "Tomorrow night", bWdNight: "{wd} night", bInDays: "in {n} days · {wd}",
   },
 
   gu: {
@@ -138,7 +138,7 @@ globalThis.I18N = {
     eveBefore: "મગરિબ ({t}) પછી: {d}ની રાત",
     leap: "કબીસા વર્ષ", nightTag: "રાત · મગરિબ પછી", loadFail: "મિકાત લોડ ન થઈ.",
     relToday: "આજે", relTomorrow: "કાલે", relIn: "{n} દિવસ પછી",
-    bTonight: "આજે રાત્રે (મગરિબ પછી)", bTomorrowNight: "કાલે રાત્રે", bWdNight: "{wd} રાત્રે", bInDays: "{n} દિવસ પછી · {wd}",
+    bTonight: "આજે રાત્રે", bTomorrowNight: "કાલે રાત્રે", bWdNight: "{wd} રાત્રે", bInDays: "{n} દિવસ પછી · {wd}",
   },
 
   hi: {
@@ -208,6 +208,6 @@ globalThis.I18N = {
     eveBefore: "Maghrib ({t}) ke baad: {d} ki raat",
     leap: "Kabisa saal", nightTag: "raat · Maghrib ke baad", loadFail: "Miqaats load nahi hui.",
     relToday: "Aaj", relTomorrow: "Kal", relIn: "{n} din baad",
-    bTonight: "Aaj raat (Maghrib ke baad)", bTomorrowNight: "Kal raat", bWdNight: "{wd} raat", bInDays: "{n} din baad · {wd}",
+    bTonight: "Aaj raat", bTomorrowNight: "Kal raat", bWdNight: "{wd} raat", bInDays: "{n} din baad · {wd}",
   },
 };
