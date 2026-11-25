@@ -2,6 +2,7 @@
 "use strict";
 globalThis.I18N = {
   en: {
+    azVib: "Vibrate during azaan", azVol: "Azaan volume",
     apkT: "New Android app available", apkB: "Mumin {v} is ready. Download it and install over the current app — your data stays.", apkN: "Your phone may ask to allow installs from your browser the first time.", apkYes: "Download",
     _label: "EN",
     wakeH: "Keep screen on while reading", wakeD: "Dua, Quran, books and Ziyarat pages stop the screen from locking while they are open.",
@@ -71,6 +72,7 @@ globalThis.I18N = {
   },
 
   gu: {
+    azVib: "અઝાન વખતે વાઇબ્રેટ", azVol: "અઝાન અવાજ",
     apkT: "નવી Android એપ ઉપલબ્ધ છે", apkB: "Mumin {v} તૈયાર છે. ડાઉનલોડ કરીને હાલની એપ પર ઇન્સ્ટૉલ કરો — તમારો ડેટા રહેશે.", apkN: "પહેલી વાર ફોન બ્રાઉઝરને ઇન્સ્ટૉલની પરવાનગી પૂછી શકે છે.", apkYes: "ડાઉનલોડ",
     _label: "ગુ",
     wakeH: "વાંચતી વખતે સ્ક્રીન ચાલુ રાખો", wakeD: "દુઆ, કુરાન, પુસ્તકો અને ઝિયારતના પાના ખુલ્લા હોય ત્યારે સ્ક્રીન લૉક થતી નથી.",
@@ -140,6 +142,7 @@ globalThis.I18N = {
   },
 
   hi: {
+    azVib: "Azaan ke dauran vibrate", azVol: "Azaan ki awaaz",
     apkT: "नया Android ऐप उपलब्ध है", apkB: "Mumin {v} तैयार है। डाउनलोड करके मौजूदा ऐप के ऊपर इंस्टॉल करें — आपका डेटा बना रहेगा।", apkN: "पहली बार फ़ोन ब्राउज़र को इंस्टॉल की अनुमति पूछ सकता है।", apkYes: "डाउनलोड",
     _label: "Hinglish",
     wakeH: "Padhte waqt screen on rakho", wakeD: "Dua, Quran, kitabein aur Ziyarat ke pages khule hon to screen lock nahi hoti.",

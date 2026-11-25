@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=205">
-<script src="theme-init.js?v=205"></script>
+<link rel="stylesheet" href="themes.css?v=206">
+<script src="theme-init.js?v=206"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -589,7 +589,8 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
       <div class="row" style="gap:12px"><span style="font-size:26px">🔊</span><span style="flex:1"><b data-i18n="azH"></b><br><small class="muted" data-i18n="azD"></small></span><button class="btn" id="azPlay" style="min-width:92px"></button></div>
       <div class="azopts" id="azOpts"></div>
       <div class="row" style="margin-top:10px"><span style="flex:1;font-size:14px" data-i18n="azZohrT"></span><input type="time" id="azZohrIn" style="font:inherit;padding:6px 8px;border-radius:10px;border:1px solid var(--line,#ccc);background:var(--card,#fff);color:inherit"></div>
-      <div id="azAlertWrap" hidden><small class="muted" data-i18n="azAlerts" style="display:block;margin-top:12px"></small><div class="azopts" id="azAl"></div><div class="prow" style="margin-top:10px"><label><input type="checkbox" id="nqOn"><span data-i18n="nqL"></span></label><input type="time" id="nqT"></div></div>
+      <div id="azAlertWrap" hidden><small class="muted" data-i18n="azAlerts" style="display:block;margin-top:12px"></small><div class="azopts" id="azAl"></div><div class="prow" style="margin-top:10px"><label><input type="checkbox" id="nqOn"><span data-i18n="nqL"></span></label><input type="time" id="nqT"></div>
+        <div id="azTune" hidden><div class="prow" style="margin-top:10px"><label><input type="checkbox" id="azVib"><span data-i18n="azVib"></span></label></div><div class="prow" style="margin-top:6px"><span data-i18n="azVol"></span><input type="range" id="azVol" min="10" max="100" step="10" style="flex:1;min-width:0;accent-color:var(--brand)"><b id="azVolN" style="min-width:3em;text-align:right"></b></div></div></div>
       <small class="muted" data-i18n="azNote" style="display:block;margin-top:8px"></small>
       <a id="azApk" class="btn ghost" href="https://github.com/murtaza0053/hijri-calendar/releases/latest/download/mumin.apk" style="display:inline-block;margin-top:10px;text-decoration:none" data-i18n="azApk"></a>
     </div>
@@ -748,10 +749,10 @@ button,a,.mrow,.cal td,.dua-item{cursor:pointer}
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=205"></script>
-<script src="i18n.js?v=205"></script>
-<script src="cities.js?v=205"></script>
-<script src="haptic.js?v=205"></script>
+<script src="hijri.js?v=206"></script>
+<script src="i18n.js?v=206"></script>
+<script src="cities.js?v=206"></script>
+<script src="haptic.js?v=206"></script>
 <script>
 "use strict";
 
@@ -1440,7 +1441,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 205, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 206, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1532,6 +1533,11 @@ const nq = () => store.get("nativeQuote", { on: true, t: "10:00" });
 function nqDraw() { const q = nq(); $("nqOn").checked = q.on !== false; $("nqT").value = q.t || "10:00"; $("nqT").disabled = q.on === false; }
 $("nqOn").onchange = e => { store.set("nativeQuote", { ...nq(), on: e.target.checked }); nqDraw(); nativeSync(); };
 $("nqT").onchange = e => { if (/^\d\d:\d\d$/.test(e.target.value)) { store.set("nativeQuote", { ...nq(), t: e.target.value }); nativeSync(); } };
+const azTune = () => store.get("azTune", { vib: false, vol: 100 });
+function azTuneDraw() { const x = azTune(); $("azVib").checked = !!x.vib; $("azVol").value = x.vol; $("azVolN").textContent = x.vol + "%"; try { MuminNative.setAzaanPrefs(!!x.vib, +x.vol); } catch {} }
+if (window.MuminNative && MuminNative.setAzaanPrefs) { $("azTune").hidden = false; azTuneDraw(); }   // APK 2.3+
+$("azVib").onchange = e => { store.set("azTune", { ...azTune(), vib: e.target.checked }); azTuneDraw(); };
+$("azVol").oninput = e => { store.set("azTune", { ...azTune(), vol: +e.target.value }); azTuneDraw(); };
 nqDraw(); azDraw(); azAlDraw();
 
 if (location.hash === "#azaan") azFromHash();

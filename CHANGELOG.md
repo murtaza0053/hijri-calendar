@@ -6,7 +6,11 @@ Web app build numbers are `APP_V` in `index.html`. The notes are the user-facing
 
 ## Android APK
 
-### Mumin Android 2.2 — 2026-11-25 (latest)
+### Mumin Android 2.3 — 2026-11-25 (latest)
+
+Azaan: vibrate option and volume slider.
+
+### Mumin Android 2.2 — 2026-11-25
 
 App now reports its version so the website can show an update pop-up with a Download button.
 
@@ -61,6 +65,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 ## Web app
 
 ### 2026-11-25
+
+**v206**
+
+- Android: new azaan options in Settings — vibrate during azaan and an azaan volume slider (needs app 2.3).
 
 **v205**
 
