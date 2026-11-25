@@ -1,6 +1,19 @@
 {
- "v": 186,
+ "v": 187,
  "history": [
+  {
+   "v": 187,
+   "date": "2026-11-25",
+   "en": [
+    "Android: stop the azaan any time — tap the notification, use the Stop button, swipe it away, or tap Stop on the bar shown inside the app."
+   ],
+   "gu": [
+    "Android: અઝાન ગમે ત્યારે બંધ કરો — નોટિફિકેશન પર ટેપ, Stop બટન, સ્વાઇપ, અથવા એપમાં દેખાતા બાર પર Stop."
+   ],
+   "hi": [
+    "Android: azaan kabhi bhi band karo — notification par tap, Stop button, swipe, ya app me dikhne wali bar par Stop."
+   ]
+  },
   {
    "v": 186,
    "date": "2026-11-25",
