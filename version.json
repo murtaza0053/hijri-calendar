@@ -1,6 +1,19 @@
 {
- "v": 185,
+ "v": 186,
  "history": [
+  {
+   "v": 186,
+   "date": "2026-11-25",
+   "en": [
+    "Quote card height now fits the text, no empty space below short quotes."
+   ],
+   "gu": [
+    "સુવચન કાર્ડની ઊંચાઈ ટેક્સ્ટ મુજબ, ટૂંકા સુવચન નીચે ખાલી જગ્યા નહીં."
+   ],
+   "hi": [
+    "Quote card ki height ab text ke hisaab se, chhote quote ke niche khali jagah nahi."
+   ]
+  },
   {
    "v": 185,
    "date": "2026-11-24",
