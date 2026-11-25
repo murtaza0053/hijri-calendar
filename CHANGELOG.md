@@ -66,6 +66,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v216**
+
+- New theme: Mono — black, white and grey, minimal.
+
 **v215**
 
 - Settings: tick boxes moved to the right, and every row now has an icon on the left.

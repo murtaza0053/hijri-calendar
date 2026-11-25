@@ -1,4 +1,4 @@
-/* Themes: data-theme = gold | green | maroon | navy | teal | rose | sky | lavender ; class "dark" = dark mode */
+/* Themes: data-theme = gold | green | maroon | navy | teal | rose | sky | lavender | mono ; class "dark" = dark mode */
 :root{--hdr-gold:#f0cb6a;--hdr-ink:#fff;--hdr-chip:rgba(255,255,255,.15);--hdr-on:var(--hdr)}
 :root,html[data-theme=green]{
   --bg:#f6f3ea; --card:#fffdf7; --ink:#1d2a22; --muted:#5f6e64; --line:#e4dccb;
@@ -75,6 +75,18 @@ html.dark[data-theme=lavender]{
   --brand:#b9a2f2; --brand-2:#9d84e3; --gold:#e6bd63; --today:#b9a2f2; --today-ink:#1a0f33;
   --filler:#554b66; --night:#9ad0ff; --chip:#251e33; --hdr:#2e2350; --on-brand:#1a0f33;
   --hdr-ink:#fff; --hdr-chip:rgba(255,255,255,.15); --hdr-on:#2e2350;
+}
+html[data-theme=mono]{
+  --bg:#ebebeb; --card:#f7f7f7; --ink:#111111; --muted:#6a6a6a; --line:#d2d2d2;
+  --brand:#111111; --brand-2:#444444; --gold:#333333; --today:#111111; --today-ink:#fff;
+  --filler:#b0b0b0; --night:#555555; --chip:#e1e1e1; --hdr:#111111; --on-brand:#fff;
+  --hdr-gold:#d4d4d4;
+}
+html.dark[data-theme=mono]{
+  --bg:#0c0c0c; --card:#171717; --ink:#eeeeee; --muted:#9a9a9a; --line:#2a2a2a;
+  --brand:#f0f0f0; --brand-2:#bdbdbd; --gold:#d6d6d6; --today:#f0f0f0; --today-ink:#111;
+  --filler:#555555; --night:#bdbdbd; --chip:#232323; --hdr:#000000; --on-brand:#111;
+  --hdr-gold:#d4d4d4;
 }
 html.dark{color-scheme:dark}
 html[data-theme=gold]{
