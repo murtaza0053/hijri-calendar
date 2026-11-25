@@ -66,6 +66,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v218**
+
+- New: Settings → Style lets you switch between Classic (as before) and Modern — rounded cards, a raised centre button in the bottom bar, pill tabs in the Dua tab, and a colourful ring on the Salat screen. Also a new Midnight theme.
+
 **v217**
 
 - Settings and Dua tab: Push alerts, Tasbeeh vibration, Home-screen widget, Rozi and Sadaqah can now be collapsed (tap the title).

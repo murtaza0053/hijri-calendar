@@ -2,6 +2,7 @@
 "use strict";
 globalThis.I18N = {
   en: {
+    uiH: "Style", ui_classic: "Classic", ui_modern: "Modern", th_midnight: "Midnight",
     azVib: "Vibrate during azaan", azVol: "Azaan volume",
     apkT: "New Android app available", apkB: "Mumin {v} is ready. Download it and install over the current app — your data stays.", apkN: "Your phone may ask to allow installs from your browser the first time.", apkYes: "Download",
     _label: "EN",
@@ -72,6 +73,7 @@ globalThis.I18N = {
   },
 
   gu: {
+    uiH: "સ્ટાઇલ", ui_classic: "ક્લાસિક", ui_modern: "મોડર્ન", th_midnight: "મિડનાઇટ",
     azVib: "અઝાન વખતે વાઇબ્રેટ", azVol: "અઝાન અવાજ",
     apkT: "નવી Android એપ ઉપલબ્ધ છે", apkB: "Mumin {v} તૈયાર છે. ડાઉનલોડ કરીને હાલની એપ પર ઇન્સ્ટૉલ કરો — તમારો ડેટા રહેશે.", apkN: "પહેલી વાર ફોન બ્રાઉઝરને ઇન્સ્ટૉલની પરવાનગી પૂછી શકે છે.", apkYes: "ડાઉનલોડ",
     _label: "ગુ",
@@ -142,6 +144,7 @@ globalThis.I18N = {
   },
 
   hi: {
+    uiH: "Style", ui_classic: "Classic", ui_modern: "Modern", th_midnight: "Midnight (raat)",
     azVib: "Azaan ke dauran vibrate", azVol: "Azaan ki awaaz",
     apkT: "नया Android ऐप उपलब्ध है", apkB: "Mumin {v} तैयार है। डाउनलोड करके मौजूदा ऐप के ऊपर इंस्टॉल करें — आपका डेटा बना रहेगा।", apkN: "पहली बार फ़ोन ब्राउज़र को इंस्टॉल की अनुमति पूछ सकता है।", apkYes: "डाउनलोड",
     _label: "Hinglish",

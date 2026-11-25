@@ -1,6 +1,19 @@
 {
- "v": 217,
+ "v": 218,
  "history": [
+  {
+   "v": 218,
+   "date": "2026-11-26",
+   "en": [
+    "New: Settings → Style lets you switch between Classic (as before) and Modern — rounded cards, a raised centre button in the bottom bar, pill tabs in the Dua tab, and a colourful ring on the Salat screen. Also a new Midnight theme."
+   ],
+   "gu": [
+    "નવું: સેટિંગ્સ → સ્ટાઇલમાં ક્લાસિક (પહેલા જેવું) અને મોડર્ન વચ્ચે બદલી શકાય છે — ગોળ કાર્ડ, નીચેના બારમાં વચ્ચેનું ઉપસેલું બટન, દુઆ ટૅબમાં પિલ ટૅબ અને સલાત સ્ક્રીન પર રંગીન રિંગ. સાથે નવી મિડનાઇટ થીમ."
+   ],
+   "hi": [
+    "नया: सेटिंग्स → Style में Classic (पहले जैसा) और Modern के बीच बदल सकते हैं — गोल कार्ड, नीचे के बार में बीच का उभरा बटन, दुआ टैब में पिल टैब और सलात स्क्रीन पर रंगीन रिंग। साथ में नई Midnight थीम।"
+   ]
+  },
   {
    "v": 217,
    "date": "2026-11-26",
