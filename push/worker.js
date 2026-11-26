@@ -33,6 +33,8 @@ function sunTimes(Y, M, D, lat, lng) {
 }
 
 const SAL_API = "https://mumineen.org/api/v1/salaat", SAL_F = ["sihori", "fajr", "sunrise", "zawaal", "zohr_end", "asr_end", "maghrib", "nisful_layl"];
+const TZ_ALIAS = { "Asia/Calcutta": "Asia/Kolkata", "Asia/Katmandu": "Asia/Kathmandu", "Asia/Saigon": "Asia/Ho_Chi_Minh", "Asia/Rangoon": "Asia/Yangon", "Asia/Dacca": "Asia/Dhaka", "Asia/Macao": "Asia/Macau", "Asia/Thimbu": "Asia/Thimphu", "Asia/Ulan_Bator": "Asia/Ulaanbaatar", "Africa/Asmera": "Africa/Asmara", "Atlantic/Faeroe": "Atlantic/Faroe", "America/Buenos_Aires": "America/Argentina/Buenos_Aires", "Europe/Kiev": "Europe/Kyiv", "Pacific/Truk": "Pacific/Chuuk" };   // the API rejects old zone names (e.g. Asia/Calcutta)
+const apiTz = tz => TZ_ALIAS[tz] || tz;
 const locKey = s => (+s.lat).toFixed(2) + "," + (+s.lng).toFixed(2) + "," + (s.tz || "UTC");
 const pad2 = n => String(n).padStart(2, "0"), dayStr = (Y, M, D) => `${Y}-${pad2(M + 1)}-${pad2(D)}`;
 function tzOff(ms, tz) { const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", { timeZone: tz, hourCycle: "h23", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit" }).formatToParts(new Date(ms)).map(x => [x.type, x.value])); return Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour, +p.minute, +p.second) - Math.floor(ms / 1000) * 1000; }
@@ -177,7 +179,7 @@ async function loadSalaat(env, subs, ws) {
   for (const k of need.slice(0, 8)) {   // free plan: 50 subrequests per invocation, MAX_SEND are reserved for pushes
     const s = keys.get(k), tz = s.tz || "UTC", a = s.days[0], [y, m, d] = a.split("-").map(Number), e = new Date(Date.UTC(y, m - 1, d + 31));
     try {
-      const r = await fetch(`${SAL_API}?start=${a}&end=${dayStr(e.getUTCFullYear(), e.getUTCMonth(), e.getUTCDate())}&latitude=${+s.lat}&longitude=${+s.lng}&timezone=${encodeURIComponent(tz)}&altitude=0`, { headers: { Accept: "application/json" }, signal: AbortSignal.timeout(8000) });
+      const r = await fetch(`${SAL_API}?start=${a}&end=${dayStr(e.getUTCFullYear(), e.getUTCMonth(), e.getUTCDate())}&latitude=${+s.lat}&longitude=${+s.lng}&timezone=${encodeURIComponent(apiTz(tz))}&altitude=0`, { headers: { Accept: "application/json" }, signal: AbortSignal.timeout(8000) });
       const j = await r.json(), st = [];
       for (const [day, o] of Object.entries(j.data || {})) { const x = {}; for (const f of SAL_F) { if (!o[f]) throw new Error("bad"); x[f] = wallMs(o[f], tz); } (cache[k] = cache[k] || {})[day] = x; st.push(env.DB.prepare("INSERT OR REPLACE INTO saltimes(loc,day,data) VALUES(?,?,?)").bind(k, day, JSON.stringify(x))); }
       if (!st.length) throw new Error("empty");

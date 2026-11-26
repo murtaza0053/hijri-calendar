@@ -1,6 +1,19 @@
 {
- "v": 225,
+ "v": 226,
  "history": [
+  {
+   "v": 226,
+   "date": "2026-11-26",
+   "en": [
+    "Fix: salaat times from mumineen.org were not used on phones that report the old time-zone name (e.g. Asia/Calcutta)."
+   ],
+   "gu": [
+    "સુધારો: જૂના ટાઇમ-ઝોન નામ (જેમ કે Asia/Calcutta) વાળા ફોનમાં mumineen.org ના સમય વપરાતા ન હતા."
+   ],
+   "hi": [
+    "सुधार: पुराने टाइम-ज़ोन नाम (जैसे Asia/Calcutta) वाले फ़ोन में mumineen.org के टाइमिंग इस्तेमाल नहीं हो रहे थे।"
+   ]
+  },
   {
    "v": 225,
    "date": "2026-11-26",

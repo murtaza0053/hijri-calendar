@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=225">
-<script src="theme-init.js?v=225"></script>
+<link rel="stylesheet" href="themes.css?v=226">
+<script src="theme-init.js?v=226"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -807,10 +807,10 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=225"></script>
-<script src="i18n.js?v=225"></script>
-<script src="cities.js?v=225"></script>
-<script src="haptic.js?v=225"></script>
+<script src="hijri.js?v=226"></script>
+<script src="i18n.js?v=226"></script>
+<script src="cities.js?v=226"></script>
+<script src="haptic.js?v=226"></script>
 <script>
 "use strict";
 
@@ -1024,6 +1024,8 @@ function todayIn() {   // today's civil date at the chosen city (device date whe
 /* ---------- Salaat times from mumineen.org (official public API v1), cached on the device; falls back to the local calculation below ---------- */
 const SAL_API = "https://mumineen.org/api/v1/salaat", SAL_F = ["sihori", "fajr", "sunrise", "zawaal", "zohr_end", "asr_end", "maghrib", "nisful_layl"];
 let salCache = store.get("salaatApi", null), salBusy = false;
+const TZ_ALIAS = { "Asia/Calcutta": "Asia/Kolkata", "Asia/Katmandu": "Asia/Kathmandu", "Asia/Saigon": "Asia/Ho_Chi_Minh", "Asia/Rangoon": "Asia/Yangon", "Asia/Dacca": "Asia/Dhaka", "Asia/Macao": "Asia/Macau", "Asia/Thimbu": "Asia/Thimphu", "Asia/Ulan_Bator": "Asia/Ulaanbaatar", "Africa/Asmera": "Africa/Asmara", "Atlantic/Faeroe": "Atlantic/Faroe", "America/Buenos_Aires": "America/Argentina/Buenos_Aires", "Europe/Kiev": "Europe/Kyiv", "Pacific/Truk": "Pacific/Chuuk" };   // the API rejects old zone names (e.g. Asia/Calcutta)
+const apiTz = tz => TZ_ALIAS[tz] || tz;
 const salTZ = () => loc.tz || Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC", salKey = () => loc.lat.toFixed(2) + "," + loc.lng.toFixed(2);
 const ymd = d => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
 function tzOff(ms, tz) { const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", { timeZone: tz, hourCycle: "h23", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit" }).formatToParts(new Date(ms)).map(x => [x.type, x.value])); return Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour, +p.minute, +p.second) - Math.floor(ms / 1000) * 1000; }
@@ -1040,7 +1042,7 @@ async function salaatSync(force) {
   salBusy = true;
   try {
     const a = new Date(td.getFullYear(), td.getMonth(), td.getDate() - 1), b = new Date(td.getFullYear(), td.getMonth(), td.getDate() + 120), ctl = new AbortController(); const to = setTimeout(() => ctl.abort(), 10000);
-    const r = await fetch(`${SAL_API}?start=${ymd(a)}&end=${ymd(b)}&latitude=${loc.lat}&longitude=${loc.lng}&timezone=${encodeURIComponent(tz)}&altitude=0`, { signal: ctl.signal, headers: { Accept: "application/json" } }); clearTimeout(to);
+    const r = await fetch(`${SAL_API}?start=${ymd(a)}&end=${ymd(b)}&latitude=${loc.lat}&longitude=${loc.lng}&timezone=${encodeURIComponent(apiTz(tz))}&altitude=0`, { signal: ctl.signal, headers: { Accept: "application/json" } }); clearTimeout(to);
     const j = await r.json(), days = {};
     for (const [d, o] of Object.entries(j.data || {})) { const x = {}; for (const f of SAL_F) { if (!o[f]) throw new Error("bad"); x[f] = wallMs(o[f], tz); } days[d] = x; }
     if (!Object.keys(days).length) throw new Error("empty");
@@ -1543,7 +1545,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 225, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 226, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll(); salaatSync();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */

@@ -66,6 +66,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v226**
+
+- Fix: salaat times from mumineen.org were not used on phones that report the old time-zone name (e.g. Asia/Calcutta).
+
 **v225**
 
 - Salaat timings now come from the official mumineen.org API (Sihori, Fajr Azaan, Sunrise, Zawaal, Zohr End, Asr End, Maghrib, Nisful Layl). Saved on your phone for offline use; if it cannot be reached the app calculates them itself. Android alarms follow the new times.
