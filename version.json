@@ -1,6 +1,19 @@
 {
- "v": 241,
+ "v": 242,
  "history": [
+  {
+   "v": 242,
+   "date": "2026-11-26",
+   "en": [
+    "New Android app 2.6: widget with floral nakkashi on the left and right edges, fading toward the middle."
+   ],
+   "gu": [
+    "નવી Android એપ 2.6: ડાબી-જમણી કિનારે ફૂલોની નક્કાશીવાળું વિજેટ, વચ્ચે ઝાંખું."
+   ],
+   "hi": [
+    "नया Android ऐप 2.6: बाएँ-दाएँ किनारों पर फूलों की नक़्क़ाशी वाला विजेट, बीच की ओर फीका।"
+   ]
+  },
   {
    "v": 241,
    "date": "2026-11-26",
@@ -2809,7 +2822,7 @@
   }
  ],
  "android": {
-  "code": 16,
-  "name": "2.5"
+  "code": 17,
+  "name": "2.6"
  }
 }
