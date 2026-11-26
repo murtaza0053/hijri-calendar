@@ -1,6 +1,19 @@
 {
- "v": 230,
+ "v": 231,
  "history": [
+  {
+   "v": 231,
+   "date": "2026-11-26",
+   "en": [
+    "Fixed: the offline/update service worker was empty since v220, so push alerts and offline use stopped working. Restored. Android app: new “Check for app update” button in Settings → About."
+   ],
+   "gu": [
+    "સુધારો: ઑફલાઇન/અપડેટ સર્વિસ વર્કર v220 થી ખાલી હતો, તેથી પુશ ચેતવણી અને ઑફલાઇન બંધ હતા. ફરી ચાલુ. Android એપ: સેટિંગ્સ → વિશે માં “એપ અપડેટ તપાસો” બટન."
+   ],
+   "hi": [
+    "सुधार: ऑफ़लाइन/अपडेट सर्विस वर्कर v220 से खाली था, इसलिए पुश अलर्ट और ऑफ़लाइन बंद थे। फिर चालू। Android ऐप: सेटिंग्स → अबाउट में “ऐप अपडेट जाँचें” बटन।"
+   ]
+  },
   {
    "v": 230,
    "date": "2026-11-26",

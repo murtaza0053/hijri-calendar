@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=230">
-<script src="theme-init.js?v=230"></script>
+<link rel="stylesheet" href="themes.css?v=231">
+<script src="theme-init.js?v=231"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -767,6 +767,7 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
       <h3 data-i18n="aboutH"></h3>
       <p class="muted" data-i18n="about"></p>
       <p class="muted" style="font-size:12px">Version <span id="appVer"></span></p>
+      <div id="apkChk" hidden><button class="btn ghost" id="apkChkBtn" data-i18n="apkChk"></button> <span class="muted" id="apkChkMsg" style="font-size:12px"></span></div>
     </div>
   </section>
 </main>
@@ -808,10 +809,10 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=230"></script>
-<script src="i18n.js?v=230"></script>
-<script src="cities.js?v=230"></script>
-<script src="haptic.js?v=230"></script>
+<script src="hijri.js?v=231"></script>
+<script src="i18n.js?v=231"></script>
+<script src="cities.js?v=231"></script>
+<script src="haptic.js?v=231"></script>
 <script>
 "use strict";
 
@@ -1590,7 +1591,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 230, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 231, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll(); salaatSync();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1844,17 +1845,28 @@ $("upd").onclick = e => {
   }
 };
 /* Android app: offer the new APK when version.json's android.code is above the installed versionCode (older APKs don't report it, so they never see this) */
-function apkCheck(j) {
+function apkCheck(j, force) {
   if (!window.MuminNative || !MuminNative.info || !j.android) return;
   let c = 0; try { c = JSON.parse(MuminNative.info()).code || 0; } catch {}
   if (!c || c >= j.android.code) return;
-  const k = store.get("apkAsk", {}); if (k.c === j.android.code && Date.now() - k.t < 864e5) return;   // "Later" = ask again tomorrow
-  if (window.tourOn || wnOpen || $("sheet").classList.contains("on") || $("pushPrompt").classList.contains("on")) return;   // next poll retries
+  const k = store.get("apkAsk", {}); if (!force && k.c === j.android.code && Date.now() - k.t < 864e5) return;   // "Later" = ask again tomorrow
+  if (!force && (window.tourOn || wnOpen || $("pushPrompt").classList.contains("on"))) return;   // next poll retries
   const p = $("apkPrompt"), done = () => { p.classList.remove("on"); store.set("apkAsk", { c: j.android.code, t: Date.now() }); };
   $("apkB").textContent = t("apkB", { v: j.android.name });
   $("apkYes").onclick = () => { done(); location.href = j.android.url || "https://github.com/murtaza0053/hijri-calendar/releases/latest/download/mumin.apk"; };
   $("apkLater").onclick = done; p.onclick = e => { if (e.target === p) done(); };
   p.classList.add("on");
+}
+if (window.MuminNative && MuminNative.info) {   // Settings → "Check for app update": ignores "Later" and says what the phone reports
+  $("apkChk").hidden = false;
+  $("apkChkBtn").onclick = () => {
+    const m = $("apkChkMsg"); m.textContent = "…";
+    fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).then(j => {
+      let c = 0; try { c = JSON.parse(MuminNative.info()).code || 0; } catch {}
+      m.textContent = t(c && c < j.android.code ? "apkNew" : "apkUp", { c, v: j.android.name });
+      apkCheck(j, true);
+    }).catch(() => { m.textContent = t("loadFail"); });
+  };
 }
 let verInfo = null;
 let isNewUser = false;   // first ever open on this device: already on the latest version, so no update bar / what's-new

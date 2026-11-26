@@ -70,6 +70,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v231**
+
+- Fixed: the offline/update service worker was empty since v220, so push alerts and offline use stopped working. Restored. Android app: new “Check for app update” button in Settings → About.
+
 **v230**
 
 - Salaat times now use your altitude (from GPS, or known for the main cities), like the official mumineen.org widget — about a minute earlier at sunrise and later at Maghrib in high places like Indore.
