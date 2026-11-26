@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=233">
-<script src="theme-init.js?v=233"></script>
+<link rel="stylesheet" href="themes.css?v=234">
+<script src="theme-init.js?v=234"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -809,10 +809,10 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=233"></script>
-<script src="i18n.js?v=233"></script>
-<script src="cities.js?v=233"></script>
-<script src="haptic.js?v=233"></script>
+<script src="hijri.js?v=234"></script>
+<script src="i18n.js?v=234"></script>
+<script src="cities.js?v=234"></script>
+<script src="haptic.js?v=234"></script>
 <script>
 "use strict";
 
@@ -1591,7 +1591,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 233, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 234, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll(); salaatSync();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1847,9 +1847,9 @@ $("upd").onclick = e => {
 };
 /* Android app: offer the new APK when version.json's android.code is above the installed versionCode (older APKs don't report it, so they never see this) */
 function apkCheck(j, force) {
-  if (!window.MuminNative || !MuminNative.info || !j.android) return;
-  let c = 0; try { c = JSON.parse(MuminNative.info()).code || 0; } catch {}
-  if (!c || c >= j.android.code) return;
+  if (!window.MuminNative || !j.android) return;
+  let c = 0; try { c = JSON.parse(MuminNative.info()).code || 0; } catch {}   // old APKs (< 2.2) have no info()/code → c = 0 → they get the pop-up too
+  if (c >= j.android.code) return;
   const k = store.get("apkAsk", {}); if (!force && k.c === j.android.code && Date.now() - k.t < 864e5) return;   // "Later" = ask again tomorrow
   if (!force && (window.tourOn || wnOpen || $("pushPrompt").classList.contains("on"))) return;   // next poll retries
   const p = $("apkPrompt"), done = () => { p.classList.remove("on"); store.set("apkAsk", { c: j.android.code, t: Date.now() }); };
@@ -1858,7 +1858,7 @@ function apkCheck(j, force) {
   $("apkLater").onclick = done; p.onclick = e => { if (e.target === p) done(); };
   p.classList.add("on");
 }
-if (window.MuminNative && MuminNative.info) {   // Settings → "Check for app update": ignores "Later" and says what the phone reports
+if (window.MuminNative) {   // Settings → "Check for app update": ignores "Later" and says what the phone reports
   $("apkChk").hidden = false;
   $("apkChkBtn").onclick = () => {
     const m = $("apkChkMsg"); m.textContent = "…";

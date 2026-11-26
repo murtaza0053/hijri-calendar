@@ -70,6 +70,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v234**
+
+- Old Android apps (before 2.2) now also get the “new app available” pop-up.
+
 **v233**
 
 - Android widget now looks like the app — it wears your current theme (gold header, big Hijri and Gregorian dates, times card) and follows dark mode. Needs the new Android app 2.5.
