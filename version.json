@@ -1,6 +1,19 @@
 {
- "v": 245,
+ "v": 246,
  "history": [
+  {
+   "v": 246,
+   "date": "2026-11-26",
+   "en": [
+    "New Android app 2.7: one-tap update — tap Download and the app downloads and opens the installer by itself."
+   ],
+   "gu": [
+    "નવી Android એપ 2.7: એક ટેપમાં અપડેટ — ડાઉનલોડ દબાવો, એપ જાતે ડાઉનલોડ કરીને ઇન્સ્ટૉલર ખોલશે."
+   ],
+   "hi": [
+    "नया Android ऐप 2.7: एक टैप में अपडेट — डाउनलोड दबाएँ, ऐप खुद डाउनलोड करके इंस्टॉलर खोलेगा।"
+   ]
+  },
   {
    "v": 245,
    "date": "2026-11-26",
@@ -2861,7 +2874,7 @@
   }
  ],
  "android": {
-  "code": 17,
-  "name": "2.6"
+  "code": 18,
+  "name": "2.7"
  }
 }

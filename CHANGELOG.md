@@ -6,7 +6,11 @@ Web app build numbers are `APP_V` in `index.html`. The notes are the user-facing
 
 ## Android APK
 
-### Mumin Android 2.6 — 2026-11-26 (latest)
+### Mumin Android 2.7 — 2026-11-26 (latest)
+
+One-tap update: tap Download in the update pop-up and the app downloads and opens the installer itself. Install over the old app; data stays.
+
+### Mumin Android 2.6 — 2026-11-26
 
 Widget: floral nakkashi on the left and right edges (fading toward the middle), header and card. Install over the old app; data stays.
 
@@ -77,6 +81,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 ## Web app
 
 ### 2026-11-26
+
+**v246**
+
+- New Android app 2.7: one-tap update — tap Download and the app downloads and opens the installer by itself.
 
 **v245**
 
