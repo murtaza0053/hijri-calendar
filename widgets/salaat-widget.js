@@ -52,17 +52,6 @@ const HDR = new Color("#2b2108"), STRIP = new Color("#3a3018"), GOLD = new Color
 const fam = config.widgetFamily || "large", small = fam === "small";
 
 w.backgroundColor = CARD; w.setPadding(0, 0, 0, 0); w.spacing = 0;
-// floral nakkashi pattern (the app's quote-card ornament, tiled) over the whole card; skipped if the picture can't be fetched
-if (!small) try {
-  const f = fm.joinPath(fm.documentsDirectory(), "mumin-floral-tile.png");
-  const tile = fm.fileExists(f) ? fm.readImage(f) : await new Request("https://murtaza0053.github.io/hijri-calendar/widgets/floral-tile.png").loadImage();
-  if (!fm.fileExists(f)) fm.writeImage(f, tile);
-  const W = 800, H = fam === "large" ? 840 : 380, tw = 300, th = tw * 410 / 300;
-  const dc = new DrawContext(); dc.size = new Size(W, H); dc.opaque = true; dc.respectScreenScale = true;
-  dc.setFillColor(CARD); dc.fillRect(new Rect(0, 0, W, H));
-  for (let y = 0; y < H; y += th) for (let x = 0; x < W; x += tw) dc.drawImageInRect(tile, new Rect(x, y, tw, th));
-  w.backgroundImage = dc.getImage();
-} catch (e) {}
 // ---- header: weekday / big dates, like the app ----
 const head = w.addStack(); head.backgroundColor = HDR; head.layoutHorizontally(); head.setPadding(small ? 10 : 14, 16, small ? 8 : 10, 16);
 const hl = head.addStack(); hl.layoutVertically(); hl.spacing = 0;
