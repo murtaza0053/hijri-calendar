@@ -1,6 +1,19 @@
 {
- "v": 247,
+ "v": 248,
  "history": [
+  {
+   "v": 248,
+   "date": "2026-11-26",
+   "en": [
+    "iPhone widget now follows the app’s theme: Settings → Home-screen widget → “Copy widget settings” and paste it in the widget’s Parameter."
+   ],
+   "gu": [
+    "iPhone વિજેટ હવે એપની થીમ અનુસરે છે: સેટિંગ્સ → હોમ-સ્ક્રીન વિજેટ → “વિજેટ સેટિંગ્સ કૉપિ કરો” અને વિજેટના Parameter માં પેસ્ટ કરો."
+   ],
+   "hi": [
+    "iPhone विजेट अब ऐप की थीम के साथ चलता है: सेटिंग्स → होम-स्क्रीन विजेट → “विजेट सेटिंग्स कॉपी करें” और विजेट के Parameter में पेस्ट करें।"
+   ]
+  },
   {
    "v": 247,
    "date": "2026-11-26",
