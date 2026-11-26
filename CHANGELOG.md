@@ -78,6 +78,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v244**
+
+- iPhone widget: timings now use the full width and height, and the gap above the header is gone.
+
 **v243**
 
 - The “Update available” pop-up now always shows on top of everything else.

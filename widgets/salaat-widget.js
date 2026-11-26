@@ -62,8 +62,12 @@ const paint = (fill, l, r, W, H, tiles) => {   // one background picture: colour
   const dc = new DrawContext(); dc.size = new Size(W, H); dc.opaque = true; dc.respectScreenScale = true;
   dc.setFillColor(fill); dc.fillRect(new Rect(0, 0, W, H));
   if (EDGE) { const iw = 190, ih = iw * 656 / 240; for (let y = 0; y < (tiles ? H : 1); y += ih) { dc.drawImageInRect(l, new Rect(0, y, iw, ih)); dc.drawImageInRect(r, new Rect(W - iw, y, iw, ih)); } }
+  if (tiles) { dc.setFillColor(HDR); dc.fillRect(new Rect(0, 0, W, H * TOP)); }
   return dc.getImage();
 };
+// iOS can leave a gap above the header; paint the top of the card in the header colour so it merges (the header always covers this band)
+const TOP = small ? 0.35 : 0.25;
+const g = new LinearGradient(); g.colors = [HDR, HDR, CARD, CARD]; g.locations = [0, TOP, TOP, 1]; w.backgroundGradient = g;
 if (EDGE) w.backgroundImage = paint(CARD, EDGE.bl, EDGE.br, 800, fam === "large" ? 840 : 380, true);
 // ---- header: weekday / big dates, like the app ----
 const head = w.addStack(); head.backgroundColor = HDR; if (EDGE) head.backgroundImage = paint(HDR, EDGE.gl, EDGE.gr, 800, 230, false); head.layoutHorizontally(); head.setPadding(small ? 10 : 14, 16, small ? 8 : 10, 16);
@@ -85,12 +89,14 @@ const nt = st.addText((small ? "" : nx[0] + "  ") + fmt(nx[1]) + (onToday ? "" :
 if (small) { st.addSpacer(); const nn = st.addText(nx[0]); nn.font = Font.systemFont(10); nn.textColor = WHITE; nn.lineLimit = 1; nn.minimumScaleFactor = 0.5; }
 // ---- body: 2 columns × 4 rows ----
 if (!small) {
-  const body = w.addStack(); body.layoutHorizontally(); body.setPadding(fam === "large" ? 14 : 8, 14, 8, 14); body.spacing = 10;
-  const sz = fam === "large" ? 34 : 22, colW = Math.floor((Device.screenSize().width * 0.84 - 28 - 10) / 2);   // widget width ≈ 84% of the screen width
+  const body = w.addStack(); body.layoutHorizontally(); body.setPadding(fam === "large" ? 12 : 6, 16, fam === "large" ? 12 : 6, 16); body.spacing = 12;
+  const sz = fam === "large" ? 34 : 22;
+  // no fixed widths (Device.screenSize() is wrong inside widgets): trailing spacers make both columns share the full width, spacers between rows spread them down the full height
   [0, 1].forEach(col => {
-    const c = body.addStack(); c.layoutVertically(); c.spacing = fam === "large" ? 12 : 4; c.size = new Size(colW, 0);
+    const c = body.addStack(); c.layoutVertically(); c.spacing = 0;
     for (let r = 0; r < 4; r++) {
       const i = col * 4 + r, it = L0[i]; if (!it) continue;
+      if (r) c.addSpacer();
       const isNx = onToday && i === ni;
       const row = c.addStack(); row.layoutHorizontally(); row.centerAlignContent(); row.spacing = 8;
       const ic = row.addStack(); ic.size = new Size(sz, sz); ic.cornerRadius = sz / 2; ic.backgroundColor = isNx ? BRAND : CHIP; ic.centerAlignContent();
@@ -98,10 +104,10 @@ if (!small) {
       const tx = row.addStack(); tx.layoutVertically(); tx.spacing = 0;
       const n = tx.addText(it[0]); n.font = Font.systemFont(fam === "large" ? 12 : 10); n.textColor = isNx ? BRAND : MUTED; n.minimumScaleFactor = 0.6; n.lineLimit = 2;
       const t2 = tx.addText(fmt(it[1])); t2.font = Font.boldSystemFont(fam === "large" ? 15 : 11); t2.textColor = isNx ? BRAND : INK;
+      row.addSpacer();
     }
   });
-}
-w.addSpacer();   // keep the header at the very top
+} else w.addSpacer();   // small: keep the header at the very top
 w.refreshAfterDate = new Date(Math.min(nx[1].getTime() + 60e3, now.getTime() + 30 * 6e4));
 if (config.runsInWidget) Script.setWidget(w); else if (small) await w.presentSmall(); else await w.presentLarge();
 Script.complete();

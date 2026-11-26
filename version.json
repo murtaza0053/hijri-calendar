@@ -1,6 +1,19 @@
 {
- "v": 243,
+ "v": 244,
  "history": [
+  {
+   "v": 244,
+   "date": "2026-11-26",
+   "en": [
+    "iPhone widget: timings now use the full width and height, and the gap above the header is gone."
+   ],
+   "gu": [
+    "iPhone વિજેટ: સમય હવે આખી પહોળાઈ અને ઊંચાઈમાં દેખાય છે, હેડર ઉપરની ખાલી જગ્યા દૂર થઈ."
+   ],
+   "hi": [
+    "iPhone widget: timings ab poori width aur height mein dikhte hain, header ke upar ka gap hata diya."
+   ]
+  },
   {
    "v": 243,
    "date": "2026-11-26",
