@@ -82,6 +82,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v247**
+
+- iPhone widget: floral edges now also show on the home screen (lighter pictures, widgets have little memory).
+
 **v246**
 
 - New Android app 2.7: one-tap update — tap Download and the app downloads and opens the installer by itself.

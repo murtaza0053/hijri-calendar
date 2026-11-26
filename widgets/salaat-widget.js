@@ -59,7 +59,7 @@ if (!small) try {
   EDGE = { bl: await pic("floral-edge-l-brown"), br: await pic("floral-edge-r-brown"), gl: await pic("floral-edge-l-gold"), gr: await pic("floral-edge-r-gold") };
 } catch (e) { EDGE = null; }
 const paint = (fill, l, r, W, H, tiles) => {   // one background picture: colour + left/right edge ornaments (tiled down the height when tiles)
-  const dc = new DrawContext(); dc.size = new Size(W, H); dc.opaque = true; dc.respectScreenScale = true;
+  const dc = new DrawContext(); dc.size = new Size(W, H); dc.opaque = true; dc.respectScreenScale = false;   // 1x pixels: a widget has only ~30 MB of memory, 3x pictures made the floral vanish on the home screen
   dc.setFillColor(fill); dc.fillRect(new Rect(0, 0, W, H));
   if (EDGE) { const iw = 190, ih = iw * 656 / 240; for (let y = 0; y < (tiles ? H : 1); y += ih) { dc.drawImageInRect(l, new Rect(0, y, iw, ih)); dc.drawImageInRect(r, new Rect(W - iw, y, iw, ih)); } }
   if (tiles) { dc.setFillColor(HDR); dc.fillRect(new Rect(0, 0, W, H * TOP)); }
