@@ -1,6 +1,19 @@
 {
- "v": 232,
+ "v": 233,
  "history": [
+  {
+   "v": 233,
+   "date": "2026-11-26",
+   "en": [
+    "Android widget now looks like the app — it wears your current theme (gold header, big Hijri and Gregorian dates, times card) and follows dark mode. Needs the new Android app 2.5."
+   ],
+   "gu": [
+    "Android વિજેટ હવે એપ જેવું દેખાય છે — તમારી થીમ, ગોલ્ડ હેડર, મોટી હિજરી/અંગ્રેજી તારીખ અને સમયનું કાર્ડ, ડાર્ક મોડ સાથે. નવી Android એપ 2.5 જોઈએ."
+   ],
+   "hi": [
+    "Android विजेट अब ऐप जैसा दिखता है — आपकी थीम, गोल्ड हेडर, बड़ी हिजरी/अंग्रेज़ी तारीख और समय का कार्ड, डार्क मोड के साथ। नया Android ऐप 2.5 चाहिए।"
+   ]
+  },
   {
    "v": 232,
    "date": "2026-11-26",

@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=232">
-<script src="theme-init.js?v=232"></script>
+<link rel="stylesheet" href="themes.css?v=233">
+<script src="theme-init.js?v=233"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -809,10 +809,10 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=232"></script>
-<script src="i18n.js?v=232"></script>
-<script src="cities.js?v=232"></script>
-<script src="haptic.js?v=232"></script>
+<script src="hijri.js?v=233"></script>
+<script src="i18n.js?v=233"></script>
+<script src="cities.js?v=233"></script>
+<script src="haptic.js?v=233"></script>
 <script>
 "use strict";
 
@@ -864,7 +864,7 @@ function applyTheme() {
   if (window.MuminNative && MuminNative.setBars) try { MuminNative.setBars(getComputedStyle(r).getPropertyValue("--hdr").trim()); } catch {}
   $("themeSet").innerHTML = Object.entries(THEMES).filter(([k]) => (ui === "modern") === MODERN_TH.includes(k)).map(([k, c]) => `<button class="sw ${k === theme ? "on" : ""}" data-theme-k="${k}"><i style="background:${c}"></i>${t("th_" + k)}</button>`).join("");
   $("modeSet").innerHTML = MODES.map(k => `<button data-mode-k="${k}" class="${k === mode ? "on" : ""}">${t("md_" + k)}</button>`).join("");
-  applyUi(); syncZy();
+  applyUi(); syncZy(); try { widgetSync(); } catch {}
 }
 /* the Ziyarat page lives in an iframe that loads once — push theme / dark / style into it whenever they change */
 function syncZy() {
@@ -1591,7 +1591,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 232, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 233, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll(); salaatSync();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1658,10 +1658,11 @@ function widgetSync() {
     for (let k = 0; k < 3; k++) {
       const d0 = new Date(td.getFullYear(), td.getMonth(), td.getDate() + k), it = salatList(d0), x = salCache && salCache.k === salKey() && salCache.days[ymd(d0)];
       const h = H.fromAJD(H.gToAJD(d0.getFullYear(), d0.getMonth(), d0.getDate()));
-      days.push({ k: ymd(d0), h: arNum(h.d), hm: H.AR[h.m] + " " + arNum(h.y), g: d0.getDate() + " " + GM[d0.getMonth()] + " " + d0.getFullYear(), day: it[6][1] - it[2][1],
+      days.push({ k: ymd(d0), h: arNum(h.d), hm: H.AR[h.m] + " " + arNum(h.y), hme: H.NAMES[h.m] + " " + h.y + "H", wd: d0.toLocaleDateString("en-US", { weekday: "long" }).toUpperCase(), gd: String(d0.getDate()), gm: GM[d0.getMonth()].slice(0, 3) + " " + d0.getFullYear(), g: d0.getDate() + " " + GM[d0.getMonth()] + " " + d0.getFullYear(), day: it[6][1] - it[2][1],
         t: [it[0][1], it[2][1], it[3][1], it[4][1], it[5][1], it[6][1], it[7][1]].map(v => +v).concat([x && x.nisful_layl_end || 0]) });
     }
-    MuminNative.setWidget(JSON.stringify({ city: loc.city || locLabel(), tz: salTZ(), days }));
+    const cs = getComputedStyle(document.documentElement), cv = k => cs.getPropertyValue(k).trim();   // the widget wears the app's current theme (and dark mode)
+    MuminNative.setWidget(JSON.stringify({ city: loc.city || locLabel(), tz: salTZ(), days, c: { hdr: cv("--hdr"), gold: cv("--hdr-gold"), hink: cv("--hdr-ink"), card: cv("--card"), ink: cv("--ink"), chip: cv("--chip"), brand: cv("--brand"), onb: cv("--on-brand") } }));
   } catch {}
 }
 function nativeSync() {
