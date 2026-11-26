@@ -52,3 +52,5 @@ Owner writes and expects replies in **Hinglish** (Hindi in Latin letters). Keep 
 When a new APK is released (`~/Projects/mumin-android`), also set `"android":{"code":<versionCode>,"name":"<versionName>"}` at the top level of `version.json` and deploy. `apkCheck()` in index.html shows the Download pop-up when the installed versionCode (from `MuminNative.info().code`) is lower. Current: code 15 = 2.4.
 
 - **Miqaats / Salaat times / city lookup all come from the mumineen.org API** (no built-in miqaat list any more; `miqaats.json` was removed). See HANDOFF.md → "mumineen.org API".
+
+- **iPhone widget:** `widgets/salaat-scriptable.js` is only a tiny loader (users paste it once); the real script is `widgets/salaat-widget.js`, fetched on every run (cached for offline) — edit that one, no re-copy needed.

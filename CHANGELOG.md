@@ -74,6 +74,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v239**
+
+- iPhone widget now updates itself: copy the new small script once (Settings → Home-screen widget) and every future design change arrives automatically.
+
 **v238**
 
 - iPhone widget: the floral nakkashi pattern now covers the whole card.
