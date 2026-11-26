@@ -1,6 +1,19 @@
 {
- "v": 248,
+ "v": 249,
  "history": [
+  {
+   "v": 249,
+   "date": "2026-11-26",
+   "en": [
+    "iPhone widget now follows the app’s theme and city by itself: Settings → Home-screen widget → “Copy widget code” → paste it in the widget’s Parameter (once)."
+   ],
+   "gu": [
+    "iPhone વિજેટ હવે એપની થીમ અને શહેર જાતે અનુસરે છે: સેટિંગ્સ → હોમ-સ્ક્રીન વિજેટ → “વિજેટ કોડ કૉપિ કરો” → વિજેટના Parameter માં એક વાર પેસ્ટ કરો."
+   ],
+   "hi": [
+    "iPhone विजेट अब ऐप की थीम और शहर खुद फ़ॉलो करता है: सेटिंग्स → होम-स्क्रीन विजेट → “विजेट कोड कॉपी करें” → विजेट के Parameter में एक बार पेस्ट करें।"
+   ]
+  },
   {
    "v": 248,
    "date": "2026-11-26",

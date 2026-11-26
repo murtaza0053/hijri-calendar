@@ -128,9 +128,21 @@ const okEndpoint = e => { try { const u = new URL(e); return u.protocol === "htt
 async function handle(req, env) {
   const url = new URL(req.url);
   if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: cors(req) });
+  if (req.method === "GET" && url.pathname.startsWith("/widget/")) {   // the iPhone widget reads the app's theme + city saved under its random code
+    const code = url.pathname.slice(8); if (!/^[a-z0-9]{12,32}$/.test(code)) return json(req, { error: "code" }, 400);
+    const r = await env.DB.prepare("SELECT data FROM widgetcfg WHERE code=?").bind(code).first();
+    return r ? json(req, JSON.parse(r.data)) : json(req, { error: "none" }, 404);
+  }
   if (req.method === "GET") return json(req, { ok: true, service: "mumin-push" });
   if (req.method !== "POST") return json(req, { error: "method" }, 405);
   let b; try { b = await req.json(); } catch { return json(req, { error: "json" }, 400); }
+  if (url.pathname === "/widget") {   // the app saves theme / city under a random code (no account, nothing else is stored)
+    const code = String(b.code || ""), num = (v, lo, hi) => Number.isFinite(+v) && +v >= lo && +v <= hi ? +v : null;
+    const cfg = { theme: /^[a-z]{3,16}$/.test(b.theme) ? b.theme : "gold", dark: !!b.dark, city: String(b.city || "").slice(0, 80), lat: num(b.lat, -90, 90), lng: num(b.lng, -180, 180), alt: num(b.alt, -500, 9000) || 0 };
+    if (!/^[a-z0-9]{12,32}$/.test(code) || cfg.lat === null || cfg.lng === null) return json(req, { error: "bad" }, 400);
+    await env.DB.prepare("INSERT INTO widgetcfg(code,data,at) VALUES(?,?,?) ON CONFLICT(code) DO UPDATE SET data=excluded.data, at=excluded.at").bind(code, JSON.stringify(cfg), Date.now()).run();
+    return json(req, { ok: true });
+  }
   if (url.pathname === "/subscribe") {
     const sub = b.subscription || {}, k = sub.keys || {};
     if (!okEndpoint(sub.endpoint) || !k.p256dh || !k.auth) return json(req, { error: "subscription" }, 400);
@@ -219,7 +231,7 @@ export async function tick(env, now = Date.now()) {
   }
   for (let i = 0; i < stmts.length; i += 40) await env.DB.batch(stmts.slice(i, i + 40));
   await env.DB.prepare("DELETE FROM outbox WHERE due < ?").bind(ws - 2 * 3600e3).run();
-  if (new Date(ws).getUTCMinutes() === 7 && new Date(ws).getUTCHours() === 3) await env.DB.prepare("DELETE FROM saltimes WHERE day < ?").bind(new Date(ws - 5 * 864e5).toISOString().slice(0, 10)).run();   // daily clean-up
+  if (new Date(ws).getUTCMinutes() === 7 && new Date(ws).getUTCHours() === 3) { await env.DB.prepare("DELETE FROM saltimes WHERE day < ?").bind(new Date(ws - 5 * 864e5).toISOString().slice(0, 10)).run(); await env.DB.prepare("DELETE FROM widgetcfg WHERE at < ?").bind(ws - 400 * 864e5).run(); }   // daily clean-up
   const { results: q } = await env.DB.prepare("SELECT o.id AS oid, o.payload, o.tries, s.* FROM outbox o JOIN subs s ON s.id=o.sub_id ORDER BY o.id LIMIT ?").bind(MAX_SEND).all();
   const dels = [];
   await Promise.all(q.map(async r => {

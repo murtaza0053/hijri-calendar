@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=248">
-<script src="theme-init.js?v=248"></script>
+<link rel="stylesheet" href="themes.css?v=249">
+<script src="theme-init.js?v=249"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -810,10 +810,10 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=248"></script>
-<script src="i18n.js?v=248"></script>
-<script src="cities.js?v=248"></script>
-<script src="haptic.js?v=248"></script>
+<script src="hijri.js?v=249"></script>
+<script src="i18n.js?v=249"></script>
+<script src="cities.js?v=249"></script>
+<script src="haptic.js?v=249"></script>
 <script>
 "use strict";
 
@@ -865,7 +865,7 @@ function applyTheme() {
   if (window.MuminNative && MuminNative.setBars) try { MuminNative.setBars(getComputedStyle(r).getPropertyValue("--hdr").trim()); } catch {}
   $("themeSet").innerHTML = Object.entries(THEMES).filter(([k]) => (ui === "modern") === MODERN_TH.includes(k)).map(([k, c]) => `<button class="sw ${k === theme ? "on" : ""}" data-theme-k="${k}"><i style="background:${c}"></i>${t("th_" + k)}</button>`).join("");
   $("modeSet").innerHTML = MODES.map(k => `<button data-mode-k="${k}" class="${k === mode ? "on" : ""}">${t("md_" + k)}</button>`).join("");
-  applyUi(); syncZy(); try { widgetSync(); } catch {}
+  applyUi(); syncZy(); try { widgetSync(); wdgPush(); } catch {}
 }
 /* the Ziyarat page lives in an iframe that loads once — push theme / dark / style into it whenever they change */
 function syncZy() {
@@ -1262,11 +1262,18 @@ $("wdgCopy").onclick = async () => {
   try { const r = await fetch("widgets/salaat-scriptable.js", { cache: "no-cache" }), txt = await r.text(); await navigator.clipboard.writeText(txt); $("wdgMsg").textContent = t("wdgCopied"); }
   catch { $("wdgMsg").innerHTML = `<a href="widgets/salaat-scriptable.js" target="_blank" rel="noopener">${t("wdgOpen")}</a>`; }
 };
-// the iPhone widget cannot read the app's theme, so give the user the widget "Parameter" with city, position, altitude and the current theme
+// iPhone widget: it cannot read the app, so the app saves its theme + city on the push server under a random code (made when you first copy it); the widget Parameter is just "W:<code>"
+function wdgPush() {
+  const code = store.get("wdgCode", null); if (!code) return;
+  clearTimeout(wdgPush.t);
+  wdgPush.t = setTimeout(() => { try { fetch(PUSH_URL + "/widget", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code, theme, dark: document.documentElement.classList.contains("dark"), city: locLabel(), lat: loc.lat, lng: loc.lng, alt: salAlt() || 0 }) }).catch(() => {}); } catch {} }, 1200);
+}
 $("wdgParam").onclick = async () => {
-  const dark = document.documentElement.classList.contains("dark"), txt = `${locLabel()},${loc.lat.toFixed(4)},${loc.lng.toFixed(4)},${salAlt() || 0},${theme}${dark ? ",dark" : ""}`;   // the widget joins everything before the numbers back into the city text, so commas in the city are fine
+  let code = store.get("wdgCode", null); if (!code) { code = Array.from(crypto.getRandomValues(new Uint8Array(16)), b => "abcdefghijklmnopqrstuvwxyz0123456789"[b % 36]).join(""); store.set("wdgCode", code); }
+  wdgPush(); const txt = "W:" + code;
   try { await navigator.clipboard.writeText(txt); $("wdgMsg").textContent = t("wdgParamOk") + " " + txt; } catch { $("wdgMsg").textContent = txt; }
 };
+setTimeout(wdgPush, 3000);
 /* ---------- Push alerts (Cloudflare worker mumin-push) ---------- */
 const PUSH_URL = "https://mumin-push.masspeshi.workers.dev", VAPID_PUB = "BMOJDR0xcJ82MmiVY3D9lIXsgZDChLbuGhGZ-9oM8paslqXtTjFGoj_0Hf84EiO-m9HCZsKOFPVQ6Z3UKE9brAo";
 const PUSH_SAL = [["sih", "tSihori"], ["faj", "tFajr"], ["fe", "tFajrEnd"], ["zaw", "tZawaal"], ["ze", "tZohrEnd"], ["ae", "tAsrEnd"], ["mag", "tMaghrib"], ["nis", "tIshaEnd"]];
@@ -1517,7 +1524,7 @@ calEl.addEventListener("touchend", e => {
 }, { passive: true });
 
 /* ---------- Location ---------- */
-function setLoc(l) { loc = l; store.set("loc", l); salaatSync(); if (typeof nativeSync === "function") setTimeout(nativeSync, 0); renderTimes(); renderHeader(); renderGhadi(); renderAshara(); if (window.pushSync) pushSync(); }
+function setLoc(l) { loc = l; store.set("loc", l); wdgPush(); salaatSync(); if (typeof nativeSync === "function") setTimeout(nativeSync, 0); renderTimes(); renderHeader(); renderGhadi(); renderAshara(); if (window.pushSync) pushSync(); }
 $("useIndore").onclick = () => setLoc(DEFAULT_LOC);
 $("setCity").onclick = openCity;
 $("saveLL").onclick = () => {
@@ -1597,7 +1604,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 248, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 249, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll(); salaatSync();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */

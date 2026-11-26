@@ -82,6 +82,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v249**
+
+- iPhone widget now follows the app’s theme and city by itself: Settings → Home-screen widget → “Copy widget code” → paste it in the widget’s Parameter (once).
+
 **v248**
 
 - iPhone widget now follows the app’s theme: Settings → Home-screen widget → “Copy widget settings” and paste it in the widget’s Parameter.
