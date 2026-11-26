@@ -1,6 +1,19 @@
 {
- "v": 231,
+ "v": 232,
  "history": [
+  {
+   "v": 232,
+   "date": "2026-11-26",
+   "en": [
+    "Settings → About now credits the official mumineen.org API for miqaats and salaat times."
+   ],
+   "gu": [
+    "સેટિંગ્સ → વિશે હવે મિકાત અને સલાતના સમય માટે અધિકૃત mumineen.org API દર્શાવે છે."
+   ],
+   "hi": [
+    "सेटिंग्स → अबाउट में अब मीक़ात और सलात के समय के लिए आधिकारिक mumineen.org API दिखता है।"
+   ]
+  },
   {
    "v": 231,
    "date": "2026-11-26",

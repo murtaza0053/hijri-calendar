@@ -70,6 +70,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v232**
+
+- Settings → About now credits the official mumineen.org API for miqaats and salaat times.
+
 **v231**
 
 - Fixed: the offline/update service worker was empty since v220, so push alerts and offline use stopped working. Restored. Android app: new “Check for app update” button in Settings → About.
