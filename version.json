@@ -1,6 +1,19 @@
 {
- "v": 235,
+ "v": 236,
  "history": [
+  {
+   "v": 236,
+   "date": "2026-11-26",
+   "en": [
+    "Fixed the iPhone Scriptable widget error “null is not an object (c.times)” on first run; if the times can’t load, the widget now shows the reason."
+   ],
+   "gu": [
+    "iPhone Scriptable વિજેટની પહેલી વખતની “null is not an object (c.times)” ભૂલ સુધારી; સમય ન આવે તો કારણ બતાવે છે."
+   ],
+   "hi": [
+    "iPhone Scriptable विजेट की पहली बार वाली “null is not an object (c.times)” गलती ठीक की; समय न आए तो वजह दिखती है।"
+   ]
+  },
   {
    "v": 235,
    "date": "2026-11-26",

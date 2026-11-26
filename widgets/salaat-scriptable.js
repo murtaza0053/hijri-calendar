@@ -12,8 +12,9 @@ const API = "https://mumineen.org/api/v1/";
 const getJSON = u => new Request(u).loadJSON();
 const ymdIn = (d, tz) => d.toLocaleDateString("en-CA", { timeZone: tz });   // "2026-11-26" in the city's own time zone
 
+let ERR = "";
 async function load() {
-  let c = {}; try { c = JSON.parse(fm.readString(CACHE)); } catch (e) {}
+  let c = {}; try { c = JSON.parse(fm.readString(CACHE)) || {}; } catch (e) {}   // readString gives null (not an error) when there is no saved file yet
   try {
     // the city's time zone comes from the official location list (the phone may be somewhere else)
     let tz = c.pos === LAT + "," + LNG ? c.tz : null;
@@ -25,12 +26,12 @@ async function load() {
     const h = await getJSON(`${API}convert/to-hijri/${t0}`);
     const out = { key, pos: LAT + "," + LNG, tz, t0, t1, off: (t.meta.timezone_offset || 0) * 1000, times: t.data, hijri: h.data.date };
     fm.writeString(CACHE, JSON.stringify(out)); return out;
-  } catch (e) { return c.times ? c : null; }   // offline → last saved
+  } catch (e) { ERR = String(e); return c.times ? c : null; }   // offline → last saved
 }
 const data = await load();
 const w = new ListWidget();
 if (!data || !data.times || !data.times[data.t0]) {
-  w.backgroundColor = new Color("#fffdf4"); const t = w.addText("Mumin — no timings yet.\nOpen the widget once with internet."); t.font = Font.systemFont(12); t.textColor = new Color("#6b4515");
+  w.backgroundColor = new Color("#fffdf4"); const t = w.addText("Mumin — no timings yet.\nOpen the widget once with internet.\n" + ERR); t.font = Font.systemFont(12); t.textColor = new Color("#6b4515");
   if (config.runsInWidget) Script.setWidget(w); else await w.presentMedium(); Script.complete(); return;
 }
 const OFF = data.off, now = new Date(), D0 = data.times[data.t0], D1 = data.times[data.t1];

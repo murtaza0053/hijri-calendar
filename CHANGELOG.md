@@ -74,6 +74,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v236**
+
+- Fixed the iPhone Scriptable widget error “null is not an object (c.times)” on first run; if the times can’t load, the widget now shows the reason.
+
 **v235**
 
 - iPhone Scriptable widget now matches the app (dark header, gold dates, times card). New Android app 2.5 is out — the widget there follows your theme and dark mode.
