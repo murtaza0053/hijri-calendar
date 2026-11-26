@@ -1,8 +1,8 @@
 {
- "v": 239,
+ "v": 240,
  "history": [
   {
-   "v": 239,
+   "v": 240,
    "date": "2026-11-26",
    "en": [
     "iPhone widget: floral pattern removed (cleaner look) and it now updates itself — copy the new small script once (Settings → Home-screen widget)."
@@ -12,19 +12,6 @@
    ],
    "hi": [
     "iPhone विजेट: फूलों की डिज़ाइन हटाई (साफ़ लुक) और अब खुद अपडेट होता है — नई छोटी स्क्रिप्ट एक बार कॉपी करें (सेटिंग्स → होम-स्क्रीन विजेट)।"
-   ]
-  },
-  {
-   "v": 239,
-   "date": "2026-11-26",
-   "en": [
-    "iPhone widget now updates itself: copy the new small script once (Settings → Home-screen widget) and every future design change arrives automatically."
-   ],
-   "gu": [
-    "iPhone વિજેટ હવે જાતે અપડેટ થાય છે: નવી નાની સ્ક્રિપ્ટ એક વાર કૉપિ કરો (સેટિંગ્સ → હોમ-સ્ક્રીન વિજેટ), પછી દરેક ફેરફાર આપમેળે આવશે."
-   ],
-   "hi": [
-    "iPhone विजेट अब खुद अपडेट होता है: नई छोटी स्क्रिप्ट एक बार कॉपी करें (सेटिंग्स → होम-स्क्रीन विजेट), फिर हर बदलाव अपने-आप आएगा।"
    ]
   },
   {
