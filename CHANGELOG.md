@@ -78,6 +78,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v243**
+
+- The “Update available” pop-up now always shows on top of everything else.
+
 **v242**
 
 - New Android app 2.6: widget with floral nakkashi on the left and right edges, fading toward the middle.
