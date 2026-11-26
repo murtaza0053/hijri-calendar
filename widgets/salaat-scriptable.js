@@ -51,7 +51,16 @@ const [gy, gm, gd] = data.t0.split("-").map(Number), WD = new Date(Date.UTC(gy, 
 const HDR = new Color("#2b2108"), STRIP = new Color("#3a3018"), GOLD = new Color("#b8892b"), CARD = new Color("#fffdf4"), INK = new Color("#2a2008"), MUTED = new Color("#6e5f35"), CHIP = new Color("#f3e8c4"), BRAND = new Color("#8a6508"), WHITE = Color.white();
 const fam = config.widgetFamily || "large", small = fam === "small";
 
-w.backgroundColor = CARD; w.setPadding(0, 0, 0, 0);
+w.backgroundColor = CARD; w.setPadding(0, 0, 0, 0); w.spacing = 0;
+// floral nakkashi corners (the app's quote-card ornament) drawn into the widget background; skipped if the pictures can't be fetched
+if (!small) try {
+  const BASE = "https://murtaza0053.github.io/hijri-calendar/widgets/", pic = async n => { const f = fm.joinPath(fm.documentsDirectory(), "mumin-" + n + ".png"); if (fm.fileExists(f)) return fm.readImage(f); const im = await new Request(BASE + n + ".png").loadImage(); fm.writeImage(f, im); return im; };
+  const bl = await pic("floral-bl"), br = await pic("floral-br"), W = 800, H = fam === "large" ? 840 : 380, iw = fam === "large" ? 230 : 120, ih = iw * 410 / 300;
+  const dc = new DrawContext(); dc.size = new Size(W, H); dc.opaque = true; dc.respectScreenScale = true;
+  dc.setFillColor(CARD); dc.fillRect(new Rect(0, 0, W, H));
+  dc.drawImageInRect(bl, new Rect(0, H - ih, iw, ih)); dc.drawImageInRect(br, new Rect(W - iw, H - ih, iw, ih));
+  w.backgroundImage = dc.getImage();
+} catch (e) {}
 // ---- header: weekday / big dates, like the app ----
 const head = w.addStack(); head.backgroundColor = HDR; head.layoutHorizontally(); head.setPadding(small ? 10 : 14, 16, small ? 8 : 10, 16);
 const hl = head.addStack(); hl.layoutVertically(); hl.spacing = 0;
@@ -73,9 +82,9 @@ if (small) { st.addSpacer(); const nn = st.addText(nx[0]); nn.font = Font.system
 // ---- body: 2 columns × 4 rows ----
 if (!small) {
   const body = w.addStack(); body.layoutHorizontally(); body.setPadding(fam === "large" ? 14 : 8, 14, 8, 14); body.spacing = 10;
-  const sz = fam === "large" ? 34 : 22;
+  const sz = fam === "large" ? 34 : 22, colW = Math.floor((Device.screenSize().width * 0.84 - 28 - 10) / 2);   // widget width ≈ 84% of the screen width
   [0, 1].forEach(col => {
-    const c = body.addStack(); c.layoutVertically(); c.spacing = fam === "large" ? 12 : 4;
+    const c = body.addStack(); c.layoutVertically(); c.spacing = fam === "large" ? 12 : 4; c.size = new Size(colW, 0);
     for (let r = 0; r < 4; r++) {
       const i = col * 4 + r, it = L0[i]; if (!it) continue;
       const isNx = onToday && i === ni;
@@ -88,6 +97,7 @@ if (!small) {
     }
   });
 }
+w.addSpacer();   // keep the header at the very top
 w.refreshAfterDate = new Date(Math.min(nx[1].getTime() + 60e3, now.getTime() + 30 * 6e4));
 if (config.runsInWidget) Script.setWidget(w); else if (small) await w.presentSmall(); else await w.presentLarge();
 Script.complete();

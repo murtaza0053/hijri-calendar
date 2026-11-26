@@ -74,6 +74,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v237**
+
+- iPhone widget: floral nakkashi corners like the quote card, header flush at the top, and evenly spaced time columns.
+
 **v236**
 
 - Fixed the iPhone Scriptable widget error “null is not an object (c.times)” on first run; if the times can’t load, the widget now shows the reason.
