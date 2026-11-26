@@ -32,3 +32,6 @@ Read `CLAUDE.md` first (conventions + deploy checklist). This file is the histor
 - Repo `~/Projects/hijri-calendar-pwa` (GitHub `murtaza0053/hijri-calendar`); Android `~/Projects/mumin-android` (not a git repo; APKs are published as GitHub releases of the web repo).
 - Scratch work from the quote extraction (PDF → text) was in a session scratchpad and is not preserved; `quotes.json` is the source of truth now.
 - Owner's memory notes for Claude Code live in `~/.claude/projects/-home-ulap236/memory/` (only visible to that machine/account).
+
+## Salaat times source
+App and push worker use the official mumineen.org API v1 (`GET /api/v1/salaat?start&end&latitude&longitude&timezone&altitude`, no auth, CORS open). App: `salaatSync()` caches 120 days in localStorage `salaatApi` and falls back to the local formulas offline. Worker: `loadSalaat()` in push/worker.js stores days in D1 table `saltimes` (one API call per subscriber location per ~month), falls back to formulas. API "fajr" = Fajr Azaan. Altitude is sent as 0. Test: `node push/test-sal.mjs` (needs internet).

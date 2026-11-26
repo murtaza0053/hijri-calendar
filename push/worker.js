@@ -32,7 +32,16 @@ function sunTimes(Y, M, D, lat, lng) {
   return { sunrise: at(noon - 4 * ha), noon: at(noon), sunset: at(noon + 4 * ha) };
 }
 
-function salaatDay(Y, M, D, lat, lng) {   // same formulas as the app (index.html: salatList) and build-ics.js
+const SAL_API = "https://mumineen.org/api/v1/salaat", SAL_F = ["sihori", "fajr", "sunrise", "zawaal", "zohr_end", "asr_end", "maghrib", "nisful_layl"];
+const locKey = s => (+s.lat).toFixed(2) + "," + (+s.lng).toFixed(2) + "," + (s.tz || "UTC");
+const pad2 = n => String(n).padStart(2, "0"), dayStr = (Y, M, D) => `${Y}-${pad2(M + 1)}-${pad2(D)}`;
+function tzOff(ms, tz) { const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", { timeZone: tz, hourCycle: "h23", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit" }).formatToParts(new Date(ms)).map(x => [x.type, x.value])); return Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour, +p.minute, +p.second) - Math.floor(ms / 1000) * 1000; }
+function wallMs(str, tz) { const m = str.match(/(\d+)-(\d+)-(\d+) (\d+):(\d+):(\d+)/), u = Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6]); let o = tzOff(u, tz); o = tzOff(u - o, tz); return u - o; }   // "2026-11-26 05:36:00" in tz → epoch ms
+
+/** The 8 timings of a local civil date. mumineen.org API values when `cache[locKey][day]` is loaded, else the local calculation below. */
+function salaatDay(Y, M, D, lat, lng, cache, key) {
+  const x = cache && key && cache[key] && cache[key][dayStr(Y, M, D)];
+  if (x) return [["sih", new Date(x.sihori)], ["faj", new Date(x.fajr)], ["fe", new Date(x.sunrise)], ["zaw", new Date(x.zawaal)], ["ze", new Date(x.zohr_end)], ["ae", new Date(x.asr_end)], ["mag", new Date(x.maghrib)], ["nis", new Date(x.nisful_layl)]];
   const s = sunTimes(Y, M, D, lat, lng), n = new Date(Date.UTC(Y, M, D + 1)), s2 = sunTimes(n.getUTCFullYear(), n.getUTCMonth(), n.getUTCDate(), lat, lng);
   const fe = new Date(s.sunrise.getTime() + 60e3), fj = new Date(fe.getTime() - 65 * 6e4), sih = new Date(fj.getTime() - 10 * 6e4);
   const ze = new Date(s.noon.getTime() + (s.sunset - s.noon) / 3), ae = new Date(s.noon.getTime() + (s.sunset - s.noon) * 2 / 3);
@@ -76,7 +85,7 @@ function quoteOn(p) {
   return QUOTES.q[((Math.floor((Date.UTC(p.y, p.m, p.d) - Date.UTC(y, m - 1, d)) / 864e5) % n) + n) % n];
 }
 /** Alerts of one subscription that fall in the minute starting at ws (ms). */
-export function dueEvents(s, ws) {
+export function dueEvents(s, ws, cache) {
   const pr = JSON.parse(s.prefs || "{}"), T = TXT[s.lang] || TXT.en, out = [];
   let p; try { p = localParts(ws, s.tz || "UTC"); } catch { p = localParts(ws, "UTC"); }
   const city = s.city || "";
@@ -84,7 +93,7 @@ export function dueEvents(s, ws) {
   const at = (k, def) => { const m = /^(\d\d):(\d\d)$/.exec(tm[k] || def) || /^(\d\d):(\d\d)$/.exec(def); return +m[1] === p.hh && +m[2] === p.mm; };
   if (pr.sal && pr.sal.length) for (const off of [-1, 0, 1]) {
     const d0 = new Date(Date.UTC(p.y, p.m, p.d + off));
-    for (const [k, t] of salaatDay(d0.getUTCFullYear(), d0.getUTCMonth(), d0.getUTCDate(), s.lat, s.lng)) {
+    for (const [k, t] of salaatDay(d0.getUTCFullYear(), d0.getUTCMonth(), d0.getUTCDate(), s.lat, s.lng, cache, locKey(s))) {
       const due = t.getTime() - lead;
       if (pr.sal.includes(k) && due >= ws && due < ws + 60000)
         out.push({ title: `🕌 ${T[k]}${city ? " — " + city : ""}`, body: lead ? fill(T.soon, { n: T[k], m: Math.round(lead / 60000) }) : fill(T.now, { n: T[k] }), url: ["faj", "zaw", "mag"].includes(k) ? "./#azaan" : "./#sl", tag: "sal-" + k });
@@ -149,16 +158,46 @@ async function handle(req, env) {
   return json(req, { error: "not found" }, 404);
 }
 
+
+/** Make sure D1 holds mumineen.org times for every subscriber location (one API call per location per ~month), and return them as { locKey: { "YYYY-MM-DD": {sihori…: epoch} } }. */
+const salFail = new Map();   // locKey → last failed attempt (ms): do not hammer the API from every minute's tick
+async function loadSalaat(env, subs, ws) {
+  const keys = new Map(); for (const s of subs) keys.set(locKey(s), s);
+  const cache = {}; if (!keys.size) return cache;
+  const need = [];
+  for (const [k, s] of keys) {
+    let p; try { p = localParts(ws, s.tz || "UTC"); } catch { p = localParts(ws, "UTC"); }
+    const days = [-1, 0, 1, 2].map(o => dayStr(...ymd(p.y, p.m, p.d, o)));
+    keys.get(k).days = days;
+  }
+  const lo = [...keys.values()].map(s => s.days[0]).sort()[0];
+  const { results } = await env.DB.prepare("SELECT loc, day, data FROM saltimes WHERE day >= ?").bind(lo).all();
+  for (const r of results) { (cache[r.loc] = cache[r.loc] || {})[r.day] = JSON.parse(r.data); }
+  for (const [k, s] of keys) if (!s.days.every(d => cache[k] && cache[k][d]) && ws - (salFail.get(k) || 0) > 10 * 60000) need.push(k);
+  for (const k of need.slice(0, 8)) {   // free plan: 50 subrequests per invocation, MAX_SEND are reserved for pushes
+    const s = keys.get(k), tz = s.tz || "UTC", a = s.days[0], [y, m, d] = a.split("-").map(Number), e = new Date(Date.UTC(y, m - 1, d + 31));
+    try {
+      const r = await fetch(`${SAL_API}?start=${a}&end=${dayStr(e.getUTCFullYear(), e.getUTCMonth(), e.getUTCDate())}&latitude=${+s.lat}&longitude=${+s.lng}&timezone=${encodeURIComponent(tz)}&altitude=0`, { headers: { Accept: "application/json" }, signal: AbortSignal.timeout(8000) });
+      const j = await r.json(), st = [];
+      for (const [day, o] of Object.entries(j.data || {})) { const x = {}; for (const f of SAL_F) { if (!o[f]) throw new Error("bad"); x[f] = wallMs(o[f], tz); } (cache[k] = cache[k] || {})[day] = x; st.push(env.DB.prepare("INSERT OR REPLACE INTO saltimes(loc,day,data) VALUES(?,?,?)").bind(k, day, JSON.stringify(x))); }
+      if (!st.length) throw new Error("empty");
+      for (let i = 0; i < st.length; i += 40) await env.DB.batch(st.slice(i, i + 40));
+    } catch { salFail.set(k, ws); }
+  }
+  return cache;
+}
+
 export async function tick(env, now = Date.now()) {
   const ws = Math.floor(now / 60000) * 60000;
   const { results: subs } = await env.DB.prepare("SELECT * FROM subs WHERE last_tick < ?").bind(ws).all();
-  const stmts = [];
+  const stmts = [], cache = await loadSalaat(env, subs, ws).catch(() => ({}));   // any failure → local calculation
   for (const s of subs) {
-    for (const e of dueEvents(s, ws)) stmts.push(env.DB.prepare("INSERT INTO outbox(sub_id,payload,due,tries) VALUES(?,?,?,0)").bind(s.id, JSON.stringify(e), ws));
+    for (const e of dueEvents(s, ws, cache)) stmts.push(env.DB.prepare("INSERT INTO outbox(sub_id,payload,due,tries) VALUES(?,?,?,0)").bind(s.id, JSON.stringify(e), ws));
     stmts.push(env.DB.prepare("UPDATE subs SET last_tick=? WHERE id=?").bind(ws, s.id));
   }
   for (let i = 0; i < stmts.length; i += 40) await env.DB.batch(stmts.slice(i, i + 40));
   await env.DB.prepare("DELETE FROM outbox WHERE due < ?").bind(ws - 2 * 3600e3).run();
+  if (new Date(ws).getUTCMinutes() === 7 && new Date(ws).getUTCHours() === 3) await env.DB.prepare("DELETE FROM saltimes WHERE day < ?").bind(new Date(ws - 5 * 864e5).toISOString().slice(0, 10)).run();   // daily clean-up
   const { results: q } = await env.DB.prepare("SELECT o.id AS oid, o.payload, o.tries, s.* FROM outbox o JOIN subs s ON s.id=o.sub_id ORDER BY o.id LIMIT ?").bind(MAX_SEND).all();
   const dels = [];
   await Promise.all(q.map(async r => {
