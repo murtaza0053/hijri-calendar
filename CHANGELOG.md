@@ -6,7 +6,11 @@ Web app build numbers are `APP_V` in `index.html`. The notes are the user-facing
 
 ## Android APK
 
-### Mumin Android 2.4 — 2026-11-26 (latest)
+### Mumin Android 2.5 — 2026-11-26 (latest)
+
+Widget now looks like the app and follows your theme / dark mode. Install over the old app; data stays.
+
+### Mumin Android 2.4 — 2026-11-26
 
 Home-screen widget (next timing + all 8 official timings, Hijri date, day/night length).
 
@@ -69,6 +73,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 ## Web app
 
 ### 2026-11-26
+
+**v235**
+
+- iPhone Scriptable widget now matches the app (dark header, gold dates, times card). New Android app 2.5 is out — the widget there follows your theme and dark mode.
 
 **v234**
 

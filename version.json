@@ -1,6 +1,19 @@
 {
- "v": 234,
+ "v": 235,
  "history": [
+  {
+   "v": 235,
+   "date": "2026-11-26",
+   "en": [
+    "iPhone Scriptable widget now matches the app (dark header, gold dates, times card). New Android app 2.5 is out — the widget there follows your theme and dark mode."
+   ],
+   "gu": [
+    "iPhone Scriptable વિજેટ હવે એપ જેવું છે (ડાર્ક હેડર, ગોલ્ડ તારીખ, સમયનું કાર્ડ). નવી Android એપ 2.5 આવી છે — વિજેટ તમારી થીમ અને ડાર્ક મોડ અનુસરે છે."
+   ],
+   "hi": [
+    "iPhone Scriptable विजेट अब ऐप जैसा है (डार्क हेडर, गोल्ड तारीख, समय का कार्ड)। नया Android ऐप 2.5 आ गया है — विजेट आपकी थीम और डार्क मोड के साथ चलता है।"
+   ]
+  },
   {
    "v": 234,
    "date": "2026-11-26",
@@ -2731,7 +2744,7 @@
   }
  ],
  "android": {
-  "code": 15,
-  "name": "2.4"
+  "code": 16,
+  "name": "2.5"
  }
 }

@@ -1,8 +1,8 @@
-// Mumin — Salaat timings widget for the iPhone "Scriptable" app (official mumineen.org times).
+// Mumin — Salaat timings widget (looks like the app, gold theme) for the iPhone "Scriptable" app (official mumineen.org times).
 // Long-press the home screen → + → Scriptable → pick Large (best) / Medium / Small → long-press the widget → Edit Widget →
 // Script = this script. Optional "Parameter":  City,latitude,longitude[,altitude]   e.g.  Indore, MP, India,22.7196,75.8577,550
 // (the last 2–3 values are numbers; everything before them is the city text). Needs internet once a day; the last times are kept for offline.
-const raw = (args.widgetParameter || "Indore, MP, India,22.7196,75.8577").split(",").map(s => s.trim());
+const raw = (args.widgetParameter || "Indore, MP, India,22.7196,75.8577,553").split(",").map(s => s.trim());
 let ALT = 0; if (raw.length >= 4 && !isNaN(parseFloat(raw[raw.length - 1])) && !isNaN(parseFloat(raw[raw.length - 2])) && !isNaN(parseFloat(raw[raw.length - 3]))) ALT = parseFloat(raw.pop());
 const LNG = parseFloat(raw.pop()), LAT = parseFloat(raw.pop()), CITY = raw.join(", ");
 const fm = FileManager.local(), CACHE = fm.joinPath(fm.documentsDirectory(), "mumin-widget.json");
@@ -30,7 +30,7 @@ async function load() {
 const data = await load();
 const w = new ListWidget();
 if (!data || !data.times || !data.times[data.t0]) {
-  w.backgroundColor = new Color("#fbf4df"); const t = w.addText("Mumin — no timings yet.\nOpen the widget once with internet."); t.font = Font.systemFont(12); t.textColor = new Color("#6b4515");
+  w.backgroundColor = new Color("#fffdf4"); const t = w.addText("Mumin — no timings yet.\nOpen the widget once with internet."); t.font = Font.systemFont(12); t.textColor = new Color("#6b4515");
   if (config.runsInWidget) Script.setWidget(w); else await w.presentMedium(); Script.complete(); return;
 }
 const OFF = data.off, now = new Date(), D0 = data.times[data.t0], D1 = data.times[data.t1];
@@ -42,46 +42,51 @@ let ni = all.findIndex(x => x[1] > now); if (ni < 0) ni = all.length - 1;
 const nx = all[ni], onToday = ni < L0.length;
 const fmt = d => { const x = new Date(d.getTime() + OFF); return String(x.getUTCHours()).padStart(2, "0") + ":" + String(x.getUTCMinutes()).padStart(2, "0"); };
 const dur = ms => { const m = Math.round(ms / 6e4); return Math.floor(m / 60) + "h " + (m % 60) + "m"; };
-const dayMs = wall(D0.maghrib) - wall(D0.sunrise);
 const [hy, hm, hd] = data.hijri.split("-").map(Number);
-const GOLD = new Color("#d49a33"), CREAM = new Color("#fbf4df"), BROWN = new Color("#6b4515"), SOFT = new Color("#efe6cf");
-const fam = config.widgetFamily || "large";
+const EN_M = ["Moharram al-Haraam", "Safar al-Muzaffar", "Rabi al-Awwal", "Rabi al-Aakhar", "Jumada al-Ula", "Jumada al-Ukhra", "Rajab al-Asab", "Shabaan al-Karim", "Ramadaan al-Moazzam", "Shawwal al-Mukarram", "Zilqadah al-Haraam", "Zilhaj al-Haraam"];
+const GM = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const [gy, gm, gd] = data.t0.split("-").map(Number), WD = new Date(Date.UTC(gy, gm - 1, gd)).toLocaleDateString("en-US", { weekday: "long", timeZone: "UTC" }).toUpperCase();
+// the app's gold theme
+const HDR = new Color("#2b2108"), STRIP = new Color("#3a3018"), GOLD = new Color("#b8892b"), CARD = new Color("#fffdf4"), INK = new Color("#2a2008"), MUTED = new Color("#6e5f35"), CHIP = new Color("#f3e8c4"), BRAND = new Color("#8a6508"), WHITE = Color.white();
+const fam = config.widgetFamily || "large", small = fam === "small";
 
-w.backgroundColor = CREAM; w.setPadding(0, 0, 0, 0);
-// ---- header (gold) ----
-const head = w.addStack(); head.backgroundColor = GOLD; head.layoutHorizontally(); head.setPadding(fam === "small" ? 10 : 14, 16, fam === "small" ? 10 : 12, 16); head.centerAlignContent();
-const hl = head.addStack(); hl.layoutVertically();
-const tt = hl.addText(fmt(nx[1])); tt.font = Font.regularSystemFont(fam === "small" ? 34 : 44); tt.textColor = Color.white();
-const tn = hl.addText(nx[0]); tn.font = Font.boldSystemFont(fam === "small" ? 13 : 16); tn.textColor = Color.white(); tn.minimumScaleFactor = 0.7;
-if (!onToday) { const tm = hl.addText("tomorrow"); tm.font = Font.systemFont(10); tm.textColor = new Color("#ffffff", 0.8); }
-if (fam !== "small") {
-  head.addSpacer();
-  const hr = head.addStack(); hr.layoutVertically();
-  const r1 = hr.addStack(); r1.layoutHorizontally(); r1.addSpacer(); r1.centerAlignContent();
-  const hm1 = r1.addText(arNum(hy) + " " + AR_M[hm - 1]); hm1.font = Font.systemFont(13); hm1.textColor = Color.white(); hm1.rightAlignText();
-  const hd1 = r1.addText("  " + arNum(hd)); hd1.font = Font.boldSystemFont(26); hd1.textColor = Color.white();
-  const [gy, gm, gd] = data.t0.split("-").map(Number); const g = hr.addText(gd + " " + ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][gm - 1] + " " + gy); g.font = Font.systemFont(13); g.textColor = Color.white(); g.rightAlignText();
-  const dn = hr.addText("Day: " + dur(dayMs) + " - Night: " + dur(864e5 - dayMs)); dn.font = Font.systemFont(11); dn.textColor = Color.white(); dn.rightAlignText(); dn.minimumScaleFactor = 0.7;
-  const lc = hr.addText("📍 " + CITY); lc.font = Font.systemFont(11); lc.textColor = Color.white(); lc.rightAlignText(); lc.minimumScaleFactor = 0.7; lc.lineLimit = 1;
+w.backgroundColor = CARD; w.setPadding(0, 0, 0, 0);
+// ---- header: weekday / big dates, like the app ----
+const head = w.addStack(); head.backgroundColor = HDR; head.layoutHorizontally(); head.setPadding(small ? 10 : 14, 16, small ? 8 : 10, 16);
+const hl = head.addStack(); hl.layoutVertically(); hl.spacing = 0;
+const wd = hl.addText(small ? WD.slice(0, 3) : WD); wd.font = Font.systemFont(10); wd.textColor = new Color("#ffffff", 0.75);
+const gdn = hl.addText(String(gd)); gdn.font = Font.boldSystemFont(small ? 34 : 38); gdn.textColor = GOLD;
+const gmt = hl.addText(GM[gm - 1] + " " + gy); gmt.font = Font.systemFont(12); gmt.textColor = WHITE;
+head.addSpacer();
+const hr = head.addStack(); hr.layoutVertically(); hr.spacing = 0;
+const hdn = hr.addText(arNum(hd)); hdn.font = Font.boldSystemFont(small ? 34 : 38); hdn.textColor = GOLD; hdn.rightAlignText();
+if (!small) {
+  const a1 = hr.addText(AR_M[hm - 1] + " " + arNum(hy)); a1.font = Font.systemFont(14); a1.textColor = WHITE; a1.rightAlignText();
+  const e1 = hr.addText(EN_M[hm - 1] + " " + hy + "H"); e1.font = Font.systemFont(11); e1.textColor = new Color("#ffffff", 0.75); e1.rightAlignText(); e1.minimumScaleFactor = 0.7; e1.lineLimit = 1;
 }
+// ---- strip: city + next timing ----
+const st = w.addStack(); st.backgroundColor = STRIP; st.layoutHorizontally(); st.centerAlignContent(); st.setPadding(6, 16, 6, 16);
+if (!small) { const lc = st.addText("📍 " + CITY); lc.font = Font.systemFont(12); lc.textColor = WHITE; lc.lineLimit = 1; lc.minimumScaleFactor = 0.7; st.addSpacer(); }
+const nt = st.addText((small ? "" : nx[0] + "  ") + fmt(nx[1]) + (onToday ? "" : " ↷")); nt.font = Font.boldSystemFont(small ? 14 : 13); nt.textColor = GOLD; nt.lineLimit = 1; nt.minimumScaleFactor = 0.6;
+if (small) { st.addSpacer(); const nn = st.addText(nx[0]); nn.font = Font.systemFont(10); nn.textColor = WHITE; nn.lineLimit = 1; nn.minimumScaleFactor = 0.5; }
 // ---- body: 2 columns × 4 rows ----
-if (fam !== "small") {
+if (!small) {
   const body = w.addStack(); body.layoutHorizontally(); body.setPadding(fam === "large" ? 14 : 8, 14, 8, 14); body.spacing = 10;
-  const rows = fam === "large" ? 4 : 4, sz = fam === "large" ? 34 : 22;
+  const sz = fam === "large" ? 34 : 22;
   [0, 1].forEach(col => {
     const c = body.addStack(); c.layoutVertically(); c.spacing = fam === "large" ? 12 : 4;
-    for (let r = 0; r < rows; r++) {
+    for (let r = 0; r < 4; r++) {
       const i = col * 4 + r, it = L0[i]; if (!it) continue;
       const isNx = onToday && i === ni;
       const row = c.addStack(); row.layoutHorizontally(); row.centerAlignContent(); row.spacing = 8;
-      const ic = row.addStack(); ic.size = new Size(sz, sz); ic.cornerRadius = sz / 2; ic.backgroundColor = isNx ? BROWN : SOFT; ic.centerAlignContent();
-      const im = ic.addImage(SFSymbol.named(it[2]).image); im.imageSize = new Size(sz * 0.55, sz * 0.55); im.tintColor = isNx ? CREAM : BROWN;
+      const ic = row.addStack(); ic.size = new Size(sz, sz); ic.cornerRadius = sz / 2; ic.backgroundColor = isNx ? BRAND : CHIP; ic.centerAlignContent();
+      const im = ic.addImage(SFSymbol.named(it[2]).image); im.imageSize = new Size(sz * 0.55, sz * 0.55); im.tintColor = isNx ? WHITE : BRAND;
       const tx = row.addStack(); tx.layoutVertically(); tx.spacing = 0;
-      const n = tx.addText(it[0]); n.font = Font.systemFont(fam === "large" ? 14 : 10); n.textColor = BROWN; n.minimumScaleFactor = 0.6; n.lineLimit = 2;
-      const t2 = tx.addText(fmt(it[1])); t2.font = Font.boldSystemFont(fam === "large" ? 14 : 11); t2.textColor = BROWN;
+      const n = tx.addText(it[0]); n.font = Font.systemFont(fam === "large" ? 12 : 10); n.textColor = isNx ? BRAND : MUTED; n.minimumScaleFactor = 0.6; n.lineLimit = 2;
+      const t2 = tx.addText(fmt(it[1])); t2.font = Font.boldSystemFont(fam === "large" ? 15 : 11); t2.textColor = isNx ? BRAND : INK;
     }
   });
 }
 w.refreshAfterDate = new Date(Math.min(nx[1].getTime() + 60e3, now.getTime() + 30 * 6e4));
-if (config.runsInWidget) Script.setWidget(w); else if (fam === "small") await w.presentSmall(); else await w.presentLarge();
+if (config.runsInWidget) Script.setWidget(w); else if (small) await w.presentSmall(); else await w.presentLarge();
 Script.complete();
