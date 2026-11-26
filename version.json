@@ -1,6 +1,32 @@
 {
- "v": 228,
+ "v": 230,
  "history": [
+  {
+   "v": 230,
+   "date": "2026-11-26",
+   "en": [
+    "Salaat times now use your altitude (from GPS, or known for the main cities), like the official mumineen.org widget — about a minute earlier at sunrise and later at Maghrib in high places like Indore."
+   ],
+   "gu": [
+    "સલાતના સમય હવે તમારી ઊંચાઈ (GPS પરથી, કે મુખ્ય શહેરો માટે જાણીતી) વાપરે છે, અધિકૃત mumineen.org વિજેટની જેમ."
+   ],
+   "hi": [
+    "सलात के टाइमिंग अब आपकी ऊँचाई (GPS से, या मुख्य शहरों की जानी हुई) इस्तेमाल करते हैं, आधिकारिक mumineen.org विजेट की तरह — इंदौर जैसी ऊँची जगह पर सूर्योदय क़रीब एक मिनट पहले और मग़रिब बाद में।"
+   ]
+  },
+  {
+   "v": 229,
+   "date": "2026-11-26",
+   "en": [
+    "New home-screen widgets: the Android app (2.4) now has a widget, and the iPhone Scriptable widget is redesigned — both show the next timing, the Hijri date, day/night length and all 8 official timings."
+   ],
+   "gu": [
+    "નવા હોમ-સ્ક્રીન વિજેટ: Android એપ (2.4) માં હવે વિજેટ છે, અને iPhone Scriptable વિજેટ નવું બનાવ્યું — બંને આગલો સમય, હિજરી તારીખ, દિવસ/રાતની લંબાઈ અને બધા 8 અધિકૃત સમય બતાવે છે."
+   ],
+   "hi": [
+    "नए होम-स्क्रीन विजेट: Android ऐप (2.4) में अब विजेट है, और iPhone Scriptable विजेट नया बनाया — दोनों अगला टाइम, हिजरी तारीख़, दिन/रात की लंबाई और सभी 8 आधिकारिक टाइमिंग दिखाते हैं।"
+   ]
+  },
   {
    "v": 228,
    "date": "2026-11-26",
@@ -2653,7 +2679,7 @@
   }
  ],
  "android": {
-  "code": 14,
-  "name": "2.3"
+  "code": 15,
+  "name": "2.4"
  }
 }

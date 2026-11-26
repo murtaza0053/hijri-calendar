@@ -49,6 +49,6 @@ Owner writes and expects replies in **Hinglish** (Hindi in Latin letters). Keep 
 - Don't scrape/copy copyrighted audio into the public app; owner chose YouTube embeds for recitations.
 
 ## Android update pop-up
-When a new APK is released (`~/Projects/mumin-android`), also set `"android":{"code":<versionCode>,"name":"<versionName>"}` at the top level of `version.json` and deploy. `apkCheck()` in index.html shows the Download pop-up when the installed versionCode (from `MuminNative.info().code`) is lower. Current: code 14 = 2.3.
+When a new APK is released (`~/Projects/mumin-android`), also set `"android":{"code":<versionCode>,"name":"<versionName>"}` at the top level of `version.json` and deploy. `apkCheck()` in index.html shows the Download pop-up when the installed versionCode (from `MuminNative.info().code`) is lower. Current: code 15 = 2.4.
 
 - **Miqaats / Salaat times / city lookup all come from the mumineen.org API** (no built-in miqaat list any more; `miqaats.json` was removed). See HANDOFF.md → "mumineen.org API".

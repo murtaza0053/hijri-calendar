@@ -6,7 +6,11 @@ Web app build numbers are `APP_V` in `index.html`. The notes are the user-facing
 
 ## Android APK
 
-### Mumin Android 2.3 — 2026-11-25 (latest)
+### Mumin Android 2.4 — 2026-11-26 (latest)
+
+Home-screen widget (next timing + all 8 official timings, Hijri date, day/night length).
+
+### Mumin Android 2.3 — 2026-11-25
 
 Azaan: vibrate option and volume slider.
 
@@ -65,6 +69,14 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 ## Web app
 
 ### 2026-11-26
+
+**v230**
+
+- Salaat times now use your altitude (from GPS, or known for the main cities), like the official mumineen.org widget — about a minute earlier at sunrise and later at Maghrib in high places like Indore.
+
+**v229**
+
+- New home-screen widgets: the Android app (2.4) now has a widget, and the iPhone Scriptable widget is redesigned — both show the next timing, the Hijri date, day/night length and all 8 official timings.
 
 **v228**
 

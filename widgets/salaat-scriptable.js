@@ -1,69 +1,87 @@
-// Mumin — Salaat timings widget for the iPhone "Scriptable" app.
-// Long-press the home screen → + → Scriptable → pick Small / Medium → long-press the widget → Edit Widget →
-// Script = this script. Optional "Parameter": City,latitude,longitude   e.g.  Indore,22.7196,75.8577
-// Timings are calculated on the phone (no internet needed), same method as the Mumin app / aajnodin.
-const P = (args.widgetParameter || "Indore,22.7196,75.8577").split(",");
-const CITY = P[0].trim(), LAT = parseFloat(P[1]), LNG = parseFloat(P[2]);
-const H = { gToAJD: (Y, M, D) => Date.UTC(Y, M, D) / 864e5 + 2440587.5 };
-function sunTimes(Y, M, D, lat, lng) {
-  const rad = Math.PI / 180;
-  const jd = H.gToAJD(Y, M, D) + 0.5 - lng / 360; // ~local noon
-  const T = (jd - 2451545) / 36525;
-  const L0 = (280.46646 + T * (36000.76983 + 0.0003032 * T)) % 360;
-  const Ma = 357.52911 + T * (35999.05029 - 0.0001537 * T);
-  const e = 0.016708634 - T * (0.000042037 + 0.0000001267 * T);
-  const C = Math.sin(Ma * rad) * (1.914602 - T * (0.004817 + 0.000014 * T)) + Math.sin(2 * Ma * rad) * (0.019993 - 0.000101 * T) + Math.sin(3 * Ma * rad) * 0.000289;
-  const lam = L0 + C - 0.00569 - 0.00478 * Math.sin((125.04 - 1934.136 * T) * rad);
-  const eps0 = 23 + (26 + (21.448 - T * (46.815 + T * (0.00059 - T * 0.001813))) / 60) / 60;
-  const eps = eps0 + 0.00256 * Math.cos((125.04 - 1934.136 * T) * rad);
-  const decl = Math.asin(Math.sin(eps * rad) * Math.sin(lam * rad));
-  const yv = Math.tan(eps / 2 * rad) ** 2;
-  const eqt = 4 / rad * (yv * Math.sin(2 * L0 * rad) - 2 * e * Math.sin(Ma * rad) + 4 * e * yv * Math.sin(Ma * rad) * Math.cos(2 * L0 * rad) - 0.5 * yv * yv * Math.sin(4 * L0 * rad) - 1.25 * e * e * Math.sin(2 * Ma * rad));
-  const noon = 720 - 4 * lng - eqt; // minutes UTC
-  const cosH = (Math.cos(90.833 * rad) - Math.sin(lat * rad) * Math.sin(decl)) / (Math.cos(lat * rad) * Math.cos(decl));
-  const ha = Math.acos(Math.max(-1, Math.min(1, cosH))) / rad;
-  const at = min => new Date(Date.UTC(Y, M, D) + min * 6e4);
-  return { sunrise: at(noon - 4 * ha), noon: at(noon), sunset: at(noon + 4 * ha) };
-}
+// Mumin — Salaat timings widget for the iPhone "Scriptable" app (official mumineen.org times).
+// Long-press the home screen → + → Scriptable → pick Large (best) / Medium / Small → long-press the widget → Edit Widget →
+// Script = this script. Optional "Parameter":  City,latitude,longitude[,altitude]   e.g.  Indore, MP, India,22.7196,75.8577,550
+// (the last 2–3 values are numbers; everything before them is the city text). Needs internet once a day; the last times are kept for offline.
+const raw = (args.widgetParameter || "Indore, MP, India,22.7196,75.8577").split(",").map(s => s.trim());
+let ALT = 0; if (raw.length >= 4 && !isNaN(parseFloat(raw[raw.length - 1])) && !isNaN(parseFloat(raw[raw.length - 2])) && !isNaN(parseFloat(raw[raw.length - 3]))) ALT = parseFloat(raw.pop());
+const LNG = parseFloat(raw.pop()), LAT = parseFloat(raw.pop()), CITY = raw.join(", ");
+const fm = FileManager.local(), CACHE = fm.joinPath(fm.documentsDirectory(), "mumin-widget.json");
+const AR_M = ["محرم", "صفر", "ربيع الاول", "ربيع الاخر", "جمادى الاولى", "جمادى الاخرى", "رجب", "شعبان", "رمضان", "شوال", "ذو القعدة", "ذو الحجة"];
+const arNum = n => String(n).replace(/\d/g, c => "٠١٢٣٤٥٦٧٨٩"[c]);
+const API = "https://mumineen.org/api/v1/";
+const getJSON = u => new Request(u).loadJSON();
+const ymdIn = (d, tz) => d.toLocaleDateString("en-CA", { timeZone: tz });   // "2026-11-26" in the city's own time zone
 
-const NAMES = ["Sihori", "Fajr", "Fajr end", "Zawaal", "Zohr end", "Asr end", "Maghrib", "Isha end"];
-function day(d0) {   // 8 timings of the civil date d0 (Date at local midnight)
-  const Y = d0.getFullYear(), M = d0.getMonth(), D = d0.getDate();
-  const s = sunTimes(Y, M, D, LAT, LNG), n = new Date(Y, M, D + 1), s2 = sunTimes(n.getFullYear(), n.getMonth(), n.getDate(), LAT, LNG);
-  const fe = new Date(s.sunrise.getTime() + 60e3), fj = new Date(fe.getTime() - 65 * 6e4), sih = new Date(fj.getTime() - 10 * 6e4);
-  const z = new Date(s.noon.getTime() + (s.sunset - s.noon) / 3), a = new Date(s.noon.getTime() + (s.sunset - s.noon) * 2 / 3);
-  return [sih, fj, fe, s.noon, z, a, s.sunset, new Date((s.sunset.getTime() + s2.sunrise.getTime()) / 2)].map((t, i) => [NAMES[i], t]);
+async function load() {
+  let c = {}; try { c = JSON.parse(fm.readString(CACHE)); } catch (e) {}
+  try {
+    // the city's time zone comes from the official location list (the phone may be somewhere else)
+    let tz = c.pos === LAT + "," + LNG ? c.tz : null;
+    if (!tz) { const n = (await getJSON(`${API}location/nearest?latitude=${LAT}&longitude=${LNG}`)).data; tz = n && n.timezone || "Asia/Kolkata"; }
+    const now = new Date(), t0 = ymdIn(now, tz), t1 = ymdIn(new Date(now.getTime() + 864e5), tz);
+    const key = LAT + "," + LNG + "," + ALT + "," + t0;
+    if (c.key === key && c.times && c.hijri) return c;
+    const t = await getJSON(`${API}salaat?start=${t0}&end=${t1}&latitude=${LAT}&longitude=${LNG}&timezone=${encodeURIComponent(tz)}&altitude=${ALT}`);
+    const h = await getJSON(`${API}convert/to-hijri/${t0}`);
+    const out = { key, pos: LAT + "," + LNG, tz, t0, t1, off: (t.meta.timezone_offset || 0) * 1000, times: t.data, hijri: h.data.date };
+    fm.writeString(CACHE, JSON.stringify(out)); return out;
+  } catch (e) { return c.times ? c : null; }   // offline → last saved
 }
-const now = new Date(), today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-const tomorrow = new Date(today.getTime() + 864e5);
-const list = day(today), all = list.concat([day(tomorrow)[0]]);
-let ni = all.findIndex(x => x[1] > now); if (ni < 0) ni = all.length - 1;
-const fmt = d => d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
-const left = ms => { const m = Math.max(0, Math.round(ms / 6e4)), h = Math.floor(m / 60); return h ? h + "h " + (m % 60) + "m" : m + "m"; };
-
+const data = await load();
 const w = new ListWidget();
-const g = new LinearGradient(); g.colors = [new Color("#7a1c2a"), new Color("#4d0f19")]; g.locations = [0, 1]; w.backgroundGradient = g;
-w.setPadding(12, 14, 12, 14);
-const head = w.addText("🕌 " + CITY); head.font = Font.semiboldSystemFont(12); head.textColor = new Color("#ffffff", 0.75);
-const nx = all[ni];
-w.addSpacer(4);
-const nl = w.addText(nx[0].toUpperCase()); nl.font = Font.semiboldSystemFont(11); nl.textColor = new Color("#e3b341");
-const nt = w.addText(fmt(nx[1])); nt.font = Font.boldSystemFont(config.widgetFamily === "small" ? 28 : 34); nt.textColor = Color.white();
-const nin = w.addText("in " + left(nx[1] - now)); nin.font = Font.systemFont(12); nin.textColor = new Color("#ffffff", 0.85);
-if (config.widgetFamily !== "small") {
-  w.addSpacer(8);
-  const rows = [list.slice(0, 4), list.slice(4)];
-  const box = w.addStack(); box.layoutHorizontally(); box.spacing = 16;
-  rows.forEach(col => {
-    const c = box.addStack(); c.layoutVertically(); c.spacing = 2;
-    col.forEach(([n, t]) => {
-      const r = c.addStack(); r.layoutHorizontally(); r.spacing = 6;
-      const a = r.addText(n); a.font = Font.systemFont(11); a.textColor = new Color("#ffffff", t < now ? 0.45 : 0.85);
-      r.addSpacer();
-      const b = r.addText(fmt(t)); b.font = Font.semiboldSystemFont(11); b.textColor = t < now ? new Color("#ffffff", 0.5) : Color.white();
-    });
+if (!data || !data.times || !data.times[data.t0]) {
+  w.backgroundColor = new Color("#fbf4df"); const t = w.addText("Mumin — no timings yet.\nOpen the widget once with internet."); t.font = Font.systemFont(12); t.textColor = new Color("#6b4515");
+  if (config.runsInWidget) Script.setWidget(w); else await w.presentMedium(); Script.complete(); return;
+}
+const OFF = data.off, now = new Date(), D0 = data.times[data.t0], D1 = data.times[data.t1];
+const wall = s => { const m = s.match(/(\d+)-(\d+)-(\d+) (\d+):(\d+):(\d+)/); return new Date(Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6]) - OFF); };   // the API gives the city's wall-clock time
+const mk = o => o ? [["Sihori End", wall(o.sihori), "sunrise.fill"], ["Sunrise", wall(o.sunrise), "sun.horizon.fill"], ["Zawal", wall(o.zawaal), "sun.max.fill"], ["Zuhr End", wall(o.zohr_end), "sun.max.circle.fill"],
+  ["Asr End", wall(o.asr_end), "sun.max.fill"], ["Maghrib", wall(o.maghrib), "sunset.fill"], ["Nisf ul Layl Start", wall(o.nisful_layl), "moon.stars.fill"], ["Nisf ul Layl End", wall(o.nisful_layl_end || o.nisful_layl), "moon.stars.fill"]] : [];
+const L0 = mk(D0), L1 = mk(D1), all = L0.concat(L1);
+let ni = all.findIndex(x => x[1] > now); if (ni < 0) ni = all.length - 1;
+const nx = all[ni], onToday = ni < L0.length;
+const fmt = d => { const x = new Date(d.getTime() + OFF); return String(x.getUTCHours()).padStart(2, "0") + ":" + String(x.getUTCMinutes()).padStart(2, "0"); };
+const dur = ms => { const m = Math.round(ms / 6e4); return Math.floor(m / 60) + "h " + (m % 60) + "m"; };
+const dayMs = wall(D0.maghrib) - wall(D0.sunrise);
+const [hy, hm, hd] = data.hijri.split("-").map(Number);
+const GOLD = new Color("#d49a33"), CREAM = new Color("#fbf4df"), BROWN = new Color("#6b4515"), SOFT = new Color("#efe6cf");
+const fam = config.widgetFamily || "large";
+
+w.backgroundColor = CREAM; w.setPadding(0, 0, 0, 0);
+// ---- header (gold) ----
+const head = w.addStack(); head.backgroundColor = GOLD; head.layoutHorizontally(); head.setPadding(fam === "small" ? 10 : 14, 16, fam === "small" ? 10 : 12, 16); head.centerAlignContent();
+const hl = head.addStack(); hl.layoutVertically();
+const tt = hl.addText(fmt(nx[1])); tt.font = Font.regularSystemFont(fam === "small" ? 34 : 44); tt.textColor = Color.white();
+const tn = hl.addText(nx[0]); tn.font = Font.boldSystemFont(fam === "small" ? 13 : 16); tn.textColor = Color.white(); tn.minimumScaleFactor = 0.7;
+if (!onToday) { const tm = hl.addText("tomorrow"); tm.font = Font.systemFont(10); tm.textColor = new Color("#ffffff", 0.8); }
+if (fam !== "small") {
+  head.addSpacer();
+  const hr = head.addStack(); hr.layoutVertically();
+  const r1 = hr.addStack(); r1.layoutHorizontally(); r1.addSpacer(); r1.centerAlignContent();
+  const hm1 = r1.addText(arNum(hy) + " " + AR_M[hm - 1]); hm1.font = Font.systemFont(13); hm1.textColor = Color.white(); hm1.rightAlignText();
+  const hd1 = r1.addText("  " + arNum(hd)); hd1.font = Font.boldSystemFont(26); hd1.textColor = Color.white();
+  const [gy, gm, gd] = data.t0.split("-").map(Number); const g = hr.addText(gd + " " + ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][gm - 1] + " " + gy); g.font = Font.systemFont(13); g.textColor = Color.white(); g.rightAlignText();
+  const dn = hr.addText("Day: " + dur(dayMs) + " - Night: " + dur(864e5 - dayMs)); dn.font = Font.systemFont(11); dn.textColor = Color.white(); dn.rightAlignText(); dn.minimumScaleFactor = 0.7;
+  const lc = hr.addText("📍 " + CITY); lc.font = Font.systemFont(11); lc.textColor = Color.white(); lc.rightAlignText(); lc.minimumScaleFactor = 0.7; lc.lineLimit = 1;
+}
+// ---- body: 2 columns × 4 rows ----
+if (fam !== "small") {
+  const body = w.addStack(); body.layoutHorizontally(); body.setPadding(fam === "large" ? 14 : 8, 14, 8, 14); body.spacing = 10;
+  const rows = fam === "large" ? 4 : 4, sz = fam === "large" ? 34 : 22;
+  [0, 1].forEach(col => {
+    const c = body.addStack(); c.layoutVertically(); c.spacing = fam === "large" ? 12 : 4;
+    for (let r = 0; r < rows; r++) {
+      const i = col * 4 + r, it = L0[i]; if (!it) continue;
+      const isNx = onToday && i === ni;
+      const row = c.addStack(); row.layoutHorizontally(); row.centerAlignContent(); row.spacing = 8;
+      const ic = row.addStack(); ic.size = new Size(sz, sz); ic.cornerRadius = sz / 2; ic.backgroundColor = isNx ? BROWN : SOFT; ic.centerAlignContent();
+      const im = ic.addImage(SFSymbol.named(it[2]).image); im.imageSize = new Size(sz * 0.55, sz * 0.55); im.tintColor = isNx ? CREAM : BROWN;
+      const tx = row.addStack(); tx.layoutVertically(); tx.spacing = 0;
+      const n = tx.addText(it[0]); n.font = Font.systemFont(fam === "large" ? 14 : 10); n.textColor = BROWN; n.minimumScaleFactor = 0.6; n.lineLimit = 2;
+      const t2 = tx.addText(fmt(it[1])); t2.font = Font.boldSystemFont(fam === "large" ? 14 : 11); t2.textColor = BROWN;
+    }
   });
 }
-w.refreshAfterDate = new Date(Math.min(nx[1].getTime(), now.getTime() + 15 * 6e4));
-if (config.runsInWidget) Script.setWidget(w); else await w.presentMedium();
+w.refreshAfterDate = new Date(Math.min(nx[1].getTime() + 60e3, now.getTime() + 30 * 6e4));
+if (config.runsInWidget) Script.setWidget(w); else if (fam === "small") await w.presentSmall(); else await w.presentLarge();
 Script.complete();
