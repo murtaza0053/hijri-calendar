@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=227">
-<script src="theme-init.js?v=227"></script>
+<link rel="stylesheet" href="themes.css?v=228">
+<script src="theme-init.js?v=228"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -808,10 +808,10 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=227"></script>
-<script src="i18n.js?v=227"></script>
-<script src="cities.js?v=227"></script>
-<script src="haptic.js?v=227"></script>
+<script src="hijri.js?v=228"></script>
+<script src="i18n.js?v=228"></script>
+<script src="cities.js?v=228"></script>
+<script src="haptic.js?v=228"></script>
 <script>
 "use strict";
 
@@ -883,39 +883,33 @@ document.addEventListener("click", e => {
 });
 
 /* ---------- Miqaats ---------- */
-let MIQ = [];
-/* mumineen.org (official API) miqaats of a Hijri month, cached on the device and merged into the built-in list below */
+/* ---------- Miqaats: all from mumineen.org (official API v1) ----------
+   One request per Hijri month, cached on the device (works offline for the months already loaded; the next 12 months are loaded in the background).
+   The API has no priority/phase, so: everything except "Urus" counts as major (priority 1), "Urus" = 3; night = Raat / Laylat in the type or name. */
 const MQ_API = "https://mumineen.org/api/v1/calendar/";
-let apiMiq = store.get("miqApi", {}); const mqBusy = {};
+let apiMiq = store.get("miqApi", {}), mqFail = false, mqRT = 0; const mqBusy = {};
 const mqKey = (y, m) => y + "-" + m;
 async function miqApiSync(y, m) {   // m: 0-based Hijri month
   const k = mqKey(y, m), c = apiMiq[k];
-  if ((c && Date.now() - c.at < 14 * 864e5) || mqBusy[k] || navigator.onLine === false) return;
+  if ((c && Date.now() - c.at < 30 * 864e5) || mqBusy[k] || navigator.onLine === false) return;
   mqBusy[k] = 1;
   try {
     const r = await fetch(`${MQ_API}${y}-${String(m + 1).padStart(2, "0")}-15`, { headers: { Accept: "application/json" }, signal: AbortSignal.timeout(10000) });
     const j = await r.json(); if (!Array.isArray(j.miqats)) throw new Error("bad");
     apiMiq[k] = { at: Date.now(), list: j.miqats.map(q => ({ d: +q.day, n: String(q.name), t: q.type && q.type.name || "", c: q.location && q.location.name || "" })) };
-    const ks = Object.keys(apiMiq); if (ks.length > 14) ks.sort((a, b) => apiMiq[a].at - apiMiq[b].at).slice(0, ks.length - 14).forEach(x => delete apiMiq[x]);
-    store.set("miqApi", apiMiq); renderMiqUi();
-  } catch {} finally { delete mqBusy[k]; }
+    const ks = Object.keys(apiMiq); if (ks.length > 30) ks.sort((a, b) => apiMiq[a].at - apiMiq[b].at).slice(0, ks.length - 30).forEach(x => delete apiMiq[x]);
+    store.set("miqApi", apiMiq); mqFail = false; clearTimeout(mqRT); mqRT = setTimeout(renderMiqUi, 150);
+  } catch { if (!apiMiq[mqKey(todayH.y, todayH.m)]) { mqFail = true; clearTimeout(mqRT); mqRT = setTimeout(renderMiqUi, 150); } } finally { delete mqBusy[k]; }
 }
-function renderMiqUi() { if (!miqLoaded) return; renderCal(); renderTodayMq(); renderBanner(); if (curView === "up") renderUpcoming(); if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD); }
-const MQ_STOP = new Set(["syedna", "syedi", "mawlai", "moula", "moulai", "moulaya", "mulla", "saheb", "bin", "ibne", "bhai", "urus", "the", "and", "aq", "ra", "busaheba"]);
-const mqNorm = s => s.toLowerCase().replace(/\(.*?\)|\[.*?\]/g, " ").replace(/[^a-z0-9 ]/g, " ").split(/\s+/).filter(w => w.length > 2 && !MQ_STOP.has(w));
-const mqSim = (a, b) => { const A = new Set(mqNorm(a)), B = new Set(mqNorm(b)); if (!A.size || !B.size) return 0; let c = 0; for (const x of A) if (B.has(x)) c++; return c / Math.min(A.size, B.size); };
-const MQ_MAJOR = /eid|laylat|yaw|shahadat|wafat|milad|salgirah|chelum|ashura|biz|zawal|fadhil raat/i;
+async function miqPrefetch() { for (let i = 0; i < 12; i++) { const n = todayH.m + i; await miqApiSync(todayH.y + Math.floor(n / 12), n % 12); } }
+function renderMiqUi() { renderCal(); renderTodayMq(); renderBanner(); if (curView === "up") renderUpcoming(); if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD); }
 const miqaatsFor = (y, m, d) => {
-  const e = MIQ.find(x => x.month === m && x.date === d);
-  const out = e ? e.miqaats.filter(q => !q.year || q.year <= y).map(q => ({ ...q })) : [];
-  const ac = apiMiq[mqKey(y, m)], api = ac ? ac.list.filter(a => a.d === d) : [];
-  if (api.length) {
-    const used = new Set(), done = new Set(), tag = (q, a) => { if (!q.description) q.description = a.t + (a.c ? " · " + a.c : ""); q.type = a.t; };
-    api.forEach((a, ai) => { let bi = -1, bs = 0; out.forEach((q, i) => { if (used.has(i)) return; const sc = mqSim(q.title, a.n); if (sc > bs) { bs = sc; bi = i; } }); if (bs >= 0.5) { used.add(bi); done.add(ai); tag(out[bi], a); } });
-    api.forEach((a, ai) => { if (done.has(ai) || a.t !== "Urus") return; let bi = -1, bs = -1; out.forEach((q, i) => { if (used.has(i) || !/urus/i.test(q.title)) return; const sc = mqSim(q.title, a.n); if (sc > bs) { bs = sc; bi = i; } }); if (bi >= 0) { used.add(bi); done.add(ai); tag(out[bi], a); } });   // same Urus, spelled differently
-    api.forEach((a, ai) => { if (!done.has(ai)) out.push({ title: a.n, description: a.t + (a.c ? " · " + a.c : ""), phase: /raat|laylat|layl/i.test(a.t + " " + a.n) ? "night" : "day", priority: MQ_MAJOR.test(a.t) ? 2 : 3, year: null, type: a.t, fromApi: true }); });
-  }
-  return out.sort((a, b) => a.priority - b.priority);
+  const ac = apiMiq[mqKey(y, m)]; if (!ac) return [];
+  return ac.list.filter(a => a.d === d).map(a => {
+    const urus = a.t === "Urus";
+    return { title: a.n, type: a.t, priority: urus ? 3 : 1, phase: /raat|laylat|layl/i.test(a.t + " " + a.n) ? "night" : "day", year: null,
+      description: urus ? (a.c && !a.n.includes(a.c) ? a.c : null) : (a.t && a.t !== a.n ? a.t : null) };
+  }).sort((a, b) => a.priority - b.priority);
 };
 
 /* ---------- Sun times (NOAA) ---------- */
@@ -982,7 +976,7 @@ function renderHeader() {
 
 /* ---------- Calendar grid ---------- */
 function renderCal() {
-  const { y, m } = view; if (miqLoaded) miqApiSync(y, m);
+  const { y, m } = view; miqApiSync(y, m);
   const first = H.toAJD(y, m, 1), n = H.daysInMonth(y, m);
   const lead = H.dow(first);
   const cells = [];
@@ -1044,7 +1038,7 @@ function mqHTML(list) {
 }
 
 function renderTodayMq() {
-  $("todayMq").innerHTML = `<h3>${t("todayMq")}</h3>${mqHTML(miqaatsFor(todayH.y, todayH.m, todayH.d))}`;
+  $("todayMq").innerHTML = `<h3>${t("todayMq")}</h3>${apiMiq[mqKey(todayH.y, todayH.m)] ? mqHTML(miqaatsFor(todayH.y, todayH.m, todayH.d)) : `<p class="muted">${t(mqFail ? "loadFail" : "mqWait")}</p>`}`;
 }
 
 function todayIn() {   // today's civil date at the chosen city (device date when no city time zone is set)
@@ -1548,7 +1542,7 @@ detectLoc();
 document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") detectLoc(); });
 
 /* ---------- Boot ---------- */
-let miqLoaded = false;
+let miqLoaded = true;
 function renderAll() {
   renderQuote();
   if (window.drawVib) drawVib();
@@ -1594,7 +1588,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 227, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 228, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll(); salaatSync();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1716,7 +1710,7 @@ function renderQuote() {
   qFull = `<div class="qcard qsheet">${hd}${QJ.a && QJ.a[i] ? `<div class="qar" lang="ar" dir="rtl">${esc(QJ.a[i])}</div>` : im("a", 0, "qa")}<div class="qd"></div>${QJ.u && QJ.u[i] ? `<div class="qur" lang="ur" dir="rtl">${esc(QJ.u[i])}</div>` : im("u", 2, "qu")}${en}<div class="qn">${t("qSrc")}</div></div>`;
 }
 fetch("quotes.json").then(r => r.json()).then(q => { QJ = q; renderQuote(); nativeSync(); azAlDraw(); }).catch(() => { $("qCard").hidden = true; });
-fetch("miqaats.json").then(r => r.json()).then(d => { MIQ = d; miqLoaded = true; renderAll(); miqApiSync(todayH.y, todayH.m); miqApiSync(todayH.m === 11 ? todayH.y + 1 : todayH.y, (todayH.m + 1) % 12); }).catch(() => { $("todayMq").innerHTML = `<p class="muted">${t("loadFail")}</p>`; });
+miqApiSync(todayH.y, todayH.m).then(() => { renderAll(); miqPrefetch(); });   // miqaats come from the API (cached copy shows at once)
 // refresh "today" when app resumes on a new day
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible") { const n = new Date(); if (n.getDate() !== now.getDate()) location.reload(); else renderHeader(); }

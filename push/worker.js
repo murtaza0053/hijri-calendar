@@ -2,7 +2,6 @@
 // cron trigger (every minute) sends the alerts that fall in that minute as encrypted Web Push messages.
 import "../hijri.js";                    // sets globalThis.H (same Misri calendar as the app)
 import { sendPush, b64u } from "./webpush.js";
-import MIQ from "../miqaats.json" with { type: "json" };
 import QUOTES from "../quotes.json" with { type: "json" };
 
 const ORIGINS = ["https://murtaza0053.github.io", "http://localhost:8765", "http://127.0.0.1:8765"];
@@ -75,10 +74,10 @@ function localParts(ms, tz) {
   return { y: +p.year, m: +p.month - 1, d: +p.day, hh: +p.hour, mm: +p.minute, dow: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(p.weekday) };
 }
 
-/** Major miqaats (priority 1–2) of a Gregorian date: [{title, phase, washeq}] */
-function miqOn(y, m, d) {
-  const h = H.fromAJD(H.gToAJD(y, m, d)), e = MIQ.find(x => x.month === h.m && x.date === h.d);
-  return e ? e.miqaats.filter(q => q.priority <= 2 && (!q.year || q.year <= h.y)).map(q => ({ title: q.title, phase: q.phase, washeq: /washeq/i.test(q.description || "") })) : [];
+/** Major miqaats (everything except "Urus") of a Gregorian date, from the mumineen.org data in `miq` ({ "hijriYear-month0": [{d, n, t}] }): [{title, phase, washeq}] */
+function miqOn(y, m, d, miq) {
+  const h = H.fromAJD(H.gToAJD(y, m, d)), list = (miq && miq[h.y + "-" + h.m]) || [];
+  return list.filter(q => q.d === h.d && q.t !== "Urus").map(q => ({ title: q.n, phase: /raat|laylat|layl/i.test(q.t + " " + q.n) ? "night" : "day", washeq: /washeq/i.test(q.n) }));
 }
 const ymd = (y, m, d, add) => { const x = new Date(Date.UTC(y, m, d + add)); return [x.getUTCFullYear(), x.getUTCMonth(), x.getUTCDate()]; };
 /** English text of the day's quote ("" when that quote has no proof-read text); same day→quote rule as the app */
@@ -87,7 +86,7 @@ function quoteOn(p) {
   return QUOTES.q[((Math.floor((Date.UTC(p.y, p.m, p.d) - Date.UTC(y, m - 1, d)) / 864e5) % n) + n) % n];
 }
 /** Alerts of one subscription that fall in the minute starting at ws (ms). */
-export function dueEvents(s, ws, cache) {
+export function dueEvents(s, ws, cache, miq) {
   const pr = JSON.parse(s.prefs || "{}"), T = TXT[s.lang] || TXT.en, out = [];
   let p; try { p = localParts(ws, s.tz || "UTC"); } catch { p = localParts(ws, "UTC"); }
   const city = s.city || "";
@@ -105,11 +104,11 @@ export function dueEvents(s, ws, cache) {
   if (at("tasbeeh", "07:00") && pr.tasbeeh) out.push({ title: T.tas, body: fill(T.tasB, { t: WEEK[p.dow] }), url: "./dua/tasbeeh.html?m=week", tag: "tasbeeh" });
   if (at("sadaqah", "08:00") && pr.sadaqah) out.push({ title: T.sdq, body: fill(T.sdqB, { i: SADAQAH[p.dow] }), url: "./#dua", tag: "sadaqah" });
   if (at("miq", "20:00") && pr.miq) {
-    const tm2 = miqOn(...ymd(p.y, p.m, p.d, 1)).filter(q => q.phase === "day"), tn = miqOn(p.y, p.m, p.d).filter(q => q.phase === "night");
+    const tm2 = miqOn(...ymd(p.y, p.m, p.d, 1), miq).filter(q => q.phase === "day"), tn = miqOn(p.y, p.m, p.d, miq).filter(q => q.phase === "night");
     if (tm2.length) out.push({ title: T.miq, body: fill(T.miqT, { t: tm2.map(q => q.title).join(" · ") }), url: "./", tag: "miq-day" });
     if (tn.length) out.push({ title: T.miq, body: fill(T.miqN, { t: tn.map(q => q.title).join(" · ") }), url: "./", tag: "miq-night" });
     // Washeq raat: heads-up one month before
-    const [wy, wm, wd] = ymd(p.y, p.m, p.d, 30), ws2 = miqOn(wy, wm, wd).filter(q => q.washeq);
+    const [wy, wm, wd] = ymd(p.y, p.m, p.d, 30), ws2 = miqOn(wy, wm, wd, miq).filter(q => q.washeq);
     if (ws2.length) { const h2 = H.fromAJD(H.gToAJD(wy, wm, wd)); out.push({ title: T.wsq, body: fill(T.wsqB, { t: ws2.map(q => q.title).join(" · "), d: `${h2.d} ${H.SHORT[h2.m]} ${h2.y}H` }), url: "./", tag: "miq-washeq" }); }
   }
   if (at("kumail", "19:00") && p.dow === 4 && pr.kumail) out.push({ title: T.kum, body: T.kumB, url: "./dua/kumail.html", tag: "kumail" });
@@ -189,12 +188,33 @@ async function loadSalaat(env, subs, ws) {
   return cache;
 }
 
+/** mumineen.org miqaats of the Hijri months the subscribers need (today, tomorrow, +30 days), cached in D1 table miqapi for 30 days. */
+const MQ_API = "https://mumineen.org/api/v1/calendar/", miqFail = new Map();
+async function loadMiq(env, subs, ws) {
+  const need = new Set();
+  for (const s of subs) { let p; try { p = localParts(ws, s.tz || "UTC"); } catch { p = localParts(ws, "UTC"); } for (const off of [0, 1, 30]) { const [y, m, d] = ymd(p.y, p.m, p.d, off), h = H.fromAJD(H.gToAJD(y, m, d)); need.add(h.y + "-" + h.m); } }
+  const miq = {}, at = {}; if (!need.size) return miq;
+  const { results } = await env.DB.prepare("SELECT ym, data, at FROM miqapi").all();
+  for (const r of results) { miq[r.ym] = JSON.parse(r.data); at[r.ym] = r.at; }
+  const todo = [...need].filter(k => (!at[k] || ws - at[k] > 30 * 864e5) && ws - (miqFail.get(k) || 0) > 10 * 60000);
+  for (const k of todo.slice(0, 4)) {
+    const [y, m] = k.split("-").map(Number);
+    try {
+      const r = await fetch(`${MQ_API}${y}-${pad2(m + 1)}-15`, { headers: { Accept: "application/json" }, signal: AbortSignal.timeout(8000) });
+      const j = await r.json(); if (!Array.isArray(j.miqats)) throw new Error("bad");
+      const list = j.miqats.map(q => ({ d: +q.day, n: String(q.name), t: q.type && q.type.name || "" }));
+      await env.DB.prepare("INSERT OR REPLACE INTO miqapi(ym,data,at) VALUES(?,?,?)").bind(k, JSON.stringify(list), ws).run(); miq[k] = list;
+    } catch { miqFail.set(k, ws); }
+  }
+  return miq;
+}
+
 export async function tick(env, now = Date.now()) {
   const ws = Math.floor(now / 60000) * 60000;
   const { results: subs } = await env.DB.prepare("SELECT * FROM subs WHERE last_tick < ?").bind(ws).all();
-  const stmts = [], cache = await loadSalaat(env, subs, ws).catch(() => ({}));   // any failure → local calculation
+  const stmts = [], cache = await loadSalaat(env, subs, ws).catch(() => ({})), miq = await loadMiq(env, subs, ws).catch(() => ({}));   // any failure → local calculation / no miqaat alerts
   for (const s of subs) {
-    for (const e of dueEvents(s, ws, cache)) stmts.push(env.DB.prepare("INSERT INTO outbox(sub_id,payload,due,tries) VALUES(?,?,?,0)").bind(s.id, JSON.stringify(e), ws));
+    for (const e of dueEvents(s, ws, cache, miq)) stmts.push(env.DB.prepare("INSERT INTO outbox(sub_id,payload,due,tries) VALUES(?,?,?,0)").bind(s.id, JSON.stringify(e), ws));
     stmts.push(env.DB.prepare("UPDATE subs SET last_tick=? WHERE id=?").bind(ws, s.id));
   }
   for (let i = 0; i < stmts.length; i += 40) await env.DB.batch(stmts.slice(i, i + 40));

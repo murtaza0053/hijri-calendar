@@ -6,7 +6,16 @@ const fs = require("fs");
 const path = require("path");
 require("./hijri.js");
 const H = globalThis.H;
-const MIQ = JSON.parse(fs.readFileSync(path.join(__dirname, "miqaats.json"), "utf8"));
+// Miqaats come from the official mumineen.org API (one request per Hijri month); "Urus" = priority 3, everything else = major (1)
+const API = {};
+async function loadApi() {
+  for (let y = Y0; y <= Y1; y++) for (let m = 0; m < 12; m++) {
+    try {
+      const r = await fetch(`https://mumineen.org/api/v1/calendar/${y}-${pad(m + 1)}-15`, { headers: { Accept: "application/json" } });
+      const j = await r.json(); API[y + "-" + m] = (j.miqats || []).map(q => ({ d: +q.day, n: String(q.name), t: q.type && q.type.name || "", c: q.location && q.location.name || "" }));
+    } catch (e) { console.error("API failed for", y, m + 1, e.message); API[y + "-" + m] = []; }
+  }
+}
 
 const now = new Date();
 const cur = H.fromAJD(H.gToAJD(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate())).y;
@@ -35,9 +44,8 @@ function build(maxPriority, name, file) {
     "REFRESH-INTERVAL;VALUE=DURATION:P7D", "X-PUBLISHED-TTL:P7D"];
   let n = 0;
   for (let y = Y0; y <= Y1; y++) for (let m = 0; m < 12; m++) for (let d = 1; d <= H.daysInMonth(y, m); d++) {
-    const e = MIQ.find(x => x.month === m && x.date === d);
-    if (!e) continue;
-    const list = e.miqaats.filter(q => q.priority <= maxPriority && (!q.year || q.year <= y));
+    const list = (API[y + "-" + m] || []).filter(q => q.d === d).map(q => ({ title: q.n, priority: q.t === "Urus" ? 3 : 1, phase: /raat|laylat|layl/i.test(q.t + " " + q.n) ? "night" : "day", description: q.t === "Urus" ? (q.c && !q.n.includes(q.c) ? q.c : "") : (q.t !== q.n ? q.t : "") })).filter(q => q.priority <= maxPriority);
+    if (!list.length) continue;
     for (const phase of ["day", "night"]) {
       const qs = list.filter(q => q.phase === phase);
       if (!qs.length) continue;
@@ -54,7 +62,7 @@ function build(maxPriority, name, file) {
         "TRANSP:TRANSPARENT",
         "BEGIN:VALARM", "ACTION:DISPLAY", `DESCRIPTION:${esc(summary)}`, `TRIGGER:${trigger}`, "END:VALARM",
         // Washeq raat → an early heads-up one month before (9 AM), so there is time to prepare
-        ...(qs.some(q => /washeq/i.test(q.description || "")) ? ["BEGIN:VALARM", "ACTION:DISPLAY", `DESCRIPTION:${esc("1 month to go (" + hdate + "): " + summary)}`, "TRIGGER:-P29DT15H", "END:VALARM"] : []),
+        ...(qs.some(q => /washeq/i.test(q.title)) ? ["BEGIN:VALARM", "ACTION:DISPLAY", `DESCRIPTION:${esc("1 month to go (" + hdate + "): " + summary)}`, "TRIGGER:-P29DT15H", "END:VALARM"] : []),
         "END:VEVENT");
       n++;
     }
@@ -65,8 +73,6 @@ function build(maxPriority, name, file) {
   console.log(`${file}: ${n} events, Hijri ${Y0}–${Y1}`);
 }
 
-build(2, "Miqaats (major)", "miqaats-major.ics");
-build(3, "Miqaats + Urus (all)", "miqaats-all.ics");
 
 // ---- Amal feed: Rozi ma Barakat (Hijri 2..7 every month) + daily tasbih of the weekday ----
 const SITE = "https://murtaza0053.github.io/hijri-calendar/";
@@ -124,43 +130,29 @@ feed("kumail.ics", "Dua e Kumail", "Shab-e-Juma (Thursday night): recite Dua e K
 });
 
 // ---- Salaat timings feed: 5 timed alerts a day (Sihori, Fajr, Zawaal, Maghrib, Nisful Layl) for the next ~6 months, per city ----
-function sunTimes(Y, M, D, lat, lng) {
-  const rad = Math.PI / 180;
-  const jd = H.gToAJD(Y, M, D) + 0.5 - lng / 360; // ~local noon
-  const T = (jd - 2451545) / 36525;
-  const L0 = (280.46646 + T * (36000.76983 + 0.0003032 * T)) % 360;
-  const Ma = 357.52911 + T * (35999.05029 - 0.0001537 * T);
-  const e = 0.016708634 - T * (0.000042037 + 0.0000001267 * T);
-  const C = Math.sin(Ma * rad) * (1.914602 - T * (0.004817 + 0.000014 * T)) + Math.sin(2 * Ma * rad) * (0.019993 - 0.000101 * T) + Math.sin(3 * Ma * rad) * 0.000289;
-  const lam = L0 + C - 0.00569 - 0.00478 * Math.sin((125.04 - 1934.136 * T) * rad);
-  const eps0 = 23 + (26 + (21.448 - T * (46.815 + T * (0.00059 - T * 0.001813))) / 60) / 60;
-  const eps = eps0 + 0.00256 * Math.cos((125.04 - 1934.136 * T) * rad);
-  const decl = Math.asin(Math.sin(eps * rad) * Math.sin(lam * rad));
-  const yv = Math.tan(eps / 2 * rad) ** 2;
-  const eqt = 4 / rad * (yv * Math.sin(2 * L0 * rad) - 2 * e * Math.sin(Ma * rad) + 4 * e * yv * Math.sin(Ma * rad) * Math.cos(2 * L0 * rad) - 0.5 * yv * yv * Math.sin(4 * L0 * rad) - 1.25 * e * e * Math.sin(2 * Ma * rad));
-  const noon = 720 - 4 * lng - eqt; // minutes UTC
-  const cosH = (Math.cos(90.833 * rad) - Math.sin(lat * rad) * Math.sin(decl)) / (Math.cos(lat * rad) * Math.cos(decl));
-  const ha = Math.acos(Math.max(-1, Math.min(1, cosH))) / rad;
-  const at = min => new Date(Date.UTC(Y, M, D) + min * 6e4);
-  return { sunrise: at(noon - 4 * ha), noon: at(noon), sunset: at(noon + 4 * ha) };
-}
-
 const SAL_DAYS = 183, SAL_CITIES = [["Indore", 22.7196, 75.8577], ["Mumbai", 19.076, 72.8777], ["Surat", 21.1702, 72.8311], ["Ahmedabad", 23.0225, 72.5714], ["Burhanpur", 21.3009, 76.2291], ["Udaipur", 24.5854, 73.7125], ["Pune", 18.5204, 73.8567], ["Hyderabad", 17.385, 78.4867], ["Kolkata", 22.5726, 88.3639], ["Chennai", 13.0827, 80.2707], ["Bengaluru", 12.9716, 77.5946], ["Delhi", 28.6139, 77.209], ["Karachi", 24.8607, 67.0011]];
 const SAL_NAMES = { sih: "Sihori", faj: "Fajr", zaw: "Zawaal", mag: "Maghrib", nis: "Nisful Layl" };
-function salaatDay(Y, M, D, lat, lng) {   // same formulas as the app (index.html: salatList)
-  const s = sunTimes(Y, M, D, lat, lng), n = new Date(Date.UTC(Y, M, D + 1)), s2 = sunTimes(n.getUTCFullYear(), n.getUTCMonth(), n.getUTCDate(), lat, lng);
-  const fe = new Date(s.sunrise.getTime() + 60e3), fj = new Date(fe.getTime() - 65 * 6e4), sih = new Date(fj.getTime() - 10 * 6e4);
-  return [["sih", sih], ["faj", fj], ["zaw", s.noon], ["mag", s.sunset], ["nis", new Date((s.sunset.getTime() + s2.sunrise.getTime()) / 2)]];
+// Timings come from the official mumineen.org API (one request per city for the whole window); the API reports the zone offset (Karachi is +05:00, the rest +05:30)
+const SAL_API = "https://mumineen.org/api/v1/salaat";
+async function loadSalaat(city, lat, lng) {
+  const a = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate())), b = new Date(a.getTime() + (SAL_DAYS - 1) * 864e5), iso = d => d.toISOString().slice(0, 10);
+  const r = await fetch(`${SAL_API}?start=${iso(a)}&end=${iso(b)}&latitude=${lat}&longitude=${lng}&timezone=${city === "Karachi" ? "Asia%2FKarachi" : "Asia%2FKolkata"}&altitude=0`, { headers: { Accept: "application/json" } });
+  const j = await r.json(); if (!j.data) throw new Error("no data");
+  const off = (j.meta && j.meta.timezone_offset != null ? j.meta.timezone_offset : 19800) * 1000, ms = str => { const m = str.match(/(\d+)-(\d+)-(\d+) (\d+):(\d+):(\d+)/); return Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6]) - off; };
+  const out = {}; for (const [day, o] of Object.entries(j.data)) out[day] = [["sih", new Date(ms(o.sihori))], ["faj", new Date(ms(o.fajr))], ["zaw", new Date(ms(o.zawaal))], ["mag", new Date(ms(o.maghrib))], ["nis", new Date(ms(o.nisful_layl))]];
+  return out;
 }
 const utc = d => `${d.getUTCFullYear()}${pad(d.getUTCMonth() + 1)}${pad(d.getUTCDate())}T${pad(d.getUTCHours())}${pad(d.getUTCMinutes())}00Z`;
+async function buildSalaat() {
 for (const [city, lat, lng] of SAL_CITIES) {
+  const DAYS = await loadSalaat(city, lat, lng);
   const slug = city.toLowerCase().replace(/[^a-z]/g, "");
   const L = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//murtaza0053//hijri-calendar//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
-    `X-WR-CALNAME:Salaat timings — ${city}`, `X-WR-CALDESC:Sihori, Fajr, Zawaal, Maghrib and Nisful Layl alerts for ${city} (approximate, like the Mumin app)`, "REFRESH-INTERVAL;VALUE=DURATION:P7D", "X-PUBLISHED-TTL:P7D"];
+    `X-WR-CALNAME:Salaat timings — ${city}`, `X-WR-CALDESC:Sihori, Fajr, Zawaal, Maghrib and Nisful Layl alerts for ${city} (official mumineen.org timings, like the Mumin app)`, "REFRESH-INTERVAL;VALUE=DURATION:P7D", "X-PUBLISHED-TTL:P7D"];
   const start = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()); let n = 0;
   for (let i = 0; i < SAL_DAYS; i++) {
     const d0 = new Date(start + i * 864e5);
-    for (const [k, t] of salaatDay(d0.getUTCFullYear(), d0.getUTCMonth(), d0.getUTCDate(), lat, lng)) {
+    for (const [k, t] of DAYS[d0.toISOString().slice(0, 10)] || []) {
       const e = new Date(t.getTime() + 6e4), name = SAL_NAMES[k];
       L.push("BEGIN:VEVENT", `UID:sal-${slug}-${ymd({ y: d0.getUTCFullYear(), m: d0.getUTCMonth(), d: d0.getUTCDate() })}-${k}@murtaza0053.github.io`, `DTSTAMP:${stamp}`, `DTSTART:${utc(t)}`, `DTEND:${utc(e)}`,
         `SUMMARY:${esc("🕌 " + name + " — " + city)}`, `DESCRIPTION:${esc(name + " time for " + city + " (approximate). " + SITE + "#sl")}`, `URL:${SITE}#sl`, "TRANSP:TRANSPARENT",
@@ -171,3 +163,10 @@ for (const [city, lat, lng] of SAL_CITIES) {
   fs.writeFileSync(path.join(__dirname, "calendar", `salaat-${slug}.ics`), L.map(fold).join("\r\n") + "\r\n");
   console.log(`salaat-${slug}.ics: ${n} events`);
 }
+}
+(async () => {
+  await loadApi();
+  build(2, "Miqaats (major)", "miqaats-major.ics");
+  build(3, "Miqaats + Urus (all)", "miqaats-all.ics");
+  await buildSalaat();
+})().catch(e => { console.error(e); process.exit(1); });

@@ -4,7 +4,7 @@ Owner writes and expects replies in **Hinglish** (Hindi in Latin letters). Keep 
 
 ## What this is
 - Plain HTML/JS PWA, **no build step**. Live: https://murtaza0053.github.io/hijri-calendar/ (GitHub Pages, repo `murtaza0053/hijri-calendar`, branch `main`). Push = deploy (1–2 min).
-- Main files: `index.html` (all UI + JS), `i18n.js` (en/gu/hi strings), `hijri.js`, `themes.css`, `sw.js` (network-first service worker), `miqaats.json`, `quotes.json` + `quotes/`, `fonts/`, `dua/` (Dua / Quran / books reader, has its own `dua/sw.js`), `push/` (Cloudflare worker), `download.html` (share page → latest APK).
+- Main files: `index.html` (all UI + JS), `i18n.js` (en/gu/hi strings), `hijri.js`, `themes.css`, `sw.js` (network-first service worker), `quotes.json` + `quotes/`, `fonts/`, `dua/` (Dua / Quran / books reader, has its own `dua/sw.js`), `push/` (Cloudflare worker), `download.html` (share page → latest APK).
 - Android app: separate folder `~/Projects/mumin-android` (WebView wrapper that loads the live site; see its `CLAUDE.md`). Most changes reach the phone through the website alone.
 - Languages: English / Gujarati / Hinglish. Default Hinglish. Themes: many colours × auto/light/dark via CSS vars (`--brand`, `--gold`, `--on-brand` …). Prefer `var(--brand)`/`var(--gold)` over hard-coded colours so themes work.
 
@@ -50,3 +50,5 @@ Owner writes and expects replies in **Hinglish** (Hindi in Latin letters). Keep 
 
 ## Android update pop-up
 When a new APK is released (`~/Projects/mumin-android`), also set `"android":{"code":<versionCode>,"name":"<versionName>"}` at the top level of `version.json` and deploy. `apkCheck()` in index.html shows the Download pop-up when the installed versionCode (from `MuminNative.info().code`) is lower. Current: code 14 = 2.3.
+
+- **Miqaats / Salaat times / city lookup all come from the mumineen.org API** (no built-in miqaat list any more; `miqaats.json` was removed). See HANDOFF.md → "mumineen.org API".

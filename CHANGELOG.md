@@ -66,6 +66,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v228**
+
+- Miqaats now come only from the official mumineen.org list (saved on your phone for offline use). The built-in list was removed. Push alerts and the calendar-subscription files use it too.
+
 **v227**
 
 - More from mumineen.org: miqaats (Urus with city, Salgirah, Ashara Vaaz and more) are now added to your calendar; the city list can search the official location list; your GPS city name comes from it; Salat screen shows Maghrib end and Nisful Layl end.

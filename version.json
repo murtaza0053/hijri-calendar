@@ -1,6 +1,19 @@
 {
- "v": 227,
+ "v": 228,
  "history": [
+  {
+   "v": 228,
+   "date": "2026-11-26",
+   "en": [
+    "Miqaats now come only from the official mumineen.org list (saved on your phone for offline use). The built-in list was removed. Push alerts and the calendar-subscription files use it too."
+   ],
+   "gu": [
+    "મિક્વાતો હવે ફક્ત અધિકૃત mumineen.org યાદીમાંથી આવે છે (ઑફલાઇન માટે ફોનમાં સાચવાય છે). એપની પોતાની યાદી કાઢી નાખી. પુશ એલર્ટ અને કૅલેન્ડર-સબ્સ્ક્રિપ્શન ફાઇલો પણ તેનો ઉપયોગ કરે છે."
+   ],
+   "hi": [
+    "मीक़ात अब सिर्फ़ आधिकारिक mumineen.org लिस्ट से आते हैं (ऑफ़लाइन के लिए फ़ोन में सेव रहते हैं)। ऐप की अपनी लिस्ट हटा दी गई। पुश अलर्ट और कैलेंडर-सब्सक्रिप्शन फ़ाइलें भी इसी का इस्तेमाल करती हैं।"
+   ]
+  },
   {
    "v": 227,
    "date": "2026-11-26",
