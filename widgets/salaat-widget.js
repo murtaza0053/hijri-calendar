@@ -67,8 +67,9 @@ const paint = (fill, l, r, W, H, tiles) => {   // one background picture: colour
 };
 // iOS can leave a gap above the header; paint the top of the card in the header colour so it merges (the header always covers this band)
 const TOP = small ? 0.35 : 0.25;
-const g = new LinearGradient(); g.colors = [HDR, HDR, CARD, CARD]; g.locations = [0, TOP, TOP, 1]; w.backgroundGradient = g;
+// only one background: Scriptable draws a backgroundGradient over the backgroundImage, which hid the floral edges (v244)
 if (EDGE) w.backgroundImage = paint(CARD, EDGE.bl, EDGE.br, 800, fam === "large" ? 840 : 380, true);
+else { const g = new LinearGradient(); g.colors = [HDR, HDR, CARD, CARD]; g.locations = [0, TOP, TOP, 1]; w.backgroundGradient = g; }
 // ---- header: weekday / big dates, like the app ----
 const head = w.addStack(); head.backgroundColor = HDR; if (EDGE) head.backgroundImage = paint(HDR, EDGE.gl, EDGE.gr, 800, 230, false); head.layoutHorizontally(); head.setPadding(small ? 10 : 14, 16, small ? 8 : 10, 16);
 const hl = head.addStack(); hl.layoutVertically(); hl.spacing = 0;

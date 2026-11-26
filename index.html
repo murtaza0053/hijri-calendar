@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=244">
-<script src="theme-init.js?v=244"></script>
+<link rel="stylesheet" href="themes.css?v=245">
+<script src="theme-init.js?v=245"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -789,7 +789,7 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
     <div class="ppic">📲</div>
     <h3 id="apkT" data-i18n="apkT"></h3>
     <p class="muted" id="apkB" style="font-size:14px;margin:0 0 8px"></p>
-    <p class="muted" style="font-size:12px;margin:0 0 8px" data-i18n="apkN"></p>
+    <p class="muted" id="apkNote" style="font-size:12px;margin:0 0 8px" data-i18n="apkN"></p>
     <div class="ppbtn"><button class="btn" id="apkYes" data-i18n="apkYes"></button><button class="btn ghost" id="apkLater" data-i18n="ppLater"></button></div>
   </div>
 </div>
@@ -809,10 +809,10 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=244"></script>
-<script src="i18n.js?v=244"></script>
-<script src="cities.js?v=244"></script>
-<script src="haptic.js?v=244"></script>
+<script src="hijri.js?v=245"></script>
+<script src="i18n.js?v=245"></script>
+<script src="cities.js?v=245"></script>
+<script src="haptic.js?v=245"></script>
 <script>
 "use strict";
 
@@ -1591,7 +1591,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 244, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 245, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll(); salaatSync();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1853,7 +1853,17 @@ function apkCheck(j, force) {
   const k = store.get("apkAsk", {}); if (!force && k.c === j.android.code && Date.now() - k.t < 864e5) return;   // "Later" = ask again tomorrow
   const p = $("apkPrompt"), done = () => { p.classList.remove("on"); store.set("apkAsk", { c: j.android.code, t: Date.now() }); };
   $("apkB").textContent = t("apkB", { v: j.android.name });
-  $("apkYes").onclick = () => { done(); location.href = j.android.url || "https://github.com/murtaza0053/hijri-calendar/releases/latest/download/mumin.apk"; };
+  $("apkYes").onclick = () => {
+    const url = j.android.url || "https://github.com/murtaza0053/hijri-calendar/releases/latest/download/mumin.apk", yes = $("apkYes"), note = $("apkNote");
+    if (!MuminNative.installApk) { done(); location.href = url; return; }   // older APK: download in the browser as before
+    yes.disabled = true; yes.textContent = t("apkDl", { p: 0 }); note.textContent = "";
+    window.apkProg = p => { yes.textContent = t("apkDl", { p }); };
+    window.apkEnd = r => {   // one tap: the app downloaded the update and opened the installer (Android asks to confirm)
+      if (r === "ok") { done(); yes.disabled = false; yes.textContent = t("apkYes"); return; }
+      yes.disabled = false; yes.textContent = t("apkYes"); note.textContent = t(r === "perm" ? "apkPerm" : "apkFail");
+    };
+    MuminNative.installApk(url);
+  };
   $("apkLater").onclick = done; p.onclick = e => { if (e.target === p) done(); };
   p.classList.add("on");
 }
