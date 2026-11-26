@@ -66,6 +66,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v225**
+
+- Salaat timings now come from the official mumineen.org API (Sihori, Fajr Azaan, Sunrise, Zawaal, Zohr End, Asr End, Maghrib, Nisful Layl). Saved on your phone for offline use; if it cannot be reached the app calculates them itself. Android alarms follow the new times.
+
 **v224**
 
 - Classic style shows only the plain colour themes; Modern shows only the night themes and hides the Light/Dark option (they are always dark).

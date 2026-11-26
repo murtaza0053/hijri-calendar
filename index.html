@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=224">
-<script src="theme-init.js?v=224"></script>
+<link rel="stylesheet" href="themes.css?v=225">
+<script src="theme-init.js?v=225"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -652,6 +652,7 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
     </div>
     <div class="card slcard" id="slList"></div>
     <p class="muted" style="font-size:12px;margin:8px 6px" data-i18n="timesNote"></p>
+    <p class="muted" style="font-size:11px;margin:0 6px 8px" id="slSrc"></p>
   </section>
 
   <!-- SETTINGS -->
@@ -806,10 +807,10 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=224"></script>
-<script src="i18n.js?v=224"></script>
-<script src="cities.js?v=224"></script>
-<script src="haptic.js?v=224"></script>
+<script src="hijri.js?v=225"></script>
+<script src="i18n.js?v=225"></script>
+<script src="cities.js?v=225"></script>
+<script src="haptic.js?v=225"></script>
 <script>
 "use strict";
 
@@ -943,10 +944,8 @@ function renderHeader() {
   $("tLoc").textContent = "📍 " + locLabel();
   const denied = loc.key === "auto" && store.get("locDenied", false);
   $("locBtn").hidden = !denied; $("locBtn").textContent = t("locOn");
-  const s2h = sunTimes(n.getFullYear(), n.getMonth(), n.getDate() + 1, loc.lat, loc.lng);
-  const asrEnd = new Date(s.noon.getTime() + (s.sunset - s.noon) * 2 / 3);   // aajnodin: Zohar end / Asar end split Zawaal→Maghrib in thirds
-  const nisfH = new Date((s.sunset.getTime() + s2h.sunrise.getTime()) / 2);
-  const tl = [["tSunrise", s.sunrise], ["tZawaal", s.noon], ["tAsrEnd", asrEnd], ["tMaghrib", s.sunset], ["tNisf", nisfH]];
+  const sl = salatList(todayIn());
+  const tl = [["tSunrise", sl[2][1]], ["tZawaal", sl[3][1]], ["tAsrEnd", sl[5][1]], ["tMaghrib", sl[6][1]], ["tNisf", sl[7][1]]];
   const nx = tl.findIndex(x => x[1] > n);
   $("tStrip").innerHTML = tl.map(([k, d], i) => `<span class="${i === nx ? "nx" : ""}">${t(k)}<b>${fmtT(d)}</b></span>`).join("");
 }
@@ -1022,7 +1021,36 @@ function todayIn() {   // today's civil date at the chosen city (device date whe
   const n = new Date(); if (!loc.tz) return new Date(n.getFullYear(), n.getMonth(), n.getDate());
   try { const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", { timeZone: loc.tz, year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(n).map(x => [x.type, x.value])); return new Date(+p.year, +p.month - 1, +p.day); } catch { return new Date(n.getFullYear(), n.getMonth(), n.getDate()); }
 }
-function salatList(d0) {   // the 8 timings of the local date d0, as on aajnodin
+/* ---------- Salaat times from mumineen.org (official public API v1), cached on the device; falls back to the local calculation below ---------- */
+const SAL_API = "https://mumineen.org/api/v1/salaat", SAL_F = ["sihori", "fajr", "sunrise", "zawaal", "zohr_end", "asr_end", "maghrib", "nisful_layl"];
+let salCache = store.get("salaatApi", null), salBusy = false;
+const salTZ = () => loc.tz || Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC", salKey = () => loc.lat.toFixed(2) + "," + loc.lng.toFixed(2);
+const ymd = d => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+function tzOff(ms, tz) { const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", { timeZone: tz, hourCycle: "h23", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit" }).formatToParts(new Date(ms)).map(x => [x.type, x.value])); return Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour, +p.minute, +p.second) - Math.floor(ms / 1000) * 1000; }
+function wallMs(str, tz) { const m = str.match(/(\d+)-(\d+)-(\d+) (\d+):(\d+):(\d+)/), u = Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6]); let o = tzOff(u, tz); o = tzOff(u - o, tz); return u - o; }   // "2026-11-26 05:36:00" in tz → epoch ms
+function salApiDay(d0) {
+  const c = salCache; if (!c || c.k !== salKey() || c.tz !== salTZ()) return null;
+  const x = c.days[ymd(d0)]; if (!x) return null;
+  return [["tSihori", new Date(x.sihori)], ["tFajr", new Date(x.fajr)], ["tFajrEnd", new Date(x.sunrise)], ["tZawaal", new Date(x.zawaal)], ["tZohrEnd", new Date(x.zohr_end)], ["tAsrEnd", new Date(x.asr_end)], ["tMaghrib", new Date(x.maghrib)], ["tIshaEnd", new Date(x.nisful_layl)]];
+}
+async function salaatSync(force) {
+  const td = todayIn(), c = salCache, tz = salTZ(), k = salKey();
+  const fresh = c && c.k === k && c.tz === tz && c.days[ymd(new Date(td.getFullYear(), td.getMonth(), td.getDate() + 14))] && Date.now() - c.at < 7 * 864e5;
+  if ((fresh && !force) || salBusy || navigator.onLine === false) return;
+  salBusy = true;
+  try {
+    const a = new Date(td.getFullYear(), td.getMonth(), td.getDate() - 1), b = new Date(td.getFullYear(), td.getMonth(), td.getDate() + 120), ctl = new AbortController(); const to = setTimeout(() => ctl.abort(), 10000);
+    const r = await fetch(`${SAL_API}?start=${ymd(a)}&end=${ymd(b)}&latitude=${loc.lat}&longitude=${loc.lng}&timezone=${encodeURIComponent(tz)}&altitude=0`, { signal: ctl.signal, headers: { Accept: "application/json" } }); clearTimeout(to);
+    const j = await r.json(), days = {};
+    for (const [d, o] of Object.entries(j.data || {})) { const x = {}; for (const f of SAL_F) { if (!o[f]) throw new Error("bad"); x[f] = wallMs(o[f], tz); } days[d] = x; }
+    if (!Object.keys(days).length) throw new Error("empty");
+    salCache = { k, tz, at: Date.now(), days }; store.set("salaatApi", salCache);
+    renderTimes(); renderHeader(); if (curView === "sl") renderSalatPage(); if (typeof nativeSync === "function") nativeSync();
+  } catch {} finally { salBusy = false; }
+}
+function salSrcNote() { return salApiDay(todayIn()) ? t("slSrcApi") : t("slSrcCalc"); }
+function salatList(d0) {   // the 8 timings of the local date d0: mumineen.org API when cached, else calculated
+  const api = salApiDay(d0); if (api) return api;
   const s = sunTimes(d0.getFullYear(), d0.getMonth(), d0.getDate(), loc.lat, loc.lng);
   const t2 = new Date(d0); t2.setDate(t2.getDate() + 1);
   const s2 = sunTimes(t2.getFullYear(), t2.getMonth(), t2.getDate(), loc.lat, loc.lng);
@@ -1048,6 +1076,7 @@ function nextSalat() {   // [key, Date] of the next timing from now (tomorrow's 
 const fmtLeft = ms => { const m = Math.max(0, Math.round(ms / 6e4)), h = Math.floor(m / 60); return h ? `${h}h ${m % 60}m` : `${m}m`; };
 const SL_IC = { tSihori: "🌙", tFajr: "🌅", tFajrEnd: "🌄", tZawaal: "☀️", tZohrEnd: "🌤️", tAsrEnd: "🌇", tMaghrib: "🌆", tIshaEnd: "🌌" };
 function renderSalatPage() {
+  $("slSrc").textContent = salSrcNote();
   const n = new Date(), td = todayIn(), d0 = new Date(td.getFullYear(), td.getMonth(), td.getDate() + slOff);
   const items = salatList(d0), ajd = H.gToAJD(d0.getFullYear(), d0.getMonth(), d0.getDate()), h = H.fromAJD(ajd);
   const nx = slOff === 0 ? items.findIndex(x => x[1] > n) : -1, cur = slOff === 0 ? (nx < 0 ? items.length - 1 : nx - 1) : -1;
@@ -1436,7 +1465,7 @@ calEl.addEventListener("touchend", e => {
 }, { passive: true });
 
 /* ---------- Location ---------- */
-function setLoc(l) { loc = l; store.set("loc", l); if (typeof nativeSync === "function") setTimeout(nativeSync, 0); renderTimes(); renderHeader(); renderGhadi(); renderAshara(); if (window.pushSync) pushSync(); }
+function setLoc(l) { loc = l; store.set("loc", l); salaatSync(); if (typeof nativeSync === "function") setTimeout(nativeSync, 0); renderTimes(); renderHeader(); renderGhadi(); renderAshara(); if (window.pushSync) pushSync(); }
 $("useIndore").onclick = () => setLoc(DEFAULT_LOC);
 $("setCity").onclick = openCity;
 $("saveLL").onclick = () => {
@@ -1514,9 +1543,9 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 224, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 225, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
-applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll();
+applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll(); salaatSync();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
 const AZ = [["faj", "tFajr", 1], ["zaw", "azZohr", 3], ["mag", "tMaghrib", 6]];
 const azZohrT = () => /^\d\d:\d\d$/.test(store.get("azZohr", "")) ? store.get("azZohr", "") : "12:45";   // Zohr azaan is at a fixed clock time (default 12:45), not at Zawaal

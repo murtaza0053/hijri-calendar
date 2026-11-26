@@ -1,6 +1,19 @@
 {
- "v": 224,
+ "v": 225,
  "history": [
+  {
+   "v": 225,
+   "date": "2026-11-26",
+   "en": [
+    "Salaat timings now come from the official mumineen.org API (Sihori, Fajr Azaan, Sunrise, Zawaal, Zohr End, Asr End, Maghrib, Nisful Layl). Saved on your phone for offline use; if it cannot be reached the app calculates them itself. Android alarms follow the new times."
+   ],
+   "gu": [
+    "સલાતના સમય હવે અધિકૃત mumineen.org API પરથી આવે છે (સિહોરી, ફજર અઝાન, સનરાઇઝ, ઝવાલ, ઝોહર એન્ડ, અસર એન્ડ, મગરિબ, નિસ્ફુલ લૈલ). ઑફલાઇન માટે ફોનમાં સાચવાય છે; ન મળે તો એપ પોતે ગણતરી કરે છે. Android એલાર્મ નવા સમય મુજબ."
+   ],
+   "hi": [
+    "सलात के टाइमिंग अब आधिकारिक mumineen.org API से आते हैं (सिहोरी, फ़ज्र अज़ान, सनराइज़, ज़वाल, ज़ोहर एंड, अस्र एंड, मग़रिब, निस्फ़ुल लैल)। ऑफ़लाइन के लिए फ़ोन में सेव रहते हैं; न मिले तो ऐप ख़ुद calculate करता है। Android अलार्म नए टाइम के हिसाब से।"
+   ]
+  },
   {
    "v": 224,
    "date": "2026-11-26",
