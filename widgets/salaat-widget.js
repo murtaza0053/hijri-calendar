@@ -52,8 +52,21 @@ const HDR = new Color("#2b2108"), STRIP = new Color("#3a3018"), GOLD = new Color
 const fam = config.widgetFamily || "large", small = fam === "small";
 
 w.backgroundColor = CARD; w.setPadding(0, 0, 0, 0); w.spacing = 0;
+// floral nakkashi on the left / right edges, fading toward the middle (brown on the cream card, gold on the dark header); skipped if the pictures can't be fetched
+let EDGE = null;
+if (!small) try {
+  const pic = async n => { const f = fm.joinPath(fm.documentsDirectory(), "mumin-" + n + ".png"); if (fm.fileExists(f)) return fm.readImage(f); const im = await new Request("https://murtaza0053.github.io/hijri-calendar/widgets/" + n + ".png").loadImage(); fm.writeImage(f, im); return im; };
+  EDGE = { bl: await pic("floral-edge-l-brown"), br: await pic("floral-edge-r-brown"), gl: await pic("floral-edge-l-gold"), gr: await pic("floral-edge-r-gold") };
+} catch (e) { EDGE = null; }
+const paint = (fill, l, r, W, H, tiles) => {   // one background picture: colour + left/right edge ornaments (tiled down the height when tiles)
+  const dc = new DrawContext(); dc.size = new Size(W, H); dc.opaque = true; dc.respectScreenScale = true;
+  dc.setFillColor(fill); dc.fillRect(new Rect(0, 0, W, H));
+  if (EDGE) { const iw = 190, ih = iw * 656 / 240; for (let y = 0; y < (tiles ? H : 1); y += ih) { dc.drawImageInRect(l, new Rect(0, y, iw, ih)); dc.drawImageInRect(r, new Rect(W - iw, y, iw, ih)); } }
+  return dc.getImage();
+};
+if (EDGE) w.backgroundImage = paint(CARD, EDGE.bl, EDGE.br, 800, fam === "large" ? 840 : 380, true);
 // ---- header: weekday / big dates, like the app ----
-const head = w.addStack(); head.backgroundColor = HDR; head.layoutHorizontally(); head.setPadding(small ? 10 : 14, 16, small ? 8 : 10, 16);
+const head = w.addStack(); head.backgroundColor = HDR; if (EDGE) head.backgroundImage = paint(HDR, EDGE.gl, EDGE.gr, 800, 230, false); head.layoutHorizontally(); head.setPadding(small ? 10 : 14, 16, small ? 8 : 10, 16);
 const hl = head.addStack(); hl.layoutVertically(); hl.spacing = 0;
 const wd = hl.addText(small ? WD.slice(0, 3) : WD); wd.font = Font.systemFont(10); wd.textColor = new Color("#ffffff", 0.75);
 const gdn = hl.addText(String(gd)); gdn.font = Font.boldSystemFont(small ? 34 : 38); gdn.textColor = GOLD;
