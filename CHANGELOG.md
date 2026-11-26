@@ -66,6 +66,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-26
 
+**v227**
+
+- More from mumineen.org: miqaats (Urus with city, Salgirah, Ashara Vaaz and more) are now added to your calendar; the city list can search the official location list; your GPS city name comes from it; Salat screen shows Maghrib end and Nisful Layl end.
+
 **v226**
 
 - Fix: salaat times from mumineen.org were not used on phones that report the old time-zone name (e.g. Asia/Calcutta).

@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=226">
-<script src="theme-init.js?v=226"></script>
+<link rel="stylesheet" href="themes.css?v=227">
+<script src="theme-init.js?v=227"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -651,6 +651,7 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
       <a id="azApk" class="btn ghost" href="https://github.com/murtaza0053/hijri-calendar/releases/latest/download/mumin.apk" style="display:inline-block;margin-top:10px;text-decoration:none" data-i18n="azApk"></a>
     </div>
     <div class="card slcard" id="slList"></div>
+    <p class="muted" id="slExtra" style="font-size:12px;margin:6px 6px 0;text-align:center"></p>
     <p class="muted" style="font-size:12px;margin:8px 6px" data-i18n="timesNote"></p>
     <p class="muted" style="font-size:11px;margin:0 6px 8px" id="slSrc"></p>
   </section>
@@ -807,10 +808,10 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=226"></script>
-<script src="i18n.js?v=226"></script>
-<script src="cities.js?v=226"></script>
-<script src="haptic.js?v=226"></script>
+<script src="hijri.js?v=227"></script>
+<script src="i18n.js?v=227"></script>
+<script src="cities.js?v=227"></script>
+<script src="haptic.js?v=227"></script>
 <script>
 "use strict";
 
@@ -883,9 +884,38 @@ document.addEventListener("click", e => {
 
 /* ---------- Miqaats ---------- */
 let MIQ = [];
+/* mumineen.org (official API) miqaats of a Hijri month, cached on the device and merged into the built-in list below */
+const MQ_API = "https://mumineen.org/api/v1/calendar/";
+let apiMiq = store.get("miqApi", {}); const mqBusy = {};
+const mqKey = (y, m) => y + "-" + m;
+async function miqApiSync(y, m) {   // m: 0-based Hijri month
+  const k = mqKey(y, m), c = apiMiq[k];
+  if ((c && Date.now() - c.at < 14 * 864e5) || mqBusy[k] || navigator.onLine === false) return;
+  mqBusy[k] = 1;
+  try {
+    const r = await fetch(`${MQ_API}${y}-${String(m + 1).padStart(2, "0")}-15`, { headers: { Accept: "application/json" }, signal: AbortSignal.timeout(10000) });
+    const j = await r.json(); if (!Array.isArray(j.miqats)) throw new Error("bad");
+    apiMiq[k] = { at: Date.now(), list: j.miqats.map(q => ({ d: +q.day, n: String(q.name), t: q.type && q.type.name || "", c: q.location && q.location.name || "" })) };
+    const ks = Object.keys(apiMiq); if (ks.length > 14) ks.sort((a, b) => apiMiq[a].at - apiMiq[b].at).slice(0, ks.length - 14).forEach(x => delete apiMiq[x]);
+    store.set("miqApi", apiMiq); renderMiqUi();
+  } catch {} finally { delete mqBusy[k]; }
+}
+function renderMiqUi() { if (!miqLoaded) return; renderCal(); renderTodayMq(); renderBanner(); if (curView === "up") renderUpcoming(); if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD); }
+const MQ_STOP = new Set(["syedna", "syedi", "mawlai", "moula", "moulai", "moulaya", "mulla", "saheb", "bin", "ibne", "bhai", "urus", "the", "and", "aq", "ra", "busaheba"]);
+const mqNorm = s => s.toLowerCase().replace(/\(.*?\)|\[.*?\]/g, " ").replace(/[^a-z0-9 ]/g, " ").split(/\s+/).filter(w => w.length > 2 && !MQ_STOP.has(w));
+const mqSim = (a, b) => { const A = new Set(mqNorm(a)), B = new Set(mqNorm(b)); if (!A.size || !B.size) return 0; let c = 0; for (const x of A) if (B.has(x)) c++; return c / Math.min(A.size, B.size); };
+const MQ_MAJOR = /eid|laylat|yaw|shahadat|wafat|milad|salgirah|chelum|ashura|biz|zawal|fadhil raat/i;
 const miqaatsFor = (y, m, d) => {
   const e = MIQ.find(x => x.month === m && x.date === d);
-  return e ? e.miqaats.filter(q => !q.year || q.year <= y).sort((a, b) => a.priority - b.priority) : [];
+  const out = e ? e.miqaats.filter(q => !q.year || q.year <= y).map(q => ({ ...q })) : [];
+  const ac = apiMiq[mqKey(y, m)], api = ac ? ac.list.filter(a => a.d === d) : [];
+  if (api.length) {
+    const used = new Set(), done = new Set(), tag = (q, a) => { if (!q.description) q.description = a.t + (a.c ? " · " + a.c : ""); q.type = a.t; };
+    api.forEach((a, ai) => { let bi = -1, bs = 0; out.forEach((q, i) => { if (used.has(i)) return; const sc = mqSim(q.title, a.n); if (sc > bs) { bs = sc; bi = i; } }); if (bs >= 0.5) { used.add(bi); done.add(ai); tag(out[bi], a); } });
+    api.forEach((a, ai) => { if (done.has(ai) || a.t !== "Urus") return; let bi = -1, bs = -1; out.forEach((q, i) => { if (used.has(i) || !/urus/i.test(q.title)) return; const sc = mqSim(q.title, a.n); if (sc > bs) { bs = sc; bi = i; } }); if (bi >= 0) { used.add(bi); done.add(ai); tag(out[bi], a); } });   // same Urus, spelled differently
+    api.forEach((a, ai) => { if (!done.has(ai)) out.push({ title: a.n, description: a.t + (a.c ? " · " + a.c : ""), phase: /raat|laylat|layl/i.test(a.t + " " + a.n) ? "night" : "day", priority: MQ_MAJOR.test(a.t) ? 2 : 3, year: null, type: a.t, fromApi: true }); });
+  }
+  return out.sort((a, b) => a.priority - b.priority);
 };
 
 /* ---------- Sun times (NOAA) ---------- */
@@ -952,7 +982,7 @@ function renderHeader() {
 
 /* ---------- Calendar grid ---------- */
 function renderCal() {
-  const { y, m } = view;
+  const { y, m } = view; if (miqLoaded) miqApiSync(y, m);
   const first = H.toAJD(y, m, 1), n = H.daysInMonth(y, m);
   const lead = H.dow(first);
   const cells = [];
@@ -1026,7 +1056,8 @@ const SAL_API = "https://mumineen.org/api/v1/salaat", SAL_F = ["sihori", "fajr",
 let salCache = store.get("salaatApi", null), salBusy = false;
 const TZ_ALIAS = { "Asia/Calcutta": "Asia/Kolkata", "Asia/Katmandu": "Asia/Kathmandu", "Asia/Saigon": "Asia/Ho_Chi_Minh", "Asia/Rangoon": "Asia/Yangon", "Asia/Dacca": "Asia/Dhaka", "Asia/Macao": "Asia/Macau", "Asia/Thimbu": "Asia/Thimphu", "Asia/Ulan_Bator": "Asia/Ulaanbaatar", "Africa/Asmera": "Africa/Asmara", "Atlantic/Faeroe": "Atlantic/Faroe", "America/Buenos_Aires": "America/Argentina/Buenos_Aires", "Europe/Kiev": "Europe/Kyiv", "Pacific/Truk": "Pacific/Chuuk" };   // the API rejects old zone names (e.g. Asia/Calcutta)
 const apiTz = tz => TZ_ALIAS[tz] || tz;
-const salTZ = () => loc.tz || Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC", salKey = () => loc.lat.toFixed(2) + "," + loc.lng.toFixed(2);
+const salAlt = () => +loc.alt || 0;
+const salTZ = () => loc.tz || Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC", salKey = () => loc.lat.toFixed(2) + "," + loc.lng.toFixed(2) + "," + salAlt();
 const ymd = d => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
 function tzOff(ms, tz) { const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", { timeZone: tz, hourCycle: "h23", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit" }).formatToParts(new Date(ms)).map(x => [x.type, x.value])); return Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour, +p.minute, +p.second) - Math.floor(ms / 1000) * 1000; }
 function wallMs(str, tz) { const m = str.match(/(\d+)-(\d+)-(\d+) (\d+):(\d+):(\d+)/), u = Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6]); let o = tzOff(u, tz); o = tzOff(u - o, tz); return u - o; }   // "2026-11-26 05:36:00" in tz → epoch ms
@@ -1042,14 +1073,15 @@ async function salaatSync(force) {
   salBusy = true;
   try {
     const a = new Date(td.getFullYear(), td.getMonth(), td.getDate() - 1), b = new Date(td.getFullYear(), td.getMonth(), td.getDate() + 120), ctl = new AbortController(); const to = setTimeout(() => ctl.abort(), 10000);
-    const r = await fetch(`${SAL_API}?start=${ymd(a)}&end=${ymd(b)}&latitude=${loc.lat}&longitude=${loc.lng}&timezone=${encodeURIComponent(apiTz(tz))}&altitude=0`, { signal: ctl.signal, headers: { Accept: "application/json" } }); clearTimeout(to);
+    const r = await fetch(`${SAL_API}?start=${ymd(a)}&end=${ymd(b)}&latitude=${loc.lat}&longitude=${loc.lng}&timezone=${encodeURIComponent(apiTz(tz))}&altitude=${+loc.alt || 0}`, { signal: ctl.signal, headers: { Accept: "application/json" } }); clearTimeout(to);
     const j = await r.json(), days = {};
-    for (const [d, o] of Object.entries(j.data || {})) { const x = {}; for (const f of SAL_F) { if (!o[f]) throw new Error("bad"); x[f] = wallMs(o[f], tz); } days[d] = x; }
+    for (const [d, o] of Object.entries(j.data || {})) { const x = {}; for (const f of SAL_F) { if (!o[f]) throw new Error("bad"); x[f] = wallMs(o[f], tz); } for (const f of ["maghrib_end", "nisful_layl_end"]) if (o[f]) x[f] = wallMs(o[f], tz); days[d] = x; }
     if (!Object.keys(days).length) throw new Error("empty");
     salCache = { k, tz, at: Date.now(), days }; store.set("salaatApi", salCache);
     renderTimes(); renderHeader(); if (curView === "sl") renderSalatPage(); if (typeof nativeSync === "function") nativeSync();
   } catch {} finally { salBusy = false; }
 }
+function salApiExtra(d0) { const c = salCache; if (!c || c.k !== salKey() || c.tz !== salTZ()) return null; const x = c.days[ymd(d0)]; return x && x.maghrib_end ? x : null; }
 function salSrcNote() { return salApiDay(todayIn()) ? t("slSrcApi") : t("slSrcCalc"); }
 function salatList(d0) {   // the 8 timings of the local date d0: mumineen.org API when cached, else calculated
   const api = salApiDay(d0); if (api) return api;
@@ -1079,6 +1111,7 @@ const fmtLeft = ms => { const m = Math.max(0, Math.round(ms / 6e4)), h = Math.fl
 const SL_IC = { tSihori: "🌙", tFajr: "🌅", tFajrEnd: "🌄", tZawaal: "☀️", tZohrEnd: "🌤️", tAsrEnd: "🌇", tMaghrib: "🌆", tIshaEnd: "🌌" };
 function renderSalatPage() {
   $("slSrc").textContent = salSrcNote();
+  { const td0 = todayIn(), dx = new Date(td0.getFullYear(), td0.getMonth(), td0.getDate() + slOff), x = salApiExtra(dx), f = v => fmtT(new Date(v)); $("slExtra").textContent = x ? `${t("slMagEnd")} ${f(x.maghrib_end)} · ${t("slNisEnd")} ${f(x.nisful_layl_end)}` : ""; }
   const n = new Date(), td = todayIn(), d0 = new Date(td.getFullYear(), td.getMonth(), td.getDate() + slOff);
   const items = salatList(d0), ajd = H.gToAJD(d0.getFullYear(), d0.getMonth(), d0.getDate()), h = H.fromAJD(ajd);
   const nx = slOff === 0 ? items.findIndex(x => x[1] > n) : -1, cur = slOff === 0 ? (nx < 0 ? items.length - 1 : nx - 1) : -1;
@@ -1109,10 +1142,24 @@ function openCity() {
   sh.innerHTML = `<div class="grab"></div><div class="stk"><input id="cq" type="search" placeholder="${t("cityPh")}" autocomplete="off"><button class="gps" id="cGps">${t("useGps")}</button></div><div id="cl">` +
     [...byC].map(([co, cs]) => `<div class="cg" data-c="${esc(co)}"><h4>${esc(co)}</h4>${cs.map(c => `<div class="ct${cur === c[0] ? " on" : ""}" data-i="${CITIES.indexOf(c)}" data-f="${esc((c[0] + " " + c[1]).toLowerCase())}">${esc(c[0])}<span>${fmtOff(c[4])}</span></div>`).join("")}</div>`).join("") + `</div>`;
   $("cityBg").style.display = "block"; lockBodyC(); requestAnimationFrame(() => sh.classList.add("on"));
-  $("cq").oninput = () => { const q = $("cq").value.trim().toLowerCase(); sh.querySelectorAll(".cg").forEach(g => { let any = 0; g.querySelectorAll(".ct").forEach(r => { const m = !q || r.dataset.f.includes(q) || g.dataset.c.toLowerCase().includes(q); r.style.display = m ? "" : "none"; if (m) any++; }); g.style.display = any ? "" : "none"; }); };
+  let cqT = 0;
+  const apiSearch = q => {   // more places from the official mumineen.org list
+    clearTimeout(cqT); const old = $("cApi"); if (old) old.remove(); if (q.length < 3) return;
+    cqT = setTimeout(async () => {
+      try {
+        const r = await fetch(`https://mumineen.org/api/v1/location?query=${encodeURIComponent(q)}`, { headers: { Accept: "application/json" }, signal: AbortSignal.timeout(8000) }), j = await r.json();
+        if ($("cq").value.trim().toLowerCase() !== q) return;
+        const have = new Set(CITIES.map(c => c[0].toLowerCase() + "|" + c[1].toLowerCase()));
+        cityApi = (j.data || []).filter(x => x && x.timezone && Math.abs(x.latitude) > 1 && Math.abs(x.longitude) > 1 && !have.has(String(x.name).toLowerCase() + "|" + String(x.country || "").toLowerCase())).slice(0, 25);
+        if (!cityApi.length) return; const o = $("cApi"); if (o) o.remove();
+        $("cl").insertAdjacentHTML("beforeend", `<div class="cg" id="cApi"><h4>mumineen.org</h4>${cityApi.map((x, i) => `<div class="ct" data-a="${i}">${esc(x.name)}<span>${esc([x.state, x.country].filter(Boolean).join(", "))} · ${fmtOff(x.timezone)}</span></div>`).join("")}</div>`);
+      } catch {}
+    }, 350);
+  };
+  $("cq").oninput = () => { apiSearch($("cq").value.trim().toLowerCase()); const q = $("cq").value.trim().toLowerCase(); sh.querySelectorAll(".cg:not(#cApi)").forEach(g => { let any = 0; g.querySelectorAll(".ct").forEach(r => { const m = !q || r.dataset.f.includes(q) || g.dataset.c.toLowerCase().includes(q); r.style.display = m ? "" : "none"; if (m) any++; }); g.style.display = any ? "" : "none"; }); };
   $("cGps").onclick = () => { closeCity(); loc = { ...loc, key: "auto", city: "", tz: undefined }; detectLoc(true); setTimeout(() => { if (curView === "sl") renderSalatPage(); }, 1500); };
 }
-let cLock = null;
+let cLock = null, cityApi = [];
 function lockBodyC() { if (cLock != null) return; cLock = scrollY; const b = document.body.style; b.position = "fixed"; b.top = -cLock + "px"; b.left = "0"; b.right = "0"; b.width = "100%"; }
 function closeCity() { $("citySheet").classList.remove("on"); $("cityBg").style.display = "none"; if (cLock != null) { const y = cLock; cLock = null; const b = document.body.style; b.position = b.top = b.left = b.right = b.width = ""; scrollTo(0, y); } }
 
@@ -1435,7 +1482,7 @@ $("slNextD").onclick = () => { slOff++; renderSalatPage(); };
 $("slToday").onclick = () => { slOff = 0; renderSalatPage(); };
 $("slCity").onclick = openCity;
 $("cityBg").onclick = closeCity;
-$("citySheet").onclick = e => { const r = e.target.closest(".ct"); if (!r) return; const c = CITIES[+r.dataset.i]; closeCity(); setLoc({ lat: c[2], lng: c[3], key: "custom", city: c[0], tz: c[4] }); if (curView === "sl") renderSalatPage(); };
+$("citySheet").onclick = e => { const r = e.target.closest(".ct"); if (!r) return; if (r.dataset.a != null) { const x = cityApi[+r.dataset.a]; closeCity(); setLoc({ lat: +x.latitude, lng: +x.longitude, key: "custom", city: x.name, tz: x.timezone, alt: +x.altitude || 0 }); if (curView === "sl") renderSalatPage(); return; } const c = CITIES[+r.dataset.i]; closeCity(); setLoc({ lat: c[2], lng: c[3], key: "custom", city: c[0], tz: c[4] }); if (curView === "sl") renderSalatPage(); };
 (function () {   // swipe the city sheet down to close
   const sh = $("citySheet"); let y0 = null, dy = 0, drag = false;
   sh.addEventListener("touchstart", e => { y0 = e.touches[0].clientY; dy = 0; drag = false; }, { passive: true });
@@ -1486,8 +1533,10 @@ function detectLoc(manual) {
     const moved = Math.abs(lat - loc.lat) > 0.02 || Math.abs(lng - loc.lng) > 0.02;
     const keepCity = !moved && loc.key === "auto" && loc.city;
     setLoc({ lat, lng, key: "auto", city: keepCity ? loc.city : "" });
-    if (!keepCity) fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`)
-      .then(r => r.json()).then(j => { const c = j.city || j.locality || j.principalSubdivision; if (c && loc.key === "auto") setLoc({ ...loc, city: c }); }).catch(() => {});
+    if (!keepCity) fetch(`https://mumineen.org/api/v1/location/nearest?latitude=${lat}&longitude=${lng}`, { headers: { Accept: "application/json" }, signal: AbortSignal.timeout(8000) })   // official Bohra location list; far away (>40 km) → generic reverse geocoder
+      .then(r => r.json()).then(j => { const n = j.data; if (!(n && n.name && n.distance != null && n.distance <= 40)) throw new Error("far"); if (loc.key === "auto") setLoc({ ...loc, city: n.name }); })
+      .catch(() => fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`)
+        .then(r => r.json()).then(j => { const c = j.city || j.locality || j.principalSubdivision; if (c && loc.key === "auto") setLoc({ ...loc, city: c }); }).catch(() => {}));
     store.set("locDenied", false); renderHeader();
   }, err => {
     if (err.code === 1) { store.set("locDenied", true); renderHeader(); if (manual) alert(t("geoHelp")); }
@@ -1545,7 +1594,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 226, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 227, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll(); salaatSync();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1667,7 +1716,7 @@ function renderQuote() {
   qFull = `<div class="qcard qsheet">${hd}${QJ.a && QJ.a[i] ? `<div class="qar" lang="ar" dir="rtl">${esc(QJ.a[i])}</div>` : im("a", 0, "qa")}<div class="qd"></div>${QJ.u && QJ.u[i] ? `<div class="qur" lang="ur" dir="rtl">${esc(QJ.u[i])}</div>` : im("u", 2, "qu")}${en}<div class="qn">${t("qSrc")}</div></div>`;
 }
 fetch("quotes.json").then(r => r.json()).then(q => { QJ = q; renderQuote(); nativeSync(); azAlDraw(); }).catch(() => { $("qCard").hidden = true; });
-fetch("miqaats.json").then(r => r.json()).then(d => { MIQ = d; miqLoaded = true; renderAll(); }).catch(() => { $("todayMq").innerHTML = `<p class="muted">${t("loadFail")}</p>`; });
+fetch("miqaats.json").then(r => r.json()).then(d => { MIQ = d; miqLoaded = true; renderAll(); miqApiSync(todayH.y, todayH.m); miqApiSync(todayH.m === 11 ? todayH.y + 1 : todayH.y, (todayH.m + 1) % 12); }).catch(() => { $("todayMq").innerHTML = `<p class="muted">${t("loadFail")}</p>`; });
 // refresh "today" when app resumes on a new day
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible") { const n = new Date(); if (n.getDate() !== now.getDate()) location.reload(); else renderHeader(); }

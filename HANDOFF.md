@@ -35,3 +35,8 @@ Read `CLAUDE.md` first (conventions + deploy checklist). This file is the histor
 
 ## Salaat times source
 App and push worker use the official mumineen.org API v1 (`GET /api/v1/salaat?start&end&latitude&longitude&timezone&altitude`, no auth, CORS open). App: `salaatSync()` caches 120 days in localStorage `salaatApi` and falls back to the local formulas offline. Worker: `loadSalaat()` in push/worker.js stores days in D1 table `saltimes` (one API call per subscriber location per ~month), falls back to formulas. API "fajr" = Fajr Azaan. Altitude is sent as 0. Test: `node push/test-sal.mjs` (needs internet).
+
+## mumineen.org API — what the app uses
+- `/api/v1/salaat` → timings (see above). `/api/v1/calendar/{y-m-15}` → `miqats` of that Hijri month, merged into `miqaatsFor()` (cache localStorage `miqApi`, dedupe by name similarity + same-day Urus pairing; API-only items get priority 3, or 2 for Eid/Laylat/Shahadat/Salgirah… types). `/api/v1/location/nearest` → GPS city name (≤40 km, else bigdatacloud fallback). `/api/v1/location?query=` → extra results in the city sheet.
+- NOT replaced: Hijri date engine (hijri.js matches the API for all 1772 days of 1446–1450, month lengths identical), converter, the built-in miqaats (richer: priority/phase/description). The push worker and build-ics.js still use the built-in miqaats only.
+- API quirks: location DB has rough coordinates (Indore 22.43,75.5), altitude almost always null, dummy coords (1,1) on a few entries, `calendar/{date}` expects a Hijri date (add `?greg=true` for Gregorian), old tz names like Asia/Calcutta are rejected.

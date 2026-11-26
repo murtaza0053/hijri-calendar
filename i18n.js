@@ -2,6 +2,7 @@
 "use strict";
 globalThis.I18N = {
   en: {
+    slMagEnd: "Maghrib ends", slNisEnd: "Nisful Layl ends",
     slSrcApi: "Timings: mumineen.org (official)", slSrcCalc: "Timings: calculated on this device (offline)",
     th_nightviolet: "Violet night", th_nightocean: "Ocean night", th_nightgreen: "Emerald night", th_nightpink: "Pink night",
     uiH: "Style", ui_classic: "Classic", ui_modern: "Modern", th_midnight: "Midnight",
@@ -75,6 +76,7 @@ globalThis.I18N = {
   },
 
   gu: {
+    slMagEnd: "મગરિબ પૂરું", slNisEnd: "નિસ્ફુલ લૈલ પૂરું",
     slSrcApi: "સમય: mumineen.org (અધિકૃત)", slSrcCalc: "સમય: આ ઉપકરણ પર ગણતરી (ઑફલાઇન)",
     th_nightviolet: "વાયોલેટ નાઇટ", th_nightocean: "ઓશન નાઇટ", th_nightgreen: "એમેરલ્ડ નાઇટ", th_nightpink: "પિંક નાઇટ",
     uiH: "સ્ટાઇલ", ui_classic: "ક્લાસિક", ui_modern: "મોડર્ન", th_midnight: "મિડનાઇટ",
@@ -148,6 +150,7 @@ globalThis.I18N = {
   },
 
   hi: {
+    slMagEnd: "Maghrib khatam", slNisEnd: "Nisful Layl khatam",
     slSrcApi: "Timings: mumineen.org (official)", slSrcCalc: "Timings: is phone par calculate kiye (offline)",
     th_nightviolet: "Violet raat", th_nightocean: "Ocean raat", th_nightgreen: "Emerald raat", th_nightpink: "Pink raat",
     uiH: "Style", ui_classic: "Classic", ui_modern: "Modern", th_midnight: "Midnight (raat)",
