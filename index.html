@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=255">
-<script src="theme-init.js?v=255"></script>
+<link rel="stylesheet" href="themes.css?v=256">
+<script src="theme-init.js?v=256"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -812,10 +812,10 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=255"></script>
-<script src="i18n.js?v=255"></script>
-<script src="cities.js?v=255"></script>
-<script src="haptic.js?v=255"></script>
+<script src="hijri.js?v=256"></script>
+<script src="i18n.js?v=256"></script>
+<script src="cities.js?v=256"></script>
+<script src="haptic.js?v=256"></script>
 <script>
 "use strict";
 
@@ -1243,7 +1243,7 @@ function renderFri() {
 }
 $("friCard").onclick = () => {   // bottom sheet, same as the quote card
   $("sheetBody").innerHTML = `<div class="frc" style="padding:2px 0 8px"><div style="font-size:20px;font-weight:700;text-align:center;margin-bottom:14px">🕌 Friday Reminder</div>
-    <div class="fr"><span class="c"><i>✔</i>Cutting nails</span><span class="c"><i>✔</i>Do Gusul</span><span class="c"><i>✔</i>Wear nice cloth</span><span class="c"><i>✔</i>Apply Ittar (perfume)</span></div>
+    <div class="fr"><span class="c"><i>✔</i>Cutting nails</span><span class="c"><i>✔</i>Do Gusul</span><span class="c"><i>✔</i>Wear nice cloth</span><span class="c"><i>✔</i>Apply Ittar</span></div>
     <div class="fr" style="margin-top:12px"><span class="c"><i>✔</i>Imamat si Namaz</span><a class="c" href="dua/"><i>✔</i>Dua-e-Kaamil</a><a class="c" href="dua/quran.html?s=18"><i>✔</i>Suratul Kehaf</a><span class="c"><i>✔</i>Qardan Hasana</span></div></div>`;
   $("sheetBg").style.display = "block"; requestAnimationFrame(() => $("sheet").classList.add("on"));
 };
@@ -1622,7 +1622,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 255, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 256, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll(); salaatSync();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1698,7 +1698,7 @@ function widgetSync() {
 }
 function ORD(n) { return n + (["th", "st", "nd", "rd"][n % 100 > 10 && n % 100 < 14 ? 0 : n % 10] || "th"); }
 const jumoaBody = d => { const h = H.fromAJD(H.gToAJD(d.getFullYear(), d.getMonth(), d.getDate()));   // d is a Friday → the ((day-1)/7+1)th Friday of the Hijri month
-  return `AsSalaam o Walaikum.\n✔ Cutting nails  ✔ Do Gusul  ✔ Wear nice cloth  ✔ Apply Ittar (perfume)\n\n${ORD(Math.floor((h.d - 1) / 7) + 1)} JUMOA MUBARAK OF ${H.NAMES[h.m].toUpperCase()} ${h.y}H\n\nJUMO'A NA DIN: 1) Imamat si Namaz  2) Dua-e-Kaamil  3) Suratul Kehaf  4) Qardan Hasana\n\n🤲 Dua ni khaas iltemas`; };
+  return `AsSalaam o Walaikum.\n✔ Cutting nails  ✔ Do Gusul  ✔ Wear nice cloth  ✔ Apply Ittar\n\n${ORD(Math.floor((h.d - 1) / 7) + 1)} JUMOA MUBARAK OF ${H.NAMES[h.m].toUpperCase()} ${h.y}H\n\nJUMO'A NA DIN: 1) Imamat si Namaz  2) Dua-e-Kaamil  3) Suratul Kehaf  4) Qardan Hasana\n\n🤲 Dua ni khaas iltemas`; };
 function nativeSync() {
   widgetSync();
   try {

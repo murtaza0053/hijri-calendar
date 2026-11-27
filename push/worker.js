@@ -87,7 +87,7 @@ function quoteOn(p) {
 }
 /** Friday reminder text (the user\'s own wording). Today is a Friday, so it is the ((day-1)/7+1)th Friday of the Hijri month. */
 const ORD = n => n + (["th", "st", "nd", "rd"][n % 100 > 10 && n % 100 < 14 ? 0 : n % 10] || "th");
-export const jumoaBody = h => `AsSalaam o Walaikum.\n✔ Cutting nails  ✔ Do Gusul  ✔ Wear nice cloth  ✔ Apply Ittar (perfume)\n\n${ORD(Math.floor((h.d - 1) / 7) + 1)} JUMOA MUBARAK OF ${H.NAMES[h.m].toUpperCase()} ${h.y}H\n\nJUMO'A NA DIN: 1) Imamat si Namaz  2) Dua-e-Kaamil  3) Suratul Kehaf  4) Qardan Hasana\n\n🤲 Dua ni khaas iltemas`;
+export const jumoaBody = h => `AsSalaam o Walaikum.\n✔ Cutting nails  ✔ Do Gusul  ✔ Wear nice cloth  ✔ Apply Ittar\n\n${ORD(Math.floor((h.d - 1) / 7) + 1)} JUMOA MUBARAK OF ${H.NAMES[h.m].toUpperCase()} ${h.y}H\n\nJUMO'A NA DIN: 1) Imamat si Namaz  2) Dua-e-Kaamil  3) Suratul Kehaf  4) Qardan Hasana\n\n🤲 Dua ni khaas iltemas`;
 /** Alerts of one subscription that fall in the minute starting at ws (ms). */
 export function dueEvents(s, ws, cache, miq) {
   const pr = JSON.parse(s.prefs || "{}"), T = TXT[s.lang] || TXT.en, out = [];
