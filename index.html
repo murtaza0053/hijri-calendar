@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=264">
-<script src="theme-init.js?v=264"></script>
+<link rel="stylesheet" href="themes.css?v=265">
+<script src="theme-init.js?v=265"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -818,10 +818,10 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=264"></script>
-<script src="i18n.js?v=264"></script>
-<script src="cities.js?v=264"></script>
-<script src="haptic.js?v=264"></script>
+<script src="hijri.js?v=265"></script>
+<script src="i18n.js?v=265"></script>
+<script src="cities.js?v=265"></script>
+<script src="haptic.js?v=265"></script>
 <script>
 "use strict";
 
@@ -1239,7 +1239,7 @@ function renderBanner() {
     const qs = miqaatsFor(h.y, h.m, h.d).filter(q => q.priority <= 2);
     const night = qs.filter(q => q.phase === "night"), day = qs.filter(q => q.phase === "day");
     // day miqaat k days away; night miqaat = evening of that day
-    if (k > 0 && day.length) items.push({ a, when: k === 1 ? t("relTomorrow") : t("bInDays", { n: k, wd: wd(a) }), qs: day });
+    if (day.length) items.push({ a, when: k === 0 ? t("relToday") : k === 1 ? t("relTomorrow") : t("bInDays", { n: k, wd: wd(a) }), qs: day });   // incl. today (e.g. a Dai's Urus)
     if (night.length) items.push({ a, when: k === 0 ? t("bTonight") : k === 1 ? t("bTomorrowNight") : t("bWdNight", { wd: wd(a) }), qs: night });
   }
   if (H.dow(todayAJD) === 4) items.unshift({ a: null, when: t("bTonight"), dua: "dua/kumail.html", txt: t("bDuaKumail"), ic: "🌙" });
@@ -1647,7 +1647,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 264, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 265, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll(); salaatSync();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */

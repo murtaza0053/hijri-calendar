@@ -82,6 +82,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-27
 
+**v265**
+
+- Home banner now also shows today’s major miqaats (for example a Dai’s Urus) under “Today”.
+
 **v264**
 
 - Miqaat reminders now also work in the Android app. Washeq raat: a reminder every evening for the 7 days before it. Zohr end and Asr end: an alert 30 minutes before and again when the time ends.

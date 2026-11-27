@@ -1,6 +1,19 @@
 {
- "v": 264,
+ "v": 265,
  "history": [
+  {
+   "v": 265,
+   "date": "2026-11-27",
+   "en": [
+    "Home banner now also shows today’s major miqaats (for example a Dai’s Urus) under “Today”."
+   ],
+   "gu": [
+    "હોમ બેનર હવે આજના મુખ્ય મીકાત (જેમ કે દાઈનો ઉર્સ) “આજે” હેઠળ પણ બતાવે છે."
+   ],
+   "hi": [
+    "Home banner ab aaj ke major miqaat (jaise Dai ka Urus) “Aaj” ke neeche bhi dikhata hai."
+   ]
+  },
   {
    "v": 264,
    "date": "2026-11-27",
