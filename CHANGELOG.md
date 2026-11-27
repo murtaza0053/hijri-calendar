@@ -82,6 +82,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-27
 
+**v259**
+
+- Friday reminder notification now shows the same items as the pop-up.
+
 **v258**
 
 - Android app: if you open it on a Friday after the usual time (before Asr end), today’s Friday reminder is shown once.

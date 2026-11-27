@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=258">
-<script src="theme-init.js?v=258"></script>
+<link rel="stylesheet" href="themes.css?v=259">
+<script src="theme-init.js?v=259"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -812,10 +812,10 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=258"></script>
-<script src="i18n.js?v=258"></script>
-<script src="cities.js?v=258"></script>
-<script src="haptic.js?v=258"></script>
+<script src="hijri.js?v=259"></script>
+<script src="i18n.js?v=259"></script>
+<script src="cities.js?v=259"></script>
+<script src="haptic.js?v=259"></script>
 <script>
 "use strict";
 
@@ -1625,7 +1625,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 258, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 259, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll(); salaatSync();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1700,8 +1700,7 @@ function widgetSync() {
   } catch {}
 }
 function ORD(n) { return n + (["th", "st", "nd", "rd"][n % 100 > 10 && n % 100 < 14 ? 0 : n % 10] || "th"); }
-const jumoaBody = d => { const h = H.fromAJD(H.gToAJD(d.getFullYear(), d.getMonth(), d.getDate()));   // d is a Friday → the ((day-1)/7+1)th Friday of the Hijri month
-  return `AsSalaam o Walaikum.\n✔ Cutting nails  ✔ Do Gusul  ✔ Wear nice cloth  ✔ Apply Ittar\n\n${ORD(Math.floor((h.d - 1) / 7) + 1)} JUMOA MUBARAK OF ${H.NAMES[h.m].toUpperCase()} ${h.y}H\n\nJUMO'A NA DIN: 1) Imamat si Namaz  2) Dua-e-Kaamil  3) Suratul Kehaf  4) Qardan Hasana\n\n🤲 Dua ni khaas iltemas`; };
+const jumoaBody = () => `✔ Cutting nails  ✔ Do Gusul\n✔ Wear nice cloth  ✔ Apply Ittar\n\n✔ Imamat si Namaz  ✔ Dua-e-Kaamil\n✔ Suratul Kehaf  ✔ Qardan Hasana`;   // same items as the Friday sheet
 function nativeSync() {
   widgetSync();
   try {

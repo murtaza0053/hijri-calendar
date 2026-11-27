@@ -87,7 +87,7 @@ function quoteOn(p) {
 }
 /** Friday reminder text (the user\'s own wording). Today is a Friday, so it is the ((day-1)/7+1)th Friday of the Hijri month. */
 const ORD = n => n + (["th", "st", "nd", "rd"][n % 100 > 10 && n % 100 < 14 ? 0 : n % 10] || "th");
-export const jumoaBody = h => `AsSalaam o Walaikum.\n✔ Cutting nails  ✔ Do Gusul  ✔ Wear nice cloth  ✔ Apply Ittar\n\n${ORD(Math.floor((h.d - 1) / 7) + 1)} JUMOA MUBARAK OF ${H.NAMES[h.m].toUpperCase()} ${h.y}H\n\nJUMO'A NA DIN: 1) Imamat si Namaz  2) Dua-e-Kaamil  3) Suratul Kehaf  4) Qardan Hasana\n\n🤲 Dua ni khaas iltemas`;
+export const jumoaBody = () => `✔ Cutting nails  ✔ Do Gusul\n✔ Wear nice cloth  ✔ Apply Ittar\n\n✔ Imamat si Namaz  ✔ Dua-e-Kaamil\n✔ Suratul Kehaf  ✔ Qardan Hasana`;   // same items as the Friday sheet in the app
 /** Alerts of one subscription that fall in the minute starting at ws (ms). */
 export function dueEvents(s, ws, cache, miq) {
   const pr = JSON.parse(s.prefs || "{}"), T = TXT[s.lang] || TXT.en, out = [];
@@ -114,7 +114,7 @@ export function dueEvents(s, ws, cache, miq) {
     const [wy, wm, wd] = ymd(p.y, p.m, p.d, 30), ws2 = miqOn(wy, wm, wd, miq).filter(q => q.washeq);
     if (ws2.length) { const h2 = H.fromAJD(H.gToAJD(wy, wm, wd)); out.push({ title: T.wsq, body: fill(T.wsqB, { t: ws2.map(q => q.title).join(" · "), d: `${h2.d} ${H.SHORT[h2.m]} ${h2.y}H` }), url: "./", tag: "miq-washeq" }); }
   }
-  if (at("jumoa", "07:00") && p.dow === 5 && pr.jumoa) out.push({ title: "🕌 Friday Reminder", body: jumoaBody(H.fromAJD(H.gToAJD(p.y, p.m, p.d))), url: "./#fri", tag: "jumoa" });
+  if (at("jumoa", "07:00") && p.dow === 5 && pr.jumoa) out.push({ title: "🕌 Friday Reminder", body: jumoaBody(), url: "./#fri", tag: "jumoa" });
   if (at("kumail", "19:00") && p.dow === 4 && pr.kumail) out.push({ title: T.kum, body: T.kumB, url: "./dua/kumail.html", tag: "kumail" });
   if (at("quote", "10:00") && pr.quote) out.push({ title: T.qt, body: quoteOn(p), url: "./", tag: "quote" });
   return out;
