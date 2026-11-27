@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=257">
-<script src="theme-init.js?v=257"></script>
+<link rel="stylesheet" href="themes.css?v=258">
+<script src="theme-init.js?v=258"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -812,10 +812,10 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=257"></script>
-<script src="i18n.js?v=257"></script>
-<script src="cities.js?v=257"></script>
-<script src="haptic.js?v=257"></script>
+<script src="hijri.js?v=258"></script>
+<script src="i18n.js?v=258"></script>
+<script src="cities.js?v=258"></script>
+<script src="haptic.js?v=258"></script>
 <script>
 "use strict";
 
@@ -1625,7 +1625,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 257, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 258, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll(); salaatSync();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1724,6 +1724,11 @@ function nativeSync() {
       const dd = new Date(td.getFullYear(), td.getMonth(), td.getDate() + i); if (dd.getDay() !== 5) continue;
       const at = new Date(dd.getFullYear(), dd.getMonth(), dd.getDate(), +jt[1], +jt[2]).getTime();
       if (at > now) out.push({ at, title: "🕌 Friday Reminder", body: jumoaBody(dd), azaan: false, hash: "#fri" });
+    }
+    if (jm.on !== false && jt && td.getDay() === 5) {   // opened on a Friday after the usual time but before Asr end: show today's reminder once, a few seconds from now
+      let f = store.get("friToday", null); const asr = salatList(td)[5][1].getTime(), usual = new Date(td.getFullYear(), td.getMonth(), td.getDate(), +jt[1], +jt[2]).getTime();
+      if ((!f || f.d !== ymd(td)) && usual <= now && now < asr) { f = { d: ymd(td), at: now + 4000 }; store.set("friToday", f); }
+      if (f && f.d === ymd(td) && f.at > now) out.push({ at: f.at, title: "🕌 Friday Reminder", body: jumoaBody(td), azaan: false, hash: "#fri" });   // kept in every sync until it has fired
     }
     out.sort((a, b) => a.at - b.at);
     store.set("azTimes", out.filter(o => o.azaan).map(o => o.at));

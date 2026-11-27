@@ -1,6 +1,19 @@
 {
- "v": 257,
+ "v": 258,
  "history": [
+  {
+   "v": 258,
+   "date": "2026-11-27",
+   "en": [
+    "Android app: if you open it on a Friday after the usual time (before Asr end), today’s Friday reminder is shown once."
+   ],
+   "gu": [
+    "Android એપ: શુક્રવારે સામાન્ય સમય પછી (અસર ના અંત પહેલાં) ખોલો તો આજનું શુક્રવારનું રીમાઇન્ડર એક વાર બતાવે છે."
+   ],
+   "hi": [
+    "Android ऐप: शुक्रवार को सामान्य समय के बाद (असर के अंत से पहले) खोलने पर आज का शुक्रवार रिमाइंडर एक बार दिखता है।"
+   ]
+  },
   {
    "v": 257,
    "date": "2026-11-27",
