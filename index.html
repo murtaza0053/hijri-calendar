@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=253">
-<script src="theme-init.js?v=253"></script>
+<link rel="stylesheet" href="themes.css?v=254">
+<script src="theme-init.js?v=254"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -107,7 +107,7 @@ table.cal{width:100%;border-collapse:separate;border-spacing:2px;table-layout:fi
 .mrow .tt .sub{font-size:11px;color:var(--muted)}
 .legend{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:6px;justify-content:center}
 h3{margin:4px 0 8px;font-size:15px}
-.frc{padding:12px 14px}#friCard{padding:11px 14px;cursor:pointer}.frc .fh{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}.frc .fh b{font-size:15px}.frc .fs{font-size:12px;color:var(--brand);font-weight:600}.frc .fk{font-size:12px;color:var(--muted);margin:10px 0 5px}.frc .fr{display:flex;flex-wrap:wrap;gap:6px}.frc .c{background:var(--chip);border-radius:10px;padding:5px 10px;font-size:13px;color:var(--ink);text-decoration:none}.frc a.c{color:var(--brand);font-weight:600}.frc .fd{font-size:13px;color:var(--muted);margin-top:10px}
+.frc{padding:12px 14px}#friCard{padding:11px 14px;cursor:pointer}.frc .fh{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}.frc .fh b{font-size:15px}.frc .fs{font-size:12px;color:var(--brand);font-weight:600}.frc .fk{font-size:12px;color:var(--muted);margin:10px 0 5px}.frc .fr{display:grid;grid-template-columns:1fr 1fr;gap:8px}.frc .c{display:flex;align-items:center;gap:8px;min-height:42px;background:var(--chip);border-radius:12px;padding:8px 11px;font-size:13.5px;line-height:1.25;color:var(--ink);text-decoration:none}.frc .c i{font-style:normal;flex:none;width:16px;text-align:center;font-weight:700;color:var(--brand)}.frc a.c::after{content:"›";margin-left:auto;color:var(--muted);font-size:16px}.frc .fd{font-size:13px;color:var(--muted);margin-top:10px}
 .mq{padding:8px 0;border-top:1px solid var(--line)}
 .mq:first-of-type{border-top:0}
 .mq .t{font-weight:600}
@@ -812,10 +812,10 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=253"></script>
-<script src="i18n.js?v=253"></script>
-<script src="cities.js?v=253"></script>
-<script src="haptic.js?v=253"></script>
+<script src="hijri.js?v=254"></script>
+<script src="i18n.js?v=254"></script>
+<script src="cities.js?v=254"></script>
+<script src="haptic.js?v=254"></script>
 <script>
 "use strict";
 
@@ -1243,8 +1243,8 @@ function renderFri() {
 }
 $("friCard").onclick = () => {   // bottom sheet, same as the quote card
   $("sheetBody").innerHTML = `<div class="frc" style="padding:2px 0 8px"><div style="font-size:20px;font-weight:700;text-align:center;margin-bottom:14px">🕌 Friday Reminder</div>
-    <div class="fr"><span class="c">✔ Cutting nails</span><span class="c">✔ Do Gusul</span><span class="c">✔ Wear nice cloth</span><span class="c">✔ Apply Ittar (perfume)</span></div>
-    <div class="fr" style="margin-top:12px"><span class="c">1 · Imamat si Namaz</span><a class="c" href="dua/">2 · Dua-e-Kaamil</a><a class="c" href="dua/quran.html?s=18">3 · Suratul Kehaf</a><span class="c">4 · Qardan Hasana</span></div></div>`;
+    <div class="fr"><span class="c"><i>✔</i>Cutting nails</span><span class="c"><i>✔</i>Do Gusul</span><span class="c"><i>✔</i>Wear nice cloth</span><span class="c"><i>✔</i>Apply Ittar (perfume)</span></div>
+    <div class="fr" style="margin-top:12px"><span class="c"><i>1</i>Imamat si Namaz</span><a class="c" href="dua/"><i>2</i>Dua-e-Kaamil</a><a class="c" href="dua/quran.html?s=18"><i>3</i>Suratul Kehaf</a><span class="c"><i>4</i>Qardan Hasana</span></div></div>`;
   $("sheetBg").style.display = "block"; requestAnimationFrame(() => $("sheet").classList.add("on"));
 };
 function goDay(a) {   // jump to a date: right month, scrolled to the calendar, day sheet open
@@ -1622,7 +1622,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 253, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 254, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll(); salaatSync();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
