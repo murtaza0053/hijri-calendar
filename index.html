@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=250">
-<script src="theme-init.js?v=250"></script>
+<link rel="stylesheet" href="themes.css?v=251">
+<script src="theme-init.js?v=251"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -107,6 +107,7 @@ table.cal{width:100%;border-collapse:separate;border-spacing:2px;table-layout:fi
 .mrow .tt .sub{font-size:11px;color:var(--muted)}
 .legend{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:6px;justify-content:center}
 h3{margin:4px 0 8px;font-size:15px}
+.fri{padding:12px 14px}.fri .fh{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}.fri .fh b{font-size:15px}.fri .fs{font-size:12px;color:var(--brand);font-weight:600}.fri .fk{font-size:12px;color:var(--muted);margin:10px 0 5px}.fri .fr{display:flex;flex-wrap:wrap;gap:6px}.fri .c{background:var(--chip);border-radius:10px;padding:5px 10px;font-size:13px;color:var(--ink);text-decoration:none}.fri a.c{color:var(--brand);font-weight:600}.fri .fd{font-size:13px;color:var(--muted);margin-top:10px}
 .mq{padding:8px 0;border-top:1px solid var(--line)}
 .mq:first-of-type{border-top:0}
 .mq .t{font-weight:600}
@@ -495,6 +496,7 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
   <!-- CALENDAR -->
   <section class="view on" id="v-cal">
     <div class="card banner" id="banner" style="display:none"></div>
+    <div class="card fri" id="friCard" hidden></div>
     <div class="card qcard" id="qCard"></div>
     <div class="card">
       <div class="monthbar">
@@ -810,10 +812,10 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=250"></script>
-<script src="i18n.js?v=250"></script>
-<script src="cities.js?v=250"></script>
-<script src="haptic.js?v=250"></script>
+<script src="hijri.js?v=251"></script>
+<script src="i18n.js?v=251"></script>
+<script src="cities.js?v=251"></script>
+<script src="haptic.js?v=251"></script>
 <script>
 "use strict";
 
@@ -1222,12 +1224,28 @@ function renderBanner() {
   if (H.dow(todayAJD) === 4) items.unshift({ a: null, when: t("bTonight"), dua: "dua/kumail.html", txt: t("bDuaKumail"), ic: "🌙" });
   const rz = ROZI.find(r => r[0] === todayH.d);
   if (rz) items.unshift({ a: null, when: t("relToday"), dua: `dua/quran.html?s=${rz[1]}`, txt: t("bRozi", { s: surahName(rz[1]) }), ic: "📖" });
-  if (H.dow(todayAJD) === 5) items.unshift({ a: null, when: t("relToday"), dua: "dua/quran.html?s=18", txt: t("bKahf"), ic: "📖" });
+  renderFri();
   const b = $("banner");
   if (!items.length) { b.style.display = "none"; return; }
   b.style.display = "";
   b.innerHTML = items.map(i => i.dua ? `<div class="mq" data-dua="${i.dua}"><div class="when">${i.ic} ${i.when}</div><div class="tw"><div class="ts"><div class="t">${i.txt}</div></div></div></div>` : `<div class="mq" data-a="${i.a}"><div class="when">🔔 ${i.when}</div><div class="tw"><div class="ts">${i.qs.map(q => `<div class="t">${q.phase === "night" ? "☾ " : "☀ "}${esc(q.title)}</div>`).join("")}</div></div></div>`).join("");
   requestAnimationFrame(() => b.querySelectorAll(".tw").forEach(w => { const x = w.firstElementChild, d = x.scrollWidth - w.clientWidth; w.classList.remove("run"); if (d > 2) { w.style.setProperty("--mqd", d + 8 + "px"); w.style.setProperty("--mqt", Math.max(6, d / 16) + "s"); w.classList.add("run"); } }));
+}
+/* Friday card on the home page: from the morning until Asr end of the (civil) Friday */
+function renderFri() {
+  clearTimeout(renderFri.t);
+  const c = $("friCard"), d = todayIn();
+  const ae = d.getDay() === 5 ? salatList(d)[5][1].getTime() : 0;   // Asr end
+  if (!ae || Date.now() >= ae) { c.hidden = true; return; }
+  const h = H.fromAJD(H.gToAJD(d.getFullYear(), d.getMonth(), d.getDate()));
+  c.hidden = false;
+  c.innerHTML = `<div class="fh"><b>🕌 Friday Reminder</b><span class="fs">${ORD(Math.floor((h.d - 1) / 7) + 1)} Jumo'a · ${H.NAMES[h.m]} ${h.y}H</span></div>
+    <div class="fk">AsSalaam o Walaikum — aaj ke liye</div>
+    <div class="fr"><span class="c">✔ Cutting nails</span><span class="c">✔ Do Gusul</span><span class="c">✔ Wear nice cloth</span><span class="c">✔ Apply Ittar (perfume)</span></div>
+    <div class="fk">Jumo'a na din</div>
+    <div class="fr"><span class="c">1 · Imamat si Namaz</span><a class="c" href="dua/">2 · Dua-e-Kaamil</a><a class="c" href="dua/quran.html?s=18">3 · Suratul Kehaf</a><span class="c">4 · Qardan Hasana</span></div>
+    <div class="fd">🤲 Dua ni khaas iltemas</div>`;
+  renderFri.t = setTimeout(renderFri, Math.min(ae - Date.now() + 1000, 2147e6));   // hides itself at Asr end
 }
 function goDay(a) {   // jump to a date: right month, scrolled to the calendar, day sheet open
   const h = H.fromAJD(a); view = { y: h.y, m: h.m }; if (curView !== "cal") switchView("cal"); renderCal();
@@ -1604,7 +1622,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 250, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 251, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll(); salaatSync();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1678,7 +1696,7 @@ function widgetSync() {
     MuminNative.setWidget(JSON.stringify({ city: loc.city || locLabel(), tz: salTZ(), days, c: { hdr: cv("--hdr"), gold: cv("--hdr-gold"), hink: cv("--hdr-ink"), card: cv("--card"), ink: cv("--ink"), chip: cv("--chip"), brand: cv("--brand"), onb: cv("--on-brand") } }));
   } catch {}
 }
-const ORD = n => n + (["th", "st", "nd", "rd"][n % 100 > 10 && n % 100 < 14 ? 0 : n % 10] || "th");
+function ORD(n) { return n + (["th", "st", "nd", "rd"][n % 100 > 10 && n % 100 < 14 ? 0 : n % 10] || "th"); }
 const jumoaBody = d => { const h = H.fromAJD(H.gToAJD(d.getFullYear(), d.getMonth(), d.getDate()));   // d is a Friday → the ((day-1)/7+1)th Friday of the Hijri month
   return `AsSalaam o Walaikum.\n✔ Cutting nails  ✔ Do Gusul  ✔ Wear nice cloth  ✔ Apply Ittar (perfume)\n\n${ORD(Math.floor((h.d - 1) / 7) + 1)} JUMOA MUBARAK OF ${H.NAMES[h.m].toUpperCase()} ${h.y}H\n\nJUMO'A NA DIN: 1) Imamat si Namaz  2) Dua-e-Kaamil  3) Suratul Kehaf  4) Qardan Hasana\n\n🤲 Dua ni khaas iltemas`; };
 function nativeSync() {
