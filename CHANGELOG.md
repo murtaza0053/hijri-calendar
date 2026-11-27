@@ -82,6 +82,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-27
 
+**v268**
+
+- Miqaats: Dawat / Salgirah now have their own flag icon.
+
 **v267**
 
 - Miqaat bullets: a different line icon for Urus, Rozu (fasting), Washeq / Fadhil raat and everything else.
