@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=252">
-<script src="theme-init.js?v=252"></script>
+<link rel="stylesheet" href="themes.css?v=253">
+<script src="theme-init.js?v=253"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -787,16 +787,6 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
     <p class="muted" style="font-size:12px;margin:8px 0 0;text-align:center" data-i18n="ppNote"></p>
   </div>
 </div>
-<div class="ppbg" id="friPop" role="dialog" aria-modal="true" aria-labelledby="friT">
-  <div class="ppcard frc" style="text-align:left">
-    <h3 id="friT" style="text-align:center">🕌 Friday Reminder</h3>
-    <div class="fk">AsSalaam o Walaikum</div>
-    <div class="fr"><span class="c">✔ Cutting nails</span><span class="c">✔ Do Gusul</span><span class="c">✔ Wear nice cloth</span><span class="c">✔ Apply Ittar (perfume)</span></div>
-    <div class="fk">Jumo'a na din</div>
-    <div class="fr"><span class="c">1 · Imamat si Namaz</span><a class="c" href="dua/">2 · Dua-e-Kaamil</a><a class="c" href="dua/quran.html?s=18">3 · Suratul Kehaf</a><span class="c">4 · Qardan Hasana</span></div>
-    <div class="ppbtn" style="margin-top:14px"><button class="btn" id="friOk">OK</button></div>
-  </div>
-</div>
 <div class="ppbg" id="apkPrompt" role="dialog" aria-modal="true" aria-labelledby="apkT">
   <div class="ppcard">
     <div class="ppic">📲</div>
@@ -822,10 +812,10 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=252"></script>
-<script src="i18n.js?v=252"></script>
-<script src="cities.js?v=252"></script>
-<script src="haptic.js?v=252"></script>
+<script src="hijri.js?v=253"></script>
+<script src="i18n.js?v=253"></script>
+<script src="cities.js?v=253"></script>
+<script src="haptic.js?v=253"></script>
 <script>
 "use strict";
 
@@ -1251,8 +1241,12 @@ function renderFri() {
   c.innerHTML = `<div class="fh" id="friGo" role="button" tabindex="0"><b>🕌 Friday Reminder</b><span class="fs">›</span></div>`;
   renderFri.t = setTimeout(renderFri, Math.min(ae - Date.now() + 1000, 2147e6));   // hides itself at Asr end
 }
-$("friCard").onclick = () => $("friPop").classList.add("on");
-$("friPop").onclick = e => { if (e.target === $("friPop") || e.target.id === "friOk") $("friPop").classList.remove("on"); };
+$("friCard").onclick = () => {   // bottom sheet, same as the quote card
+  $("sheetBody").innerHTML = `<div class="frc" style="padding:2px 0 8px"><div style="font-size:20px;font-weight:700;text-align:center;margin-bottom:14px">🕌 Friday Reminder</div>
+    <div class="fr"><span class="c">✔ Cutting nails</span><span class="c">✔ Do Gusul</span><span class="c">✔ Wear nice cloth</span><span class="c">✔ Apply Ittar (perfume)</span></div>
+    <div class="fr" style="margin-top:12px"><span class="c">1 · Imamat si Namaz</span><a class="c" href="dua/">2 · Dua-e-Kaamil</a><a class="c" href="dua/quran.html?s=18">3 · Suratul Kehaf</a><span class="c">4 · Qardan Hasana</span></div></div>`;
+  $("sheetBg").style.display = "block"; requestAnimationFrame(() => $("sheet").classList.add("on"));
+};
 function goDay(a) {   // jump to a date: right month, scrolled to the calendar, day sheet open
   const h = H.fromAJD(a); view = { y: h.y, m: h.m }; if (curView !== "cal") switchView("cal"); renderCal();
   setTimeout(() => { const c = $("cal").closest(".card"); c.style.scrollMarginTop = "calc(env(safe-area-inset-top) + 64px)"; c.scrollIntoView({ behavior: "smooth", block: "start" }); }, 60);
@@ -1628,7 +1622,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 252, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 253, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll(); salaatSync();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
