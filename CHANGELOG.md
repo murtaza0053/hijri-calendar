@@ -82,6 +82,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-27
 
+**v255**
+
+- Friday reminder pop-up: same tick bullet on every item.
+
 **v254**
 
 - Friday reminder pop-up: all items now look the same and line up in two even columns.
