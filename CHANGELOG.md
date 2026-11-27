@@ -82,6 +82,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-27
 
+**v267**
+
+- Miqaat bullets: a different line icon for Urus, Rozu (fasting), Washeq / Fadhil raat and everything else.
+
 **v266**
 
 - Miqaats: names now line up in one column with a marker (☀ / ☾ / •), wrapped lines no longer jump under the icon.
