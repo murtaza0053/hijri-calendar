@@ -82,6 +82,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-27
 
+**v252**
+
+- Friday reminder is now one line on the home page; tap it to see everything in a pop-up.
+
 **v251**
 
 - Home page: a Friday card (nails, gusul, nice clothes, ittar, Jumo’a na din, which Jumo’a of the month) shows from morning until Asr end.
