@@ -1,6 +1,19 @@
 {
- "v": 249,
+ "v": 250,
  "history": [
+  {
+   "v": 250,
+   "date": "2026-11-27",
+   "en": [
+    "New Friday reminder every Friday morning (nails, gusul, nice clothes, ittar, the Jumo’a na din list and the Jumoa count of the Hijri month). Settings → alerts: on by default at 7:00, you can change the time or turn it off."
+   ],
+   "gu": [
+    "દર શુક્રવારે સવારે નવું રીમાઇન્ડર (નખ, ગુસલ, સારાં કપડાં, અત્તર, જુમોઆ ના દિનની યાદી અને હિજરી મહિનાનો જુમોઆ ક્રમ). સેટિંગ્સમાં સવારે 7:00 ચાલુ છે; સમય બદલી કે બંધ કરી શકો છો."
+   ],
+   "hi": [
+    "हर शुक्रवार सुबह नया रिमाइंडर (नाख़ून, ग़ुस्ल, अच्छे कपड़े, इत्र, जुमोआ ना दिन की सूची और हिजरी महीने का जुमोआ क्रम)। सेटिंग्स में सुबह 7:00 पर चालू है; समय बदल या बंद कर सकते हैं।"
+   ]
+  },
   {
    "v": 249,
    "date": "2026-11-26",

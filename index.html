@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=249">
-<script src="theme-init.js?v=249"></script>
+<link rel="stylesheet" href="themes.css?v=250">
+<script src="theme-init.js?v=250"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -645,7 +645,7 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
       <div class="row" style="gap:12px"><span style="font-size:26px">🔊</span><span style="flex:1"><b data-i18n="azH"></b><br><small class="muted" data-i18n="azD"></small></span><button class="btn" id="azPlay" style="min-width:92px"></button></div>
       <div class="azopts" id="azOpts"></div>
       <div class="row" style="margin-top:10px"><span style="flex:1;font-size:14px" data-i18n="azZohrT"></span><input type="time" id="azZohrIn" style="font:inherit;padding:6px 8px;border-radius:10px;border:1px solid var(--line,#ccc);background:var(--card,#fff);color:inherit"></div>
-      <div id="azAlertWrap" hidden><small class="muted" data-i18n="azAlerts" style="display:block;margin-top:12px"></small><div class="azopts" id="azAl"></div><div class="prow" style="margin-top:10px"><label><input type="checkbox" id="nqOn"><span data-i18n="nqL"></span></label><input type="time" id="nqT"></div>
+      <div id="azAlertWrap" hidden><small class="muted" data-i18n="azAlerts" style="display:block;margin-top:12px"></small><div class="azopts" id="azAl"></div><div class="prow" style="margin-top:10px"><label><input type="checkbox" id="nqOn"><span data-i18n="nqL"></span></label><input type="time" id="nqT"></div><div class="prow" style="margin-top:10px"><label><input type="checkbox" id="jmOn"><span data-i18n="jmL"></span></label><input type="time" id="jmT"></div>
         <div id="azTune" hidden><div class="prow" style="margin-top:10px"><label><input type="checkbox" id="azVib"><span data-i18n="azVib"></span></label></div><div class="prow" style="margin-top:6px"><span data-i18n="azVol"></span><input type="range" id="azVol" min="10" max="100" step="10" style="flex:1;min-width:0;accent-color:var(--brand)"><b id="azVolN" style="min-width:3em;text-align:right"></b></div></div></div>
       <small class="muted" data-i18n="azNote" style="display:block;margin-top:8px"></small>
       <a id="azApk" class="btn ghost" href="https://github.com/murtaza0053/hijri-calendar/releases/latest/download/mumin.apk" style="display:inline-block;margin-top:10px;text-decoration:none" data-i18n="azApk"></a>
@@ -810,10 +810,10 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=249"></script>
-<script src="i18n.js?v=249"></script>
-<script src="cities.js?v=249"></script>
-<script src="haptic.js?v=249"></script>
+<script src="hijri.js?v=250"></script>
+<script src="i18n.js?v=250"></script>
+<script src="cities.js?v=250"></script>
+<script src="haptic.js?v=250"></script>
 <script>
 "use strict";
 
@@ -1277,12 +1277,12 @@ setTimeout(wdgPush, 3000);
 /* ---------- Push alerts (Cloudflare worker mumin-push) ---------- */
 const PUSH_URL = "https://mumin-push.masspeshi.workers.dev", VAPID_PUB = "BMOJDR0xcJ82MmiVY3D9lIXsgZDChLbuGhGZ-9oM8paslqXtTjFGoj_0Hf84EiO-m9HCZsKOFPVQ6Z3UKE9brAo";
 const PUSH_SAL = [["sih", "tSihori"], ["faj", "tFajr"], ["fe", "tFajrEnd"], ["zaw", "tZawaal"], ["ze", "tZohrEnd"], ["ae", "tAsrEnd"], ["mag", "tMaghrib"], ["nis", "tIshaEnd"]];
-const PUSH_OTH = [["rozi", "pushRozi"], ["tasbeeh", "pushTas"], ["sadaqah", "pushSdq"], ["kumail", "pushKum"], ["miq", "pushMiq"], ["quote", "pushQuote"]];
+const PUSH_OTH = [["rozi", "pushRozi"], ["tasbeeh", "pushTas"], ["sadaqah", "pushSdq"], ["kumail", "pushKum"], ["jumoa", "pushJum"], ["miq", "pushMiq"], ["quote", "pushQuote"]];
 (function () {
   const sup = "serviceWorker" in navigator && "PushManager" in window && "Notification" in window;
   const ios = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
   const standalone = navigator.standalone === true || matchMedia("(display-mode: standalone)").matches;
-  const PDEF = { sal: ["sih", "faj", "zaw", "mag", "nis"], lead: 0, t: { rozi: "08:00", tasbeeh: "07:00", sadaqah: "08:00", kumail: "19:00", miq: "20:00", quote: "10:00" }, rozi: true, tasbeeh: false, sadaqah: false, kumail: true, miq: true, quote: true };
+  const PDEF = { sal: ["sih", "faj", "zaw", "mag", "nis"], lead: 0, t: { rozi: "08:00", tasbeeh: "07:00", sadaqah: "08:00", kumail: "19:00", jumoa: "07:00", miq: "20:00", quote: "10:00" }, rozi: true, tasbeeh: false, sadaqah: false, kumail: true, jumoa: true, miq: true, quote: true };
   let prefs = Object.assign({}, PDEF, store.get("pushPrefs", {})); prefs.t = Object.assign({}, PDEF.t, prefs.t || {});
   const u8 = b => { const s = atob((b + "=".repeat((4 - b.length % 4) % 4)).replace(/-/g, "+").replace(/_/g, "/")); return Uint8Array.from(s, c => c.charCodeAt(0)); };
   const post = (path, body) => fetch(PUSH_URL + path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }).then(r => r.json());
@@ -1604,7 +1604,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 249, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 250, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll(); salaatSync();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1678,6 +1678,9 @@ function widgetSync() {
     MuminNative.setWidget(JSON.stringify({ city: loc.city || locLabel(), tz: salTZ(), days, c: { hdr: cv("--hdr"), gold: cv("--hdr-gold"), hink: cv("--hdr-ink"), card: cv("--card"), ink: cv("--ink"), chip: cv("--chip"), brand: cv("--brand"), onb: cv("--on-brand") } }));
   } catch {}
 }
+const ORD = n => n + (["th", "st", "nd", "rd"][n % 100 > 10 && n % 100 < 14 ? 0 : n % 10] || "th");
+const jumoaBody = d => { const h = H.fromAJD(H.gToAJD(d.getFullYear(), d.getMonth(), d.getDate()));   // d is a Friday → the ((day-1)/7+1)th Friday of the Hijri month
+  return `AsSalaam o Walaikum.\n✔ Cutting nails  ✔ Do Gusul  ✔ Wear nice cloth  ✔ Apply Ittar (perfume)\n\n${ORD(Math.floor((h.d - 1) / 7) + 1)} JUMOA MUBARAK OF ${H.NAMES[h.m].toUpperCase()} ${h.y}H\n\nJUMO'A NA DIN: 1) Imamat si Namaz  2) Dua-e-Kaamil  3) Suratul Kehaf  4) Qardan Hasana\n\n🤲 Dua ni khaas iltemas`; };
 function nativeSync() {
   widgetSync();
   try {
@@ -1695,6 +1698,12 @@ function nativeSync() {
       const at = new Date(td.getFullYear(), td.getMonth(), td.getDate() + i, +tm[1], +tm[2]).getTime();
       if (at > now) out.push({ at, title: "✨ " + t("qH") + " ✨", body: quoteFor(new Date(at)), azaan: false, hash: "#q" });
     }
+    const jm = store.get("nativeJumoa", { on: true, t: "07:00" }), jt = /^(\d\d):(\d\d)$/.exec(jm.t || "07:00");
+    if (jm.on !== false && jt) for (let i = 0; i < 14; i++) {   // Friday reminder
+      const dd = new Date(td.getFullYear(), td.getMonth(), td.getDate() + i); if (dd.getDay() !== 5) continue;
+      const at = new Date(dd.getFullYear(), dd.getMonth(), dd.getDate(), +jt[1], +jt[2]).getTime();
+      if (at > now) out.push({ at, title: "🕌 Friday Reminder", body: jumoaBody(dd), azaan: false });
+    }
     out.sort((a, b) => a.at - b.at);
     store.set("azTimes", out.filter(o => o.azaan).map(o => o.at));
     MuminNative.schedule(JSON.stringify(out));
@@ -1709,7 +1718,11 @@ function azAlDraw() {
 $("azAl").onchange = e => { const k = e.target.dataset.al; if (!k) return; const pp = store.get("pushPrefs", null) || {}, sal = new Set(Array.isArray(pp.sal) ? pp.sal : ["sih", "faj", "zaw", "mag", "nis"]); e.target.checked ? sal.add(k) : sal.delete(k); pp.sal = [...sal]; store.set("pushPrefs", pp); e.target.parentElement.classList.toggle("on", e.target.checked); nativeSync(); };
 $("azZohrIn").value = azZohrT(); $("azZohrIn").onchange = e => { if (/^\d\d:\d\d$/.test(e.target.value)) { store.set("azZohr", e.target.value); azDone = { ...azDone, zaw: "" }; store.set("azaanDone", azDone); nativeSync(); } };
 const nq = () => store.get("nativeQuote", { on: true, t: "10:00" });
-function nqDraw() { const q = nq(); $("nqOn").checked = q.on !== false; $("nqT").value = q.t || "10:00"; $("nqT").disabled = q.on === false; }
+function nqDraw() { jmDraw(); const q = nq(); $("nqOn").checked = q.on !== false; $("nqT").value = q.t || "10:00"; $("nqT").disabled = q.on === false; }
+const jm = () => store.get("nativeJumoa", { on: true, t: "07:00" });
+function jmDraw() { const q = jm(); $("jmOn").checked = q.on !== false; $("jmT").value = q.t || "07:00"; $("jmT").disabled = q.on === false; }
+$("jmOn").onchange = e => { store.set("nativeJumoa", { ...jm(), on: e.target.checked }); jmDraw(); nativeSync(); };
+$("jmT").onchange = e => { if (/^\d\d:\d\d$/.test(e.target.value)) { store.set("nativeJumoa", { ...jm(), t: e.target.value }); nativeSync(); } };
 $("nqOn").onchange = e => { store.set("nativeQuote", { ...nq(), on: e.target.checked }); nqDraw(); nativeSync(); };
 $("nqT").onchange = e => { if (/^\d\d:\d\d$/.test(e.target.value)) { store.set("nativeQuote", { ...nq(), t: e.target.value }); nativeSync(); } };
 const azTune = () => store.get("azTune", { vib: false, vol: 100 });

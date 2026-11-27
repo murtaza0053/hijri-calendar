@@ -80,6 +80,12 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ## Web app
 
+### 2026-11-27
+
+**v250**
+
+- New Friday reminder every Friday morning (nails, gusul, nice clothes, ittar, the Jumo’a na din list and the Jumoa count of the Hijri month). Settings → alerts: on by default at 7:00, you can change the time or turn it off.
+
 ### 2026-11-26
 
 **v249**
