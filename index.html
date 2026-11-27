@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=265">
-<script src="theme-init.js?v=265"></script>
+<link rel="stylesheet" href="themes.css?v=266">
+<script src="theme-init.js?v=266"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -112,6 +112,7 @@ h3{margin:4px 0 8px;font-size:15px}
 .mq:first-of-type{border-top:0}
 .mq .t{font-weight:600}
 .mq .d{font-size:13px;color:var(--muted)}
+.mq .mqr{display:flex;gap:8px;align-items:baseline;padding:1px 0}.mq .mqr .mk{flex:none;width:18px;text-align:center}.mq .mqr .mk.m{color:var(--muted);font-weight:400}.mq .mqr .mtx{flex:1;min-width:0}.mq .mqr+.d{padding-left:26px}
 .mq .when{font-size:12px;color:var(--brand);font-weight:600}
 .tag{display:inline-block;font-size:10px;padding:1px 6px;border-radius:6px;background:var(--chip);color:var(--muted);margin-left:4px;vertical-align:middle}
 .times{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px}
@@ -818,10 +819,10 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=265"></script>
-<script src="i18n.js?v=265"></script>
-<script src="cities.js?v=265"></script>
-<script src="haptic.js?v=265"></script>
+<script src="hijri.js?v=266"></script>
+<script src="i18n.js?v=266"></script>
+<script src="cities.js?v=266"></script>
+<script src="haptic.js?v=266"></script>
 <script>
 "use strict";
 
@@ -1052,16 +1053,18 @@ function renderMonthMq() {
     const a = first + d - 1, g = H.ajdToG(a), top = qs[0];
     const cls = (top.priority === 1 ? (top.phase === "night" ? "p1n" : "p1") : "") + (a < todayAJD ? " past" : "");
     rows += `<div class="mrow ${cls}" data-a="${a}"><div class="dd"><b>${hNum(d)}</b><span>${g.d} ${L.gShort[g.m]}</span></div>
-      <div class="tt">${qs.map(q => `<div>${icon(q)}${esc(q.title)}${nightTag(q)}</div>`).join("")}<div class="sub">${wd(a)}</div></div></div>`;
+      <div class="tt">${qs.map(mqRow).join("")}<div class="sub">${wd(a)}</div></div></div>`;
   }
   $("monthMq").innerHTML = `<h3>${t("monthMq", { m: L.hijriMonths[m] })}</h3><div class="mlist">${rows || `<p class="muted">${t("noMq")}</p>`}</div>`;
 }
 
 const icon = q => q.priority === 1 ? (q.phase === "night" ? "☾ " : "☀ ") : "";
+// one row per miqaat: a fixed-width marker column (☀ day / ☾ night / • minor) so wrapped lines and every row start at the same x
+const mqRow = q => `<div class="t mqr"><span class="mk${q.priority === 1 ? "" : " m"}">${q.priority === 1 ? (q.phase === "night" ? "☾" : "☀") : "•"}</span><span class="mtx">${esc(q.title)}${nightTag(q)}</span></div>`;
 const nightTag = q => q.phase === "night" ? `<span class="tag">${t("nightTag")}</span>` : "";
 function mqHTML(list) {
   if (!list.length) return `<p class="muted">${t("noMq")}</p>`;
-  return list.map(q => `<div class="mq"><div class="t">${icon(q)}${esc(q.title)}${nightTag(q)}</div>${q.description ? `<div class="d">${esc(q.description)}</div>` : ""}</div>`).join("");
+  return list.map(q => `<div class="mq">${mqRow(q)}${q.description ? `<div class="d">${esc(q.description)}</div>` : ""}</div>`).join("");
 }
 
 function renderTodayMq() {
@@ -1474,7 +1477,7 @@ function renderUpcoming() {
     if (!list.length) continue;
     const g = H.ajdToG(a), diff = a - todayAJD;
     const rel = diff === 0 ? t("relToday") : diff === 1 ? t("relTomorrow") : t("relIn", { n: diff });
-    html += `<div class="mq" data-a="${a}"><div class="when">${hShort(h)} · ${L.wdShort[H.dow(a)]}, ${g.d} ${L.gShort[g.m]} ${g.y} · ${rel}</div>${list.map(q => `<div class="t">${icon(q)}${esc(q.title)}${nightTag(q)}</div>`).join("")}</div>`;
+    html += `<div class="mq" data-a="${a}"><div class="when">${hShort(h)} · ${L.wdShort[H.dow(a)]}, ${g.d} ${L.gShort[g.m]} ${g.y} · ${rel}</div>${list.map(mqRow).join("")}</div>`;
   }
   $("upList").innerHTML = html || `<p class="muted">${t("upNone")}</p>`;
 }
@@ -1647,7 +1650,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 265, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 266, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll(); salaatSync();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */

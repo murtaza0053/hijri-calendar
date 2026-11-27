@@ -82,6 +82,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-27
 
+**v266**
+
+- Miqaats: names now line up in one column with a marker (☀ / ☾ / •), wrapped lines no longer jump under the icon.
+
 **v265**
 
 - Home banner now also shows today’s major miqaats (for example a Dai’s Urus) under “Today”.

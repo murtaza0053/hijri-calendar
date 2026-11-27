@@ -1,6 +1,19 @@
 {
- "v": 265,
+ "v": 266,
  "history": [
+  {
+   "v": 266,
+   "date": "2026-11-27",
+   "en": [
+    "Miqaats: names now line up in one column with a marker (☀ / ☾ / •), wrapped lines no longer jump under the icon."
+   ],
+   "gu": [
+    "મીકાત: નામ હવે માર્કર (☀ / ☾ / •) સાથે એક કૉલમમાં સરખાં ગોઠવાયાં, લાંબી લીટી આઇકન નીચે નથી જતી."
+   ],
+   "hi": [
+    "Miqaat: naam ab marker (☀ / ☾ / •) ke saath ek column me align hain, lambi line icon ke neeche nahi jaati."
+   ]
+  },
   {
    "v": 265,
    "date": "2026-11-27",
