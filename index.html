@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=268">
-<script src="theme-init.js?v=268"></script>
+<link rel="stylesheet" href="themes.css?v=269">
+<script src="theme-init.js?v=269"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -333,7 +333,7 @@ html:not(.ui-modern) #v-set .langset button,html:not(.ui-modern) #v-set .langset
 .pro{font-size:10px;font-weight:800;letter-spacing:.08em;padding:2px 8px;border-radius:999px;background:linear-gradient(135deg,#f0cb6a,#b8892b);color:#2a2008;margin-left:8px;align-self:center}
 #uiCard.locked{cursor:pointer}#uiCard.locked #uiSet{opacity:.4;pointer-events:none}
 #v-set .remrow .ri{filter:none!important;color:transparent!important;text-shadow:0 0 0 var(--muted)}/* flat single-colour icons */
-.proT{text-align:center}.proT .pb{height:10px;border-radius:6px;background:var(--chip);overflow:hidden;margin:14px 0 6px}.proT .pb i{display:block;height:100%;width:0;background:linear-gradient(90deg,#f0cb6a,#b8892b);transition:width .15s}.proT .pn{font-size:13px;color:var(--muted);margin-bottom:12px}.proT .pt{width:100%;padding:20px;font-size:22px;font-weight:700;border-radius:16px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.proT{text-align:center}.proT .pr{margin-top:14px;text-align:left}.proT .ph{display:flex;justify-content:space-between;align-items:baseline;font-size:14px}.proT .pb{height:8px;border-radius:6px;background:var(--chip);overflow:hidden;margin:6px 0 8px}.proT .pb i{display:block;height:100%;width:0;background:linear-gradient(90deg,#f0cb6a,#b8892b);transition:width .15s}.proT .pn{font-size:13px;color:var(--muted);margin-bottom:12px}.proT .pt{width:100%;padding:14px;font-size:18px;font-weight:700;border-radius:14px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
 #v-set .remrow input[type=checkbox]{order:3;margin-left:auto}
 #v-set .remrow .ri{width:28px;text-align:center;font-size:22px}
 #v-set h3.acc-h::before,#v-set .acc-h h3::before{content:"";display:inline-block;width:22px;height:22px;margin:0 3px 0 3px;vertical-align:-4px;background:var(--muted);-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
@@ -819,10 +819,10 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=268"></script>
-<script src="i18n.js?v=268"></script>
-<script src="cities.js?v=268"></script>
-<script src="haptic.js?v=268"></script>
+<script src="hijri.js?v=269"></script>
+<script src="i18n.js?v=269"></script>
+<script src="cities.js?v=269"></script>
+<script src="haptic.js?v=269"></script>
 <script>
 "use strict";
 
@@ -883,18 +883,20 @@ function syncZy() {
 $("zyFrame").addEventListener("load", syncZy);
 /* ---------- Style: classic (default) / modern ---------- */
 const UIS = ["classic", "modern"]; let ui = store.get("ui", "classic"); if (!UIS.includes(ui)) ui = "classic";
-const styleOpen = () => store.get("styleUnlocked", false);   // "Style" is a PRO feature: unlocked by 1000 × Astagferullah
+// "Style" is a PRO feature: unlocked by finishing all three tasbeehs (counts are kept on this phone)
+const PRO = [["ist", "proT1", 1000], ["hwl", "proT2", 1000], ["iyk", "proT3", 836]];
+const proCount = k => Math.min(PRO.find(x => x[0] === k)[2], store.get(k + "Count", 0));
+const styleOpen = () => PRO.every(([k, , n]) => proCount(k) >= n);
 function proOpen() {
-  const n = () => Math.min(1000, store.get("istCount", 0));
   $("sheetBody").innerHTML = `<div class="proT"><div style="font-size:20px;font-weight:700">${t("uiH")} <span class="pro">PRO</span></div>
-    <p class="muted" style="margin:10px 0 0">${t("proB")}</p><div class="pb"><i id="proBar"></i></div><div class="pn" id="proN"></div>
-    <button class="btn pt" id="proTap">${t("proTap")}</button></div>`;
-  const draw = () => { $("proBar").style.width = n() / 10 + "%"; $("proN").textContent = t("proOf", { n: n() }); };
+    <p class="muted" style="margin:10px 0 4px">${t("proB")}</p>${PRO.map(([k, tk, n]) => `<div class="pr" data-k="${k}"><div class="ph"><b>${t(tk)}</b><span class="pn"></span></div><div class="pb"><i></i></div><button class="btn pt"></button></div>`).join("")}</div>`;
+  const draw = () => document.querySelectorAll(".pr").forEach(r => { const [k, tk, n] = PRO.find(x => x[0] === r.dataset.k), c = proCount(k); r.querySelector("i").style.width = c / n * 100 + "%"; r.querySelector(".pn").textContent = t("proOf", { n: c, t: n }); const b = r.querySelector("button"); b.disabled = c >= n; b.textContent = c >= n ? "✔ " + t("proDone") : t(tk); });
   draw(); $("sheetBg").style.display = "block"; requestAnimationFrame(() => $("sheet").classList.add("on"));
-  $("proTap").onclick = () => {
-    const c = Math.min(1000, store.get("istCount", 0) + 1); store.set("istCount", c); draw();
-    if (window.haptic) haptic(c >= 1000 ? "done" : "tap");
-    if (c >= 1000) { store.set("styleUnlocked", true); applyUi(); $("proTap").disabled = true; $("proTap").textContent = t("proDone"); setTimeout(closeSheet, 1800); }
+  $("sheetBody").onclick = e => {
+    const r = e.target.closest(".pr"); if (!r || !e.target.closest("button")) return;
+    const [k, , n] = PRO.find(x => x[0] === r.dataset.k), c = Math.min(n, store.get(k + "Count", 0) + 1); store.set(k + "Count", c); draw();
+    if (window.haptic) haptic(c >= n ? "done" : "tap");
+    if (styleOpen()) { applyUi(); setTimeout(closeSheet, 1800); }
   };
 }
 $("uiCard").addEventListener("click", () => { if (!styleOpen()) proOpen(); });
@@ -1651,7 +1653,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 268, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 269, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll(); salaatSync();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */

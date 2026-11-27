@@ -82,6 +82,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-27
 
+**v269**
+
+- PRO Style now needs three tasbeehs: Astagferullah 1000, La hawla wala quwwata illa billah 1000 and Iyyaka na’budu 836.
+
 **v268**
 
 - Miqaats: Dawat / Salgirah now have their own flag icon.
