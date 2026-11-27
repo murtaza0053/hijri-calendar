@@ -82,6 +82,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-27
 
+**v262**
+
+- Ziyarat tab: clean line icons for mazaar, stay, address, call, map and source.
+
 **v261**
 
 - Dua tab: clean line icons for every dua and for sadaqah.
