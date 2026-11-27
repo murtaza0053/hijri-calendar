@@ -114,7 +114,7 @@ export function dueEvents(s, ws, cache, miq) {
     const [wy, wm, wd] = ymd(p.y, p.m, p.d, 30), ws2 = miqOn(wy, wm, wd, miq).filter(q => q.washeq);
     if (ws2.length) { const h2 = H.fromAJD(H.gToAJD(wy, wm, wd)); out.push({ title: T.wsq, body: fill(T.wsqB, { t: ws2.map(q => q.title).join(" · "), d: `${h2.d} ${H.SHORT[h2.m]} ${h2.y}H` }), url: "./", tag: "miq-washeq" }); }
   }
-  if (at("jumoa", "07:00") && p.dow === 5 && pr.jumoa) out.push({ title: "🕌 Friday Reminder", body: jumoaBody(H.fromAJD(H.gToAJD(p.y, p.m, p.d))), url: "./", tag: "jumoa" });
+  if (at("jumoa", "07:00") && p.dow === 5 && pr.jumoa) out.push({ title: "🕌 Friday Reminder", body: jumoaBody(H.fromAJD(H.gToAJD(p.y, p.m, p.d))), url: "./#fri", tag: "jumoa" });
   if (at("kumail", "19:00") && p.dow === 4 && pr.kumail) out.push({ title: T.kum, body: T.kumB, url: "./dua/kumail.html", tag: "kumail" });
   if (at("quote", "10:00") && pr.quote) out.push({ title: T.qt, body: quoteOn(p), url: "./", tag: "quote" });
   return out;

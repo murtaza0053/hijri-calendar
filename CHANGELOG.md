@@ -82,6 +82,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-27
 
+**v257**
+
+- Tapping the Friday reminder notification opens the Friday pop-up.
+
 **v256**
 
 - Friday reminder: “(perfume)” removed, it just says Apply Ittar.
