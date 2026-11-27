@@ -1,6 +1,19 @@
 {
- "v": 263,
+ "v": 264,
  "history": [
+  {
+   "v": 264,
+   "date": "2026-11-27",
+   "en": [
+    "Miqaat reminders now also work in the Android app. Washeq raat: a reminder every evening for the 7 days before it. Zohr end and Asr end: an alert 30 minutes before and again when the time ends."
+   ],
+   "gu": [
+    "મીકાત રીમાઇન્ડર હવે Android એપમાં પણ. વાશિક રાત: તેના પહેલાંના 7 દિવસ દરરોજ સાંજે રીમાઇન્ડર. ઝોહર અને અસર નો અંત: 30 મિનિટ પહેલાં અને સમય પૂરો થાય ત્યારે અલર્ટ."
+   ],
+   "hi": [
+    "Miqaat reminder ab Android app me bhi. Washeq raat: usse pehle ke 7 din har shaam reminder. Zohr end aur Asr end: 30 minute pehle aur waqt khatam hone par alert."
+   ]
+  },
   {
    "v": 263,
    "date": "2026-11-27",

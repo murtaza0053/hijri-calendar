@@ -52,15 +52,15 @@ function salaatDay(Y, M, D, lat, lng, cache, key) {
 const TXT = {
   en: { sih: "Sihori", faj: "Fajr", fe: "Fajr end", zaw: "Zawaal", ze: "Zohr end", ae: "Asr end", mag: "Maghrib", nis: "Nisful Layl", now: "It is {n} time.", soon: "{n} in {m} minutes.",
         rozi: "📖 Rozi amal: Surat {s}", roziB: "Hijri {d} — recite it once for barakat in rozi.", tas: "📿 Today's tasbeeh", tasB: "{t} — 100 times.",
-        sdq: "🤲 Today's sadaqah", sdqB: "Give sadaqah today: {i}.", miq: "🕌 Miqaat", miqN: "🌙 Tonight: {t}", miqT: "📅 Tomorrow: {t}", wsq: "🌙 Washeq raat in 1 month", wsqB: "{t} — {d}. Time to prepare.",
+        sdq: "🤲 Today's sadaqah", sdqB: "Give sadaqah today: {i}.", miq: "🕌 Miqaat", miqN: "🌙 Tonight: {t}", miqT: "📅 Tomorrow: {t}", wsq: "🌙 Washeq raat in {n} day(s)", wsqB: "{t} — {d}. Time to prepare.", left30: "30 minutes left.", endedB: "{n} — time has ended.",
         qt: "✨ Quote of the day ✨", qtG: "Open Mumin to read today’s quote from Raudat Hidayaat.", kum: "🌙 Shab-e-Juma", kumB: "Tonight, after Maghrib: recite Dua e Kumail.", test: "🔔 Alerts are on", testB: "You will get your Salaat and amal alerts on this device." },
   gu: { sih: "સિહોરી", faj: "ફજર", fe: "ફજર અંત", zaw: "ઝવાલ", ze: "ઝોહર અંત", ae: "અસર અંત", mag: "મગરિબ", nis: "નિસ્ફુલ લૈલ", now: "{n} નો સમય થયો.", soon: "{m} મિનિટમાં {n}.",
         rozi: "📖 રોઝી અમલ: સૂરત {s}", roziB: "હિજરી {d} — રોઝીમાં બરકત માટે એક વાર પઢો.", tas: "📿 આજની તસ્બીહ", tasB: "{t} — 100 વાર.",
-        sdq: "🤲 આજનો સદકો", sdqB: "આજે સદકો આપો: {i}.", miq: "🕌 મિકાત", miqN: "🌙 આજે રાત્રે: {t}", miqT: "📅 આવતી કાલે: {t}", wsq: "🌙 વાશિક રાત 1 મહિના પછી", wsqB: "{t} — {d}. તૈયારીનો સમય.",
+        sdq: "🤲 આજનો સદકો", sdqB: "આજે સદકો આપો: {i}.", miq: "🕌 મિકાત", miqN: "🌙 આજે રાત્રે: {t}", miqT: "📅 આવતી કાલે: {t}", wsq: "🌙 વાશિક રાત {n} દિવસમાં", wsqB: "{t} — {d}. તૈયારીનો સમય.", left30: "30 મિનિટ બાકી.", endedB: "{n} — સમય પૂરો થયો.",
         qt: "✨ આજનું સુવચન ✨", qtG: "રૌઝતુલ હિદાયાતનું આજનું સુવચન વાંચવા મુમિન ખોલો.", kum: "🌙 શબે જુમા", kumB: "આજે રાત્રે, મગરિબ પછી: દુઆ એ કુમૈલ પઢો.", test: "🔔 અલર્ટ ચાલુ છે", testB: "આ ડિવાઇસ પર તમને સલાત અને અમલના અલર્ટ મળશે." },
   hi: { sih: "Sihori", faj: "Fajr", fe: "Fajr end", zaw: "Zawaal", ze: "Zohr end", ae: "Asr end", mag: "Maghrib", nis: "Nisful Layl", now: "{n} ka waqt ho gaya.", soon: "{n} me {m} minute baaki.",
         rozi: "📖 Rozi amal: Surat {s}", roziB: "Hijri {d} — rozi me barakat ke liye ek baar padho.", tas: "📿 Aaj ki tasbeeh", tasB: "{t} — 100 baar.",
-        sdq: "🤲 Aaj ka sadaqah", sdqB: "Aaj sadaqah do: {i}.", miq: "🕌 Miqaat", miqN: "🌙 Aaj raat: {t}", miqT: "📅 Kal: {t}", wsq: "🌙 Washeq raat 1 mahine baad", wsqB: "{t} — {d}. Taiyari ka waqt.",
+        sdq: "🤲 Aaj ka sadaqah", sdqB: "Aaj sadaqah do: {i}.", miq: "🕌 Miqaat", miqN: "🌙 Aaj raat: {t}", miqT: "📅 Kal: {t}", wsq: "🌙 Washeq raat {n} din me", wsqB: "{t} — {d}. Taiyari ka waqt.", left30: "30 minute baaki.", endedB: "{n} — waqt khatam ho gaya.",
         qt: "✨ Aaj ka quote ✨", qtG: "Raudat Hidayaat ka aaj ka quote padhne ke liye Mumin kholo.", kum: "🌙 Shab-e-Juma", kumB: "Aaj raat, Maghrib ke baad: Dua e Kumail padho.", test: "🔔 Alerts on hain", testB: "Is device par aapko Salaat aur amal ke alerts milenge." }
 };
 const ROZI = [[2, "Yaseen"], [3, "ar-Rahman"], [4, "al-Waqiah"], [5, "al-Hashr"], [6, "al-Jumuah"], [7, "al-Jinn"]];
@@ -99,6 +99,10 @@ export function dueEvents(s, ws, cache, miq) {
   if (pr.sal && pr.sal.length) for (const off of [-1, 0, 1]) {
     const d0 = new Date(Date.UTC(p.y, p.m, p.d + off));
     for (const [k, t] of salaatDay(d0.getUTCFullYear(), d0.getUTCMonth(), d0.getUTCDate(), s.lat, s.lng, cache, locKey(s))) {
+      if (pr.sal.includes(k) && (k === "ze" || k === "ae")) {   // Zohr end / Asr end: 30 minutes before and again when the time ends (ignores the common lead)
+        for (const [ms, kind] of [[30 * 60000, "left"], [0, "end"]]) { const d2 = t.getTime() - ms; if (d2 >= ws && d2 < ws + 60000) out.push({ title: `🕌 ${T[k]}${city ? " — " + city : ""}`, body: kind === "left" ? T.left30 : fill(T.endedB, { n: T[k] }), url: "./#sl", tag: "sal-" + k + "-" + kind }); }
+        continue;
+      }
       const due = t.getTime() - lead;
       if (pr.sal.includes(k) && due >= ws && due < ws + 60000)
         out.push({ title: `🕌 ${T[k]}${city ? " — " + city : ""}`, body: lead ? fill(T.soon, { n: T[k], m: Math.round(lead / 60000) }) : fill(T.now, { n: T[k] }), url: ["faj", "zaw", "mag"].includes(k) ? "./#azaan" : "./#sl", tag: "sal-" + k });
@@ -111,9 +115,11 @@ export function dueEvents(s, ws, cache, miq) {
     const tm2 = miqOn(...ymd(p.y, p.m, p.d, 1), miq).filter(q => q.phase === "day"), tn = miqOn(p.y, p.m, p.d, miq).filter(q => q.phase === "night");
     if (tm2.length) out.push({ title: T.miq, body: fill(T.miqT, { t: tm2.map(q => q.title).join(" · ") }), url: "./", tag: "miq-day" });
     if (tn.length) out.push({ title: T.miq, body: fill(T.miqN, { t: tn.map(q => q.title).join(" · ") }), url: "./", tag: "miq-night" });
-    // Washeq raat: heads-up one month before
-    const [wy, wm, wd] = ymd(p.y, p.m, p.d, 30), ws2 = miqOn(wy, wm, wd, miq).filter(q => q.washeq);
-    if (ws2.length) { const h2 = H.fromAJD(H.gToAJD(wy, wm, wd)); out.push({ title: T.wsq, body: fill(T.wsqB, { t: ws2.map(q => q.title).join(" · "), d: `${h2.d} ${H.SHORT[h2.m]} ${h2.y}H` }), url: "./", tag: "miq-washeq" }); }
+    // Washeq raat: a reminder every evening for the 7 days before it
+    for (let n = 1; n <= 7; n++) {
+      const [wy, wm, wd] = ymd(p.y, p.m, p.d, n), ws2 = miqOn(wy, wm, wd, miq).filter(q => q.washeq);
+      if (ws2.length) { const h2 = H.fromAJD(H.gToAJD(wy, wm, wd)); out.push({ title: fill(T.wsq, { n }), body: fill(T.wsqB, { t: ws2.map(q => q.title).join(" · "), d: `${h2.d} ${H.SHORT[h2.m]} ${h2.y}H` }), url: "./", tag: "miq-washeq-" + n }); }
+    }
   }
   if (at("jumoa", "07:00") && p.dow === 5 && pr.jumoa) out.push({ title: "🕌 Friday Reminder", body: jumoaBody(), url: "./#fri", tag: "jumoa" });
   if (at("kumail", "19:00") && p.dow === 4 && pr.kumail) out.push({ title: T.kum, body: T.kumB, url: "./dua/kumail.html", tag: "kumail" });

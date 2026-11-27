@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=263">
-<script src="theme-init.js?v=263"></script>
+<link rel="stylesheet" href="themes.css?v=264">
+<script src="theme-init.js?v=264"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -818,10 +818,10 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=263"></script>
-<script src="i18n.js?v=263"></script>
-<script src="cities.js?v=263"></script>
-<script src="haptic.js?v=263"></script>
+<script src="hijri.js?v=264"></script>
+<script src="i18n.js?v=264"></script>
+<script src="cities.js?v=264"></script>
+<script src="haptic.js?v=264"></script>
 <script>
 "use strict";
 
@@ -927,7 +927,7 @@ async function miqApiSync(y, m) {   // m: 0-based Hijri month
   } catch { if (!apiMiq[mqKey(todayH.y, todayH.m)]) { mqFail = true; clearTimeout(mqRT); mqRT = setTimeout(renderMiqUi, 150); } } finally { delete mqBusy[k]; }
 }
 async function miqPrefetch() { for (let i = 0; i < 12; i++) { const n = todayH.m + i; await miqApiSync(todayH.y + Math.floor(n / 12), n % 12); } }
-function renderMiqUi() { renderCal(); renderTodayMq(); renderBanner(); if (curView === "up") renderUpcoming(); if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD); }
+function renderMiqUi() { if (typeof nativeSync === "function") setTimeout(nativeSync, 0); renderCal(); renderTodayMq(); renderBanner(); if (curView === "up") renderUpcoming(); if ($("sheet").classList.contains("on") && selAJD !== null) openDay(selAJD); }
 const miqaatsFor = (y, m, d) => {
   const ac = apiMiq[mqKey(y, m)]; if (!ac) return [];
   return ac.list.filter(a => a.d === d).map(a => {
@@ -1324,8 +1324,9 @@ const PUSH_OTH = [["rozi", "pushRozi"], ["tasbeeh", "pushTas"], ["sadaqah", "pus
   const sup = "serviceWorker" in navigator && "PushManager" in window && "Notification" in window;
   const ios = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
   const standalone = navigator.standalone === true || matchMedia("(display-mode: standalone)").matches;
-  const PDEF = { sal: ["sih", "faj", "zaw", "mag", "nis"], lead: 0, t: { rozi: "08:00", tasbeeh: "07:00", sadaqah: "08:00", kumail: "19:00", jumoa: "07:00", miq: "20:00", quote: "10:00" }, rozi: true, tasbeeh: false, sadaqah: false, kumail: true, jumoa: true, miq: true, quote: true };
+  const PDEF = { sal: ["sih", "faj", "zaw", "ze", "ae", "mag", "nis"], lead: 0, t: { rozi: "08:00", tasbeeh: "07:00", sadaqah: "08:00", kumail: "19:00", jumoa: "07:00", miq: "20:00", quote: "10:00" }, rozi: true, tasbeeh: false, sadaqah: false, kumail: true, jumoa: true, miq: true, quote: true };
   let prefs = Object.assign({}, PDEF, store.get("pushPrefs", {})); prefs.t = Object.assign({}, PDEF.t, prefs.t || {});
+  if (!prefs.zeae) { prefs.sal = [...new Set([...(prefs.sal || []), "ze", "ae"])]; prefs.zeae = true; store.set("pushPrefs", prefs); }   // one time: turn on the Zohr end / Asr end alerts (30 min before + at the end)
   const u8 = b => { const s = atob((b + "=".repeat((4 - b.length % 4) % 4)).replace(/-/g, "+").replace(/_/g, "/")); return Uint8Array.from(s, c => c.charCodeAt(0)); };
   const post = (path, body) => fetch(PUSH_URL + path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }).then(r => r.json());
   const getSub = async () => (await navigator.serviceWorker.ready).pushManager.getSubscription();
@@ -1646,7 +1647,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 263, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 264, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll(); salaatSync();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
@@ -1726,11 +1727,15 @@ function nativeSync() {
   widgetSync();
   try {
     if (!NATIVE) return;
-    const td = todayIn(), pp = store.get("pushPrefs", null), sal = pp && Array.isArray(pp.sal) ? pp.sal : ["sih", "faj", "zaw", "mag", "nis"], lead = (pp && +pp.lead) || 0, out = [], now = Date.now();
+    const td = todayIn(), pp = store.get("pushPrefs", null), sal = pp && Array.isArray(pp.sal) ? pp.sal : ["sih", "faj", "zaw", "ze", "ae", "mag", "nis"], lead = (pp && +pp.lead) || 0, out = [], now = Date.now();
     const nm = { sih: "tSihori", faj: "tFajr", fe: "tFajrEnd", zaw: "tZawaal", ze: "tZohrEnd", ae: "tAsrEnd", mag: "tMaghrib", nis: "tIshaEnd" };
     for (let i = 0; i < 14; i++) { const dd = new Date(td.getFullYear(), td.getMonth(), td.getDate() + i); salatList(dd).forEach(([, dt], j) => {
       const k = NAT_KEYS[j], az = !!azPrefs[k] && AZ.some(a => a[0] === k);
       if (!az && !sal.includes(k)) return;
+      if (!az && (k === "ze" || k === "ae")) {   // Zohr end / Asr end: 30 minutes before and again when the time ends
+        for (const [ms, left] of [[30 * 60000, true], [0, false]]) if (dt.getTime() - ms > now) out.push({ at: dt.getTime() - ms, title: "🕌 " + t(nm[k]) + " — " + locLabel(), body: left ? t("left30") : t("endedZ", { n: t(nm[k]) }), azaan: false });
+        return;
+      }
       const at = az ? azTime(k, dd, dt) : dt.getTime() - lead * 60000;
       if (at > now) out.push({ at, title: (az ? "🔊 " : "🕌 ") + (az && k === "zaw" ? t("azZohr") : t(nm[k])) + " — " + locLabel(), body: az ? t("azH") : (lead ? t("slIn", { t: lead + " min" }) : t("slNow")), azaan: az });
     }); }
@@ -1749,6 +1754,16 @@ function nativeSync() {
       let f = store.get("friToday", null); const asr = salatList(td)[5][1].getTime(), usual = new Date(td.getFullYear(), td.getMonth(), td.getDate(), +jt[1], +jt[2]).getTime();
       if ((!f || f.d !== ymd(td)) && usual <= now && now < asr) { f = { d: ymd(td), at: now + 4000 }; store.set("friToday", f); }
       if (f && f.d === ymd(td) && f.at > now) out.push({ at: f.at, title: "🕌 Friday Reminder", body: jumoaBody(td), azaan: false, hash: "#fri" });   // kept in every sync until it has fired
+    }
+    const mq = store.get("nativeMiq", { on: true, t: "20:00" }), mt = /^(\d\d):(\d\d)$/.exec(mq.t || "20:00");
+    if (mq.on !== false && mt) for (let i = 0; i < 14; i++) {   // miqaat reminders (same rules as the push worker): tomorrow's day miqaats, tonight's night miqaats, Washeq raat every evening for 7 days before
+      const at = new Date(td.getFullYear(), td.getMonth(), td.getDate() + i, +mt[1], +mt[2]).getTime(); if (at <= now) continue;
+      const hOf = k => { const x = new Date(td.getFullYear(), td.getMonth(), td.getDate() + i + k); return H.fromAJD(H.gToAJD(x.getFullYear(), x.getMonth(), x.getDate())); };
+      const on = k => { const h = hOf(k); return miqaatsFor(h.y, h.m, h.d).filter(q => q.priority <= 2); };
+      const tm = on(1).filter(q => q.phase === "day"), tn = on(0).filter(q => q.phase === "night");
+      if (tm.length) out.push({ at, title: "🕌 " + t("miqH"), body: "📅 " + t("relTomorrow") + ": " + tm.map(q => q.title).join(" · "), azaan: false });
+      if (tn.length) out.push({ at, title: "🕌 " + t("miqH"), body: "🌙 " + t("bTonight") + ": " + tn.map(q => q.title).join(" · "), azaan: false });
+      for (let k = 1; k <= 7; k++) { const w = on(k).filter(q => /washeq/i.test(q.title)); if (w.length) out.push({ at, title: t("wsqRem", { n: k }), body: w.map(q => q.title).join(" · ") + " — " + hStr(hOf(k)), azaan: false }); }
     }
     out.sort((a, b) => a.at - b.at);
     store.set("azTimes", out.filter(o => o.azaan).map(o => o.at));
