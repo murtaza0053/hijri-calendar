@@ -6,7 +6,7 @@ const fs = require("fs");
 const path = require("path");
 require("./hijri.js");
 const H = globalThis.H;
-// Miqaats come from the official mumineen.org API (one request per Hijri month); "Urus" = priority 3, everything else = major (1)
+// Miqaats come from the official mumineen.org API (one request per Hijri month); "Urus" = priority 3 (a Dai's Urus "Syedna …" = 1), everything else = major (1)
 const API = {};
 async function loadApi() {
   for (let y = Y0; y <= Y1; y++) for (let m = 0; m < 12; m++) {
@@ -44,7 +44,7 @@ function build(maxPriority, name, file) {
     "REFRESH-INTERVAL;VALUE=DURATION:P7D", "X-PUBLISHED-TTL:P7D"];
   let n = 0;
   for (let y = Y0; y <= Y1; y++) for (let m = 0; m < 12; m++) for (let d = 1; d <= H.daysInMonth(y, m); d++) {
-    const list = (API[y + "-" + m] || []).filter(q => q.d === d).map(q => ({ title: q.n, priority: q.t === "Urus" ? 3 : 1, phase: /raat|laylat|layl/i.test(q.t + " " + q.n) ? "night" : "day", description: q.t === "Urus" ? (q.c && !q.n.includes(q.c) ? q.c : "") : (q.t !== q.n ? q.t : "") })).filter(q => q.priority <= maxPriority);
+    const list = (API[y + "-" + m] || []).filter(q => q.d === d).map(q => ({ title: q.n, priority: q.t === "Urus" && !/^Syedna\b/i.test(q.n) ? 3 : 1, phase: /raat|laylat|layl/i.test(q.t + " " + q.n) ? "night" : "day", description: q.t === "Urus" ? (q.c && !q.n.includes(q.c) ? q.c : "") : (q.t !== q.n ? q.t : "") })).filter(q => q.priority <= maxPriority);
     if (!list.length) continue;
     for (const phase of ["day", "night"]) {
       const qs = list.filter(q => q.phase === phase);

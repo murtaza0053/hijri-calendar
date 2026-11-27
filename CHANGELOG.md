@@ -82,6 +82,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-27
 
+**v263**
+
+- Fixed: Urus of the Dais (Syedna …) are major miqaats again, so you get the miqaat reminder and they show in the banner; city / local Urus stay quiet.
+
 **v262**
 
 - Ziyarat tab: clean line icons for mazaar, stay, address, call, map and source.

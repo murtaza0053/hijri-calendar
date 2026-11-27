@@ -75,9 +75,10 @@ function localParts(ms, tz) {
 }
 
 /** Major miqaats (everything except "Urus") of a Gregorian date, from the mumineen.org data in `miq` ({ "hijriYear-month0": [{d, n, t}] }): [{title, phase, washeq}] */
+// Urus only for the Dais ("Syedna …"); city / local Urus stay quiet, as before the API
 function miqOn(y, m, d, miq) {
   const h = H.fromAJD(H.gToAJD(y, m, d)), list = (miq && miq[h.y + "-" + h.m]) || [];
-  return list.filter(q => q.d === h.d && q.t !== "Urus").map(q => ({ title: q.n, phase: /raat|laylat|layl/i.test(q.t + " " + q.n) ? "night" : "day", washeq: /washeq/i.test(q.n) }));
+  return list.filter(q => q.d === h.d && (q.t !== "Urus" || /^Syedna\b/i.test(q.n))).map(q => ({ title: q.n, phase: /raat|laylat|layl/i.test(q.t + " " + q.n) ? "night" : "day", washeq: /washeq/i.test(q.n) }));
 }
 const ymd = (y, m, d, add) => { const x = new Date(Date.UTC(y, m, d + add)); return [x.getUTCFullYear(), x.getUTCMonth(), x.getUTCDate()]; };
 /** English text of the day's quote ("" when that quote has no proof-read text); same day→quote rule as the app */

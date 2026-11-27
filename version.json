@@ -1,6 +1,19 @@
 {
- "v": 262,
+ "v": 263,
  "history": [
+  {
+   "v": 263,
+   "date": "2026-11-27",
+   "en": [
+    "Fixed: Urus of the Dais (Syedna …) are major miqaats again, so you get the miqaat reminder and they show in the banner; city / local Urus stay quiet."
+   ],
+   "gu": [
+    "સુધારો: દાઈઓના ઉર્સ (સૈયદના …) ફરી મુખ્ય મીકાત છે, તેથી મીકાત રીમાઇન્ડર આવશે અને બેનરમાં દેખાશે; શહેર/સ્થાનિક ઉર્સ શાંત રહેશે."
+   ],
+   "hi": [
+    "Sudhar: Dais ke Urus (Syedna …) phir se major miqaat hain, isliye miqaat reminder aayega aur banner me dikhega; city / local Urus chup rahenge."
+   ]
+  },
   {
    "v": 262,
    "date": "2026-11-27",

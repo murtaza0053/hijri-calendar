@@ -83,12 +83,13 @@ UID:1447-1-7-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20250702
 DTEND;VALUE=DATE:20250703
-SUMMARY:Vaaz 6
-DESCRIPTION:7 Moharram 1447H\n\n• Vaaz 6 — Ashara Mubaraka
+SUMMARY:Syedna Ismail Badruddin RA [38th Dai] (Jamnagar) · Vaaz 6
+DESCRIPTION:7 Moharram 1447H\n\n• Syedna Ismail Badruddin RA [38th Dai] (
+ Jamnagar)\n• Vaaz 6 — Ashara Mubaraka
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Vaaz 6
+DESCRIPTION:Syedna Ismail Badruddin RA [38th Dai] (Jamnagar) · Vaaz 6
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -125,12 +126,103 @@ UID:1447-1-10-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20250705
 DTEND;VALUE=DATE:20250706
-SUMMARY:Ashura
-DESCRIPTION:10 Moharram 1447H\n\n• Ashura — Yawme Ashura
+SUMMARY:Syedna Zoeb Bin Musa AQ [1st Dai] (Haus) · Ashura
+DESCRIPTION:10 Moharram 1447H\n\n• Syedna Zoeb Bin Musa AQ [1st Dai] (Hau
+ s)\n• Ashura — Yawme Ashura
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Ashura
+DESCRIPTION:Syedna Zoeb Bin Musa AQ [1st Dai] (Haus) · Ashura
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-1-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20250711
+DTEND;VALUE=DATE:20250712
+SUMMARY:Syedna Hatim bin Syedna Ibrahim RA [3rd Dai] (Hutaib)
+DESCRIPTION:16 Moharram 1447H\n\n• Syedna Hatim bin Syedna Ibrahim RA [3r
+ d Dai] (Hutaib)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hatim bin Syedna Ibrahim RA [3rd Dai] (Hutaib)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-1-17-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20250712
+DTEND;VALUE=DATE:20250713
+SUMMARY:Syedna Ibrahim Vajihuddin RA [39th Dai] (Ujjain)
+DESCRIPTION:17 Moharram 1447H\n\n• Syedna Ibrahim Vajihuddin RA [39th Dai
+ ] (Ujjain)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ibrahim Vajihuddin RA [39th Dai] (Ujjain)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-2-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20250726
+DTEND;VALUE=DATE:20250727
+SUMMARY:Syedna Ali bin Moulaya Hasan RA [10th Dai] (Sana’a)
+DESCRIPTION:1 Safar 1447H\n\n• Syedna Ali bin Moulaya Hasan RA [10th Dai]
+  (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Moulaya Hasan RA [10th Dai] (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-2-3-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20250728
+DTEND;VALUE=DATE:20250729
+SUMMARY:Syedna Ali Shamsuddin Bin Syedna Abdullah AQ [18th Dai] (Shareqa)
+DESCRIPTION:3 Safar 1447H\n\n• Syedna Ali Shamsuddin Bin Syedna Abdullah 
+ AQ [18th Dai] (Shareqa)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin Bin Syedna Abdullah AQ [18th Dai] (Shareq
+ a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-2-4-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20250729
+DTEND;VALUE=DATE:20250730
+SUMMARY:Syedna Abdul Tayyib Zakiyuddin AQ [41st Dai] (Burhanpur)
+DESCRIPTION:4 Safar 1447H\n\n• Syedna Abdul Tayyib Zakiyuddin AQ [41st Da
+ i] (Burhanpur)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Tayyib Zakiyuddin AQ [41st Dai] (Burhanpur)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-2-8-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20250802
+DTEND;VALUE=DATE:20250803
+SUMMARY:Syedna al-Khattab bin Hasan al-Hamdani AQ
+DESCRIPTION:8 Safar 1447H\n\n• Syedna al-Khattab bin Hasan al-Hamdani AQ
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna al-Khattab bin Hasan al-Hamdani AQ
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -149,6 +241,36 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1447-2-22-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20250816
+DTEND;VALUE=DATE:20250817
+SUMMARY:Syedna Hussain bin Syedna Ali RA [8th Dai] (Sana’a)
+DESCRIPTION:22 Safar 1447H\n\n• Syedna Hussain bin Syedna Ali RA [8th Dai
+ ] (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hussain bin Syedna Ali RA [8th Dai] (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-2-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20250821
+DTEND;VALUE=DATE:20250822
+SUMMARY:Syedna Mohammed Ezzuddin RA [23rd Dai] (Zabid)
+DESCRIPTION:27 Safar 1447H\n\n• Syedna Mohammed Ezzuddin RA [23rd Dai] (Z
+ abid)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed Ezzuddin RA [23rd Dai] (Zabid)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1447-2-28-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20250822
@@ -159,6 +281,38 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Imam Hasan AS (Medina)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-3-2-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20250825
+DTEND;VALUE=DATE:20250826
+SUMMARY:Syedna Abdul Tayyib Zakiyuddin bin Syedna Dawood bin Qutbub Shah AQ
+  [29th Dai] (Ahmedabad)
+DESCRIPTION:2 Rabi I 1447H\n\n• Syedna Abdul Tayyib Zakiyuddin bin Syedna
+  Dawood bin Qutbub Shah AQ [29th Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Tayyib Zakiyuddin bin Syedna Dawood bin Qutbub Sha
+ h AQ [29th Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-3-10-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20250902
+DTEND;VALUE=DATE:20250903
+SUMMARY:Syedna Abdullah Badruddin RA [50th Dai] (Surat)
+DESCRIPTION:10 Rabi I 1447H\n\n• Syedna Abdullah Badruddin RA [50th Dai] 
+ (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdullah Badruddin RA [50th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -177,6 +331,51 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1447-3-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20250908
+DTEND;VALUE=DATE:20250909
+SUMMARY:Syedna Mohammed Burhanuddin RA [52nd Dai] (Mumbai)
+DESCRIPTION:16 Rabi I 1447H\n\n• Syedna Mohammed Burhanuddin RA [52nd Dai
+ ] (Mumbai)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed Burhanuddin RA [52nd Dai] (Mumbai)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-3-22-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20250914
+DTEND;VALUE=DATE:20250915
+SUMMARY:Syedna Ali bin Hanzala RA [6th Dai] (Hamadan)
+DESCRIPTION:22 Rabi I 1447H\n\n• Syedna Ali bin Hanzala RA [6th Dai] (Ham
+ adan)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Hanzala RA [6th Dai] (Hamadan)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-3-25-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20250917
+DTEND;VALUE=DATE:20250918
+SUMMARY:Syedna Ali Shamsuddin bin Mawlai Hasan [30th Dai](Hisne Afedat)
+DESCRIPTION:25 Rabi I 1447H\n\n• Syedna Ali Shamsuddin bin Mawlai Hasan [
+ 30th Dai](Hisne Afedat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin bin Mawlai Hasan [30th Dai](Hisne Afedat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1447-4-4-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20250926
@@ -187,6 +386,21 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Imam-uz-Zamaan SA
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-4-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20251008
+DTEND;VALUE=DATE:20251009
+SUMMARY:Syedna Jalal Shamsuddin AQ bin Hasan [25th Dai]  (Ahmedabad)
+DESCRIPTION:16 Rabi II 1447H\n\n• Syedna Jalal Shamsuddin AQ bin Hasan [2
+ 5th Dai]  (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Jalal Shamsuddin AQ bin Hasan [25th Dai]  (Ahmedabad)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -206,6 +420,52 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1447-4-22-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20251014
+DTEND;VALUE=DATE:20251015
+SUMMARY:Syedna Moosa Kalimuddin RA [36th Dai] (Jamnagar)
+DESCRIPTION:22 Rabi II 1447H\n\n• Syedna Moosa Kalimuddin RA [36th Dai] (
+ Jamnagar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Moosa Kalimuddin RA [36th Dai] (Jamnagar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-4-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20251019
+DTEND;VALUE=DATE:20251020
+SUMMARY:Syedna Dawood ibn Ajab Shah Burhanuddin RA [26th Dai] (Ahmedabad)
+DESCRIPTION:27 Rabi II 1447H\n\n• Syedna Dawood ibn Ajab Shah Burhanuddin
+  RA [26th Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Dawood ibn Ajab Shah Burhanuddin RA [26th Dai] (Ahmedaba
+ d)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-5-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20251022
+DTEND;VALUE=DATE:20251023
+SUMMARY:Syedna Ahmed bin Syedna Ali al-Mukarram Sulaihi AQ (Sana’a)
+DESCRIPTION:1 Jumada I 1447H\n\n• Syedna Ahmed bin Syedna Ali al-Mukarram
+  Sulaihi AQ (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ahmed bin Syedna Ali al-Mukarram Sulaihi AQ (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1447-5-10-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20251031
@@ -221,6 +481,66 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1447-5-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20251106
+DTEND;VALUE=DATE:20251107
+SUMMARY:Syedna Mohammed bin Idris AQ (Yemen)
+DESCRIPTION:16 Jumada I 1447H\n\n• Syedna Mohammed bin Idris AQ (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed bin Idris AQ (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-6-15-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20251205
+DTEND;VALUE=DATE:20251206
+SUMMARY:Syedna Dawood Burhanuddin AQ bin Qutub Shah [27th Dai] (Ahmedabad)
+DESCRIPTION:15 Jumada II 1447H\n\n• Syedna Dawood Burhanuddin AQ bin Qutu
+ b Shah [27th Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Dawood Burhanuddin AQ bin Qutub Shah [27th Dai] (Ahmedab
+ ad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-6-18-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20251208
+DTEND;VALUE=DATE:20251209
+SUMMARY:Syedna Yusuf Najmuddin AQ [42nd Dai] (Surat)
+DESCRIPTION:18 Jumada II 1447H\n\n• Syedna Yusuf Najmuddin AQ [42nd Dai] 
+ (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Yusuf Najmuddin AQ [42nd Dai] (Surat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-6-23-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20251213
+DTEND;VALUE=DATE:20251214
+SUMMARY:Syedna Ismail Badruddin AQ bin Mawlai Raj [34th Dai] (Jamnagar)
+DESCRIPTION:23 Jumada II 1447H\n\n• Syedna Ismail Badruddin AQ bin Mawlai
+  Raj [34th Dai] (Jamnagar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ismail Badruddin AQ bin Mawlai Raj [34th Dai] (Jamnagar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1447-6-26-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20251216
@@ -232,6 +552,57 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Mazoon al-Dawat Syedi Husain Bhaisaheb Husamuddin AQ
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-6-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20251217
+DTEND;VALUE=DATE:20251218
+SUMMARY:Syedna Lamak bin Malik RA (Yemen) · Syedna Qutub Khan Qutubuddin S
+ hahid AQ [32nd Dai] (Ahmedabad)
+DESCRIPTION:27 Jumada II 1447H\n\n• Syedna Lamak bin Malik RA (Yemen)\n
+ • Syedna Qutub Khan Qutubuddin Shahid AQ [32nd Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Lamak bin Malik RA (Yemen) · Syedna Qutub Khan Qutubudd
+ in Shahid AQ [32nd Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-6-28-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20251218
+DTEND;VALUE=DATE:20251219
+SUMMARY:Syedna Ahmed bin Mubarak AQ (Hamdaan) [7th Dai] (Hamdaan) · Syedna
+  Yahya bin Syedna Lamak AQ (Yemen)
+DESCRIPTION:28 Jumada II 1447H\n\n• Syedna Ahmed bin Mubarak AQ (Hamdaan)
+  [7th Dai] (Hamdaan)\n• Syedna Yahya bin Syedna Lamak AQ (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ahmed bin Mubarak AQ (Hamdaan) [7th Dai] (Hamdaan) · Sy
+ edna Yahya bin Syedna Lamak AQ (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-6-29-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20251219
+DTEND;VALUE=DATE:20251220
+SUMMARY:Syedna Qadi Numan bin Mohammed AQ · Syedna Mohammed Badruddin AQ [
+ 46th Dai] (Surat)
+DESCRIPTION:29 Jumada II 1447H\n\n• Syedna Qadi Numan bin Mohammed AQ\n
+ • Syedna Mohammed Badruddin AQ [46th Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Qadi Numan bin Mohammed AQ · Syedna Mohammed Badruddin 
+ AQ [46th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -267,6 +638,36 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Fasting
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-7-4-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20251223
+DTEND;VALUE=DATE:20251224
+SUMMARY:Syedna Noor Mohammed Nooruddin AQ [37th Dai] (Kutch-Mandvi)
+DESCRIPTION:4 Rajab 1447H\n\n• Syedna Noor Mohammed Nooruddin AQ [37th Da
+ i] (Kutch-Mandvi) — Kutch Mandvi
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Noor Mohammed Nooruddin AQ [37th Dai] (Kutch-Mandvi)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-7-7-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20251226
+DTEND;VALUE=DATE:20251227
+SUMMARY:Syedna Shaikh Adam Safiyuddin AQ [28th Dai] (Ahmedabad)
+DESCRIPTION:7 Rajab 1447H\n\n• Syedna Shaikh Adam Safiyuddin AQ [28th Dai
+ ] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Shaikh Adam Safiyuddin AQ [28th Dai] (Ahmedabad)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -314,6 +715,70 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1447-7-18-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260106
+DTEND;VALUE=DATE:20260107
+SUMMARY:Syedna Ali Shamsuddin AQ bin Syedna Ibrahim bin Husain AQ [13th Dai
+ ] (Zamarmar)
+DESCRIPTION:18 Rajab 1447H\n\n• Syedna Ali Shamsuddin AQ bin Syedna Ibrah
+ im bin Husain AQ [13th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin AQ bin Syedna Ibrahim bin Husain AQ [13th
+  Dai] (Zamarmar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-7-19-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260107
+DTEND;VALUE=DATE:20260108
+SUMMARY:Syedna Taher Saifuddin AQ [51st Dai] (Mumbai)
+DESCRIPTION:19 Rajab 1447H\n\n• Syedna Taher Saifuddin AQ [51st Dai] (Mum
+ bai)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Taher Saifuddin AQ [51st Dai] (Mumbai)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-7-24-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260112
+DTEND;VALUE=DATE:20260113
+SUMMARY:Syedna Abdul Mutalib Najmuddin AQ bin Syedna Mohammed bin Hatim AQ 
+ [14th Dai] (Zamarmar)
+DESCRIPTION:24 Rajab 1447H\n\n• Syedna Abdul Mutalib Najmuddin AQ bin Sye
+ dna Mohammed bin Hatim AQ [14th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Mutalib Najmuddin AQ bin Syedna Mohammed bin Hatim
+  AQ [14th Dai] (Zamarmar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-7-26-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260114
+DTEND;VALUE=DATE:20260115
+SUMMARY:Syedna Abdul Qadr Najmuddin AQ [47th Dai] (Ujjain)
+DESCRIPTION:26 Rajab 1447H\n\n• Syedna Abdul Qadr Najmuddin AQ [47th Dai]
+  (Ujjain)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Qadr Najmuddin AQ [47th Dai] (Ujjain)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1447-7-26-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20260114
@@ -343,6 +808,21 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1447-8-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260119
+DTEND;VALUE=DATE:20260120
+SUMMARY:Syedna Hebatullah Muayyad Fiddin AQ [40th Dai] (Ujjain)
+DESCRIPTION:1 Shabaan 1447H\n\n• Syedna Hebatullah Muayyad Fiddin AQ [40t
+ h Dai] (Ujjain)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hebatullah Muayyad Fiddin AQ [40th Dai] (Ujjain)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1447-8-14-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20260201
@@ -355,6 +835,66 @@ BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🌙 Night: Shabb-e-Baraat (Laylat al-Nisf)
 TRIGGER:PT17H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-8-15-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260202
+DTEND;VALUE=DATE:20260203
+SUMMARY:Syedna Hasan Badruddin AQ [20th Dai] (Masaar)
+DESCRIPTION:15 Shabaan 1447H\n\n• Syedna Hasan Badruddin AQ [20th Dai] (M
+ asaar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hasan Badruddin AQ [20th Dai] (Masaar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-8-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260203
+DTEND;VALUE=DATE:20260204
+SUMMARY:Syedna Ibrahim bin Husain AQ [2nd Dai] [2nd Dai]
+DESCRIPTION:16 Shabaan 1447H\n\n• Syedna Ibrahim bin Husain AQ [2nd Dai] 
+ [2nd Dai]
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ibrahim bin Husain AQ [2nd Dai] [2nd Dai]
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-8-29-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260216
+DTEND;VALUE=DATE:20260217
+SUMMARY:Syedna Ali bin Mawla Mohammed al-Walid AQ [5th Dai] (Haraaz)
+DESCRIPTION:29 Shabaan 1447H\n\n• Syedna Ali bin Mawla Mohammed al-Walid 
+ AQ [5th Dai] (Haraaz)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Mawla Mohammed al-Walid AQ [5th Dai] (Haraaz)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-9-9-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260225
+DTEND;VALUE=DATE:20260226
+SUMMARY:Syedna Abdullah Fakhruddin AQ bin Ali [16th Dai] (Zamarmar)
+DESCRIPTION:9 Ramadaan 1447H\n\n• Syedna Abdullah Fakhruddin AQ bin Ali [
+ 16th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdullah Fakhruddin AQ bin Ali [16th Dai] (Zamarmar)
+TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -392,13 +932,15 @@ UID:1447-9-19-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20260307
 DTEND;VALUE=DATE:20260308
-SUMMARY:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa)
+SUMMARY:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa) · Syedna Mohammed Ezz
+ uddin RA [44th Dai] (Surat)
 DESCRIPTION:19 Ramadaan 1447H\n\n• Amir al-Mumineen Ali ibn Abi Talib SA 
- (Kufa) — Shahadat
+ (Kufa) — Shahadat\n• Syedna Mohammed Ezzuddin RA [44th Dai] (Surat)
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa)
+DESCRIPTION:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa) · Syedna Mohammed
+  Ezzuddin RA [44th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -493,17 +1035,214 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1447-10-6-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260324
+DTEND;VALUE=DATE:20260325
+SUMMARY:Syedna Hasan Badruddin bin Syedba Abdullah Fakhruddin AQ [17th Dai]
+  (Zamarmar)
+DESCRIPTION:6 Shawwal 1447H\n\n• Syedna Hasan Badruddin bin Syedba Abdull
+ ah Fakhruddin AQ [17th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hasan Badruddin bin Syedba Abdullah Fakhruddin AQ [17th 
+ Dai] (Zamarmar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-10-7-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260325
+DTEND;VALUE=DATE:20260326
+SUMMARY:Syedna Mohammed bin Taher AQ [Writer of Dua Al Aql Al Awwal\, Bawes
+ ani Dua] (Yemen)
+DESCRIPTION:7 Shawwal 1447H\n\n• Syedna Mohammed bin Taher AQ [Writer of 
+ Dua Al Aql Al Awwal\, Bawesani Dua] (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed bin Taher AQ [Writer of Dua Al Aql Al Awwal\, B
+ awesani Dua] (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-10-8-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260326
+DTEND;VALUE=DATE:20260327
+SUMMARY:Syedna Abbas bin Syedna Mohammed bin Hatim AQ [15th Dai] (Hisne Afe
+ dat)
+DESCRIPTION:8 Shawwal 1447H\n\n• Syedna Abbas bin Syedna Mohammed bin Hat
+ im AQ [15th Dai] (Hisne Afedat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abbas bin Syedna Mohammed bin Hatim AQ [15th Dai] (Hisne
+  Afedat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-10-9-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260327
+DTEND;VALUE=DATE:20260328
+SUMMARY:Syedna Qasim Khan Zainuddin AQ [31st Dai] (Ahmedabad)
+DESCRIPTION:9 Shawwal 1447H\n\n• Syedna Qasim Khan Zainuddin AQ [31st Dai
+ ] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Qasim Khan Zainuddin AQ [31st Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-10-10-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260328
+DTEND;VALUE=DATE:20260329
+SUMMARY:Syedna Husain Husamuddin AQ [21st Dai] (Masaar) · Syedna Ibrahim b
+ in Syedna Husain AQ [11th Dai] (Hisne Afedat) · Syedna Hebatullah Muayyad
+ fiddin Shirazi AQ
+DESCRIPTION:10 Shawwal 1447H\n\n• Syedna Husain Husamuddin AQ [21st Dai] 
+ (Masaar)\n• Syedna Ibrahim bin Syedna Husain AQ [11th Dai] (Hisne Afedat
+ )\n• Syedna Hebatullah Muayyadfiddin Shirazi AQ — Cairo
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Husain Husamuddin AQ [21st Dai] (Masaar) · Syedna Ibrah
+ im bin Syedna Husain AQ [11th Dai] (Hisne Afedat) · Syedna Hebatullah Mua
+ yyadfiddin Shirazi AQ
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-11-9-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260425
+DTEND;VALUE=DATE:20260426
+SUMMARY:Syedna Fir Khan Shujahuddin AQ [33rd Dai] (Ahmedabad)
+DESCRIPTION:9 Zilqadah 1447H\n\n• Syedna Fir Khan Shujahuddin AQ [33rd Da
+ i] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Fir Khan Shujahuddin AQ [33rd Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-11-11-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260427
+DTEND;VALUE=DATE:20260428
+SUMMARY:Syedna Ali bin Mohammed al-Sulayhi AQ (Yemen)
+DESCRIPTION:11 Zilqadah 1447H\n\n• Syedna Ali bin Mohammed al-Sulayhi AQ 
+ (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Mohammed al-Sulayhi AQ (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-11-12-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260428
+DTEND;VALUE=DATE:20260429
+SUMMARY:Syedna Abdul Tayyib Zakiyuddin bin Syedna Ismail Badruddin AQ [35th
+  Dai] (Jamnagar) · Syedna Abdeali Saifuddin AQ [43rd Dai] (Surat)
+DESCRIPTION:12 Zilqadah 1447H\n\n• Syedna Abdul Tayyib Zakiyuddin bin Sye
+ dna Ismail Badruddin AQ [35th Dai] (Jamnagar)\n• Syedna Abdeali Saifuddi
+ n AQ [43rd Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Tayyib Zakiyuddin bin Syedna Ismail Badruddin AQ [
+ 35th Dai] (Jamnagar) · Syedna Abdeali Saifuddin AQ [43rd Dai] (Surat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-11-13-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260429
+DTEND;VALUE=DATE:20260430
+SUMMARY:Syedna Ali bin Syedna Husain [9th Dai] (Sana’a)
+DESCRIPTION:13 Zilqadah 1447H\n\n• Syedna Ali bin Syedna Husain [9th Dai]
+  (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Syedna Husain [9th Dai] (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-11-15-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260501
+DTEND;VALUE=DATE:20260502
+SUMMARY:Syedna Tayyib Zainuddin bin Syedi Jewanji [45th Dai] (Surat)
+DESCRIPTION:15 Zilqadah 1447H\n\n• Syedna Tayyib Zainuddin bin Syedi Jewa
+ nji [45th Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Tayyib Zainuddin bin Syedi Jewanji [45th Dai] (Surat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1447-11-19-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20260505
 DTEND;VALUE=DATE:20260506
-SUMMARY:Mukasir al-Dawat Syedi Qaid Johar Bhaisaheb Ezzuddin DM
-DESCRIPTION:19 Zilqadah 1447H\n\n• Mukasir al-Dawat Syedi Qaid Johar Bhai
- saheb Ezzuddin DM — Milad
+SUMMARY:Syedna Idris Imaduddin AQ [19th Dai] (Shibaam) · Mukasir al-Dawat 
+ Syedi Qaid Johar Bhaisaheb Ezzuddin DM
+DESCRIPTION:19 Zilqadah 1447H\n\n• Syedna Idris Imaduddin AQ [19th Dai] (
+ Shibaam)\n• Mukasir al-Dawat Syedi Qaid Johar Bhaisaheb Ezzuddin DM — 
+ Milad
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Mukasir al-Dawat Syedi Qaid Johar Bhaisaheb Ezzuddin DM
+DESCRIPTION:Syedna Idris Imaduddin AQ [19th Dai] (Shibaam) · Mukasir al-Da
+ wat Syedi Qaid Johar Bhaisaheb Ezzuddin DM
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-11-21-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260507
+DTEND;VALUE=DATE:20260508
+SUMMARY:Syedna Ali Shamsuddin AQ [22nd Dai] (Masaar)
+DESCRIPTION:21 Zilqadah 1447H\n\n• Syedna Ali Shamsuddin AQ [22nd Dai] (M
+ asaar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin AQ [22nd Dai] (Masaar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-11-25-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260511
+DTEND;VALUE=DATE:20260512
+SUMMARY:Syedna Ali bin Syedna Hatim RA [4th Dai] (Sana’a)
+DESCRIPTION:25 Zilqadah 1447H\n\n• Syedna Ali bin Syedna Hatim RA [4th Da
+ i] (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Syedna Hatim RA [4th Dai] (Sana’a)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -519,6 +1258,23 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Syedna Taher Saifuddin AQ [51st Dai]
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-12-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260517
+DTEND;VALUE=DATE:20260518
+SUMMARY:Syedna Mohammed AQ bin Hatim bin Husain in Ali [12th Dai] (Hisne Af
+ edat)
+DESCRIPTION:1 Zilhaj 1447H\n\n• Syedna Mohammed AQ bin Hatim bin Husain i
+ n Ali [12th Dai] (Hisne Afedat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed AQ bin Hatim bin Husain in Ali [12th Dai] (Hisn
+ e Afedat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -602,6 +1358,21 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1447-12-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260601
+DTEND;VALUE=DATE:20260602
+SUMMARY:Syedna Yusuf Najmuddin RA [24th Dai] (Taibah)
+DESCRIPTION:16 Zilhaj 1447H\n\n• Syedna Yusuf Najmuddin RA [24th Dai] (Ta
+ ibah)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Yusuf Najmuddin RA [24th Dai] (Taibah)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1447-12-18-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20260603
@@ -612,6 +1383,26 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Rozu
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1447-12-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260612
+DTEND;VALUE=DATE:20260613
+SUMMARY:Syedna Abdul Husain Husamuddin bin Syedna Tayyib Zainuddin AQ [48th
+  Dai] (Ahmedabad) · Syedna Mohammed Burhanuddin bin Syedna AbdulQadir Naj
+ muddin AQ [49th Dai] (Surat)
+DESCRIPTION:27 Zilhaj 1447H\n\n• Syedna Abdul Husain Husamuddin bin Syedn
+ a Tayyib Zainuddin AQ [48th Dai] (Ahmedabad)\n• Syedna Mohammed Burhanud
+ din bin Syedna AbdulQadir Najmuddin AQ [49th Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Husain Husamuddin bin Syedna Tayyib Zainuddin AQ [
+ 48th Dai] (Ahmedabad) · Syedna Mohammed Burhanuddin bin Syedna AbdulQadir
+  Najmuddin AQ [49th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -690,12 +1481,13 @@ UID:1448-1-7-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20260621
 DTEND;VALUE=DATE:20260622
-SUMMARY:Vaaz 6
-DESCRIPTION:7 Moharram 1448H\n\n• Vaaz 6 — Ashara Mubaraka
+SUMMARY:Syedna Ismail Badruddin RA [38th Dai] (Jamnagar) · Vaaz 6
+DESCRIPTION:7 Moharram 1448H\n\n• Syedna Ismail Badruddin RA [38th Dai] (
+ Jamnagar)\n• Vaaz 6 — Ashara Mubaraka
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Vaaz 6
+DESCRIPTION:Syedna Ismail Badruddin RA [38th Dai] (Jamnagar) · Vaaz 6
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -732,12 +1524,103 @@ UID:1448-1-10-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20260624
 DTEND;VALUE=DATE:20260625
-SUMMARY:Ashura
-DESCRIPTION:10 Moharram 1448H\n\n• Ashura — Yawme Ashura
+SUMMARY:Syedna Zoeb Bin Musa AQ [1st Dai] (Haus) · Ashura
+DESCRIPTION:10 Moharram 1448H\n\n• Syedna Zoeb Bin Musa AQ [1st Dai] (Hau
+ s)\n• Ashura — Yawme Ashura
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Ashura
+DESCRIPTION:Syedna Zoeb Bin Musa AQ [1st Dai] (Haus) · Ashura
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-1-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260630
+DTEND;VALUE=DATE:20260701
+SUMMARY:Syedna Hatim bin Syedna Ibrahim RA [3rd Dai] (Hutaib)
+DESCRIPTION:16 Moharram 1448H\n\n• Syedna Hatim bin Syedna Ibrahim RA [3r
+ d Dai] (Hutaib)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hatim bin Syedna Ibrahim RA [3rd Dai] (Hutaib)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-1-17-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260701
+DTEND;VALUE=DATE:20260702
+SUMMARY:Syedna Ibrahim Vajihuddin RA [39th Dai] (Ujjain)
+DESCRIPTION:17 Moharram 1448H\n\n• Syedna Ibrahim Vajihuddin RA [39th Dai
+ ] (Ujjain)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ibrahim Vajihuddin RA [39th Dai] (Ujjain)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-2-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260715
+DTEND;VALUE=DATE:20260716
+SUMMARY:Syedna Ali bin Moulaya Hasan RA [10th Dai] (Sana’a)
+DESCRIPTION:1 Safar 1448H\n\n• Syedna Ali bin Moulaya Hasan RA [10th Dai]
+  (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Moulaya Hasan RA [10th Dai] (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-2-3-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260717
+DTEND;VALUE=DATE:20260718
+SUMMARY:Syedna Ali Shamsuddin Bin Syedna Abdullah AQ [18th Dai] (Shareqa)
+DESCRIPTION:3 Safar 1448H\n\n• Syedna Ali Shamsuddin Bin Syedna Abdullah 
+ AQ [18th Dai] (Shareqa)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin Bin Syedna Abdullah AQ [18th Dai] (Shareq
+ a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-2-4-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260718
+DTEND;VALUE=DATE:20260719
+SUMMARY:Syedna Abdul Tayyib Zakiyuddin AQ [41st Dai] (Burhanpur)
+DESCRIPTION:4 Safar 1448H\n\n• Syedna Abdul Tayyib Zakiyuddin AQ [41st Da
+ i] (Burhanpur)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Tayyib Zakiyuddin AQ [41st Dai] (Burhanpur)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-2-8-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260722
+DTEND;VALUE=DATE:20260723
+SUMMARY:Syedna al-Khattab bin Hasan al-Hamdani AQ
+DESCRIPTION:8 Safar 1448H\n\n• Syedna al-Khattab bin Hasan al-Hamdani AQ
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna al-Khattab bin Hasan al-Hamdani AQ
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -756,6 +1639,36 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1448-2-22-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260805
+DTEND;VALUE=DATE:20260806
+SUMMARY:Syedna Hussain bin Syedna Ali RA [8th Dai] (Sana’a)
+DESCRIPTION:22 Safar 1448H\n\n• Syedna Hussain bin Syedna Ali RA [8th Dai
+ ] (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hussain bin Syedna Ali RA [8th Dai] (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-2-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260810
+DTEND;VALUE=DATE:20260811
+SUMMARY:Syedna Mohammed Ezzuddin RA [23rd Dai] (Zabid)
+DESCRIPTION:27 Safar 1448H\n\n• Syedna Mohammed Ezzuddin RA [23rd Dai] (Z
+ abid)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed Ezzuddin RA [23rd Dai] (Zabid)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1448-2-28-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20260811
@@ -766,6 +1679,38 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Imam Hasan AS (Medina)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-3-2-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260814
+DTEND;VALUE=DATE:20260815
+SUMMARY:Syedna Abdul Tayyib Zakiyuddin bin Syedna Dawood bin Qutbub Shah AQ
+  [29th Dai] (Ahmedabad)
+DESCRIPTION:2 Rabi I 1448H\n\n• Syedna Abdul Tayyib Zakiyuddin bin Syedna
+  Dawood bin Qutbub Shah AQ [29th Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Tayyib Zakiyuddin bin Syedna Dawood bin Qutbub Sha
+ h AQ [29th Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-3-10-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260822
+DTEND;VALUE=DATE:20260823
+SUMMARY:Syedna Abdullah Badruddin RA [50th Dai] (Surat)
+DESCRIPTION:10 Rabi I 1448H\n\n• Syedna Abdullah Badruddin RA [50th Dai] 
+ (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdullah Badruddin RA [50th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -784,6 +1729,51 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1448-3-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260828
+DTEND;VALUE=DATE:20260829
+SUMMARY:Syedna Mohammed Burhanuddin RA [52nd Dai] (Mumbai)
+DESCRIPTION:16 Rabi I 1448H\n\n• Syedna Mohammed Burhanuddin RA [52nd Dai
+ ] (Mumbai)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed Burhanuddin RA [52nd Dai] (Mumbai)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-3-22-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260903
+DTEND;VALUE=DATE:20260904
+SUMMARY:Syedna Ali bin Hanzala RA [6th Dai] (Hamadan)
+DESCRIPTION:22 Rabi I 1448H\n\n• Syedna Ali bin Hanzala RA [6th Dai] (Ham
+ adan)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Hanzala RA [6th Dai] (Hamadan)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-3-25-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:Syedna Ali Shamsuddin bin Mawlai Hasan [30th Dai](Hisne Afedat)
+DESCRIPTION:25 Rabi I 1448H\n\n• Syedna Ali Shamsuddin bin Mawlai Hasan [
+ 30th Dai](Hisne Afedat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin bin Mawlai Hasan [30th Dai](Hisne Afedat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1448-4-4-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20260915
@@ -794,6 +1784,21 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Imam-uz-Zamaan SA
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-4-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Syedna Jalal Shamsuddin AQ bin Hasan [25th Dai]  (Ahmedabad)
+DESCRIPTION:16 Rabi II 1448H\n\n• Syedna Jalal Shamsuddin AQ bin Hasan [2
+ 5th Dai]  (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Jalal Shamsuddin AQ bin Hasan [25th Dai]  (Ahmedabad)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -813,6 +1818,52 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1448-4-22-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261003
+DTEND;VALUE=DATE:20261004
+SUMMARY:Syedna Moosa Kalimuddin RA [36th Dai] (Jamnagar)
+DESCRIPTION:22 Rabi II 1448H\n\n• Syedna Moosa Kalimuddin RA [36th Dai] (
+ Jamnagar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Moosa Kalimuddin RA [36th Dai] (Jamnagar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-4-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261008
+DTEND;VALUE=DATE:20261009
+SUMMARY:Syedna Dawood ibn Ajab Shah Burhanuddin RA [26th Dai] (Ahmedabad)
+DESCRIPTION:27 Rabi II 1448H\n\n• Syedna Dawood ibn Ajab Shah Burhanuddin
+  RA [26th Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Dawood ibn Ajab Shah Burhanuddin RA [26th Dai] (Ahmedaba
+ d)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-5-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:Syedna Ahmed bin Syedna Ali al-Mukarram Sulaihi AQ (Sana’a)
+DESCRIPTION:1 Jumada I 1448H\n\n• Syedna Ahmed bin Syedna Ali al-Mukarram
+  Sulaihi AQ (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ahmed bin Syedna Ali al-Mukarram Sulaihi AQ (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1448-5-10-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261020
@@ -828,6 +1879,66 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1448-5-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261026
+DTEND;VALUE=DATE:20261027
+SUMMARY:Syedna Mohammed bin Idris AQ (Yemen)
+DESCRIPTION:16 Jumada I 1448H\n\n• Syedna Mohammed bin Idris AQ (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed bin Idris AQ (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-6-15-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261124
+DTEND;VALUE=DATE:20261125
+SUMMARY:Syedna Dawood Burhanuddin AQ bin Qutub Shah [27th Dai] (Ahmedabad)
+DESCRIPTION:15 Jumada II 1448H\n\n• Syedna Dawood Burhanuddin AQ bin Qutu
+ b Shah [27th Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Dawood Burhanuddin AQ bin Qutub Shah [27th Dai] (Ahmedab
+ ad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-6-18-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261127
+DTEND;VALUE=DATE:20261128
+SUMMARY:Syedna Yusuf Najmuddin AQ [42nd Dai] (Surat)
+DESCRIPTION:18 Jumada II 1448H\n\n• Syedna Yusuf Najmuddin AQ [42nd Dai] 
+ (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Yusuf Najmuddin AQ [42nd Dai] (Surat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-6-23-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261202
+DTEND;VALUE=DATE:20261203
+SUMMARY:Syedna Ismail Badruddin AQ bin Mawlai Raj [34th Dai] (Jamnagar)
+DESCRIPTION:23 Jumada II 1448H\n\n• Syedna Ismail Badruddin AQ bin Mawlai
+  Raj [34th Dai] (Jamnagar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ismail Badruddin AQ bin Mawlai Raj [34th Dai] (Jamnagar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1448-6-26-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261205
@@ -839,6 +1950,57 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Mazoon al-Dawat Syedi Husain Bhaisaheb Husamuddin AQ
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-6-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Syedna Lamak bin Malik RA (Yemen) · Syedna Qutub Khan Qutubuddin S
+ hahid AQ [32nd Dai] (Ahmedabad)
+DESCRIPTION:27 Jumada II 1448H\n\n• Syedna Lamak bin Malik RA (Yemen)\n
+ • Syedna Qutub Khan Qutubuddin Shahid AQ [32nd Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Lamak bin Malik RA (Yemen) · Syedna Qutub Khan Qutubudd
+ in Shahid AQ [32nd Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-6-28-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261207
+DTEND;VALUE=DATE:20261208
+SUMMARY:Syedna Ahmed bin Mubarak AQ (Hamdaan) [7th Dai] (Hamdaan) · Syedna
+  Yahya bin Syedna Lamak AQ (Yemen)
+DESCRIPTION:28 Jumada II 1448H\n\n• Syedna Ahmed bin Mubarak AQ (Hamdaan)
+  [7th Dai] (Hamdaan)\n• Syedna Yahya bin Syedna Lamak AQ (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ahmed bin Mubarak AQ (Hamdaan) [7th Dai] (Hamdaan) · Sy
+ edna Yahya bin Syedna Lamak AQ (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-6-29-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261208
+DTEND;VALUE=DATE:20261209
+SUMMARY:Syedna Qadi Numan bin Mohammed AQ · Syedna Mohammed Badruddin AQ [
+ 46th Dai] (Surat)
+DESCRIPTION:29 Jumada II 1448H\n\n• Syedna Qadi Numan bin Mohammed AQ\n
+ • Syedna Mohammed Badruddin AQ [46th Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Qadi Numan bin Mohammed AQ · Syedna Mohammed Badruddin 
+ AQ [46th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -874,6 +2036,36 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Fasting
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-7-4-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Syedna Noor Mohammed Nooruddin AQ [37th Dai] (Kutch-Mandvi)
+DESCRIPTION:4 Rajab 1448H\n\n• Syedna Noor Mohammed Nooruddin AQ [37th Da
+ i] (Kutch-Mandvi) — Kutch Mandvi
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Noor Mohammed Nooruddin AQ [37th Dai] (Kutch-Mandvi)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-7-7-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261216
+SUMMARY:Syedna Shaikh Adam Safiyuddin AQ [28th Dai] (Ahmedabad)
+DESCRIPTION:7 Rajab 1448H\n\n• Syedna Shaikh Adam Safiyuddin AQ [28th Dai
+ ] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Shaikh Adam Safiyuddin AQ [28th Dai] (Ahmedabad)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -921,6 +2113,70 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1448-7-18-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261226
+DTEND;VALUE=DATE:20261227
+SUMMARY:Syedna Ali Shamsuddin AQ bin Syedna Ibrahim bin Husain AQ [13th Dai
+ ] (Zamarmar)
+DESCRIPTION:18 Rajab 1448H\n\n• Syedna Ali Shamsuddin AQ bin Syedna Ibrah
+ im bin Husain AQ [13th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin AQ bin Syedna Ibrahim bin Husain AQ [13th
+  Dai] (Zamarmar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-7-19-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261227
+DTEND;VALUE=DATE:20261228
+SUMMARY:Syedna Taher Saifuddin AQ [51st Dai] (Mumbai)
+DESCRIPTION:19 Rajab 1448H\n\n• Syedna Taher Saifuddin AQ [51st Dai] (Mum
+ bai)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Taher Saifuddin AQ [51st Dai] (Mumbai)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-7-24-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Syedna Abdul Mutalib Najmuddin AQ bin Syedna Mohammed bin Hatim AQ 
+ [14th Dai] (Zamarmar)
+DESCRIPTION:24 Rajab 1448H\n\n• Syedna Abdul Mutalib Najmuddin AQ bin Sye
+ dna Mohammed bin Hatim AQ [14th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Mutalib Najmuddin AQ bin Syedna Mohammed bin Hatim
+  AQ [14th Dai] (Zamarmar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-7-26-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270103
+DTEND;VALUE=DATE:20270104
+SUMMARY:Syedna Abdul Qadr Najmuddin AQ [47th Dai] (Ujjain)
+DESCRIPTION:26 Rajab 1448H\n\n• Syedna Abdul Qadr Najmuddin AQ [47th Dai]
+  (Ujjain)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Qadr Najmuddin AQ [47th Dai] (Ujjain)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1448-7-26-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270103
@@ -950,6 +2206,21 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1448-8-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270108
+DTEND;VALUE=DATE:20270109
+SUMMARY:Syedna Hebatullah Muayyad Fiddin AQ [40th Dai] (Ujjain)
+DESCRIPTION:1 Shabaan 1448H\n\n• Syedna Hebatullah Muayyad Fiddin AQ [40t
+ h Dai] (Ujjain)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hebatullah Muayyad Fiddin AQ [40th Dai] (Ujjain)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1448-8-14-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270121
@@ -962,6 +2233,66 @@ BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🌙 Night: Shabb-e-Baraat (Laylat al-Nisf)
 TRIGGER:PT17H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-8-15-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270122
+DTEND;VALUE=DATE:20270123
+SUMMARY:Syedna Hasan Badruddin AQ [20th Dai] (Masaar)
+DESCRIPTION:15 Shabaan 1448H\n\n• Syedna Hasan Badruddin AQ [20th Dai] (M
+ asaar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hasan Badruddin AQ [20th Dai] (Masaar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-8-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270123
+DTEND;VALUE=DATE:20270124
+SUMMARY:Syedna Ibrahim bin Husain AQ [2nd Dai] [2nd Dai]
+DESCRIPTION:16 Shabaan 1448H\n\n• Syedna Ibrahim bin Husain AQ [2nd Dai] 
+ [2nd Dai]
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ibrahim bin Husain AQ [2nd Dai] [2nd Dai]
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-8-29-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270205
+DTEND;VALUE=DATE:20270206
+SUMMARY:Syedna Ali bin Mawla Mohammed al-Walid AQ [5th Dai] (Haraaz)
+DESCRIPTION:29 Shabaan 1448H\n\n• Syedna Ali bin Mawla Mohammed al-Walid 
+ AQ [5th Dai] (Haraaz)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Mawla Mohammed al-Walid AQ [5th Dai] (Haraaz)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-9-9-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270214
+DTEND;VALUE=DATE:20270215
+SUMMARY:Syedna Abdullah Fakhruddin AQ bin Ali [16th Dai] (Zamarmar)
+DESCRIPTION:9 Ramadaan 1448H\n\n• Syedna Abdullah Fakhruddin AQ bin Ali [
+ 16th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdullah Fakhruddin AQ bin Ali [16th Dai] (Zamarmar)
+TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -999,13 +2330,15 @@ UID:1448-9-19-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270224
 DTEND;VALUE=DATE:20270225
-SUMMARY:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa)
+SUMMARY:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa) · Syedna Mohammed Ezz
+ uddin RA [44th Dai] (Surat)
 DESCRIPTION:19 Ramadaan 1448H\n\n• Amir al-Mumineen Ali ibn Abi Talib SA 
- (Kufa) — Shahadat
+ (Kufa) — Shahadat\n• Syedna Mohammed Ezzuddin RA [44th Dai] (Surat)
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa)
+DESCRIPTION:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa) · Syedna Mohammed
+  Ezzuddin RA [44th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -1100,17 +2433,214 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1448-10-6-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270313
+DTEND;VALUE=DATE:20270314
+SUMMARY:Syedna Hasan Badruddin bin Syedba Abdullah Fakhruddin AQ [17th Dai]
+  (Zamarmar)
+DESCRIPTION:6 Shawwal 1448H\n\n• Syedna Hasan Badruddin bin Syedba Abdull
+ ah Fakhruddin AQ [17th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hasan Badruddin bin Syedba Abdullah Fakhruddin AQ [17th 
+ Dai] (Zamarmar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-10-7-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270314
+DTEND;VALUE=DATE:20270315
+SUMMARY:Syedna Mohammed bin Taher AQ [Writer of Dua Al Aql Al Awwal\, Bawes
+ ani Dua] (Yemen)
+DESCRIPTION:7 Shawwal 1448H\n\n• Syedna Mohammed bin Taher AQ [Writer of 
+ Dua Al Aql Al Awwal\, Bawesani Dua] (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed bin Taher AQ [Writer of Dua Al Aql Al Awwal\, B
+ awesani Dua] (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-10-8-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270315
+DTEND;VALUE=DATE:20270316
+SUMMARY:Syedna Abbas bin Syedna Mohammed bin Hatim AQ [15th Dai] (Hisne Afe
+ dat)
+DESCRIPTION:8 Shawwal 1448H\n\n• Syedna Abbas bin Syedna Mohammed bin Hat
+ im AQ [15th Dai] (Hisne Afedat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abbas bin Syedna Mohammed bin Hatim AQ [15th Dai] (Hisne
+  Afedat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-10-9-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270316
+DTEND;VALUE=DATE:20270317
+SUMMARY:Syedna Qasim Khan Zainuddin AQ [31st Dai] (Ahmedabad)
+DESCRIPTION:9 Shawwal 1448H\n\n• Syedna Qasim Khan Zainuddin AQ [31st Dai
+ ] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Qasim Khan Zainuddin AQ [31st Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-10-10-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270317
+DTEND;VALUE=DATE:20270318
+SUMMARY:Syedna Husain Husamuddin AQ [21st Dai] (Masaar) · Syedna Ibrahim b
+ in Syedna Husain AQ [11th Dai] (Hisne Afedat) · Syedna Hebatullah Muayyad
+ fiddin Shirazi AQ
+DESCRIPTION:10 Shawwal 1448H\n\n• Syedna Husain Husamuddin AQ [21st Dai] 
+ (Masaar)\n• Syedna Ibrahim bin Syedna Husain AQ [11th Dai] (Hisne Afedat
+ )\n• Syedna Hebatullah Muayyadfiddin Shirazi AQ — Cairo
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Husain Husamuddin AQ [21st Dai] (Masaar) · Syedna Ibrah
+ im bin Syedna Husain AQ [11th Dai] (Hisne Afedat) · Syedna Hebatullah Mua
+ yyadfiddin Shirazi AQ
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-11-9-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270414
+DTEND;VALUE=DATE:20270415
+SUMMARY:Syedna Fir Khan Shujahuddin AQ [33rd Dai] (Ahmedabad)
+DESCRIPTION:9 Zilqadah 1448H\n\n• Syedna Fir Khan Shujahuddin AQ [33rd Da
+ i] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Fir Khan Shujahuddin AQ [33rd Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-11-11-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270416
+DTEND;VALUE=DATE:20270417
+SUMMARY:Syedna Ali bin Mohammed al-Sulayhi AQ (Yemen)
+DESCRIPTION:11 Zilqadah 1448H\n\n• Syedna Ali bin Mohammed al-Sulayhi AQ 
+ (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Mohammed al-Sulayhi AQ (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-11-12-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270417
+DTEND;VALUE=DATE:20270418
+SUMMARY:Syedna Abdul Tayyib Zakiyuddin bin Syedna Ismail Badruddin AQ [35th
+  Dai] (Jamnagar) · Syedna Abdeali Saifuddin AQ [43rd Dai] (Surat)
+DESCRIPTION:12 Zilqadah 1448H\n\n• Syedna Abdul Tayyib Zakiyuddin bin Sye
+ dna Ismail Badruddin AQ [35th Dai] (Jamnagar)\n• Syedna Abdeali Saifuddi
+ n AQ [43rd Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Tayyib Zakiyuddin bin Syedna Ismail Badruddin AQ [
+ 35th Dai] (Jamnagar) · Syedna Abdeali Saifuddin AQ [43rd Dai] (Surat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-11-13-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270418
+DTEND;VALUE=DATE:20270419
+SUMMARY:Syedna Ali bin Syedna Husain [9th Dai] (Sana’a)
+DESCRIPTION:13 Zilqadah 1448H\n\n• Syedna Ali bin Syedna Husain [9th Dai]
+  (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Syedna Husain [9th Dai] (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-11-15-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270420
+DTEND;VALUE=DATE:20270421
+SUMMARY:Syedna Tayyib Zainuddin bin Syedi Jewanji [45th Dai] (Surat)
+DESCRIPTION:15 Zilqadah 1448H\n\n• Syedna Tayyib Zainuddin bin Syedi Jewa
+ nji [45th Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Tayyib Zainuddin bin Syedi Jewanji [45th Dai] (Surat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1448-11-19-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270424
 DTEND;VALUE=DATE:20270425
-SUMMARY:Mukasir al-Dawat Syedi Qaid Johar Bhaisaheb Ezzuddin DM
-DESCRIPTION:19 Zilqadah 1448H\n\n• Mukasir al-Dawat Syedi Qaid Johar Bhai
- saheb Ezzuddin DM — Milad
+SUMMARY:Syedna Idris Imaduddin AQ [19th Dai] (Shibaam) · Mukasir al-Dawat 
+ Syedi Qaid Johar Bhaisaheb Ezzuddin DM
+DESCRIPTION:19 Zilqadah 1448H\n\n• Syedna Idris Imaduddin AQ [19th Dai] (
+ Shibaam)\n• Mukasir al-Dawat Syedi Qaid Johar Bhaisaheb Ezzuddin DM — 
+ Milad
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Mukasir al-Dawat Syedi Qaid Johar Bhaisaheb Ezzuddin DM
+DESCRIPTION:Syedna Idris Imaduddin AQ [19th Dai] (Shibaam) · Mukasir al-Da
+ wat Syedi Qaid Johar Bhaisaheb Ezzuddin DM
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-11-21-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270426
+DTEND;VALUE=DATE:20270427
+SUMMARY:Syedna Ali Shamsuddin AQ [22nd Dai] (Masaar)
+DESCRIPTION:21 Zilqadah 1448H\n\n• Syedna Ali Shamsuddin AQ [22nd Dai] (M
+ asaar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin AQ [22nd Dai] (Masaar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-11-25-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270430
+DTEND;VALUE=DATE:20270501
+SUMMARY:Syedna Ali bin Syedna Hatim RA [4th Dai] (Sana’a)
+DESCRIPTION:25 Zilqadah 1448H\n\n• Syedna Ali bin Syedna Hatim RA [4th Da
+ i] (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Syedna Hatim RA [4th Dai] (Sana’a)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -1126,6 +2656,23 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Syedna Taher Saifuddin AQ [51st Dai]
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-12-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270506
+DTEND;VALUE=DATE:20270507
+SUMMARY:Syedna Mohammed AQ bin Hatim bin Husain in Ali [12th Dai] (Hisne Af
+ edat)
+DESCRIPTION:1 Zilhaj 1448H\n\n• Syedna Mohammed AQ bin Hatim bin Husain i
+ n Ali [12th Dai] (Hisne Afedat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed AQ bin Hatim bin Husain in Ali [12th Dai] (Hisn
+ e Afedat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -1209,6 +2756,21 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1448-12-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270521
+DTEND;VALUE=DATE:20270522
+SUMMARY:Syedna Yusuf Najmuddin RA [24th Dai] (Taibah)
+DESCRIPTION:16 Zilhaj 1448H\n\n• Syedna Yusuf Najmuddin RA [24th Dai] (Ta
+ ibah)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Yusuf Najmuddin RA [24th Dai] (Taibah)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1448-12-18-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270523
@@ -1219,6 +2781,26 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Rozu
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-12-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270601
+DTEND;VALUE=DATE:20270602
+SUMMARY:Syedna Abdul Husain Husamuddin bin Syedna Tayyib Zainuddin AQ [48th
+  Dai] (Ahmedabad) · Syedna Mohammed Burhanuddin bin Syedna AbdulQadir Naj
+ muddin AQ [49th Dai] (Surat)
+DESCRIPTION:27 Zilhaj 1448H\n\n• Syedna Abdul Husain Husamuddin bin Syedn
+ a Tayyib Zainuddin AQ [48th Dai] (Ahmedabad)\n• Syedna Mohammed Burhanud
+ din bin Syedna AbdulQadir Najmuddin AQ [49th Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Husain Husamuddin bin Syedna Tayyib Zainuddin AQ [
+ 48th Dai] (Ahmedabad) · Syedna Mohammed Burhanuddin bin Syedna AbdulQadir
+  Najmuddin AQ [49th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -1297,12 +2879,13 @@ UID:1449-1-7-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270611
 DTEND;VALUE=DATE:20270612
-SUMMARY:Vaaz 6
-DESCRIPTION:7 Moharram 1449H\n\n• Vaaz 6 — Ashara Mubaraka
+SUMMARY:Syedna Ismail Badruddin RA [38th Dai] (Jamnagar) · Vaaz 6
+DESCRIPTION:7 Moharram 1449H\n\n• Syedna Ismail Badruddin RA [38th Dai] (
+ Jamnagar)\n• Vaaz 6 — Ashara Mubaraka
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Vaaz 6
+DESCRIPTION:Syedna Ismail Badruddin RA [38th Dai] (Jamnagar) · Vaaz 6
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -1339,12 +2922,103 @@ UID:1449-1-10-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270614
 DTEND;VALUE=DATE:20270615
-SUMMARY:Ashura
-DESCRIPTION:10 Moharram 1449H\n\n• Ashura — Yawme Ashura
+SUMMARY:Syedna Zoeb Bin Musa AQ [1st Dai] (Haus) · Ashura
+DESCRIPTION:10 Moharram 1449H\n\n• Syedna Zoeb Bin Musa AQ [1st Dai] (Hau
+ s)\n• Ashura — Yawme Ashura
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Ashura
+DESCRIPTION:Syedna Zoeb Bin Musa AQ [1st Dai] (Haus) · Ashura
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-1-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270620
+DTEND;VALUE=DATE:20270621
+SUMMARY:Syedna Hatim bin Syedna Ibrahim RA [3rd Dai] (Hutaib)
+DESCRIPTION:16 Moharram 1449H\n\n• Syedna Hatim bin Syedna Ibrahim RA [3r
+ d Dai] (Hutaib)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hatim bin Syedna Ibrahim RA [3rd Dai] (Hutaib)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-1-17-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270621
+DTEND;VALUE=DATE:20270622
+SUMMARY:Syedna Ibrahim Vajihuddin RA [39th Dai] (Ujjain)
+DESCRIPTION:17 Moharram 1449H\n\n• Syedna Ibrahim Vajihuddin RA [39th Dai
+ ] (Ujjain)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ibrahim Vajihuddin RA [39th Dai] (Ujjain)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-2-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270705
+DTEND;VALUE=DATE:20270706
+SUMMARY:Syedna Ali bin Moulaya Hasan RA [10th Dai] (Sana’a)
+DESCRIPTION:1 Safar 1449H\n\n• Syedna Ali bin Moulaya Hasan RA [10th Dai]
+  (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Moulaya Hasan RA [10th Dai] (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-2-3-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270707
+DTEND;VALUE=DATE:20270708
+SUMMARY:Syedna Ali Shamsuddin Bin Syedna Abdullah AQ [18th Dai] (Shareqa)
+DESCRIPTION:3 Safar 1449H\n\n• Syedna Ali Shamsuddin Bin Syedna Abdullah 
+ AQ [18th Dai] (Shareqa)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin Bin Syedna Abdullah AQ [18th Dai] (Shareq
+ a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-2-4-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270708
+DTEND;VALUE=DATE:20270709
+SUMMARY:Syedna Abdul Tayyib Zakiyuddin AQ [41st Dai] (Burhanpur)
+DESCRIPTION:4 Safar 1449H\n\n• Syedna Abdul Tayyib Zakiyuddin AQ [41st Da
+ i] (Burhanpur)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Tayyib Zakiyuddin AQ [41st Dai] (Burhanpur)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-2-8-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270712
+DTEND;VALUE=DATE:20270713
+SUMMARY:Syedna al-Khattab bin Hasan al-Hamdani AQ
+DESCRIPTION:8 Safar 1449H\n\n• Syedna al-Khattab bin Hasan al-Hamdani AQ
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna al-Khattab bin Hasan al-Hamdani AQ
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -1363,6 +3037,36 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1449-2-22-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270726
+DTEND;VALUE=DATE:20270727
+SUMMARY:Syedna Hussain bin Syedna Ali RA [8th Dai] (Sana’a)
+DESCRIPTION:22 Safar 1449H\n\n• Syedna Hussain bin Syedna Ali RA [8th Dai
+ ] (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hussain bin Syedna Ali RA [8th Dai] (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-2-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270731
+DTEND;VALUE=DATE:20270801
+SUMMARY:Syedna Mohammed Ezzuddin RA [23rd Dai] (Zabid)
+DESCRIPTION:27 Safar 1449H\n\n• Syedna Mohammed Ezzuddin RA [23rd Dai] (Z
+ abid)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed Ezzuddin RA [23rd Dai] (Zabid)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1449-2-28-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270801
@@ -1373,6 +3077,38 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Imam Hasan AS (Medina)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-3-2-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270804
+DTEND;VALUE=DATE:20270805
+SUMMARY:Syedna Abdul Tayyib Zakiyuddin bin Syedna Dawood bin Qutbub Shah AQ
+  [29th Dai] (Ahmedabad)
+DESCRIPTION:2 Rabi I 1449H\n\n• Syedna Abdul Tayyib Zakiyuddin bin Syedna
+  Dawood bin Qutbub Shah AQ [29th Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Tayyib Zakiyuddin bin Syedna Dawood bin Qutbub Sha
+ h AQ [29th Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-3-10-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270812
+DTEND;VALUE=DATE:20270813
+SUMMARY:Syedna Abdullah Badruddin RA [50th Dai] (Surat)
+DESCRIPTION:10 Rabi I 1449H\n\n• Syedna Abdullah Badruddin RA [50th Dai] 
+ (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdullah Badruddin RA [50th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -1391,6 +3127,51 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1449-3-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270818
+DTEND;VALUE=DATE:20270819
+SUMMARY:Syedna Mohammed Burhanuddin RA [52nd Dai] (Mumbai)
+DESCRIPTION:16 Rabi I 1449H\n\n• Syedna Mohammed Burhanuddin RA [52nd Dai
+ ] (Mumbai)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed Burhanuddin RA [52nd Dai] (Mumbai)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-3-22-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270824
+DTEND;VALUE=DATE:20270825
+SUMMARY:Syedna Ali bin Hanzala RA [6th Dai] (Hamadan)
+DESCRIPTION:22 Rabi I 1449H\n\n• Syedna Ali bin Hanzala RA [6th Dai] (Ham
+ adan)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Hanzala RA [6th Dai] (Hamadan)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-3-25-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270827
+DTEND;VALUE=DATE:20270828
+SUMMARY:Syedna Ali Shamsuddin bin Mawlai Hasan [30th Dai](Hisne Afedat)
+DESCRIPTION:25 Rabi I 1449H\n\n• Syedna Ali Shamsuddin bin Mawlai Hasan [
+ 30th Dai](Hisne Afedat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin bin Mawlai Hasan [30th Dai](Hisne Afedat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1449-4-4-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270905
@@ -1401,6 +3182,21 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Imam-uz-Zamaan SA
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-4-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270917
+DTEND;VALUE=DATE:20270918
+SUMMARY:Syedna Jalal Shamsuddin AQ bin Hasan [25th Dai]  (Ahmedabad)
+DESCRIPTION:16 Rabi II 1449H\n\n• Syedna Jalal Shamsuddin AQ bin Hasan [2
+ 5th Dai]  (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Jalal Shamsuddin AQ bin Hasan [25th Dai]  (Ahmedabad)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -1420,6 +3216,52 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1449-4-22-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270923
+DTEND;VALUE=DATE:20270924
+SUMMARY:Syedna Moosa Kalimuddin RA [36th Dai] (Jamnagar)
+DESCRIPTION:22 Rabi II 1449H\n\n• Syedna Moosa Kalimuddin RA [36th Dai] (
+ Jamnagar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Moosa Kalimuddin RA [36th Dai] (Jamnagar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-4-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270928
+DTEND;VALUE=DATE:20270929
+SUMMARY:Syedna Dawood ibn Ajab Shah Burhanuddin RA [26th Dai] (Ahmedabad)
+DESCRIPTION:27 Rabi II 1449H\n\n• Syedna Dawood ibn Ajab Shah Burhanuddin
+  RA [26th Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Dawood ibn Ajab Shah Burhanuddin RA [26th Dai] (Ahmedaba
+ d)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-5-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271001
+DTEND;VALUE=DATE:20271002
+SUMMARY:Syedna Ahmed bin Syedna Ali al-Mukarram Sulaihi AQ (Sana’a)
+DESCRIPTION:1 Jumada I 1449H\n\n• Syedna Ahmed bin Syedna Ali al-Mukarram
+  Sulaihi AQ (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ahmed bin Syedna Ali al-Mukarram Sulaihi AQ (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1449-5-10-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20271010
@@ -1435,6 +3277,66 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1449-5-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271016
+DTEND;VALUE=DATE:20271017
+SUMMARY:Syedna Mohammed bin Idris AQ (Yemen)
+DESCRIPTION:16 Jumada I 1449H\n\n• Syedna Mohammed bin Idris AQ (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed bin Idris AQ (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-6-15-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271114
+DTEND;VALUE=DATE:20271115
+SUMMARY:Syedna Dawood Burhanuddin AQ bin Qutub Shah [27th Dai] (Ahmedabad)
+DESCRIPTION:15 Jumada II 1449H\n\n• Syedna Dawood Burhanuddin AQ bin Qutu
+ b Shah [27th Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Dawood Burhanuddin AQ bin Qutub Shah [27th Dai] (Ahmedab
+ ad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-6-18-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271117
+DTEND;VALUE=DATE:20271118
+SUMMARY:Syedna Yusuf Najmuddin AQ [42nd Dai] (Surat)
+DESCRIPTION:18 Jumada II 1449H\n\n• Syedna Yusuf Najmuddin AQ [42nd Dai] 
+ (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Yusuf Najmuddin AQ [42nd Dai] (Surat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-6-23-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271122
+DTEND;VALUE=DATE:20271123
+SUMMARY:Syedna Ismail Badruddin AQ bin Mawlai Raj [34th Dai] (Jamnagar)
+DESCRIPTION:23 Jumada II 1449H\n\n• Syedna Ismail Badruddin AQ bin Mawlai
+  Raj [34th Dai] (Jamnagar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ismail Badruddin AQ bin Mawlai Raj [34th Dai] (Jamnagar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1449-6-26-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20271125
@@ -1446,6 +3348,57 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Mazoon al-Dawat Syedi Husain Bhaisaheb Husamuddin AQ
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-6-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271126
+DTEND;VALUE=DATE:20271127
+SUMMARY:Syedna Lamak bin Malik RA (Yemen) · Syedna Qutub Khan Qutubuddin S
+ hahid AQ [32nd Dai] (Ahmedabad)
+DESCRIPTION:27 Jumada II 1449H\n\n• Syedna Lamak bin Malik RA (Yemen)\n
+ • Syedna Qutub Khan Qutubuddin Shahid AQ [32nd Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Lamak bin Malik RA (Yemen) · Syedna Qutub Khan Qutubudd
+ in Shahid AQ [32nd Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-6-28-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271127
+DTEND;VALUE=DATE:20271128
+SUMMARY:Syedna Ahmed bin Mubarak AQ (Hamdaan) [7th Dai] (Hamdaan) · Syedna
+  Yahya bin Syedna Lamak AQ (Yemen)
+DESCRIPTION:28 Jumada II 1449H\n\n• Syedna Ahmed bin Mubarak AQ (Hamdaan)
+  [7th Dai] (Hamdaan)\n• Syedna Yahya bin Syedna Lamak AQ (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ahmed bin Mubarak AQ (Hamdaan) [7th Dai] (Hamdaan) · Sy
+ edna Yahya bin Syedna Lamak AQ (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-6-29-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271128
+DTEND;VALUE=DATE:20271129
+SUMMARY:Syedna Qadi Numan bin Mohammed AQ · Syedna Mohammed Badruddin AQ [
+ 46th Dai] (Surat)
+DESCRIPTION:29 Jumada II 1449H\n\n• Syedna Qadi Numan bin Mohammed AQ\n
+ • Syedna Mohammed Badruddin AQ [46th Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Qadi Numan bin Mohammed AQ · Syedna Mohammed Badruddin 
+ AQ [46th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -1481,6 +3434,36 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Fasting
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-7-4-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271202
+DTEND;VALUE=DATE:20271203
+SUMMARY:Syedna Noor Mohammed Nooruddin AQ [37th Dai] (Kutch-Mandvi)
+DESCRIPTION:4 Rajab 1449H\n\n• Syedna Noor Mohammed Nooruddin AQ [37th Da
+ i] (Kutch-Mandvi) — Kutch Mandvi
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Noor Mohammed Nooruddin AQ [37th Dai] (Kutch-Mandvi)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-7-7-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271205
+DTEND;VALUE=DATE:20271206
+SUMMARY:Syedna Shaikh Adam Safiyuddin AQ [28th Dai] (Ahmedabad)
+DESCRIPTION:7 Rajab 1449H\n\n• Syedna Shaikh Adam Safiyuddin AQ [28th Dai
+ ] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Shaikh Adam Safiyuddin AQ [28th Dai] (Ahmedabad)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -1528,6 +3511,70 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1449-7-18-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271216
+DTEND;VALUE=DATE:20271217
+SUMMARY:Syedna Ali Shamsuddin AQ bin Syedna Ibrahim bin Husain AQ [13th Dai
+ ] (Zamarmar)
+DESCRIPTION:18 Rajab 1449H\n\n• Syedna Ali Shamsuddin AQ bin Syedna Ibrah
+ im bin Husain AQ [13th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin AQ bin Syedna Ibrahim bin Husain AQ [13th
+  Dai] (Zamarmar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-7-19-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271217
+DTEND;VALUE=DATE:20271218
+SUMMARY:Syedna Taher Saifuddin AQ [51st Dai] (Mumbai)
+DESCRIPTION:19 Rajab 1449H\n\n• Syedna Taher Saifuddin AQ [51st Dai] (Mum
+ bai)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Taher Saifuddin AQ [51st Dai] (Mumbai)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-7-24-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271222
+DTEND;VALUE=DATE:20271223
+SUMMARY:Syedna Abdul Mutalib Najmuddin AQ bin Syedna Mohammed bin Hatim AQ 
+ [14th Dai] (Zamarmar)
+DESCRIPTION:24 Rajab 1449H\n\n• Syedna Abdul Mutalib Najmuddin AQ bin Sye
+ dna Mohammed bin Hatim AQ [14th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Mutalib Najmuddin AQ bin Syedna Mohammed bin Hatim
+  AQ [14th Dai] (Zamarmar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-7-26-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271224
+DTEND;VALUE=DATE:20271225
+SUMMARY:Syedna Abdul Qadr Najmuddin AQ [47th Dai] (Ujjain)
+DESCRIPTION:26 Rajab 1449H\n\n• Syedna Abdul Qadr Najmuddin AQ [47th Dai]
+  (Ujjain)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Qadr Najmuddin AQ [47th Dai] (Ujjain)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1449-7-26-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20271224
@@ -1557,6 +3604,21 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1449-8-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271229
+DTEND;VALUE=DATE:20271230
+SUMMARY:Syedna Hebatullah Muayyad Fiddin AQ [40th Dai] (Ujjain)
+DESCRIPTION:1 Shabaan 1449H\n\n• Syedna Hebatullah Muayyad Fiddin AQ [40t
+ h Dai] (Ujjain)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hebatullah Muayyad Fiddin AQ [40th Dai] (Ujjain)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1449-8-14-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20280111
@@ -1569,6 +3631,66 @@ BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🌙 Night: Shabb-e-Baraat (Laylat al-Nisf)
 TRIGGER:PT17H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-8-15-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280112
+DTEND;VALUE=DATE:20280113
+SUMMARY:Syedna Hasan Badruddin AQ [20th Dai] (Masaar)
+DESCRIPTION:15 Shabaan 1449H\n\n• Syedna Hasan Badruddin AQ [20th Dai] (M
+ asaar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hasan Badruddin AQ [20th Dai] (Masaar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-8-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280113
+DTEND;VALUE=DATE:20280114
+SUMMARY:Syedna Ibrahim bin Husain AQ [2nd Dai] [2nd Dai]
+DESCRIPTION:16 Shabaan 1449H\n\n• Syedna Ibrahim bin Husain AQ [2nd Dai] 
+ [2nd Dai]
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ibrahim bin Husain AQ [2nd Dai] [2nd Dai]
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-8-29-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280126
+DTEND;VALUE=DATE:20280127
+SUMMARY:Syedna Ali bin Mawla Mohammed al-Walid AQ [5th Dai] (Haraaz)
+DESCRIPTION:29 Shabaan 1449H\n\n• Syedna Ali bin Mawla Mohammed al-Walid 
+ AQ [5th Dai] (Haraaz)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Mawla Mohammed al-Walid AQ [5th Dai] (Haraaz)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-9-9-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280204
+DTEND;VALUE=DATE:20280205
+SUMMARY:Syedna Abdullah Fakhruddin AQ bin Ali [16th Dai] (Zamarmar)
+DESCRIPTION:9 Ramadaan 1449H\n\n• Syedna Abdullah Fakhruddin AQ bin Ali [
+ 16th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdullah Fakhruddin AQ bin Ali [16th Dai] (Zamarmar)
+TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1606,13 +3728,15 @@ UID:1449-9-19-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20280214
 DTEND;VALUE=DATE:20280215
-SUMMARY:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa)
+SUMMARY:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa) · Syedna Mohammed Ezz
+ uddin RA [44th Dai] (Surat)
 DESCRIPTION:19 Ramadaan 1449H\n\n• Amir al-Mumineen Ali ibn Abi Talib SA 
- (Kufa) — Shahadat
+ (Kufa) — Shahadat\n• Syedna Mohammed Ezzuddin RA [44th Dai] (Surat)
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa)
+DESCRIPTION:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa) · Syedna Mohammed
+  Ezzuddin RA [44th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -1707,17 +3831,214 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1449-10-6-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280302
+DTEND;VALUE=DATE:20280303
+SUMMARY:Syedna Hasan Badruddin bin Syedba Abdullah Fakhruddin AQ [17th Dai]
+  (Zamarmar)
+DESCRIPTION:6 Shawwal 1449H\n\n• Syedna Hasan Badruddin bin Syedba Abdull
+ ah Fakhruddin AQ [17th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hasan Badruddin bin Syedba Abdullah Fakhruddin AQ [17th 
+ Dai] (Zamarmar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-10-7-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280303
+DTEND;VALUE=DATE:20280304
+SUMMARY:Syedna Mohammed bin Taher AQ [Writer of Dua Al Aql Al Awwal\, Bawes
+ ani Dua] (Yemen)
+DESCRIPTION:7 Shawwal 1449H\n\n• Syedna Mohammed bin Taher AQ [Writer of 
+ Dua Al Aql Al Awwal\, Bawesani Dua] (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed bin Taher AQ [Writer of Dua Al Aql Al Awwal\, B
+ awesani Dua] (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-10-8-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280304
+DTEND;VALUE=DATE:20280305
+SUMMARY:Syedna Abbas bin Syedna Mohammed bin Hatim AQ [15th Dai] (Hisne Afe
+ dat)
+DESCRIPTION:8 Shawwal 1449H\n\n• Syedna Abbas bin Syedna Mohammed bin Hat
+ im AQ [15th Dai] (Hisne Afedat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abbas bin Syedna Mohammed bin Hatim AQ [15th Dai] (Hisne
+  Afedat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-10-9-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280305
+DTEND;VALUE=DATE:20280306
+SUMMARY:Syedna Qasim Khan Zainuddin AQ [31st Dai] (Ahmedabad)
+DESCRIPTION:9 Shawwal 1449H\n\n• Syedna Qasim Khan Zainuddin AQ [31st Dai
+ ] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Qasim Khan Zainuddin AQ [31st Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-10-10-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280306
+DTEND;VALUE=DATE:20280307
+SUMMARY:Syedna Husain Husamuddin AQ [21st Dai] (Masaar) · Syedna Ibrahim b
+ in Syedna Husain AQ [11th Dai] (Hisne Afedat) · Syedna Hebatullah Muayyad
+ fiddin Shirazi AQ
+DESCRIPTION:10 Shawwal 1449H\n\n• Syedna Husain Husamuddin AQ [21st Dai] 
+ (Masaar)\n• Syedna Ibrahim bin Syedna Husain AQ [11th Dai] (Hisne Afedat
+ )\n• Syedna Hebatullah Muayyadfiddin Shirazi AQ — Cairo
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Husain Husamuddin AQ [21st Dai] (Masaar) · Syedna Ibrah
+ im bin Syedna Husain AQ [11th Dai] (Hisne Afedat) · Syedna Hebatullah Mua
+ yyadfiddin Shirazi AQ
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-11-9-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280403
+DTEND;VALUE=DATE:20280404
+SUMMARY:Syedna Fir Khan Shujahuddin AQ [33rd Dai] (Ahmedabad)
+DESCRIPTION:9 Zilqadah 1449H\n\n• Syedna Fir Khan Shujahuddin AQ [33rd Da
+ i] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Fir Khan Shujahuddin AQ [33rd Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-11-11-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280405
+DTEND;VALUE=DATE:20280406
+SUMMARY:Syedna Ali bin Mohammed al-Sulayhi AQ (Yemen)
+DESCRIPTION:11 Zilqadah 1449H\n\n• Syedna Ali bin Mohammed al-Sulayhi AQ 
+ (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Mohammed al-Sulayhi AQ (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-11-12-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280406
+DTEND;VALUE=DATE:20280407
+SUMMARY:Syedna Abdul Tayyib Zakiyuddin bin Syedna Ismail Badruddin AQ [35th
+  Dai] (Jamnagar) · Syedna Abdeali Saifuddin AQ [43rd Dai] (Surat)
+DESCRIPTION:12 Zilqadah 1449H\n\n• Syedna Abdul Tayyib Zakiyuddin bin Sye
+ dna Ismail Badruddin AQ [35th Dai] (Jamnagar)\n• Syedna Abdeali Saifuddi
+ n AQ [43rd Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Tayyib Zakiyuddin bin Syedna Ismail Badruddin AQ [
+ 35th Dai] (Jamnagar) · Syedna Abdeali Saifuddin AQ [43rd Dai] (Surat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-11-13-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280407
+DTEND;VALUE=DATE:20280408
+SUMMARY:Syedna Ali bin Syedna Husain [9th Dai] (Sana’a)
+DESCRIPTION:13 Zilqadah 1449H\n\n• Syedna Ali bin Syedna Husain [9th Dai]
+  (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Syedna Husain [9th Dai] (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-11-15-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280409
+DTEND;VALUE=DATE:20280410
+SUMMARY:Syedna Tayyib Zainuddin bin Syedi Jewanji [45th Dai] (Surat)
+DESCRIPTION:15 Zilqadah 1449H\n\n• Syedna Tayyib Zainuddin bin Syedi Jewa
+ nji [45th Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Tayyib Zainuddin bin Syedi Jewanji [45th Dai] (Surat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1449-11-19-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20280413
 DTEND;VALUE=DATE:20280414
-SUMMARY:Mukasir al-Dawat Syedi Qaid Johar Bhaisaheb Ezzuddin DM
-DESCRIPTION:19 Zilqadah 1449H\n\n• Mukasir al-Dawat Syedi Qaid Johar Bhai
- saheb Ezzuddin DM — Milad
+SUMMARY:Syedna Idris Imaduddin AQ [19th Dai] (Shibaam) · Mukasir al-Dawat 
+ Syedi Qaid Johar Bhaisaheb Ezzuddin DM
+DESCRIPTION:19 Zilqadah 1449H\n\n• Syedna Idris Imaduddin AQ [19th Dai] (
+ Shibaam)\n• Mukasir al-Dawat Syedi Qaid Johar Bhaisaheb Ezzuddin DM — 
+ Milad
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Mukasir al-Dawat Syedi Qaid Johar Bhaisaheb Ezzuddin DM
+DESCRIPTION:Syedna Idris Imaduddin AQ [19th Dai] (Shibaam) · Mukasir al-Da
+ wat Syedi Qaid Johar Bhaisaheb Ezzuddin DM
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-11-21-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280415
+DTEND;VALUE=DATE:20280416
+SUMMARY:Syedna Ali Shamsuddin AQ [22nd Dai] (Masaar)
+DESCRIPTION:21 Zilqadah 1449H\n\n• Syedna Ali Shamsuddin AQ [22nd Dai] (M
+ asaar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin AQ [22nd Dai] (Masaar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-11-25-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280419
+DTEND;VALUE=DATE:20280420
+SUMMARY:Syedna Ali bin Syedna Hatim RA [4th Dai] (Sana’a)
+DESCRIPTION:25 Zilqadah 1449H\n\n• Syedna Ali bin Syedna Hatim RA [4th Da
+ i] (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Syedna Hatim RA [4th Dai] (Sana’a)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -1733,6 +4054,23 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Syedna Taher Saifuddin AQ [51st Dai]
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-12-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280425
+DTEND;VALUE=DATE:20280426
+SUMMARY:Syedna Mohammed AQ bin Hatim bin Husain in Ali [12th Dai] (Hisne Af
+ edat)
+DESCRIPTION:1 Zilhaj 1449H\n\n• Syedna Mohammed AQ bin Hatim bin Husain i
+ n Ali [12th Dai] (Hisne Afedat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed AQ bin Hatim bin Husain in Ali [12th Dai] (Hisn
+ e Afedat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -1816,6 +4154,21 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1449-12-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280510
+DTEND;VALUE=DATE:20280511
+SUMMARY:Syedna Yusuf Najmuddin RA [24th Dai] (Taibah)
+DESCRIPTION:16 Zilhaj 1449H\n\n• Syedna Yusuf Najmuddin RA [24th Dai] (Ta
+ ibah)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Yusuf Najmuddin RA [24th Dai] (Taibah)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1449-12-18-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20280512
@@ -1826,6 +4179,26 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Rozu
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-12-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280521
+DTEND;VALUE=DATE:20280522
+SUMMARY:Syedna Abdul Husain Husamuddin bin Syedna Tayyib Zainuddin AQ [48th
+  Dai] (Ahmedabad) · Syedna Mohammed Burhanuddin bin Syedna AbdulQadir Naj
+ muddin AQ [49th Dai] (Surat)
+DESCRIPTION:27 Zilhaj 1449H\n\n• Syedna Abdul Husain Husamuddin bin Syedn
+ a Tayyib Zainuddin AQ [48th Dai] (Ahmedabad)\n• Syedna Mohammed Burhanud
+ din bin Syedna AbdulQadir Najmuddin AQ [49th Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Husain Husamuddin bin Syedna Tayyib Zainuddin AQ [
+ 48th Dai] (Ahmedabad) · Syedna Mohammed Burhanuddin bin Syedna AbdulQadir
+  Najmuddin AQ [49th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -1904,12 +4277,13 @@ UID:1450-1-7-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20280530
 DTEND;VALUE=DATE:20280531
-SUMMARY:Vaaz 6
-DESCRIPTION:7 Moharram 1450H\n\n• Vaaz 6 — Ashara Mubaraka
+SUMMARY:Syedna Ismail Badruddin RA [38th Dai] (Jamnagar) · Vaaz 6
+DESCRIPTION:7 Moharram 1450H\n\n• Syedna Ismail Badruddin RA [38th Dai] (
+ Jamnagar)\n• Vaaz 6 — Ashara Mubaraka
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Vaaz 6
+DESCRIPTION:Syedna Ismail Badruddin RA [38th Dai] (Jamnagar) · Vaaz 6
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -1946,12 +4320,103 @@ UID:1450-1-10-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20280602
 DTEND;VALUE=DATE:20280603
-SUMMARY:Ashura
-DESCRIPTION:10 Moharram 1450H\n\n• Ashura — Yawme Ashura
+SUMMARY:Syedna Zoeb Bin Musa AQ [1st Dai] (Haus) · Ashura
+DESCRIPTION:10 Moharram 1450H\n\n• Syedna Zoeb Bin Musa AQ [1st Dai] (Hau
+ s)\n• Ashura — Yawme Ashura
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Ashura
+DESCRIPTION:Syedna Zoeb Bin Musa AQ [1st Dai] (Haus) · Ashura
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-1-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280608
+DTEND;VALUE=DATE:20280609
+SUMMARY:Syedna Hatim bin Syedna Ibrahim RA [3rd Dai] (Hutaib)
+DESCRIPTION:16 Moharram 1450H\n\n• Syedna Hatim bin Syedna Ibrahim RA [3r
+ d Dai] (Hutaib)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hatim bin Syedna Ibrahim RA [3rd Dai] (Hutaib)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-1-17-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280609
+DTEND;VALUE=DATE:20280610
+SUMMARY:Syedna Ibrahim Vajihuddin RA [39th Dai] (Ujjain)
+DESCRIPTION:17 Moharram 1450H\n\n• Syedna Ibrahim Vajihuddin RA [39th Dai
+ ] (Ujjain)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ibrahim Vajihuddin RA [39th Dai] (Ujjain)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-2-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280623
+DTEND;VALUE=DATE:20280624
+SUMMARY:Syedna Ali bin Moulaya Hasan RA [10th Dai] (Sana’a)
+DESCRIPTION:1 Safar 1450H\n\n• Syedna Ali bin Moulaya Hasan RA [10th Dai]
+  (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Moulaya Hasan RA [10th Dai] (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-2-3-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280625
+DTEND;VALUE=DATE:20280626
+SUMMARY:Syedna Ali Shamsuddin Bin Syedna Abdullah AQ [18th Dai] (Shareqa)
+DESCRIPTION:3 Safar 1450H\n\n• Syedna Ali Shamsuddin Bin Syedna Abdullah 
+ AQ [18th Dai] (Shareqa)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin Bin Syedna Abdullah AQ [18th Dai] (Shareq
+ a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-2-4-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280626
+DTEND;VALUE=DATE:20280627
+SUMMARY:Syedna Abdul Tayyib Zakiyuddin AQ [41st Dai] (Burhanpur)
+DESCRIPTION:4 Safar 1450H\n\n• Syedna Abdul Tayyib Zakiyuddin AQ [41st Da
+ i] (Burhanpur)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Tayyib Zakiyuddin AQ [41st Dai] (Burhanpur)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-2-8-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280630
+DTEND;VALUE=DATE:20280701
+SUMMARY:Syedna al-Khattab bin Hasan al-Hamdani AQ
+DESCRIPTION:8 Safar 1450H\n\n• Syedna al-Khattab bin Hasan al-Hamdani AQ
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna al-Khattab bin Hasan al-Hamdani AQ
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -1970,6 +4435,36 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1450-2-22-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280714
+DTEND;VALUE=DATE:20280715
+SUMMARY:Syedna Hussain bin Syedna Ali RA [8th Dai] (Sana’a)
+DESCRIPTION:22 Safar 1450H\n\n• Syedna Hussain bin Syedna Ali RA [8th Dai
+ ] (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hussain bin Syedna Ali RA [8th Dai] (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-2-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280719
+DTEND;VALUE=DATE:20280720
+SUMMARY:Syedna Mohammed Ezzuddin RA [23rd Dai] (Zabid)
+DESCRIPTION:27 Safar 1450H\n\n• Syedna Mohammed Ezzuddin RA [23rd Dai] (Z
+ abid)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed Ezzuddin RA [23rd Dai] (Zabid)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1450-2-28-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20280720
@@ -1980,6 +4475,38 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Imam Hasan AS (Medina)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-3-2-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280723
+DTEND;VALUE=DATE:20280724
+SUMMARY:Syedna Abdul Tayyib Zakiyuddin bin Syedna Dawood bin Qutbub Shah AQ
+  [29th Dai] (Ahmedabad)
+DESCRIPTION:2 Rabi I 1450H\n\n• Syedna Abdul Tayyib Zakiyuddin bin Syedna
+  Dawood bin Qutbub Shah AQ [29th Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Tayyib Zakiyuddin bin Syedna Dawood bin Qutbub Sha
+ h AQ [29th Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-3-10-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280731
+DTEND;VALUE=DATE:20280801
+SUMMARY:Syedna Abdullah Badruddin RA [50th Dai] (Surat)
+DESCRIPTION:10 Rabi I 1450H\n\n• Syedna Abdullah Badruddin RA [50th Dai] 
+ (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdullah Badruddin RA [50th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -1998,6 +4525,51 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1450-3-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280806
+DTEND;VALUE=DATE:20280807
+SUMMARY:Syedna Mohammed Burhanuddin RA [52nd Dai] (Mumbai)
+DESCRIPTION:16 Rabi I 1450H\n\n• Syedna Mohammed Burhanuddin RA [52nd Dai
+ ] (Mumbai)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed Burhanuddin RA [52nd Dai] (Mumbai)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-3-22-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280812
+DTEND;VALUE=DATE:20280813
+SUMMARY:Syedna Ali bin Hanzala RA [6th Dai] (Hamadan)
+DESCRIPTION:22 Rabi I 1450H\n\n• Syedna Ali bin Hanzala RA [6th Dai] (Ham
+ adan)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Hanzala RA [6th Dai] (Hamadan)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-3-25-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280815
+DTEND;VALUE=DATE:20280816
+SUMMARY:Syedna Ali Shamsuddin bin Mawlai Hasan [30th Dai](Hisne Afedat)
+DESCRIPTION:25 Rabi I 1450H\n\n• Syedna Ali Shamsuddin bin Mawlai Hasan [
+ 30th Dai](Hisne Afedat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin bin Mawlai Hasan [30th Dai](Hisne Afedat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1450-4-4-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20280824
@@ -2008,6 +4580,21 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Imam-uz-Zamaan SA
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-4-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280905
+DTEND;VALUE=DATE:20280906
+SUMMARY:Syedna Jalal Shamsuddin AQ bin Hasan [25th Dai]  (Ahmedabad)
+DESCRIPTION:16 Rabi II 1450H\n\n• Syedna Jalal Shamsuddin AQ bin Hasan [2
+ 5th Dai]  (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Jalal Shamsuddin AQ bin Hasan [25th Dai]  (Ahmedabad)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -2027,6 +4614,52 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1450-4-22-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280911
+DTEND;VALUE=DATE:20280912
+SUMMARY:Syedna Moosa Kalimuddin RA [36th Dai] (Jamnagar)
+DESCRIPTION:22 Rabi II 1450H\n\n• Syedna Moosa Kalimuddin RA [36th Dai] (
+ Jamnagar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Moosa Kalimuddin RA [36th Dai] (Jamnagar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-4-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280916
+DTEND;VALUE=DATE:20280917
+SUMMARY:Syedna Dawood ibn Ajab Shah Burhanuddin RA [26th Dai] (Ahmedabad)
+DESCRIPTION:27 Rabi II 1450H\n\n• Syedna Dawood ibn Ajab Shah Burhanuddin
+  RA [26th Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Dawood ibn Ajab Shah Burhanuddin RA [26th Dai] (Ahmedaba
+ d)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-5-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280919
+DTEND;VALUE=DATE:20280920
+SUMMARY:Syedna Ahmed bin Syedna Ali al-Mukarram Sulaihi AQ (Sana’a)
+DESCRIPTION:1 Jumada I 1450H\n\n• Syedna Ahmed bin Syedna Ali al-Mukarram
+  Sulaihi AQ (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ahmed bin Syedna Ali al-Mukarram Sulaihi AQ (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1450-5-10-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20280928
@@ -2042,6 +4675,66 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1450-5-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20281004
+DTEND;VALUE=DATE:20281005
+SUMMARY:Syedna Mohammed bin Idris AQ (Yemen)
+DESCRIPTION:16 Jumada I 1450H\n\n• Syedna Mohammed bin Idris AQ (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed bin Idris AQ (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-6-15-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20281102
+DTEND;VALUE=DATE:20281103
+SUMMARY:Syedna Dawood Burhanuddin AQ bin Qutub Shah [27th Dai] (Ahmedabad)
+DESCRIPTION:15 Jumada II 1450H\n\n• Syedna Dawood Burhanuddin AQ bin Qutu
+ b Shah [27th Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Dawood Burhanuddin AQ bin Qutub Shah [27th Dai] (Ahmedab
+ ad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-6-18-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20281105
+DTEND;VALUE=DATE:20281106
+SUMMARY:Syedna Yusuf Najmuddin AQ [42nd Dai] (Surat)
+DESCRIPTION:18 Jumada II 1450H\n\n• Syedna Yusuf Najmuddin AQ [42nd Dai] 
+ (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Yusuf Najmuddin AQ [42nd Dai] (Surat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-6-23-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20281110
+DTEND;VALUE=DATE:20281111
+SUMMARY:Syedna Ismail Badruddin AQ bin Mawlai Raj [34th Dai] (Jamnagar)
+DESCRIPTION:23 Jumada II 1450H\n\n• Syedna Ismail Badruddin AQ bin Mawlai
+  Raj [34th Dai] (Jamnagar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ismail Badruddin AQ bin Mawlai Raj [34th Dai] (Jamnagar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1450-6-26-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20281113
@@ -2053,6 +4746,57 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Mazoon al-Dawat Syedi Husain Bhaisaheb Husamuddin AQ
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-6-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20281114
+DTEND;VALUE=DATE:20281115
+SUMMARY:Syedna Lamak bin Malik RA (Yemen) · Syedna Qutub Khan Qutubuddin S
+ hahid AQ [32nd Dai] (Ahmedabad)
+DESCRIPTION:27 Jumada II 1450H\n\n• Syedna Lamak bin Malik RA (Yemen)\n
+ • Syedna Qutub Khan Qutubuddin Shahid AQ [32nd Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Lamak bin Malik RA (Yemen) · Syedna Qutub Khan Qutubudd
+ in Shahid AQ [32nd Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-6-28-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20281115
+DTEND;VALUE=DATE:20281116
+SUMMARY:Syedna Ahmed bin Mubarak AQ (Hamdaan) [7th Dai] (Hamdaan) · Syedna
+  Yahya bin Syedna Lamak AQ (Yemen)
+DESCRIPTION:28 Jumada II 1450H\n\n• Syedna Ahmed bin Mubarak AQ (Hamdaan)
+  [7th Dai] (Hamdaan)\n• Syedna Yahya bin Syedna Lamak AQ (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ahmed bin Mubarak AQ (Hamdaan) [7th Dai] (Hamdaan) · Sy
+ edna Yahya bin Syedna Lamak AQ (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-6-29-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20281116
+DTEND;VALUE=DATE:20281117
+SUMMARY:Syedna Qadi Numan bin Mohammed AQ · Syedna Mohammed Badruddin AQ [
+ 46th Dai] (Surat)
+DESCRIPTION:29 Jumada II 1450H\n\n• Syedna Qadi Numan bin Mohammed AQ\n
+ • Syedna Mohammed Badruddin AQ [46th Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Qadi Numan bin Mohammed AQ · Syedna Mohammed Badruddin 
+ AQ [46th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -2088,6 +4832,36 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Fasting
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-7-4-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20281120
+DTEND;VALUE=DATE:20281121
+SUMMARY:Syedna Noor Mohammed Nooruddin AQ [37th Dai] (Kutch-Mandvi)
+DESCRIPTION:4 Rajab 1450H\n\n• Syedna Noor Mohammed Nooruddin AQ [37th Da
+ i] (Kutch-Mandvi) — Kutch Mandvi
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Noor Mohammed Nooruddin AQ [37th Dai] (Kutch-Mandvi)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-7-7-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20281123
+DTEND;VALUE=DATE:20281124
+SUMMARY:Syedna Shaikh Adam Safiyuddin AQ [28th Dai] (Ahmedabad)
+DESCRIPTION:7 Rajab 1450H\n\n• Syedna Shaikh Adam Safiyuddin AQ [28th Dai
+ ] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Shaikh Adam Safiyuddin AQ [28th Dai] (Ahmedabad)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -2135,6 +4909,70 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1450-7-18-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20281204
+DTEND;VALUE=DATE:20281205
+SUMMARY:Syedna Ali Shamsuddin AQ bin Syedna Ibrahim bin Husain AQ [13th Dai
+ ] (Zamarmar)
+DESCRIPTION:18 Rajab 1450H\n\n• Syedna Ali Shamsuddin AQ bin Syedna Ibrah
+ im bin Husain AQ [13th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin AQ bin Syedna Ibrahim bin Husain AQ [13th
+  Dai] (Zamarmar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-7-19-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20281205
+DTEND;VALUE=DATE:20281206
+SUMMARY:Syedna Taher Saifuddin AQ [51st Dai] (Mumbai)
+DESCRIPTION:19 Rajab 1450H\n\n• Syedna Taher Saifuddin AQ [51st Dai] (Mum
+ bai)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Taher Saifuddin AQ [51st Dai] (Mumbai)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-7-24-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20281210
+DTEND;VALUE=DATE:20281211
+SUMMARY:Syedna Abdul Mutalib Najmuddin AQ bin Syedna Mohammed bin Hatim AQ 
+ [14th Dai] (Zamarmar)
+DESCRIPTION:24 Rajab 1450H\n\n• Syedna Abdul Mutalib Najmuddin AQ bin Sye
+ dna Mohammed bin Hatim AQ [14th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Mutalib Najmuddin AQ bin Syedna Mohammed bin Hatim
+  AQ [14th Dai] (Zamarmar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-7-26-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20281212
+DTEND;VALUE=DATE:20281213
+SUMMARY:Syedna Abdul Qadr Najmuddin AQ [47th Dai] (Ujjain)
+DESCRIPTION:26 Rajab 1450H\n\n• Syedna Abdul Qadr Najmuddin AQ [47th Dai]
+  (Ujjain)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Qadr Najmuddin AQ [47th Dai] (Ujjain)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1450-7-26-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20281212
@@ -2164,6 +5002,21 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1450-8-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20281217
+DTEND;VALUE=DATE:20281218
+SUMMARY:Syedna Hebatullah Muayyad Fiddin AQ [40th Dai] (Ujjain)
+DESCRIPTION:1 Shabaan 1450H\n\n• Syedna Hebatullah Muayyad Fiddin AQ [40t
+ h Dai] (Ujjain)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hebatullah Muayyad Fiddin AQ [40th Dai] (Ujjain)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1450-8-14-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20281230
@@ -2176,6 +5029,66 @@ BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🌙 Night: Shabb-e-Baraat (Laylat al-Nisf)
 TRIGGER:PT17H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-8-15-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20281231
+DTEND;VALUE=DATE:20290101
+SUMMARY:Syedna Hasan Badruddin AQ [20th Dai] (Masaar)
+DESCRIPTION:15 Shabaan 1450H\n\n• Syedna Hasan Badruddin AQ [20th Dai] (M
+ asaar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hasan Badruddin AQ [20th Dai] (Masaar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-8-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290101
+DTEND;VALUE=DATE:20290102
+SUMMARY:Syedna Ibrahim bin Husain AQ [2nd Dai] [2nd Dai]
+DESCRIPTION:16 Shabaan 1450H\n\n• Syedna Ibrahim bin Husain AQ [2nd Dai] 
+ [2nd Dai]
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ibrahim bin Husain AQ [2nd Dai] [2nd Dai]
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-8-29-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290114
+DTEND;VALUE=DATE:20290115
+SUMMARY:Syedna Ali bin Mawla Mohammed al-Walid AQ [5th Dai] (Haraaz)
+DESCRIPTION:29 Shabaan 1450H\n\n• Syedna Ali bin Mawla Mohammed al-Walid 
+ AQ [5th Dai] (Haraaz)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Mawla Mohammed al-Walid AQ [5th Dai] (Haraaz)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-9-9-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290123
+DTEND;VALUE=DATE:20290124
+SUMMARY:Syedna Abdullah Fakhruddin AQ bin Ali [16th Dai] (Zamarmar)
+DESCRIPTION:9 Ramadaan 1450H\n\n• Syedna Abdullah Fakhruddin AQ bin Ali [
+ 16th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdullah Fakhruddin AQ bin Ali [16th Dai] (Zamarmar)
+TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -2213,13 +5126,15 @@ UID:1450-9-19-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20290202
 DTEND;VALUE=DATE:20290203
-SUMMARY:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa)
+SUMMARY:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa) · Syedna Mohammed Ezz
+ uddin RA [44th Dai] (Surat)
 DESCRIPTION:19 Ramadaan 1450H\n\n• Amir al-Mumineen Ali ibn Abi Talib SA 
- (Kufa) — Shahadat
+ (Kufa) — Shahadat\n• Syedna Mohammed Ezzuddin RA [44th Dai] (Surat)
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa)
+DESCRIPTION:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa) · Syedna Mohammed
+  Ezzuddin RA [44th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -2314,17 +5229,214 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1450-10-6-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290219
+DTEND;VALUE=DATE:20290220
+SUMMARY:Syedna Hasan Badruddin bin Syedba Abdullah Fakhruddin AQ [17th Dai]
+  (Zamarmar)
+DESCRIPTION:6 Shawwal 1450H\n\n• Syedna Hasan Badruddin bin Syedba Abdull
+ ah Fakhruddin AQ [17th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hasan Badruddin bin Syedba Abdullah Fakhruddin AQ [17th 
+ Dai] (Zamarmar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-10-7-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290220
+DTEND;VALUE=DATE:20290221
+SUMMARY:Syedna Mohammed bin Taher AQ [Writer of Dua Al Aql Al Awwal\, Bawes
+ ani Dua] (Yemen)
+DESCRIPTION:7 Shawwal 1450H\n\n• Syedna Mohammed bin Taher AQ [Writer of 
+ Dua Al Aql Al Awwal\, Bawesani Dua] (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed bin Taher AQ [Writer of Dua Al Aql Al Awwal\, B
+ awesani Dua] (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-10-8-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290221
+DTEND;VALUE=DATE:20290222
+SUMMARY:Syedna Abbas bin Syedna Mohammed bin Hatim AQ [15th Dai] (Hisne Afe
+ dat)
+DESCRIPTION:8 Shawwal 1450H\n\n• Syedna Abbas bin Syedna Mohammed bin Hat
+ im AQ [15th Dai] (Hisne Afedat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abbas bin Syedna Mohammed bin Hatim AQ [15th Dai] (Hisne
+  Afedat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-10-9-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290222
+DTEND;VALUE=DATE:20290223
+SUMMARY:Syedna Qasim Khan Zainuddin AQ [31st Dai] (Ahmedabad)
+DESCRIPTION:9 Shawwal 1450H\n\n• Syedna Qasim Khan Zainuddin AQ [31st Dai
+ ] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Qasim Khan Zainuddin AQ [31st Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-10-10-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290223
+DTEND;VALUE=DATE:20290224
+SUMMARY:Syedna Husain Husamuddin AQ [21st Dai] (Masaar) · Syedna Ibrahim b
+ in Syedna Husain AQ [11th Dai] (Hisne Afedat) · Syedna Hebatullah Muayyad
+ fiddin Shirazi AQ
+DESCRIPTION:10 Shawwal 1450H\n\n• Syedna Husain Husamuddin AQ [21st Dai] 
+ (Masaar)\n• Syedna Ibrahim bin Syedna Husain AQ [11th Dai] (Hisne Afedat
+ )\n• Syedna Hebatullah Muayyadfiddin Shirazi AQ — Cairo
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Husain Husamuddin AQ [21st Dai] (Masaar) · Syedna Ibrah
+ im bin Syedna Husain AQ [11th Dai] (Hisne Afedat) · Syedna Hebatullah Mua
+ yyadfiddin Shirazi AQ
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-11-9-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290323
+DTEND;VALUE=DATE:20290324
+SUMMARY:Syedna Fir Khan Shujahuddin AQ [33rd Dai] (Ahmedabad)
+DESCRIPTION:9 Zilqadah 1450H\n\n• Syedna Fir Khan Shujahuddin AQ [33rd Da
+ i] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Fir Khan Shujahuddin AQ [33rd Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-11-11-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290325
+DTEND;VALUE=DATE:20290326
+SUMMARY:Syedna Ali bin Mohammed al-Sulayhi AQ (Yemen)
+DESCRIPTION:11 Zilqadah 1450H\n\n• Syedna Ali bin Mohammed al-Sulayhi AQ 
+ (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Mohammed al-Sulayhi AQ (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-11-12-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290326
+DTEND;VALUE=DATE:20290327
+SUMMARY:Syedna Abdul Tayyib Zakiyuddin bin Syedna Ismail Badruddin AQ [35th
+  Dai] (Jamnagar) · Syedna Abdeali Saifuddin AQ [43rd Dai] (Surat)
+DESCRIPTION:12 Zilqadah 1450H\n\n• Syedna Abdul Tayyib Zakiyuddin bin Sye
+ dna Ismail Badruddin AQ [35th Dai] (Jamnagar)\n• Syedna Abdeali Saifuddi
+ n AQ [43rd Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Tayyib Zakiyuddin bin Syedna Ismail Badruddin AQ [
+ 35th Dai] (Jamnagar) · Syedna Abdeali Saifuddin AQ [43rd Dai] (Surat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-11-13-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290327
+DTEND;VALUE=DATE:20290328
+SUMMARY:Syedna Ali bin Syedna Husain [9th Dai] (Sana’a)
+DESCRIPTION:13 Zilqadah 1450H\n\n• Syedna Ali bin Syedna Husain [9th Dai]
+  (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Syedna Husain [9th Dai] (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-11-15-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290329
+DTEND;VALUE=DATE:20290330
+SUMMARY:Syedna Tayyib Zainuddin bin Syedi Jewanji [45th Dai] (Surat)
+DESCRIPTION:15 Zilqadah 1450H\n\n• Syedna Tayyib Zainuddin bin Syedi Jewa
+ nji [45th Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Tayyib Zainuddin bin Syedi Jewanji [45th Dai] (Surat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1450-11-19-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20290402
 DTEND;VALUE=DATE:20290403
-SUMMARY:Mukasir al-Dawat Syedi Qaid Johar Bhaisaheb Ezzuddin DM
-DESCRIPTION:19 Zilqadah 1450H\n\n• Mukasir al-Dawat Syedi Qaid Johar Bhai
- saheb Ezzuddin DM — Milad
+SUMMARY:Syedna Idris Imaduddin AQ [19th Dai] (Shibaam) · Mukasir al-Dawat 
+ Syedi Qaid Johar Bhaisaheb Ezzuddin DM
+DESCRIPTION:19 Zilqadah 1450H\n\n• Syedna Idris Imaduddin AQ [19th Dai] (
+ Shibaam)\n• Mukasir al-Dawat Syedi Qaid Johar Bhaisaheb Ezzuddin DM — 
+ Milad
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Mukasir al-Dawat Syedi Qaid Johar Bhaisaheb Ezzuddin DM
+DESCRIPTION:Syedna Idris Imaduddin AQ [19th Dai] (Shibaam) · Mukasir al-Da
+ wat Syedi Qaid Johar Bhaisaheb Ezzuddin DM
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-11-21-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290404
+DTEND;VALUE=DATE:20290405
+SUMMARY:Syedna Ali Shamsuddin AQ [22nd Dai] (Masaar)
+DESCRIPTION:21 Zilqadah 1450H\n\n• Syedna Ali Shamsuddin AQ [22nd Dai] (M
+ asaar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin AQ [22nd Dai] (Masaar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-11-25-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290408
+DTEND;VALUE=DATE:20290409
+SUMMARY:Syedna Ali bin Syedna Hatim RA [4th Dai] (Sana’a)
+DESCRIPTION:25 Zilqadah 1450H\n\n• Syedna Ali bin Syedna Hatim RA [4th Da
+ i] (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Syedna Hatim RA [4th Dai] (Sana’a)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -2340,6 +5452,23 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Syedna Taher Saifuddin AQ [51st Dai]
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-12-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290414
+DTEND;VALUE=DATE:20290415
+SUMMARY:Syedna Mohammed AQ bin Hatim bin Husain in Ali [12th Dai] (Hisne Af
+ edat)
+DESCRIPTION:1 Zilhaj 1450H\n\n• Syedna Mohammed AQ bin Hatim bin Husain i
+ n Ali [12th Dai] (Hisne Afedat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed AQ bin Hatim bin Husain in Ali [12th Dai] (Hisn
+ e Afedat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -2423,6 +5552,21 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1450-12-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290429
+DTEND;VALUE=DATE:20290430
+SUMMARY:Syedna Yusuf Najmuddin RA [24th Dai] (Taibah)
+DESCRIPTION:16 Zilhaj 1450H\n\n• Syedna Yusuf Najmuddin RA [24th Dai] (Ta
+ ibah)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Yusuf Najmuddin RA [24th Dai] (Taibah)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1450-12-18-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20290501
@@ -2433,6 +5577,26 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Rozu
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1450-12-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290510
+DTEND;VALUE=DATE:20290511
+SUMMARY:Syedna Abdul Husain Husamuddin bin Syedna Tayyib Zainuddin AQ [48th
+  Dai] (Ahmedabad) · Syedna Mohammed Burhanuddin bin Syedna AbdulQadir Naj
+ muddin AQ [49th Dai] (Surat)
+DESCRIPTION:27 Zilhaj 1450H\n\n• Syedna Abdul Husain Husamuddin bin Syedn
+ a Tayyib Zainuddin AQ [48th Dai] (Ahmedabad)\n• Syedna Mohammed Burhanud
+ din bin Syedna AbdulQadir Najmuddin AQ [49th Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Husain Husamuddin bin Syedna Tayyib Zainuddin AQ [
+ 48th Dai] (Ahmedabad) · Syedna Mohammed Burhanuddin bin Syedna AbdulQadir
+  Najmuddin AQ [49th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -2511,12 +5675,13 @@ UID:1451-1-7-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20290520
 DTEND;VALUE=DATE:20290521
-SUMMARY:Vaaz 6
-DESCRIPTION:7 Moharram 1451H\n\n• Vaaz 6 — Ashara Mubaraka
+SUMMARY:Syedna Ismail Badruddin RA [38th Dai] (Jamnagar) · Vaaz 6
+DESCRIPTION:7 Moharram 1451H\n\n• Syedna Ismail Badruddin RA [38th Dai] (
+ Jamnagar)\n• Vaaz 6 — Ashara Mubaraka
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Vaaz 6
+DESCRIPTION:Syedna Ismail Badruddin RA [38th Dai] (Jamnagar) · Vaaz 6
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -2553,12 +5718,103 @@ UID:1451-1-10-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20290523
 DTEND;VALUE=DATE:20290524
-SUMMARY:Ashura
-DESCRIPTION:10 Moharram 1451H\n\n• Ashura — Yawme Ashura
+SUMMARY:Syedna Zoeb Bin Musa AQ [1st Dai] (Haus) · Ashura
+DESCRIPTION:10 Moharram 1451H\n\n• Syedna Zoeb Bin Musa AQ [1st Dai] (Hau
+ s)\n• Ashura — Yawme Ashura
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Ashura
+DESCRIPTION:Syedna Zoeb Bin Musa AQ [1st Dai] (Haus) · Ashura
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-1-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290529
+DTEND;VALUE=DATE:20290530
+SUMMARY:Syedna Hatim bin Syedna Ibrahim RA [3rd Dai] (Hutaib)
+DESCRIPTION:16 Moharram 1451H\n\n• Syedna Hatim bin Syedna Ibrahim RA [3r
+ d Dai] (Hutaib)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hatim bin Syedna Ibrahim RA [3rd Dai] (Hutaib)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-1-17-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290530
+DTEND;VALUE=DATE:20290531
+SUMMARY:Syedna Ibrahim Vajihuddin RA [39th Dai] (Ujjain)
+DESCRIPTION:17 Moharram 1451H\n\n• Syedna Ibrahim Vajihuddin RA [39th Dai
+ ] (Ujjain)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ibrahim Vajihuddin RA [39th Dai] (Ujjain)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-2-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290613
+DTEND;VALUE=DATE:20290614
+SUMMARY:Syedna Ali bin Moulaya Hasan RA [10th Dai] (Sana’a)
+DESCRIPTION:1 Safar 1451H\n\n• Syedna Ali bin Moulaya Hasan RA [10th Dai]
+  (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Moulaya Hasan RA [10th Dai] (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-2-3-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290615
+DTEND;VALUE=DATE:20290616
+SUMMARY:Syedna Ali Shamsuddin Bin Syedna Abdullah AQ [18th Dai] (Shareqa)
+DESCRIPTION:3 Safar 1451H\n\n• Syedna Ali Shamsuddin Bin Syedna Abdullah 
+ AQ [18th Dai] (Shareqa)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin Bin Syedna Abdullah AQ [18th Dai] (Shareq
+ a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-2-4-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290616
+DTEND;VALUE=DATE:20290617
+SUMMARY:Syedna Abdul Tayyib Zakiyuddin AQ [41st Dai] (Burhanpur)
+DESCRIPTION:4 Safar 1451H\n\n• Syedna Abdul Tayyib Zakiyuddin AQ [41st Da
+ i] (Burhanpur)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Tayyib Zakiyuddin AQ [41st Dai] (Burhanpur)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-2-8-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290620
+DTEND;VALUE=DATE:20290621
+SUMMARY:Syedna al-Khattab bin Hasan al-Hamdani AQ
+DESCRIPTION:8 Safar 1451H\n\n• Syedna al-Khattab bin Hasan al-Hamdani AQ
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna al-Khattab bin Hasan al-Hamdani AQ
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -2577,6 +5833,36 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1451-2-22-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290704
+DTEND;VALUE=DATE:20290705
+SUMMARY:Syedna Hussain bin Syedna Ali RA [8th Dai] (Sana’a)
+DESCRIPTION:22 Safar 1451H\n\n• Syedna Hussain bin Syedna Ali RA [8th Dai
+ ] (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hussain bin Syedna Ali RA [8th Dai] (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-2-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290709
+DTEND;VALUE=DATE:20290710
+SUMMARY:Syedna Mohammed Ezzuddin RA [23rd Dai] (Zabid)
+DESCRIPTION:27 Safar 1451H\n\n• Syedna Mohammed Ezzuddin RA [23rd Dai] (Z
+ abid)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed Ezzuddin RA [23rd Dai] (Zabid)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1451-2-28-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20290710
@@ -2587,6 +5873,38 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Imam Hasan AS (Medina)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-3-2-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290713
+DTEND;VALUE=DATE:20290714
+SUMMARY:Syedna Abdul Tayyib Zakiyuddin bin Syedna Dawood bin Qutbub Shah AQ
+  [29th Dai] (Ahmedabad)
+DESCRIPTION:2 Rabi I 1451H\n\n• Syedna Abdul Tayyib Zakiyuddin bin Syedna
+  Dawood bin Qutbub Shah AQ [29th Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Tayyib Zakiyuddin bin Syedna Dawood bin Qutbub Sha
+ h AQ [29th Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-3-10-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290721
+DTEND;VALUE=DATE:20290722
+SUMMARY:Syedna Abdullah Badruddin RA [50th Dai] (Surat)
+DESCRIPTION:10 Rabi I 1451H\n\n• Syedna Abdullah Badruddin RA [50th Dai] 
+ (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdullah Badruddin RA [50th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -2605,6 +5923,51 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1451-3-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290727
+DTEND;VALUE=DATE:20290728
+SUMMARY:Syedna Mohammed Burhanuddin RA [52nd Dai] (Mumbai)
+DESCRIPTION:16 Rabi I 1451H\n\n• Syedna Mohammed Burhanuddin RA [52nd Dai
+ ] (Mumbai)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed Burhanuddin RA [52nd Dai] (Mumbai)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-3-22-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290802
+DTEND;VALUE=DATE:20290803
+SUMMARY:Syedna Ali bin Hanzala RA [6th Dai] (Hamadan)
+DESCRIPTION:22 Rabi I 1451H\n\n• Syedna Ali bin Hanzala RA [6th Dai] (Ham
+ adan)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Hanzala RA [6th Dai] (Hamadan)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-3-25-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290805
+DTEND;VALUE=DATE:20290806
+SUMMARY:Syedna Ali Shamsuddin bin Mawlai Hasan [30th Dai](Hisne Afedat)
+DESCRIPTION:25 Rabi I 1451H\n\n• Syedna Ali Shamsuddin bin Mawlai Hasan [
+ 30th Dai](Hisne Afedat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin bin Mawlai Hasan [30th Dai](Hisne Afedat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1451-4-4-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20290814
@@ -2615,6 +5978,21 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Imam-uz-Zamaan SA
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-4-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290826
+DTEND;VALUE=DATE:20290827
+SUMMARY:Syedna Jalal Shamsuddin AQ bin Hasan [25th Dai]  (Ahmedabad)
+DESCRIPTION:16 Rabi II 1451H\n\n• Syedna Jalal Shamsuddin AQ bin Hasan [2
+ 5th Dai]  (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Jalal Shamsuddin AQ bin Hasan [25th Dai]  (Ahmedabad)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -2634,6 +6012,52 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1451-4-22-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290901
+DTEND;VALUE=DATE:20290902
+SUMMARY:Syedna Moosa Kalimuddin RA [36th Dai] (Jamnagar)
+DESCRIPTION:22 Rabi II 1451H\n\n• Syedna Moosa Kalimuddin RA [36th Dai] (
+ Jamnagar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Moosa Kalimuddin RA [36th Dai] (Jamnagar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-4-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290906
+DTEND;VALUE=DATE:20290907
+SUMMARY:Syedna Dawood ibn Ajab Shah Burhanuddin RA [26th Dai] (Ahmedabad)
+DESCRIPTION:27 Rabi II 1451H\n\n• Syedna Dawood ibn Ajab Shah Burhanuddin
+  RA [26th Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Dawood ibn Ajab Shah Burhanuddin RA [26th Dai] (Ahmedaba
+ d)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-5-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290909
+DTEND;VALUE=DATE:20290910
+SUMMARY:Syedna Ahmed bin Syedna Ali al-Mukarram Sulaihi AQ (Sana’a)
+DESCRIPTION:1 Jumada I 1451H\n\n• Syedna Ahmed bin Syedna Ali al-Mukarram
+  Sulaihi AQ (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ahmed bin Syedna Ali al-Mukarram Sulaihi AQ (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1451-5-10-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20290918
@@ -2649,6 +6073,66 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1451-5-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290924
+DTEND;VALUE=DATE:20290925
+SUMMARY:Syedna Mohammed bin Idris AQ (Yemen)
+DESCRIPTION:16 Jumada I 1451H\n\n• Syedna Mohammed bin Idris AQ (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed bin Idris AQ (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-6-15-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20291023
+DTEND;VALUE=DATE:20291024
+SUMMARY:Syedna Dawood Burhanuddin AQ bin Qutub Shah [27th Dai] (Ahmedabad)
+DESCRIPTION:15 Jumada II 1451H\n\n• Syedna Dawood Burhanuddin AQ bin Qutu
+ b Shah [27th Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Dawood Burhanuddin AQ bin Qutub Shah [27th Dai] (Ahmedab
+ ad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-6-18-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20291026
+DTEND;VALUE=DATE:20291027
+SUMMARY:Syedna Yusuf Najmuddin AQ [42nd Dai] (Surat)
+DESCRIPTION:18 Jumada II 1451H\n\n• Syedna Yusuf Najmuddin AQ [42nd Dai] 
+ (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Yusuf Najmuddin AQ [42nd Dai] (Surat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-6-23-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20291031
+DTEND;VALUE=DATE:20291101
+SUMMARY:Syedna Ismail Badruddin AQ bin Mawlai Raj [34th Dai] (Jamnagar)
+DESCRIPTION:23 Jumada II 1451H\n\n• Syedna Ismail Badruddin AQ bin Mawlai
+  Raj [34th Dai] (Jamnagar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ismail Badruddin AQ bin Mawlai Raj [34th Dai] (Jamnagar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1451-6-26-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20291103
@@ -2660,6 +6144,57 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Mazoon al-Dawat Syedi Husain Bhaisaheb Husamuddin AQ
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-6-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20291104
+DTEND;VALUE=DATE:20291105
+SUMMARY:Syedna Lamak bin Malik RA (Yemen) · Syedna Qutub Khan Qutubuddin S
+ hahid AQ [32nd Dai] (Ahmedabad)
+DESCRIPTION:27 Jumada II 1451H\n\n• Syedna Lamak bin Malik RA (Yemen)\n
+ • Syedna Qutub Khan Qutubuddin Shahid AQ [32nd Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Lamak bin Malik RA (Yemen) · Syedna Qutub Khan Qutubudd
+ in Shahid AQ [32nd Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-6-28-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20291105
+DTEND;VALUE=DATE:20291106
+SUMMARY:Syedna Ahmed bin Mubarak AQ (Hamdaan) [7th Dai] (Hamdaan) · Syedna
+  Yahya bin Syedna Lamak AQ (Yemen)
+DESCRIPTION:28 Jumada II 1451H\n\n• Syedna Ahmed bin Mubarak AQ (Hamdaan)
+  [7th Dai] (Hamdaan)\n• Syedna Yahya bin Syedna Lamak AQ (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ahmed bin Mubarak AQ (Hamdaan) [7th Dai] (Hamdaan) · Sy
+ edna Yahya bin Syedna Lamak AQ (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-6-29-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20291106
+DTEND;VALUE=DATE:20291107
+SUMMARY:Syedna Qadi Numan bin Mohammed AQ · Syedna Mohammed Badruddin AQ [
+ 46th Dai] (Surat)
+DESCRIPTION:29 Jumada II 1451H\n\n• Syedna Qadi Numan bin Mohammed AQ\n
+ • Syedna Mohammed Badruddin AQ [46th Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Qadi Numan bin Mohammed AQ · Syedna Mohammed Badruddin 
+ AQ [46th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -2695,6 +6230,36 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Fasting
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-7-4-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20291110
+DTEND;VALUE=DATE:20291111
+SUMMARY:Syedna Noor Mohammed Nooruddin AQ [37th Dai] (Kutch-Mandvi)
+DESCRIPTION:4 Rajab 1451H\n\n• Syedna Noor Mohammed Nooruddin AQ [37th Da
+ i] (Kutch-Mandvi) — Kutch Mandvi
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Noor Mohammed Nooruddin AQ [37th Dai] (Kutch-Mandvi)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-7-7-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20291113
+DTEND;VALUE=DATE:20291114
+SUMMARY:Syedna Shaikh Adam Safiyuddin AQ [28th Dai] (Ahmedabad)
+DESCRIPTION:7 Rajab 1451H\n\n• Syedna Shaikh Adam Safiyuddin AQ [28th Dai
+ ] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Shaikh Adam Safiyuddin AQ [28th Dai] (Ahmedabad)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -2742,6 +6307,70 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1451-7-18-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20291124
+DTEND;VALUE=DATE:20291125
+SUMMARY:Syedna Ali Shamsuddin AQ bin Syedna Ibrahim bin Husain AQ [13th Dai
+ ] (Zamarmar)
+DESCRIPTION:18 Rajab 1451H\n\n• Syedna Ali Shamsuddin AQ bin Syedna Ibrah
+ im bin Husain AQ [13th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin AQ bin Syedna Ibrahim bin Husain AQ [13th
+  Dai] (Zamarmar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-7-19-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20291125
+DTEND;VALUE=DATE:20291126
+SUMMARY:Syedna Taher Saifuddin AQ [51st Dai] (Mumbai)
+DESCRIPTION:19 Rajab 1451H\n\n• Syedna Taher Saifuddin AQ [51st Dai] (Mum
+ bai)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Taher Saifuddin AQ [51st Dai] (Mumbai)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-7-24-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20291130
+DTEND;VALUE=DATE:20291201
+SUMMARY:Syedna Abdul Mutalib Najmuddin AQ bin Syedna Mohammed bin Hatim AQ 
+ [14th Dai] (Zamarmar)
+DESCRIPTION:24 Rajab 1451H\n\n• Syedna Abdul Mutalib Najmuddin AQ bin Sye
+ dna Mohammed bin Hatim AQ [14th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Mutalib Najmuddin AQ bin Syedna Mohammed bin Hatim
+  AQ [14th Dai] (Zamarmar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-7-26-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20291202
+DTEND;VALUE=DATE:20291203
+SUMMARY:Syedna Abdul Qadr Najmuddin AQ [47th Dai] (Ujjain)
+DESCRIPTION:26 Rajab 1451H\n\n• Syedna Abdul Qadr Najmuddin AQ [47th Dai]
+  (Ujjain)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Qadr Najmuddin AQ [47th Dai] (Ujjain)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1451-7-26-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20291202
@@ -2771,6 +6400,21 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1451-8-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20291207
+DTEND;VALUE=DATE:20291208
+SUMMARY:Syedna Hebatullah Muayyad Fiddin AQ [40th Dai] (Ujjain)
+DESCRIPTION:1 Shabaan 1451H\n\n• Syedna Hebatullah Muayyad Fiddin AQ [40t
+ h Dai] (Ujjain)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hebatullah Muayyad Fiddin AQ [40th Dai] (Ujjain)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1451-8-14-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20291220
@@ -2783,6 +6427,66 @@ BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🌙 Night: Shabb-e-Baraat (Laylat al-Nisf)
 TRIGGER:PT17H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-8-15-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20291221
+DTEND;VALUE=DATE:20291222
+SUMMARY:Syedna Hasan Badruddin AQ [20th Dai] (Masaar)
+DESCRIPTION:15 Shabaan 1451H\n\n• Syedna Hasan Badruddin AQ [20th Dai] (M
+ asaar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hasan Badruddin AQ [20th Dai] (Masaar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-8-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20291222
+DTEND;VALUE=DATE:20291223
+SUMMARY:Syedna Ibrahim bin Husain AQ [2nd Dai] [2nd Dai]
+DESCRIPTION:16 Shabaan 1451H\n\n• Syedna Ibrahim bin Husain AQ [2nd Dai] 
+ [2nd Dai]
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ibrahim bin Husain AQ [2nd Dai] [2nd Dai]
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-8-29-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300104
+DTEND;VALUE=DATE:20300105
+SUMMARY:Syedna Ali bin Mawla Mohammed al-Walid AQ [5th Dai] (Haraaz)
+DESCRIPTION:29 Shabaan 1451H\n\n• Syedna Ali bin Mawla Mohammed al-Walid 
+ AQ [5th Dai] (Haraaz)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Mawla Mohammed al-Walid AQ [5th Dai] (Haraaz)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-9-9-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300113
+DTEND;VALUE=DATE:20300114
+SUMMARY:Syedna Abdullah Fakhruddin AQ bin Ali [16th Dai] (Zamarmar)
+DESCRIPTION:9 Ramadaan 1451H\n\n• Syedna Abdullah Fakhruddin AQ bin Ali [
+ 16th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdullah Fakhruddin AQ bin Ali [16th Dai] (Zamarmar)
+TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -2820,13 +6524,15 @@ UID:1451-9-19-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20300123
 DTEND;VALUE=DATE:20300124
-SUMMARY:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa)
+SUMMARY:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa) · Syedna Mohammed Ezz
+ uddin RA [44th Dai] (Surat)
 DESCRIPTION:19 Ramadaan 1451H\n\n• Amir al-Mumineen Ali ibn Abi Talib SA 
- (Kufa) — Shahadat
+ (Kufa) — Shahadat\n• Syedna Mohammed Ezzuddin RA [44th Dai] (Surat)
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa)
+DESCRIPTION:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa) · Syedna Mohammed
+  Ezzuddin RA [44th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -2921,17 +6627,214 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1451-10-6-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300209
+DTEND;VALUE=DATE:20300210
+SUMMARY:Syedna Hasan Badruddin bin Syedba Abdullah Fakhruddin AQ [17th Dai]
+  (Zamarmar)
+DESCRIPTION:6 Shawwal 1451H\n\n• Syedna Hasan Badruddin bin Syedba Abdull
+ ah Fakhruddin AQ [17th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hasan Badruddin bin Syedba Abdullah Fakhruddin AQ [17th 
+ Dai] (Zamarmar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-10-7-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300210
+DTEND;VALUE=DATE:20300211
+SUMMARY:Syedna Mohammed bin Taher AQ [Writer of Dua Al Aql Al Awwal\, Bawes
+ ani Dua] (Yemen)
+DESCRIPTION:7 Shawwal 1451H\n\n• Syedna Mohammed bin Taher AQ [Writer of 
+ Dua Al Aql Al Awwal\, Bawesani Dua] (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed bin Taher AQ [Writer of Dua Al Aql Al Awwal\, B
+ awesani Dua] (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-10-8-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300211
+DTEND;VALUE=DATE:20300212
+SUMMARY:Syedna Abbas bin Syedna Mohammed bin Hatim AQ [15th Dai] (Hisne Afe
+ dat)
+DESCRIPTION:8 Shawwal 1451H\n\n• Syedna Abbas bin Syedna Mohammed bin Hat
+ im AQ [15th Dai] (Hisne Afedat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abbas bin Syedna Mohammed bin Hatim AQ [15th Dai] (Hisne
+  Afedat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-10-9-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300212
+DTEND;VALUE=DATE:20300213
+SUMMARY:Syedna Qasim Khan Zainuddin AQ [31st Dai] (Ahmedabad)
+DESCRIPTION:9 Shawwal 1451H\n\n• Syedna Qasim Khan Zainuddin AQ [31st Dai
+ ] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Qasim Khan Zainuddin AQ [31st Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-10-10-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300213
+DTEND;VALUE=DATE:20300214
+SUMMARY:Syedna Husain Husamuddin AQ [21st Dai] (Masaar) · Syedna Ibrahim b
+ in Syedna Husain AQ [11th Dai] (Hisne Afedat) · Syedna Hebatullah Muayyad
+ fiddin Shirazi AQ
+DESCRIPTION:10 Shawwal 1451H\n\n• Syedna Husain Husamuddin AQ [21st Dai] 
+ (Masaar)\n• Syedna Ibrahim bin Syedna Husain AQ [11th Dai] (Hisne Afedat
+ )\n• Syedna Hebatullah Muayyadfiddin Shirazi AQ — Cairo
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Husain Husamuddin AQ [21st Dai] (Masaar) · Syedna Ibrah
+ im bin Syedna Husain AQ [11th Dai] (Hisne Afedat) · Syedna Hebatullah Mua
+ yyadfiddin Shirazi AQ
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-11-9-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300313
+DTEND;VALUE=DATE:20300314
+SUMMARY:Syedna Fir Khan Shujahuddin AQ [33rd Dai] (Ahmedabad)
+DESCRIPTION:9 Zilqadah 1451H\n\n• Syedna Fir Khan Shujahuddin AQ [33rd Da
+ i] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Fir Khan Shujahuddin AQ [33rd Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-11-11-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300315
+DTEND;VALUE=DATE:20300316
+SUMMARY:Syedna Ali bin Mohammed al-Sulayhi AQ (Yemen)
+DESCRIPTION:11 Zilqadah 1451H\n\n• Syedna Ali bin Mohammed al-Sulayhi AQ 
+ (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Mohammed al-Sulayhi AQ (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-11-12-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300316
+DTEND;VALUE=DATE:20300317
+SUMMARY:Syedna Abdul Tayyib Zakiyuddin bin Syedna Ismail Badruddin AQ [35th
+  Dai] (Jamnagar) · Syedna Abdeali Saifuddin AQ [43rd Dai] (Surat)
+DESCRIPTION:12 Zilqadah 1451H\n\n• Syedna Abdul Tayyib Zakiyuddin bin Sye
+ dna Ismail Badruddin AQ [35th Dai] (Jamnagar)\n• Syedna Abdeali Saifuddi
+ n AQ [43rd Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Tayyib Zakiyuddin bin Syedna Ismail Badruddin AQ [
+ 35th Dai] (Jamnagar) · Syedna Abdeali Saifuddin AQ [43rd Dai] (Surat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-11-13-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300317
+DTEND;VALUE=DATE:20300318
+SUMMARY:Syedna Ali bin Syedna Husain [9th Dai] (Sana’a)
+DESCRIPTION:13 Zilqadah 1451H\n\n• Syedna Ali bin Syedna Husain [9th Dai]
+  (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Syedna Husain [9th Dai] (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-11-15-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300319
+DTEND;VALUE=DATE:20300320
+SUMMARY:Syedna Tayyib Zainuddin bin Syedi Jewanji [45th Dai] (Surat)
+DESCRIPTION:15 Zilqadah 1451H\n\n• Syedna Tayyib Zainuddin bin Syedi Jewa
+ nji [45th Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Tayyib Zainuddin bin Syedi Jewanji [45th Dai] (Surat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1451-11-19-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20300323
 DTEND;VALUE=DATE:20300324
-SUMMARY:Mukasir al-Dawat Syedi Qaid Johar Bhaisaheb Ezzuddin DM
-DESCRIPTION:19 Zilqadah 1451H\n\n• Mukasir al-Dawat Syedi Qaid Johar Bhai
- saheb Ezzuddin DM — Milad
+SUMMARY:Syedna Idris Imaduddin AQ [19th Dai] (Shibaam) · Mukasir al-Dawat 
+ Syedi Qaid Johar Bhaisaheb Ezzuddin DM
+DESCRIPTION:19 Zilqadah 1451H\n\n• Syedna Idris Imaduddin AQ [19th Dai] (
+ Shibaam)\n• Mukasir al-Dawat Syedi Qaid Johar Bhaisaheb Ezzuddin DM — 
+ Milad
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Mukasir al-Dawat Syedi Qaid Johar Bhaisaheb Ezzuddin DM
+DESCRIPTION:Syedna Idris Imaduddin AQ [19th Dai] (Shibaam) · Mukasir al-Da
+ wat Syedi Qaid Johar Bhaisaheb Ezzuddin DM
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-11-21-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300325
+DTEND;VALUE=DATE:20300326
+SUMMARY:Syedna Ali Shamsuddin AQ [22nd Dai] (Masaar)
+DESCRIPTION:21 Zilqadah 1451H\n\n• Syedna Ali Shamsuddin AQ [22nd Dai] (M
+ asaar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin AQ [22nd Dai] (Masaar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-11-25-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300329
+DTEND;VALUE=DATE:20300330
+SUMMARY:Syedna Ali bin Syedna Hatim RA [4th Dai] (Sana’a)
+DESCRIPTION:25 Zilqadah 1451H\n\n• Syedna Ali bin Syedna Hatim RA [4th Da
+ i] (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Syedna Hatim RA [4th Dai] (Sana’a)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -2947,6 +6850,23 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Syedna Taher Saifuddin AQ [51st Dai]
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-12-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300404
+DTEND;VALUE=DATE:20300405
+SUMMARY:Syedna Mohammed AQ bin Hatim bin Husain in Ali [12th Dai] (Hisne Af
+ edat)
+DESCRIPTION:1 Zilhaj 1451H\n\n• Syedna Mohammed AQ bin Hatim bin Husain i
+ n Ali [12th Dai] (Hisne Afedat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed AQ bin Hatim bin Husain in Ali [12th Dai] (Hisn
+ e Afedat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -3030,6 +6950,21 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1451-12-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300419
+DTEND;VALUE=DATE:20300420
+SUMMARY:Syedna Yusuf Najmuddin RA [24th Dai] (Taibah)
+DESCRIPTION:16 Zilhaj 1451H\n\n• Syedna Yusuf Najmuddin RA [24th Dai] (Ta
+ ibah)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Yusuf Najmuddin RA [24th Dai] (Taibah)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1451-12-18-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20300421
@@ -3040,6 +6975,26 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Rozu
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1451-12-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300430
+DTEND;VALUE=DATE:20300501
+SUMMARY:Syedna Abdul Husain Husamuddin bin Syedna Tayyib Zainuddin AQ [48th
+  Dai] (Ahmedabad) · Syedna Mohammed Burhanuddin bin Syedna AbdulQadir Naj
+ muddin AQ [49th Dai] (Surat)
+DESCRIPTION:27 Zilhaj 1451H\n\n• Syedna Abdul Husain Husamuddin bin Syedn
+ a Tayyib Zainuddin AQ [48th Dai] (Ahmedabad)\n• Syedna Mohammed Burhanud
+ din bin Syedna AbdulQadir Najmuddin AQ [49th Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Husain Husamuddin bin Syedna Tayyib Zainuddin AQ [
+ 48th Dai] (Ahmedabad) · Syedna Mohammed Burhanuddin bin Syedna AbdulQadir
+  Najmuddin AQ [49th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -3118,12 +7073,13 @@ UID:1452-1-7-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20300509
 DTEND;VALUE=DATE:20300510
-SUMMARY:Vaaz 6
-DESCRIPTION:7 Moharram 1452H\n\n• Vaaz 6 — Ashara Mubaraka
+SUMMARY:Syedna Ismail Badruddin RA [38th Dai] (Jamnagar) · Vaaz 6
+DESCRIPTION:7 Moharram 1452H\n\n• Syedna Ismail Badruddin RA [38th Dai] (
+ Jamnagar)\n• Vaaz 6 — Ashara Mubaraka
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Vaaz 6
+DESCRIPTION:Syedna Ismail Badruddin RA [38th Dai] (Jamnagar) · Vaaz 6
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -3160,12 +7116,103 @@ UID:1452-1-10-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20300512
 DTEND;VALUE=DATE:20300513
-SUMMARY:Ashura
-DESCRIPTION:10 Moharram 1452H\n\n• Ashura — Yawme Ashura
+SUMMARY:Syedna Zoeb Bin Musa AQ [1st Dai] (Haus) · Ashura
+DESCRIPTION:10 Moharram 1452H\n\n• Syedna Zoeb Bin Musa AQ [1st Dai] (Hau
+ s)\n• Ashura — Yawme Ashura
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Ashura
+DESCRIPTION:Syedna Zoeb Bin Musa AQ [1st Dai] (Haus) · Ashura
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-1-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300518
+DTEND;VALUE=DATE:20300519
+SUMMARY:Syedna Hatim bin Syedna Ibrahim RA [3rd Dai] (Hutaib)
+DESCRIPTION:16 Moharram 1452H\n\n• Syedna Hatim bin Syedna Ibrahim RA [3r
+ d Dai] (Hutaib)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hatim bin Syedna Ibrahim RA [3rd Dai] (Hutaib)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-1-17-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300519
+DTEND;VALUE=DATE:20300520
+SUMMARY:Syedna Ibrahim Vajihuddin RA [39th Dai] (Ujjain)
+DESCRIPTION:17 Moharram 1452H\n\n• Syedna Ibrahim Vajihuddin RA [39th Dai
+ ] (Ujjain)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ibrahim Vajihuddin RA [39th Dai] (Ujjain)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-2-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300602
+DTEND;VALUE=DATE:20300603
+SUMMARY:Syedna Ali bin Moulaya Hasan RA [10th Dai] (Sana’a)
+DESCRIPTION:1 Safar 1452H\n\n• Syedna Ali bin Moulaya Hasan RA [10th Dai]
+  (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Moulaya Hasan RA [10th Dai] (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-2-3-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300604
+DTEND;VALUE=DATE:20300605
+SUMMARY:Syedna Ali Shamsuddin Bin Syedna Abdullah AQ [18th Dai] (Shareqa)
+DESCRIPTION:3 Safar 1452H\n\n• Syedna Ali Shamsuddin Bin Syedna Abdullah 
+ AQ [18th Dai] (Shareqa)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin Bin Syedna Abdullah AQ [18th Dai] (Shareq
+ a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-2-4-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300605
+DTEND;VALUE=DATE:20300606
+SUMMARY:Syedna Abdul Tayyib Zakiyuddin AQ [41st Dai] (Burhanpur)
+DESCRIPTION:4 Safar 1452H\n\n• Syedna Abdul Tayyib Zakiyuddin AQ [41st Da
+ i] (Burhanpur)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Tayyib Zakiyuddin AQ [41st Dai] (Burhanpur)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-2-8-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300609
+DTEND;VALUE=DATE:20300610
+SUMMARY:Syedna al-Khattab bin Hasan al-Hamdani AQ
+DESCRIPTION:8 Safar 1452H\n\n• Syedna al-Khattab bin Hasan al-Hamdani AQ
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna al-Khattab bin Hasan al-Hamdani AQ
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -3184,6 +7231,36 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1452-2-22-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300623
+DTEND;VALUE=DATE:20300624
+SUMMARY:Syedna Hussain bin Syedna Ali RA [8th Dai] (Sana’a)
+DESCRIPTION:22 Safar 1452H\n\n• Syedna Hussain bin Syedna Ali RA [8th Dai
+ ] (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hussain bin Syedna Ali RA [8th Dai] (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-2-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300628
+DTEND;VALUE=DATE:20300629
+SUMMARY:Syedna Mohammed Ezzuddin RA [23rd Dai] (Zabid)
+DESCRIPTION:27 Safar 1452H\n\n• Syedna Mohammed Ezzuddin RA [23rd Dai] (Z
+ abid)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed Ezzuddin RA [23rd Dai] (Zabid)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1452-2-28-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20300629
@@ -3194,6 +7271,38 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Imam Hasan AS (Medina)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-3-2-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300702
+DTEND;VALUE=DATE:20300703
+SUMMARY:Syedna Abdul Tayyib Zakiyuddin bin Syedna Dawood bin Qutbub Shah AQ
+  [29th Dai] (Ahmedabad)
+DESCRIPTION:2 Rabi I 1452H\n\n• Syedna Abdul Tayyib Zakiyuddin bin Syedna
+  Dawood bin Qutbub Shah AQ [29th Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Tayyib Zakiyuddin bin Syedna Dawood bin Qutbub Sha
+ h AQ [29th Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-3-10-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300710
+DTEND;VALUE=DATE:20300711
+SUMMARY:Syedna Abdullah Badruddin RA [50th Dai] (Surat)
+DESCRIPTION:10 Rabi I 1452H\n\n• Syedna Abdullah Badruddin RA [50th Dai] 
+ (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdullah Badruddin RA [50th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -3212,6 +7321,51 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1452-3-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300716
+DTEND;VALUE=DATE:20300717
+SUMMARY:Syedna Mohammed Burhanuddin RA [52nd Dai] (Mumbai)
+DESCRIPTION:16 Rabi I 1452H\n\n• Syedna Mohammed Burhanuddin RA [52nd Dai
+ ] (Mumbai)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed Burhanuddin RA [52nd Dai] (Mumbai)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-3-22-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300722
+DTEND;VALUE=DATE:20300723
+SUMMARY:Syedna Ali bin Hanzala RA [6th Dai] (Hamadan)
+DESCRIPTION:22 Rabi I 1452H\n\n• Syedna Ali bin Hanzala RA [6th Dai] (Ham
+ adan)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Hanzala RA [6th Dai] (Hamadan)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-3-25-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300725
+DTEND;VALUE=DATE:20300726
+SUMMARY:Syedna Ali Shamsuddin bin Mawlai Hasan [30th Dai](Hisne Afedat)
+DESCRIPTION:25 Rabi I 1452H\n\n• Syedna Ali Shamsuddin bin Mawlai Hasan [
+ 30th Dai](Hisne Afedat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin bin Mawlai Hasan [30th Dai](Hisne Afedat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1452-4-4-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20300803
@@ -3222,6 +7376,21 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Imam-uz-Zamaan SA
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-4-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300815
+DTEND;VALUE=DATE:20300816
+SUMMARY:Syedna Jalal Shamsuddin AQ bin Hasan [25th Dai]  (Ahmedabad)
+DESCRIPTION:16 Rabi II 1452H\n\n• Syedna Jalal Shamsuddin AQ bin Hasan [2
+ 5th Dai]  (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Jalal Shamsuddin AQ bin Hasan [25th Dai]  (Ahmedabad)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -3241,6 +7410,52 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1452-4-22-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300821
+DTEND;VALUE=DATE:20300822
+SUMMARY:Syedna Moosa Kalimuddin RA [36th Dai] (Jamnagar)
+DESCRIPTION:22 Rabi II 1452H\n\n• Syedna Moosa Kalimuddin RA [36th Dai] (
+ Jamnagar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Moosa Kalimuddin RA [36th Dai] (Jamnagar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-4-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300826
+DTEND;VALUE=DATE:20300827
+SUMMARY:Syedna Dawood ibn Ajab Shah Burhanuddin RA [26th Dai] (Ahmedabad)
+DESCRIPTION:27 Rabi II 1452H\n\n• Syedna Dawood ibn Ajab Shah Burhanuddin
+  RA [26th Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Dawood ibn Ajab Shah Burhanuddin RA [26th Dai] (Ahmedaba
+ d)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-5-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300829
+DTEND;VALUE=DATE:20300830
+SUMMARY:Syedna Ahmed bin Syedna Ali al-Mukarram Sulaihi AQ (Sana’a)
+DESCRIPTION:1 Jumada I 1452H\n\n• Syedna Ahmed bin Syedna Ali al-Mukarram
+  Sulaihi AQ (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ahmed bin Syedna Ali al-Mukarram Sulaihi AQ (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1452-5-10-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20300907
@@ -3256,6 +7471,66 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1452-5-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20300913
+DTEND;VALUE=DATE:20300914
+SUMMARY:Syedna Mohammed bin Idris AQ (Yemen)
+DESCRIPTION:16 Jumada I 1452H\n\n• Syedna Mohammed bin Idris AQ (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed bin Idris AQ (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-6-15-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20301012
+DTEND;VALUE=DATE:20301013
+SUMMARY:Syedna Dawood Burhanuddin AQ bin Qutub Shah [27th Dai] (Ahmedabad)
+DESCRIPTION:15 Jumada II 1452H\n\n• Syedna Dawood Burhanuddin AQ bin Qutu
+ b Shah [27th Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Dawood Burhanuddin AQ bin Qutub Shah [27th Dai] (Ahmedab
+ ad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-6-18-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20301015
+DTEND;VALUE=DATE:20301016
+SUMMARY:Syedna Yusuf Najmuddin AQ [42nd Dai] (Surat)
+DESCRIPTION:18 Jumada II 1452H\n\n• Syedna Yusuf Najmuddin AQ [42nd Dai] 
+ (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Yusuf Najmuddin AQ [42nd Dai] (Surat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-6-23-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20301020
+DTEND;VALUE=DATE:20301021
+SUMMARY:Syedna Ismail Badruddin AQ bin Mawlai Raj [34th Dai] (Jamnagar)
+DESCRIPTION:23 Jumada II 1452H\n\n• Syedna Ismail Badruddin AQ bin Mawlai
+  Raj [34th Dai] (Jamnagar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ismail Badruddin AQ bin Mawlai Raj [34th Dai] (Jamnagar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1452-6-26-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20301023
@@ -3267,6 +7542,57 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Mazoon al-Dawat Syedi Husain Bhaisaheb Husamuddin AQ
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-6-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20301024
+DTEND;VALUE=DATE:20301025
+SUMMARY:Syedna Lamak bin Malik RA (Yemen) · Syedna Qutub Khan Qutubuddin S
+ hahid AQ [32nd Dai] (Ahmedabad)
+DESCRIPTION:27 Jumada II 1452H\n\n• Syedna Lamak bin Malik RA (Yemen)\n
+ • Syedna Qutub Khan Qutubuddin Shahid AQ [32nd Dai] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Lamak bin Malik RA (Yemen) · Syedna Qutub Khan Qutubudd
+ in Shahid AQ [32nd Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-6-28-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20301025
+DTEND;VALUE=DATE:20301026
+SUMMARY:Syedna Ahmed bin Mubarak AQ (Hamdaan) [7th Dai] (Hamdaan) · Syedna
+  Yahya bin Syedna Lamak AQ (Yemen)
+DESCRIPTION:28 Jumada II 1452H\n\n• Syedna Ahmed bin Mubarak AQ (Hamdaan)
+  [7th Dai] (Hamdaan)\n• Syedna Yahya bin Syedna Lamak AQ (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ahmed bin Mubarak AQ (Hamdaan) [7th Dai] (Hamdaan) · Sy
+ edna Yahya bin Syedna Lamak AQ (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-6-29-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20301026
+DTEND;VALUE=DATE:20301027
+SUMMARY:Syedna Qadi Numan bin Mohammed AQ · Syedna Mohammed Badruddin AQ [
+ 46th Dai] (Surat)
+DESCRIPTION:29 Jumada II 1452H\n\n• Syedna Qadi Numan bin Mohammed AQ\n
+ • Syedna Mohammed Badruddin AQ [46th Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Qadi Numan bin Mohammed AQ · Syedna Mohammed Badruddin 
+ AQ [46th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -3302,6 +7628,36 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Fasting
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-7-4-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20301030
+DTEND;VALUE=DATE:20301031
+SUMMARY:Syedna Noor Mohammed Nooruddin AQ [37th Dai] (Kutch-Mandvi)
+DESCRIPTION:4 Rajab 1452H\n\n• Syedna Noor Mohammed Nooruddin AQ [37th Da
+ i] (Kutch-Mandvi) — Kutch Mandvi
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Noor Mohammed Nooruddin AQ [37th Dai] (Kutch-Mandvi)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-7-7-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20301102
+DTEND;VALUE=DATE:20301103
+SUMMARY:Syedna Shaikh Adam Safiyuddin AQ [28th Dai] (Ahmedabad)
+DESCRIPTION:7 Rajab 1452H\n\n• Syedna Shaikh Adam Safiyuddin AQ [28th Dai
+ ] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Shaikh Adam Safiyuddin AQ [28th Dai] (Ahmedabad)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -3349,6 +7705,70 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1452-7-18-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20301113
+DTEND;VALUE=DATE:20301114
+SUMMARY:Syedna Ali Shamsuddin AQ bin Syedna Ibrahim bin Husain AQ [13th Dai
+ ] (Zamarmar)
+DESCRIPTION:18 Rajab 1452H\n\n• Syedna Ali Shamsuddin AQ bin Syedna Ibrah
+ im bin Husain AQ [13th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin AQ bin Syedna Ibrahim bin Husain AQ [13th
+  Dai] (Zamarmar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-7-19-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20301114
+DTEND;VALUE=DATE:20301115
+SUMMARY:Syedna Taher Saifuddin AQ [51st Dai] (Mumbai)
+DESCRIPTION:19 Rajab 1452H\n\n• Syedna Taher Saifuddin AQ [51st Dai] (Mum
+ bai)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Taher Saifuddin AQ [51st Dai] (Mumbai)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-7-24-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20301119
+DTEND;VALUE=DATE:20301120
+SUMMARY:Syedna Abdul Mutalib Najmuddin AQ bin Syedna Mohammed bin Hatim AQ 
+ [14th Dai] (Zamarmar)
+DESCRIPTION:24 Rajab 1452H\n\n• Syedna Abdul Mutalib Najmuddin AQ bin Sye
+ dna Mohammed bin Hatim AQ [14th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Mutalib Najmuddin AQ bin Syedna Mohammed bin Hatim
+  AQ [14th Dai] (Zamarmar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-7-26-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20301121
+DTEND;VALUE=DATE:20301122
+SUMMARY:Syedna Abdul Qadr Najmuddin AQ [47th Dai] (Ujjain)
+DESCRIPTION:26 Rajab 1452H\n\n• Syedna Abdul Qadr Najmuddin AQ [47th Dai]
+  (Ujjain)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Qadr Najmuddin AQ [47th Dai] (Ujjain)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1452-7-26-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20301121
@@ -3378,6 +7798,21 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1452-8-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20301126
+DTEND;VALUE=DATE:20301127
+SUMMARY:Syedna Hebatullah Muayyad Fiddin AQ [40th Dai] (Ujjain)
+DESCRIPTION:1 Shabaan 1452H\n\n• Syedna Hebatullah Muayyad Fiddin AQ [40t
+ h Dai] (Ujjain)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hebatullah Muayyad Fiddin AQ [40th Dai] (Ujjain)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1452-8-14-night-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20301209
@@ -3390,6 +7825,66 @@ BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🌙 Night: Shabb-e-Baraat (Laylat al-Nisf)
 TRIGGER:PT17H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-8-15-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20301210
+DTEND;VALUE=DATE:20301211
+SUMMARY:Syedna Hasan Badruddin AQ [20th Dai] (Masaar)
+DESCRIPTION:15 Shabaan 1452H\n\n• Syedna Hasan Badruddin AQ [20th Dai] (M
+ asaar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hasan Badruddin AQ [20th Dai] (Masaar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-8-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20301211
+DTEND;VALUE=DATE:20301212
+SUMMARY:Syedna Ibrahim bin Husain AQ [2nd Dai] [2nd Dai]
+DESCRIPTION:16 Shabaan 1452H\n\n• Syedna Ibrahim bin Husain AQ [2nd Dai] 
+ [2nd Dai]
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ibrahim bin Husain AQ [2nd Dai] [2nd Dai]
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-8-29-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20301224
+DTEND;VALUE=DATE:20301225
+SUMMARY:Syedna Ali bin Mawla Mohammed al-Walid AQ [5th Dai] (Haraaz)
+DESCRIPTION:29 Shabaan 1452H\n\n• Syedna Ali bin Mawla Mohammed al-Walid 
+ AQ [5th Dai] (Haraaz)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Mawla Mohammed al-Walid AQ [5th Dai] (Haraaz)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-9-9-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20310102
+DTEND;VALUE=DATE:20310103
+SUMMARY:Syedna Abdullah Fakhruddin AQ bin Ali [16th Dai] (Zamarmar)
+DESCRIPTION:9 Ramadaan 1452H\n\n• Syedna Abdullah Fakhruddin AQ bin Ali [
+ 16th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdullah Fakhruddin AQ bin Ali [16th Dai] (Zamarmar)
+TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -3427,13 +7922,15 @@ UID:1452-9-19-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20310112
 DTEND;VALUE=DATE:20310113
-SUMMARY:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa)
+SUMMARY:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa) · Syedna Mohammed Ezz
+ uddin RA [44th Dai] (Surat)
 DESCRIPTION:19 Ramadaan 1452H\n\n• Amir al-Mumineen Ali ibn Abi Talib SA 
- (Kufa) — Shahadat
+ (Kufa) — Shahadat\n• Syedna Mohammed Ezzuddin RA [44th Dai] (Surat)
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa)
+DESCRIPTION:Amir al-Mumineen Ali ibn Abi Talib SA (Kufa) · Syedna Mohammed
+  Ezzuddin RA [44th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -3528,17 +8025,214 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1452-10-6-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20310129
+DTEND;VALUE=DATE:20310130
+SUMMARY:Syedna Hasan Badruddin bin Syedba Abdullah Fakhruddin AQ [17th Dai]
+  (Zamarmar)
+DESCRIPTION:6 Shawwal 1452H\n\n• Syedna Hasan Badruddin bin Syedba Abdull
+ ah Fakhruddin AQ [17th Dai] (Zamarmar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Hasan Badruddin bin Syedba Abdullah Fakhruddin AQ [17th 
+ Dai] (Zamarmar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-10-7-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20310130
+DTEND;VALUE=DATE:20310131
+SUMMARY:Syedna Mohammed bin Taher AQ [Writer of Dua Al Aql Al Awwal\, Bawes
+ ani Dua] (Yemen)
+DESCRIPTION:7 Shawwal 1452H\n\n• Syedna Mohammed bin Taher AQ [Writer of 
+ Dua Al Aql Al Awwal\, Bawesani Dua] (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed bin Taher AQ [Writer of Dua Al Aql Al Awwal\, B
+ awesani Dua] (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-10-8-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20310131
+DTEND;VALUE=DATE:20310201
+SUMMARY:Syedna Abbas bin Syedna Mohammed bin Hatim AQ [15th Dai] (Hisne Afe
+ dat)
+DESCRIPTION:8 Shawwal 1452H\n\n• Syedna Abbas bin Syedna Mohammed bin Hat
+ im AQ [15th Dai] (Hisne Afedat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abbas bin Syedna Mohammed bin Hatim AQ [15th Dai] (Hisne
+  Afedat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-10-9-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20310201
+DTEND;VALUE=DATE:20310202
+SUMMARY:Syedna Qasim Khan Zainuddin AQ [31st Dai] (Ahmedabad)
+DESCRIPTION:9 Shawwal 1452H\n\n• Syedna Qasim Khan Zainuddin AQ [31st Dai
+ ] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Qasim Khan Zainuddin AQ [31st Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-10-10-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20310202
+DTEND;VALUE=DATE:20310203
+SUMMARY:Syedna Husain Husamuddin AQ [21st Dai] (Masaar) · Syedna Ibrahim b
+ in Syedna Husain AQ [11th Dai] (Hisne Afedat) · Syedna Hebatullah Muayyad
+ fiddin Shirazi AQ
+DESCRIPTION:10 Shawwal 1452H\n\n• Syedna Husain Husamuddin AQ [21st Dai] 
+ (Masaar)\n• Syedna Ibrahim bin Syedna Husain AQ [11th Dai] (Hisne Afedat
+ )\n• Syedna Hebatullah Muayyadfiddin Shirazi AQ — Cairo
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Husain Husamuddin AQ [21st Dai] (Masaar) · Syedna Ibrah
+ im bin Syedna Husain AQ [11th Dai] (Hisne Afedat) · Syedna Hebatullah Mua
+ yyadfiddin Shirazi AQ
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-11-9-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20310302
+DTEND;VALUE=DATE:20310303
+SUMMARY:Syedna Fir Khan Shujahuddin AQ [33rd Dai] (Ahmedabad)
+DESCRIPTION:9 Zilqadah 1452H\n\n• Syedna Fir Khan Shujahuddin AQ [33rd Da
+ i] (Ahmedabad)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Fir Khan Shujahuddin AQ [33rd Dai] (Ahmedabad)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-11-11-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20310304
+DTEND;VALUE=DATE:20310305
+SUMMARY:Syedna Ali bin Mohammed al-Sulayhi AQ (Yemen)
+DESCRIPTION:11 Zilqadah 1452H\n\n• Syedna Ali bin Mohammed al-Sulayhi AQ 
+ (Yemen)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Mohammed al-Sulayhi AQ (Yemen)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-11-12-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20310305
+DTEND;VALUE=DATE:20310306
+SUMMARY:Syedna Abdul Tayyib Zakiyuddin bin Syedna Ismail Badruddin AQ [35th
+  Dai] (Jamnagar) · Syedna Abdeali Saifuddin AQ [43rd Dai] (Surat)
+DESCRIPTION:12 Zilqadah 1452H\n\n• Syedna Abdul Tayyib Zakiyuddin bin Sye
+ dna Ismail Badruddin AQ [35th Dai] (Jamnagar)\n• Syedna Abdeali Saifuddi
+ n AQ [43rd Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Tayyib Zakiyuddin bin Syedna Ismail Badruddin AQ [
+ 35th Dai] (Jamnagar) · Syedna Abdeali Saifuddin AQ [43rd Dai] (Surat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-11-13-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20310306
+DTEND;VALUE=DATE:20310307
+SUMMARY:Syedna Ali bin Syedna Husain [9th Dai] (Sana’a)
+DESCRIPTION:13 Zilqadah 1452H\n\n• Syedna Ali bin Syedna Husain [9th Dai]
+  (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Syedna Husain [9th Dai] (Sana’a)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-11-15-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20310308
+DTEND;VALUE=DATE:20310309
+SUMMARY:Syedna Tayyib Zainuddin bin Syedi Jewanji [45th Dai] (Surat)
+DESCRIPTION:15 Zilqadah 1452H\n\n• Syedna Tayyib Zainuddin bin Syedi Jewa
+ nji [45th Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Tayyib Zainuddin bin Syedi Jewanji [45th Dai] (Surat)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1452-11-19-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20310312
 DTEND;VALUE=DATE:20310313
-SUMMARY:Mukasir al-Dawat Syedi Qaid Johar Bhaisaheb Ezzuddin DM
-DESCRIPTION:19 Zilqadah 1452H\n\n• Mukasir al-Dawat Syedi Qaid Johar Bhai
- saheb Ezzuddin DM — Milad
+SUMMARY:Syedna Idris Imaduddin AQ [19th Dai] (Shibaam) · Mukasir al-Dawat 
+ Syedi Qaid Johar Bhaisaheb Ezzuddin DM
+DESCRIPTION:19 Zilqadah 1452H\n\n• Syedna Idris Imaduddin AQ [19th Dai] (
+ Shibaam)\n• Mukasir al-Dawat Syedi Qaid Johar Bhaisaheb Ezzuddin DM — 
+ Milad
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Mukasir al-Dawat Syedi Qaid Johar Bhaisaheb Ezzuddin DM
+DESCRIPTION:Syedna Idris Imaduddin AQ [19th Dai] (Shibaam) · Mukasir al-Da
+ wat Syedi Qaid Johar Bhaisaheb Ezzuddin DM
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-11-21-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20310314
+DTEND;VALUE=DATE:20310315
+SUMMARY:Syedna Ali Shamsuddin AQ [22nd Dai] (Masaar)
+DESCRIPTION:21 Zilqadah 1452H\n\n• Syedna Ali Shamsuddin AQ [22nd Dai] (M
+ asaar)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali Shamsuddin AQ [22nd Dai] (Masaar)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-11-25-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20310318
+DTEND;VALUE=DATE:20310319
+SUMMARY:Syedna Ali bin Syedna Hatim RA [4th Dai] (Sana’a)
+DESCRIPTION:25 Zilqadah 1452H\n\n• Syedna Ali bin Syedna Hatim RA [4th Da
+ i] (Sana’a)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Ali bin Syedna Hatim RA [4th Dai] (Sana’a)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -3554,6 +8248,23 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Syedna Taher Saifuddin AQ [51st Dai]
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-12-1-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20310324
+DTEND;VALUE=DATE:20310325
+SUMMARY:Syedna Mohammed AQ bin Hatim bin Husain in Ali [12th Dai] (Hisne Af
+ edat)
+DESCRIPTION:1 Zilhaj 1452H\n\n• Syedna Mohammed AQ bin Hatim bin Husain i
+ n Ali [12th Dai] (Hisne Afedat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Mohammed AQ bin Hatim bin Husain in Ali [12th Dai] (Hisn
+ e Afedat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
@@ -3637,6 +8348,21 @@ TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:1452-12-16-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20310408
+DTEND;VALUE=DATE:20310409
+SUMMARY:Syedna Yusuf Najmuddin RA [24th Dai] (Taibah)
+DESCRIPTION:16 Zilhaj 1452H\n\n• Syedna Yusuf Najmuddin RA [24th Dai] (Ta
+ ibah)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Yusuf Najmuddin RA [24th Dai] (Taibah)
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1452-12-18-day-p2@murtaza0053.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20310410
@@ -3647,6 +8373,26 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Rozu
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1452-12-27-day-p2@murtaza0053.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20310419
+DTEND;VALUE=DATE:20310420
+SUMMARY:Syedna Abdul Husain Husamuddin bin Syedna Tayyib Zainuddin AQ [48th
+  Dai] (Ahmedabad) · Syedna Mohammed Burhanuddin bin Syedna AbdulQadir Naj
+ muddin AQ [49th Dai] (Surat)
+DESCRIPTION:27 Zilhaj 1452H\n\n• Syedna Abdul Husain Husamuddin bin Syedn
+ a Tayyib Zainuddin AQ [48th Dai] (Ahmedabad)\n• Syedna Mohammed Burhanud
+ din bin Syedna AbdulQadir Najmuddin AQ [49th Dai] (Surat)
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Syedna Abdul Husain Husamuddin bin Syedna Tayyib Zainuddin AQ [
+ 48th Dai] (Ahmedabad) · Syedna Mohammed Burhanuddin bin Syedna AbdulQadir
+  Najmuddin AQ [49th Dai] (Surat)
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT

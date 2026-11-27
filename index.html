@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://murtaza0053.github.io/hijri-calendar/og-image.png">
-<link rel="stylesheet" href="themes.css?v=262">
-<script src="theme-init.js?v=262"></script>
+<link rel="stylesheet" href="themes.css?v=263">
+<script src="theme-init.js?v=263"></script>
 <style>
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -818,10 +818,10 @@ html.ui-modern #modeSet,html.ui-modern h3[data-i18n=modeH]{display:none}   /* Mo
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grab"></div><div id="sheetBody"></div></div>
 
-<script src="hijri.js?v=262"></script>
-<script src="i18n.js?v=262"></script>
-<script src="cities.js?v=262"></script>
-<script src="haptic.js?v=262"></script>
+<script src="hijri.js?v=263"></script>
+<script src="i18n.js?v=263"></script>
+<script src="cities.js?v=263"></script>
+<script src="haptic.js?v=263"></script>
 <script>
 "use strict";
 
@@ -910,7 +910,7 @@ document.addEventListener("click", e => {
 /* ---------- Miqaats ---------- */
 /* ---------- Miqaats: all from mumineen.org (official API v1) ----------
    One request per Hijri month, cached on the device (works offline for the months already loaded; the next 12 months are loaded in the background).
-   The API has no priority/phase, so: everything except "Urus" counts as major (priority 1), "Urus" = 3; night = Raat / Laylat in the type or name. */
+   The API has no priority/phase, so: everything except "Urus" counts as major (priority 1), "Urus" = 3 unless it is a Dai's Urus ("Syedna …" = 1); night = Raat / Laylat in the type or name. */
 const MQ_API = "https://mumineen.org/api/v1/calendar/";
 let apiMiq = store.get("miqApi", {}), mqFail = false, mqRT = 0; const mqBusy = {};
 const mqKey = (y, m) => y + "-" + m;
@@ -932,7 +932,7 @@ const miqaatsFor = (y, m, d) => {
   const ac = apiMiq[mqKey(y, m)]; if (!ac) return [];
   return ac.list.filter(a => a.d === d).map(a => {
     const urus = a.t === "Urus";
-    return { title: a.n, type: a.t, priority: urus ? 3 : 1, phase: /raat|laylat|layl/i.test(a.t + " " + a.n) ? "night" : "day", year: null,
+    return { title: a.n, type: a.t, priority: urus && !/^Syedna\b/i.test(a.n) ? 3 : 1, phase: /raat|laylat|layl/i.test(a.t + " " + a.n) ? "night" : "day", year: null,
       description: urus ? (a.c && !a.n.includes(a.c) ? a.c : null) : (a.t && a.t !== a.n ? a.t : null) };
   }).sort((a, b) => a.priority - b.priority);
 };
@@ -1646,7 +1646,7 @@ document.addEventListener("keydown", e => {
   setInterval(() => { if (bar.classList.contains("on")) fill(); }, 30000);
   window.addEventListener("hashchange", upd); document.addEventListener("click", () => setTimeout(upd, 50));
 })();
-const APP_V = 262, APP_VERSION = vName(APP_V) + " (2026-11-25)";
+const APP_V = 263, APP_VERSION = vName(APP_V) + " (2026-11-25)";
 $("appVer").textContent = APP_VERSION;
 applyStatic(); applyTheme(); setupConv(); setupSubscribe(); renderAll(); salaatSync();
 /* ---------- Azaan (plays the bundled Bohra azaan while the app is open) ---------- */
