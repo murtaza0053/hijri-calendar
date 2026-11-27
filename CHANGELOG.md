@@ -82,6 +82,10 @@ Android app (APK). Plays the Bohra azaan at Fajr, Zawaal and Maghrib even when t
 
 ### 2026-11-27
 
+**v261**
+
+- Dua tab: clean line icons for every dua and for sadaqah.
+
 **v260**
 
 - Settings icons are now clean line icons. The app Style switch is a PRO feature: tap it, then recite the Astagferullah tasbeeh 1000 times (a counter button in the pop-up) to unlock it.
