@@ -1,6 +1,19 @@
 {
- "v": 259,
+ "v": 260,
  "history": [
+  {
+   "v": 260,
+   "date": "2026-11-27",
+   "en": [
+    "Settings icons are now clean line icons. The app Style switch is a PRO feature: tap it, then recite the Astagferullah tasbeeh 1000 times (a counter button in the pop-up) to unlock it."
+   ],
+   "gu": [
+    "સેટિંગ્સના આઇકન હવે સાફ લાઇન આઇકન છે. એપ સ્ટાઇલ સ્વિચ PRO સુવિધા છે: તેના પર ટેપ કરીને 1000 વખત અસ્તગફિરુલ્લાહની તસ્બીહ કરો (પોપ-અપમાં કાઉન્ટર બટન) અને અનલૉક કરો."
+   ],
+   "hi": [
+    "Settings ke icons ab saaf line icons hain. App Style switch ek PRO feature hai: us par tap karke 1000 baar Astagferullah ki tasbeeh karo (popup me counter button) aur unlock karo."
+   ]
+  },
   {
    "v": 259,
    "date": "2026-11-27",
